@@ -30,9 +30,9 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="structMkTexture.html" target="_top" xlink:title="struct for a texture use in menu mainly">
-<polygon fill="white" stroke="#666666" points="166,-96 98,-96 98,-77 166,-77 166,-96"/>
-<text text-anchor="middle" x="132" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">MkTexture</text>
+<g id="a_Node000002"><a xlink:href="structMenuTexture.html" target="_top" xlink:title="struct for a texture use in menu mainly">
+<polygon fill="white" stroke="#666666" points="172,-96 92,-96 92,-77 172,-77 172,-96"/>
+<text text-anchor="middle" x="132" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">MenuTexture</text>
 </a>
 </g>
 </g>
@@ -63,9 +63,8 @@
 <polygon fill="#9a32cd" stroke="#9a32cd" points="48.09,-176.32 48.37,-186.91 54.76,-178.45 48.09,-176.32"/>
 </a>
 </g>
-<text text-anchor="middle" x="107" y="-150" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> type</text>
-<text text-anchor="middle" x="107" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unused1</text>
-<text text-anchor="middle" x="107" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unused2</text>
+<text text-anchor="middle" x="107" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> type</text>
+<text text-anchor="middle" x="107" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unused2</text>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
@@ -99,7 +98,7 @@
 <g id="edge4_Node000002_Node000005" class="edge">
 <title>Node5&#45;&gt;Node2</title>
 <g id="a_edge4_Node000002_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M222.56,-176.71C220.21,-158.55 214.08,-131.3 198,-114 189.59,-104.96 177.68,-98.93 166.29,-94.95"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M222.56,-176.71C220.21,-158.55 214.08,-131.3 198,-114 190.35,-105.77 179.8,-100.04 169.38,-96.08"/>
 <polygon fill="#9a32cd" stroke="#9a32cd" points="219.08,-177.09 223.58,-186.68 226.04,-176.38 219.08,-177.09"/>
 </a>
 </g>

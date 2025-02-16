@@ -123,6 +123,6 @@ var wario__stadium_2course__data_8c =
     [ "d_course_wario_stadium_sign_head_model4", "wario__stadium_2course__data_8c.html#a5267b189f4deb366aaeb9cccf68b34a7", null ],
     [ "d_course_wario_stadium_sign_top_left", "wario__stadium_2course__data_8c.html#a25efda1180500f8b412d9f1e8ead4463", null ],
     [ "d_course_wario_stadium_sign_top_right", "wario__stadium_2course__data_8c.html#a95eefd929c2946d48060b1b2b2ac9e23", null ],
-    [ "d_course_wario_stadium_track_waypoints", "wario__stadium_2course__data_8c.html#a56df7443bb7f212efcc95b61ff2fdb27", null ],
-    [ "d_course_wario_stadium_unknown_waypoints", "wario__stadium_2course__data_8c.html#ab4128305cca8bd561dc671aecad4a33b", null ]
+    [ "d_course_wario_stadium_track_path", "wario__stadium_2course__data_8c.html#aba05f3619d63d5c124c652eb8752ea90", null ],
+    [ "d_course_wario_stadium_unknown_path", "wario__stadium_2course__data_8c.html#a30a7d634cc65efd983b5c3fb792cfb69", null ]
 ];

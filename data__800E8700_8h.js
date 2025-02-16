@@ -18,8 +18,8 @@ var data__800E8700_8h =
     [ "D_800E8B80", "data__800E8700_8h.html#ac3b9a2f2e49a8bc747a8e93d9d64c610", null ],
     [ "D_800E8BC0", "data__800E8700_8h.html#a0cd5320112bd70fbd52726c7f4e75765", null ],
     [ "D_800E8C00", "data__800E8700_8h.html#a8b02ee50c1069eb73c299b2d09fb89f5", null ],
-    [ "D_800E8C40", "data__800E8700_8h.html#a7816d8a2b319761db7f3b6a9ab6a347b", null ],
-    [ "D_800E8CC0", "data__800E8700_8h.html#a4654654deb0e3fa69958679d4c2e9da4", null ],
     [ "D_800E8D40", "data__800E8700_8h.html#aadd1d44cc08e24d4417552e88cfe2d60", null ],
-    [ "D_800E8DD0", "data__800E8700_8h.html#af108d138885722e3ef5a26f89c9af18b", null ]
+    [ "D_800E8DD0", "data__800E8700_8h.html#af108d138885722e3ef5a26f89c9af18b", null ],
+    [ "data_800E8700_vtx_800E8C40", "data__800E8700_8h.html#a7ab0498bc328c71908a5d535d9ab4e16", null ],
+    [ "data_800E8700_vtx_800E8CC0", "data__800E8700_8h.html#aaf82208c008cd1203b8baba424de5e78", null ]
 ];

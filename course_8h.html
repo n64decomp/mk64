@@ -106,13 +106,17 @@ $(function(){initNavTree('course_8h.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a>  </div>
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">course.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="ultra64_8h_source.html">ultra64.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="path_8h_source.html">path.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for course.h:</div>
 <div class="dyncontent">
@@ -125,7 +129,720 @@ Include dependency graph for course.h:</div>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTrackSections.html">TrackSections</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__struct__gCoursePathSizes__0x10.html">_struct_gCoursePathSizes_0x10</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a759b070083a3e92db7c56945795f9bd2" id="r_a759b070083a3e92db7c56945795f9bd2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a759b070083a3e92db7c56945795f9bd2">GET_COURSE_800DCBB4</a>(n)&#160;&#160;&#160;<a class="el" href="path__spawn__metadata_8c.html#a82c8bf0509878ffdb1aa19171a3d677e">D_800DCBB4</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][n]</td></tr>
+<tr class="separator:a759b070083a3e92db7c56945795f9bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeec4a9754c72d9ceed176c6e4d6742a" id="r_aeeec4a9754c72d9ceed176c6e4d6742a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeeec4a9754c72d9ceed176c6e4d6742a">GET_COURSE_AIMaximumSeparation</a>&#160;&#160;&#160;<a class="el" href="path__spawn__metadata_8c.html#a8e7eb0fff1b4318a366c6502b2bf8c6f">cpu_CourseMaximumSeparation</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td></tr>
+<tr class="separator:aeeec4a9754c72d9ceed176c6e4d6742a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c1020e9e220cbdb743ea01c0422ceb2" id="r_a2c1020e9e220cbdb743ea01c0422ceb2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c1020e9e220cbdb743ea01c0422ceb2">GET_COURSE_PathSizes</a>&#160;&#160;&#160;<a class="el" href="path__spawn__metadata_8c.html#a73c279d1b02c2ea82905d26306aac795">gCoursePathSizes</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td></tr>
+<tr class="separator:a2c1020e9e220cbdb743ea01c0422ceb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7336e4fa0dd3aeaf33c41d3c0e0a0ac9" id="r_a7336e4fa0dd3aeaf33c41d3c0e0a0ac9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7336e4fa0dd3aeaf33c41d3c0e0a0ac9">GET_COURSE_AISteeringSensitivity</a>&#160;&#160;&#160;<a class="el" href="path__spawn__metadata_8c.html#a4dc8284707dc06d3322c96c7464732b1">cpu_SteeringSensitivity</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td></tr>
+<tr class="separator:a7336e4fa0dd3aeaf33c41d3c0e0a0ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accbeefdd5c8aba9fcdc24e707d37512d" id="r_accbeefdd5c8aba9fcdc24e707d37512d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accbeefdd5c8aba9fcdc24e707d37512d">GET_COURSE_AIMinimumSeparation</a>&#160;&#160;&#160;<a class="el" href="path__spawn__metadata_8c.html#a5940a5581b67e72ec944ae8f309f4c84">cpu_CourseMinimumSeparation</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td></tr>
+<tr class="separator:accbeefdd5c8aba9fcdc24e707d37512d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4ee96188e3680d8ba28b615b02d0429" id="r_af4ee96188e3680d8ba28b615b02d0429"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4ee96188e3680d8ba28b615b02d0429">GET_COURSE_PathTable</a>(p)&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(<a class="el" href="path__spawn__metadata_8c.html#a7333cfe93b8a998952e59b3b9db06739">gCoursePathTable</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][p])</td></tr>
+<tr class="separator:af4ee96188e3680d8ba28b615b02d0429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cb8b3aeda68f5bc9b343e6f47bf2695" id="r_a7cb8b3aeda68f5bc9b343e6f47bf2695"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cb8b3aeda68f5bc9b343e6f47bf2695">GET_COURSE_PathTable2</a>(p)&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(<a class="el" href="path__spawn__metadata_8c.html#a63fe02c87cdf19733a2f8ec53eb7f62f">gCoursePathTable2</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][p])</td></tr>
+<tr class="separator:a7cb8b3aeda68f5bc9b343e6f47bf2695"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84b12559bab31d0177083793adf75d47" id="r_a84b12559bab31d0177083793adf75d47"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84b12559bab31d0177083793adf75d47">GET_COURSE_AIBehaviour</a>&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(<a class="el" href="path__spawn__metadata_8c.html#a129e459ac406b5ce50811ffce1624aa9">cpu_BehaviourLUT</a>[i])</td></tr>
+<tr class="separator:a84b12559bab31d0177083793adf75d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7d780be1dea97798154d0c8437c00ce" id="r_aa7d780be1dea97798154d0c8437c00ce"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7d780be1dea97798154d0c8437c00ce">GET_COURSE_Name</a>&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a3097aac674e080c6482f6405a8c70a5b">gCourseNames</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td></tr>
+<tr class="separator:aa7d780be1dea97798154d0c8437c00ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab29c636009def61ebec691e0dce3706b" id="r_ab29c636009def61ebec691e0dce3706b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab29c636009def61ebec691e0dce3706b">GET_COURSE_NameDup</a>&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a421a808b522f8cfd6d4c510a673ccd1e">gCourseNamesDup</a>[<a class="el" href="menus_8c.html#a3fc2ddf798d50c3da2a2f6a76f161bb1">gCupCourseOrder</a>[<a class="el" href="menus_8c.html#a6abfa481036329e857a3160c78e51174">gCupSelection</a>][<a class="el" href="menus_8c.html#a74be912e8257090794cfa87efabf6f98">gCourseIndexInCup</a>]]</td></tr>
+<tr class="separator:ab29c636009def61ebec691e0dce3706b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c1648b44e9bbfb6270f1458a411e83b" id="r_a8c1648b44e9bbfb6270f1458a411e83b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c1648b44e9bbfb6270f1458a411e83b">GET_COURSE_debugName</a>&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a2554d677ca8f96fac36f5b64944ba181">gDebugCourseNames</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td></tr>
+<tr class="separator:a8c1648b44e9bbfb6270f1458a411e83b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa81daa3c1d15006dbf7556748546e1a0" id="r_aa81daa3c1d15006dbf7556748546e1a0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa81daa3c1d15006dbf7556748546e1a0">gCourseFarPersp</a>&#160;&#160;&#160;gCourseFarPersp</td></tr>
+<tr class="separator:aa81daa3c1d15006dbf7556748546e1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac68b6c745feeb9dccdd867839fa09db2" id="r_ac68b6c745feeb9dccdd867839fa09db2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac68b6c745feeb9dccdd867839fa09db2">gCourseNearPersp</a>&#160;&#160;&#160;gCourseNearPersp</td></tr>
+<tr class="separator:ac68b6c745feeb9dccdd867839fa09db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24d91910602f32cca9e0e76325f70b4b" id="r_a24d91910602f32cca9e0e76325f70b4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24d91910602f32cca9e0e76325f70b4b">GET_COURSE_D_0D0096B8</a>(cc)&#160;&#160;&#160;*(<a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>*) <a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(&amp;<a class="el" href="common__data_8h.html#a7fdc73cec346b8e59454406c977fc02e">D_0D0096B8</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][cc])</td></tr>
+<tr class="separator:a24d91910602f32cca9e0e76325f70b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec4a63667bcb8800982f8e61cbb95562" id="r_aec4a63667bcb8800982f8e61cbb95562"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec4a63667bcb8800982f8e61cbb95562">GET_COURSE_cpu_OffTrackTargetSpeed</a>(cc)&#160;&#160;&#160;    *(<a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>*) <a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(&amp;<a class="el" href="common__data_8h.html#adf6811a0a838f01ece6c01db8b059ad0">cpu_OffTrackTargetSpeed</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][cc])</td></tr>
+<tr class="separator:aec4a63667bcb8800982f8e61cbb95562"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab704280832def564d86ad612722556f8" id="r_ab704280832def564d86ad612722556f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab704280832def564d86ad612722556f8">GET_COURSE_cpu_CurveTargetSpeed</a>(cc)&#160;&#160;&#160;    *(<a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>*) <a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(&amp;<a class="el" href="common__data_8h.html#aa9a0507b66becd38732fba5ada485e74">cpu_CurveTargetSpeed</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][cc])</td></tr>
+<tr class="separator:ab704280832def564d86ad612722556f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab91fcf386414b9896e5534ae862d0276" id="r_ab91fcf386414b9896e5534ae862d0276"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab91fcf386414b9896e5534ae862d0276">GET_COURSE_cpu_NormalTargetSpeed</a>(cc)&#160;&#160;&#160;    *(<a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>*) <a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(&amp;<a class="el" href="common__data_8h.html#a1ed71a797463ccbe4272e7b9b32681d6">cpu_NormalTargetSpeed</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][cc])</td></tr>
+<tr class="separator:ab91fcf386414b9896e5534ae862d0276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:acf250ad4ca05ca435a61203c41d4ca88" id="r_acf250ad4ca05ca435a61203c41d4ca88"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88">COURSES</a> { <br />
+&#160;&#160;<a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a1013d9dfd3dc6f49c3dc2b35ce6df371">COURSE_MARIO_RACEWAY</a> = 0
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a5be72eac26f2579975f7f17bb46378ec">COURSE_CHOCO_MOUNTAIN</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88aa7fddb5027be204be3744c5bdf5b0fdf">COURSE_BOWSER_CASTLE</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a11c1ecabaa01524ea23a1576a4d44b53">COURSE_BANSHEE_BOARDWALK</a>
+, <br />
+&#160;&#160;<a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a4b6d6cdaa7ed40498052e3c7aabc1e57">COURSE_YOSHI_VALLEY</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a389f0d184c4fbb9c292313d833c28474">COURSE_FRAPPE_SNOWLAND</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88aad2aeb452d05375037e928a747061862">COURSE_KOOPA_BEACH</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a20aff87970b4015a467d7e6a2b14f72b">COURSE_ROYAL_RACEWAY</a>
+, <br />
+&#160;&#160;<a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a39770529445f7fbbcd4d98e5069bfcf0">COURSE_LUIGI_RACEWAY</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88ac2de96c4eae26b588aa604ccfdfe17a7">COURSE_MOO_MOO_FARM</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a760b521013b956257751e8d7c181b783">COURSE_TOADS_TURNPIKE</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a1619ffda705a355d39c3808863b489d4">COURSE_KALAMARI_DESERT</a>
+, <br />
+&#160;&#160;<a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88adffb845d6b01049394cea12e2eea5b01">COURSE_SHERBET_LAND</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a3b9286cb989b34063c66fe7311ea92f9">COURSE_RAINBOW_ROAD</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a0ffab71be7660244b308ec7f9377b9fc">COURSE_WARIO_STADIUM</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a286f4605d59b2d837791bc5ac3a5e314">COURSE_BLOCK_FORT</a>
+, <br />
+&#160;&#160;<a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a9546ec6c77641ea8cd2cca35a0078b8d">COURSE_SKYSCRAPER</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88aa3ec272a814b881c2285053650e5e0d0">COURSE_DOUBLE_DECK</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88ac825c98c8fe3f1d9bc84ea81d2fcb7e5">COURSE_DK_JUNGLE</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88a166bae031c2161dad321e1f7460c2c2f">COURSE_BIG_DONUT</a>
+, <br />
+&#160;&#160;<a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88af2483ce57ec1e76a8870321f2afd6bd3">COURSE_AWARD_CEREMONY</a>
+, <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88ab491e3c35f36dc6baccdb5ca3a2eff60">NUM_COURSES</a>
+<br />
+ }</td></tr>
+<tr class="separator:acf250ad4ca05ca435a61203c41d4ca88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a0b35aa576b8ad5250674993b72300f0d" id="r_a0b35aa576b8ad5250674993b72300f0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a></td></tr>
+<tr class="separator:a0b35aa576b8ad5250674993b72300f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82c8bf0509878ffdb1aa19171a3d677e" id="r_a82c8bf0509878ffdb1aa19171a3d677e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82c8bf0509878ffdb1aa19171a3d677e">D_800DCBB4</a> []</td></tr>
+<tr class="separator:a82c8bf0509878ffdb1aa19171a3d677e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e7eb0fff1b4318a366c6502b2bf8c6f" id="r_a8e7eb0fff1b4318a366c6502b2bf8c6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e7eb0fff1b4318a366c6502b2bf8c6f">cpu_CourseMaximumSeparation</a> []</td></tr>
+<tr class="separator:a8e7eb0fff1b4318a366c6502b2bf8c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c279d1b02c2ea82905d26306aac795" id="r_a73c279d1b02c2ea82905d26306aac795"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct__struct__gCoursePathSizes__0x10.html">_struct_gCoursePathSizes_0x10</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73c279d1b02c2ea82905d26306aac795">gCoursePathSizes</a> []</td></tr>
+<tr class="separator:a73c279d1b02c2ea82905d26306aac795"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dc8284707dc06d3322c96c7464732b1" id="r_a4dc8284707dc06d3322c96c7464732b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dc8284707dc06d3322c96c7464732b1">cpu_SteeringSensitivity</a> []</td></tr>
+<tr class="separator:a4dc8284707dc06d3322c96c7464732b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5940a5581b67e72ec944ae8f309f4c84" id="r_a5940a5581b67e72ec944ae8f309f4c84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5940a5581b67e72ec944ae8f309f4c84">cpu_CourseMinimumSeparation</a> []</td></tr>
+<tr class="separator:a5940a5581b67e72ec944ae8f309f4c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7333cfe93b8a998952e59b3b9db06739" id="r_a7333cfe93b8a998952e59b3b9db06739"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7333cfe93b8a998952e59b3b9db06739">gCoursePathTable</a> [][4]</td></tr>
+<tr class="separator:a7333cfe93b8a998952e59b3b9db06739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63fe02c87cdf19733a2f8ec53eb7f62f" id="r_a63fe02c87cdf19733a2f8ec53eb7f62f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63fe02c87cdf19733a2f8ec53eb7f62f">gCoursePathTable2</a> [][4]</td></tr>
+<tr class="separator:a63fe02c87cdf19733a2f8ec53eb7f62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a129e459ac406b5ce50811ffce1624aa9" id="r_a129e459ac406b5ce50811ffce1624aa9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCPUBehaviour.html">CPUBehaviour</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a129e459ac406b5ce50811ffce1624aa9">cpu_BehaviourLUT</a> []</td></tr>
+<tr class="separator:a129e459ac406b5ce50811ffce1624aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3097aac674e080c6482f6405a8c70a5b" id="r_a3097aac674e080c6482f6405a8c70a5b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3097aac674e080c6482f6405a8c70a5b">gCourseNames</a> []</td></tr>
+<tr class="separator:a3097aac674e080c6482f6405a8c70a5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a421a808b522f8cfd6d4c510a673ccd1e" id="r_a421a808b522f8cfd6d4c510a673ccd1e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a421a808b522f8cfd6d4c510a673ccd1e">gCourseNamesDup</a> []</td></tr>
+<tr class="separator:a421a808b522f8cfd6d4c510a673ccd1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2554d677ca8f96fac36f5b64944ba181" id="r_a2554d677ca8f96fac36f5b64944ba181"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2554d677ca8f96fac36f5b64944ba181">gDebugCourseNames</a> []</td></tr>
+<tr class="separator:a2554d677ca8f96fac36f5b64944ba181"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25bc834a21c26281249c3bef5443a1cd" id="r_a25bc834a21c26281249c3bef5443a1cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25bc834a21c26281249c3bef5443a1cd">gCourseFarPersp</a></td></tr>
+<tr class="separator:a25bc834a21c26281249c3bef5443a1cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad597e410abad9581a65b10dba280674b" id="r_ad597e410abad9581a65b10dba280674b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad597e410abad9581a65b10dba280674b">gCourseNearPersp</a></td></tr>
+<tr class="separator:ad597e410abad9581a65b10dba280674b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aa81daa3c1d15006dbf7556748546e1a0" name="aa81daa3c1d15006dbf7556748546e1a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa81daa3c1d15006dbf7556748546e1a0">&#9670;&#160;</a></span>gCourseFarPersp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define gCourseFarPersp&#160;&#160;&#160;gCourseFarPersp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac68b6c745feeb9dccdd867839fa09db2" name="ac68b6c745feeb9dccdd867839fa09db2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac68b6c745feeb9dccdd867839fa09db2">&#9670;&#160;</a></span>gCourseNearPersp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define gCourseNearPersp&#160;&#160;&#160;gCourseNearPersp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a759b070083a3e92db7c56945795f9bd2" name="a759b070083a3e92db7c56945795f9bd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a759b070083a3e92db7c56945795f9bd2">&#9670;&#160;</a></span>GET_COURSE_800DCBB4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_800DCBB4</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="path__spawn__metadata_8c.html#a82c8bf0509878ffdb1aa19171a3d677e">D_800DCBB4</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][n]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84b12559bab31d0177083793adf75d47" name="a84b12559bab31d0177083793adf75d47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84b12559bab31d0177083793adf75d47">&#9670;&#160;</a></span>GET_COURSE_AIBehaviour</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_AIBehaviour&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(<a class="el" href="path__spawn__metadata_8c.html#a129e459ac406b5ce50811ffce1624aa9">cpu_BehaviourLUT</a>[i])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeeec4a9754c72d9ceed176c6e4d6742a" name="aeeec4a9754c72d9ceed176c6e4d6742a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeec4a9754c72d9ceed176c6e4d6742a">&#9670;&#160;</a></span>GET_COURSE_AIMaximumSeparation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_AIMaximumSeparation&#160;&#160;&#160;<a class="el" href="path__spawn__metadata_8c.html#a8e7eb0fff1b4318a366c6502b2bf8c6f">cpu_CourseMaximumSeparation</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="accbeefdd5c8aba9fcdc24e707d37512d" name="accbeefdd5c8aba9fcdc24e707d37512d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accbeefdd5c8aba9fcdc24e707d37512d">&#9670;&#160;</a></span>GET_COURSE_AIMinimumSeparation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_AIMinimumSeparation&#160;&#160;&#160;<a class="el" href="path__spawn__metadata_8c.html#a5940a5581b67e72ec944ae8f309f4c84">cpu_CourseMinimumSeparation</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7336e4fa0dd3aeaf33c41d3c0e0a0ac9" name="a7336e4fa0dd3aeaf33c41d3c0e0a0ac9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7336e4fa0dd3aeaf33c41d3c0e0a0ac9">&#9670;&#160;</a></span>GET_COURSE_AISteeringSensitivity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_AISteeringSensitivity&#160;&#160;&#160;<a class="el" href="path__spawn__metadata_8c.html#a4dc8284707dc06d3322c96c7464732b1">cpu_SteeringSensitivity</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab704280832def564d86ad612722556f8" name="ab704280832def564d86ad612722556f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab704280832def564d86ad612722556f8">&#9670;&#160;</a></span>GET_COURSE_cpu_CurveTargetSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_cpu_CurveTargetSpeed</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>cc</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;    *(<a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>*) <a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(&amp;<a class="el" href="common__data_8h.html#aa9a0507b66becd38732fba5ada485e74">cpu_CurveTargetSpeed</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][cc])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab91fcf386414b9896e5534ae862d0276" name="ab91fcf386414b9896e5534ae862d0276"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab91fcf386414b9896e5534ae862d0276">&#9670;&#160;</a></span>GET_COURSE_cpu_NormalTargetSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_cpu_NormalTargetSpeed</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>cc</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;    *(<a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>*) <a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(&amp;<a class="el" href="common__data_8h.html#a1ed71a797463ccbe4272e7b9b32681d6">cpu_NormalTargetSpeed</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][cc])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec4a63667bcb8800982f8e61cbb95562" name="aec4a63667bcb8800982f8e61cbb95562"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec4a63667bcb8800982f8e61cbb95562">&#9670;&#160;</a></span>GET_COURSE_cpu_OffTrackTargetSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_cpu_OffTrackTargetSpeed</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>cc</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;    *(<a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>*) <a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(&amp;<a class="el" href="common__data_8h.html#adf6811a0a838f01ece6c01db8b059ad0">cpu_OffTrackTargetSpeed</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][cc])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24d91910602f32cca9e0e76325f70b4b" name="a24d91910602f32cca9e0e76325f70b4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24d91910602f32cca9e0e76325f70b4b">&#9670;&#160;</a></span>GET_COURSE_D_0D0096B8</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_D_0D0096B8</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>cc</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;*(<a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>*) <a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(&amp;<a class="el" href="common__data_8h.html#a7fdc73cec346b8e59454406c977fc02e">D_0D0096B8</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][cc])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c1648b44e9bbfb6270f1458a411e83b" name="a8c1648b44e9bbfb6270f1458a411e83b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c1648b44e9bbfb6270f1458a411e83b">&#9670;&#160;</a></span>GET_COURSE_debugName</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_debugName&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a2554d677ca8f96fac36f5b64944ba181">gDebugCourseNames</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa7d780be1dea97798154d0c8437c00ce" name="aa7d780be1dea97798154d0c8437c00ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7d780be1dea97798154d0c8437c00ce">&#9670;&#160;</a></span>GET_COURSE_Name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_Name&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a3097aac674e080c6482f6405a8c70a5b">gCourseNames</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab29c636009def61ebec691e0dce3706b" name="ab29c636009def61ebec691e0dce3706b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab29c636009def61ebec691e0dce3706b">&#9670;&#160;</a></span>GET_COURSE_NameDup</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_NameDup&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a421a808b522f8cfd6d4c510a673ccd1e">gCourseNamesDup</a>[<a class="el" href="menus_8c.html#a3fc2ddf798d50c3da2a2f6a76f161bb1">gCupCourseOrder</a>[<a class="el" href="menus_8c.html#a6abfa481036329e857a3160c78e51174">gCupSelection</a>][<a class="el" href="menus_8c.html#a74be912e8257090794cfa87efabf6f98">gCourseIndexInCup</a>]]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c1020e9e220cbdb743ea01c0422ceb2" name="a2c1020e9e220cbdb743ea01c0422ceb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c1020e9e220cbdb743ea01c0422ceb2">&#9670;&#160;</a></span>GET_COURSE_PathSizes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_PathSizes&#160;&#160;&#160;<a class="el" href="path__spawn__metadata_8c.html#a73c279d1b02c2ea82905d26306aac795">gCoursePathSizes</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4ee96188e3680d8ba28b615b02d0429" name="af4ee96188e3680d8ba28b615b02d0429"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4ee96188e3680d8ba28b615b02d0429">&#9670;&#160;</a></span>GET_COURSE_PathTable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_PathTable</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(<a class="el" href="path__spawn__metadata_8c.html#a7333cfe93b8a998952e59b3b9db06739">gCoursePathTable</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][p])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7cb8b3aeda68f5bc9b343e6f47bf2695" name="a7cb8b3aeda68f5bc9b343e6f47bf2695"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cb8b3aeda68f5bc9b343e6f47bf2695">&#9670;&#160;</a></span>GET_COURSE_PathTable2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_COURSE_PathTable2</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="menu__items_8c.html#a7f945b0137dc9c27332444441ca8ac67">segmented_to_virtual_dupe_2</a>(<a class="el" href="path__spawn__metadata_8c.html#a63fe02c87cdf19733a2f8ec53eb7f62f">gCoursePathTable2</a>[<a class="el" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>][p])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="acf250ad4ca05ca435a61203c41d4ca88" name="acf250ad4ca05ca435a61203c41d4ca88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf250ad4ca05ca435a61203c41d4ca88">&#9670;&#160;</a></span>COURSES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#acf250ad4ca05ca435a61203c41d4ca88">COURSES</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a1013d9dfd3dc6f49c3dc2b35ce6df371" name="acf250ad4ca05ca435a61203c41d4ca88a1013d9dfd3dc6f49c3dc2b35ce6df371"></a>COURSE_MARIO_RACEWAY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a5be72eac26f2579975f7f17bb46378ec" name="acf250ad4ca05ca435a61203c41d4ca88a5be72eac26f2579975f7f17bb46378ec"></a>COURSE_CHOCO_MOUNTAIN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88aa7fddb5027be204be3744c5bdf5b0fdf" name="acf250ad4ca05ca435a61203c41d4ca88aa7fddb5027be204be3744c5bdf5b0fdf"></a>COURSE_BOWSER_CASTLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a11c1ecabaa01524ea23a1576a4d44b53" name="acf250ad4ca05ca435a61203c41d4ca88a11c1ecabaa01524ea23a1576a4d44b53"></a>COURSE_BANSHEE_BOARDWALK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a4b6d6cdaa7ed40498052e3c7aabc1e57" name="acf250ad4ca05ca435a61203c41d4ca88a4b6d6cdaa7ed40498052e3c7aabc1e57"></a>COURSE_YOSHI_VALLEY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a389f0d184c4fbb9c292313d833c28474" name="acf250ad4ca05ca435a61203c41d4ca88a389f0d184c4fbb9c292313d833c28474"></a>COURSE_FRAPPE_SNOWLAND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88aad2aeb452d05375037e928a747061862" name="acf250ad4ca05ca435a61203c41d4ca88aad2aeb452d05375037e928a747061862"></a>COURSE_KOOPA_BEACH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a20aff87970b4015a467d7e6a2b14f72b" name="acf250ad4ca05ca435a61203c41d4ca88a20aff87970b4015a467d7e6a2b14f72b"></a>COURSE_ROYAL_RACEWAY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a39770529445f7fbbcd4d98e5069bfcf0" name="acf250ad4ca05ca435a61203c41d4ca88a39770529445f7fbbcd4d98e5069bfcf0"></a>COURSE_LUIGI_RACEWAY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88ac2de96c4eae26b588aa604ccfdfe17a7" name="acf250ad4ca05ca435a61203c41d4ca88ac2de96c4eae26b588aa604ccfdfe17a7"></a>COURSE_MOO_MOO_FARM&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a760b521013b956257751e8d7c181b783" name="acf250ad4ca05ca435a61203c41d4ca88a760b521013b956257751e8d7c181b783"></a>COURSE_TOADS_TURNPIKE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a1619ffda705a355d39c3808863b489d4" name="acf250ad4ca05ca435a61203c41d4ca88a1619ffda705a355d39c3808863b489d4"></a>COURSE_KALAMARI_DESERT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88adffb845d6b01049394cea12e2eea5b01" name="acf250ad4ca05ca435a61203c41d4ca88adffb845d6b01049394cea12e2eea5b01"></a>COURSE_SHERBET_LAND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a3b9286cb989b34063c66fe7311ea92f9" name="acf250ad4ca05ca435a61203c41d4ca88a3b9286cb989b34063c66fe7311ea92f9"></a>COURSE_RAINBOW_ROAD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a0ffab71be7660244b308ec7f9377b9fc" name="acf250ad4ca05ca435a61203c41d4ca88a0ffab71be7660244b308ec7f9377b9fc"></a>COURSE_WARIO_STADIUM&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a286f4605d59b2d837791bc5ac3a5e314" name="acf250ad4ca05ca435a61203c41d4ca88a286f4605d59b2d837791bc5ac3a5e314"></a>COURSE_BLOCK_FORT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a9546ec6c77641ea8cd2cca35a0078b8d" name="acf250ad4ca05ca435a61203c41d4ca88a9546ec6c77641ea8cd2cca35a0078b8d"></a>COURSE_SKYSCRAPER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88aa3ec272a814b881c2285053650e5e0d0" name="acf250ad4ca05ca435a61203c41d4ca88aa3ec272a814b881c2285053650e5e0d0"></a>COURSE_DOUBLE_DECK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88ac825c98c8fe3f1d9bc84ea81d2fcb7e5" name="acf250ad4ca05ca435a61203c41d4ca88ac825c98c8fe3f1d9bc84ea81d2fcb7e5"></a>COURSE_DK_JUNGLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88a166bae031c2161dad321e1f7460c2c2f" name="acf250ad4ca05ca435a61203c41d4ca88a166bae031c2161dad321e1f7460c2c2f"></a>COURSE_BIG_DONUT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88af2483ce57ec1e76a8870321f2afd6bd3" name="acf250ad4ca05ca435a61203c41d4ca88af2483ce57ec1e76a8870321f2afd6bd3"></a>COURSE_AWARD_CEREMONY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acf250ad4ca05ca435a61203c41d4ca88ab491e3c35f36dc6baccdb5ca3a2eff60" name="acf250ad4ca05ca435a61203c41d4ca88ab491e3c35f36dc6baccdb5ca3a2eff60"></a>NUM_COURSES&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a129e459ac406b5ce50811ffce1624aa9" name="a129e459ac406b5ce50811ffce1624aa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a129e459ac406b5ce50811ffce1624aa9">&#9670;&#160;</a></span>cpu_BehaviourLUT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCPUBehaviour.html">CPUBehaviour</a>* cpu_BehaviourLUT[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e7eb0fff1b4318a366c6502b2bf8c6f" name="a8e7eb0fff1b4318a366c6502b2bf8c6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e7eb0fff1b4318a366c6502b2bf8c6f">&#9670;&#160;</a></span>cpu_CourseMaximumSeparation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> cpu_CourseMaximumSeparation[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5940a5581b67e72ec944ae8f309f4c84" name="a5940a5581b67e72ec944ae8f309f4c84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5940a5581b67e72ec944ae8f309f4c84">&#9670;&#160;</a></span>cpu_CourseMinimumSeparation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> cpu_CourseMinimumSeparation[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4dc8284707dc06d3322c96c7464732b1" name="a4dc8284707dc06d3322c96c7464732b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dc8284707dc06d3322c96c7464732b1">&#9670;&#160;</a></span>cpu_SteeringSensitivity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> cpu_SteeringSensitivity[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section warning"><dt>Warning</dt><dd>Array contains an extra zero element at the end. </dd></dl>
+
+</div>
+</div>
+<a id="a82c8bf0509878ffdb1aa19171a3d677e" name="a82c8bf0509878ffdb1aa19171a3d677e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82c8bf0509878ffdb1aa19171a3d677e">&#9670;&#160;</a></span>D_800DCBB4</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>* D_800DCBB4[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a25bc834a21c26281249c3bef5443a1cd" name="a25bc834a21c26281249c3bef5443a1cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25bc834a21c26281249c3bef5443a1cd">&#9670;&#160;</a></span>gCourseFarPersp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> gCourseFarPersp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3097aac674e080c6482f6405a8c70a5b" name="a3097aac674e080c6482f6405a8c70a5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3097aac674e080c6482f6405a8c70a5b">&#9670;&#160;</a></span>gCourseNames</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* gCourseNames[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a421a808b522f8cfd6d4c510a673ccd1e" name="a421a808b522f8cfd6d4c510a673ccd1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a421a808b522f8cfd6d4c510a673ccd1e">&#9670;&#160;</a></span>gCourseNamesDup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* gCourseNamesDup[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad597e410abad9581a65b10dba280674b" name="ad597e410abad9581a65b10dba280674b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad597e410abad9581a65b10dba280674b">&#9670;&#160;</a></span>gCourseNearPersp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> gCourseNearPersp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a73c279d1b02c2ea82905d26306aac795" name="a73c279d1b02c2ea82905d26306aac795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73c279d1b02c2ea82905d26306aac795">&#9670;&#160;</a></span>gCoursePathSizes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct__struct__gCoursePathSizes__0x10.html">_struct_gCoursePathSizes_0x10</a> gCoursePathSizes[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7333cfe93b8a998952e59b3b9db06739" name="a7333cfe93b8a998952e59b3b9db06739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7333cfe93b8a998952e59b3b9db06739">&#9670;&#160;</a></span>gCoursePathTable</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>* gCoursePathTable[][4]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63fe02c87cdf19733a2f8ec53eb7f62f" name="a63fe02c87cdf19733a2f8ec53eb7f62f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63fe02c87cdf19733a2f8ec53eb7f62f">&#9670;&#160;</a></span>gCoursePathTable2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>* gCoursePathTable2[][4]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b35aa576b8ad5250674993b72300f0d" name="a0b35aa576b8ad5250674993b72300f0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b35aa576b8ad5250674993b72300f0d">&#9670;&#160;</a></span>gCurrentCourseId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> gCurrentCourseId</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2554d677ca8f96fac36f5b64944ba181" name="a2554d677ca8f96fac36f5b64944ba181"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2554d677ca8f96fac36f5b64944ba181">&#9670;&#160;</a></span>gDebugCourseNames</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* gDebugCourseNames[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -115,7 +115,7 @@ $(function(){initNavTree('mario__raceway_2course__data_8c.html',''); initResizab
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="path_8h_source.html">path.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="mario__raceway_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mario__raceway_2course__textures_8linkonly_8h_source.html">course_textures.linkonly.h</a>&quot;</code><br />
@@ -268,10 +268,10 @@ Variables</h2></td></tr>
 <tr class="separator:a116d1bf2a9b4f96a1d2c6e600b4f03c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb63388d8b6e7c4b88029fdd8235cc47" id="r_adb63388d8b6e7c4b88029fdd8235cc47"><td class="memItemLeft" align="right" valign="top">Gfx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb63388d8b6e7c4b88029fdd8235cc47">d_course_mario_raceway_dl_5228</a> []</td></tr>
 <tr class="separator:adb63388d8b6e7c4b88029fdd8235cc47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed389d43b4a325cdc64e45f5e76114e6" id="r_aed389d43b4a325cdc64e45f5e76114e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed389d43b4a325cdc64e45f5e76114e6">d_course_mario_raceway_unknown_waypoints</a> []</td></tr>
-<tr class="separator:aed389d43b4a325cdc64e45f5e76114e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8a6ce7f789fa41e13a8cefc526395a3" id="r_ac8a6ce7f789fa41e13a8cefc526395a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8a6ce7f789fa41e13a8cefc526395a3">d_course_mario_raceway_track_waypoints</a> []</td></tr>
-<tr class="separator:ac8a6ce7f789fa41e13a8cefc526395a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a867c5de8f2b6e4008413f75614d31eac" id="r_a867c5de8f2b6e4008413f75614d31eac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a867c5de8f2b6e4008413f75614d31eac">d_course_mario_raceway_unknown_path</a> []</td></tr>
+<tr class="separator:a867c5de8f2b6e4008413f75614d31eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a607310822883038301c3a1c47754f23b" id="r_a607310822883038301c3a1c47754f23b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a607310822883038301c3a1c47754f23b">d_course_mario_raceway_track_path</a> []</td></tr>
+<tr class="separator:a607310822883038301c3a1c47754f23b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2940da5051ea370577be58ff542c0fb2" id="r_a2940da5051ea370577be58ff542c0fb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2940da5051ea370577be58ff542c0fb2">d_course_mario_raceway_piranha_plant_tlut</a> []</td></tr>
 <tr class="separator:a2940da5051ea370577be58ff542c0fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaeabb6edbbe057609d373a77f5de074" id="r_afaeabb6edbbe057609d373a77f5de074"><td class="memItemLeft" align="right" valign="top">Vtx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaeabb6edbbe057609d373a77f5de074">d_course_mario_raceway_piranha_plant_model</a> []</td></tr>
@@ -493,7 +493,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000062">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000061">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
 
 </div>
 </div>
@@ -1943,14 +1943,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ac8a6ce7f789fa41e13a8cefc526395a3" name="ac8a6ce7f789fa41e13a8cefc526395a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8a6ce7f789fa41e13a8cefc526395a3">&#9670;&#160;</a></span>d_course_mario_raceway_track_waypoints</h2>
+<a id="a607310822883038301c3a1c47754f23b" name="a607310822883038301c3a1c47754f23b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a607310822883038301c3a1c47754f23b">&#9670;&#160;</a></span>d_course_mario_raceway_track_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_mario_raceway_track_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_mario_raceway_track_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2003,14 +2003,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aed389d43b4a325cdc64e45f5e76114e6" name="aed389d43b4a325cdc64e45f5e76114e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed389d43b4a325cdc64e45f5e76114e6">&#9670;&#160;</a></span>d_course_mario_raceway_unknown_waypoints</h2>
+<a id="a867c5de8f2b6e4008413f75614d31eac" name="a867c5de8f2b6e4008413f75614d31eac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a867c5de8f2b6e4008413f75614d31eac">&#9670;&#160;</a></span>d_course_mario_raceway_unknown_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_mario_raceway_unknown_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_mario_raceway_unknown_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">

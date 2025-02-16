@@ -1,5 +1,6 @@
 var race__logic_8h =
 [
+    [ "end_demo_update", "race__logic_8h.html#a01b81b0761fe49ed9207567c7769ba94", null ],
     [ "func_8028DF00", "race__logic_8h.html#ae1563ce64a716f5d420505adc3e9b89d", null ],
     [ "func_8028DF38", "race__logic_8h.html#ad662382097107c855812aa65f2acbd49", null ],
     [ "func_8028E028", "race__logic_8h.html#a47f2e46e866e68495bc5792fb13f0d66", null ],
@@ -20,7 +21,6 @@ var race__logic_8h =
     [ "func_8028F914", "race__logic_8h.html#ac50527ef661d883bf7903adfc6f67497", null ],
     [ "func_8028F970", "race__logic_8h.html#a4eb4cb5c0963bcfceae40d340c2e7756", null ],
     [ "func_8028FBD4", "race__logic_8h.html#a4f316a53a95dde1e4ff1d2a89ff934aa", null ],
-    [ "func_8028FC34", "race__logic_8h.html#aac937545c174100218f0726a70d83e33", null ],
     [ "func_8028FCBC", "race__logic_8h.html#a7f21a1ef55b61f5678170da62e5e51dc", null ],
     [ "func_80290314", "race__logic_8h.html#a66020eab44dae8f0dc54c06c17f44e53", null ],
     [ "func_80290338", "race__logic_8h.html#a53decb718a29b1c4910cf1f5bada018f", null ],

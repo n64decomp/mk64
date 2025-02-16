@@ -115,9 +115,10 @@ $(function(){initNavTree('collision_8c.html',''); initResizable(true); });
 <div class="textblock"><code>#include &lt;<a class="el" href="ultra64_8h_source.html">ultra64.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="common__structs_8h_source.html">common_structs.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="memory_8h_source.html">memory.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="collision_8h_source.html">collision.h</a>&quot;</code><br />
@@ -177,16 +178,17 @@ Functions</h2></td></tr>
 <tr class="separator:a5215426a44c63db1cf89cb65ab65c1a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ea8b20f38e63c1b1157923085c8e306" id="r_a6ea8b20f38e63c1b1157923085c8e306"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ea8b20f38e63c1b1157923085c8e306">is_colliding_with_drivable_surface</a> (<a class="el" href="structCollision.html">Collision</a> *collision, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> boundingBoxSize, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> newX, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> newY, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> newZ, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> index, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> oldX, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> oldY, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> oldZ)</td></tr>
 <tr class="separator:a6ea8b20f38e63c1b1157923085c8e306"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23443870e0d3a6797de707a89ded7ef0" id="r_a23443870e0d3a6797de707a89ded7ef0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23443870e0d3a6797de707a89ded7ef0">is_colliding_with_wall2</a> (<a class="el" href="structCollision.html">Collision</a> *arg, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> boundingBoxSize, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> x1, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> y1, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> z1, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> surfaceIndex, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posX, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posY, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posZ)</td></tr>
-<tr class="separator:a23443870e0d3a6797de707a89ded7ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94970a4a6ca911f74e59114decd74557" id="r_a94970a4a6ca911f74e59114decd74557"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94970a4a6ca911f74e59114decd74557">is_colliding_with_wall1</a> (<a class="el" href="structCollision.html">Collision</a> *arg, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> boundingBoxSize, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> x1, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> y1, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> z1, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> surfaceIndex, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posX, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posY, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posZ)</td></tr>
-<tr class="separator:a94970a4a6ca911f74e59114decd74557"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a642cf426566eddf85eda734e12478e27" id="r_a642cf426566eddf85eda734e12478e27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a642cf426566eddf85eda734e12478e27">is_colliding_with_wall_z</a> (<a class="el" href="structCollision.html">Collision</a> *arg, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> boundingBoxSize, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> x1, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> y1, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> z1, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> surfaceIndex, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posX, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posY, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posZ)</td></tr>
+<tr class="separator:a642cf426566eddf85eda734e12478e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbd8c48f85e8d7588b952807a160eec5" id="r_abbd8c48f85e8d7588b952807a160eec5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbd8c48f85e8d7588b952807a160eec5">is_colliding_with_wall_x</a> (<a class="el" href="structCollision.html">Collision</a> *arg, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> boundingBoxSize, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> x1, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> y1, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> z1, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> surfaceIndex, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posX, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posY, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posZ)</td></tr>
+<tr class="separator:abbd8c48f85e8d7588b952807a160eec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79293dbdae52d290fdaf8dde9d5244ca" id="r_a79293dbdae52d290fdaf8dde9d5244ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79293dbdae52d290fdaf8dde9d5244ca">actor_terrain_collision</a> (<a class="el" href="structCollision.html">Collision</a> *collision, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> boundingBoxSize, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> newX, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> newY, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> newZ, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> oldX, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> oldY, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> oldZ)</td></tr>
 <tr class="separator:a79293dbdae52d290fdaf8dde9d5244ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37aa55b3768d001533ad75e7f1b8388a" id="r_a37aa55b3768d001533ad75e7f1b8388a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37aa55b3768d001533ad75e7f1b8388a">check_bounding_collision</a> (<a class="el" href="structCollision.html">Collision</a> *collision, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> boundingBoxSize, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posX, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posY, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posZ)</td></tr>
 <tr class="separator:a37aa55b3768d001533ad75e7f1b8388a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad95e9ed2051529d5edee26109fa07427" id="r_ad95e9ed2051529d5edee26109fa07427"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad95e9ed2051529d5edee26109fa07427">spawn_actor_on_surface</a> (<a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posX, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posY, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posZ)</td></tr>
-<tr class="separator:ad95e9ed2051529d5edee26109fa07427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af40212f95fb9273a88b4d4d54f96b2aa" id="r_af40212f95fb9273a88b4d4d54f96b2aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af40212f95fb9273a88b4d4d54f96b2aa">get_surface_height</a> (<a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posX, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posY, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posZ)</td></tr>
+<tr class="memdesc:af40212f95fb9273a88b4d4d54f96b2aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the height of the surface below the provided position. Used to set actors onto the course mesh. If unable to spawn actor on the surface set to -3000.0f or if outside the collision grid, spawn in the air (3000.0f).  <br /></td></tr>
+<tr class="separator:af40212f95fb9273a88b4d4d54f96b2aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c516edee107b39b30bb3a4d3c54534a" id="r_a8c516edee107b39b30bb3a4d3c54534a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c516edee107b39b30bb3a4d3c54534a">add_collision_triangle</a> (Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> surfaceType, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> sectionId)</td></tr>
 <tr class="separator:a8c516edee107b39b30bb3a4d3c54534a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a335dc7fed8a2540ca0a5b0a466545845" id="r_a335dc7fed8a2540ca0a5b0a466545845"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a335dc7fed8a2540ca0a5b0a466545845">set_vtx_from_triangle</a> (<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> triangle, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> surfaceType, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> sectionId)</td></tr>
@@ -1085,6 +1087,44 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="af40212f95fb9273a88b4d4d54f96b2aa" name="af40212f95fb9273a88b4d4d54f96b2aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af40212f95fb9273a88b4d4d54f96b2aa">&#9670;&#160;</a></span>get_surface_height()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> get_surface_height </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a></td>          <td class="paramname"><span class="paramname"><em>posX</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a></td>          <td class="paramname"><span class="paramname"><em>posY</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a></td>          <td class="paramname"><span class="paramname"><em>posZ</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the height of the surface below the provided position. Used to set actors onto the course mesh. If unable to spawn actor on the surface set to -3000.0f or if outside the collision grid, spawn in the air (3000.0f). </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="collision_8c_af40212f95fb9273a88b4d4d54f96b2aa_cgraph.svg" width="390" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="collision_8c_af40212f95fb9273a88b4d4d54f96b2aa_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="a9395b9fc31397e9e9d754b4887a12544" name="a9395b9fc31397e9e9d754b4887a12544"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9395b9fc31397e9e9d754b4887a12544">&#9670;&#160;</a></span>get_surface_type()</h2>
 
@@ -1190,14 +1230,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a94970a4a6ca911f74e59114decd74557" name="a94970a4a6ca911f74e59114decd74557"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94970a4a6ca911f74e59114decd74557">&#9670;&#160;</a></span>is_colliding_with_wall1()</h2>
+<a id="abbd8c48f85e8d7588b952807a160eec5" name="abbd8c48f85e8d7588b952807a160eec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbd8c48f85e8d7588b952807a160eec5">&#9670;&#160;</a></span>is_colliding_with_wall_x()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> is_colliding_with_wall1 </td>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> is_colliding_with_wall_x </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structCollision.html">Collision</a> *</td>          <td class="paramname"><span class="paramname"><em>arg</em></span>, </td>
         </tr>
@@ -1247,19 +1287,19 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="collision_8c_a94970a4a6ca911f74e59114decd74557_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="collision_8c_abbd8c48f85e8d7588b952807a160eec5_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
-<a id="a23443870e0d3a6797de707a89ded7ef0" name="a23443870e0d3a6797de707a89ded7ef0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23443870e0d3a6797de707a89ded7ef0">&#9670;&#160;</a></span>is_colliding_with_wall2()</h2>
+<a id="a642cf426566eddf85eda734e12478e27" name="a642cf426566eddf85eda734e12478e27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a642cf426566eddf85eda734e12478e27">&#9670;&#160;</a></span>is_colliding_with_wall_z()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> is_colliding_with_wall2 </td>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> is_colliding_with_wall_z </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structCollision.html">Collision</a> *</td>          <td class="paramname"><span class="paramname"><em>arg</em></span>, </td>
         </tr>
@@ -1309,7 +1349,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="collision_8c_a23443870e0d3a6797de707a89ded7ef0_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="collision_8c_a642cf426566eddf85eda734e12478e27_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -1750,43 +1790,6 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="collision_8c_a24c9df6b00fc739e341b6f28b06396e4_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="ad95e9ed2051529d5edee26109fa07427" name="ad95e9ed2051529d5edee26109fa07427"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad95e9ed2051529d5edee26109fa07427">&#9670;&#160;</a></span>spawn_actor_on_surface()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> spawn_actor_on_surface </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a></td>          <td class="paramname"><span class="paramname"><em>posX</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a></td>          <td class="paramname"><span class="paramname"><em>posY</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a></td>          <td class="paramname"><span class="paramname"><em>posZ</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>If unable to spawn actor on the surface set to -3000.0f or if outside the collision grid, spawn in the air (3000.0f). </p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="collision_8c_ad95e9ed2051529d5edee26109fa07427_cgraph.svg" width="426" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="collision_8c_ad95e9ed2051529d5edee26109fa07427_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>

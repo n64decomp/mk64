@@ -123,8 +123,8 @@ var bowsers__castle_2course__data_8h =
     [ "d_course_bowsers_castle_thwomp_model4", "bowsers__castle_2course__data_8h.html#a0a2074c3a467a0bd16324d9884723161", null ],
     [ "d_course_bowsers_castle_thwomp_side", "bowsers__castle_2course__data_8h.html#a58b25c38c611804c006571f83abb415e", null ],
     [ "d_course_bowsers_castle_thwomp_tlut", "bowsers__castle_2course__data_8h.html#adc9789813be81d9c2143b07c8626b27e", null ],
-    [ "d_course_bowsers_castle_track_waypoints", "bowsers__castle_2course__data_8h.html#a99efd58fd119ec2c98b83e56043930df", null ],
+    [ "d_course_bowsers_castle_track_path", "bowsers__castle_2course__data_8h.html#ab6a6c04ee00894ab0370f9e216be6400", null ],
     [ "d_course_bowsers_castle_tree_spawn", "bowsers__castle_2course__data_8h.html#adbf10b545a199ba7db64f700b805e412", null ],
     [ "d_course_bowsers_castle_unknown_model", "bowsers__castle_2course__data_8h.html#a276582ed048044d337cdbe22d26ece88", null ],
-    [ "d_course_bowsers_castle_unknown_waypoints", "bowsers__castle_2course__data_8h.html#a70aa6184d0015047d057f9856a594276", null ]
+    [ "d_course_bowsers_castle_unknown_path", "bowsers__castle_2course__data_8h.html#a5100b4f7400c18b698fbc204ef683e49", null ]
 ];

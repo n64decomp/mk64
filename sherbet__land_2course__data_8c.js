@@ -184,7 +184,7 @@ var sherbet__land_2course__data_8c =
     [ "d_course_sherbet_land_penguin_nose_model", "sherbet__land_2course__data_8c.html#a5da3d49cc9a4a2aa8cb9494fe0597e0c", null ],
     [ "d_course_sherbet_land_penguin_right_foot_model", "sherbet__land_2course__data_8c.html#adde7a0967d3dc8552e4a0d0ebed44e75", null ],
     [ "d_course_sherbet_land_penguin_unknown_model", "sherbet__land_2course__data_8c.html#a00e0dafd4d55d4e6232631c87721cef2", null ],
-    [ "d_course_sherbet_land_track_waypoints", "sherbet__land_2course__data_8c.html#add3f8b323bf84106ab78c1f07714189d", null ],
+    [ "d_course_sherbet_land_track_path", "sherbet__land_2course__data_8c.html#af756adc4167eaf226986a1b273c658fb", null ],
     [ "d_course_sherbet_land_unk_data1", "sherbet__land_2course__data_8c.html#a85dbcd6dd36d303868ec6a03877c0bfe", null ],
     [ "d_course_sherbet_land_unk_data10", "sherbet__land_2course__data_8c.html#aeaa81179fa7c2dfcf9b1529288b2a548", null ],
     [ "d_course_sherbet_land_unk_data11", "sherbet__land_2course__data_8c.html#a70eca87327c9470dee38f0e09faf02ab", null ],
@@ -197,7 +197,7 @@ var sherbet__land_2course__data_8c =
     [ "d_course_sherbet_land_unk_data7", "sherbet__land_2course__data_8c.html#a69fdcd90fa9c81cde4e9e1c34165dc51", null ],
     [ "d_course_sherbet_land_unk_data8", "sherbet__land_2course__data_8c.html#a28b6f760d3778cfb880c2c4531a6fc52", null ],
     [ "d_course_sherbet_land_unk_data9", "sherbet__land_2course__data_8c.html#a9f1eff63fedf7ccd5a405735c7017410", null ],
-    [ "d_course_sherbet_land_unknown_waypoints", "sherbet__land_2course__data_8c.html#a824e44719c3645ad684d7a60bb6678c9", null ],
+    [ "d_course_sherbet_land_unknown_path", "sherbet__land_2course__data_8c.html#abdfef82faaf3c02015383d89627215e7", null ],
     [ "d_course_sherbet_land_var", "sherbet__land_2course__data_8c.html#a2ca31b00bcbec4d2971ff3bf6acf9d8f", null ],
     [ "d_course_sherbet_land_var2", "sherbet__land_2course__data_8c.html#af1cf48eee5d3afb621bb3cf760101876", null ],
     [ "wut", "sherbet__land_2course__data_8c.html#a9eeed027c0accdad88ef82b59706956f", null ]

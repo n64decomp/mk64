@@ -113,7 +113,7 @@ $(function(){initNavTree('toads__turnpike_2course__data_8h.html',''); initResiza
 <div class="textblock"><code>#include &lt;<a class="el" href="ultra64_8h_source.html">ultra64.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="path_8h_source.html">path.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for course_data.h:</div>
@@ -294,10 +294,10 @@ Variables</h2></td></tr>
 <tr class="separator:ad4aca8f1a552cbd42f77a73fc06c0784"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0de3607fd4395848f6e1f1f085cdadf8" id="r_a0de3607fd4395848f6e1f1f085cdadf8"><td class="memItemLeft" align="right" valign="top">Gfx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0de3607fd4395848f6e1f1f085cdadf8">d_course_toads_turnpike_dl_3AD8</a> []</td></tr>
 <tr class="separator:a0de3607fd4395848f6e1f1f085cdadf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b529a705bd5ce4a3037f326de7ef1ba" id="r_a2b529a705bd5ce4a3037f326de7ef1ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b529a705bd5ce4a3037f326de7ef1ba">d_course_toads_turnpike_unknown_waypoints</a> []</td></tr>
-<tr class="separator:a2b529a705bd5ce4a3037f326de7ef1ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3328f513afb4f65d38285d3f4b3e8d28" id="r_a3328f513afb4f65d38285d3f4b3e8d28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3328f513afb4f65d38285d3f4b3e8d28">d_course_toads_turnpike_track_waypoints</a> []</td></tr>
-<tr class="separator:a3328f513afb4f65d38285d3f4b3e8d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ca1321f7395f321751b20f5ca30fb60" id="r_a5ca1321f7395f321751b20f5ca30fb60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ca1321f7395f321751b20f5ca30fb60">d_course_toads_turnpike_unknown_path</a> []</td></tr>
+<tr class="separator:a5ca1321f7395f321751b20f5ca30fb60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3ce9382617015586e6b36fc5baded18" id="r_af3ce9382617015586e6b36fc5baded18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3ce9382617015586e6b36fc5baded18">d_course_toads_turnpike_track_path</a> []</td></tr>
+<tr class="separator:af3ce9382617015586e6b36fc5baded18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24492675f79bf14419bfb6046b183bfc" id="r_a24492675f79bf14419bfb6046b183bfc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24492675f79bf14419bfb6046b183bfc">d_course_toads_turnpike_unk_windshield1</a> []</td></tr>
 <tr class="separator:a24492675f79bf14419bfb6046b183bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b03a6bfca6b0bafc175cf15addfc87f" id="r_a9b03a6bfca6b0bafc175cf15addfc87f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b03a6bfca6b0bafc175cf15addfc87f">d_course_toads_turnpike_unk_windshield2</a> []</td></tr>
@@ -2817,7 +2817,7 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000068">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000067">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
 
 </div>
 </div>
@@ -8585,8 +8585,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a3328f513afb4f65d38285d3f4b3e8d28" name="a3328f513afb4f65d38285d3f4b3e8d28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3328f513afb4f65d38285d3f4b3e8d28">&#9670;&#160;</a></span>d_course_toads_turnpike_track_waypoints</h2>
+<a id="af3ce9382617015586e6b36fc5baded18" name="af3ce9382617015586e6b36fc5baded18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3ce9382617015586e6b36fc5baded18">&#9670;&#160;</a></span>d_course_toads_turnpike_track_path</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -8595,7 +8595,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_toads_turnpike_track_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_toads_turnpike_track_path[]</td>
         </tr>
       </table>
   </td>
@@ -9399,8 +9399,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a2b529a705bd5ce4a3037f326de7ef1ba" name="a2b529a705bd5ce4a3037f326de7ef1ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b529a705bd5ce4a3037f326de7ef1ba">&#9670;&#160;</a></span>d_course_toads_turnpike_unknown_waypoints</h2>
+<a id="a5ca1321f7395f321751b20f5ca30fb60" name="a5ca1321f7395f321751b20f5ca30fb60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ca1321f7395f321751b20f5ca30fb60">&#9670;&#160;</a></span>d_course_toads_turnpike_unknown_path</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -9409,7 +9409,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_toads_turnpike_unknown_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_toads_turnpike_unknown_path[]</td>
         </tr>
       </table>
   </td>

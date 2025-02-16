@@ -66,9 +66,9 @@ var sectionId = 'dynsection-10';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="skybox__and__splitscreen_8c.html#ae7c45179d5b0717d70dc1a894355b26d" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="251,-241 159,-241 159,-222 251,-222 251,-241"/>
-<text text-anchor="middle" x="205" y="-229" font-family="Helvetica,sans-Serif" font-size="10.00">func_802A450C</text>
+<g id="a_Node000002"><a xlink:href="skybox__and__splitscreen_8c.html#a4b71883a4df655bb1d78757b067448b0" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="279.5,-241 130.5,-241 130.5,-222 279.5,-222 279.5,-241"/>
+<text text-anchor="middle" x="205" y="-229" font-family="Helvetica,sans-Serif" font-size="10.00">course_set_skybox_colours</text>
 </a>
 </g>
 </g>
@@ -76,8 +76,8 @@ var sectionId = 'dynsection-10';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M53.07,-130.14C64.64,-149.23 93.17,-191.86 129,-213.5 135.15,-217.21 142.01,-220.16 149.02,-222.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="148.03,-225.86 158.61,-225.33 150.01,-219.14 148.03,-225.86"/>
+<path fill="none" stroke="#63b8ff" d="M53.07,-130.14C64.64,-149.23 93.17,-191.86 129,-213.5 131.81,-215.2 134.77,-216.73 137.82,-218.12"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="136.62,-221.42 147.21,-221.88 139.22,-214.92 136.62,-221.42"/>
 </a>
 </g>
 </g>

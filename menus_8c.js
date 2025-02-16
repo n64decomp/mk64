@@ -71,8 +71,8 @@ var menus_8c =
     [ "sSoundMenuPack", "menus_8c.html#a482e5aa8d8581771ca9514a26b64fcfd", null ],
     [ "sTempCupSelection", "menus_8c.html#ad7ccecb0e440dc0910054a0d51bab82f", null ],
     [ "sVIGammaOffDitherOn", "menus_8c.html#af2dc51c46bcac60ad844adf5b1397087", null ],
-    [ "unref_800E86E0", "menus_8c.html#a2fed18815771a43e572d0e844475bf8d", null ],
     [ "unref_800F2BDC", "menus_8c.html#a222e4373dee5eff0b59adeaefa82e9b9", null ],
     [ "unref_8018EE0C", "menus_8c.html#a9fefcb6f8f1942f9e31a99c9193d03f8", null ],
-    [ "unref_D_800E86D4", "menus_8c.html#abe32a199851c6aad5543710392160974", null ]
+    [ "unref_D_800E86D4", "menus_8c.html#abe32a199851c6aad5543710392160974", null ],
+    [ "unref_D_800E86E0", "menus_8c.html#a3a37c923a3ac9b62c9049e8cbba79120", null ]
 ];

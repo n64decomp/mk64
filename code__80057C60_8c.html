@@ -116,6 +116,7 @@ $(function(){initNavTree('code__80057C60_8c.html',''); initResizable(true); });
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="camera_8h_source.html">camera.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__80057C60_8h_source.html">code_80057C60.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
@@ -125,7 +126,7 @@ $(function(){initNavTree('code__80057C60_8c.html',''); initResizable(true); });
 <code>#include &lt;<a class="el" href="defines_8h_source.html">defines.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="math__util_8h_source.html">math_util.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="math__util__2_8h_source.html">math_util_2.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="code__80005FD0_8h_source.html">code_80005FD0.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cpu__vehicles__camera__path_8h_source.html">cpu_vehicles_camera_path.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render__player_8h_source.html">render_player.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render__objects_8h_source.html">render_objects.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__8006E9C0_8h_source.html">code_8006E9C0.h</a>&quot;</code><br />
@@ -982,9 +983,9 @@ Variables</h2></td></tr>
 <tr class="separator:aaa6d95077e451e6f65ceeef23323d581"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2a447dea2fb050577ef3192acb46e7d" id="r_ad2a447dea2fb050577ef3192acb46e7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2a447dea2fb050577ef3192acb46e7d">indexObjectList3</a> [32]</td></tr>
 <tr class="separator:ad2a447dea2fb050577ef3192acb46e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8978cd66a20859240d369b9e1ba3a5b" id="r_af8978cd66a20859240d369b9e1ba3a5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8978cd66a20859240d369b9e1ba3a5b">D_8018C028</a></td></tr>
-<tr class="memdesc:af8978cd66a20859240d369b9e1ba3a5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seemingly a pointer to Lakitu texture(s)  <br /></td></tr>
-<tr class="separator:af8978cd66a20859240d369b9e1ba3a5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a569785b688e6174a8a3a5dd2c34294fa" id="r_a569785b688e6174a8a3a5dd2c34294fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a569785b688e6174a8a3a5dd2c34294fa">gLakituTexturePtr</a></td></tr>
+<tr class="memdesc:a569785b688e6174a8a3a5dd2c34294fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seemingly a pointer to Lakitu texture(s)  <br /></td></tr>
+<tr class="separator:a569785b688e6174a8a3a5dd2c34294fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a4a2b5089902c887f3a034ed9fe8d5a" id="r_a0a4a2b5089902c887f3a034ed9fe8d5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a4a2b5089902c887f3a034ed9fe8d5a">indexObjectList4</a> [32]</td></tr>
 <tr class="separator:a0a4a2b5089902c887f3a034ed9fe8d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12b536ec4ac750df51fa10cc87fa2986" id="r_a12b536ec4ac750df51fa10cc87fa2986"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCollision.html">Collision</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12b536ec4ac750df51fa10cc87fa2986">D_8018C0B0</a> [4]</td></tr>
@@ -1025,10 +1026,8 @@ Variables</h2></td></tr>
 <tr class="separator:ac39f1b3b6b43cc1c41267c361182f758"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04fe9dfa582ec2b710ffdfcbecd7c4ed" id="r_a04fe9dfa582ec2b710ffdfcbecd7c4ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04fe9dfa582ec2b710ffdfcbecd7c4ed">D_8018CF24</a></td></tr>
 <tr class="separator:a04fe9dfa582ec2b710ffdfcbecd7c4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98849386dc3bde34aea39123663ea1a3" id="r_a98849386dc3bde34aea39123663ea1a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPlayer.html">Player</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98849386dc3bde34aea39123663ea1a3">D_8018CF28</a> [4]</td></tr>
-<tr class="separator:a98849386dc3bde34aea39123663ea1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a548187133fd34272243a1a3789945a55" id="r_a548187133fd34272243a1a3789945a55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a548187133fd34272243a1a3789945a55">D_8018CF38</a> [4]</td></tr>
-<tr class="separator:a548187133fd34272243a1a3789945a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfda98b026625a85a676f039124cff37" id="r_abfda98b026625a85a676f039124cff37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPlayer.html">Player</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfda98b026625a85a676f039124cff37">D_8018CF28</a> [8]</td></tr>
+<tr class="separator:abfda98b026625a85a676f039124cff37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fb84ae7973d9ca2d880a0c16b45a5df" id="r_a7fb84ae7973d9ca2d880a0c16b45a5df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7fb84ae7973d9ca2d880a0c16b45a5df">D_8018CF48</a></td></tr>
 <tr class="separator:a7fb84ae7973d9ca2d880a0c16b45a5df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24ce9901db908825f06ac44c6b414f42" id="r_a24ce9901db908825f06ac44c6b414f42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24ce9901db908825f06ac44c6b414f42">D_8018CF50</a> [8]</td></tr>
@@ -1209,7 +1208,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="code__80057C60_8c_a42401fff0d83dd5bbe75d000e438683b_cgraph.svg" width="651" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="code__80057C60_8c_a42401fff0d83dd5bbe75d000e438683b_cgraph.svg" width="100%" height="364"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -8052,7 +8051,7 @@ Here is the caller graph for this function:</div>
 <div class="line">    <a class="code hl_define" href="#aab11ebac1d00e38a34c81ac79f0e149b">MAKE_RGB</a>(0x90, 0x70, 0x40), <a class="code hl_define" href="#aab11ebac1d00e38a34c81ac79f0e149b">MAKE_RGB</a>(0xC0, 0x70, 0x10), <a class="code hl_define" href="#aab11ebac1d00e38a34c81ac79f0e149b">MAKE_RGB</a>(0xD0, 0xF0, 0xFF), <a class="code hl_define" href="#aab11ebac1d00e38a34c81ac79f0e149b">MAKE_RGB</a>(0xE0, 0x90, 0x30),</div>
 <div class="line">    <a class="code hl_define" href="#aab11ebac1d00e38a34c81ac79f0e149b">MAKE_RGB</a>(0xC0, 0x90, 0x30), <a class="code hl_define" href="#aab11ebac1d00e38a34c81ac79f0e149b">MAKE_RGB</a>(0x60, 0x40, 0x20), <a class="code hl_define" href="#aab11ebac1d00e38a34c81ac79f0e149b">MAKE_RGB</a>(0xF0, 0xD0, 0xB0), <a class="code hl_define" href="#aab11ebac1d00e38a34c81ac79f0e149b">MAKE_RGB</a>(0xA0, 0x80, 0x30),</div>
 <div class="line">}</div>
-<div class="ttc" id="acode__80057C60_8c_html_aab11ebac1d00e38a34c81ac79f0e149b"><div class="ttname"><a href="#aab11ebac1d00e38a34c81ac79f0e149b">MAKE_RGB</a></div><div class="ttdeci">#define MAKE_RGB(r, g, b)</div><div class="ttdef"><b>Definition</b> code_80057C60.c:40</div></div>
+<div class="ttc" id="acode__80057C60_8c_html_aab11ebac1d00e38a34c81ac79f0e149b"><div class="ttname"><a href="#aab11ebac1d00e38a34c81ac79f0e149b">MAKE_RGB</a></div><div class="ttdeci">#define MAKE_RGB(r, g, b)</div><div class="ttdef"><b>Definition</b> code_80057C60.c:41</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -10713,22 +10712,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="af8978cd66a20859240d369b9e1ba3a5b" name="af8978cd66a20859240d369b9e1ba3a5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8978cd66a20859240d369b9e1ba3a5b">&#9670;&#160;</a></span>D_8018C028</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>* D_8018C028</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Seemingly a pointer to Lakitu texture(s) </p>
-
-</div>
-</div>
 <a id="a12b536ec4ac750df51fa10cc87fa2986" name="a12b536ec4ac750df51fa10cc87fa2986"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a12b536ec4ac750df51fa10cc87fa2986">&#9670;&#160;</a></span>D_8018C0B0</h2>
 
@@ -10902,28 +10885,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a98849386dc3bde34aea39123663ea1a3" name="a98849386dc3bde34aea39123663ea1a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98849386dc3bde34aea39123663ea1a3">&#9670;&#160;</a></span>D_8018CF28</h2>
+<a id="abfda98b026625a85a676f039124cff37" name="abfda98b026625a85a676f039124cff37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfda98b026625a85a676f039124cff37">&#9670;&#160;</a></span>D_8018CF28</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structPlayer.html">Player</a>* D_8018CF28[4]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a548187133fd34272243a1a3789945a55" name="a548187133fd34272243a1a3789945a55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a548187133fd34272243a1a3789945a55">&#9670;&#160;</a></span>D_8018CF38</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> D_8018CF38[4]</td>
+          <td class="memname"><a class="el" href="structPlayer.html">Player</a>* D_8018CF28[8]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -11302,6 +11271,22 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Appears to be a list of object list indices for the Item Window part of the HUD. </p>
+
+</div>
+</div>
+<a id="a569785b688e6174a8a3a5dd2c34294fa" name="a569785b688e6174a8a3a5dd2c34294fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a569785b688e6174a8a3a5dd2c34294fa">&#9670;&#160;</a></span>gLakituTexturePtr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>* gLakituTexturePtr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Seemingly a pointer to Lakitu texture(s) </p>
 
 </div>
 </div>

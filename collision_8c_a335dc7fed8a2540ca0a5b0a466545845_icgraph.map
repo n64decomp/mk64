@@ -1,20 +1,20 @@
 <map id="set_vtx_from_triangle" name="set_vtx_from_triangle">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1760,70,1925,95"/>
-<area shape="rect" id="Node000002" href="$collision_8c.html#a3081198f925be148fc9f05897a3bddd3" title=" " alt="" coords="1528,70,1712,95"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1746,85,1712,85,1712,80,1746,80"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="1660,60,1649,52,1620,49,1596,51,1584,56,1581,61,1588,68,1584,72,1576,62,1580,52,1595,46,1620,43,1651,47,1663,56"/>
-<area shape="rect" id="Node000003" href="$collision_8c.html#a0c0f33fa7f0e76fa9cd556c9f1401b36" title=" " alt="" coords="1253,120,1480,160"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="1551,101,1456,123,1455,117,1549,96"/>
-<area shape="rect" id="Node000012" href="$collision_8c.html#a9ab05719b77156569d97b4397d922d62" title=" " alt="" coords="1287,5,1447,45"/>
-<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="1549,70,1446,46,1447,41,1550,64"/>
-<area shape="rect" id="Node000013" href="$render__courses_8c.html#aa4af1c42d08a2df94b3140023cf94b15" title=" " alt="" coords="1272,70,1461,95"/>
-<area shape="poly" id="edge15_Node000002_Node000013" title=" " alt="" coords="1514,85,1461,85,1461,80,1514,80"/>
-<area shape="rect" id="Node000004" href="$render__courses_8c.html#afa7a12f363eeadd8ea6926eaf62657ef" title=" " alt="" coords="1083,73,1205,98"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="1271,119,1196,101,1197,95,1272,114"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1872,70,2037,95"/>
+<area shape="rect" id="Node000002" href="$collision_8c.html#a3081198f925be148fc9f05897a3bddd3" title=" " alt="" coords="1640,70,1824,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1858,85,1824,85,1824,80,1858,80"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="1772,60,1761,52,1732,49,1708,51,1696,56,1693,61,1700,68,1696,72,1688,62,1692,52,1707,46,1732,43,1763,47,1775,56"/>
+<area shape="rect" id="Node000003" href="$collision_8c.html#a0c0f33fa7f0e76fa9cd556c9f1401b36" title=" " alt="" coords="1365,120,1592,160"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="1663,101,1568,123,1567,117,1661,96"/>
+<area shape="rect" id="Node000012" href="$collision_8c.html#a9ab05719b77156569d97b4397d922d62" title=" " alt="" coords="1399,5,1559,45"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="1661,70,1558,46,1559,41,1662,64"/>
+<area shape="rect" id="Node000013" href="$render__courses_8c.html#aa4af1c42d08a2df94b3140023cf94b15" title=" " alt="" coords="1384,70,1573,95"/>
+<area shape="poly" id="edge15_Node000002_Node000013" title=" " alt="" coords="1626,85,1573,85,1573,80,1626,80"/>
+<area shape="rect" id="Node000004" href="$render__courses_8c.html#a628c168bd9c9e44ce9490756bc7a23a7" title="Also sets vertex colours for the course vtx data." alt="" coords="1083,73,1317,98"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="1362,120,1265,101,1266,95,1364,115"/>
 <area shape="rect" id="Node000011" href="$code__80281780_8c.html#af227cfd0f1fd3d6adbe9a29ad59b4dc8" title=" " alt="" coords="848,123,1035,149"/>
-<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="1240,141,1035,140,1035,134,1240,136"/>
+<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="1352,142,1035,139,1035,134,1352,136"/>
 <area shape="rect" id="Node000005" href="$code__800029B0_8c.html#aca6165112fc92e65ad6477e785a7098c" title=" " alt="" coords="895,74,988,99"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="1069,88,988,89,988,84,1069,83"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="1069,89,989,89,988,84,1069,83"/>
 <area shape="rect" id="Node000006" href="$main_8c.html#ad0625ed56ac663d3ec7ae8f1ba50c735" title=" " alt="" coords="656,99,800,125"/>
 <area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="881,96,801,106,800,101,881,91"/>
 <area shape="rect" id="Node000007" href="$main_8c.html#a633ed517e458daeb768f5361895dcac9" title=" " alt="" coords="457,99,608,125"/>
@@ -26,6 +26,6 @@
 <area shape="rect" id="Node000010" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,99,96,125"/>
 <area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="131,115,96,115,96,109,131,109"/>
 <area shape="poly" id="edge12_Node000011_Node000006" title=" " alt="" coords="834,127,800,123,800,117,834,121"/>
-<area shape="poly" id="edge14_Node000012_Node000004" title=" " alt="" coords="1279,52,1192,75,1191,70,1278,46"/>
-<area shape="poly" id="edge16_Node000013_Node000004" title=" " alt="" coords="1258,87,1206,87,1206,82,1258,81"/>
+<area shape="poly" id="edge14_Node000012_Node000004" title=" " alt="" coords="1386,48,1261,75,1259,70,1385,43"/>
+<area shape="poly" id="edge16_Node000013_Node000004" title=" " alt="" coords="1370,86,1318,87,1318,82,1370,81"/>
 </map>

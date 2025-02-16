@@ -1,0 +1,13 @@
+<map id="generate_train_path" name="generate_train_path">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,159,56"/>
+<area shape="rect" id="Node000002" href="$path__calc_8inc_8c.html#a7f230a1d618ed1435ca6607369eab314" title=" " alt="" coords="211,5,349,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,31,197,26,197,31,159,36"/>
+<area shape="rect" id="Node000004" href="$collision_8c.html#af40212f95fb9273a88b4d4d54f96b2aa" title="Returns the height of the surface below the provided position. Used to set actors onto the course mes..." alt="" coords="207,55,353,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="159,50,194,54,193,59,159,55"/>
+<area shape="rect" id="Node000003" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="467,5,519,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="350,15,453,15,453,21,350,21"/>
+<area shape="rect" id="Node000005" href="$collision_8c.html#a6527a2135a10909cdf9a1fd731be5628" title=" " alt="" coords="401,55,585,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="354,65,388,65,388,70,354,70"/>
+<area shape="rect" id="Node000006" href="$collision_8c.html#a0fe340ccfe1d926a592ea9a0c84d7574" title=" " alt="" coords="405,105,581,145"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="329,77,406,98,405,104,327,83"/>
+</map>

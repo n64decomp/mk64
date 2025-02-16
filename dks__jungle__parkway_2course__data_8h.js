@@ -140,7 +140,7 @@ var dks__jungle__parkway_2course__data_8h =
     [ "d_course_dks_jungle_parkway_dl_tree1", "dks__jungle__parkway_2course__data_8h.html#af182f36f1c494f9d7a14b5bfec4eef37", null ],
     [ "d_course_dks_jungle_parkway_dl_tree2", "dks__jungle__parkway_2course__data_8h.html#aec48c6d968271f1da369e69d68bf196e", null ],
     [ "d_course_dks_jungle_parkway_dl_tree3", "dks__jungle__parkway_2course__data_8h.html#abee2127daa9849e763db3291616794fd", null ],
-    [ "d_course_dks_jungle_parkway_ferry_waypoints", "dks__jungle__parkway_2course__data_8h.html#a5a130fa6063d848075a2cdf758b130b7", null ],
+    [ "d_course_dks_jungle_parkway_ferry_path", "dks__jungle__parkway_2course__data_8h.html#af5969b3cb17eda89434135ef84067116", null ],
     [ "d_course_dks_jungle_parkway_item_box_spawns", "dks__jungle__parkway_2course__data_8h.html#a886d96c3c354028b65fab69f4f65fd56", null ],
     [ "d_course_dks_jungle_parkway_kiwano_model", "dks__jungle__parkway_2course__data_8h.html#ac5986d509accb336dd77daad06458bca", null ],
     [ "d_course_dks_jungle_parkway_kiwano_tlut", "dks__jungle__parkway_2course__data_8h.html#a56a04d919dec820c3e59f053d45abe04", null ],
@@ -168,7 +168,7 @@ var dks__jungle__parkway_2course__data_8h =
     [ "d_course_dks_jungle_parkway_palm_tree", "dks__jungle__parkway_2course__data_8h.html#a0c2ba49527406c19655f9576b711c8ce", null ],
     [ "d_course_dks_jungle_parkway_palm_tree_model", "dks__jungle__parkway_2course__data_8h.html#a2a1e6be592cfcec3f4d5caad2a62604f", null ],
     [ "d_course_dks_jungle_parkway_railings_dl", "dks__jungle__parkway_2course__data_8h.html#a3cc13f2b5a967b15dae8ee1da7ea134d", null ],
-    [ "d_course_dks_jungle_parkway_track_waypoints", "dks__jungle__parkway_2course__data_8h.html#aecdd2cf97701914ba2aa52f9cfca7e3d", null ],
+    [ "d_course_dks_jungle_parkway_track_path", "dks__jungle__parkway_2course__data_8h.html#aca65b196dda12d0698ff46a7a6f9322f", null ],
     [ "d_course_dks_jungle_parkway_tree", "dks__jungle__parkway_2course__data_8h.html#a1cd1a2639c4808a5f463938fa8f7d174", null ],
     [ "d_course_dks_jungle_parkway_tree2_model", "dks__jungle__parkway_2course__data_8h.html#a452f3d0a56e2fd6d76270651ec256ad6", null ],
     [ "d_course_dks_jungle_parkway_tree2_top", "dks__jungle__parkway_2course__data_8h.html#ad02c8e1ca6e48844229e7fc288fb67a7", null ],
@@ -184,5 +184,5 @@ var dks__jungle__parkway_2course__data_8h =
     [ "d_course_dks_jungle_parkway_unknown_light2", "dks__jungle__parkway_2course__data_8h.html#a710a9947e38ebb59876e557c7aa69df4", null ],
     [ "d_course_dks_jungle_parkway_unknown_light3", "dks__jungle__parkway_2course__data_8h.html#a84c2d3c760d4e98a28c403f686fcfe59", null ],
     [ "d_course_dks_jungle_parkway_unknown_light4", "dks__jungle__parkway_2course__data_8h.html#ad4ea0f1de5207906be9894bd52c0a22a", null ],
-    [ "d_course_dks_jungle_parkway_unknown_waypoints", "dks__jungle__parkway_2course__data_8h.html#a37a70ee007b6a03aaaaa722cae1e823f", null ]
+    [ "d_course_dks_jungle_parkway_unknown_path", "dks__jungle__parkway_2course__data_8h.html#a3dc17bff003e27bcf7e179504bda8307", null ]
 ];

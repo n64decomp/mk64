@@ -1,12 +1,12 @@
 <map id="move_s32_towards" name="move_s32_towards">
-<area shape="rect" id="Node000001" title=" " alt="" coords="2001,56,2149,81"/>
-<area shape="rect" id="Node000002" href="$player__controller_8c.html#a0b1d5784639cce58f06a6b0586f9a662" title=" " alt="" coords="1831,56,1953,81"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1988,71,1954,71,1954,66,1988,66"/>
-<area shape="rect" id="Node000003" href="$code__80005FD0_8c.html#a7808902aee426ba4433e92cde1feb8a1" title=" " alt="" coords="1660,31,1783,56"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="2000,56,2148,81"/>
+<area shape="rect" id="Node000002" href="$player__controller_8c.html#a320c24f0c2de049f9e6ba453bad28d0d" title=" " alt="" coords="1831,56,1952,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1987,71,1952,71,1952,66,1987,66"/>
+<area shape="rect" id="Node000003" href="$cpu__vehicles__camera__path_8c.html#a7808902aee426ba4433e92cde1feb8a1" title=" " alt="" coords="1660,31,1783,56"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1817,60,1783,55,1783,50,1818,55"/>
 <area shape="rect" id="Node000011" href="$player__controller_8c.html#ae84c50ebfb4641214c2da3210ab5e7e2" title=" " alt="" coords="1660,80,1783,105"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="1818,82,1783,87,1783,81,1817,77"/>
-<area shape="rect" id="Node000004" href="$code__80005FD0_8c.html#a325ddded54aab32025174f6aedd5e391" title=" " alt="" coords="1489,24,1612,49"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="1818,82,1783,87,1783,81,1817,76"/>
+<area shape="rect" id="Node000004" href="$cpu__vehicles__camera__path_8c.html#a325ddded54aab32025174f6aedd5e391" title=" " alt="" coords="1489,24,1612,49"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1646,43,1612,42,1612,36,1646,38"/>
 <area shape="rect" id="Node000005" href="$code__80281780_8c.html#af227cfd0f1fd3d6adbe9a29ad59b4dc8" title=" " alt="" coords="1255,17,1441,43"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1476,37,1441,36,1442,30,1476,32"/>

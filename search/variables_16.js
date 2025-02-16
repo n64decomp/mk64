@@ -42,7 +42,7 @@ var searchData=
   ['vimgrthread_39',['viMgrThread',['../osCreateViManager_8c.html#aee09a29e989794a33a210f14519e8c6c',1,'osCreateViManager.c']]],
   ['vintr_40',['vIntr',['../structOSViFieldRegs.html#a258c670f50cd3b157316404ae3892ea8',1,'OSViFieldRegs']]],
   ['visibilitystates_41',['visibilityStates',['../structPiranhaPlant.html#a2b920e708ce2c7685c5fec09e7dda782',1,'PiranhaPlant']]],
-  ['visible_42',['visible',['../structstruct__8018D9E0__entry.html#aaf7aafa7fedccc94a8da354410d09b79',1,'struct_8018D9E0_entry::visible'],['../structstruct__8018DEE0__entry.html#a31badc8c3ecad9d4e66e6d1d94924281',1,'struct_8018DEE0_entry::visible']]],
+  ['visible_42',['visible',['../structMenuItem.html#a1c31220f3d1e3db48b2d30b2a132c363',1,'MenuItem::visible'],['../structstruct__8018DEE0__entry.html#a31badc8c3ecad9d4e66e6d1d94924281',1,'struct_8018DEE0_entry::visible']]],
   ['volume_43',['volume',['../structSequencePlayer.html#a9415e1935b76851cedbfa64d61ca0cd3',1,'SequencePlayer::volume'],['../structSequenceChannel.html#a7714166355bd970c962da7e43fb35b1d',1,'SequenceChannel::volume'],['../structSequenceChannel.html#a0db3a4e22eeb5c551db2522eee9e097b',1,'SequenceChannel::volume'],['../structAudioSessionSettingsEU.html#ae4a9341b0913386e8fc19890619cb72f',1,'AudioSessionSettingsEU::volume'],['../structAudioSessionSettings.html#a05ebf9209e133d04eb887d6f48c74ef3',1,'AudioSessionSettings::volume'],['../structALInstrument.html#af08ba88d76d1a98e1d208fa25bded19d',1,'ALInstrument::volume']]],
   ['volumescale_44',['volumeScale',['../structSequenceChannel.html#af596e19276966daf55729d4d524a78cb',1,'SequenceChannel']]],
   ['vstart_45',['vStart',['../structOSViFieldRegs.html#a25ada5d28742b95c120f71e297dcb28d',1,'OSViFieldRegs']]],

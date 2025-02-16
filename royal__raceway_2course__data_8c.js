@@ -141,9 +141,9 @@ var royal__raceway_2course__data_8c =
     [ "d_course_royal_raceway_piranha_plant_model", "royal__raceway_2course__data_8c.html#a4522e8349f11831193b3728325c49f6e", null ],
     [ "d_course_royal_raceway_piranha_plant_spawn", "royal__raceway_2course__data_8c.html#ac603af672033be139f2915f1ec24d728", null ],
     [ "d_course_royal_raceway_piranha_plant_tlut", "royal__raceway_2course__data_8c.html#a24f7e47cfdd8510a34669fcfd73484bc", null ],
-    [ "d_course_royal_raceway_track_waypoints", "royal__raceway_2course__data_8c.html#a5c9a0ef21f7fd48691aba650383765f4", null ],
+    [ "d_course_royal_raceway_track_path", "royal__raceway_2course__data_8c.html#a30994417cd33627107f6d9cde97b035d", null ],
     [ "d_course_royal_raceway_tree_model", "royal__raceway_2course__data_8c.html#ae9580e40d17fbbea98554c7544849e16", null ],
     [ "d_course_royal_raceway_tree_spawn", "royal__raceway_2course__data_8c.html#a0e2d5783b67f3b1de0230c9424367078", null ],
-    [ "d_course_royal_raceway_unknown_waypoints", "royal__raceway_2course__data_8c.html#a5b89a8547e0feefe3dacc4de4ebd6b80", null ],
+    [ "d_course_royal_raceway_unknown_path", "royal__raceway_2course__data_8c.html#ac0666582fa72e82a618819355c279b05", null ],
     [ "d_royal_raceway_peaches_castle_tree_model", "royal__raceway_2course__data_8c.html#ab97e94ce42d2ef99e1acfeab061224f0", null ]
 ];

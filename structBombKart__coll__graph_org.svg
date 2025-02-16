@@ -59,12 +59,12 @@
 <polygon fill="#9a32cd" stroke="#9a32cd" points="104.5,-121.97 108,-131.97 111.5,-121.97 104.5,-121.97"/>
 </a>
 </g>
-<text text-anchor="middle" x="144.5" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> bounceTimer</text>
-<text text-anchor="middle" x="144.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">circleTimer</text>
-<text text-anchor="middle" x="144.5" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">someRot</text>
-<text text-anchor="middle" x="144.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">state</text>
-<text text-anchor="middle" x="144.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_4A</text>
-<text text-anchor="middle" x="144.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">waypointIndex</text>
+<text text-anchor="middle" x="145" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> bounceTimer</text>
+<text text-anchor="middle" x="145" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">circleTimer</text>
+<text text-anchor="middle" x="145" y="-78.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">pathPointIndex</text>
+<text text-anchor="middle" x="145" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">someRot</text>
+<text text-anchor="middle" x="145" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">state</text>
+<text text-anchor="middle" x="145" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_4A</text>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
@@ -79,8 +79,8 @@
 <g id="edge3_Node000001_Node000004" class="edge">
 <title>Node4&#45;&gt;Node1</title>
 <g id="a_edge3_Node000001_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M221.81,-121.8C218.15,-98.8 208.68,-60.01 185,-37 173.03,-25.38 155.74,-18.84 140.57,-15.17"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="218.37,-122.52 223.21,-131.94 225.31,-121.56 218.37,-122.52"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M222.02,-121.79C218.61,-98.79 209.56,-59.99 186,-37 173.82,-25.11 156.11,-18.55 140.64,-14.93"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="218.58,-122.46 223.3,-131.94 225.52,-121.58 218.58,-122.46"/>
 </a>
 </g>
 <text text-anchor="middle" x="240" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_4C</text>

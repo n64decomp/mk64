@@ -1,7 +1,7 @@
 var common__structs_8h =
 [
     [ "Vec3fs", "structVec3fs.html", "structVec3fs" ],
-    [ "KartAIBehaviour", "structKartAIBehaviour.html", "structKartAIBehaviour" ],
+    [ "CPUBehaviour", "structCPUBehaviour.html", "structCPUBehaviour" ],
     [ "SPTask", "structSPTask.html", "structSPTask" ],
     [ "VblankHandler", "structVblankHandler.html", "structVblankHandler" ],
     [ "D_80150158", "structD__80150158.html", "structD__80150158" ],

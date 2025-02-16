@@ -1,0 +1,26 @@
+var path__utils_8inc_8c =
+[
+    [ "adjust_path_at_start_line", "path__utils_8inc_8c.html#affd5f9e715b41d88eaf26f157bfc9719", null ],
+    [ "are_in_curve", "path__utils_8inc_8c.html#a84cc678542e9db3cceaad290ba4fbb18", null ],
+    [ "calculate_track_offset_position", "path__utils_8inc_8c.html#acb7299eaf4c2bcebdcdf2d92b8e4cf19", null ],
+    [ "calculate_track_position_factor", "path__utils_8inc_8c.html#a3369c0c7791c16418382ddd702784cd6", null ],
+    [ "cpu_track_position_factor", "path__utils_8inc_8c.html#a56cc4d29afeb765dda89d79fe75f848e", null ],
+    [ "determine_ideal_cpu_position_offset", "path__utils_8inc_8c.html#ac5fb9fbfd98b24138320e915eb7c69fe", null ],
+    [ "find_closest_pathPoint_track_section", "path__utils_8inc_8c.html#ab96cbd71b16b521d82bee529494f1351", null ],
+    [ "find_closest_vehicles_pathPoint", "path__utils_8inc_8c.html#a1196cc6fd964765f84153c6bda74028e", null ],
+    [ "func_8000BD94", "path__utils_8inc_8c.html#ae8e900a9d103d8427bebe0f9fc5c2686", null ],
+    [ "func_8000D24C", "path__utils_8inc_8c.html#aae3d2d6e27d79a30dfe68c64e771b5b1", null ],
+    [ "func_8000D2B4", "path__utils_8inc_8c.html#a9fec4bf4c51e7206b461803a60d7e6e3", null ],
+    [ "func_8000D33C", "path__utils_8inc_8c.html#a54d4fdff9a2e57dc38533f07080b27f2", null ],
+    [ "func_8000D6D0", "path__utils_8inc_8c.html#a44c754d762164fef82f8e769dfda5b81", null ],
+    [ "func_8000D940", "path__utils_8inc_8c.html#a6dec7a494db9036be46fe6fb9dc642d5", null ],
+    [ "is_far_from_path", "path__utils_8inc_8c.html#ab3011c4461af84066229e8c503d74628", null ],
+    [ "set_track_offset_position", "path__utils_8inc_8c.html#a98f90736f1191cd761bdbfc51966abc4", null ],
+    [ "tweak_path_index_wario_stadium", "path__utils_8inc_8c.html#a378e7658e99022775eee23b67d1a38cf", null ],
+    [ "update_path_index", "path__utils_8inc_8c.html#a7f6aaf7d61fc1cad057367e11c4aa66f", null ],
+    [ "update_path_index_track_section", "path__utils_8inc_8c.html#aa68f443dc84b98b90105c83a74d957de", null ],
+    [ "update_path_index_with_track", "path__utils_8inc_8c.html#a213cc48734c334d651e61ea2b73b5604", null ],
+    [ "update_player_path", "path__utils_8inc_8c.html#a072d199e27b05801ecc506ea10695d54", null ],
+    [ "update_player_position_factor", "path__utils_8inc_8c.html#a6cb84638a305d4e4835ae3eaab57ba11", null ],
+    [ "update_vehicle_following_path", "path__utils_8inc_8c.html#a606bec721253c10bb68a4bb4a445ee10", null ]
+];

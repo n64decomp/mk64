@@ -2,6 +2,7 @@ var skybox__and__splitscreen_8c =
 [
     [ "Skybox", "structSkybox.html", "structSkybox" ],
     [ "copy_framebuffer", "skybox__and__splitscreen_8c.html#a97049ca439feed0c004c1d41f302189e", null ],
+    [ "course_set_skybox_colours", "skybox__and__splitscreen_8c.html#a4b71883a4df655bb1d78757b067448b0", null ],
     [ "func_802A3730", "skybox__and__splitscreen_8c.html#ae4ccafca07028b0c92356fdf52e84180", null ],
     [ "func_802A38AC", "skybox__and__splitscreen_8c.html#a52a89ac5b94f92acb106384aa5668246", null ],
     [ "func_802A38B4", "skybox__and__splitscreen_8c.html#a3e841fd472316b42bf7b4d8f077b2d1c", null ],
@@ -15,10 +16,8 @@ var skybox__and__splitscreen_8c =
     [ "func_802A40D4", "skybox__and__splitscreen_8c.html#aa8a896c63b5bf16ab4df85628032755e", null ],
     [ "func_802A40DC", "skybox__and__splitscreen_8c.html#a82d0b28d568171fb511b650436cbd021", null ],
     [ "func_802A4300", "skybox__and__splitscreen_8c.html#a67bde07a20019a64500eba855d93ff4a", null ],
-    [ "func_802A450C", "skybox__and__splitscreen_8c.html#ae7c45179d5b0717d70dc1a894355b26d", null ],
     [ "func_802A487C", "skybox__and__splitscreen_8c.html#ac2b757ad60cbf91f4c5a7a9b290b10f6", null ],
     [ "func_802A4A0C", "skybox__and__splitscreen_8c.html#a6135e98ec3076399696ca04f441529f4", null ],
-    [ "func_802A4D18", "skybox__and__splitscreen_8c.html#a1520a44a27c37f0b2554764974afb428", null ],
     [ "func_802A4EF4", "skybox__and__splitscreen_8c.html#a1521be679cd75bb46d9e6f0e1ae184f4", null ],
     [ "func_802A5004", "skybox__and__splitscreen_8c.html#a106a6c5b25b49dea0722c25630e2bdb9", null ],
     [ "func_802A50EC", "skybox__and__splitscreen_8c.html#ab0061fbdffa3d6f0a7a58b866cfd2336", null ],
@@ -44,6 +43,7 @@ var skybox__and__splitscreen_8c =
     [ "render_player_two_2p_screen_vertical", "skybox__and__splitscreen_8c.html#aa8a367dff9836f7f36d096ba50c8ed9b", null ],
     [ "render_player_two_3p_4p_screen", "skybox__and__splitscreen_8c.html#a3cae4ed02b4f4ac73f8e0092f0599bd0", null ],
     [ "select_framebuffer", "skybox__and__splitscreen_8c.html#ab481a35d4548245b2a89ab574f460a14", null ],
+    [ "set_perspective_and_aspect_ratio", "skybox__and__splitscreen_8c.html#a283d4ef8637e23224c3212edf83513c4", null ],
     [ "set_viewport", "skybox__and__splitscreen_8c.html#aa627a5166fe0e9f01475246065b6923c", null ],
     [ "set_viewport2", "skybox__and__splitscreen_8c.html#ad533665bd8936a3498367d41cb3f05f5", null ],
     [ "D_802B8880", "skybox__and__splitscreen_8c.html#aa9561e7be092d9cd53decc5700218e26", null ],
@@ -52,6 +52,6 @@ var skybox__and__splitscreen_8c =
     [ "D_802B8990", "skybox__and__splitscreen_8c.html#a82f24f7e2e98540d8ea10579ee3b6315", null ],
     [ "D_802B8A10", "skybox__and__splitscreen_8c.html#a48751c54a38756b9474b566084b5e56a", null ],
     [ "D_802B8A90", "skybox__and__splitscreen_8c.html#a9119e27ac748939929d0b105173cdb43", null ],
-    [ "sSkyColors", "skybox__and__splitscreen_8c.html#a5a62561f3fe644aa6a2db4ef3a8f4254", null ],
-    [ "sSkyColors2", "skybox__and__splitscreen_8c.html#a24d921b7aaa7cdc7a3f32e4e45b01405", null ]
+    [ "sBottomSkyBoxColors", "skybox__and__splitscreen_8c.html#a1e7f2e342772cc46c30b47e62e13ead3", null ],
+    [ "sTopSkyBoxColors", "skybox__and__splitscreen_8c.html#a3f1ced60108c88889ea15a52f25924c5", null ]
 ];

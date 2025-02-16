@@ -20,9 +20,9 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="player__controller_8c.html#aa0d80c8142dd012f72a5224c9cc9d730" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="262.5,-282 143.5,-282 143.5,-263 262.5,-263 262.5,-282"/>
-<text text-anchor="middle" x="203" y="-270" font-family="Helvetica,sans-Serif" font-size="10.00">decelerate_ai_player</text>
+<g id="a_Node000002"><a xlink:href="player__controller_8c.html#af83cd9c36e6a1e62b4146b1216443e90" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="255,-282 151,-282 151,-263 255,-263 255,-282"/>
+<text text-anchor="middle" x="203" y="-270" font-family="Helvetica,sans-Serif" font-size="10.00">decelerate_player</text>
 </a>
 </g>
 </g>
@@ -102,8 +102,8 @@
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M262.81,-272.5C281.04,-272.5 301.04,-272.5 318.96,-272.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="318.97,-276 328.97,-272.5 318.96,-269 318.97,-276"/>
+<path fill="none" stroke="#63b8ff" d="M255.32,-272.5C275.4,-272.5 298.48,-272.5 318.87,-272.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="318.96,-276 328.96,-272.5 318.96,-269 318.96,-276"/>
 </a>
 </g>
 </g>

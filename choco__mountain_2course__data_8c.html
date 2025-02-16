@@ -114,7 +114,7 @@ $(function(){initNavTree('choco__mountain_2course__data_8c.html',''); initResiza
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="path_8h_source.html">path.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="choco__mountain_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
@@ -320,10 +320,10 @@ Variables</h2></td></tr>
 <tr class="separator:acc9101417cba16562a6d6ebe8f521847"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee4be95e760c97285b9499b5ef1ad689" id="r_aee4be95e760c97285b9499b5ef1ad689"><td class="memItemLeft" align="right" valign="top">Gfx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee4be95e760c97285b9499b5ef1ad689">d_course_choco_mountain_dl_43C8</a> []</td></tr>
 <tr class="separator:aee4be95e760c97285b9499b5ef1ad689"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf08e2de66e95fb514c0b38304a93a48" id="r_abf08e2de66e95fb514c0b38304a93a48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf08e2de66e95fb514c0b38304a93a48">d_course_choco_mountain_unknown_waypoints</a> []</td></tr>
-<tr class="separator:abf08e2de66e95fb514c0b38304a93a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a398ac3a95305bc1cf4284f9c3bf6e973" id="r_a398ac3a95305bc1cf4284f9c3bf6e973"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a398ac3a95305bc1cf4284f9c3bf6e973">d_course_choco_mountain_track_waypoints</a> []</td></tr>
-<tr class="separator:a398ac3a95305bc1cf4284f9c3bf6e973"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e6c1078fcf60049e575de73757d4b3e" id="r_a7e6c1078fcf60049e575de73757d4b3e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e6c1078fcf60049e575de73757d4b3e">d_course_choco_mountain_unknown_path</a> []</td></tr>
+<tr class="separator:a7e6c1078fcf60049e575de73757d4b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93eae4c0ab433d4b0381f5d52d0887c1" id="r_a93eae4c0ab433d4b0381f5d52d0887c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93eae4c0ab433d4b0381f5d52d0887c1">d_course_choco_mountain_track_path</a> []</td></tr>
+<tr class="separator:a93eae4c0ab433d4b0381f5d52d0887c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac8da9634d6e858e41270b2240c78265" id="r_aac8da9634d6e858e41270b2240c78265"><td class="memItemLeft" align="right" valign="top">Lights1&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac8da9634d6e858e41270b2240c78265">d_course_choco_mountain_light</a> = gdSPDefLights1(0x71, 0x71, 0x71, 0x73, 0x73, 0x73, 0x00, 0x81, 0x00)</td></tr>
 <tr class="separator:aac8da9634d6e858e41270b2240c78265"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab45feb609c08e935524bef75be09e414" id="r_ab45feb609c08e935524bef75be09e414"><td class="memItemLeft" align="right" valign="top">Vtx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab45feb609c08e935524bef75be09e414">d_course_choco_mountain_6005AF8</a> []</td></tr>
@@ -4317,28 +4317,28 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a398ac3a95305bc1cf4284f9c3bf6e973" name="a398ac3a95305bc1cf4284f9c3bf6e973"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a398ac3a95305bc1cf4284f9c3bf6e973">&#9670;&#160;</a></span>d_course_choco_mountain_track_waypoints</h2>
+<a id="a93eae4c0ab433d4b0381f5d52d0887c1" name="a93eae4c0ab433d4b0381f5d52d0887c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93eae4c0ab433d4b0381f5d52d0887c1">&#9670;&#160;</a></span>d_course_choco_mountain_track_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_choco_mountain_track_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_choco_mountain_track_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="abf08e2de66e95fb514c0b38304a93a48" name="abf08e2de66e95fb514c0b38304a93a48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf08e2de66e95fb514c0b38304a93a48">&#9670;&#160;</a></span>d_course_choco_mountain_unknown_waypoints</h2>
+<a id="a7e6c1078fcf60049e575de73757d4b3e" name="a7e6c1078fcf60049e575de73757d4b3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e6c1078fcf60049e575de73757d4b3e">&#9670;&#160;</a></span>d_course_choco_mountain_unknown_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_choco_mountain_unknown_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_choco_mountain_unknown_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">

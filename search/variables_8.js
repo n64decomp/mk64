@@ -46,7 +46,7 @@ var searchData=
   ['heapaudiostring36_43',['heapAudioString36',['../heap_8c.html#a226a781e9d25916a9d99dc85b0e48263',1,'heap.c']]],
   ['heapaudiostring37_44',['heapAudioString37',['../heap_8c.html#a7779572e10216fcee6dc29dd85ac7ed5',1,'heap.c']]],
   ['heapaudiostring38_45',['heapAudioString38',['../heap_8c.html#a9ced62cd32c82d4fe7cc0751f742e960',1,'heap.c']]],
-  ['height_46',['height',['../structMkTexture.html#a44c5e3d94124f429abe927eb8baa022a',1,'MkTexture']]],
+  ['height_46',['height',['../structMenuTexture.html#af9b073fc7bf796e8f447f8cb20f8ae23',1,'MenuTexture']]],
   ['hi_47',['hi',['../uniondu.html#ac24ce7d9a78b6632965424039e4362c3',1,'du::hi'],['../struct____OSThreadContext.html#a22b3930da4f78d513776547d37123599',1,'__OSThreadContext::hi']]],
   ['highnotessound_48',['highNotesSound',['../structInstrument.html#abbc84184dcd31c9fc2108450d2cff01a',1,'Instrument']]],
   ['hstart_49',['hStart',['../structOSViCommonRegs.html#a1240df0b8b9a5200bc0a7c55798b4146',1,'OSViCommonRegs']]],

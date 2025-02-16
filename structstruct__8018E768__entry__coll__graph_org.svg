@@ -12,17 +12,17 @@
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title=" ">
-<polygon fill="#999999" stroke="#666666" points="230,-19 102,-19 102,0 230,0 230,-19"/>
-<text text-anchor="middle" x="166" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">struct_8018E768_entry</text>
+<polygon fill="#999999" stroke="#666666" points="233,-19 105,-19 105,0 233,0 233,-19"/>
+<text text-anchor="middle" x="169" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">struct_8018E768_entry</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="structMkTexture.html" target="_top" xlink:title="struct for a texture use in menu mainly">
-<polygon fill="white" stroke="#666666" points="166,-85 98,-85 98,-66 166,-66 166,-85"/>
-<text text-anchor="middle" x="132" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">MkTexture</text>
+<g id="a_Node000002"><a xlink:href="structMenuTexture.html" target="_top" xlink:title="struct for a texture use in menu mainly">
+<polygon fill="white" stroke="#666666" points="172,-85 92,-85 92,-66 172,-66 172,-85"/>
+<text text-anchor="middle" x="132" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">MenuTexture</text>
 </a>
 </g>
 </g>
@@ -30,11 +30,11 @@
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node2&#45;&gt;Node1</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M130.7,-55.7C130.98,-49.46 132.11,-42.67 135,-37 138.73,-29.68 145.45,-23.56 151.67,-19.04"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="127.2,-56.03 130.9,-65.96 134.2,-55.89 127.2,-56.03"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M134.32,-55.67C135.65,-49.44 137.73,-42.65 141,-37 145.02,-30.05 151.42,-23.79 157.09,-19.1"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="130.8,-55.51 132.65,-65.94 137.71,-56.63 130.8,-55.51"/>
 </a>
 </g>
-<text text-anchor="middle" x="157" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> textures</text>
+<text text-anchor="middle" x="163" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> textures</text>
 </g>
 <!-- Node3 -->
 <g id="Node000003" class="node">
@@ -53,9 +53,8 @@
 <polygon fill="#9a32cd" stroke="#9a32cd" points="48.09,-165.32 48.37,-175.91 54.76,-167.45 48.09,-165.32"/>
 </a>
 </g>
-<text text-anchor="middle" x="107" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> type</text>
-<text text-anchor="middle" x="107" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unused1</text>
-<text text-anchor="middle" x="107" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unused2</text>
+<text text-anchor="middle" x="107" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> type</text>
+<text text-anchor="middle" x="107" y="-122.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unused2</text>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
@@ -89,7 +88,7 @@
 <g id="edge4_Node000002_Node000005" class="edge">
 <title>Node5&#45;&gt;Node2</title>
 <g id="a_edge4_Node000002_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M222.56,-165.71C220.21,-147.55 214.08,-120.3 198,-103 189.59,-93.96 177.68,-87.93 166.29,-83.95"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M222.56,-165.71C220.21,-147.55 214.08,-120.3 198,-103 190.35,-94.77 179.8,-89.04 169.38,-85.08"/>
 <polygon fill="#9a32cd" stroke="#9a32cd" points="219.08,-166.09 223.58,-175.68 226.04,-165.38 219.08,-166.09"/>
 </a>
 </g>
@@ -103,8 +102,8 @@
 <g id="Node000006" class="node">
 <title>Node6</title>
 <g id="a_Node000006"><a xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="218,-85 184,-85 184,-66 218,-66 218,-85"/>
-<text text-anchor="middle" x="201" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">Gfx</text>
+<polygon fill="white" stroke="#666666" points="224,-85 190,-85 190,-66 224,-66 224,-85"/>
+<text text-anchor="middle" x="207" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">Gfx</text>
 </a>
 </g>
 </g>
@@ -112,11 +111,11 @@
 <g id="edge5_Node000001_Node000006" class="edge">
 <title>Node6&#45;&gt;Node1</title>
 <g id="a_edge5_Node000001_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M191.46,-57.05C184.79,-44.86 176.17,-29.11 170.87,-19.41"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="188.41,-58.77 196.28,-65.87 194.55,-55.42 188.41,-58.77"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M196.72,-56.87C193.04,-50.59 188.85,-43.47 185,-37 181.48,-31.09 177.48,-24.46 174.36,-19.32"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="193.9,-58.98 201.96,-65.84 199.94,-55.44 193.9,-58.98"/>
 </a>
 </g>
-<text text-anchor="middle" x="213" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> displayList</text>
+<text text-anchor="middle" x="219" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> displayList</text>
 </g>
 </g>
 </svg>

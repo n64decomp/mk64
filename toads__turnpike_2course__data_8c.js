@@ -349,7 +349,7 @@ var toads__turnpike_2course__data_8c =
     [ "d_course_toads_turnpike_tanker_truck_unknown_model8", "toads__turnpike_2course__data_8c.html#a810c1589b88892471b130ed656df9b2b", null ],
     [ "d_course_toads_turnpike_tanker_truck_unknown_model9", "toads__turnpike_2course__data_8c.html#a28052cf2e22dd87e144eba21c241e235", null ],
     [ "d_course_toads_turnpike_tanker_truck_windshield", "toads__turnpike_2course__data_8c.html#a3ee44443555a69c540ea8b731f23297a", null ],
-    [ "d_course_toads_turnpike_track_waypoints", "toads__turnpike_2course__data_8c.html#a3328f513afb4f65d38285d3f4b3e8d28", null ],
+    [ "d_course_toads_turnpike_track_path", "toads__turnpike_2course__data_8c.html#af3ce9382617015586e6b36fc5baded18", null ],
     [ "d_course_toads_turnpike_truck1_cab", "toads__turnpike_2course__data_8c.html#aca3d90ca660de451ad8f5e831e5ebc54", null ],
     [ "d_course_toads_turnpike_truck1_cab_side", "toads__turnpike_2course__data_8c.html#a08a0b985d41add4812b27ee737b0c904", null ],
     [ "d_course_toads_turnpike_truck1_headlights", "toads__turnpike_2course__data_8c.html#af52784eedb7da0e029a97b1b60657fc3", null ],
@@ -386,5 +386,5 @@ var toads__turnpike_2course__data_8c =
     [ "d_course_toads_turnpike_truck_unknown_model9", "toads__turnpike_2course__data_8c.html#af9169b11188eb2d3edf999cc19d356ed", null ],
     [ "d_course_toads_turnpike_unk_windshield1", "toads__turnpike_2course__data_8c.html#a24492675f79bf14419bfb6046b183bfc", null ],
     [ "d_course_toads_turnpike_unk_windshield2", "toads__turnpike_2course__data_8c.html#a9b03a6bfca6b0bafc175cf15addfc87f", null ],
-    [ "d_course_toads_turnpike_unknown_waypoints", "toads__turnpike_2course__data_8c.html#a2b529a705bd5ce4a3037f326de7ef1ba", null ]
+    [ "d_course_toads_turnpike_unknown_path", "toads__turnpike_2course__data_8c.html#a5ca1321f7395f321751b20f5ca30fb60", null ]
 ];

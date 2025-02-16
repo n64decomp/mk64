@@ -73,7 +73,6 @@ var code__800029B0_8h =
     [ "gCourseMinY", "code__800029B0_8h.html#aa2ee5042f4e7ac743d8b4d48e4e30db8", null ],
     [ "gCourseMinZ", "code__800029B0_8h.html#a161879cca91eaae1535e6640e78d0ce9", null ],
     [ "gCreditsCourseId", "code__800029B0_8h.html#a7bd38c0597917d8e83928a1e79280958", null ],
-    [ "gCurrentCourseId", "code__800029B0_8h.html#a0b35aa576b8ad5250674993b72300f0d", null ],
     [ "gCurrentlyLoadedCourseId", "code__800029B0_8h.html#a73a219a87c7a37b8e853df47c813192c", null ],
     [ "gDebugPathCount", "code__800029B0_8h.html#afb5cadcf00ee957fb377975318e25cd6", null ],
     [ "gFreeMemoryResetAnchor", "code__800029B0_8h.html#a40f34d625901521dc5667a667e65b50c", null ],

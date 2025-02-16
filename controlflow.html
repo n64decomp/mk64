@@ -135,14 +135,16 @@ Paradigm</h1>
 Threading</h1>
 <p>After boot, the game begins by setting up its four threads; <a class="el" href="main_8c.html#a1e35d2b842121e6aea373f09381616e5">idle</a>, <a class="el" href="main_8c.html#a023b8f272e4efbd33f371e91ffff6b30">video</a>, <a class="el" href="main_8c.html#adc4ddc4dba28c4eebe8a7c28e5559b11">audio</a>, and the <a class="el" href="main_8c.html#a633ed517e458daeb768f5361895dcac9">game loop</a>.</p>
 <p>The <a class="el" href="main_8c.html#a1e35d2b842121e6aea373f09381616e5">idle thread</a> allows the cpu to sleep. Without it, if at any time execution of all threads were paused, the cpu would never be able to continue. The idle thread is active if all the other threads are paused.</p>
-<p>As such, the <a class="el" href="main_8c.html#a1e35d2b842121e6aea373f09381616e5">idle thread</a> runs the following loop: <code>while(true);</code> (it runs in a perpetual loop of nothing; sleep). In mips assembly it looks like this: </p><div class="fragment"><div class="line">.L800005B8:</div>
+<p>As such, the <a class="el" href="main_8c.html#a1e35d2b842121e6aea373f09381616e5">idle thread</a> runs the following loop: <code>while(true);</code> (it runs in a perpetual loop of nothing; sleep). In mips assembly it looks like this:</p>
+<div class="fragment"><div class="line">.L800005B8:</div>
 <div class="line">b     .L800005B8</div>
-<div class="line">nop   </div>
-</div><!-- fragment --><p> b stands for branch which acts akin to a goto. In this case, branch to the label <code>.L800005B8</code>. This creates an infinite loop. Whenever the cpu branches it always runs the next instruction as well which is called a delay slot. This means the cpu will continuously branch then run <code>nop</code> or <code>no operation</code> with no method of escaping the loop (except for when another thread has a higher priority which means the cpu switches to that thread and stops running the idle thread).</p>
+<div class="line">nop</div>
+</div><!-- fragment --><p>b stands for branch which acts akin to a goto. In this case, branch to the label <code>.L800005B8</code>. This creates an infinite loop. Whenever the cpu branches it always runs the next instruction as well which is called a delay slot. This means the cpu will continuously branch then run <code>nop</code> or <code>no operation</code> with no method of escaping the loop (except for when another thread has a higher priority which means the cpu switches to that thread and stops running the idle thread).</p>
 <p>N64 threads are ran based on priority running whichever thread holds the most of it. Threads can also pause and wait for events. <a class="el" href="structNote.html">Note</a> that the N64 is not multi-threaded by modern standards as the other threads contain specific purposes which slightly differs from the concept of splitting a single program into multiple processes for efficiency.</p>
 <h1><a class="anchor" id="overall-control-flow"></a>
 Overall Control Flow</h1>
-<p>order of initialisation of thread: boot:</p><ul>
+<p>order of initialisation of thread: boot:</p>
+<ul>
 <li>init_threads:<br  />
 <ul>
 <li><a class="el" href="main_8c.html#a1e35d2b842121e6aea373f09381616e5">idle</a>, <a class="el" href="main_8c.html#a023b8f272e4efbd33f371e91ffff6b30">video</a>, <a class="el" href="main_8c.html#adc4ddc4dba28c4eebe8a7c28e5559b11">audio</a>, <a class="el" href="main_8c.html#a633ed517e458daeb768f5361895dcac9">game loop</a><br  />
@@ -235,7 +237,7 @@ Actors</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="actors__extended_8c.html">actors_extended</a>   </td><td class="markdownTableBodyNone">Shells and bananas    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="code__80005FD0_8c.html">code_80005FD0</a>   </td><td class="markdownTableBodyNone">Vehicles; trains, cars, trucks, boats   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="cpu__vehicles__camera__path_8c.html">cpu_vehicles_camera_path</a>   </td><td class="markdownTableBodyNone">Vehicles; trains, cars, trucks, boats   </td></tr>
 </table>
 <h2><a class="anchor" id="objects-1"></a>
 Objects</h2>
@@ -292,7 +294,7 @@ Engine</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a class="el" href="collision_8c.html">collision</a>   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="code__80005FD0_8c.html">code_80005FD0</a>   </td><td class="markdownTableBodyNone">Pathing code   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="cpu__vehicles__camera__path_8c.html">cpu_vehicles_camera_path</a>   </td><td class="markdownTableBodyNone">Pathing code   </td></tr>
 </table>
 <h2><a class="anchor" id="math"></a>
 Math</h2>

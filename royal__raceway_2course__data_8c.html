@@ -114,7 +114,7 @@ $(function(){initNavTree('royal__raceway_2course__data_8c.html',''); initResizab
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="path_8h_source.html">path.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="royal__raceway_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
@@ -391,10 +391,10 @@ Variables</h2></td></tr>
 <tr class="separator:ae9f4a70e75b693a06bcb2e043915b4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bdaae939a0876f7887262f8b7ad63c2" id="r_a6bdaae939a0876f7887262f8b7ad63c2"><td class="memItemLeft" align="right" valign="top">Gfx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bdaae939a0876f7887262f8b7ad63c2">d_course_royal_raceway_dl_B508</a> []</td></tr>
 <tr class="separator:a6bdaae939a0876f7887262f8b7ad63c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b89a8547e0feefe3dacc4de4ebd6b80" id="r_a5b89a8547e0feefe3dacc4de4ebd6b80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b89a8547e0feefe3dacc4de4ebd6b80">d_course_royal_raceway_unknown_waypoints</a> []</td></tr>
-<tr class="separator:a5b89a8547e0feefe3dacc4de4ebd6b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c9a0ef21f7fd48691aba650383765f4" id="r_a5c9a0ef21f7fd48691aba650383765f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c9a0ef21f7fd48691aba650383765f4">d_course_royal_raceway_track_waypoints</a> []</td></tr>
-<tr class="separator:a5c9a0ef21f7fd48691aba650383765f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0666582fa72e82a618819355c279b05" id="r_ac0666582fa72e82a618819355c279b05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0666582fa72e82a618819355c279b05">d_course_royal_raceway_unknown_path</a> []</td></tr>
+<tr class="separator:ac0666582fa72e82a618819355c279b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30994417cd33627107f6d9cde97b035d" id="r_a30994417cd33627107f6d9cde97b035d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30994417cd33627107f6d9cde97b035d">d_course_royal_raceway_track_path</a> []</td></tr>
+<tr class="separator:a30994417cd33627107f6d9cde97b035d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9580e40d17fbbea98554c7544849e16" id="r_ae9580e40d17fbbea98554c7544849e16"><td class="memItemLeft" align="right" valign="top">Vtx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9580e40d17fbbea98554c7544849e16">d_course_royal_raceway_tree_model</a> []</td></tr>
 <tr class="separator:ae9580e40d17fbbea98554c7544849e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5da77a601be214ce0bd344daa3e3a5ad" id="r_a5da77a601be214ce0bd344daa3e3a5ad"><td class="memItemLeft" align="right" valign="top">Gfx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5da77a601be214ce0bd344daa3e3a5ad">d_course_royal_raceway_dl_tree</a> []</td></tr>
@@ -446,7 +446,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000065">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000064">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
 
 </div>
 </div>
@@ -4175,14 +4175,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a5c9a0ef21f7fd48691aba650383765f4" name="a5c9a0ef21f7fd48691aba650383765f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c9a0ef21f7fd48691aba650383765f4">&#9670;&#160;</a></span>d_course_royal_raceway_track_waypoints</h2>
+<a id="a30994417cd33627107f6d9cde97b035d" name="a30994417cd33627107f6d9cde97b035d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30994417cd33627107f6d9cde97b035d">&#9670;&#160;</a></span>d_course_royal_raceway_track_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_royal_raceway_track_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_royal_raceway_track_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -4236,14 +4236,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a5b89a8547e0feefe3dacc4de4ebd6b80" name="a5b89a8547e0feefe3dacc4de4ebd6b80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b89a8547e0feefe3dacc4de4ebd6b80">&#9670;&#160;</a></span>d_course_royal_raceway_unknown_waypoints</h2>
+<a id="ac0666582fa72e82a618819355c279b05" name="ac0666582fa72e82a618819355c279b05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0666582fa72e82a618819355c279b05">&#9670;&#160;</a></span>d_course_royal_raceway_unknown_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_royal_raceway_unknown_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_royal_raceway_unknown_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">

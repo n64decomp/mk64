@@ -114,7 +114,7 @@ $(function(){initNavTree('frappe__snowland_2course__data_8c.html',''); initResiz
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="path_8h_source.html">path.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="frappe__snowland_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
@@ -268,10 +268,10 @@ Variables</h2></td></tr>
 <tr class="separator:a9a82b533a8266a1782d4d10b0f11e509"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95908fefc72da8de6051ccc55d210df0" id="r_a95908fefc72da8de6051ccc55d210df0"><td class="memItemLeft" align="right" valign="top">Gfx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95908fefc72da8de6051ccc55d210df0">d_course_frappe_snowland_dl_33E0</a> []</td></tr>
 <tr class="separator:a95908fefc72da8de6051ccc55d210df0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9555a9cd71c69634f338f34549378c96" id="r_a9555a9cd71c69634f338f34549378c96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9555a9cd71c69634f338f34549378c96">d_course_frappe_snowland_unknown_waypoints</a> []</td></tr>
-<tr class="separator:a9555a9cd71c69634f338f34549378c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dba788d3500c5b3630a8514f4eff32b" id="r_a6dba788d3500c5b3630a8514f4eff32b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6dba788d3500c5b3630a8514f4eff32b">d_course_frappe_snowland_track_waypoints</a> []</td></tr>
-<tr class="separator:a6dba788d3500c5b3630a8514f4eff32b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c6181d526e54d651732a00d296787de" id="r_a0c6181d526e54d651732a00d296787de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c6181d526e54d651732a00d296787de">d_course_frappe_snowland_unknown_path</a> []</td></tr>
+<tr class="separator:a0c6181d526e54d651732a00d296787de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a834b56b93dfc20f19316623e556458c1" id="r_a834b56b93dfc20f19316623e556458c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a834b56b93dfc20f19316623e556458c1">d_course_frappe_snowland_track_path</a> []</td></tr>
+<tr class="separator:a834b56b93dfc20f19316623e556458c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad1314d8adcace5f54636ac2e10f468b" id="r_aad1314d8adcace5f54636ac2e10f468b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad1314d8adcace5f54636ac2e10f468b">d_course_frappe_snowland_snowman_tlut</a> []</td></tr>
 <tr class="separator:aad1314d8adcace5f54636ac2e10f468b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af09ec38b8b1d76101b17a1a3f89429d4" id="r_af09ec38b8b1d76101b17a1a3f89429d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af09ec38b8b1d76101b17a1a3f89429d4">d_course_frappe_snowland_snowman_head</a> []</td></tr>
@@ -376,7 +376,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="afrappe__snowland_2course__displaylists_8inc_8c_html_aece493e7e5b35155e58155f6b88c3791"><div class="ttname"><a href="frappe__snowland_2course__displaylists_8inc_8c.html#aece493e7e5b35155e58155f6b88c3791">d_course_frappe_snowland_packed_dl_3F80</a></div><div class="ttdeci">Gfx d_course_frappe_snowland_packed_dl_3F80[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:2437</div></div>
 <div class="ttc" id="afrappe__snowland_2course__displaylists_8inc_8c_html_af7d27ba9399e04944ebbd30ab69373ac"><div class="ttname"><a href="frappe__snowland_2course__displaylists_8inc_8c.html#af7d27ba9399e04944ebbd30ab69373ac">d_course_frappe_snowland_packed_dl_61A0</a></div><div class="ttdeci">Gfx d_course_frappe_snowland_packed_dl_61A0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:3733</div></div>
 <div class="ttc" id="afrappe__snowland_2course__displaylists_8inc_8c_html_af93fe009853267d89a7e8d1c91946ed4"><div class="ttname"><a href="frappe__snowland_2course__displaylists_8inc_8c.html#af93fe009853267d89a7e8d1c91946ed4">d_course_frappe_snowland_packed_dl_51C8</a></div><div class="ttdeci">Gfx d_course_frappe_snowland_packed_dl_51C8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:3141</div></div>
-</div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000058">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
+</div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000057">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
 
 </div>
 </div>
@@ -2625,14 +2625,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a6dba788d3500c5b3630a8514f4eff32b" name="a6dba788d3500c5b3630a8514f4eff32b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6dba788d3500c5b3630a8514f4eff32b">&#9670;&#160;</a></span>d_course_frappe_snowland_track_waypoints</h2>
+<a id="a834b56b93dfc20f19316623e556458c1" name="a834b56b93dfc20f19316623e556458c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a834b56b93dfc20f19316623e556458c1">&#9670;&#160;</a></span>d_course_frappe_snowland_track_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_frappe_snowland_track_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_frappe_snowland_track_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2682,14 +2682,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a9555a9cd71c69634f338f34549378c96" name="a9555a9cd71c69634f338f34549378c96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9555a9cd71c69634f338f34549378c96">&#9670;&#160;</a></span>d_course_frappe_snowland_unknown_waypoints</h2>
+<a id="a0c6181d526e54d651732a00d296787de" name="a0c6181d526e54d651732a00d296787de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c6181d526e54d651732a00d296787de">&#9670;&#160;</a></span>d_course_frappe_snowland_unknown_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_frappe_snowland_unknown_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_frappe_snowland_unknown_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">

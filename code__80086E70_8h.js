@@ -159,6 +159,5 @@ var code__80086E70_8h =
     [ "set_obj_orientation", "code__80086E70_8h.html#a79b9f5db62f7cd4377afe43ca0af529e", null ],
     [ "set_obj_origin_offset", "code__80086E70_8h.html#a8744724872ab5f82d311316191a024e6", null ],
     [ "set_obj_origin_pos", "code__80086E70_8h.html#a638285feb04bc64f862fa093373e9649", null ],
-    [ "set_obj_velocity", "code__80086E70_8h.html#a18342f4e3577ea49ea5de7e1e9d06677", null ],
-    [ "gCurrentCourseId", "code__80086E70_8h.html#a0b35aa576b8ad5250674993b72300f0d", null ]
+    [ "set_obj_velocity", "code__80086E70_8h.html#a18342f4e3577ea49ea5de7e1e9d06677", null ]
 ];

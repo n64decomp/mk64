@@ -11,6 +11,5 @@ var code__8003DC40_8h =
     [ "func_8003F138", "code__8003DC40_8h.html#a87029862a5907de5317d1be285c88a3c", null ],
     [ "func_8003F46C", "code__8003DC40_8h.html#abd40186b75c00aa006ff50af55a94238", null ],
     [ "func_8003F734", "code__8003DC40_8h.html#a514a6cf5046a247341f8eec38ad9e5c1", null ],
-    [ "func_8003FBAC", "code__8003DC40_8h.html#a9a543107c435fd4b7044505c408f8431", null ],
-    [ "gCurrentCourseId", "code__8003DC40_8h.html#a0b35aa576b8ad5250674993b72300f0d", null ]
+    [ "func_8003FBAC", "code__8003DC40_8h.html#a9a543107c435fd4b7044505c408f8431", null ]
 ];

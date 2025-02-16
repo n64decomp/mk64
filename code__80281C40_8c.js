@@ -3,7 +3,7 @@ var code__80281C40_8c =
     [ "UnkStruct80287560", "structUnkStruct80287560.html", "structUnkStruct80287560" ],
     [ "func_80281C40", "code__80281C40_8c.html#ab5bd4c2d6a7aebc416355a5b976df802", null ],
     [ "func_80281CB4", "code__80281C40_8c.html#a8b833db89ee69fe3e47914a25aa1d8a2", null ],
-    [ "func_80281D00", "code__80281C40_8c.html#af6f6a1f0caec6d086a4ab98602a6670e", null ],
+    [ "render_podium_ceremony", "code__80281C40_8c.html#a099208da25e64494e7ba5301788f6e3c", null ],
     [ "D_80281C40_pad", "code__80281C40_8c.html#ae07ff21e9da506afeb2a9a390ee9346e", null ],
     [ "D_80284EE0", "code__80281C40_8c.html#a445c8b014f8ab614d70630c4daeb5925", null ],
     [ "D_80284F70", "code__80281C40_8c.html#a6c67c1063b223111f11721f6a00a2835", null ],

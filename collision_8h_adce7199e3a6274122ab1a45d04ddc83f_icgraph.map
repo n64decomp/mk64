@@ -1,15 +1,15 @@
 <map id="is_triangle_intersecting_bounding_box" name="is_triangle_intersecting_bounding_box">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1645,23,1820,63"/>
-<area shape="rect" id="Node000002" href="$collision_8c.html#aa1116ededb9ebc0ee976259f02fe2a4e" title=" " alt="" coords="1424,31,1597,56"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1632,46,1597,46,1597,41,1632,41"/>
-<area shape="rect" id="Node000003" href="$render__courses_8c.html#ab02cdf6684f984a12e7388fe973bc89a" title=" " alt="" coords="1253,31,1376,56"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1410,46,1377,46,1377,41,1410,41"/>
-<area shape="rect" id="Node000004" href="$render__courses_8c.html#afa7a12f363eeadd8ea6926eaf62657ef" title=" " alt="" coords="1083,5,1205,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1240,35,1205,30,1206,24,1240,30"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1757,23,1932,63"/>
+<area shape="rect" id="Node000002" href="$collision_8c.html#aa1116ededb9ebc0ee976259f02fe2a4e" title=" " alt="" coords="1536,31,1709,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1744,46,1709,46,1709,41,1744,41"/>
+<area shape="rect" id="Node000003" href="$render__courses_8c.html#ab02cdf6684f984a12e7388fe973bc89a" title=" " alt="" coords="1365,31,1488,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1522,46,1489,46,1489,41,1522,41"/>
+<area shape="rect" id="Node000004" href="$render__courses_8c.html#a628c168bd9c9e44ce9490756bc7a23a7" title="Also sets vertex colours for the course vtx data." alt="" coords="1083,5,1317,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1351,38,1313,33,1314,28,1352,32"/>
 <area shape="rect" id="Node000011" href="$code__80281780_8c.html#af227cfd0f1fd3d6adbe9a29ad59b4dc8" title=" " alt="" coords="848,56,1035,81"/>
-<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="1239,51,1035,65,1035,60,1239,46"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="1352,50,1035,66,1035,61,1351,45"/>
 <area shape="rect" id="Node000005" href="$code__800029B0_8c.html#aca6165112fc92e65ad6477e785a7098c" title=" " alt="" coords="895,7,988,32"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1069,21,988,22,988,16,1069,16"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1069,21,989,22,988,16,1069,16"/>
 <area shape="rect" id="Node000006" href="$main_8c.html#ad0625ed56ac663d3ec7ae8f1ba50c735" title=" " alt="" coords="656,32,800,57"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="881,29,801,39,800,33,881,24"/>
 <area shape="rect" id="Node000007" href="$main_8c.html#a633ed517e458daeb768f5361895dcac9" title=" " alt="" coords="457,32,608,57"/>

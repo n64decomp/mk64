@@ -1,0 +1,13 @@
+<map id="init_players" name="init_players">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,104,105"/>
+<area shape="rect" id="Node000002" href="$behaviour__utils_8inc_8c.html#ac842533b23b073d73ad370538493ac1c" title=" " alt="" coords="152,5,364,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,78,110,58,151,40,176,32,177,37,153,44,112,63,78,82"/>
+<area shape="rect" id="Node000003" href="$cpu__item__strategy_8inc_8c.html#afb7a20357b7271b1854444f3a66eaaea" title=" " alt="" coords="197,55,319,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="104,84,183,74,183,79,104,89"/>
+<area shape="rect" id="Node000004" href="$behaviour__utils_8inc_8c.html#a135ec35ea5dd53f5ceaeda9e3ca8eb41" title=" " alt="" coords="160,104,356,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="104,96,146,101,146,106,104,101"/>
+<area shape="rect" id="Node000005" href="$path__utils_8inc_8c.html#a6cb84638a305d4e4835ae3eaab57ba11" title=" " alt="" coords="171,154,345,194"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="80,103,153,138,176,147,174,152,151,143,78,108"/>
+<area shape="rect" id="Node000006" href="$path__utils_8inc_8c.html#a3369c0c7791c16418382ddd702784cd6" title=" " alt="" coords="412,154,592,194"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="345,171,398,171,398,177,345,177"/>
+</map>

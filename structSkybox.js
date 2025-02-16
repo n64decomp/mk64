@@ -1,9 +1,9 @@
 var structSkybox =
 [
-    [ "unk0", "structSkybox.html#a4997ffec92872b821d40a35a20eeb0ca", null ],
-    [ "unk2", "structSkybox.html#a6ec3cb6bb705b02184a2519504595eb9", null ],
-    [ "unk4", "structSkybox.html#af5f678277107fc2ae1978d46304502ae", null ],
-    [ "unk6", "structSkybox.html#a60e408b166dad45f452004d93b0ad15e", null ],
-    [ "unk8", "structSkybox.html#acae711c4881e4963c9dda0e2b16f3de3", null ],
-    [ "unkA", "structSkybox.html#a38b95b0761ac6f03f1d85a93e514cad1", null ]
+    [ "bottomBlue", "structSkybox.html#a082d66b9e6b5a4bcf10078bd239151f2", null ],
+    [ "bottomGreen", "structSkybox.html#a2a1b9bce801e0e947ffff39b064b1890", null ],
+    [ "bottomRed", "structSkybox.html#a6601d18dd3ad1c5200ee5205863f56a9", null ],
+    [ "topBlue", "structSkybox.html#a02d959fcb0363100835a62d61a76f7db", null ],
+    [ "topGreen", "structSkybox.html#a7d7322bcc7b9e5475836b7b8b9204e3a", null ],
+    [ "topRed", "structSkybox.html#af7036abeec54c32154b3ddfa0efe11ad", null ]
 ];

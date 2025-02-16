@@ -113,7 +113,7 @@ $(function(){initNavTree('banshee__boardwalk_2course__data_8h.html',''); initRes
 <div class="textblock"><code>#include &lt;<a class="el" href="ultra64_8h_source.html">ultra64.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="path_8h_source.html">path.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for course_data.h:</div>
@@ -340,10 +340,10 @@ Variables</h2></td></tr>
 <tr class="separator:ac3861993c631311bcf4cb0615710b1cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82bc60198e544fde4289f00cdaa706f4" id="r_a82bc60198e544fde4289f00cdaa706f4"><td class="memItemLeft" align="right" valign="top">Gfx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82bc60198e544fde4289f00cdaa706f4">d_course_banshee_boardwalk_dl_4480</a> []</td></tr>
 <tr class="separator:a82bc60198e544fde4289f00cdaa706f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae158dfeca123b7a5d8c699e9f1eeee5d" id="r_ae158dfeca123b7a5d8c699e9f1eeee5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae158dfeca123b7a5d8c699e9f1eeee5d">d_course_banshee_boardwalk_unknown_waypoints</a> []</td></tr>
-<tr class="separator:ae158dfeca123b7a5d8c699e9f1eeee5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46321d1b618c216480f0dc807e21da7c" id="r_a46321d1b618c216480f0dc807e21da7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46321d1b618c216480f0dc807e21da7c">d_course_banshee_boardwalk_track_waypoints</a> []</td></tr>
-<tr class="separator:a46321d1b618c216480f0dc807e21da7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8f99a8007d54577f9dae72951a221a9" id="r_ab8f99a8007d54577f9dae72951a221a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8f99a8007d54577f9dae72951a221a9">d_course_banshee_boardwalk_unknown_path</a> []</td></tr>
+<tr class="separator:ab8f99a8007d54577f9dae72951a221a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5678d336ac1592918e2a38f8b9eb8a7" id="r_aa5678d336ac1592918e2a38f8b9eb8a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5678d336ac1592918e2a38f8b9eb8a7">d_course_banshee_boardwalk_track_path</a> []</td></tr>
+<tr class="separator:aa5678d336ac1592918e2a38f8b9eb8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26fd1e1e3904fdd7edd566841ac6b01e" id="r_a26fd1e1e3904fdd7edd566841ac6b01e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26fd1e1e3904fdd7edd566841ac6b01e">d_course_banshee_boardwalk_boo_tlut</a> []</td></tr>
 <tr class="separator:a26fd1e1e3904fdd7edd566841ac6b01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7059d16dd3593fdc9fd2c296255496e4" id="r_a7059d16dd3593fdc9fd2c296255496e4"><td class="memItemLeft" align="right" valign="top">Vtx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7059d16dd3593fdc9fd2c296255496e4">d_course_banshee_boardwalk_cheep_cheep1</a> []</td></tr>
@@ -721,7 +721,7 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000054">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000053">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
 
 </div>
 </div>
@@ -3409,6 +3409,28 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="aa5678d336ac1592918e2a38f8b9eb8a7" name="aa5678d336ac1592918e2a38f8b9eb8a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5678d336ac1592918e2a38f8b9eb8a7">&#9670;&#160;</a></span>d_course_banshee_boardwalk_track_path</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_banshee_boardwalk_track_path[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad870a27c4386c185699928ed9f7b132c" name="ad870a27c4386c185699928ed9f7b132c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad870a27c4386c185699928ed9f7b132c">&#9670;&#160;</a></span>d_course_banshee_boardwalk_track_sections</h2>
 
@@ -3431,8 +3453,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a46321d1b618c216480f0dc807e21da7c" name="a46321d1b618c216480f0dc807e21da7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46321d1b618c216480f0dc807e21da7c">&#9670;&#160;</a></span>d_course_banshee_boardwalk_track_waypoints</h2>
+<a id="ab8f99a8007d54577f9dae72951a221a9" name="ab8f99a8007d54577f9dae72951a221a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8f99a8007d54577f9dae72951a221a9">&#9670;&#160;</a></span>d_course_banshee_boardwalk_unknown_path</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3441,29 +3463,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_banshee_boardwalk_track_waypoints[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae158dfeca123b7a5d8c699e9f1eeee5d" name="ae158dfeca123b7a5d8c699e9f1eeee5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae158dfeca123b7a5d8c699e9f1eeee5d">&#9670;&#160;</a></span>d_course_banshee_boardwalk_unknown_waypoints</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_banshee_boardwalk_unknown_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_banshee_boardwalk_unknown_path[]</td>
         </tr>
       </table>
   </td>

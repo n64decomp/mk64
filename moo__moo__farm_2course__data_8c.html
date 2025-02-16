@@ -114,7 +114,7 @@ $(function(){initNavTree('moo__moo__farm_2course__data_8c.html',''); initResizab
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="path_8h_source.html">path.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="moo__moo__farm_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
@@ -331,10 +331,10 @@ Variables</h2></td></tr>
 <tr class="separator:af676b85da4f42632a75cfedf2754724d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff67222cde4d2fdd53a7b6109fdc1d8b" id="r_aff67222cde4d2fdd53a7b6109fdc1d8b"><td class="memItemLeft" align="right" valign="top">Gfx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff67222cde4d2fdd53a7b6109fdc1d8b">d_course_moo_moo_farm_dl_EA18</a> []</td></tr>
 <tr class="separator:aff67222cde4d2fdd53a7b6109fdc1d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1408093a94d05e28338f2a6c9b9fc21" id="r_aa1408093a94d05e28338f2a6c9b9fc21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1408093a94d05e28338f2a6c9b9fc21">d_course_moo_moo_farm_unknown_waypoints</a> []</td></tr>
-<tr class="separator:aa1408093a94d05e28338f2a6c9b9fc21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb72c1e8db0bb57dbb89aee7c88b3cae" id="r_aeb72c1e8db0bb57dbb89aee7c88b3cae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb72c1e8db0bb57dbb89aee7c88b3cae">d_course_moo_moo_farm_track_waypoints</a> []</td></tr>
-<tr class="separator:aeb72c1e8db0bb57dbb89aee7c88b3cae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a453081964fa6d642573ecd88c15a76ba" id="r_a453081964fa6d642573ecd88c15a76ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a453081964fa6d642573ecd88c15a76ba">d_course_moo_moo_farm_unknown_path</a> []</td></tr>
+<tr class="separator:a453081964fa6d642573ecd88c15a76ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73dd011a44053d9e0f8a39938d49a708" id="r_a73dd011a44053d9e0f8a39938d49a708"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73dd011a44053d9e0f8a39938d49a708">d_course_moo_moo_farm_track_path</a> []</td></tr>
+<tr class="separator:a73dd011a44053d9e0f8a39938d49a708"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a240f5323a3d5ce24c07972b5fce9ffe3" id="r_a240f5323a3d5ce24c07972b5fce9ffe3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a240f5323a3d5ce24c07972b5fce9ffe3">d_course_moo_moo_farm_mole_tlut</a> []</td></tr>
 <tr class="separator:a240f5323a3d5ce24c07972b5fce9ffe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54b7ec43c90542f5b1dbe7174f31cb28" id="r_a54b7ec43c90542f5b1dbe7174f31cb28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54b7ec43c90542f5b1dbe7174f31cb28">d_course_moo_moo_farm_mole_frames</a> [][2048]</td></tr>
@@ -492,7 +492,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_aadb5eb2ba3b0a454682ae544c2d7ab66"><div class="ttname"><a href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF2</div><div class="ttdef"><b>Definition</b> gbi.h:879</div></div>
 <div class="ttc" id="agbi_8h_html_ace7a0e559b5d01f76f0481a2c23ba2e1"><div class="ttname"><a href="gbi_8h.html#ace7a0e559b5d01f76f0481a2c23ba2e1">G_LIGHTING</a></div><div class="ttdeci">#define G_LIGHTING</div><div class="ttdef"><b>Definition</b> gbi.h:355</div></div>
 <div class="ttc" id="agbi_8h_html_af4ca350056fb68e0331682164f7cddf6"><div class="ttname"><a href="gbi_8h.html#af4ca350056fb68e0331682164f7cddf6">G_CC_MODULATEI</a></div><div class="ttdeci">#define G_CC_MODULATEI</div><div class="ttdef"><b>Definition</b> gbi.h:480</div></div>
-</div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000063">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
+</div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000062">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
 
 </div>
 </div>
@@ -2259,14 +2259,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aeb72c1e8db0bb57dbb89aee7c88b3cae" name="aeb72c1e8db0bb57dbb89aee7c88b3cae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb72c1e8db0bb57dbb89aee7c88b3cae">&#9670;&#160;</a></span>d_course_moo_moo_farm_track_waypoints</h2>
+<a id="a73dd011a44053d9e0f8a39938d49a708" name="a73dd011a44053d9e0f8a39938d49a708"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73dd011a44053d9e0f8a39938d49a708">&#9670;&#160;</a></span>d_course_moo_moo_farm_track_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_moo_moo_farm_track_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_moo_moo_farm_track_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2369,14 +2369,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aa1408093a94d05e28338f2a6c9b9fc21" name="aa1408093a94d05e28338f2a6c9b9fc21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1408093a94d05e28338f2a6c9b9fc21">&#9670;&#160;</a></span>d_course_moo_moo_farm_unknown_waypoints</h2>
+<a id="a453081964fa6d642573ecd88c15a76ba" name="a453081964fa6d642573ecd88c15a76ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a453081964fa6d642573ecd88c15a76ba">&#9670;&#160;</a></span>d_course_moo_moo_farm_unknown_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_moo_moo_farm_unknown_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_moo_moo_farm_unknown_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">

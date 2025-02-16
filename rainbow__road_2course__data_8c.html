@@ -114,7 +114,7 @@ $(function(){initNavTree('rainbow__road_2course__data_8c.html',''); initResizabl
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="path_8h_source.html">path.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="animation_8h_source.html">animation.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
@@ -265,10 +265,10 @@ Variables</h2></td></tr>
 <tr class="separator:ac9098b13a8015e91ac28b80fe047b9e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a075b4ca36507bf895ab3e7a90f04ab59" id="r_a075b4ca36507bf895ab3e7a90f04ab59"><td class="memItemLeft" align="right" valign="top">Gfx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a075b4ca36507bf895ab3e7a90f04ab59">d_course_rainbow_road_dl_1948</a> []</td></tr>
 <tr class="separator:a075b4ca36507bf895ab3e7a90f04ab59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b814224378cedeb410f43d051b343ea" id="r_a3b814224378cedeb410f43d051b343ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b814224378cedeb410f43d051b343ea">d_course_rainbow_road_unknown_waypoints</a> []</td></tr>
-<tr class="separator:a3b814224378cedeb410f43d051b343ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49db8635e8bdcc1c3835ace6475c30a9" id="r_a49db8635e8bdcc1c3835ace6475c30a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49db8635e8bdcc1c3835ace6475c30a9">d_course_rainbow_road_track_waypoints</a> []</td></tr>
-<tr class="separator:a49db8635e8bdcc1c3835ace6475c30a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6de5b27947ad3f3976f9391c0106de5b" id="r_a6de5b27947ad3f3976f9391c0106de5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6de5b27947ad3f3976f9391c0106de5b">d_course_rainbow_road_unknown_path</a> []</td></tr>
+<tr class="separator:a6de5b27947ad3f3976f9391c0106de5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a816d901e4ffb15db11ef0e266e69506b" id="r_a816d901e4ffb15db11ef0e266e69506b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a816d901e4ffb15db11ef0e266e69506b">d_course_rainbow_road_track_path</a> []</td></tr>
+<tr class="separator:a816d901e4ffb15db11ef0e266e69506b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ac8c87499fda3d9972936d52c3dfa39" id="r_a9ac8c87499fda3d9972936d52c3dfa39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ac8c87499fda3d9972936d52c3dfa39">d_course_rainbow_road_neon_mushroom_tlut_list</a> [][512]</td></tr>
 <tr class="separator:a9ac8c87499fda3d9972936d52c3dfa39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d6beaeca4ee06c56ca280629ba1bb43" id="r_a6d6beaeca4ee06c56ca280629ba1bb43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d6beaeca4ee06c56ca280629ba1bb43">d_course_rainbow_road_neon_mario_tlut_list</a> [][512]</td></tr>
@@ -379,8 +379,8 @@ Variables</h2></td></tr>
 <div class="line">    { <a class="code hl_variable" href="rainbow__road_2course__displaylists_8inc_8c.html#a5c66c057e8f8f8bd5049ca8524942eae">d_course_rainbow_road_packed_dl_1318</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b">RAMP</a>, 255, 0x0000 },</div>
 <div class="line">    { 0x00000000, 0, 0, 0x0000 },</div>
 <div class="line">}</div>
-<div class="ttc" id="amk64_8h_html_a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b"><div class="ttname"><a href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b">RAMP</a></div><div class="ttdeci">@ RAMP</div><div class="ttdef"><b>Definition</b> mk64.h:101</div></div>
-<div class="ttc" id="amk64_8h_html_a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb"><div class="ttname"><a href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a></div><div class="ttdeci">@ ASPHALT</div><div class="ttdef"><b>Definition</b> mk64.h:79</div></div>
+<div class="ttc" id="amk64_8h_html_a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b"><div class="ttname"><a href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b">RAMP</a></div><div class="ttdeci">@ RAMP</div><div class="ttdef"><b>Definition</b> mk64.h:78</div></div>
+<div class="ttc" id="amk64_8h_html_a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb"><div class="ttname"><a href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a></div><div class="ttdeci">@ ASPHALT</div><div class="ttdef"><b>Definition</b> mk64.h:56</div></div>
 <div class="ttc" id="arainbow__road_2course__displaylists_8inc_8c_html_a0e579d5e5aaa8b066666d7cab5d2706c"><div class="ttname"><a href="rainbow__road_2course__displaylists_8inc_8c.html#a0e579d5e5aaa8b066666d7cab5d2706c">d_course_rainbow_road_packed_dl_15F8</a></div><div class="ttdeci">Gfx d_course_rainbow_road_packed_dl_15F8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:764</div></div>
 <div class="ttc" id="arainbow__road_2course__displaylists_8inc_8c_html_a3df8769bd17981636ffea8211dfeff86"><div class="ttname"><a href="rainbow__road_2course__displaylists_8inc_8c.html#a3df8769bd17981636ffea8211dfeff86">d_course_rainbow_road_packed_dl_1978</a></div><div class="ttdeci">Gfx d_course_rainbow_road_packed_dl_1978[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:892</div></div>
 <div class="ttc" id="arainbow__road_2course__displaylists_8inc_8c_html_a3f1e45f303bf108dfd30f241c5198081"><div class="ttname"><a href="rainbow__road_2course__displaylists_8inc_8c.html#a3f1e45f303bf108dfd30f241c5198081">d_course_rainbow_road_packed_dl_1758</a></div><div class="ttdeci">Gfx d_course_rainbow_road_packed_dl_1758[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:814</div></div>
@@ -703,7 +703,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_ae1cb0caf54e886b7f0d70a4184cb3799"><div class="ttname"><a href="gbi_8h.html#ae1cb0caf54e886b7f0d70a4184cb3799">G_RM_AA_ZB_XLU_SURF2</a></div><div class="ttdeci">#define G_RM_AA_ZB_XLU_SURF2</div><div class="ttdef"><b>Definition</b> gbi.h:881</div></div>
 <div class="ttc" id="ambi_8h_html_a3502935c4007f9c00550286d895ca296"><div class="ttname"><a href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a></div><div class="ttdeci">#define G_ON</div><div class="ttdef"><b>Definition</b> mbi.h:51</div></div>
 <div class="ttc" id="arainbow__road_2course__textures_8linkonly_8c_html_a78b373c14f092fe8e7221ecfd975757d"><div class="ttname"><a href="rainbow__road_2course__textures_8linkonly_8c.html#a78b373c14f092fe8e7221ecfd975757d">gRRTextureStarOutline</a></div><div class="ttdeci">u8 gRRTextureStarOutline[]</div><div class="ttdef"><b>Definition</b> course_textures.linkonly.c:4</div></div>
-</div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000064">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
+</div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000063">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
 
 </div>
 </div>
@@ -2660,14 +2660,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a49db8635e8bdcc1c3835ace6475c30a9" name="a49db8635e8bdcc1c3835ace6475c30a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49db8635e8bdcc1c3835ace6475c30a9">&#9670;&#160;</a></span>d_course_rainbow_road_track_waypoints</h2>
+<a id="a816d901e4ffb15db11ef0e266e69506b" name="a816d901e4ffb15db11ef0e266e69506b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a816d901e4ffb15db11ef0e266e69506b">&#9670;&#160;</a></span>d_course_rainbow_road_track_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_rainbow_road_track_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_rainbow_road_track_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2702,14 +2702,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a3b814224378cedeb410f43d051b343ea" name="a3b814224378cedeb410f43d051b343ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b814224378cedeb410f43d051b343ea">&#9670;&#160;</a></span>d_course_rainbow_road_unknown_waypoints</h2>
+<a id="a6de5b27947ad3f3976f9391c0106de5b" name="a6de5b27947ad3f3976f9391c0106de5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6de5b27947ad3f3976f9391c0106de5b">&#9670;&#160;</a></span>d_course_rainbow_road_unknown_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_rainbow_road_unknown_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_rainbow_road_unknown_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">

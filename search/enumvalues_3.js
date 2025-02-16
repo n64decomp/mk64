@@ -18,5 +18,6 @@ var searchData=
   ['dirt_15',['DIRT',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98acc4e9a6b72b8cb231cf382b6320aeed2',1,'mk64.h']]],
   ['dirt_5foffroad_16',['DIRT_OFFROAD',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9b7899bece29ab1a6a42237ddbb1b5a8',1,'mk64.h']]],
   ['disable_5fautomatic_5fpop_5fmatrix_17',['DISABLE_AUTOMATIC_POP_MATRIX',['../animation_8h.html#a52e412534f1af21caf39f50ea61280cea4c013f2b23a17714b68c9b94847fa4b2',1,'animation.h']]],
-  ['dropped_5fbanana_18',['DROPPED_BANANA',['../actor__types_8h.html#ac1412f2ed50826478acf5d826cb0e4bca2e7784d017a544d7bbfe8f856c0f0f07',1,'actor_types.h']]]
+  ['driver_5fchange_18',['DRIVER_CHANGE',['../menu__items_8h.html#a4d8bd027afc3c0a143597992067ad859a86e4e0b14d3f149e332d88792ae3936a',1,'menu_items.h']]],
+  ['dropped_5fbanana_19',['DROPPED_BANANA',['../actor__types_8h.html#ac1412f2ed50826478acf5d826cb0e4bca2e7784d017a544d7bbfe8f856c0f0f07',1,'actor_types.h']]]
 ];

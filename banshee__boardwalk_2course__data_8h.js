@@ -136,9 +136,9 @@ var banshee__boardwalk_2course__data_8h =
     [ "d_course_banshee_boardwalk_model_unk", "banshee__boardwalk_2course__data_8h.html#a2fb0c3a52dba52b8d125fef127aaa3cd", null ],
     [ "d_course_banshee_boardwalk_texture", "banshee__boardwalk_2course__data_8h.html#a9da0c307b716c03e159433d60bec4c1d", null ],
     [ "d_course_banshee_boardwalk_texture2", "banshee__boardwalk_2course__data_8h.html#a6809748a74a7666650cd161c51102a6b", null ],
+    [ "d_course_banshee_boardwalk_track_path", "banshee__boardwalk_2course__data_8h.html#aa5678d336ac1592918e2a38f8b9eb8a7", null ],
     [ "d_course_banshee_boardwalk_track_sections", "banshee__boardwalk_2course__data_8h.html#ad870a27c4386c185699928ed9f7b132c", null ],
-    [ "d_course_banshee_boardwalk_track_waypoints", "banshee__boardwalk_2course__data_8h.html#a46321d1b618c216480f0dc807e21da7c", null ],
-    [ "d_course_banshee_boardwalk_unknown_waypoints", "banshee__boardwalk_2course__data_8h.html#ae158dfeca123b7a5d8c699e9f1eeee5d", null ],
+    [ "d_course_banshee_boardwalk_unknown_path", "banshee__boardwalk_2course__data_8h.html#ab8f99a8007d54577f9dae72951a221a9", null ],
     [ "d_course_bashee_boardwalk_uknown_light", "banshee__boardwalk_2course__data_8h.html#aa02eafd2d71a38d4c66dd5bc67ef14b0", null ],
     [ "d_course_bashee_boardwalk_unknown_model1", "banshee__boardwalk_2course__data_8h.html#aad8b7f8ca74d29c12e642aeac310b707", null ],
     [ "d_course_bashee_boardwalk_unknown_model2", "banshee__boardwalk_2course__data_8h.html#af2063f09ccd7a5b5a0f2aad8841eb588", null ]

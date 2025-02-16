@@ -340,8 +340,8 @@ var koopa__troopa__beach_2course__data_8c =
     [ "d_course_koopa_troopa_beach_light4", "koopa__troopa__beach_2course__data_8c.html#a63c2cb411ee6210782fb59f439bff1cb", null ],
     [ "d_course_koopa_troopa_beach_palm_frond", "koopa__troopa__beach_2course__data_8c.html#a7ec7fbeab9a56a12f907345f1126ccec", null ],
     [ "d_course_koopa_troopa_beach_palm_trunk", "koopa__troopa__beach_2course__data_8c.html#a53c30361329ca66c9d9d6e3ad4ab206f", null ],
-    [ "d_course_koopa_troopa_beach_track_waypoints", "koopa__troopa__beach_2course__data_8c.html#a6f39fcda253142706a24007015b6fc16", null ],
-    [ "d_course_koopa_troopa_beach_track_waypoints_2", "koopa__troopa__beach_2course__data_8c.html#ade7457547f2b9c5f0e1815ada337e251", null ],
+    [ "d_course_koopa_troopa_beach_track_path", "koopa__troopa__beach_2course__data_8c.html#afa36dcd636989fac382ca5a69075bf7c", null ],
+    [ "d_course_koopa_troopa_beach_track_path_2", "koopa__troopa__beach_2course__data_8c.html#a6345d3d60cfa20262ce6cb6cde89279b", null ],
     [ "d_course_koopa_troopa_beach_tree_2_model", "koopa__troopa__beach_2course__data_8c.html#a1531ad80274d69af003bd7cd9dd3605c", null ],
     [ "d_course_koopa_troopa_beach_tree_3_model", "koopa__troopa__beach_2course__data_8c.html#a7f19d2101640040ae3e00a5a440fea79", null ],
     [ "d_course_koopa_troopa_beach_tree_model", "koopa__troopa__beach_2course__data_8c.html#ad978130dc73840492df4a41c494cfb8a", null ],
@@ -359,6 +359,6 @@ var koopa__troopa__beach_2course__data_8c =
     [ "d_course_koopa_troopa_beach_unknown_model4", "koopa__troopa__beach_2course__data_8c.html#abad04b52f0c28bb331e8db62fbd6c846", null ],
     [ "d_course_koopa_troopa_beach_unknown_model5", "koopa__troopa__beach_2course__data_8c.html#ab065d332d795ac253167defec7ae7fa6", null ],
     [ "d_course_koopa_troopa_beach_unknown_model6", "koopa__troopa__beach_2course__data_8c.html#ae8d43729a96351d52b257e647b568d86", null ],
-    [ "d_course_koopa_troopa_beach_unknown_waypoints", "koopa__troopa__beach_2course__data_8c.html#a1d452c408448affdecc888575b758bb3", null ],
-    [ "d_course_koopa_troopa_beach_unknown_waypoints1", "koopa__troopa__beach_2course__data_8c.html#aed4bdd7b0eeddebc561e1d2c3edf35e8", null ]
+    [ "d_course_koopa_troopa_beach_unknown_path", "koopa__troopa__beach_2course__data_8c.html#a27b8733b9685907584e80ef3c8d88a65", null ],
+    [ "d_course_koopa_troopa_beach_unknown_path1", "koopa__troopa__beach_2course__data_8c.html#afd62b1f9fb56efc92801589f6445b467", null ]
 ];

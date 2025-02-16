@@ -113,12 +113,12 @@ $(function(){initNavTree('path__spawn__metadata_8c.html',''); initResizable(true
 <div class="textblock"><code>#include &quot;<a class="el" href="path__spawn__metadata_8h_source.html">data/path_spawn_metadata.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="all__course__data_8h_source.html">courses/all_course_data.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="ceremony__data_8h_source.html">assets/ceremony_data.h</a>&gt;</code><br />
-<code>#include &quot;assets/course_metadata/gKartAIBehaviourLUT.inc.c&quot;</code><br />
+<code>#include &quot;assets/course_metadata/cpu_BehaviourLUT.inc.c&quot;</code><br />
 <code>#include &quot;assets/course_metadata/gCoursePathTableUnknown.inc.c&quot;</code><br />
 <code>#include &quot;assets/course_metadata/gCoursePathTable.inc.c&quot;</code><br />
-<code>#include &quot;assets/course_metadata/gCPUSteeringSensitivity.inc.c&quot;</code><br />
-<code>#include &quot;assets/course_metadata/gKartAICourseMaximumSeparation.inc.c&quot;</code><br />
-<code>#include &quot;assets/course_metadata/gKartAICourseMinimumSeparation.inc.c&quot;</code><br />
+<code>#include &quot;assets/course_metadata/cpu_SteeringSensitivity.inc.c&quot;</code><br />
+<code>#include &quot;assets/course_metadata/cpu_CourseMaximumSeparation.inc.c&quot;</code><br />
+<code>#include &quot;assets/course_metadata/cpu_CourseMinimumSeparation.inc.c&quot;</code><br />
 <code>#include &quot;assets/course_metadata/D_800DCBB4.inc.c&quot;</code><br />
 <code>#include &quot;assets/course_metadata/gBombKartSpawns.inc.c&quot;</code><br />
 <code>#include &quot;assets/course_metadata/gCoursePathSizes.inc.c&quot;</code><br />
@@ -130,20 +130,20 @@ Include dependency graph for path_spawn_metadata.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aa0468c3c278ca2e4cf01b3effe4c9f7f" id="r_aa0468c3c278ca2e4cf01b3effe4c9f7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structKartAIBehaviour.html">KartAIBehaviour</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0468c3c278ca2e4cf01b3effe4c9f7f">gKartAIBehaviourLUT</a> []</td></tr>
-<tr class="separator:aa0468c3c278ca2e4cf01b3effe4c9f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7676f6772d590fea2b2fd6df03b6a8c" id="r_ab7676f6772d590fea2b2fd6df03b6a8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7676f6772d590fea2b2fd6df03b6a8c">nullPath</a> = { 0x8000, 0x0000, 0x0000, 0x0000 }</td></tr>
-<tr class="separator:ab7676f6772d590fea2b2fd6df03b6a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae14993e4e00b90adc5b479b0b5fa74cb" id="r_ae14993e4e00b90adc5b479b0b5fa74cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae14993e4e00b90adc5b479b0b5fa74cb">gCoursePathTable</a> [][4]</td></tr>
-<tr class="separator:ae14993e4e00b90adc5b479b0b5fa74cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3640d73e55756fdc1c3bad4a9b7dcb4f" id="r_a3640d73e55756fdc1c3bad4a9b7dcb4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3640d73e55756fdc1c3bad4a9b7dcb4f">gCoursePathTable2</a> [][4]</td></tr>
-<tr class="separator:a3640d73e55756fdc1c3bad4a9b7dcb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fe0d76c9f223ccc99173c48d7c00a0c" id="r_a4fe0d76c9f223ccc99173c48d7c00a0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fe0d76c9f223ccc99173c48d7c00a0c">gKartAISteeringSensitivity</a> []</td></tr>
-<tr class="separator:a4fe0d76c9f223ccc99173c48d7c00a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb2bf943d8823faa7ed58946f0e55f2e" id="r_afb2bf943d8823faa7ed58946f0e55f2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb2bf943d8823faa7ed58946f0e55f2e">gKartAICourseMaximumSeparation</a> []</td></tr>
-<tr class="separator:afb2bf943d8823faa7ed58946f0e55f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f7236d64b781f0a3555429e81aa3ee5" id="r_a7f7236d64b781f0a3555429e81aa3ee5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f7236d64b781f0a3555429e81aa3ee5">gKartAICourseMinimumSeparation</a> []</td></tr>
-<tr class="separator:a7f7236d64b781f0a3555429e81aa3ee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a129e459ac406b5ce50811ffce1624aa9" id="r_a129e459ac406b5ce50811ffce1624aa9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCPUBehaviour.html">CPUBehaviour</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a129e459ac406b5ce50811ffce1624aa9">cpu_BehaviourLUT</a> []</td></tr>
+<tr class="separator:a129e459ac406b5ce50811ffce1624aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56efa5095869bc7d2d65e4cb08015e1c" id="r_a56efa5095869bc7d2d65e4cb08015e1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56efa5095869bc7d2d65e4cb08015e1c">nullPath</a> = { 0x8000, 0x0000, 0x0000, 0x0000 }</td></tr>
+<tr class="separator:a56efa5095869bc7d2d65e4cb08015e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7333cfe93b8a998952e59b3b9db06739" id="r_a7333cfe93b8a998952e59b3b9db06739"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7333cfe93b8a998952e59b3b9db06739">gCoursePathTable</a> [][4]</td></tr>
+<tr class="separator:a7333cfe93b8a998952e59b3b9db06739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63fe02c87cdf19733a2f8ec53eb7f62f" id="r_a63fe02c87cdf19733a2f8ec53eb7f62f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63fe02c87cdf19733a2f8ec53eb7f62f">gCoursePathTable2</a> [][4]</td></tr>
+<tr class="separator:a63fe02c87cdf19733a2f8ec53eb7f62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dc8284707dc06d3322c96c7464732b1" id="r_a4dc8284707dc06d3322c96c7464732b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dc8284707dc06d3322c96c7464732b1">cpu_SteeringSensitivity</a> []</td></tr>
+<tr class="separator:a4dc8284707dc06d3322c96c7464732b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e7eb0fff1b4318a366c6502b2bf8c6f" id="r_a8e7eb0fff1b4318a366c6502b2bf8c6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e7eb0fff1b4318a366c6502b2bf8c6f">cpu_CourseMaximumSeparation</a> []</td></tr>
+<tr class="separator:a8e7eb0fff1b4318a366c6502b2bf8c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5940a5581b67e72ec944ae8f309f4c84" id="r_a5940a5581b67e72ec944ae8f309f4c84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5940a5581b67e72ec944ae8f309f4c84">cpu_CourseMinimumSeparation</a> []</td></tr>
+<tr class="separator:a5940a5581b67e72ec944ae8f309f4c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d65df57aa21b7e861b48e554d96c613" id="r_a8d65df57aa21b7e861b48e554d96c613"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d65df57aa21b7e861b48e554d96c613">D_800DCAF4</a> []</td></tr>
 <tr class="separator:a8d65df57aa21b7e861b48e554d96c613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af413342ee8a98ba5e66ef582acb47476" id="r_af413342ee8a98ba5e66ef582acb47476"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af413342ee8a98ba5e66ef582acb47476">D_800DCB34</a> []</td></tr>
@@ -160,6 +160,72 @@ Variables</h2></td></tr>
 <tr class="separator:aa1225cbe034f8220381bf006bcb48ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a129e459ac406b5ce50811ffce1624aa9" name="a129e459ac406b5ce50811ffce1624aa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a129e459ac406b5ce50811ffce1624aa9">&#9670;&#160;</a></span>cpu_BehaviourLUT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCPUBehaviour.html">CPUBehaviour</a>* cpu_BehaviourLUT[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8e7eb0fff1b4318a366c6502b2bf8c6f" name="a8e7eb0fff1b4318a366c6502b2bf8c6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e7eb0fff1b4318a366c6502b2bf8c6f">&#9670;&#160;</a></span>cpu_CourseMaximumSeparation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> cpu_CourseMaximumSeparation[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5940a5581b67e72ec944ae8f309f4c84" name="a5940a5581b67e72ec944ae8f309f4c84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5940a5581b67e72ec944ae8f309f4c84">&#9670;&#160;</a></span>cpu_CourseMinimumSeparation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> cpu_CourseMinimumSeparation[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4dc8284707dc06d3322c96c7464732b1" name="a4dc8284707dc06d3322c96c7464732b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dc8284707dc06d3322c96c7464732b1">&#9670;&#160;</a></span>cpu_SteeringSensitivity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> cpu_SteeringSensitivity[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">}</div>
+</div><!-- fragment --><dl class="section warning"><dt>Warning</dt><dd>Array contains an extra zero element at the end. </dd></dl>
+
+</div>
+</div>
 <a id="a8d65df57aa21b7e861b48e554d96c613" name="a8d65df57aa21b7e861b48e554d96c613"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8d65df57aa21b7e861b48e554d96c613">&#9670;&#160;</a></span>D_800DCAF4</h2>
 
@@ -276,14 +342,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ae14993e4e00b90adc5b479b0b5fa74cb" name="ae14993e4e00b90adc5b479b0b5fa74cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae14993e4e00b90adc5b479b0b5fa74cb">&#9670;&#160;</a></span>gCoursePathTable</h2>
+<a id="a7333cfe93b8a998952e59b3b9db06739" name="a7333cfe93b8a998952e59b3b9db06739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7333cfe93b8a998952e59b3b9db06739">&#9670;&#160;</a></span>gCoursePathTable</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>* gCoursePathTable[][4]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>* gCoursePathTable[][4]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -292,14 +358,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a3640d73e55756fdc1c3bad4a9b7dcb4f" name="a3640d73e55756fdc1c3bad4a9b7dcb4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3640d73e55756fdc1c3bad4a9b7dcb4f">&#9670;&#160;</a></span>gCoursePathTable2</h2>
+<a id="a63fe02c87cdf19733a2f8ec53eb7f62f" name="a63fe02c87cdf19733a2f8ec53eb7f62f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63fe02c87cdf19733a2f8ec53eb7f62f">&#9670;&#160;</a></span>gCoursePathTable2</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>* gCoursePathTable2[][4]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>* gCoursePathTable2[][4]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -308,79 +374,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aa0468c3c278ca2e4cf01b3effe4c9f7f" name="aa0468c3c278ca2e4cf01b3effe4c9f7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0468c3c278ca2e4cf01b3effe4c9f7f">&#9670;&#160;</a></span>gKartAIBehaviourLUT</h2>
+<a id="a56efa5095869bc7d2d65e4cb08015e1c" name="a56efa5095869bc7d2d65e4cb08015e1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56efa5095869bc7d2d65e4cb08015e1c">&#9670;&#160;</a></span>nullPath</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structKartAIBehaviour.html">KartAIBehaviour</a>* gKartAIBehaviourLUT[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line"> </div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="afb2bf943d8823faa7ed58946f0e55f2e" name="afb2bf943d8823faa7ed58946f0e55f2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb2bf943d8823faa7ed58946f0e55f2e">&#9670;&#160;</a></span>gKartAICourseMaximumSeparation</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> gKartAICourseMaximumSeparation[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a7f7236d64b781f0a3555429e81aa3ee5" name="a7f7236d64b781f0a3555429e81aa3ee5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f7236d64b781f0a3555429e81aa3ee5">&#9670;&#160;</a></span>gKartAICourseMinimumSeparation</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> gKartAICourseMinimumSeparation[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a4fe0d76c9f223ccc99173c48d7c00a0c" name="a4fe0d76c9f223ccc99173c48d7c00a0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fe0d76c9f223ccc99173c48d7c00a0c">&#9670;&#160;</a></span>gKartAISteeringSensitivity</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> gKartAISteeringSensitivity[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ab7676f6772d590fea2b2fd6df03b6a8c" name="ab7676f6772d590fea2b2fd6df03b6a8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7676f6772d590fea2b2fd6df03b6a8c">&#9670;&#160;</a></span>nullPath</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 }</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 }</td>
         </tr>
       </table>
 </div><div class="memdoc">

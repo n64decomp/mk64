@@ -65,8 +65,6 @@ var main_8h =
     [ "D_80150118", "main_8h.html#a2e326eb0b21a55d10f57219f34d50840", null ],
     [ "D_8015011E", "main_8h.html#a84dc67907299c2a78782332be92906be", null ],
     [ "D_80150120", "main_8h.html#a1feaa4d9500eb5fc10f4c6f750ce8058", null ],
-    [ "D_8015014C", "main_8h.html#af4e7fd2826ad122f60151c811f532034", null ],
-    [ "D_80150150", "main_8h.html#a22964cae6a6d2065bb398ef23463eb88", null ],
     [ "D_801502A0", "main_8h.html#a4b6820ecb517ae844d72cb317e76c4e6", null ],
     [ "D_801502A4", "main_8h.html#aa285c58f3f109ce4c2b6909ce20dcbc5", null ],
     [ "D_801502C0", "main_8h.html#a51cd6ec991b2a5a0cd960e901439a49a", null ],

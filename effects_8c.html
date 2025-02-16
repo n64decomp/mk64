@@ -121,8 +121,8 @@ $(function(){initNavTree('effects_8c.html',''); initResizable(true); });
 <code>#include &quot;<a class="el" href="code__800029B0_8h_source.html">code_800029B0.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="math__util_8h_source.html">math_util.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="kart__attributes_8h_source.html">kart_attributes.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="code__80005FD0_8h_source.html">code_80005FD0.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="path_8h_source.html">path.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cpu__vehicles__camera__path_8h_source.html">cpu_vehicles_camera_path.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render__player_8h_source.html">render_player.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="player__controller_8h_source.html">player_controller.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render__objects_8h_source.html">render_objects.h</a>&quot;</code><br />
@@ -130,7 +130,8 @@ $(function(){initNavTree('effects_8c.html',''); initResizable(true); });
 <code>#include &quot;<a class="el" href="effects_8h_source.html">effects.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="external_8h_source.html">audio/external.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="spawn__players_8h_source.html">spawn_players.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="code__80091750_8h_source.html">code_80091750.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="menu__items_8h_source.html">menu_items.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for effects.c:</div>
 <div class="dyncontent">
@@ -346,8 +347,8 @@ Functions</h2></td></tr>
 <tr class="separator:a33ec124df87bebf683d7c8e5e6ed5160"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6d84742231847170dd64267f0519cdf" id="r_ab6d84742231847170dd64267f0519cdf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6d84742231847170dd64267f0519cdf">func_8008FEDC</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> arg1)</td></tr>
 <tr class="separator:ab6d84742231847170dd64267f0519cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3442a1fae6bd562a7502af8343bd06ba" id="r_a3442a1fae6bd562a7502af8343bd06ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3442a1fae6bd562a7502af8343bd06ba">func_8008FF08</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> playerId)</td></tr>
-<tr class="separator:a3442a1fae6bd562a7502af8343bd06ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83776fbfe94995f8a90e02fef6b5ec96" id="r_a83776fbfe94995f8a90e02fef6b5ec96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83776fbfe94995f8a90e02fef6b5ec96">course_update_path_point</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> playerId)</td></tr>
+<tr class="separator:a83776fbfe94995f8a90e02fef6b5ec96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a086cd6754f206c99bed839ed8f26091c" id="r_a086cd6754f206c99bed839ed8f26091c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a086cd6754f206c99bed839ed8f26091c">func_80090178</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> playerId, <a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a> arg2, <a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a> arg3)</td></tr>
 <tr class="separator:a086cd6754f206c99bed839ed8f26091c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17332237b5c2a4249328a35071e23bf7" id="r_a17332237b5c2a4249328a35071e23bf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17332237b5c2a4249328a35071e23bf7">func_80090778</a> (<a class="el" href="structPlayer.html">Player</a> *player)</td></tr>
@@ -395,12 +396,12 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="defines_8h.html#a8dbdabe3aa4cd649ab8c2c052ff0846d">LIGHTNING_EFFECT</a> | 0x10000000 | 0x8000000 | <a class="code hl_define" href="defines_8h.html#af84a86145ef7700c1f96b2dbb35b70b1">HIT_EFFECT</a> | <a class="code hl_define" href="defines_8h.html#a01e33a3b3c84b76ba1db69ff99f1602d">HIT_BY_ITEM_EFFECT</a> | 0x1000000 | 0x800000 |     \</div>
 <div class="line">        <a class="code hl_define" href="defines_8h.html#a121f2d36faaecc8c1e2486617b49595f">BOOST_RAMP_ASPHALT_EFFECT</a> | 0x20000 | 0x10000 | 0x4000 | 0x800 | 0x400 | <a class="code hl_define" href="defines_8h.html#a8162db60017841c732d51d0c3a4a5269">STAR_EFFECT</a> | 0x80 | 0x40 | \</div>
 <div class="line">        <a class="code hl_define" href="defines_8h.html#acdb005e38b62958d114c040eef53736d">BOOST_RAMP_WOOD_EFFECT</a></div>
-<div class="ttc" id="adefines_8h_html_a01e33a3b3c84b76ba1db69ff99f1602d"><div class="ttname"><a href="defines_8h.html#a01e33a3b3c84b76ba1db69ff99f1602d">HIT_BY_ITEM_EFFECT</a></div><div class="ttdeci">#define HIT_BY_ITEM_EFFECT</div><div class="ttdef"><b>Definition</b> defines.h:326</div></div>
-<div class="ttc" id="adefines_8h_html_a121f2d36faaecc8c1e2486617b49595f"><div class="ttname"><a href="defines_8h.html#a121f2d36faaecc8c1e2486617b49595f">BOOST_RAMP_ASPHALT_EFFECT</a></div><div class="ttdeci">#define BOOST_RAMP_ASPHALT_EFFECT</div><div class="ttdef"><b>Definition</b> defines.h:325</div></div>
-<div class="ttc" id="adefines_8h_html_a8162db60017841c732d51d0c3a4a5269"><div class="ttname"><a href="defines_8h.html#a8162db60017841c732d51d0c3a4a5269">STAR_EFFECT</a></div><div class="ttdeci">#define STAR_EFFECT</div><div class="ttdef"><b>Definition</b> defines.h:323</div></div>
-<div class="ttc" id="adefines_8h_html_a8dbdabe3aa4cd649ab8c2c052ff0846d"><div class="ttname"><a href="defines_8h.html#a8dbdabe3aa4cd649ab8c2c052ff0846d">LIGHTNING_EFFECT</a></div><div class="ttdeci">#define LIGHTNING_EFFECT</div><div class="ttdef"><b>Definition</b> defines.h:328</div></div>
-<div class="ttc" id="adefines_8h_html_acdb005e38b62958d114c040eef53736d"><div class="ttname"><a href="defines_8h.html#acdb005e38b62958d114c040eef53736d">BOOST_RAMP_WOOD_EFFECT</a></div><div class="ttdeci">#define BOOST_RAMP_WOOD_EFFECT</div><div class="ttdoc">effect of player's for effects</div><div class="ttdef"><b>Definition</b> defines.h:322</div></div>
-<div class="ttc" id="adefines_8h_html_af84a86145ef7700c1f96b2dbb35b70b1"><div class="ttname"><a href="defines_8h.html#af84a86145ef7700c1f96b2dbb35b70b1">HIT_EFFECT</a></div><div class="ttdeci">#define HIT_EFFECT</div><div class="ttdef"><b>Definition</b> defines.h:327</div></div>
+<div class="ttc" id="adefines_8h_html_a01e33a3b3c84b76ba1db69ff99f1602d"><div class="ttname"><a href="defines_8h.html#a01e33a3b3c84b76ba1db69ff99f1602d">HIT_BY_ITEM_EFFECT</a></div><div class="ttdeci">#define HIT_BY_ITEM_EFFECT</div><div class="ttdef"><b>Definition</b> defines.h:342</div></div>
+<div class="ttc" id="adefines_8h_html_a121f2d36faaecc8c1e2486617b49595f"><div class="ttname"><a href="defines_8h.html#a121f2d36faaecc8c1e2486617b49595f">BOOST_RAMP_ASPHALT_EFFECT</a></div><div class="ttdeci">#define BOOST_RAMP_ASPHALT_EFFECT</div><div class="ttdef"><b>Definition</b> defines.h:338</div></div>
+<div class="ttc" id="adefines_8h_html_a8162db60017841c732d51d0c3a4a5269"><div class="ttname"><a href="defines_8h.html#a8162db60017841c732d51d0c3a4a5269">STAR_EFFECT</a></div><div class="ttdeci">#define STAR_EFFECT</div><div class="ttdef"><b>Definition</b> defines.h:335</div></div>
+<div class="ttc" id="adefines_8h_html_a8dbdabe3aa4cd649ab8c2c052ff0846d"><div class="ttname"><a href="defines_8h.html#a8dbdabe3aa4cd649ab8c2c052ff0846d">LIGHTNING_EFFECT</a></div><div class="ttdeci">#define LIGHTNING_EFFECT</div><div class="ttdef"><b>Definition</b> defines.h:345</div></div>
+<div class="ttc" id="adefines_8h_html_acdb005e38b62958d114c040eef53736d"><div class="ttname"><a href="defines_8h.html#acdb005e38b62958d114c040eef53736d">BOOST_RAMP_WOOD_EFFECT</a></div><div class="ttdeci">#define BOOST_RAMP_WOOD_EFFECT</div><div class="ttdef"><b>Definition</b> defines.h:327</div></div>
+<div class="ttc" id="adefines_8h_html_af84a86145ef7700c1f96b2dbb35b70b1"><div class="ttname"><a href="defines_8h.html#af84a86145ef7700c1f96b2dbb35b70b1">HIT_EFFECT</a></div><div class="ttdeci">#define HIT_EFFECT</div><div class="ttdef"><b>Definition</b> defines.h:343</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -947,6 +948,32 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="effects_8c_aeda67f98b2369b1c3952d9e4eb30b4d1_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a83776fbfe94995f8a90e02fef6b5ec96" name="a83776fbfe94995f8a90e02fef6b5ec96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83776fbfe94995f8a90e02fef6b5ec96">&#9670;&#160;</a></span>course_update_path_point()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void course_update_path_point </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPlayer.html">Player</a> *</td>          <td class="paramname"><span class="paramname"><em>player</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a></td>          <td class="paramname"><span class="paramname"><em>playerId</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="effects_8c_a83776fbfe94995f8a90e02fef6b5ec96_icgraph.svg" width="100%" height="589"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -2134,32 +2161,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a3442a1fae6bd562a7502af8343bd06ba" name="a3442a1fae6bd562a7502af8343bd06ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3442a1fae6bd562a7502af8343bd06ba">&#9670;&#160;</a></span>func_8008FF08()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void func_8008FF08 </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structPlayer.html">Player</a> *</td>          <td class="paramname"><span class="paramname"><em>player</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a></td>          <td class="paramname"><span class="paramname"><em>playerId</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="effects_8c_a3442a1fae6bd562a7502af8343bd06ba_icgraph.svg" width="100%" height="589"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
 <a id="a086cd6754f206c99bed839ed8f26091c" name="a086cd6754f206c99bed839ed8f26091c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a086cd6754f206c99bed839ed8f26091c">&#9670;&#160;</a></span>func_80090178()</h2>
 
@@ -2240,7 +2241,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="effects_8c_a80884e9db018960df253546f0c9718e5_cgraph.svg" width="339" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="effects_8c_a80884e9db018960df253546f0c9718e5_cgraph.svg" width="339" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>

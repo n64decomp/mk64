@@ -1,5 +1,6 @@
 var math__util__2_8h =
 [
+    [ "DEGREES_CONVERSION_FACTOR", "math__util__2_8h.html#a5fe5c9e278625a540997d87c80f22208", null ],
     [ "f32_step_down_towards", "math__util__2_8h.html#ab2183a20811f82f73822f72f7e5820e7", null ],
     [ "f32_step_down_towards_alternate", "math__util__2_8h.html#a66052313bcfde0d6781810162ab0fa2f", null ],
     [ "f32_step_towards", "math__util__2_8h.html#afb9b5f8428228ee21731d66647fa02a2", null ],

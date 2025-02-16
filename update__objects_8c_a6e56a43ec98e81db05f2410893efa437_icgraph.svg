@@ -841,7 +841,7 @@ var sectionId = 'dynsection-2';
 <!-- Node48 -->
 <g id="Node000048" class="node">
 <title>Node48</title>
-<g id="a_Node000048"><a xlink:href="code__80005FD0_8c.html#a1d19438c5488f2963014e5c3e6513d4f" target="_top" xlink:title=" ">
+<g id="a_Node000048"><a xlink:href="actor__utils_8inc_8c.html#a1d19438c5488f2963014e5c3e6513d4f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="996,-163.5 862,-163.5 862,-144.5 996,-144.5 996,-163.5"/>
 <text text-anchor="middle" x="929" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00">generate_player_smoke</text>
 </a>
@@ -859,7 +859,7 @@ var sectionId = 'dynsection-2';
 <!-- Node49 -->
 <g id="Node000049" class="node">
 <title>Node49</title>
-<g id="a_Node000049"><a xlink:href="code__80005FD0_8c.html#aef8687777d0e50889371f98024d0bb12" target="_top" xlink:title=" ">
+<g id="a_Node000049"><a xlink:href="cpu__vehicles__camera__path_8c.html#aef8687777d0e50889371f98024d0bb12" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="816.5,-201.5 720.5,-201.5 720.5,-182.5 816.5,-182.5 816.5,-201.5"/>
 <text text-anchor="middle" x="768.5" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">update_vehicles</text>
 </a>
@@ -895,9 +895,9 @@ var sectionId = 'dynsection-2';
 <!-- Node52 -->
 <g id="Node000052" class="node">
 <title>Node52</title>
-<g id="a_Node000052"><a xlink:href="code__8006E9C0_8c.html#a95bd792f4507dd26cf251c980bd9214b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="981.5,-115.5 876.5,-115.5 876.5,-96.5 981.5,-96.5 981.5,-115.5"/>
-<text text-anchor="middle" x="929" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00">init_course_object</text>
+<g id="a_Node000052"><a xlink:href="code__8006E9C0_8c.html#a3c803d7a0d79d7a217c63a7fb2bed137" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="984,-115.5 874,-115.5 874,-96.5 984,-96.5 984,-115.5"/>
+<text text-anchor="middle" x="929" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00">init_course_objects</text>
 </a>
 </g>
 </g>
@@ -905,7 +905,7 @@ var sectionId = 'dynsection-2';
 <g id="edge49_Node000051_Node000052" class="edge">
 <title>Node51&#45;&gt;Node52</title>
 <g id="a_edge49_Node000051_Node000052"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1021.77,-107.15C1008.35,-106.98 994.46,-106.81 981.67,-106.65"/>
+<path fill="none" stroke="#63b8ff" d="M1021.9,-107.15C1009.26,-106.99 996.2,-106.83 984.04,-106.68"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="1021.87,-110.65 1031.92,-107.28 1021.96,-103.65 1021.87,-110.65"/>
 </a>
 </g>
@@ -923,8 +923,8 @@ var sectionId = 'dynsection-2';
 <g id="edge50_Node000052_Node000053" class="edge">
 <title>Node52&#45;&gt;Node53</title>
 <g id="a_edge50_Node000052_Node000053"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M865.79,-106C852.73,-106 839.01,-106 826.17,-106"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="866.1,-109.5 876.1,-106 866.1,-102.5 866.1,-109.5"/>
+<path fill="none" stroke="#63b8ff" d="M863.6,-106C851.16,-106 838.22,-106 826.06,-106"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="863.9,-109.5 873.9,-106 863.9,-102.5 863.9,-109.5"/>
 </a>
 </g>
 </g>
@@ -988,7 +988,7 @@ var sectionId = 'dynsection-2';
 <!-- Node63 -->
 <g id="Node000063" class="node">
 <title>Node63</title>
-<g id="a_Node000063"><a xlink:href="code__80005FD0_8c.html#a729f7f5e21d05aa84945ba750d554c76" target="_top" xlink:title=" ">
+<g id="a_Node000063"><a xlink:href="vehicle__utils_8inc_8c.html#a729f7f5e21d05aa84945ba750d554c76" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="993.5,-249 864.5,-249 864.5,-219 993.5,-219 993.5,-249"/>
 <text text-anchor="start" x="872.5" y="-237" font-family="Helvetica,sans-Serif" font-size="10.00">update_vehicle_paddle</text>
 <text text-anchor="middle" x="929" y="-226" font-family="Helvetica,sans-Serif" font-size="10.00">_boats</text>
@@ -1016,7 +1016,7 @@ var sectionId = 'dynsection-2';
 <!-- Node65 -->
 <g id="Node000065" class="node">
 <title>Node65</title>
-<g id="a_Node000065"><a xlink:href="code__80005FD0_8c.html#aa4a9c388d068cd83d2e2a4f6c30705e4" target="_top" xlink:title=" ">
+<g id="a_Node000065"><a xlink:href="vehicle__utils_8inc_8c.html#aa4a9c388d068cd83d2e2a4f6c30705e4" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="991,-200.5 867,-200.5 867,-181.5 991,-181.5 991,-200.5"/>
 <text text-anchor="middle" x="929" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">update_vehicle_trains</text>
 </a>

@@ -116,6 +116,7 @@ $(function(){initNavTree('skybox__and__splitscreen_8c.html',''); initResizable(t
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="skybox__and__splitscreen_8h_source.html">skybox_and_splitscreen.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__800029B0_8h_source.html">code_800029B0.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="common__structs_8h_source.html">common_structs.h</a>&gt;</code><br />
@@ -124,7 +125,7 @@ $(function(){initNavTree('skybox__and__splitscreen_8c.html',''); initResizable(t
 <code>#include &lt;<a class="el" href="common__data_8h_source.html">assets/common_data.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="render__player_8h_source.html">render_player.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__80057C60_8h_source.html">code_80057C60.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="code__80091750_8h_source.html">code_80091750.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="menu__items_8h_source.html">menu_items.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="actors_8h_source.html">actors.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render__courses_8h_source.html">render_courses.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="math__util_8h_source.html">math_util.h</a>&quot;</code><br />
@@ -181,14 +182,14 @@ Functions</h2></td></tr>
 <tr class="separator:ab481a35d4548245b2a89ab574f460a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67bde07a20019a64500eba855d93ff4a" id="r_a67bde07a20019a64500eba855d93ff4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67bde07a20019a64500eba855d93ff4a">func_802A4300</a> (void)</td></tr>
 <tr class="separator:a67bde07a20019a64500eba855d93ff4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7c45179d5b0717d70dc1a894355b26d" id="r_ae7c45179d5b0717d70dc1a894355b26d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7c45179d5b0717d70dc1a894355b26d">func_802A450C</a> (Vtx *skybox)</td></tr>
-<tr class="separator:ae7c45179d5b0717d70dc1a894355b26d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b71883a4df655bb1d78757b067448b0" id="r_a4b71883a4df655bb1d78757b067448b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b71883a4df655bb1d78757b067448b0">course_set_skybox_colours</a> (Vtx *skybox)</td></tr>
+<tr class="separator:a4b71883a4df655bb1d78757b067448b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2b757ad60cbf91f4c5a7a9b290b10f6" id="r_ac2b757ad60cbf91f4c5a7a9b290b10f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2b757ad60cbf91f4c5a7a9b290b10f6">func_802A487C</a> (Vtx *arg0, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> struct <a class="el" href="structUnkStruct__800DC5EC.html">UnkStruct_800DC5EC</a> *arg1, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg2, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg3, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> *arg4)</td></tr>
 <tr class="separator:ac2b757ad60cbf91f4c5a7a9b290b10f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6135e98ec3076399696ca04f441529f4" id="r_a6135e98ec3076399696ca04f441529f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6135e98ec3076399696ca04f441529f4">func_802A4A0C</a> (Vtx *vtx, struct <a class="el" href="structUnkStruct__800DC5EC.html">UnkStruct_800DC5EC</a> *arg1, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg2, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg3, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> *arg4)</td></tr>
 <tr class="separator:a6135e98ec3076399696ca04f441529f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1520a44a27c37f0b2554764974afb428" id="r_a1520a44a27c37f0b2554764974afb428"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1520a44a27c37f0b2554764974afb428">func_802A4D18</a> (void)</td></tr>
-<tr class="separator:a1520a44a27c37f0b2554764974afb428"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a283d4ef8637e23224c3212edf83513c4" id="r_a283d4ef8637e23224c3212edf83513c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a283d4ef8637e23224c3212edf83513c4">set_perspective_and_aspect_ratio</a> (void)</td></tr>
+<tr class="separator:a283d4ef8637e23224c3212edf83513c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1521be679cd75bb46d9e6f0e1ae184f4" id="r_a1521be679cd75bb46d9e6f0e1ae184f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1521be679cd75bb46d9e6f0e1ae184f4">func_802A4EF4</a> (void)</td></tr>
 <tr class="separator:a1521be679cd75bb46d9e6f0e1ae184f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a106a6c5b25b49dea0722c25630e2bdb9" id="r_a106a6c5b25b49dea0722c25630e2bdb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a106a6c5b25b49dea0722c25630e2bdb9">func_802A5004</a> (void)</td></tr>
@@ -250,10 +251,10 @@ Variables</h2></td></tr>
 <tr class="separator:a48751c54a38756b9474b566084b5e56a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9119e27ac748939929d0b105173cdb43" id="r_a9119e27ac748939929d0b105173cdb43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> Gfx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9119e27ac748939929d0b105173cdb43">D_802B8A90</a> []</td></tr>
 <tr class="separator:a9119e27ac748939929d0b105173cdb43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a62561f3fe644aa6a2db4ef3a8f4254" id="r_a5a62561f3fe644aa6a2db4ef3a8f4254"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structSkybox.html">Skybox</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a62561f3fe644aa6a2db4ef3a8f4254">sSkyColors</a> []</td></tr>
-<tr class="separator:a5a62561f3fe644aa6a2db4ef3a8f4254"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24d921b7aaa7cdc7a3f32e4e45b01405" id="r_a24d921b7aaa7cdc7a3f32e4e45b01405"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structSkybox.html">Skybox</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24d921b7aaa7cdc7a3f32e4e45b01405">sSkyColors2</a> []</td></tr>
-<tr class="separator:a24d921b7aaa7cdc7a3f32e4e45b01405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f1ced60108c88889ea15a52f25924c5" id="r_a3f1ced60108c88889ea15a52f25924c5"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structSkybox.html">Skybox</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f1ced60108c88889ea15a52f25924c5">sTopSkyBoxColors</a> []</td></tr>
+<tr class="separator:a3f1ced60108c88889ea15a52f25924c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e7f2e342772cc46c30b47e62e13ead3" id="r_a1e7f2e342772cc46c30b47e62e13ead3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structSkybox.html">Skybox</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e7f2e342772cc46c30b47e62e13ead3">sBottomSkyBoxColors</a> []</td></tr>
+<tr class="separator:a1e7f2e342772cc46c30b47e62e13ead3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a97049ca439feed0c004c1d41f302189e" name="a97049ca439feed0c004c1d41f302189e"></a>
@@ -298,6 +299,28 @@ Variables</h2></td></tr>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="skybox__and__splitscreen_8c_a97049ca439feed0c004c1d41f302189e_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a4b71883a4df655bb1d78757b067448b0" name="a4b71883a4df655bb1d78757b067448b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b71883a4df655bb1d78757b067448b0">&#9670;&#160;</a></span>course_set_skybox_colours()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void course_set_skybox_colours </td>
+          <td>(</td>
+          <td class="paramtype">Vtx *</td>          <td class="paramname"><span class="paramname"><em>skybox</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="skybox__and__splitscreen_8c_a4b71883a4df655bb1d78757b067448b0_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -548,28 +571,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ae7c45179d5b0717d70dc1a894355b26d" name="ae7c45179d5b0717d70dc1a894355b26d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7c45179d5b0717d70dc1a894355b26d">&#9670;&#160;</a></span>func_802A450C()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void func_802A450C </td>
-          <td>(</td>
-          <td class="paramtype">Vtx *</td>          <td class="paramname"><span class="paramname"><em>skybox</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="skybox__and__splitscreen_8c_ae7c45179d5b0717d70dc1a894355b26d_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
 <a id="ac2b757ad60cbf91f4c5a7a9b290b10f6" name="ac2b757ad60cbf91f4c5a7a9b290b10f6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac2b757ad60cbf91f4c5a7a9b290b10f6">&#9670;&#160;</a></span>func_802A487C()</h2>
 
@@ -658,28 +659,6 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="skybox__and__splitscreen_8c_a6135e98ec3076399696ca04f441529f4_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="a1520a44a27c37f0b2554764974afb428" name="a1520a44a27c37f0b2554764974afb428"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1520a44a27c37f0b2554764974afb428">&#9670;&#160;</a></span>func_802A4D18()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void func_802A4D18 </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="skybox__and__splitscreen_8c_a1520a44a27c37f0b2554764974afb428_icgraph.svg" width="100%" height="549"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -1071,7 +1050,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="skybox__and__splitscreen_8c_af301b54a848553e5cbefdeaecc5dd67b_icgraph.svg" width="100%" height="443"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="skybox__and__splitscreen_8c_af301b54a848553e5cbefdeaecc5dd67b_icgraph.svg" width="100%" height="449"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -1342,6 +1321,28 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a283d4ef8637e23224c3212edf83513c4" name="a283d4ef8637e23224c3212edf83513c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a283d4ef8637e23224c3212edf83513c4">&#9670;&#160;</a></span>set_perspective_and_aspect_ratio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_perspective_and_aspect_ratio </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="skybox__and__splitscreen_8c_a283d4ef8637e23224c3212edf83513c4_icgraph.svg" width="100%" height="549"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="aa627a5166fe0e9f01475246065b6923c" name="aa627a5166fe0e9f01475246065b6923c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa627a5166fe0e9f01475246065b6923c">&#9670;&#160;</a></span>set_viewport()</h2>
 
@@ -1420,8 +1421,8 @@ Here is the caller graph for this function:</div>
 <div class="line">    { { { 0, 0, -1 }, 0, { 0, 0 }, { 0x78, 0xFF, 0x78, 0xFF } } },</div>
 <div class="line">    { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },</div>
 <div class="line">}</div>
-<div class="ttc" id="amk64_8h_html_a2cd109632a6dcccaa80b43561b1ab700"><div class="ttname"><a href="mk64_8h.html#a2cd109632a6dcccaa80b43561b1ab700">SCREEN_WIDTH</a></div><div class="ttdeci">#define SCREEN_WIDTH</div><div class="ttdef"><b>Definition</b> mk64.h:18</div></div>
-<div class="ttc" id="amk64_8h_html_a6974d08a74da681b3957b2fead2608b8"><div class="ttname"><a href="mk64_8h.html#a6974d08a74da681b3957b2fead2608b8">SCREEN_HEIGHT</a></div><div class="ttdeci">#define SCREEN_HEIGHT</div><div class="ttdef"><b>Definition</b> mk64.h:19</div></div>
+<div class="ttc" id="amk64_8h_html_a2cd109632a6dcccaa80b43561b1ab700"><div class="ttname"><a href="mk64_8h.html#a2cd109632a6dcccaa80b43561b1ab700">SCREEN_WIDTH</a></div><div class="ttdeci">#define SCREEN_WIDTH</div><div class="ttdef"><b>Definition</b> mk64.h:20</div></div>
+<div class="ttc" id="amk64_8h_html_a6974d08a74da681b3957b2fead2608b8"><div class="ttname"><a href="mk64_8h.html#a6974d08a74da681b3957b2fead2608b8">SCREEN_HEIGHT</a></div><div class="ttdeci">#define SCREEN_HEIGHT</div><div class="ttdef"><b>Definition</b> mk64.h:21</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1525,35 +1526,35 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a5a62561f3fe644aa6a2db4ef3a8f4254" name="a5a62561f3fe644aa6a2db4ef3a8f4254"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a62561f3fe644aa6a2db4ef3a8f4254">&#9670;&#160;</a></span>sSkyColors</h2>
+<a id="a1e7f2e342772cc46c30b47e62e13ead3" name="a1e7f2e342772cc46c30b47e62e13ead3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e7f2e342772cc46c30b47e62e13ead3">&#9670;&#160;</a></span>sBottomSkyBoxColors</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structSkybox.html">Skybox</a> sSkyColors[]</td>
+          <td class="memname">struct <a class="el" href="structSkybox.html">Skybox</a> sBottomSkyBoxColors[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3f1ced60108c88889ea15a52f25924c5" name="a3f1ced60108c88889ea15a52f25924c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f1ced60108c88889ea15a52f25924c5">&#9670;&#160;</a></span>sTopSkyBoxColors</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structSkybox.html">Skybox</a> sTopSkyBoxColors[]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line"> </div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a24d921b7aaa7cdc7a3f32e4e45b01405" name="a24d921b7aaa7cdc7a3f32e4e45b01405"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24d921b7aaa7cdc7a3f32e4e45b01405">&#9670;&#160;</a></span>sSkyColors2</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structSkybox.html">Skybox</a> sSkyColors2[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>

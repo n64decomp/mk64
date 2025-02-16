@@ -2,6 +2,7 @@ var skybox__and__splitscreen_8h =
 [
     [ "G_CLEAR_ALL_MODES", "skybox__and__splitscreen_8h.html#a3b52a415dad457e45730015e6dfd3614", null ],
     [ "copy_framebuffer", "skybox__and__splitscreen_8h.html#a305f9888c702557c18a9dfdd9c7225f3", null ],
+    [ "course_set_skybox_colours", "skybox__and__splitscreen_8h.html#aa34f187a9966c04e9a17652e80ac5a8f", null ],
     [ "func_802A3730", "skybox__and__splitscreen_8h.html#a8c8ae70998ecd6b5b4773008bc82efeb", null ],
     [ "func_802A38AC", "skybox__and__splitscreen_8h.html#ab8435f5b83d0fc118a6bbad43a0a806d", null ],
     [ "func_802A38B4", "skybox__and__splitscreen_8h.html#a3e841fd472316b42bf7b4d8f077b2d1c", null ],
@@ -15,10 +16,8 @@ var skybox__and__splitscreen_8h =
     [ "func_802A40D4", "skybox__and__splitscreen_8h.html#a213c7db805b5f5abc6c4511b44b24c96", null ],
     [ "func_802A40DC", "skybox__and__splitscreen_8h.html#a5baf6806d3a9bd2c602b6693860dd292", null ],
     [ "func_802A4300", "skybox__and__splitscreen_8h.html#a67bde07a20019a64500eba855d93ff4a", null ],
-    [ "func_802A450C", "skybox__and__splitscreen_8h.html#a1997568f9573e9aa62f3662c0a360f42", null ],
     [ "func_802A487C", "skybox__and__splitscreen_8h.html#a12eba1430c33121d90ee6374942e59b4", null ],
     [ "func_802A4A0C", "skybox__and__splitscreen_8h.html#a30bce983f26f3643814ad1075cae39be", null ],
-    [ "func_802A4D18", "skybox__and__splitscreen_8h.html#a1520a44a27c37f0b2554764974afb428", null ],
     [ "func_802A4EF4", "skybox__and__splitscreen_8h.html#a1521be679cd75bb46d9e6f0e1ae184f4", null ],
     [ "func_802A5004", "skybox__and__splitscreen_8h.html#a106a6c5b25b49dea0722c25630e2bdb9", null ],
     [ "func_802A50EC", "skybox__and__splitscreen_8h.html#ab0061fbdffa3d6f0a7a58b866cfd2336", null ],
@@ -44,6 +43,7 @@ var skybox__and__splitscreen_8h =
     [ "render_player_two_2p_screen_vertical", "skybox__and__splitscreen_8h.html#aa8a367dff9836f7f36d096ba50c8ed9b", null ],
     [ "render_player_two_3p_4p_screen", "skybox__and__splitscreen_8h.html#a3cae4ed02b4f4ac73f8e0092f0599bd0", null ],
     [ "select_framebuffer", "skybox__and__splitscreen_8h.html#ab481a35d4548245b2a89ab574f460a14", null ],
+    [ "set_perspective_and_aspect_ratio", "skybox__and__splitscreen_8h.html#a283d4ef8637e23224c3212edf83513c4", null ],
     [ "set_viewport", "skybox__and__splitscreen_8h.html#aa627a5166fe0e9f01475246065b6923c", null ],
     [ "set_viewport2", "skybox__and__splitscreen_8h.html#a3d19ba08f130a164d0ee2ec90e054301", null ],
     [ "D_802B8880", "skybox__and__splitscreen_8h.html#aa9561e7be092d9cd53decc5700218e26", null ]

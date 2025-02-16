@@ -5,7 +5,7 @@ var searchData=
   ['objectlistsize_2',['objectListSize',['../code__80057C60_8c.html#a619a9cb4ca05d69a44a5928af9e499ad',1,'code_80057C60.c']]],
   ['objx_3',['objX',['../structuObjSprite__t.html#aa56aa472d1ac710dd829e6f1cd9f7ad0',1,'uObjSprite_t']]],
   ['objy_4',['objY',['../structuObjSprite__t.html#ae240a2544af062bc4828c1fce79b04c5',1,'uObjSprite_t']]],
-  ['offset_5',['offset',['../structstruct__8018E118__entry.html#ad2db42afb387d418037f8cec2c0302cd',1,'struct_8018E118_entry::offset'],['../structObject.html#addd6910e926d1e9459c6567c37957ffe',1,'Object::offset'],['../structItemWindowObjects.html#a3a9da5b56f2c95cfdb83edb18f1f3317',1,'ItemWindowObjects::offset'],['../structALSeqData.html#ac83264321ecc6649b5a511ed65047f97',1,'ALSeqData::offset']]],
+  ['offset_5',['offset',['../structTextureMap.html#a8b4286ddfe639a65e498930733799cf6',1,'TextureMap::offset'],['../structObject.html#addd6910e926d1e9459c6567c37957ffe',1,'Object::offset'],['../structItemWindowObjects.html#a3a9da5b56f2c95cfdb83edb18f1f3317',1,'ItemWindowObjects::offset'],['../structALSeqData.html#ac83264321ecc6649b5a511ed65047f97',1,'ALSeqData::offset']]],
   ['offsetromend_6',['offsetRomEnd',['../structCourseTable.html#ab3a7aa2b05671688a96e9b657bd6623a',1,'CourseTable']]],
   ['offsetromstart_7',['offsetRomStart',['../structCourseTable.html#ac8cd9a4c39f0f06665b451ff3c523dff',1,'CourseTable']]],
   ['oldpos_8',['oldPos',['../structPlayer.html#a2810886a55a7b5545851693406f327f4',1,'Player']]],

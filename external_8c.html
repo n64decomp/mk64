@@ -114,8 +114,9 @@ $(function(){initNavTree('external_8c.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="ultra64_8h_source.html">ultra64.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="defines_8h_source.html">defines.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="camera_8h_source.html">camera.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="math__util__2_8h_source.html">math_util_2.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="sounds_8h_source.html">sounds.h</a>&gt;</code><br />
@@ -124,8 +125,8 @@ $(function(){initNavTree('external_8c.html',''); initResizable(true); });
 <code>#include &quot;<a class="el" href="data_8h_source.html">audio/data.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="port__eu_8h_source.html">audio/port_eu.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__800029B0_8h_source.html">code_800029B0.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="code__80005FD0_8h_source.html">code_80005FD0.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="code__80091750_8h_source.html">code_80091750.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cpu__vehicles__camera__path_8h_source.html">cpu_vehicles_camera_path.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="menu__items_8h_source.html">menu_items.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for external.c:</div>
 <div class="dyncontent">
@@ -532,8 +533,8 @@ Variables</h2></td></tr>
 <tr class="separator:afe3ac5dcdf6df0d69ce9f3d8219ce42a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58c8b01c8d04564092605e2fcf5e4d0a" id="r_a58c8b01c8d04564092605e2fcf5e4d0a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58c8b01c8d04564092605e2fcf5e4d0a">external_unused_u32_0</a> = 0x00000000</td></tr>
 <tr class="separator:a58c8b01c8d04564092605e2fcf5e4d0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56ed9eb9866d221ff16a2f681c0d7ae3" id="r_a56ed9eb9866d221ff16a2f681c0d7ae3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56ed9eb9866d221ff16a2f681c0d7ae3">D_800EA1DC</a> = 0</td></tr>
-<tr class="separator:a56ed9eb9866d221ff16a2f681c0d7ae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab63413f7b809e82559a5cd9ac7d4b367" id="r_ab63413f7b809e82559a5cd9ac7d4b367"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab63413f7b809e82559a5cd9ac7d4b367">D_800EA1DC</a> = 0</td></tr>
+<tr class="separator:ab63413f7b809e82559a5cd9ac7d4b367"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54ea525efbf066bbad30b7dd9c4c527b" id="r_a54ea525efbf066bbad30b7dd9c4c527b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54ea525efbf066bbad30b7dd9c4c527b">external_unused_u32_1</a> = 0x00000000</td></tr>
 <tr class="separator:a54ea525efbf066bbad30b7dd9c4c527b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cd291f7963efabb357447d3205bc4a6" id="r_a5cd291f7963efabb357447d3205bc4a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cd291f7963efabb357447d3205bc4a6">D_800EA1E4</a> = 0</td></tr>
@@ -4343,14 +4344,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a56ed9eb9866d221ff16a2f681c0d7ae3" name="a56ed9eb9866d221ff16a2f681c0d7ae3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56ed9eb9866d221ff16a2f681c0d7ae3">&#9670;&#160;</a></span>D_800EA1DC</h2>
+<a id="ab63413f7b809e82559a5cd9ac7d4b367" name="ab63413f7b809e82559a5cd9ac7d4b367"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab63413f7b809e82559a5cd9ac7d4b367">&#9670;&#160;</a></span>D_800EA1DC</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> D_800EA1DC = 0</td>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> D_800EA1DC = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">

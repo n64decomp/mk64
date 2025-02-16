@@ -90,10 +90,10 @@ var mario__raceway_2course__data_8c =
     [ "d_course_mario_raceway_piranha_plant_model", "mario__raceway_2course__data_8c.html#afaeabb6edbbe057609d373a77f5de074", null ],
     [ "d_course_mario_raceway_piranha_plant_spawns", "mario__raceway_2course__data_8c.html#a38d245a489ece06bd3600dc69fa349f6", null ],
     [ "d_course_mario_raceway_piranha_plant_tlut", "mario__raceway_2course__data_8c.html#a2940da5051ea370577be58ff542c0fb2", null ],
-    [ "d_course_mario_raceway_track_waypoints", "mario__raceway_2course__data_8c.html#ac8a6ce7f789fa41e13a8cefc526395a3", null ],
+    [ "d_course_mario_raceway_track_path", "mario__raceway_2course__data_8c.html#a607310822883038301c3a1c47754f23b", null ],
     [ "d_course_mario_raceway_tree_model", "mario__raceway_2course__data_8c.html#a48ac27850728389c9c953d0da0406f92", null ],
     [ "d_course_mario_raceway_tree_spawns", "mario__raceway_2course__data_8c.html#a4e60251bde48009ec27ce9148980722e", null ],
-    [ "d_course_mario_raceway_unknown_waypoints", "mario__raceway_2course__data_8c.html#aed389d43b4a325cdc64e45f5e76114e6", null ],
+    [ "d_course_mario_raceway_unknown_path", "mario__raceway_2course__data_8c.html#a867c5de8f2b6e4008413f75614d31eac", null ],
     [ "d_course_mario_sign_left", "mario__raceway_2course__data_8c.html#a13e1a4b083213371ae4ca78719a91426", null ],
     [ "d_course_mario_sign_model", "mario__raceway_2course__data_8c.html#abf365cea25e66116a08083b5d602ad68", null ],
     [ "d_course_mario_sign_right", "mario__raceway_2course__data_8c.html#a39966bd10f8d4ddcbdc050bc304fb855", null ]

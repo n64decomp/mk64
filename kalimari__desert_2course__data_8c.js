@@ -227,9 +227,9 @@ var kalimari__desert_2course__data_8c =
     [ "d_course_kalimari_desert_tender_model_lod0", "kalimari__desert_2course__data_8c.html#aa263598b24e6c973493749359da155c3", null ],
     [ "d_course_kalimari_desert_tender_model_lod1", "kalimari__desert_2course__data_8c.html#a565d82dd016a50e14058eaf88be0b1cc", null ],
     [ "d_course_kalimari_desert_tender_model_lod2", "kalimari__desert_2course__data_8c.html#a5022c4e54dca022a4825d5f5d655692b", null ],
-    [ "d_course_kalimari_desert_track_waypoints", "kalimari__desert_2course__data_8c.html#a0126b1b654db069cb319b9d96c389d26", null ],
+    [ "d_course_kalimari_desert_track_path", "kalimari__desert_2course__data_8c.html#a3aa8fa67c2d3d0d839d2030a73b7910b", null ],
     [ "d_course_kalimari_desert_train_bogie", "kalimari__desert_2course__data_8c.html#a9b32ae6f92f5ec5cb34102361f3b0987", null ],
-    [ "d_course_kalimari_desert_train_waypoints", "kalimari__desert_2course__data_8c.html#af4ea8e2b25869eeb34d643a0790f4f69", null ],
+    [ "d_course_kalimari_desert_train_path", "kalimari__desert_2course__data_8c.html#a224aa12fa03130500486823cadaa1919", null ],
     [ "d_course_kalimari_desert_tree_tlut", "kalimari__desert_2course__data_8c.html#a173fd4e16661695b8197b8dc2fa3ec31", null ],
     [ "d_course_kalimari_desert_unknown_lod0_carriage_model1", "kalimari__desert_2course__data_8c.html#a3845d35a1702efad380f02f410d889ab", null ],
     [ "d_course_kalimari_desert_unknown_lod0_carriage_model2", "kalimari__desert_2course__data_8c.html#a7e6c5a468ac981fb301705f0a1ab6288", null ],
@@ -312,5 +312,5 @@ var kalimari__desert_2course__data_8c =
     [ "d_course_kalimari_desert_unknown_lod2_tender_model4", "kalimari__desert_2course__data_8c.html#a2d07156a0dfa80e3602905b877073f46", null ],
     [ "d_course_kalimari_desert_unknown_model1", "kalimari__desert_2course__data_8c.html#a43ee3cfd511d565b91271cb1c8df73a1", null ],
     [ "d_course_kalimari_desert_unknown_model2", "kalimari__desert_2course__data_8c.html#ad3b01483596658c0f106dc263c6b6c8a", null ],
-    [ "d_course_kalimari_desert_unknown_waypoints", "kalimari__desert_2course__data_8c.html#a784edd423b7ab07b649ae82f3d1921d3", null ]
+    [ "d_course_kalimari_desert_unknown_path", "kalimari__desert_2course__data_8c.html#af212aa7bbbfec9d2060a577bf871e05d", null ]
 ];

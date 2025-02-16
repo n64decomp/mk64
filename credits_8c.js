@@ -1,5 +1,5 @@
 var credits_8c =
 [
-    [ "D_802850C0", "credits_8c.html#a183240d93e3878bae9a1c2c5e2d36903", null ],
-    [ "D_802854B0", "credits_8c.html#a4fd703e247f1b67b5fc935dad2056b3a", null ]
+    [ "gCreditsText", "credits_8c.html#a68f1bfcc173fa3ffc39ff2f72f14529c", null ],
+    [ "gCreditsTextRenderInfo", "credits_8c.html#a261cabde1a41076636378a70a0542130", null ]
 ];

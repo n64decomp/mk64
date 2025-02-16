@@ -37,8 +37,8 @@
 <text text-anchor="middle" x="56.5" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> actorIndex</text>
 <text text-anchor="middle" x="56.5" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">compilerPadding</text>
 <text text-anchor="middle" x="56.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">isActive</text>
-<text text-anchor="middle" x="56.5" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unused</text>
-<text text-anchor="middle" x="56.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">waypointIndex</text>
+<text text-anchor="middle" x="56.5" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">pathPointIndex</text>
+<text text-anchor="middle" x="56.5" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unused</text>
 </g>
 <!-- Node3 -->
 <g id="Node000003" class="node">

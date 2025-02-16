@@ -1,11 +1,11 @@
 <map id="func_8002E4C4" name="func_8002E4C4">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,42,128,67"/>
-<area shape="rect" id="Node000002" href="$player__controller_8c.html#aafeb0470c7da44e1440ffa4848f7d500" title=" " alt="" coords="188,5,347,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,43,174,36,175,42,129,48"/>
-<area shape="rect" id="Node000003" href="$collision_8c.html#ad95e9ed2051529d5edee26109fa07427" title=" " alt="" coords="176,70,359,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,61,163,65,163,71,128,66"/>
-<area shape="rect" id="Node000004" href="$collision_8c.html#a6527a2135a10909cdf9a1fd731be5628" title=" " alt="" coords="407,41,591,66"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="359,68,393,64,394,69,359,74"/>
-<area shape="rect" id="Node000005" href="$collision_8c.html#a0fe340ccfe1d926a592ea9a0c84d7574" title=" " alt="" coords="411,91,587,131"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="359,91,397,96,397,101,359,96"/>
+<area shape="rect" id="Node000002" href="$player__controller_8c.html#aafeb0470c7da44e1440ffa4848f7d500" title=" " alt="" coords="176,5,335,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,43,162,37,163,42,129,48"/>
+<area shape="rect" id="Node000003" href="$collision_8c.html#af40212f95fb9273a88b4d4d54f96b2aa" title="Returns the height of the surface below the provided position. Used to set actors onto the course mes..." alt="" coords="182,70,329,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,61,169,67,168,72,128,66"/>
+<area shape="rect" id="Node000004" href="$collision_8c.html#a6527a2135a10909cdf9a1fd731be5628" title=" " alt="" coords="383,41,567,66"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="328,70,369,65,369,70,329,76"/>
+<area shape="rect" id="Node000005" href="$collision_8c.html#a0fe340ccfe1d926a592ea9a0c84d7574" title=" " alt="" coords="387,91,563,131"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="329,89,373,95,373,100,328,95"/>
 </map>

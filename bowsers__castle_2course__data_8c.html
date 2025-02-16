@@ -114,7 +114,7 @@ $(function(){initNavTree('bowsers__castle_2course__data_8c.html',''); initResiza
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="gbi_8h_source.html">PR/gbi.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="path_8h_source.html">path.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="bowsers__castle_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
@@ -350,10 +350,10 @@ Variables</h2></td></tr>
 <tr class="separator:a25f790d55965821759bd6e364c60fb70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42d8c669e7ca6b71e80a4f1e7d1a7a16" id="r_a42d8c669e7ca6b71e80a4f1e7d1a7a16"><td class="memItemLeft" align="right" valign="top">Gfx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42d8c669e7ca6b71e80a4f1e7d1a7a16">d_course_bowsers_castle_dl_4EA8</a> []</td></tr>
 <tr class="separator:a42d8c669e7ca6b71e80a4f1e7d1a7a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70aa6184d0015047d057f9856a594276" id="r_a70aa6184d0015047d057f9856a594276"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70aa6184d0015047d057f9856a594276">d_course_bowsers_castle_unknown_waypoints</a> []</td></tr>
-<tr class="separator:a70aa6184d0015047d057f9856a594276"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99efd58fd119ec2c98b83e56043930df" id="r_a99efd58fd119ec2c98b83e56043930df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99efd58fd119ec2c98b83e56043930df">d_course_bowsers_castle_track_waypoints</a> []</td></tr>
-<tr class="separator:a99efd58fd119ec2c98b83e56043930df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5100b4f7400c18b698fbc204ef683e49" id="r_a5100b4f7400c18b698fbc204ef683e49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5100b4f7400c18b698fbc204ef683e49">d_course_bowsers_castle_unknown_path</a> []</td></tr>
+<tr class="separator:a5100b4f7400c18b698fbc204ef683e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6a6c04ee00894ab0370f9e216be6400" id="r_ab6a6c04ee00894ab0370f9e216be6400"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6a6c04ee00894ab0370f9e216be6400">d_course_bowsers_castle_track_path</a> []</td></tr>
+<tr class="separator:ab6a6c04ee00894ab0370f9e216be6400"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58b25c38c611804c006571f83abb415e" id="r_a58b25c38c611804c006571f83abb415e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58b25c38c611804c006571f83abb415e">d_course_bowsers_castle_thwomp_side</a> []</td></tr>
 <tr class="separator:a58b25c38c611804c006571f83abb415e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc9789813be81d9c2143b07c8626b27e" id="r_adc9789813be81d9c2143b07c8626b27e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc9789813be81d9c2143b07c8626b27e">d_course_bowsers_castle_thwomp_tlut</a> []</td></tr>
@@ -467,7 +467,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="abowsers__castle_2course__displaylists_8inc_8c_html_af0e3e8056f93fc9912b5b678ed75d65b"><div class="ttname"><a href="bowsers__castle_2course__displaylists_8inc_8c.html#af0e3e8056f93fc9912b5b678ed75d65b">d_course_bowsers_castle_packed_dl_81B0</a></div><div class="ttdeci">Gfx d_course_bowsers_castle_packed_dl_81B0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:4930</div></div>
 <div class="ttc" id="abowsers__castle_2course__displaylists_8inc_8c_html_af18e357163eb7a89f1b48ba1891bba7b"><div class="ttname"><a href="bowsers__castle_2course__displaylists_8inc_8c.html#af18e357163eb7a89f1b48ba1891bba7b">d_course_bowsers_castle_packed_dl_9328</a></div><div class="ttdeci">Gfx d_course_bowsers_castle_packed_dl_9328[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:5569</div></div>
 <div class="ttc" id="abowsers__castle_2course__displaylists_8inc_8c_html_af370c4d25b3e8491de99d59e3513de1b"><div class="ttname"><a href="bowsers__castle_2course__displaylists_8inc_8c.html#af370c4d25b3e8491de99d59e3513de1b">d_course_bowsers_castle_packed_dl_7A10</a></div><div class="ttdeci">Gfx d_course_bowsers_castle_packed_dl_7A10[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:4601</div></div>
-</div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000055">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
+</div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000054">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
 
 </div>
 </div>
@@ -3807,14 +3807,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a99efd58fd119ec2c98b83e56043930df" name="a99efd58fd119ec2c98b83e56043930df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99efd58fd119ec2c98b83e56043930df">&#9670;&#160;</a></span>d_course_bowsers_castle_track_waypoints</h2>
+<a id="ab6a6c04ee00894ab0370f9e216be6400" name="ab6a6c04ee00894ab0370f9e216be6400"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6a6c04ee00894ab0370f9e216be6400">&#9670;&#160;</a></span>d_course_bowsers_castle_track_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_bowsers_castle_track_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_bowsers_castle_track_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -3866,14 +3866,14 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a70aa6184d0015047d057f9856a594276" name="a70aa6184d0015047d057f9856a594276"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70aa6184d0015047d057f9856a594276">&#9670;&#160;</a></span>d_course_bowsers_castle_unknown_waypoints</h2>
+<a id="a5100b4f7400c18b698fbc204ef683e49" name="a5100b4f7400c18b698fbc204ef683e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5100b4f7400c18b698fbc204ef683e49">&#9670;&#160;</a></span>d_course_bowsers_castle_unknown_path</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structTrackWaypoint.html">TrackWaypoint</a> d_course_bowsers_castle_unknown_waypoints[]</td>
+          <td class="memname"><a class="el" href="structTrackPathPoint.html">TrackPathPoint</a> d_course_bowsers_castle_unknown_path[]</td>
         </tr>
       </table>
 </div><div class="memdoc">

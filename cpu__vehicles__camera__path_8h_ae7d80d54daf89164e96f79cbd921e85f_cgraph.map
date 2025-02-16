@@ -1,0 +1,31 @@
+<map id="load_track_path" name="load_track_path">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,208,132,233"/>
+<area shape="rect" id="Node000002" href="$path__calc_8inc_8c.html#ac09cdba0d303bd516359b9ae117e59e6" title=" " alt="" coords="191,183,313,208"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,209,177,203,178,208,133,215"/>
+<area shape="rect" id="Node000014" href="$path__calc_8inc_8c.html#a63ad6d0756cdc4682b0032051cc628ce" title=" " alt="" coords="180,232,324,257"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="133,226,167,231,166,236,132,232"/>
+<area shape="rect" id="Node000003" href="$path__calc_8inc_8c.html#aa4f95e13ae04a8719510680bb59a3ba0" title=" " alt="" coords="389,108,511,133"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="281,180,371,144,394,135,396,140,373,148,283,185"/>
+<area shape="rect" id="Node000011" href="$path__calc_8inc_8c.html#ad22ec1d3413eebae418d5d0a1bbbe6a8" title=" " alt="" coords="390,157,510,183"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="313,185,376,177,377,182,313,190"/>
+<area shape="rect" id="Node000012" href="$collision_8c.html#a053809031f467d0a6747788211e0ec69" title=" " alt="" coords="372,207,528,232"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="313,200,359,206,358,211,313,205"/>
+<area shape="rect" id="Node000013" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="424,256,476,281"/>
+<area shape="poly" id="edge14_Node000002_Node000013" title=" " alt="" coords="292,206,325,218,373,242,412,256,410,261,371,247,323,223,290,211"/>
+<area shape="rect" id="Node000004" href="$collision_8c.html#a37aa55b3768d001533ad75e7f1b8388a" title=" " alt="" coords="576,104,764,129"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="511,117,562,116,562,121,511,122"/>
+<area shape="rect" id="Node000008" href="$collision_8c.html#af40212f95fb9273a88b4d4d54f96b2aa" title="Returns the height of the surface below the provided position. Used to set actors onto the course mes..." alt="" coords="597,159,743,184"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="507,131,602,153,600,158,506,136"/>
+<area shape="rect" id="Node000005" href="$collision_8c.html#ac312bf382cb40752f6b790a99e7cdcb6" title=" " alt="" coords="832,5,976,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="690,102,744,71,811,40,832,32,834,37,813,44,746,76,693,106"/>
+<area shape="rect" id="Node000006" href="$collision_8c.html#a4b48832a90e984536a0635a016ec4f28" title=" " alt="" coords="833,55,975,80"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="730,101,829,80,830,86,731,107"/>
+<area shape="rect" id="Node000007" href="$collision_8c.html#a21fef964ab48191a1c0341954ef27a40" title=" " alt="" coords="833,104,975,129"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="764,114,819,114,819,119,764,119"/>
+<area shape="rect" id="Node000009" href="$collision_8c.html#a6527a2135a10909cdf9a1fd731be5628" title=" " alt="" coords="812,219,996,244"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="721,181,841,213,840,218,720,187"/>
+<area shape="rect" id="Node000010" href="$collision_8c.html#a0fe340ccfe1d926a592ea9a0c84d7574" title=" " alt="" coords="816,154,992,194"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="744,170,802,170,802,176,744,175"/>
+<area shape="poly" id="edge11_Node000011_Node000004" title=" " alt="" coords="503,155,603,130,604,135,504,160"/>
+<area shape="poly" id="edge12_Node000011_Node000008" title=" " alt="" coords="510,168,583,168,583,173,510,173"/>
+</map>

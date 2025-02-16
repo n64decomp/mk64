@@ -1,5 +1,5 @@
 var structstruct__8018E060__entry =
 [
-    [ "texture", "structstruct__8018E060__entry.html#ac3dedad461a2374002d5237c02d760dd", null ],
-    [ "unk_4", "structstruct__8018E060__entry.html#a75a51a2667de423eff48d82b6d8a21e1", null ]
+    [ "texNum", "structstruct__8018E060__entry.html#a96c3354cbbafffdfcc22b0ffbba5bb8f", null ],
+    [ "texture", "structstruct__8018E060__entry.html#a29371cbcb0234333744decad0ae26888", null ]
 ];

@@ -1,6 +1,7 @@
 var race__logic_8c =
 [
-    [ "D_802BA038_SIZE", "race__logic_8c.html#ad0abac1adccb2725a281a2db6286cd0d", null ],
+    [ "gDemoTimer_SIZE", "race__logic_8c.html#a9c9d7e23e1e8bb86822d4a3afeae0fd9", null ],
+    [ "end_demo_update", "race__logic_8c.html#a01b81b0761fe49ed9207567c7769ba94", null ],
     [ "func_8028DF00", "race__logic_8c.html#ae1563ce64a716f5d420505adc3e9b89d", null ],
     [ "func_8028DF38", "race__logic_8c.html#ad662382097107c855812aa65f2acbd49", null ],
     [ "func_8028E028", "race__logic_8c.html#a47f2e46e866e68495bc5792fb13f0d66", null ],
@@ -8,7 +9,7 @@ var race__logic_8c =
     [ "func_8028E3A0", "race__logic_8c.html#a208a5da7a5ebbbd333d582c03c136c2b", null ],
     [ "func_8028E438", "race__logic_8c.html#ab3cce6260fc4d7f0c4610aeebce8de54", null ],
     [ "func_8028E678", "race__logic_8c.html#aeb498a031d0fc8f31b5947bf329344f4", null ],
-    [ "func_8028EC38", "race__logic_8c.html#a7ef352a26863f1cb77a3cfca56164b91", null ],
+    [ "func_8028EC38", "race__logic_8c.html#a267e17e7b20c9b502466a58e21e71a08", null ],
     [ "func_8028EC98", "race__logic_8c.html#a81fc82f45c9f9fcbf0d71fd2e0d6853c", null ],
     [ "func_8028EE8C", "race__logic_8c.html#ac72458a1821d41e46b4017bc4ad752b7", null ],
     [ "func_8028EEF0", "race__logic_8c.html#a1ea1efbd97d34c4f81c9184a4a029a26", null ],
@@ -21,7 +22,6 @@ var race__logic_8c =
     [ "func_8028F914", "race__logic_8c.html#ac50527ef661d883bf7903adfc6f67497", null ],
     [ "func_8028F970", "race__logic_8c.html#a4eb4cb5c0963bcfceae40d340c2e7756", null ],
     [ "func_8028FBD4", "race__logic_8c.html#a4f316a53a95dde1e4ff1d2a89ff934aa", null ],
-    [ "func_8028FC34", "race__logic_8c.html#aac937545c174100218f0726a70d83e33", null ],
     [ "func_8028FCBC", "race__logic_8c.html#a7f21a1ef55b61f5678170da62e5e51dc", null ],
     [ "func_80290314", "race__logic_8c.html#ac566dbdbe9f5b8db1511bce7fc511ed1", null ],
     [ "func_80290338", "race__logic_8c.html#a53decb718a29b1c4910cf1f5bada018f", null ],
@@ -40,10 +40,10 @@ var race__logic_8c =
     [ "D_802BA030", "race__logic_8c.html#a76fe374b8488fe7ba4e7ae95385e9a0a", null ],
     [ "D_802BA032", "race__logic_8c.html#ac028ea2114c7fd2e35661cb1f1ec3aa7", null ],
     [ "D_802BA034", "race__logic_8c.html#a8248cb723a9174c8f6cc066ff76804b8", null ],
-    [ "D_802BA038", "race__logic_8c.html#a748ca3411272a63780bf629522f86f91", null ],
     [ "D_802BA03C", "race__logic_8c.html#a9eda822eb897f015332a199f25aee562", null ],
     [ "D_802BA040", "race__logic_8c.html#ad550ae3a9bf88f8ee61f551cebb44912", null ],
     [ "D_802BA048", "race__logic_8c.html#aa064451699e55c64c16a2e0da8dbca71", null ],
+    [ "gDemoTimer", "race__logic_8c.html#aaccff44264902a7c2a0a57af6091e5d6", null ],
     [ "gLapCountByPlayerId", "race__logic_8c.html#a678223a647ce27aa2f4934dc1c777374", null ],
     [ "gPlayerBalloonCount", "race__logic_8c.html#a89ac412ce30c2e0e583d74258a887c8b", null ]
 ];

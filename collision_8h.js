@@ -22,6 +22,7 @@ var collision_8h =
     [ "generate_collision_mesh", "collision_8h.html#a0c76e5828b1a49d4fc8117aaa3295366", null ],
     [ "generate_collision_mesh_with_default_section_id", "collision_8h.html#a44d8cc187a7eff53adc8f6016499a036", null ],
     [ "generate_collision_mesh_with_defaults", "collision_8h.html#a4b0c3dc7da55eb727078c57d07a93482", null ],
+    [ "get_surface_height", "collision_8h.html#ac268223de76902c826adece78043a192", null ],
     [ "get_surface_type", "collision_8h.html#a40bc0e0e5747f94a42176c7cd846d52f", null ],
     [ "get_track_section_id", "collision_8h.html#aa6766c1a7688ae78dfe64422ac5265b2", null ],
     [ "is_line_intersecting_rectangle", "collision_8h.html#aaf54ae6485eb87ae9f70de8b2d3fed19", null ],
@@ -32,6 +33,5 @@ var collision_8h =
     [ "set_vertex_colours", "collision_8h.html#aaf0c207528a562d4fe836d6d0d904dd8", null ],
     [ "set_vtx_buffer", "collision_8h.html#a64d962d7e19f12e029fb038a5478611b", null ],
     [ "shell_collision", "collision_8h.html#a99aab337d05429f6a81d3ebb18052db7", null ],
-    [ "spawn_actor_on_surface", "collision_8h.html#abea1129e3bf97441713011770b3fb20b", null ],
     [ "subtract_scaled_vector", "collision_8h.html#ac3b07878a7e77808f5bc76d681652603", null ]
 ];

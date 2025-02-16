@@ -151,7 +151,7 @@ var luigi__raceway_2course__data_8c =
     [ "d_course_luigi_raceway_light1", "luigi__raceway_2course__data_8c.html#acd595a376ef20bfe79c67f1a754910c5", null ],
     [ "d_course_luigi_raceway_sign_left", "luigi__raceway_2course__data_8c.html#a6e4c9be5aea47eaf0d61d1f36199be74", null ],
     [ "d_course_luigi_raceway_sign_right", "luigi__raceway_2course__data_8c.html#ada534f92211d3b83edd6c1bca1fd4406", null ],
-    [ "d_course_luigi_raceway_track_waypoints", "luigi__raceway_2course__data_8c.html#a655186ebedea7f43778c68867a1d1fbb", null ],
+    [ "d_course_luigi_raceway_track_path", "luigi__raceway_2course__data_8c.html#a7a4e1c45ab480256eb2bbe5bc2ee6da0", null ],
     [ "d_course_luigi_raceway_tree_model", "luigi__raceway_2course__data_8c.html#a8746f742417a8d71bd197f6676beb35b", null ],
     [ "d_course_luigi_raceway_tree_spawn", "luigi__raceway_2course__data_8c.html#a675a335445957949db855abf3d14b169", null ],
     [ "d_course_luigi_raceway_unknown_model1", "luigi__raceway_2course__data_8c.html#ab3d2fb55f0f546c713e27c621cb1e03c", null ],
@@ -162,5 +162,5 @@ var luigi__raceway_2course__data_8c =
     [ "d_course_luigi_raceway_unknown_model6", "luigi__raceway_2course__data_8c.html#a03b24c20d8dfbb5ef5dd9d71f7e3cfd7", null ],
     [ "d_course_luigi_raceway_unknown_model7", "luigi__raceway_2course__data_8c.html#aa04477d9622b3b8dc3690734859791c5", null ],
     [ "d_course_luigi_raceway_unknown_model8", "luigi__raceway_2course__data_8c.html#a655366b59b1d019f98b1fb3080dfa978", null ],
-    [ "d_course_luigi_raceway_unknown_waypoints", "luigi__raceway_2course__data_8c.html#ad9010d947e1e5b075f1f7381ddec9390", null ]
+    [ "d_course_luigi_raceway_unknown_path", "luigi__raceway_2course__data_8c.html#a4e83d802036d3d14bbb7767a2cb2ef77", null ]
 ];

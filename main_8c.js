@@ -1,7 +1,7 @@
 var main_8c =
 [
     [ "D_800DC510_AS_U16", "main_8c.html#acaba7d0fa7a83cbbbbd0ef8d1bd0cb20", null ],
-    [ "audio_init", "main_8c.html#a1057a490ba85ab32c800c0e3c9e85c78", null ],
+    [ "audio_init", "main_8c.html#a780026a09284372732eeca5c1bdeda0b", null ],
     [ "clear_framebuffer", "main_8c.html#ac6df158ad2a863eb16f6b82e12ea26e4", null ],
     [ "config_gfx_pool", "main_8c.html#a9b253735194a23ab701e8ab9cdc7b128", null ],
     [ "create_debug_thread", "main_8c.html#a77471bbea209b9d664b6569191c60787", null ],
@@ -71,8 +71,6 @@ var main_8c =
     [ "D_8015012C", "main_8c.html#a57d786394309c1c68ea7a440649ee17c", null ],
     [ "D_80150140", "main_8c.html#a085d2497682f92347e0458eb9d5522dc", null ],
     [ "D_80150144", "main_8c.html#a0c41a85f48091243af8e42cd1ddd993b", null ],
-    [ "D_8015014C", "main_8c.html#af4e7fd2826ad122f60151c811f532034", null ],
-    [ "D_80150150", "main_8c.html#a22964cae6a6d2065bb398ef23463eb88", null ],
     [ "D_80150154", "main_8c.html#a22c9a97281e73c3a925bac646c646608", null ],
     [ "D_801502A0", "main_8c.html#a4b6820ecb517ae844d72cb317e76c4e6", null ],
     [ "D_801502A4", "main_8c.html#aa285c58f3f109ce4c2b6909ce20dcbc5", null ],
@@ -104,6 +102,8 @@ var main_8c =
     [ "gControllerStatuses", "main_8c.html#a4cc0098822a91c78e704958dc8ce3caf", null ],
     [ "gControllerThree", "main_8c.html#a4f697d7f1105784e32df2656d15fb3a1", null ],
     [ "gControllerTwo", "main_8c.html#a121438ed666b9774455ab1c9c77c8e72", null ],
+    [ "gCourseFarPersp", "main_8c.html#a25bc834a21c26281249c3bef5443a1cd", null ],
+    [ "gCourseNearPersp", "main_8c.html#ad597e410abad9581a65b10dba280674b", null ],
     [ "gCourseTimer", "main_8c.html#a30bcdb54dee2c1ce2f03abc5270a51a3", null ],
     [ "gD_80150158", "main_8c.html#ac56c0cf69a12476ce66f650aba0a8bbb", null ],
     [ "gDemoMode", "main_8c.html#ad0d02d334a85a918cd9504a24db19f61", null ],

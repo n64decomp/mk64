@@ -115,7 +115,7 @@ var choco__mountain_2course__data_8h =
     [ "d_course_choco_mountain_item_box_spawns", "choco__mountain_2course__data_8h.html#abd320ebcf272f5658bb909912b9b1bb9", null ],
     [ "d_course_choco_mountain_light", "choco__mountain_2course__data_8h.html#aac8da9634d6e858e41270b2240c78265", null ],
     [ "d_course_choco_mountain_rock_texture", "choco__mountain_2course__data_8h.html#a84d9ce27b4f4aac5fb454ec83a19a4f5", null ],
-    [ "d_course_choco_mountain_track_waypoints", "choco__mountain_2course__data_8h.html#a398ac3a95305bc1cf4284f9c3bf6e973", null ],
-    [ "d_course_choco_mountain_unknown_waypoints", "choco__mountain_2course__data_8h.html#abf08e2de66e95fb514c0b38304a93a48", null ],
+    [ "d_course_choco_mountain_track_path", "choco__mountain_2course__data_8h.html#a93eae4c0ab433d4b0381f5d52d0887c1", null ],
+    [ "d_course_choco_mountain_unknown_path", "choco__mountain_2course__data_8h.html#a7e6c1078fcf60049e575de73757d4b3e", null ],
     [ "d_course_choco_mountain_wall_texture", "choco__mountain_2course__data_8h.html#a91dd336e1b27b7ed67f3df175a684c81", null ]
 ];

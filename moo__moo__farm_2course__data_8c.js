@@ -115,10 +115,10 @@ var moo__moo__farm_2course__data_8c =
     [ "d_course_moo_moo_farm_mole_dirt", "moo__moo__farm_2course__data_8c.html#a53bf2527d6c72021c3eda4c91c67a702", null ],
     [ "d_course_moo_moo_farm_mole_frames", "moo__moo__farm_2course__data_8c.html#a54b7ec43c90542f5b1dbe7174f31cb28", null ],
     [ "d_course_moo_moo_farm_mole_tlut", "moo__moo__farm_2course__data_8c.html#a240f5323a3d5ce24c07972b5fce9ffe3", null ],
-    [ "d_course_moo_moo_farm_track_waypoints", "moo__moo__farm_2course__data_8c.html#aeb72c1e8db0bb57dbb89aee7c88b3cae", null ],
+    [ "d_course_moo_moo_farm_track_path", "moo__moo__farm_2course__data_8c.html#a73dd011a44053d9e0f8a39938d49a708", null ],
     [ "d_course_moo_moo_farm_tree_model", "moo__moo__farm_2course__data_8c.html#ac2f06c994f6801d392966851f13d2cb7", null ],
     [ "d_course_moo_moo_farm_tree_spawn", "moo__moo__farm_2course__data_8c.html#a3cc99e2464386502e2b6d015e38b768b", null ],
     [ "d_course_moo_moo_farm_unknown_model1", "moo__moo__farm_2course__data_8c.html#aef39362d3a6aa41391b736260edfc1dd", null ],
     [ "d_course_moo_moo_farm_unknown_model2", "moo__moo__farm_2course__data_8c.html#a13040cc00f95d42e373036520e0224dc", null ],
-    [ "d_course_moo_moo_farm_unknown_waypoints", "moo__moo__farm_2course__data_8c.html#aa1408093a94d05e28338f2a6c9b9fc21", null ]
+    [ "d_course_moo_moo_farm_unknown_path", "moo__moo__farm_2course__data_8c.html#a453081964fa6d642573ecd88c15a76ba", null ]
 ];

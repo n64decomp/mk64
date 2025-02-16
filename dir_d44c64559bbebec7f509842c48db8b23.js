@@ -6,6 +6,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "actor_types.h", "actor__types_8h.html", "actor__types_8h" ],
     [ "bomb_kart.h", "bomb__kart_8h.html", "bomb__kart_8h" ],
     [ "common_structs.h", "common__structs_8h.html", "common__structs_8h" ],
+    [ "config.h", "config_8h.html", "config_8h" ],
     [ "course.h", "course_8h.html", "course_8h" ],
     [ "course_offsets.h", "course__offsets_8h.html", "course__offsets_8h" ],
     [ "debug.h", "debug_8h.html", "debug_8h" ],
@@ -16,11 +17,11 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "macros.inc", "macros_8inc.html", null ],
     [ "mk64.h", "mk64_8h.html", "mk64_8h" ],
     [ "objects.h", "objects_8h.html", "objects_8h" ],
+    [ "path.h", "path_8h.html", "path_8h" ],
     [ "save_data.h", "save__data_8h.html", "save__data_8h" ],
     [ "segments.h", "segments_8h.html", "segments_8h" ],
     [ "sounds.h", "sounds_8h.html", "sounds_8h" ],
     [ "spline.h", "spline_8h.html", "spline_8h" ],
     [ "ultra64.h", "ultra64_8h.html", "ultra64_8h" ],
-    [ "vehicles.h", "vehicles_8h.html", "vehicles_8h" ],
-    [ "waypoints.h", "waypoints_8h.html", "waypoints_8h" ]
+    [ "vehicles.h", "vehicles_8h.html", "vehicles_8h" ]
 ];

@@ -12,10 +12,13 @@ var searchData=
   ['coursetable_9',['CourseTable',['../structCourseTable.html',1,'']]],
   ['coursetimetrialrecords_10',['CourseTimeTrialRecords',['../structCourseTimeTrialRecords.html',1,'']]],
   ['coursevtx_11',['CourseVtx',['../structCourseVtx.html',1,'']]],
-  ['crabspawn_12',['CrabSpawn',['../structCrabSpawn.html',1,'']]],
-  ['credits_5fdata_5f1fa0_13',['credits_data_1FA0',['../structcredits__data__1FA0.html',1,'']]],
-  ['ctlentry_14',['CtlEntry',['../structCtlEntry.html',1,'']]],
-  ['cuptimetrialrecords_15',['CupTimeTrialRecords',['../structCupTimeTrialRecords.html',1,'']]],
-  ['cutscene_16',['Cutscene',['../structCutscene.html',1,'']]],
-  ['cutscenesplinepoint_17',['CutsceneSplinePoint',['../structCutsceneSplinePoint.html',1,'']]]
+  ['cpubehaviour_12',['CPUBehaviour',['../structCPUBehaviour.html',1,'']]],
+  ['cpuitemstrategydata_13',['CpuItemStrategyData',['../structCpuItemStrategyData.html',1,'']]],
+  ['crabspawn_14',['CrabSpawn',['../structCrabSpawn.html',1,'']]],
+  ['credits_5fdata_5f1fa0_15',['credits_data_1FA0',['../structcredits__data__1FA0.html',1,'']]],
+  ['creditsrenderinfo_16',['CreditsRenderInfo',['../structCreditsRenderInfo.html',1,'']]],
+  ['ctlentry_17',['CtlEntry',['../structCtlEntry.html',1,'']]],
+  ['cuptimetrialrecords_18',['CupTimeTrialRecords',['../structCupTimeTrialRecords.html',1,'']]],
+  ['cutscene_19',['Cutscene',['../structCutscene.html',1,'']]],
+  ['cutscenesplinepoint_20',['CutsceneSplinePoint',['../structCutsceneSplinePoint.html',1,'']]]
 ];
