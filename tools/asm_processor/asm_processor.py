@@ -6,6 +6,7 @@ import copy
 import sys
 import re
 import os
+import shutil
 from collections import namedtuple
 from io import StringIO
 
@@ -1009,16 +1010,19 @@ def fixup_objfile(objfile_name, functions, asm_prelude, assembler, output_enc, d
             asm.extend(conts)
         asm.append('glabel {}'.format(late_rodata_source_name_end))
 
-    o_file = tempfile.NamedTemporaryFile(prefix='asm-processor', suffix='.o', delete=False)
-    o_name = o_file.name
+    os.makedirs("tmp", exist_ok=True)
+    o_file = tempfile.NamedTemporaryFile(prefix='asm-processor', suffix='.o', dir="tmp", delete=False)
+    o_name = os.path.realpath(o_file.name)
     o_file.close()
-    s_file = tempfile.NamedTemporaryFile(prefix='asm-processor', suffix='.s', delete=False)
-    s_name = s_file.name
+    s_file = tempfile.NamedTemporaryFile(prefix='asm-processor', suffix='.s', dir="tmp", delete=False)
+    s_name = os.path.realpath(s_file.name)
     try:
         s_file.write(asm_prelude + b'\n')
         for line in asm:
             s_file.write(line.encode(output_enc) + b'\n')
         s_file.close()
+        print("Assembling", s_name)
+        print("Output file", o_name)
         ret = os.system(assembler + " " + s_name + " -o " + o_name)
         if ret != 0:
             raise Failure("failed to assemble")
@@ -1268,11 +1272,13 @@ def fixup_objfile(objfile_name, functions, asm_prelude, assembler, output_enc, d
         objfile.write(objfile_name)
     finally:
         s_file.close()
-        os.remove(s_name)
+        # os.remove(s_name)
         try:
-            os.remove(o_name)
+            pass
+            # os.remove(o_name)
         except:
             pass
+    shutil.rmtree("tmp")
 
 def run_wrapped(argv, outfile, functions):
     parser = argparse.ArgumentParser(description="Pre-process .c files and post-process .o files to enable embedding assembly into C.")
