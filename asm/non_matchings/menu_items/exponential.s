@@ -5,7 +5,7 @@ glabel D_800F0CD0
 
 .section .text
 
-glabel func_8009195C
+glabel exponential
 /* 09255C 8009195C 44802800 */  mtc1  $zero, $f5
 /* 092560 80091960 44802000 */  mtc1  $zero, $f4
 /* 092564 80091964 27BDFFE8 */  addiu $sp, $sp, -0x18
@@ -70,7 +70,7 @@ glabel func_8009195C
 /* 092648 80091A48 46202080 */  add.d $f2, $f4, $f0
 /* 09264C 80091A4C 462E1180 */  add.d $f6, $f2, $f14
 /* 092650 80091A50 462E1201 */  sub.d $f8, $f2, $f14
-/* 092654 80091A54 0C02469B */  jal   func_80091A6C
+/* 092654 80091A54 0C02469B */  jal   pow2
 /* 092658 80091A58 46283303 */   div.d $f12, $f6, $f8
 /* 09265C 80091A5C 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 092660 80091A60 27BD0018 */  addiu $sp, $sp, 0x18
