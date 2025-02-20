@@ -43,7 +43,7 @@ typedef struct {
     /* 0x30 */ Vec3f wheel4Pos;
     /* 0x3C */ f32 unk_3C;
     /* 0x40 */ u16 someRot;        // seems like an angle of some variety, can't figure out its purpose
-    /* 0x42 */ u16 pathPointIndex; // probably the pathPoint that the bomb circles
+    /* 0x42 */ u16 pathPointIndex; // probably the path point that the bomb circles
     /* 0x44 */ u16 state;
     /* 0x46 */ u16 bounceTimer; // timer? state? height?
     /* 0x48 */ u16 circleTimer; // timer? state? Somehow controls how it circles around
