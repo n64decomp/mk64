@@ -137,7 +137,7 @@ void generate_filename(const char *in_name, char *out_name, char *extension);
 // extract base filename from file path
 // name: path to file
 // returns just the file name after the last '/'
-char *basename(const char *name);
+//char *basename(const char *name);
 
 // make a directory if it doesn't exist
 // dir_name: name of the directory
