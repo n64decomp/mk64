@@ -1136,37 +1136,25 @@ f64 func_8009186C(f64 arg0) {
     return ((f64) sp38 * 0.6931471805599453) + (2 * var_f2);
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/dXpT5
-// Some math reordering issues on the continued fraction line
 f64 func_8009195C(f64 arg0) {
     s32 temp_f10;
-    s32 six = 6;
-    s32 ten = 10;
-    s32 fourteen = 14;
-    s32 eighteen = 18;
     f64 temp_f2;
+    f64 temp_f0;
+    s32 i;
 
-    if (arg0 >= 0.0) {
-        temp_f2 = 0.5;
-    } else {
-        temp_f2 = -0.5;
-    }
-    temp_f10 = temp_f2 + (arg0 / 0.6931471805599453);
+    temp_f10 = ((arg0 >= 0.0) ? 0.5 : -0.5) + (arg0 / 0.6931471805599453);
     arg0 -= (temp_f10 * 0.6931471805599453);
-    temp_f2 = arg0 * arg0;
-    /**
-     * This is the denominator part a tanh(x/2) continued fraction, where arg0 is x
-     * The best reference to this I can find is:
-     *https://math.stackexchange.com/questions/3241906/continued-fraction-02-6-10-14-22n-1-frace-1e1
-     **/
-    temp_f2 =
-        2 + (temp_f2 / (six + (temp_f2 / (ten + (temp_f2 / (fourteen + (temp_f2 / (eighteen + (temp_f2 / 22)))))))));
+    temp_f2 = SQ(arg0);
+
+    temp_f0 = temp_f2 / 22;
+    for (i = 0; i < 4; i++) {
+        temp_f0 = temp_f2 / ((18 - 4 * i) + temp_f0);
+    }
+    
+    temp_f2 = 2 + temp_f0;
+
     return func_80091A6C((temp_f2 + arg0) / (temp_f2 - arg0), temp_f10);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menu_items/func_8009195C.s")
-#endif
 
 /**
  * This function appears to multiply some `value`
