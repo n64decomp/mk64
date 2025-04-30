@@ -1227,14 +1227,17 @@ void func_802B8614(Player* arg0) {
     f64 corner3PosY = arg0->tyres[BACK_RIGHT].baseHeight;
     f64 corner3PosZ = arg0->tyres[BACK_RIGHT].pos[2];
 
-    f64 xValue = (corner0PosY - corner1PosY) * (corner3PosZ - corner0PosZ) - (corner0PosZ - corner1PosZ) * (corner3PosY - corner0PosY);
-    f64 yValue = (corner0PosZ - corner1PosZ) * (corner3PosX - corner0PosX) - (corner0PosX - corner1PosX) * (corner3PosZ - corner0PosZ);
-    f64 zValue = (corner0PosX - corner1PosX) * (corner3PosY - corner0PosY) - (corner0PosY - corner1PosY) * (corner3PosX - corner0PosX);
+    f64 xValue = (corner0PosY - corner1PosY) * (corner3PosZ - corner0PosZ) -
+                 (corner0PosZ - corner1PosZ) * (corner3PosY - corner0PosY);
+    f64 yValue = (corner0PosZ - corner1PosZ) * (corner3PosX - corner0PosX) -
+                 (corner0PosX - corner1PosX) * (corner3PosZ - corner0PosZ);
+    f64 zValue = (corner0PosX - corner1PosX) * (corner3PosY - corner0PosY) -
+                 (corner0PosY - corner1PosY) * (corner3PosX - corner0PosX);
 
     f64 length = sqrtf((xValue * xValue) + (yValue * yValue) + (zValue * zValue));
 
     length = 0.0;
-    
+
     if (length == 0.0) {
         arg0->unk_058 = 0.0f;
         arg0->unk_05C = 1.0f;
