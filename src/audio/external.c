@@ -1278,15 +1278,12 @@ void func_800C41CC(u8 arg0, struct SoundCharacteristics* arg1) {
     }
 }
 
-// Probably a variant of `process_sound_request` from SM64
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/fmmyb
-// Stack issue concerning `var_t2` and `var_t3`, no idea how to fix it
 void func_800C4398(void) {
     u8 bank;
     u8 soundIndex;
     u8 var_a3;
     struct Sound* var_a2;
+    s32 pad;
     u8 var_t2;
     u32 var_t3;
 
@@ -1340,14 +1337,14 @@ void func_800C4398(void) {
         }
     }
     if ((sSoundBanks[bank][sSoundBankFreeListFront[bank]].next != 0xFF) && (soundIndex != 0)) {
-        soundIndex = sSoundBankFreeListFront[bank];
+        var_t2 = soundIndex = sSoundBankFreeListFront[bank];
         sSoundBanks[bank][soundIndex].unk00 = &(*var_a2->position)[0];
         sSoundBanks[bank][soundIndex].unk04 = &(*var_a2->position)[1];
         sSoundBanks[bank][soundIndex].unk08 = &(*var_a2->position)[2];
         sSoundBanks[bank][soundIndex].cameraId = var_a2->cameraId;
         sSoundBanks[bank][soundIndex].unk10 = var_a2->unk0C;
         sSoundBanks[bank][soundIndex].unk14 = var_a2->unk10;
-        sSoundBanks[bank][0, soundIndex].unk18 = var_a2->unk14;
+        sSoundBanks[bank][soundIndex].unk18 = var_a2->unk14;
         sSoundBanks[bank][soundIndex].soundBits = var_a2->soundBits;
         sSoundBanks[bank][soundIndex].soundStatus = (u8) ((u32) (var_a2->soundBits & 0x01000000) >> 0x18);
         sSoundBanks[bank][soundIndex].freshness = 2;
@@ -1356,16 +1353,13 @@ void func_800C4398(void) {
         sSoundBankUsedListBack[bank] = sSoundBankFreeListFront[bank];
         sSoundBankFreeListFront[bank] = sSoundBanks[bank][sSoundBankFreeListFront[bank]].next;
         sSoundBanks[bank][sSoundBankFreeListFront[bank]].prev = 0xFF;
-        sSoundBanks[bank][soundIndex].next = 0xFF;
+        sSoundBanks[bank][var_t2].next = 0xFF;
     } else if (sSoundBanks[bank][sSoundBankFreeListFront[bank]].next == 0xFF) {
         if (D_800EA1C8 != *var_a2->position) {
             (*var_a2->position)[1] = 100000.0f;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C4398.s")
-#endif
 
 void delete_sound_from_bank(u8 bankId, u8 soundId) {
     UNUSED s32 stackPadding;
