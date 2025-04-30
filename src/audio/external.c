@@ -1506,9 +1506,6 @@ void func_800C4888(u8 bankId) {
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800C4888.s")
 #endif
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/Lm9EX
-/* ~*~*~* UwU Resgister allocation OwO *~*~*~ */
 void func_800C4FE4(u8 bankId) {
     u8 soundId;
     u8 var_s4;
@@ -1529,8 +1526,8 @@ void func_800C4FE4(u8 bankId) {
                     D_801930D0->unk_00E[2] = 0x28;
                 }
                 func_800C19D0(bankId, soundId, D_80192C38);
-                func_800CBBE8((D_80192C38 << 8) | 0x06020000, 1);
-                func_800CBBE8((D_80192C38 << 8) | 0x06020000 | 4, temp_s0->soundBits & 0xFF);
+                func_800CBBE8(((D_80192C38 & 0xFF) << 8) | 0x06020000, 1);
+                func_800CBBE8(((D_80192C38 & 0xFF) << 8) | 0x06020000 | 4, (u8)(temp_s0->soundBits & 0xFF));
                 temp_s0->soundStatus = 4U;
             } else if (((u8) thing->soundScriptIO[7]) == 0x80) {
                 func_800CBBE8(((D_80192C38 & 0xFF) << 8) | 0x06020000 | 7, 0);
@@ -1543,9 +1540,6 @@ void func_800C4FE4(u8 bankId) {
         D_80192C38 += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C4FE4.s")
-#endif
 
 // Seems somewhat similar to certain parts of `select_current_sounds` from SM64
 void func_800C5278(u8 bankId) {
