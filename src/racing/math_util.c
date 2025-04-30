@@ -1214,7 +1214,7 @@ UNUSED void func_802B8414(uintptr_t addr, Mat4 arg1, s16 arg2, s16 arg3, s32 arg
 }
 
 void func_802B8614(Player* arg0) {
-    f64 pad[4];
+    UNUSED f64 pad[4];
     f64 corner1PosX = arg0->tyres[FRONT_RIGHT].pos[0];
     f64 corner1PosY = arg0->tyres[FRONT_RIGHT].baseHeight;
     f64 corner1PosZ = arg0->tyres[FRONT_RIGHT].pos[2];

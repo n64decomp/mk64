@@ -624,38 +624,33 @@ void func_800C2474(void) {
     D_8018EFD8[var_v0].next = 0xFF;
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/B9kUf
-// No idea what's up with this function. `arg1_copy` is a huge improvement but feels very silly
-// Presumably there's some macro being used to do all the or'ing (creating soundbits), that might
-// matter for match purposes
 void func_800C284C(u8 arg0, u8 arg1, u8 arg2, u16 arg3) {
     u8 var_v1;
-    u8* arg1_copy = &arg1;
+    UNUSED s32 pad;
 
-    if ((D_800EA1EC == 0) || (arg0 == 2)) {
-        if (1) {}
-        func_800CBBB8(0x82000000 | (arg0 << 0x10) | (*arg1_copy << 8), arg3);
-        D_801930D0[arg0].unk_248 = *arg1_copy | (arg2 << 8);
-        if (D_801930D0[arg0].unk_000 != 1.0f) {
-            func_800CBB88(0x41000000 | (arg0 << 0x10), D_801930D0[arg0].unk_000);
-        }
-        D_801930D0[arg0].unk_028 = 0;
-        D_801930D0[arg0].unk_018 = 0;
-        D_801930D0[arg0].unk_014 = 0;
-        for (var_v1 = 0; var_v1 < 16; var_v1++) {
-            D_801930D0[arg0].unk_044[var_v1].unk_00 = 1.0f;
-            D_801930D0[arg0].unk_044[var_v1].unk_0C = 0;
-            D_801930D0[arg0].unk_044[var_v1].unk_10 = 1.0f;
-            D_801930D0[arg0].unk_044[var_v1].unk_1C = 0;
-        }
-        D_801930D0[arg0].unk_244 = 0;
-        D_801930D0[arg0].unk_246 = 0;
+    if ((D_800EA1EC != 0) && (arg0 != 2)) {
+        return;
     }
+    
+    func_800CBBB8(0x82000000 | (((u32)arg0 & 0xFF) << 0x10) | (((u32)arg1 & 0xFF) << 8), arg3);
+    D_801930D0[arg0].unk_248 = arg1 | (arg2 << 8);
+    if (D_801930D0[arg0].unk_000 != 1.0f) {
+        func_800CBB88(0x41000000 | (((u32)arg0 & 0xFF) << 0x10), D_801930D0[arg0].unk_000);
+    }
+    D_801930D0[arg0].unk_028 = 0;
+    D_801930D0[arg0].unk_018 = 0;
+    D_801930D0[arg0].unk_014 = 0;
+
+    for (var_v1 = 0; var_v1 < 16; var_v1++) {
+        D_801930D0[arg0].unk_044[var_v1].unk_00 = 1.0f;
+        D_801930D0[arg0].unk_044[var_v1].unk_0C = 0;
+        D_801930D0[arg0].unk_044[var_v1].unk_10 = 1.0f;
+        D_801930D0[arg0].unk_044[var_v1].unk_1C = 0;
+    }
+
+    D_801930D0[arg0].unk_244 = 0;
+    D_801930D0[arg0].unk_246 = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C284C.s")
-#endif
 
 void func_800C29B4(u8 arg0, u16 arg1) {
     func_800CBBB8(((arg0 & 0xFF) << 0x10) | 0x83000000, arg1);
