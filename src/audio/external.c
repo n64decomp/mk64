@@ -1299,7 +1299,7 @@ void func_800C4398(void) {
     var_a2 = &sSoundRequests[sNumProcessedSoundRequests];
     if (var_a2->soundBits == 0) {
         return;
-}
+    }
 
     bank = ((u32) (var_a2->soundBits & 0xF0000000) >> 0x1C);
     soundIndex = sSoundBanks[bank][0].next;
