@@ -657,204 +657,231 @@ void func_800C29B4(u8 arg0, u16 arg1) {
     D_801930D0[arg0].unk_248 = 0xFFFF;
 }
 
-#ifdef NON_MATCHING
-/**
- * https://decomp.me/scratch/TS7EW
- * The last big thing is the for loop in `case 10`. For some reason the 0 used for loop initialization is saved to 2
- *variables? I speculate that this is functionally equivalent although its hard to tell with all the register allocation
- *differences `arg0` is almost certainly `soundbits`, so all the `why*` variables are probably the results of macros
- *pulling out the different parts of the full sound specification.
- **/
-void func_800C2A2C(u32 arg0) {
-    u16 var_a3;
-    u16 var_a0;
-    s32 var_a2;
-    u8 var_a1;
-    u8 var_t0;
-    u8 var_v1;
-    struct_D_801930D0_entry* temp_v0_3;
-    u8 test;
-    u8 why;
-    u16 why2;
-    u8 why3;
-    u8 why4;
-    u8 why5;
-    u8 temp_a1;
+void func_800C2A2C(u32 cmd) {
+    f32 freqScaleTarget;
+    u16 channelMaskDisable;
+    u16 val;
+    u16 fadeTimer;
+    u8 priority;
+    u8 ioPort;
+    u8 i;
+    u8 duration;
+    u8 channelIndex;
+    u8 found;
+    u8 seqId;
+    u8 subArgs;
+    u8 op;
+    u8 seqPlayerIndex;
 
-    test = arg0 & 0xFF;
-    why = (arg0 & 0xFF00) >> 8;
-    why2 = (arg0 & 0xFF0000) >> 0xD;
-    why3 = (arg0 & 0xFF0000) >> 0xF;
-    why4 = (arg0 & 0xFF0000) >> 0x10;
-    why5 = (arg0 & 0xF00) >> 8;
-    temp_a1 = (arg0 & 0x0F000000) >> 0x18;
-    switch ((arg0 >> 0x1C) & 0xFF) {
+    op = cmd >> 28;
+    seqPlayerIndex = (cmd & 0xF000000) >> 24;
+
+    switch (op) {
         case 0:
-            func_800C284C(temp_a1, arg0 & 0xFF, why, why2);
+            seqId = cmd & 0xFF;
+            subArgs = (cmd & 0xFF00) >> 8;
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+            func_800C284C(seqPlayerIndex, seqId, subArgs, fadeTimer);
             break;
+        
         case 1:
-            func_800C29B4(temp_a1, why2);
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+            func_800C29B4(seqPlayerIndex, fadeTimer);
             break;
+        
         case 2:
-            for (var_v1 = 0; var_v1 < D_80192CC6[temp_a1]; var_v1++) {
-                if (test == D_80192CA8[temp_a1][var_v1].thing0) {
-                    if (var_v1 == 0) {
-                        func_800C284C(temp_a1, test, why, why2);
+            seqId = cmd & 0xFF;
+            subArgs = (cmd & 0xFF00) >> 8;
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+            priority = subArgs;
+
+            for (i = 0; i < D_80192CC6[seqPlayerIndex]; i++) {
+                if (D_80192CA8[seqPlayerIndex][i].thing0 == seqId) {
+                    if (i == 0) {
+                        func_800C284C(seqPlayerIndex, seqId, subArgs, fadeTimer);
                     }
                     return;
                 }
             }
-            var_t0 = D_80192CC6[temp_a1];
-            for (var_v1 = 0; var_v1 < D_80192CC6[temp_a1]; var_v1++) {
-                if (why >= D_80192CA8[temp_a1][var_v1].thing1) {
-                    var_t0 = var_v1;
-                    var_v1 = D_80192CC6[temp_a1];
+            
+            found = D_80192CC6[seqPlayerIndex];
+            for (i = 0; i < D_80192CC6[seqPlayerIndex]; i++) {
+                if (priority >= D_80192CA8[seqPlayerIndex][i].thing1) {
+                    found = i;
+                    i = D_80192CC6[seqPlayerIndex];
                 }
             }
-            if ((var_t0 != D_80192CC6[temp_a1]) || (var_t0 == 0)) {
-                if (D_80192CC6[temp_a1] < 5) {
-                    D_80192CC6[temp_a1]++;
+            
+            if ((found != D_80192CC6[seqPlayerIndex]) || (found == 0)) {
+                if (D_80192CC6[seqPlayerIndex] < 5) {
+                    D_80192CC6[seqPlayerIndex]++;
                 }
-                for (var_v1 = D_80192CC6[temp_a1] - 1; var_v1 != var_t0; var_v1--) {
-                    D_80192CA8[temp_a1][var_v1].thing1 = D_80192CA8[temp_a1][var_v1 - 1].thing1;
-                    D_80192CA8[temp_a1][var_v1].thing0 = D_80192CA8[temp_a1][var_v1 - 1].thing0;
+                for (i = D_80192CC6[seqPlayerIndex] - 1; i != found; i--) {
+                    D_80192CA8[seqPlayerIndex][i].thing1 = D_80192CA8[seqPlayerIndex][i - 1].thing1;
+                    D_80192CA8[seqPlayerIndex][i].thing0 = D_80192CA8[seqPlayerIndex][i - 1].thing0;
                 }
-                D_80192CA8[temp_a1][var_t0].thing1 = why;
-                D_80192CA8[temp_a1][var_t0].thing0 = test;
+            
+                D_80192CA8[seqPlayerIndex][found].thing1 = subArgs;
+                D_80192CA8[seqPlayerIndex][found].thing0 = seqId;
             }
-            if (var_t0 == 0) {
-                func_800C284C(temp_a1, test, why, why2);
+            if (found == 0) {
+                func_800C284C(seqPlayerIndex, seqId, subArgs, fadeTimer);
             }
             break;
+        
         case 3:
-            var_t0 = D_80192CC6[temp_a1];
-            for (var_v1 = 0; var_v1 < D_80192CC6[temp_a1]; var_v1++) {
-                if (test == D_80192CA8[temp_a1][var_v1].thing0) {
-                    var_t0 = var_v1;
-                    var_v1 = D_80192CC6[temp_a1];
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+
+            found = D_80192CC6[seqPlayerIndex];
+            for (i = 0; i < D_80192CC6[seqPlayerIndex]; i++) {
+                seqId = cmd & 0xFF;
+                if (D_80192CA8[seqPlayerIndex][i].thing0 == seqId) {
+                    found = i;
+                    i = D_80192CC6[seqPlayerIndex];
                 }
             }
-            if (var_t0 != D_80192CC6[temp_a1]) {
-                for (var_v1 = var_t0; var_v1 < D_80192CC6[temp_a1] - 1; var_v1++) {
-                    D_80192CA8[temp_a1][var_v1].thing1 = D_80192CA8[temp_a1][var_v1 + 1].thing1;
-                    D_80192CA8[temp_a1][var_v1].thing0 = D_80192CA8[temp_a1][var_v1 + 1].thing0;
+            
+            if (found != D_80192CC6[seqPlayerIndex]) {
+                for (i = found; i < (D_80192CC6[seqPlayerIndex] - 1); i++) {
+                D_80192CA8[seqPlayerIndex][i].thing1 = D_80192CA8[seqPlayerIndex][i + 1].thing1;
+                D_80192CA8[seqPlayerIndex][i].thing0 = D_80192CA8[seqPlayerIndex][i + 1].thing0;
                 }
-                D_80192CC6[temp_a1]--;
+            
+                D_80192CC6[seqPlayerIndex]--;
             }
-            if (var_t0 == 0) {
-                func_800C29B4(temp_a1, why2);
-                if (D_80192CC6[temp_a1] != 0) {
-                    func_800C284C(temp_a1, D_80192CA8[temp_a1][0].thing0, D_80192CA8[temp_a1][0].thing1, why2);
+            if (found == 0) {
+                func_800C29B4(seqPlayerIndex, fadeTimer);
+                if (D_80192CC6[seqPlayerIndex] != 0) {
+                    func_800C284C(seqPlayerIndex, D_80192CA8[seqPlayerIndex][0].thing0, D_80192CA8[seqPlayerIndex][0].thing1, fadeTimer);
                 }
             }
             break;
+        
         case 4:
-            var_a1 = why3;
-            if (var_a1 == 0) {
-                var_a1++;
-            }
+            duration = (cmd & 0xFF0000) >> 15;
+            val = cmd & 0xFF;
 
-            temp_v0_3 = &D_801930D0[temp_a1 & 0xFF];
-            temp_v0_3->unk_004 = (arg0 & 0xFF) / 127.0f;
-            if (temp_v0_3->unk_000 != temp_v0_3->unk_004) {
-                temp_v0_3->unk_008 = (temp_v0_3->unk_000 - temp_v0_3->unk_004) / var_a1;
-                temp_v0_3->unk_00C = var_a1;
+            if (duration == 0) {
+                duration++;
+            }
+            
+            D_801930D0[seqPlayerIndex].unk_004 = val / 127.0f;
+            if (D_801930D0[seqPlayerIndex].unk_000 != D_801930D0[seqPlayerIndex].unk_004) {
+                D_801930D0[seqPlayerIndex].unk_008 = (D_801930D0[seqPlayerIndex].unk_000 - D_801930D0[seqPlayerIndex].unk_004) / duration;
+                D_801930D0[seqPlayerIndex].unk_00C = duration;
             }
             break;
+        
         case 5:
-            var_a1 = why3;
-            if (var_a1 == 0) {
-                var_a1++;
-            }
+            duration = (cmd & 0xFF0000) >> 15;
+            val = cmd & 0xFFFF;
 
-            temp_v0_3 = &D_801930D0[var_a1 & 0xFF];
-            for (var_v1 = 0; var_v1 < 0x10; var_v1++) {
-                temp_v0_3->unk_044[var_v1].unk_14 = ((arg0 & 0xFFFF) / 1000.0f);
-                temp_v0_3->unk_044[var_v1].unk_18 =
-                    (temp_v0_3->unk_044[var_v1].unk_10 - temp_v0_3->unk_044[var_v1].unk_14) / var_a1;
-                temp_v0_3->unk_044[var_v1].unk_1C = var_a1;
+            if (duration == 0) {
+                duration++;
             }
-            D_801930D0[var_a1].unk_244 = 0xFFFF;
+            freqScaleTarget = (f32)val / 1000.0f;
+            for (i = 0; i < 0x10; i++) {
+                D_801930D0[seqPlayerIndex].unk_044[i].unk_14 = freqScaleTarget;
+                D_801930D0[seqPlayerIndex].unk_044[i].unk_1C = duration;
+                D_801930D0[seqPlayerIndex].unk_044[i].unk_18 = (D_801930D0[seqPlayerIndex].unk_044[i].unk_10 - freqScaleTarget) / duration;
+            }
+            
+            D_801930D0[seqPlayerIndex].unk_244 = 0xFFFF;
             break;
+        
         case 6:
-            var_a1 = why3;
-            if (var_a1 == 0) {
-                var_a1++;
-            }
-            var_v1 = ((arg0 & 0xF00) >> 8) & 0xFF;
+            duration = (cmd & 0xFF0000) >> 15;
+            channelIndex = (cmd & 0xF00) >> 8;
+            val = cmd & 0xFF;
 
-            D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_04 = test / 127.0f;
-            if (D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_00 != D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_04) {
-                D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_08 = (D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_00 -
-                                                                    D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_04) /
-                                                                   var_a1;
-                D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_0C = var_a1;
-                D_801930D0[var_a1 & 0xFF].unk_244 |= 1 << var_v1;
+            if (duration == 0) {
+                duration++;
+            }
+
+            D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_04 = val / 127.0f;
+            if (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00 != D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_04) {
+                D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_08 = (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00 - D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_04) / duration;
+                D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_0C = duration;
+                D_801930D0[seqPlayerIndex].unk_244 |= 1 << channelIndex;
             }
             break;
+        
         case 7:
-            func_800CBBE8(0x46000000 | (temp_a1 & 0xFF) << 0x10 | (why4 & 0xFF) << 8, (u64) arg0);
+            ioPort = (cmd & 0xFF0000) >> 16;
+            val = cmd & 0xFF;
+            func_800CBBE8((0x46000000 | ((seqPlayerIndex & 0xFF) << 0x10)) | ((ioPort & 0xFF) << 8), val);
             break;
+        
         case 8:
-            if (!(D_801930D0[temp_a1].unk_24A & (1 << why5))) {
-                func_800CBBE8(0x06000000 | ((temp_a1 & 0xFF) << 0x10) | (why5 & 0xFF) << 8 | (why4 & 0xFF), (u64) arg0);
+            channelIndex = (cmd & 0xF00) >> 8;
+            ioPort = (cmd & 0xFF0000) >> 16;
+            val = cmd & 0xFF;
+            if (!(D_801930D0[seqPlayerIndex].unk_24A & (1 << channelIndex))) {
+            func_800CBBE8(((0x06000000 | ((seqPlayerIndex & 0xFF) << 0x10)) | (((u32)channelIndex & 0xFF) << 8)) | (ioPort & 0xFF), val);
             }
             break;
+        
         case 9:
-            D_801930D0[temp_a1].unk_24A = arg0;
+            D_801930D0[seqPlayerIndex].unk_24A = cmd & 0xFFFF;
             break;
+        
         case 10:
-            var_a0 = 1;
-            var_a3 = arg0 & 0xFFFF;
-            for (var_v1 = 0; var_v1 < 0x10; var_v1++) {
-                if (var_a3 & var_a0) {
-                    var_a2 = 1;
-                } else {
-                    var_a2 = 0;
-                }
-                func_800CBBE8(((temp_a1 & 0xFF) << 0x10) | 0x08000000 | ((var_v1 & 0xFF) << 8), var_a2);
-                var_a0 *= 2;
+            val = 1;
+            channelMaskDisable = cmd & 0xFFFF;
+            for (i = 0; i < 0x10; i++) {
+                func_800CBBE8(0x08000000 | ((seqPlayerIndex & 0xFF) << 0x10) | (((u32)i & 0xFF) << 8), (channelMaskDisable & val) ? 1 : 0);
+                val <<= 1;
             }
+            
             break;
+        
         case 11:
-            D_801930D0[temp_a1].unk_014 = arg0;
+            D_801930D0[seqPlayerIndex].unk_014 = cmd;
             break;
+        
         case 12:
-            temp_v0_3 = &D_801930D0[temp_a1 & 0xFF];
-            if ((((arg0 & 0xF00000) >> 0x14) & 0xFF) != 0xF) {
-                var_t0 = temp_v0_3->unk_041++;
-                if (var_t0 < 5) {
-                    temp_v0_3->unk_02C[var_t0] = arg0;
-                    temp_v0_3->unk_040 = 2;
+            subArgs = (cmd & 0xF00000) >> 20;
+            if (subArgs != 0xF) {
+                found = D_801930D0[seqPlayerIndex].unk_041++;
+                if (found < 5) {
+                    D_801930D0[seqPlayerIndex].unk_02C[found] = cmd;
+                    D_801930D0[seqPlayerIndex].unk_040 = 2;
                 }
             } else {
-                temp_v0_3->unk_041 = 0;
+                D_801930D0[seqPlayerIndex].unk_041 = 0;
             }
             break;
+        
         case 14:
-            switch (why5) { /* switch 1; irregular */
-                case 0:     /* switch 1 */
-                    func_800CBBB8(0xF0000000U, D_800EA1F0[arg0 & 0xFF]);
+            subArgs = (cmd & 0xF00) >> 8;
+            val = cmd & 0xFF;
+            switch (subArgs) {
+                case 0:
+                    func_800CBBB8(0xF0000000, D_800EA1F0[val]);
                     break;
-                case 1: /* switch 1 */
-                    D_800EA1EC = arg0 & 1;
+                
+                case 1:
+                    D_800EA1EC = val & 1;
                     break;
             }
+            
             break;
+        
         case 15:
-            D_800EA1C0 = (arg0 & 0xFF00) >> 8;
-            audio_reset_session_eu((void*) test);
-            D_800EA1F4[0] = test;
-            func_800CBBE8(0x46020000U, why);
+            seqId = cmd & 0xFF;
+            subArgs = (cmd & 0xFF00) >> 8;
+            D_800EA1C0 = subArgs;
+            audio_reset_session_eu((void *) seqId);
+            D_800EA1F4[0] = seqId;
+            func_800CBBE8(0x46020000, subArgs);
             func_800C5C40();
             break;
+        
         default:
             break;
+        
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C2A2C.s")
-#endif
 
 void func_800C3448(u32 arg0) {
     D_80192CD0[D_800EA1E4] = arg0;
