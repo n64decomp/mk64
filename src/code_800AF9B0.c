@@ -33,9 +33,6 @@ s16 D_8018EDB4;
 Vtx* D_8018EDB8;
 Vtx* D_8018EDBC;
 
-/*** utils **/
-#define SQ(x) ((x) * (x))
-
 void func_800AF9B0(void) {
     D_8018EDB8 = (void*) get_next_available_memory_addr(480 * sizeof(Vtx));
     D_8018EDBC = (void*) get_next_available_memory_addr(480 * sizeof(Vtx));
