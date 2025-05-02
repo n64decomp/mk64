@@ -131,7 +131,7 @@ void calculate_track_offset_position(u16, f32, f32, s16);
 void set_track_offset_position(u16, f32, s16);
 s16 func_8000BD94(f32, f32, f32, s32);
 
-s16 find_closest_pathPoint_track_section(f32, f32, f32, u16, s32*);
+s16 find_closest_path_point_track_section(f32, f32, f32, u16, s32*);
 s16 update_path_index_with_track(f32, f32, f32, s16, s32, u16);
 s16 update_path_index(f32, f32, f32, s16, s32);
 void tweak_path_index_wario_stadium(f32, f32, f32, s16*, s32);
@@ -139,7 +139,7 @@ void adjust_path_at_start_line(f32, f32, f32, s16*, s32);
 s16 update_path_index_track_section(f32, f32, f32, Player*, s32, s32*);
 s16 update_player_path(f32, f32, f32, s16, Player*, s32, s32);
 
-s16 find_closest_vehicles_pathPoint(f32, f32, f32, s16);
+s16 find_closest_vehicles_path_point(f32, f32, f32, s16);
 s16 func_8000D24C(f32, f32, f32, s32*);
 s16 func_8000D2B4(f32, f32, f32, s16, s32);
 s16 func_8000D33C(f32, f32, f32, s16, s32);
@@ -161,7 +161,7 @@ void generate_player_smoke(void);
 
 void func_8000F0E0(void);
 void func_8000F124(void);
-void clear_pathPoint(TrackPathPoint*, size_t);
+void clear_path_point(TrackPathPoint*, size_t);
 void init_course_path_point(void);
 void init_players(void);
 
@@ -190,7 +190,7 @@ void generate_train_path(void);
 void generate_ferry_path(void);
 void spawn_vehicle_on_road(VehicleStuff*);
 void spawn_course_vehicles(void);
-void set_vehicle_pos_pathPoint(TrainCarStuff*, Path2D*, u16);
+void set_vehicle_pos_path_point(TrainCarStuff*, Path2D*, u16);
 void init_vehicles_trains(void);
 void sync_train_components(TrainCarStuff*, s16);
 void update_vehicle_trains(void);
@@ -200,10 +200,10 @@ void func_80013054(void);
 void check_ai_crossing_distance(s32);
 void init_vehicles_ferry(void);
 void update_vehicle_paddle_boats(void);
-void handle_paddleBoats_interactions(Player*);
+void handle_paddle_boats_interactions(Player*);
 void initialize_toads_turnpike_vehicle(f32, f32, s32, s32, VehicleStuff*, TrackPathPoint*);
 f32 func_80013C74(s16, s16);
-void update_vehicle_follow_pathPoint(VehicleStuff*);
+void update_vehicle_follow_path_point(VehicleStuff*);
 void handle_vehicle_interactions(s32, Player*, VehicleStuff*, f32, f32, s32, u32);
 
 f32 player_track_position_factor_vehicle(s16, f32, s16);
@@ -284,7 +284,7 @@ void func_8001BE78(void);
 
 void func_8001C05C(void);
 void func_8001C14C(void);
-void func_8001C3C4(s32);
+void render_bomb_karts_wrap(s32);
 void func_8001C42C(void);
 
 /* This is where I'd put my static data, if I had any */
@@ -305,7 +305,6 @@ extern s16 D_80162FF8[];
 extern s16 D_80163010[];
 extern f32 cpu_TargetSpeed[];
 extern s16 gPreviousAngleSteering[];
-extern f32 gTrackPositionFactor[];
 extern f32 D_80163090[];
 extern bool gIsPlayerInCurve[];
 extern u16 gCurrentNearestPathPoint;
@@ -319,9 +318,6 @@ extern f32 gPreviousPlayerAiOffsetX[];
 extern f32 gPreviousPlayerAiOffsetZ[];
 extern s16 sVehicleSoundRenderCounter;
 extern s32 D_801631CC;
-extern TrackPathPoint* gCurrentTrackLeftPath;
-extern TrackPathPoint* gCurrentTrackRightPath;
-extern s16* gCurrentTrackSectionTypesPath;
 extern u16 D_801631E0[];
 extern u16 D_801631F8[];
 extern f32 gCurrentCpuTargetSpeed;
@@ -337,19 +333,17 @@ extern u16 gCurrentCPUBehaviourId[];
 extern u16 gPreviousCPUBehaviourId[];
 extern u16 cpu_BehaviourState[];
 
-enum { cpu_BEHAVIOUR_STATE_NONE, cpu_BEHAVIOUR_STATE_START, cpu_BEHAVIOUR_STATE_RUNNING };
+enum { CPU_BEHAVIOUR_STATE_NONE, CPU_BEHAVIOUR_STATE_START, CPU_BEHAVIOUR_STATE_RUNNING };
 
 extern s16 sPlayerAngle[];
-extern u16 gPlayersTrackSectionId[];
 extern u16 D_80163330[];
 extern u16 D_80163344[];
 extern u16 D_80163348[];
 extern u16 D_8016334C[];
 extern u16 gSpeedCPUBehaviour[];
 
-enum { SPEED_cpu_BEHAVIOUR_NORMAL, SPEED_cpu_BEHAVIOUR_FAST, SPEED_cpu_BEHAVIOUR_SLOW, SPEED_cpu_BEHAVIOUR_MAX };
+enum { SPEED_CPU_BEHAVIOUR_NORMAL, SPEED_CPU_BEHAVIOUR_FAST, SPEED_CPU_BEHAVIOUR_SLOW, SPEED_CPU_BEHAVIOUR_MAX };
 
-extern s32 D_80163368[];
 extern s32 gIncrementUpdatePlayer;
 extern s32 D_8016337C;
 extern s16 gCurrentPlayerLookAhead[];
@@ -362,8 +356,6 @@ extern s16 D_80163410[];
 extern f32 D_80163418[];
 extern f32 D_80163428[];
 extern f32 D_80163438[];
-extern s32 gPlayerPathIndex;
-extern f32 gPathStartZ;
 extern f32 gPreviousPlayerZ[];
 extern s16 gBestRankedHumanPlayer;
 // 0 or 1, only 1 when when in extra (mirror) mode
@@ -374,8 +366,6 @@ extern s32 D_80163480;
 extern s32 D_80163484;
 extern s32 D_80163488;
 extern s16 D_8016348C;
-extern s16 cpu_enteringPathIntersection[];
-extern s16 cpu_exitingPathIntersection[];
 extern s16 D_801634C0[];
 extern s16 bStopAICrossing[];
 extern s16 D_801634EC;
@@ -398,15 +388,11 @@ extern s32 gLapCountByPlayerId[];          // D_80164390
 extern s32 gGPCurrentRaceRankByPlayerId[]; // D_801643B8
 extern s32 gPreviousGPCurrentRaceRankByPlayerId[];
 extern s32 gGPCurrentRaceRankByPlayerIdDup[];
-extern u16 gSelectedPathCount;
-extern u16 gNearestPathPointByPlayerId[];
-extern s32 gNumPathPointsTraversed[];
 extern s16 gGetPlayerByCharacterId[];
 extern s32 D_8016448C;
 extern f32 D_80164498[];
 extern f32 gLapCompletionPercentByPlayerId[];    // D_801644A8
 extern f32 gCourseCompletionPercentByPlayerId[]; // D_801644D0
-extern s16 bInMultiPathSection[];
 extern f32 gPlayerPathY[];
 extern s16 D_80164538[];
 extern s32 D_801645D0[];
@@ -432,7 +418,6 @@ extern UnkStruct_46D0 D_801646D0[];
 
 // See bss_80005FD0.s
 extern f32 gCourseCompletionPercentByRank[NUM_PLAYERS];
-extern s32 gPreviousGPCurrentRaceRankByPlayerId[];
 extern s32 D_8016448C;
 extern u16 D_801637BE;
 extern u16 D_80163E2A;

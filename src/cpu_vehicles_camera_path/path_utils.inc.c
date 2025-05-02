@@ -102,7 +102,7 @@ void calculate_track_offset_position(u16 pathPointIndex, f32 lerpFactor, f32 off
     pathPointTwoX = pathPointTwo->posX;
     pathPointTwoZ = pathPointTwo->posZ;
 
-    // Calculate vector between path
+    // Calculate vector between path point
     zdiff = pathPointTwoZ - pathPointOneZ;
     xdiff = pathPointTwoX - pathPointOneX;
     if (xdiff && xdiff) {}
@@ -203,7 +203,7 @@ s16 func_8000BD94(f32 posX, f32 posY, f32 posZ, s32 pathIndex) {
     return nearestPathPointIndex;
 }
 
-s16 find_closest_pathPoint_track_section(f32 posX, f32 posY, f32 posZ, u16 trackSectionId, s32* pathIndex) {
+s16 find_closest_path_point_track_section(f32 posX, f32 posY, f32 posZ, u16 trackSectionId, s32* pathIndex) {
     TrackPathPoint* pathPathPoints;
     TrackPathPoint* considerPathPoint;
     f32 x_dist;
@@ -297,7 +297,7 @@ s16 find_closest_pathPoint_track_section(f32 posX, f32 posY, f32 posZ, u16 track
 }
 
 /**
- * Tries to find the pathPoint nearest to (posX, posY, posZ)
+ * Tries to find the path point nearest to (posX, posY, posZ)
  * Only consider path in the same segment as trackSectionId
  * Only considers path within 500 units of(posX, posY, posZ)
  * Looks 3 path behind and 6 path ahead of pathPointIndex
@@ -339,7 +339,7 @@ s16 update_path_index_with_track(f32 posX, f32 posY, f32 posZ, s16 pathPointInde
 }
 
 /**
- * Tries to find the pathPoint nearest to (posX, posY, posZ)
+ * Tries to find the path point nearest to (posX, posY, posZ)
  * Only considers path within 400 units of (posX, posY, posZ)
  * Looks 3 path behind and 6 path ahead of pathPointIndex
  **/
@@ -424,7 +424,7 @@ s16 update_path_index_track_section(f32 posX, f32 posY, f32 posZ, Player* player
         trackSectionId = gPlayersTrackSectionId[playerId];
     }
     gPlayersTrackSectionId[playerId] = trackSectionId;
-    ret = find_closest_pathPoint_track_section(posX, posY, posZ, trackSectionId, pathIndex);
+    ret = find_closest_path_point_track_section(posX, posY, posZ, trackSectionId, pathIndex);
     gPathIndexByPlayerId[playerId] = *pathIndex;
     return ret;
 }
@@ -475,8 +475,8 @@ s16 update_player_path(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, Player*
                     newPathPoint = update_path_index(posX, posY, posZ, pathPointIndex, pathIndex);
                 }
                 if (newPathPoint == -1) {
-                    newPathPoint = find_closest_pathPoint_track_section(posX, posY, posZ,
-                                                                        gPlayersTrackSectionId[playerId], &pathIndex);
+                    newPathPoint = find_closest_path_point_track_section(posX, posY, posZ,
+                                                                         gPlayersTrackSectionId[playerId], &pathIndex);
                     temp_v1 = &gTrackPaths[pathIndex][newPathPoint];
                     player->pos[0] = (f32) temp_v1->posX;
                     player->pos[1] = (f32) temp_v1->posY;
@@ -509,7 +509,7 @@ s16 update_player_path(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, Player*
     return newPathPoint;
 }
 
-s16 find_closest_vehicles_pathPoint(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 pathPointIndex) {
+s16 find_closest_vehicles_path_point(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 pathPointIndex) {
     f32 xdiff;
     f32 zdiff;
     f32 minimumDistance;
@@ -547,7 +547,7 @@ s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32* pathIndex) {
     Collision sp24;
 
     check_bounding_collision(&sp24, 10.0f, posX, posY, posZ);
-    return find_closest_pathPoint_track_section(posX, posY, posZ, get_track_section_id(sp24.meshIndexZX), pathIndex);
+    return find_closest_path_point_track_section(posX, posY, posZ, get_track_section_id(sp24.meshIndexZX), pathIndex);
 }
 
 s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 pathIndex) {
@@ -824,7 +824,7 @@ s16 update_vehicle_following_path(Vec3f pos, s16* pathPointIndex, f32 speed) {
     sp38[0] = pos[0];
     sp38[1] = pos[1];
     sp38[2] = pos[2];
-    newPathPointIndex = find_closest_vehicles_pathPoint(origXPos, origYPos, origZPos, *pathPointIndex);
+    newPathPointIndex = find_closest_vehicles_path_point(origXPos, origYPos, origZPos, *pathPointIndex);
     *pathPointIndex = newPathPointIndex;
     farPathPoint1 = (newPathPointIndex + 3) % gVehicle2DPathLength;
     farPathPoint2 = (newPathPointIndex + 4) % gVehicle2DPathLength;
