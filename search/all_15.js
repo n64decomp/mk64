@@ -642,7 +642,7 @@ var searchData=
   ['sptask_5fstate_5fnot_5fstarted_639',['SPTASK_STATE_NOT_STARTED',['../common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03aa1d36cbdfdd74c1dffec49c527c434e2',1,'common_structs.h']]],
   ['sptask_5fstate_5frunning_640',['SPTASK_STATE_RUNNING',['../common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03a9afa6ccb46b744f4b86c4c8c3e882f0a',1,'common_structs.h']]],
   ['sptaskstate_641',['SpTaskState',['../common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03',1,'common_structs.h']]],
-  ['sq_642',['SQ',['../code__800AF9B0_8c.html#ac3644f84794a8bfdacf39c4b2c2495fc',1,'code_800AF9B0.c']]],
+  ['sq_642',['SQ',['../macros_8h.html#ac3644f84794a8bfdacf39c4b2c2495fc',1,'macros.h']]],
   ['sqr_643',['sqr',['../math__util_8h.html#adee8c6d2fc20a1194cf64c481e7b6353',1,'math_util.h']]],
   ['sqrtf_644',['sqrtf',['../math_8h.html#a37bde043e94a6f074c78f10518fb5d99',1,'math.h']]],
   ['sr_645',['sr',['../struct____OSThreadContext.html#ad566c6e9f82caad32ceae8e2fe6e4adb',1,'__OSThreadContext']]],

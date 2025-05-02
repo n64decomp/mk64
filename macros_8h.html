@@ -159,6 +159,8 @@ Macros</h2></td></tr>
 <tr class="separator:a08b2c3c00c27891c0b0179c9d8a1c2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a635e1ead21634c60d387a6602b27ada8" id="r_a635e1ead21634c60d387a6602b27ada8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a635e1ead21634c60d387a6602b27ada8">GET_PACKED_END</a>(dl)&#160;&#160;&#160;(((<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>*) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)</td></tr>
 <tr class="separator:a635e1ead21634c60d387a6602b27ada8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3644f84794a8bfdacf39c4b2c2495fc" id="r_ac3644f84794a8bfdacf39c4b2c2495fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3644f84794a8bfdacf39c4b2c2495fc">SQ</a>(x)&#160;&#160;&#160;((x) * (x))</td></tr>
+<tr class="separator:ac3644f84794a8bfdacf39c4b2c2495fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a08b2c3c00c27891c0b0179c9d8a1c2b6" name="a08b2c3c00c27891c0b0179c9d8a1c2b6"></a>
@@ -411,6 +413,23 @@ Macros</h2></td></tr>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>addr</em></span></td><td>)</td>
           <td>&#160;&#160;&#160;((uintptr_t) (addr) | 0x80000000)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3644f84794a8bfdacf39c4b2c2495fc" name="ac3644f84794a8bfdacf39c4b2c2495fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3644f84794a8bfdacf39c4b2c2495fc">&#9670;&#160;</a></span>SQ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SQ</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;((x) * (x))</td>
         </tr>
       </table>
 </div><div class="memdoc">

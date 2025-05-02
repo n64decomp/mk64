@@ -254,7 +254,7 @@ var searchData=
   ['spstatus_5fsignal6_5fset_251',['SPSTATUS_SIGNAL6_SET',['../sptask_8h.html#a2e605af7362492c6fcfc8f3e93ce9860',1,'sptask.h']]],
   ['spstatus_5fsignal7_5fset_252',['SPSTATUS_SIGNAL7_SET',['../sptask_8h.html#aee3d988cae08ee65429fe31c7bc8fa10',1,'sptask.h']]],
   ['spstatus_5fsingle_5fstep_253',['SPSTATUS_SINGLE_STEP',['../sptask_8h.html#a61eba4cea23be6c2e28bc14be5c12ec0',1,'sptask.h']]],
-  ['sq_254',['SQ',['../code__800AF9B0_8c.html#ac3644f84794a8bfdacf39c4b2c2495fc',1,'code_800AF9B0.c']]],
+  ['sq_254',['SQ',['../macros_8h.html#ac3644f84794a8bfdacf39c4b2c2495fc',1,'macros.h']]],
   ['sqr_255',['sqr',['../math__util_8h.html#adee8c6d2fc20a1194cf64c481e7b6353',1,'math_util.h']]],
   ['sr_5fbev_256',['SR_BEV',['../R4300_8h.html#ad2a0c9b17ef7c84606a5156fbd8d22b3',1,'R4300.h']]],
   ['sr_5fce_257',['SR_CE',['../R4300_8h.html#a817e1877bde3b959f8026cfcb1da5b7b',1,'R4300.h']]],

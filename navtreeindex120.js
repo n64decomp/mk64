@@ -1,5 +1,12 @@
 var NAVTREEINDEX120 =
 {
+"tanker__truck_2render_8inc_8c.html":[8,0,3,0,16,0],
+"tanker__truck_2render_8inc_8c.html#a946fd8f61348549cfb60bf8a480baad3":[8,0,3,0,16,0,0],
+"tanker__truck_2render_8inc_8c_source.html":[8,0,3,0,16,0],
+"terminology.html":[1,3],
+"terminology.html#racing-terminology":[1,3,1],
+"terminology.html#technical-definitions":[1,3,0],
+"textures_8c.html":[8,0,3,4,6],
 "textures_8c.html#a0043f0a0d4f7cd716e5a719093635c47":[8,0,3,4,6,81],
 "textures_8c.html#a007c011834c417b4f6016c446546cbe0":[8,0,3,4,6,282],
 "textures_8c.html#a00ac0719ec8ce9c0c0354631cf9d3520":[8,0,3,4,6,149],
@@ -242,12 +249,5 @@ var NAVTREEINDEX120 =
 "textures_8c.html#a50decdcb8e577e454bd47d75dfe07f78":[8,0,3,4,6,609],
 "textures_8c.html#a51a046bc45e7d62f64c9c40f78fa5da9":[8,0,3,4,6,569],
 "textures_8c.html#a51b50e62007eb780c4ef99efe978d5b0":[8,0,3,4,6,42],
-"textures_8c.html#a51c59640c257e64d458c5cb780f435d4":[8,0,3,4,6,446],
-"textures_8c.html#a524860002eb00c70d3aadd9b8df423f4":[8,0,3,4,6,332],
-"textures_8c.html#a532ecc3645bd57cc2e544980b8f478dc":[8,0,3,4,6,571],
-"textures_8c.html#a536f2a574454ee21e63c5844be8f3b45":[8,0,3,4,6,346],
-"textures_8c.html#a5372d95d6824d5c2871fac7d4cea26b5":[8,0,3,4,6,442],
-"textures_8c.html#a542164bd3a5fabe6830674fd9048f8d7":[8,0,3,4,6,662],
-"textures_8c.html#a54288b54a3bac22d4351faafad91564b":[8,0,3,4,6,654],
-"textures_8c.html#a545fe2ad644c6a6d819b10ff2a14fd42":[8,0,3,4,6,52]
+"textures_8c.html#a51c59640c257e64d458c5cb780f435d4":[8,0,3,4,6,446]
 };

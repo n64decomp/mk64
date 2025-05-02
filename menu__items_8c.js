@@ -24,6 +24,7 @@ var menu__items_8c =
     [ "find_menu_items_dupe", "menu__items_8c.html#a22759c8446f89851d20e92cbf52730f7", null ],
     [ "func_800917B0", "menu__items_8c.html#a1471cd7a8b6e19674777d36b1629b9d9", null ],
     [ "func_8009186C", "menu__items_8c.html#a73b7f5f4f320fbf62152d58607d959e4", null ],
+    [ "func_8009195C", "menu__items_8c.html#aab81260bf16dbc169409509e9f2009d0", null ],
     [ "func_80091A6C", "menu__items_8c.html#aec0b8cc1c0af233987eca66c5d37eb09", null ],
     [ "func_80091AC0", "menu__items_8c.html#a6abdaa1d8c32550ba117080fdf39a81d", null ],
     [ "func_80091B78", "menu__items_8c.html#a4c171632ff32db3cbe13719e6478d536", null ],

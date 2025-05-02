@@ -1,5 +1,12 @@
 var NAVTREEINDEX133 =
 {
+"unionMoleSpawnUnion.html#a09d4dfe1e7162719ab7625c8368d1eab":[7,0,104,0],
+"unionMoleSpawnUnion.html#a3baa9626b7dcbeae08da881caa12f15c":[7,0,104,1],
+"unionMtx2.html":[7,0,105],
+"unionMtx2.html#a5160e38fe5a7582069d438000769704b":[7,0,105,1],
+"unionMtx2.html#ad2bbe35e4606145f027ed1b53697a0d0":[7,0,105,2],
+"unionMtx2.html#addf34ff580685e645fb24671780fa102":[7,0,105,0],
+"unionReverbBits.html":[7,0,143],
 "unionReverbBits.html#a097f0981e060c03cdd0f5b45c0e5c01a":[7,0,143,0],
 "unionReverbBits.html#a395ca89e82139bcaf63c939ac327cc93":[7,0,143,1],
 "unionTheWhyUnion.html":[7,0,195],
@@ -15,10 +22,10 @@ var NAVTREEINDEX133 =
 "union____OSfp.html#a75305f2336958086f4304df0b367ded9":[7,0,8,2],
 "union____OSfp.html#aa1b92e78cc62bfa671d55b4f08a42f52":[7,0,8,1],
 "uniondu.html":[7,0,79],
-"uniondu.html#a06928fe4577a2d3ae425f6df73fbef26":[7,0,79,3],
+"uniondu.html#a06928fe4577a2d3ae425f6df73fbef26":[7,0,79,4],
 "uniondu.html#a1350494c6a09b425b926250e9b10b5c9":[7,0,79,2],
 "uniondu.html#a258273f21784ceba6533c8bd20bc8bc0":[7,0,79,0],
-"uniondu.html#a490dba023fb0b686d9a03b51508bcfad":[7,0,79,4],
+"uniondu.html#a9e9d23cf0353aa7609b667deb1530e03":[7,0,79,3],
 "uniondu.html#ac24ce7d9a78b6632965424039e4362c3":[7,0,79,1],
 "unionfu.html":[7,0,85],
 "unionfu.html#a6aed0becf5f2fa3047085638c8516b26":[7,0,85,2],
@@ -242,12 +249,5 @@ var NAVTREEINDEX133 =
 "update__objects_8c.html#a85e40481d0054a86e75ec7969199103d":[8,0,3,63,124],
 "update__objects_8c.html#a86113b7f254606e89d4e7c566ce8ff27":[8,0,3,63,320],
 "update__objects_8c.html#a86976d4b79853c37ad7d3b5f0513a9b8":[8,0,3,63,324],
-"update__objects_8c.html#a86ecfc20b442abe52e3d3e0a20e9a55d":[8,0,3,63,81],
-"update__objects_8c.html#a86fe7e1a5b390123168b404e8d2ffb47":[8,0,3,63,215],
-"update__objects_8c.html#a8849266523f90ebccf7c717a3a30dc8a":[8,0,3,63,279],
-"update__objects_8c.html#a8961519eebfc170539434d78a6fb1419":[8,0,3,63,115],
-"update__objects_8c.html#a8a1cc843647d4b8c608e86098075296a":[8,0,3,63,128],
-"update__objects_8c.html#a8aac0a69dfad37e485b339b3541d9d96":[8,0,3,63,20],
-"update__objects_8c.html#a8afc56ea0d06d8d9d473e5883925c9a9":[8,0,3,63,249],
-"update__objects_8c.html#a8b0c1527833d536e03dd3c4854bfa03d":[8,0,3,63,289]
+"update__objects_8c.html#a86ecfc20b442abe52e3d3e0a20e9a55d":[8,0,3,63,81]
 };
