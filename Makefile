@@ -135,10 +135,15 @@ ifeq ($(OS),Windows_NT)
     export TMPDIR=$(TEMP)
 else
     UNAME_S := $(shell uname -s)
+    ARCH := $(shell uname -m)
     ifeq ($(UNAME_S),Linux)
         DETECTED_OS=linux
     else ifeq ($(UNAME_S),Darwin)
+      ifeq ($(ARCH),arm64)
+        DETECTED_OS=macos-arm
+      else
         DETECTED_OS=macos
+      endif
     endif
 endif
 
@@ -465,7 +470,7 @@ fast64_blender:
 distclean: distclean_assets
 	$(RM) -r $(BUILD_DIR_BASE)
 	$(PYTHON) extract_assets.py --clean
-	make -C $(TOOLS_DIR) clean
+	$(make) -C $(TOOLS_DIR) clean
 
 distclean_assets: ;
 
