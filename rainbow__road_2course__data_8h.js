@@ -81,7 +81,7 @@ var rainbow__road_2course__data_8h =
     [ "d_course_rainbow_road_reflection_map_metal", "rainbow__road_2course__data_8h.html#a4496d7a524adbf997be015f41e2e079f", null ],
     [ "d_course_rainbow_road_sphere", "rainbow__road_2course__data_8h.html#ae58f96ad6b4ffabc02e5ea38c706a8e1", null ],
     [ "d_course_rainbow_road_static_textures", "rainbow__road_2course__data_8h.html#aa013942442220169aa283184a2c59052", null ],
-    [ "d_course_rainbow_road_static_tluts", "rainbow__road_2course__data_8h.html#aff5ccadd0e586e3238bebff0f18a6b41", null ],
+    [ "d_course_rainbow_road_static_tluts", "rainbow__road_2course__data_8h.html#aa3500ce310b9c4c4c8d3157a4a1d9645", null ],
     [ "d_course_rainbow_road_track_path", "rainbow__road_2course__data_8h.html#a816d901e4ffb15db11ef0e266e69506b", null ],
     [ "d_course_rainbow_road_unk_double", "rainbow__road_2course__data_8h.html#aa05016144a02c23c63252c8a95192232", null ],
     [ "d_course_rainbow_road_unk_double2", "rainbow__road_2course__data_8h.html#a24ca1072ef138cfd1c338ae603a2eee4", null ],

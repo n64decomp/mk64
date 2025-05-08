@@ -306,6 +306,7 @@ var update__objects_8c =
     [ "func_80085E38", "update__objects_8c.html#aaf345d74477b4556bd7cb590179d7e72", null ],
     [ "func_80085EF8", "update__objects_8c.html#abef9e21ca75285520cc71d37b6ef71b5", null ],
     [ "func_80085F74", "update__objects_8c.html#a611ea98550b46aa887eb34b7472ef871", null ],
+    [ "func_80086074", "update__objects_8c.html#a66f1df425507777f0e9286871f15b6e9", null ],
     [ "func_80086110", "update__objects_8c.html#a0bbcf658cc179abdfa00efd79207efed", null ],
     [ "func_8008629C", "update__objects_8c.html#a020bf503dac8a1755a3a5addd59ae0be", null ],
     [ "func_80086424", "update__objects_8c.html#a329b8a720ab29e32f0528f4a3774d4a6", null ],

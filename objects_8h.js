@@ -44,7 +44,7 @@ var objects_8h =
     [ "D_800E579C", "objects_8h.html#a0ab89bd423e1e6f866245bc1be8b4561", null ],
     [ "D_800E57F8", "objects_8h.html#ab92a33f74c91826a23b7a8a072db2901", null ],
     [ "D_800E5DF4", "objects_8h.html#a4135206d173121b26f559b00a48d50cc", null ],
-    [ "D_800E6734", "objects_8h.html#aea01a58b54d599d5a4ad1402f1290e1e", null ],
+    [ "D_800E6734", "objects_8h.html#a7979704f68caaa1a6e84454172143130", null ],
     [ "D_80165730", "objects_8h.html#ab30af75a769f114cc77de43957f6006e", null ],
     [ "D_80165738", "objects_8h.html#aeee7035ffe75ebf0d6dbdb70cba2b095", null ],
     [ "D_80165750", "objects_8h.html#a2c5610e8b7027617a4517cc82ecd870c", null ],

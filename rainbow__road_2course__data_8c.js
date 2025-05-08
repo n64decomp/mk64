@@ -81,7 +81,7 @@ var rainbow__road_2course__data_8c =
     [ "d_course_rainbow_road_reflection_map_metal", "rainbow__road_2course__data_8c.html#a4496d7a524adbf997be015f41e2e079f", null ],
     [ "d_course_rainbow_road_sphere", "rainbow__road_2course__data_8c.html#ae58f96ad6b4ffabc02e5ea38c706a8e1", null ],
     [ "d_course_rainbow_road_static_textures", "rainbow__road_2course__data_8c.html#aa013942442220169aa283184a2c59052", null ],
-    [ "d_course_rainbow_road_static_tluts", "rainbow__road_2course__data_8c.html#aff5ccadd0e586e3238bebff0f18a6b41", null ],
+    [ "d_course_rainbow_road_static_tluts", "rainbow__road_2course__data_8c.html#aa3500ce310b9c4c4c8d3157a4a1d9645", null ],
     [ "d_course_rainbow_road_track_path", "rainbow__road_2course__data_8c.html#a816d901e4ffb15db11ef0e266e69506b", null ],
     [ "d_course_rainbow_road_unk_double", "rainbow__road_2course__data_8c.html#aa05016144a02c23c63252c8a95192232", null ],
     [ "d_course_rainbow_road_unk_double2", "rainbow__road_2course__data_8c.html#a24ca1072ef138cfd1c338ae603a2eee4", null ],
@@ -91,5 +91,11 @@ var rainbow__road_2course__data_8c =
     [ "d_rainbow_road_unk2", "rainbow__road_2course__data_8c.html#a53767faecf03d0490683062c56d149af", null ],
     [ "d_rainbow_road_unk3", "rainbow__road_2course__data_8c.html#aa5682d93516e9c7478c140d6bc73e00e", null ],
     [ "d_rainbow_road_unk4", "rainbow__road_2course__data_8c.html#a1d1b1ef7b91cd1d736d78b9d67f00386", null ],
-    [ "d_rainbow_road_unk5", "rainbow__road_2course__data_8c.html#a29b42a85dcea8e10f7f7941a9ec1feb6", null ]
+    [ "d_rainbow_road_unk5", "rainbow__road_2course__data_8c.html#a29b42a85dcea8e10f7f7941a9ec1feb6", null ],
+    [ "d_tlut_rainbow_road_neon_bowser", "rainbow__road_2course__data_8c.html#a10c10f1174c9464bd5ec282015a222b6", null ],
+    [ "d_tlut_rainbow_road_neon_dk", "rainbow__road_2course__data_8c.html#a65d87deb0749525c06b996f6485a6451", null ],
+    [ "d_tlut_rainbow_road_neon_luigi", "rainbow__road_2course__data_8c.html#a5462ea483446dd1a2ccde8ff2ac587ef", null ],
+    [ "d_tlut_rainbow_road_neon_toad", "rainbow__road_2course__data_8c.html#a9722be8a25ccc53e8ee10baa457c327d", null ],
+    [ "d_tlut_rainbow_road_neon_wario", "rainbow__road_2course__data_8c.html#a3f895054bc686bcde9e2d0cd8f64cd0a", null ],
+    [ "d_tlut_rainbow_road_neon_yoshi", "rainbow__road_2course__data_8c.html#a67d564b6bc48739c9ea4bf59fceff4e9", null ]
 ];
