@@ -472,7 +472,6 @@ void func_800B559C(s32 arg0) {
                       bestRecord->bestThreelaps[0], 0x38);
 }
 
-#ifdef NON_MATCHING
 /**
  * This one is weird. Its some type of checksum calculator, seemingly for the
  * best time trial records. But the number of bytes it operates over is
@@ -482,26 +481,19 @@ void func_800B559C(s32 arg0) {
  *
  * But only unknown bytes 7 and 8 ever get set, so why the extra 3, and why in chunks of 17?
  **/
-s32 func_800B578C(s32 arg0) {
-    u8* var_a2;
-    s32 var_a0;
-    s32 var_v0;
-    s32 var_v1;
-    var_a2 = &gSaveData.onlyBestTimeTrialRecords[arg0].bestThreelaps[0][0];
-    var_v1 = 0;
-    for (var_v0 = 0; var_v0 < 3;) {
-        ++var_v0;
-        for (var_a0 = 0; var_a0 != 0x11; var_a0++) {
-            if (var_a0) {}
-            var_v1 += (((*var_a2++) + 1) * var_v0) + var_a0;
+u8 func_800B578C(s32 arg0) {
+    u8* times = (u8*)&gSaveData.onlyBestTimeTrialRecords[arg0];
+    s32 checksum = 0;
+    s32 i;
+    s32 j;
+
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 0x11; j++) {
+            checksum += (times[i * 0x11 + j] + 1) * (i + 1) + j;
         }
-        var_a2 += 0x11;
     }
-    return (var_v1 % 256) & 0xFF;
+    return (checksum % 256);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/save/func_800B578C.s")
-#endif
 
 s32 func_800B5888(s32 arg0) {
     s32 tmp = gSaveData.onlyBestTimeTrialRecords[arg0].unknownBytes[6] + 90;

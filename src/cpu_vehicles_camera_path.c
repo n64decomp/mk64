@@ -1817,61 +1817,67 @@ void update_player(s32 playerId) {
 GLOBAL_ASM("asm/non_matchings/cpu_vehicles_camera_path/update_player.s")
 #endif
 
-#ifdef NON_MATCHING
-// Lots of work left to do, might be funtionally accurate?
 void func_8000B140(s32 playerId) {
-    UNUSED f32 stackPadding0;
-    UNUSED f32 stackPadding1;
-    UNUSED f32 stackPadding2;
-    UNUSED f32 stackPadding3;
-    UNUSED f32 stackPadding4;
-    UNUSED f32 stackPadding5;
-    UNUSED f32 stackPadding6;
-    UNUSED f32 stackPadding7;
-    f32 temp_f0_2;
+    s32 i;
     f32 temp_f12;
     f32 temp_f14;
+    s32 j;
     f32 temp_f16;
+    f32 temp_ft2;
+    s16 currPathPoint;
+    s16 temp_v1_2;
     f32 temp_f22;
-    f32 temp_f2;
+    f32 temp_f0_2;
     f32 var_f18;
     f32 var_f20;
+    s32 pad[5];
     s16 spB0[8];
-    UNUSED f32 stackPadding8;
+    f32 stackPadding8;
     s16 sp9C[8];
-    UNUSED f32 stackPadding9;
+    f32 stackPadding9;
+    f32 temp_f2;
     f32 sp74[8];
     s32 temp_a1_2;
-    s16 temp_v1_2;
-    s16 currPathPoint;
-    s32 j;
-    s32 i;
     Player* player;
-
     player = &gPlayers[playerId];
 
-    if (player->effects & UNKNOWN_EFFECT_0x10)
+    if (player->effects & UNKNOWN_EFFECT_0x10) {
         return;
+    }
 
-    if (D_801630E8[playerId] == 1)
+    if (D_801630E8[playerId] == 1) {
         return;
-    if (D_801630E8[playerId] == -1)
+    }
+
+    if (D_801630E8[playerId] == -1) {
         return;
-    if (gTrackPositionFactor[playerId] < -1.0f)
+    }
+
+    if (gTrackPositionFactor[playerId] < -1.0f) {
         return;
-    if (gTrackPositionFactor[playerId] > 1.0f)
+    }
+
+    if (gTrackPositionFactor[playerId] > 1.0f) {
         return;
+    }
 
     // Exclude heavyweights
-    if (player->characterId == WARIO)
+    if (player->characterId == WARIO) {
         return;
-    if (player->characterId == BOWSER)
+    }
+
+    if (player->characterId == BOWSER) {
         return;
-    if (player->characterId == DK)
+    }
+
+    if (player->characterId == DK) {
         return;
-    // Skip if player has starman
-    if (player->effects & STAR_EFFECT)
+    }
+
+    // Skip if player has star
+    if (player->effects & STAR_EFFECT) {
         return;
+    }
 
     currPathPoint = gNearestPathPointByPlayerId[playerId];
     temp_f22 = (player->speed / 18.0f) * 216.0f;
@@ -1879,6 +1885,7 @@ void func_8000B140(s32 playerId) {
         sp9C[i] = -1;
         spB0[i] = 0x03E8;
     }
+
     if (D_80163010[playerId] > 0) {
         D_80163010[playerId]--;
         if (D_80163010[playerId] <= 0) {
@@ -1886,76 +1893,92 @@ void func_8000B140(s32 playerId) {
         }
     }
     j = 0;
-    for (i = 0; (j < 2) && (i < 8); i++) {
-        if (i == playerId)
-            continue;
-        player = &gPlayers[i];
-        if (!(player->type & PLAYER_EXISTS))
-            continue;
-        temp_f2 = (temp_f22) -5.0f;
-        temp_v1_2 = gNearestPathPointByPlayerId[i];
-        temp_f0_2 = (player->speed / 18.0f) * 216.0f;
-        if (temp_f0_2 < temp_f2) {
-            if (is_path_point_in_range(temp_v1_2, currPathPoint, 0U, 0x0014U, gSelectedPathCount) > 0) {
-                temp_a1_2 = temp_v1_2 - currPathPoint;
-                sp9C[j] = i;
-                if (temp_a1_2 > 0) {
-                    spB0[j] = temp_a1_2;
-                } else {
-                    spB0[j] = (temp_v1_2 + gSelectedPathCount) - currPathPoint;
+    i = 0; 
+    while (i < 8) {
+        if (i != playerId) {
+            player = &gPlayers[i];
+            if ((player->type & PLAYER_EXISTS)) {
+                temp_v1_2 = gNearestPathPointByPlayerId[i];
+                temp_f0_2 = (player->speed / 18.0f) * 216.0f;
+                temp_f2 = temp_f22 - 5.0f;
+                if (temp_f0_2 < temp_f2) {
+                    if (is_path_point_in_range(temp_v1_2, currPathPoint, 0, 0x0014U, gSelectedPathCount) > 0) {
+                        temp_a1_2 = temp_v1_2 - currPathPoint;
+                        sp9C[j] = i;
+                        if (temp_a1_2 > 0) {
+                            spB0[j] = temp_a1_2;
+                        } else {
+                            spB0[j] = (temp_v1_2 + gSelectedPathCount) - currPathPoint;
+                        }
+                        sp74[j] = temp_f2 - temp_f0_2;
+                        j++;
+                    }
+        
                 }
-                sp74[j] = temp_f2 - temp_f0_2;
-                j += 1;
+            }
+        }
+        i++;
+        if (j >= 2) {
+            break;
+        }
+    }
+
+    if (j == 0) {
+        return;
+    }
+
+    var_f18 = 1.0f;
+    var_f20 = -1.0f;
+    for (i = 0; i < j; i++) {
+        temp_f2 = gTrackPositionFactor[sp9C[i]];
+        if ((temp_f2 > (-1.0f)) && (temp_f2 < 1.0f)) {
+            
+            temp_f12 = temp_ft2 = ((0.2f * (20.0f / (spB0[i] + 20.0f))) * ((sp74[i]) + 10.0f))  / 20.0f;
+            
+            if ((var_f18 == 1.0f) && (var_f20 == (-1.0f))) {
+                var_f18 = temp_f2 - temp_f12;
+                var_f20 = temp_f2 + temp_f12;
+            } else {
+                temp_f14 = temp_f2 - temp_f12;
+                temp_f16 = temp_f2 + temp_f12;
+                if ((temp_f14 < var_f18) && (temp_f16 > var_f18)) {
+                    var_f18 = temp_f14;
+                }
+                if ((temp_f16 > var_f20) && (temp_f14 < var_f20)) {
+                    var_f20 = temp_f16;
+                }
             }
         }
     }
-    if (j != 0) {
-        var_f18 = 1.0f;
-        var_f20 = -1.0f;
-        for (i = 0; i < j; i++) {
-            temp_f2 = gTrackPositionFactor[sp9C[i]];
-            if ((temp_f2 > -1.0f) && (temp_f2 < 1.0f)) {
-                temp_f12 = sp74[i] + 10.0f;
-                temp_f12 *= 0.2f * (20.0f / (spB0[i] + 20.0f));
-                temp_f12 /= 20.0f;
-                if ((var_f18 == 1.0f) && (var_f20 == -1.0f)) {
-                    var_f18 = temp_f2 - temp_f12;
-                    var_f20 = temp_f2 + temp_f12;
-                } else {
-                    temp_f14 = temp_f2 - temp_f12;
-                    temp_f16 = temp_f2 + temp_f12;
-                    if ((temp_f14 < 1.0f) && (temp_f16 > 1.0f)) {
-                        var_f18 = temp_f14;
-                    }
-                    if ((temp_f16 > -1.0f) && (temp_f14 < -1.0f)) {
-                        var_f20 = temp_f16;
-                    }
-                }
-            }
-        }
-        if (!(var_f20 < var_f18) && !(gTrackPositionFactor[playerId] < var_f18) &&
-            !(var_f20 < gTrackPositionFactor[playerId])) {
-            if (var_f20 > 1.0f) {
-                var_f20 = 1.0f;
-            }
-            if (var_f18 < -1.0f) {
-                var_f18 = -1.0f;
-            }
-            if ((var_f18 + 1.0f) < (1.0f - var_f20)) {
-                D_80163010[playerId] = 0x003C;
-                D_80162FF8[playerId] = 1;
-                D_80163090[playerId] = var_f20;
-            } else {
-                D_80163010[playerId] = 0x003C;
-                D_80162FF8[playerId] = 2;
-                D_80163090[playerId] = var_f18;
-            }
-        }
+
+    if (var_f20 < var_f18) {
+        return;
+    }
+
+    if (gTrackPositionFactor[playerId] < var_f18) {
+        return;
+    }
+
+    if (var_f20 < gTrackPositionFactor[playerId]) {
+        return;
+    }
+
+    if (var_f20 > 1.0f) {
+        var_f20 = 1.0f;
+    }
+    if (var_f18 < (-1.0f)) {
+        var_f18 = -1.0f;
+    }
+    if ((var_f18 + 1.0f) < (1.0f - var_f20)) {
+        D_80163010[playerId] = 0x003C;
+        D_80162FF8[playerId] = 1;
+        D_80163090[playerId] = var_f20;
+    } else {
+        D_80163010[playerId] = 0x003C;
+        D_80162FF8[playerId] = 2;
+        D_80163090[playerId] = var_f18;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/cpu_vehicles_camera_path/func_8000B140.s")
-#endif
 
 // utils track position
 

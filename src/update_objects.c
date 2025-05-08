@@ -6035,31 +6035,23 @@ void func_80080DE4(s32 arg0) {
     }
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/YMJDJ
-// No idea what the problem is
 void func_80080E8C(s32 objectIndex1, s32 objectIndex2, s32 arg2) {
     u16 anAngle;
-    f32 thing0;
     f32 thing1;
-    f32* temp_v1;
+    f32 thing0;
 
     init_object(objectIndex1, arg2);
-    temp_v1 = D_800E594C[arg2];
     gObjectList[objectIndex1].unk_0D5 = 2;
     anAngle = gObjectList[objectIndex2].direction_angle[1];
-    thing1 = func_800416D8(temp_v1[1], temp_v1[0], anAngle);
-    thing0 = func_80041724(temp_v1[1], temp_v1[0], anAngle);
+    thing1 = func_800416D8(D_800E594C[arg2 * 2 + 1], D_800E594C[arg2 * 2 + 0], anAngle);
+    thing0 = func_80041724(D_800E594C[arg2 * 2 + 1], D_800E594C[arg2 * 2 + 0], anAngle);
     gObjectList[objectIndex1].origin_pos[0] = gObjectList[objectIndex2].pos[0] + thing0;
     gObjectList[objectIndex1].origin_pos[1] = gObjectList[objectIndex2].surfaceHeight - 9.0;
     gObjectList[objectIndex1].origin_pos[2] = gObjectList[objectIndex2].pos[2] + thing1;
-    anAngle = D_800E597C[arg2] + gObjectList[objectIndex2].direction_angle[1];
+    anAngle = gObjectList[objectIndex2].direction_angle[1] + D_800E597C[arg2];
     gObjectList[objectIndex1].velocity[0] = sins(anAngle) * 0.6;
     gObjectList[objectIndex1].velocity[2] = coss(anAngle) * 0.6;
 }
-#else
-    GLOBAL_ASM("asm/non_matchings/update_objects/func_80080E8C.s")
-#endif
 
 void func_80080FEC(s32 arg0) {
     s32 objectIndex;
@@ -6752,24 +6744,15 @@ void update_crabs(void) {
     }
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/PYAg4
-// Stack issue caused by the `test` variable, but removing it causes much, much larger differences
 void func_80082F1C(s32 objectIndex, s32 arg1) {
-    YVFlagPoleSpawn* test;
-    gObjectList[objectIndex].model = (Gfx*) d_course_yoshi_valley_unk5;
-    gObjectList[objectIndex].vertex = (Vtx*) d_course_yoshi_valley_unk4;
+    gObjectList[objectIndex].model = (Gfx*)d_course_yoshi_valley_unk5;
+    gObjectList[objectIndex].vertex = (Vtx*)d_course_yoshi_valley_unk4;
     gObjectList[objectIndex].sizeScaling = 0.027f;
-    if (test->rot && test->rot) {}
-    test = &D_800E5DF4[arg1];
     object_next_state(objectIndex);
-    set_obj_origin_pos(objectIndex, test->pos[0] * xOrientation, test->pos[1], test->pos[2]);
+    set_obj_origin_pos(objectIndex, D_800E5DF4[arg1 * 4 + 0] * xOrientation, D_800E5DF4[arg1 * 4 + 1], D_800E5DF4[arg1 * 4 + 2]);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
-    set_obj_direction_angle(objectIndex, 0U, test->rot, 0U);
+    set_obj_direction_angle(objectIndex, 0U, D_800E5DF4[arg1 * 4 + 3], 0U);
 }
-#else
-    GLOBAL_ASM("asm/non_matchings/update_objects/func_80082F1C.s")
-#endif
 
 void func_80083018(s32 objectIndex, s32 arg1) {
     switch (gObjectList[objectIndex].state) {

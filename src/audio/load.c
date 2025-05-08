@@ -755,27 +755,31 @@ void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
     seqPlayer->scriptState.pc = sequenceData;
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/5FBUM
-//  There is some wild bullshit going on in this function
-//  It is an unholy cross between SM64's EU and Shindou
-//  verions of this function, with the for loop towards
-//  the bottom resembling stuff from bank_load_async
+
+#ifdef VERSION_EU
+GLOBAL_ASM("asm/eu_nonmatchings/audio_init.s")
+#else
+
 extern u8 _audio_banksSegmentRomStart;
 extern u8 _audio_tablesSegmentRomStart;
 extern u8 _instrument_setsSegmentRomStart;
 extern u8 _sequencesSegmentRomStart;
-
+/**
+ * There is some wild bullshit going on in this function
+ *  It is an unholy cross between SM64's EU and Shindou
+ *  verions of this function, with the for loop towards
+ *  the bottom resembling stuff from bank_load_async
+ */
 void audio_init(void) {
     s32 i;
-    UNUSED s32 pad[2];
-    s32 j;
-    UNUSED s32 pad2[6];
-    u32 sp60[2];
-    UNUSED s32 pad1[2];
+    UNUSED s32 pad[6];
+    s32 j, k;
     s32 aaa;
+    u32 sp60[2];
+    UNUSED s32 lim2, lim3;
     s32 size;
-    UNUSED u64* ptr64;
+    u64* ptr64;
+    UNUSED void *data;
     UNUSED s32 one = 1;
     u8* test;
 
@@ -788,10 +792,7 @@ void audio_init(void) {
 #ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.
     ptr64 = (u64*) ((u8*) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
-    for (i = ((uintptr_t) &gAudioGlobalsEndMarker -
-              (uintptr_t) ((u64*) ((u8*) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer)))) /
-             8;
-         i >= 0; i--) {
+    for (k = ((uintptr_t) &gAudioGlobalsEndMarker - (uintptr_t) ((u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer))) ) / 8; k >= 0; k--) {
         *ptr64++ = 0;
     }
 #endif
@@ -812,6 +813,7 @@ void audio_init(void) {
             break;
     }
     port_eu_init();
+    if (k) {} // fake
     for (i = 0; i < NUMAIBUFFERS; i++) {
         gAiBufferLengths[i] = 0xa0;
     }
@@ -878,10 +880,4 @@ void audio_init(void) {
     init_sequence_players();
     gAudioLoadLock = 0x76557364;
 }
-#else
-#ifdef VERSION_EU
-GLOBAL_ASM("asm/eu_nonmatchings/audio_init.s")
-#else
-GLOBAL_ASM("asm/non_matchings/audio/load/audio_init.s")
-#endif
 #endif

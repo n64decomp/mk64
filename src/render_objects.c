@@ -1764,54 +1764,49 @@ void func_8004C628(s32 arg0, s32 arg1, u32 arg2, u32 arg3, u8* texture) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/TqXqn
-// There's a weird fakematch concerning `xPos`, don't know that to make of. Can't quite get it over the finish line
-// though
 void render_texture_tile_rgba32_block(s16 x, s16 y, u8* texture, u32 width, u32 height) {
     s32 texSizeLess;
     s32 i;
-    s32 yPos;
-    s32 xPos;
-    s32 texBlockCount;
+    s32 centerY;
+    s32 centerX;
+    s32 numTextureBlocks;
     u32 texSize;
     s32 heightDiv;
-    s32 realCount;
+    s32 size;
     u8* textureCopy;
 
-    xPos = x - (width / 2);
-    yPos = y - (height / 2);
+    centerX = x - (width / 2);
+    centerY = y - (height / 2);
     textureCopy = texture;
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
     gDPSetRenderMode(gDisplayListHead++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     texSize = width * height * 4;
-    texBlockCount = texSize / 4096;
+    numTextureBlocks = texSize / 4096;
     if (texSize % 4096) {
-        texBlockCount++;
+        numTextureBlocks++;
     }
-    heightDiv = height / texBlockCount;
-    realCount = texBlockCount;
-    for (i = 0; i < realCount; i++) {
+    heightDiv = height / numTextureBlocks;
+    size = numTextureBlocks;
+    for (i = 0; i < size; i++) {
         load_texture_tile_rgba32_nomirror(textureCopy, width, heightDiv);
-        render_texture_rectangle_wrap(xPos, yPos, width, heightDiv, 1);
-        texSizeLess = texSize - (width * heightDiv * 4);
+        render_texture_rectangle_wrap(centerX, centerY, width, heightDiv, 1);
         textureCopy += (width * heightDiv * 4);
+        texSizeLess = texSize - (width * heightDiv * 4);
         if (texSizeLess < 0) {
             heightDiv = texSize / width;
         } else {
-            texSize = texSizeLess;
+            texSize -= (width * heightDiv * 4);
         }
-        // Weird fakematch that is a HUGE improvement
-        xPos += yPos * 0;
-        yPos += heightDiv;
-    }
 
+
+        centerY += heightDiv;
+    }
+    
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
+    // FAKE
+    centerX++;
+    centerX--;
 }
-#else
-void render_texture_tile_rgba32_block(s16 x, s16 y, u8* texture, u32 width, u32 height);
-GLOBAL_ASM("asm/non_matchings/render_objects/render_texture_tile_rgba32_block.s")
-#endif
 
 void render_game_logo(s16 x, s16 y) {
     render_texture_tile_rgba32_block(x, y, gGameLogoAddress, 256, 128);
