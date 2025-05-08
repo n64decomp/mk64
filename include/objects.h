@@ -205,12 +205,8 @@ extern Collision D_8018C0B0[];
 
 #define NUM_YV_FLAG_POLES 4
 
-typedef struct {
-    /* 0x0 */ Vec3s pos;
-    /* 0x6 */ u16 rot;
-} YVFlagPoleSpawn; // size = 0x8;
-
-extern YVFlagPoleSpawn D_800E5DF4[];
+// pos, rot
+extern s16 D_800E5DF4[];
 
 #define NUM_CRABS 0xA
 
@@ -227,7 +223,8 @@ extern CrabSpawn gCrabSpawns[];
 #define NUM_THWOMPS_100CC_EXTRA 11
 #define NUM_THWOMPS_150CC 12
 
-extern Vec3f D_800E6734[];
+// pos x,y,z
+extern float D_800E6734[];
 
 typedef struct {
     /* 0x0 */ s16 startX;

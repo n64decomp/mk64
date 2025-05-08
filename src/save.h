@@ -59,7 +59,7 @@ s32 is_cc_mode_complete(s32);
 s32 has_unlocked_extra_mode(void);
 s32 has_completed_extra_mode(void);
 void func_800B559C(s32);
-s32 func_800B578C(s32);
+u8 func_800B578C(s32);
 s32 func_800B5888(s32);
 s32 func_800B58C4(s32);
 void update_save_data_backup(void);

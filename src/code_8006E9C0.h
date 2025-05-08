@@ -13,7 +13,7 @@ void load_mario_kart_64_logo(void);
 void init_item_window(s32);
 void func_8006EEE8(s32);
 void func_8006EF60(void);
-void course_mini_map_settings(void);
+void track_minimap_settings(void);
 void func_8006F824(s32);
 void func_8006F8CC(void);
 void func_8006FA94(void);
