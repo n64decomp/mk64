@@ -224,7 +224,7 @@ extern CrabSpawn gCrabSpawns[];
 #define NUM_THWOMPS_150CC 12
 
 // pos x,y,z
-extern float D_800E6734[];
+extern Vec3f D_800E6734[];
 
 typedef struct {
     /* 0x0 */ s16 startX;

@@ -67,7 +67,7 @@ extern SplineData D_800E659C;
 extern SplineData D_800E6668;
 extern SplineData* D_800E6724[];
 extern SplineData* D_800E672C[];
-extern float D_800E6734[];
+extern Vec3f D_800E6734[];
 // This should really be `extern Vec3s gTorchSpawns[];`
 extern s16 gTorchSpawns[];
 extern SplineData D_800E67B8;
