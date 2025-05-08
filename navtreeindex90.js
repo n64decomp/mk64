@@ -1,5 +1,14 @@
 var NAVTREEINDEX90 =
 {
+"player__controller_8c.html#aa8bd7d70f752d3eaeb2aa62fa3a47092":[8,0,3,48,113],
+"player__controller_8c.html#aab4c4057257b6f6e8c470cd20d03c487":[8,0,3,48,148],
+"player__controller_8c.html#aaba04d0928ff8eaf7ef6c6cea1b93d7d":[8,0,3,48,27],
+"player__controller_8c.html#aadbb82b82a02926b542667f4e78b4046":[8,0,3,48,80],
+"player__controller_8c.html#aadd7ccd890026db7f09896da5426d5c8":[8,0,3,48,44],
+"player__controller_8c.html#aafeb0470c7da44e1440ffa4848f7d500":[8,0,3,48,88],
+"player__controller_8c.html#aaffe6c72ab8d2690bb439bf8221d4418":[8,0,3,48,42],
+"player__controller_8c.html#ab0dbd1e70372263a934b5ce4907aa491":[8,0,3,48,90],
+"player__controller_8c.html#ab2c05a634e8227ce7a52e2b596b281b3":[8,0,3,48,70],
 "player__controller_8c.html#ab3708de06c0d34cee386a993c00ff1e1":[8,0,3,48,58],
 "player__controller_8c.html#ab4bb07d840a1c124938d2582c2e6b97e":[8,0,3,48,21],
 "player__controller_8c.html#ab6a7d333ca8adc69bb0d3fa482d05923":[8,0,3,48,156],
@@ -240,14 +249,5 @@ var NAVTREEINDEX90 =
 "podium__ceremony__actors_8c.html#a75ee72f9d8cc3f7bbb219fdeb11a3916":[8,0,3,6,12,18],
 "podium__ceremony__actors_8c.html#a7604a8b5c90084c9c85780649132f8f1":[8,0,3,6,12,3],
 "podium__ceremony__actors_8c.html#a7af822e673ca2eb51ebe9d4a10d6d86b":[8,0,3,6,12,2],
-"podium__ceremony__actors_8c.html#a7c371812edff549f45991d545e9d88c4":[8,0,3,6,12,39],
-"podium__ceremony__actors_8c.html#a7ea229c65f264670fc828b95e8321154":[8,0,3,6,12,17],
-"podium__ceremony__actors_8c.html#a8498ff6e509f0f284e968ba8ebde3ccf":[8,0,3,6,12,34],
-"podium__ceremony__actors_8c.html#a8c6ae9a3ae3f35735260e615607ae90c":[8,0,3,6,12,32],
-"podium__ceremony__actors_8c.html#a8e755249ace8430f5b9ea2778d0a117c":[8,0,3,6,12,9],
-"podium__ceremony__actors_8c.html#a8f084b11598b111cbea7b52e49b26c8b":[8,0,3,6,12,16],
-"podium__ceremony__actors_8c.html#aa7db12bbf2b4620e89db609cd18c273a":[8,0,3,6,12,13],
-"podium__ceremony__actors_8c.html#ab11c7750e17800d6220b0e2a3ed479d0":[8,0,3,6,12,4],
-"podium__ceremony__actors_8c.html#ab2ac33a173465c17c9774eb06eb2b006":[8,0,3,6,12,41],
-"podium__ceremony__actors_8c.html#ab4a2b3023e104635f01e66a08874f578":[8,0,3,6,12,20]
+"podium__ceremony__actors_8c.html#a7c371812edff549f45991d545e9d88c4":[8,0,3,6,12,39]
 };

@@ -198,38 +198,38 @@
 </a>
 </g>
 </g>
-<!-- Node509 -->
-<g id="Node000509" class="node">
-<title>Node509</title>
-<g id="a_Node000509"><a xlink:href="memory_8c.html#a3b9e88d491e09bc5a2392c1fcafd5a20" target="_top" xlink:title="Loads &amp; DMAs course data. Vtx, textures, displaylists, etc.">
+<!-- Node515 -->
+<g id="Node000515" class="node">
+<title>Node515</title>
+<g id="a_Node000515"><a xlink:href="memory_8c.html#a3b9e88d491e09bc5a2392c1fcafd5a20" target="_top" xlink:title="Loads &amp; DMAs course data. Vtx, textures, displaylists, etc.">
 <polygon fill="#fff0f0" stroke="red" points="231.5,-67.5 156.5,-67.5 156.5,-48.5 231.5,-48.5 231.5,-67.5"/>
 <text text-anchor="middle" x="194" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_course</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node509 -->
-<g id="edge52_Node000001_Node000509" class="edge">
-<title>Node1&#45;&gt;Node509</title>
-<g id="a_edge52_Node000001_Node000509"><a xlink:title=" ">
+<!-- Node1&#45;&gt;Node515 -->
+<g id="edge52_Node000001_Node000515" class="edge">
+<title>Node1&#45;&gt;Node515</title>
+<g id="a_edge52_Node000001_Node000515"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M37.18,-226.24C41.12,-198.08 56.54,-116.1 106,-76 117.28,-66.86 132.03,-62 146.17,-59.52"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="146.89,-62.96 156.31,-58.11 145.92,-56.02 146.89,-62.96"/>
 </a>
 </g>
 </g>
-<!-- Node545 -->
-<g id="Node000545" class="node">
-<title>Node545</title>
-<g id="a_Node000545"><a xlink:href="skybox__and__splitscreen_8c.html#a283d4ef8637e23224c3212edf83513c4" target="_top" xlink:title=" ">
+<!-- Node551 -->
+<g id="Node000551" class="node">
+<title>Node551</title>
+<g id="a_Node000551"><a xlink:href="skybox__and__splitscreen_8c.html#a283d4ef8637e23224c3212edf83513c4" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="252.5,-30 135.5,-30 135.5,0 252.5,0 252.5,-30"/>
 <text text-anchor="start" x="143.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">set_perspective_and</text>
 <text text-anchor="middle" x="194" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">_aspect_ratio</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node545 -->
-<g id="edge53_Node000001_Node000545" class="edge">
-<title>Node1&#45;&gt;Node545</title>
-<g id="a_edge53_Node000001_Node000545"><a xlink:title=" ">
+<!-- Node1&#45;&gt;Node551 -->
+<g id="edge53_Node000001_Node000551" class="edge">
+<title>Node1&#45;&gt;Node551</title>
+<g id="a_edge53_Node000001_Node000551"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M36.44,-226.1C38.42,-194.02 49.13,-91.9 106,-39 111.73,-33.67 118.53,-29.51 125.77,-26.26"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="127.08,-29.51 135.13,-22.61 124.54,-22.98 127.08,-29.51"/>
 </a>

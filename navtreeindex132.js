@@ -1,5 +1,12 @@
 var NAVTREEINDEX132 =
 {
+"toads__turnpike_2course__displaylists_8inc_8h.html#a4201b32a2a0028adbd25ff5ba9b96a7a":[8,0,0,17,3,78],
+"toads__turnpike_2course__displaylists_8inc_8h.html#a4379c48a331fafc7c4ca3cd74765c152":[8,0,0,17,3,112],
+"toads__turnpike_2course__displaylists_8inc_8h.html#a4380312425d3da9827180ae2e0c7e3a2":[8,0,0,17,3,57],
+"toads__turnpike_2course__displaylists_8inc_8h.html#a4828fc8038c93ce121ddd0a00166e010":[8,0,0,17,3,33],
+"toads__turnpike_2course__displaylists_8inc_8h.html#a48f7a86c982b08e9ddd6ad083e41c229":[8,0,0,17,3,17],
+"toads__turnpike_2course__displaylists_8inc_8h.html#a493400250368b8626d964ec880d5254c":[8,0,0,17,3,40],
+"toads__turnpike_2course__displaylists_8inc_8h.html#a4a6e3c4257610e4e571e2374be17dc2d":[8,0,0,17,3,59],
 "toads__turnpike_2course__displaylists_8inc_8h.html#a4b53cee5a83ce26fa30a2e898a656189":[8,0,0,17,3,8],
 "toads__turnpike_2course__displaylists_8inc_8h.html#a4f0f6b4f9df7afed0066404bafdc595d":[8,0,0,17,3,37],
 "toads__turnpike_2course__displaylists_8inc_8h.html#a519b5641ea4dbb5b1a820f5cef68b55c":[8,0,0,17,3,100],
@@ -242,12 +249,5 @@ var NAVTREEINDEX132 =
 "ultratypes_8h.html#abb452686968e48b67397da5f97445f5b":[8,0,2,2,27,0],
 "ultratypes_8h.html#abcdd5d61f51cb4c472ac6637916cf72a":[8,0,2,2,27,22],
 "ultratypes_8h.html#ac0b0e5ad15a599850f4ca02c451110ba":[8,0,2,2,27,14],
-"ultratypes_8h.html#ac732361b9548b4f326ab0ba6776ffc19":[8,0,2,2,27,16],
-"ultratypes_8h.html#ace392b4d1c3911331b2fe5ddc99fdcba":[8,0,2,2,27,23],
-"ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de":[8,0,2,2,27,15],
-"ultratypes_8h_source.html":[8,0,2,2,27],
-"unionGameModePack.html":[7,0,86],
-"unionGameModePack.html#a070413d3976e79c9be223f8ab02369b7":[7,0,86,1],
-"unionGameModePack.html#a7480766028750720e0e81e64e658922c":[7,0,86,0],
-"unionMoleSpawnUnion.html":[7,0,104]
+"ultratypes_8h.html#ac732361b9548b4f326ab0ba6776ffc19":[8,0,2,2,27,16]
 };

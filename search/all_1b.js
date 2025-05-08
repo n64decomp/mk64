@@ -10,6 +10,5 @@ var searchData=
   ['yoshivalleyegg_7',['YoshiValleyEgg',['../structYoshiValleyEgg.html',1,'']]],
   ['youngerindex_8',['youngerIndex',['../structBananaActor.html#ad686614e95607653ffbf00b39cd10397',1,'BananaActor']]],
   ['ypos_9',['yPos',['../structBombKart.html#a8cc2966d931e376e71aa0942dfb85af3',1,'BombKart']]],
-  ['yscale_10',['yScale',['../structOSViFieldRegs.html#a1a39cfe1ebe1efe3da6765e009a6d252',1,'OSViFieldRegs']]],
-  ['yvflagpolespawn_11',['YVFlagPoleSpawn',['../structYVFlagPoleSpawn.html',1,'']]]
+  ['yscale_10',['yScale',['../structOSViFieldRegs.html#a1a39cfe1ebe1efe3da6765e009a6d252',1,'OSViFieldRegs']]]
 ];

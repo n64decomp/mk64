@@ -1,5 +1,15 @@
 var NAVTREEINDEX117 =
 {
+"structUnkPlayerStruct258.html#aa9646e2f6a147860f79c8fdb56eb7693":[7,0,215,10],
+"structUnkPlayerStruct258.html#aab0eb4880c2f1df0071739a47ff015fd":[7,0,215,5],
+"structUnkPlayerStruct258.html#aafe2c0bf2264ea4a4b234933c536ce08":[7,0,215,24],
+"structUnkPlayerStruct258.html#ab258d69935e21839db26b729181f3069":[7,0,215,25],
+"structUnkPlayerStruct258.html#ac77a426f9ea34ca612e546fab25b64a2":[7,0,215,11],
+"structUnkPlayerStruct258.html#ad7ad17d8e5610dfae2797ad7344e219c":[7,0,215,21],
+"structUnkPlayerStruct258.html#ad8c454352c519c179c4c24eb34fc478e":[7,0,215,9],
+"structUnkPlayerStruct258.html#adabe9a14d03f68a9c60a2ebe628d1774":[7,0,215,6],
+"structUnkPlayerStruct258.html#aee4312615939019d4179bcba05c06b20":[7,0,215,3],
+"structUnkPlayerStruct258.html#af4008f88f10c78d5108d52e74d615777":[7,0,215,4],
 "structUnkPool.html":[7,0,216],
 "structUnkPool.html#a54e0b9a13c0b02bbd2dd4cbe4c539bfb":[7,0,216,1],
 "structUnkPool.html#ab3cfce0714280493c920b0d583e1943c":[7,0,216,0],
@@ -169,9 +179,6 @@ var NAVTREEINDEX117 =
 "structVolumeChange.html#a5a54284947f770817436ddd65c195c19":[7,0,248,0],
 "structVolumeChange.html#abbc6c7d5ee5a6e4acf7314ff0b112a09":[7,0,248,1],
 "structVolumeChange.html#ace77b1c1e7a1f002fcbdd5d10c9c9159":[7,0,248,3],
-"structYVFlagPoleSpawn.html":[7,0,250],
-"structYVFlagPoleSpawn.html#a5b8d47e9bc2fabb268253a700c249527":[7,0,250,0],
-"structYVFlagPoleSpawn.html#aadd9629a5899fd9ee91eeb5f637e1a92":[7,0,250,1],
 "structYoshiValleyEgg.html":[7,0,249],
 "structYoshiValleyEgg.html#a0ab1923c00ae6a34e0ef6d397abb3a29":[7,0,249,11],
 "structYoshiValleyEgg.html#a217fb03109992b5767e9828e0784beb1":[7,0,249,8],
@@ -242,12 +249,5 @@ var NAVTREEINDEX117 =
 "struct____OSEventState.html":[7,0,7],
 "struct____OSEventState.html#a251ae30224ee2b53f0c8f51711419789":[7,0,7,0],
 "struct____OSEventState.html#a7a839e3ce4fab6438bf9a1109fe600eb":[7,0,7,1],
-"struct____OSInode.html":[7,0,9],
-"struct____OSInode.html#ab913e55c3af6099c919ece81349eb21f":[7,0,9,0],
-"struct____OSInodeCache.html":[7,0,10],
-"struct____OSInodeCache.html#a245ec66065f70ab11d6983e113ff345d":[7,0,10,0],
-"struct____OSInodeCache.html#a3733820db9596ac6724b29785d78d7f4":[7,0,10,1],
-"struct____OSInodeCache.html#a886e19bb5c2baa08a900922c148af008":[7,0,10,2],
-"struct____OSPackId.html":[7,0,12],
-"struct____OSPackId.html#a010be96d2b4109e8fea9fb8b1d7d6fd6":[7,0,12,0]
+"struct____OSInode.html":[7,0,9]
 };

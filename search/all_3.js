@@ -331,7 +331,7 @@ var searchData=
   ['audio_5fheap_2eh_328',['audio_heap.h',['../audio__heap_8h.html',1,'']]],
   ['audio_5fheap_5finit_5fsize_329',['AUDIO_HEAP_INIT_SIZE',['../audio__heap_8h.html#a5a55a3cb27bc5f165daa0c1094cfc439',1,'AUDIO_HEAP_INIT_SIZE:&#160;audio_heap.h'],['../mk64_8h.html#a5a55a3cb27bc5f165daa0c1094cfc439',1,'AUDIO_HEAP_INIT_SIZE:&#160;mk64.h']]],
   ['audio_5fheap_5fsize_330',['AUDIO_HEAP_SIZE',['../audio__heap_8h.html#a47ad0c17ca696e995e47dad8177b3def',1,'AUDIO_HEAP_SIZE:&#160;audio_heap.h'],['../mk64_8h.html#a47ad0c17ca696e995e47dad8177b3def',1,'AUDIO_HEAP_SIZE:&#160;mk64.h']]],
-  ['audio_5finit_331',['audio_init',['../main_8c.html#a780026a09284372732eeca5c1bdeda0b',1,'main.c']]],
+  ['audio_5finit_331',['audio_init',['../load_8c.html#a780026a09284372732eeca5c1bdeda0b',1,'audio_init(void):&#160;load.c'],['../main_8c.html#a780026a09284372732eeca5c1bdeda0b',1,'audio_init(void):&#160;load.c']]],
   ['audio_5fleft_5ftyre_332',['AUDIO_LEFT_TYRE',['../external_8c.html#a58d23d666321d5851d59dd07027a5bdf',1,'external.c']]],
   ['audio_5flist_5fpop_5fback_333',['audio_list_pop_back',['../seqplayer_8c.html#aff01bffc83a074f3f9603d10869539a3',1,'audio_list_pop_back(struct AudioListItem *list):&#160;seqplayer.c'],['../seqplayer_8h.html#aff01bffc83a074f3f9603d10869539a3',1,'audio_list_pop_back(struct AudioListItem *list):&#160;seqplayer.c']]],
   ['audio_5flist_5fpush_5fback_334',['audio_list_push_back',['../seqplayer_8c.html#ad6bdf40a669a4ec92be6fb203b2abf0a',1,'audio_list_push_back(struct AudioListItem *list, struct AudioListItem *item):&#160;seqplayer.c'],['../seqplayer_8h.html#ad6bdf40a669a4ec92be6fb203b2abf0a',1,'audio_list_push_back(struct AudioListItem *list, struct AudioListItem *item):&#160;seqplayer.c']]],

@@ -2,7 +2,6 @@ var code__8006E9C0_8h =
 [
     [ "clear_object_list", "code__8006E9C0_8h.html#a9a7eb511a2b4e48f93514329be4de022", null ],
     [ "course_init_cloud", "code__8006E9C0_8h.html#aa7a86cdf7add890b37eeb25e21e4b3d3", null ],
-    [ "course_mini_map_settings", "code__8006E9C0_8h.html#a2cf8336fdb8aa82ac7b4755a782e69bc", null ],
     [ "dma_copy_base_misc_textures", "code__8006E9C0_8h.html#a5485f3e1c06a76d641ff4b48b1b6dead", null ],
     [ "func_8006EB10", "code__8006E9C0_8h.html#a2e7b50a4e958c5bd727b199ced2511e5", null ],
     [ "func_8006EEE8", "code__8006E9C0_8h.html#aedce5312d1981131b06edd1d62e8f070", null ],
@@ -26,6 +25,7 @@ var code__8006E9C0_8h =
     [ "init_stars", "code__8006E9C0_8h.html#a4169ccf57e19193e35c29a2225ae09c3", null ],
     [ "load_mario_kart_64_logo", "code__8006E9C0_8h.html#a76bd4b421a02ca09a11fa607fa9b5851", null ],
     [ "reset_object_variable", "code__8006E9C0_8h.html#a90b6f11f43c81c8c033805cfddb8fc89", null ],
+    [ "track_minimap_settings", "code__8006E9C0_8h.html#a246d3f6537103ca7f6ed99e279c6cb12", null ],
     [ "D_800E5520", "code__8006E9C0_8h.html#aee58b6012d26ac5f24bc57244678bcee", null ],
     [ "D_800E5548", "code__8006E9C0_8h.html#a4dd16d0f2a52c4d28b7ed8e49a030add", null ],
     [ "gCourseOutlineTextures", "code__8006E9C0_8h.html#a625d0ad27f8c5a2b2d0efd1899f76dae", null ]

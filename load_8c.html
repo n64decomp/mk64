@@ -192,6 +192,8 @@ Functions</h2></td></tr>
 <tr class="separator:a6002fcbd2dd5d0a3b0b378c3dc6ee731"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c3a18a0dda97c61c1b24745f64ca2a9" id="r_a6c3a18a0dda97c61c1b24745f64ca2a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c3a18a0dda97c61c1b24745f64ca2a9">load_sequence_internal</a> (<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> player, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> seqId, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> loadAsync)</td></tr>
 <tr class="separator:a6c3a18a0dda97c61c1b24745f64ca2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a780026a09284372732eeca5c1bdeda0b" id="r_a780026a09284372732eeca5c1bdeda0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a780026a09284372732eeca5c1bdeda0b">audio_init</a> (void)</td></tr>
+<tr class="separator:a780026a09284372732eeca5c1bdeda0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -347,6 +349,14 @@ Variables</h2></td></tr>
 <tr class="separator:a8f28ff1713a5b60f0b5d38e0cc5ecbc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a745c756b4d74cc5f26e5e7d1eaa1d1e5" id="r_a745c756b4d74cc5f26e5e7d1eaa1d1e5"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a745c756b4d74cc5f26e5e7d1eaa1d1e5">loadAudioString38</a> [] = &quot;---------------------------------------\n&quot;</td></tr>
 <tr class="separator:a745c756b4d74cc5f26e5e7d1eaa1d1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a598b3bf9d2cd4ad6097f0f21b54d7302" id="r_a598b3bf9d2cd4ad6097f0f21b54d7302"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a598b3bf9d2cd4ad6097f0f21b54d7302">_audio_banksSegmentRomStart</a></td></tr>
+<tr class="separator:a598b3bf9d2cd4ad6097f0f21b54d7302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fb73778f85d99513231c2a320b57855" id="r_a5fb73778f85d99513231c2a320b57855"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fb73778f85d99513231c2a320b57855">_audio_tablesSegmentRomStart</a></td></tr>
+<tr class="separator:a5fb73778f85d99513231c2a320b57855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a055656bc3b19f27b12be6ffe130e0467" id="r_a055656bc3b19f27b12be6ffe130e0467"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a055656bc3b19f27b12be6ffe130e0467">_instrument_setsSegmentRomStart</a></td></tr>
+<tr class="separator:a055656bc3b19f27b12be6ffe130e0467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d8411db4bf3cde7ea45b5c18430ca75" id="r_a3d8411db4bf3cde7ea45b5c18430ca75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d8411db4bf3cde7ea45b5c18430ca75">_sequencesSegmentRomStart</a></td></tr>
+<tr class="separator:a3d8411db4bf3cde7ea45b5c18430ca75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a08b2c3c00c27891c0b0179c9d8a1c2b6" name="a08b2c3c00c27891c0b0179c9d8a1c2b6"></a>
@@ -587,7 +597,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="load_8c_a7512c5eea1c942521c019a033b962fd1_icgraph.svg" width="100%" height="532"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="load_8c_a7512c5eea1c942521c019a033b962fd1_icgraph.svg" width="100%" height="575"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -635,6 +645,34 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="load_8c_a126f56cab34b7b9a73ab2c42dc3c23e8_icgraph.svg" width="100%" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a780026a09284372732eeca5c1bdeda0b" name="a780026a09284372732eeca5c1bdeda0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a780026a09284372732eeca5c1bdeda0b">&#9670;&#160;</a></span>audio_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void audio_init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>There is some wild bullshit going on in this function It is an unholy cross between SM64's EU and Shindou verions of this function, with the for loop towards the bottom resembling stuff from bank_load_async </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="load_8c_a780026a09284372732eeca5c1bdeda0b_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="load_8c_a780026a09284372732eeca5c1bdeda0b_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -786,7 +824,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="load_8c_a964962cd1a7c0ad6d0b9c8e67a762049_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="load_8c_a964962cd1a7c0ad6d0b9c8e67a762049_icgraph.svg" width="100%" height="364"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -873,6 +911,11 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="load_8c_a6e0d5d0c670416552b2f07a456b1075e_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -1222,6 +1265,94 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a598b3bf9d2cd4ad6097f0f21b54d7302" name="a598b3bf9d2cd4ad6097f0f21b54d7302"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a598b3bf9d2cd4ad6097f0f21b54d7302">&#9670;&#160;</a></span>_audio_banksSegmentRomStart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> _audio_banksSegmentRomStart</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5fb73778f85d99513231c2a320b57855" name="a5fb73778f85d99513231c2a320b57855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fb73778f85d99513231c2a320b57855">&#9670;&#160;</a></span>_audio_tablesSegmentRomStart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> _audio_tablesSegmentRomStart</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a055656bc3b19f27b12be6ffe130e0467" name="a055656bc3b19f27b12be6ffe130e0467"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a055656bc3b19f27b12be6ffe130e0467">&#9670;&#160;</a></span>_instrument_setsSegmentRomStart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> _instrument_setsSegmentRomStart</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d8411db4bf3cde7ea45b5c18430ca75" name="a3d8411db4bf3cde7ea45b5c18430ca75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d8411db4bf3cde7ea45b5c18430ca75">&#9670;&#160;</a></span>_sequencesSegmentRomStart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> _sequencesSegmentRomStart</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6c99c08ed5a0ac0321dfa18527e49987" name="a6c99c08ed5a0ac0321dfa18527e49987"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c99c08ed5a0ac0321dfa18527e49987">&#9670;&#160;</a></span>D_803B6720</h2>
 

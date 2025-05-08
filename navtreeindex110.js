@@ -1,5 +1,15 @@
 var NAVTREEINDEX110 =
 {
+"staff__ghosts_8c.html#a4ca179885936d13aa3dde49dd332369a":[8,0,3,60,37],
+"staff__ghosts_8c.html#a4e58850f1fd8ab0b9cb2543d71c70316":[8,0,3,60,59],
+"staff__ghosts_8c.html#a4f7db5fd22b9cb3070588dd58afc5bfd":[8,0,3,60,41],
+"staff__ghosts_8c.html#a50bd57149fa9d4bfaeed7a98353cfde3":[8,0,3,60,27],
+"staff__ghosts_8c.html#a56d14f71a331d4b1486315ce44d04488":[8,0,3,60,26],
+"staff__ghosts_8c.html#a6391b1c00d3b9e1d73c43ca096ca1997":[8,0,3,60,51],
+"staff__ghosts_8c.html#a64b02d1b4791a8f97a0c15f1f0509c09":[8,0,3,60,48],
+"staff__ghosts_8c.html#a678223a647ce27aa2f4934dc1c777374":[8,0,3,60,61],
+"staff__ghosts_8c.html#a679f0f383eed9f5e52a4506c9220788e":[8,0,3,60,22],
+"staff__ghosts_8c.html#a6c93bd66a22613771face974257523c8":[8,0,3,60,20],
 "staff__ghosts_8c.html#a6cb6cd9d8408015df1d5a5e1f78f77e2":[8,0,3,60,21],
 "staff__ghosts_8c.html#a765650c60bc8d34ec297e6ac6d152aa0":[8,0,3,60,53],
 "staff__ghosts_8c.html#a7a9e6f2f324c84f772bb79bca4067e58":[8,0,3,60,2],
@@ -239,15 +249,5 @@ var NAVTREEINDEX110 =
 "structALKeyMap.html":[7,0,33],
 "structALKeyMap.html#a423b1ebc7949a62d3bff8cc8a6e26552":[7,0,33,3],
 "structALKeyMap.html#a4b2f22128a8067b9ff9b8ee2e94f9a2d":[7,0,33,0],
-"structALKeyMap.html#a4baa8c969cb232cfefd38fa32ee98bde":[7,0,33,2],
-"structALKeyMap.html#a89af6738b166e6260b060e8d3b8c9fc4":[7,0,33,5],
-"structALKeyMap.html#ac6357788bc4f80d9630c677ffb04c26c":[7,0,33,4],
-"structALKeyMap.html#aec1f90a35507d4ec74039b5b480f9014":[7,0,33,1],
-"structALRAWWaveInfo.html":[7,0,37],
-"structALRAWWaveInfo.html#a2fb2b21087e87d197d3cf6017f80e119":[7,0,37,0],
-"structALRawLoop.html":[7,0,36],
-"structALRawLoop.html#a07760308fe4e65442c2e183541e13a17":[7,0,36,2],
-"structALRawLoop.html#ac8807a71b2c6300a93e37b1c158b352d":[7,0,36,1],
-"structALRawLoop.html#aeb6a44b74de5d8f38826c3d023df2139":[7,0,36,0],
-"structALSeqData.html":[7,0,38]
+"structALKeyMap.html#a4baa8c969cb232cfefd38fa32ee98bde":[7,0,33,2]
 };

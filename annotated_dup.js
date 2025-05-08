@@ -249,6 +249,5 @@ var annotated_dup =
     [ "VehicleStuff", "structVehicleStuff.html", "structVehicleStuff" ],
     [ "VibratoState", "structVibratoState.html", "structVibratoState" ],
     [ "VolumeChange", "structVolumeChange.html", "structVolumeChange" ],
-    [ "YoshiValleyEgg", "structYoshiValleyEgg.html", "structYoshiValleyEgg" ],
-    [ "YVFlagPoleSpawn", "structYVFlagPoleSpawn.html", "structYVFlagPoleSpawn" ]
+    [ "YoshiValleyEgg", "structYoshiValleyEgg.html", "structYoshiValleyEgg" ]
 ];

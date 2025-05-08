@@ -5,6 +5,7 @@ var cpu__vehicles__camera__path_8c =
     [ "clear_pathPoint", "cpu__vehicles__camera__path_8c.html#a72ce70bb47f21d3217bad362d438041b", null ],
     [ "detect_wrong_player_direction", "cpu__vehicles__camera__path_8c.html#aadc6661efd30c7dfbf4f93acc665c441", null ],
     [ "func_80009258", "cpu__vehicles__camera__path_8c.html#a359e8de4d9023a78f604c09110041943", null ],
+    [ "func_8000B140", "cpu__vehicles__camera__path_8c.html#afea9758c9f344fdd388632dac92e2186", null ],
     [ "func_8000F0E0", "cpu__vehicles__camera__path_8c.html#a235e42391f675d011b865e8568b78f4e", null ],
     [ "func_8000F124", "cpu__vehicles__camera__path_8c.html#a7fc44af1268e58cc195aeab08726c3cd", null ],
     [ "func_80014D30", "cpu__vehicles__camera__path_8c.html#a2293cdf918f0aaa85d53e5eea5e1e5df", null ],

@@ -1,5 +1,9 @@
 var NAVTREEINDEX31 =
 {
+"dks__jungle__parkway_2course__displaylists_8inc_8h.html#a9cf3b1023cf47aa2243ffd31510d0563":[8,0,0,5,3,55],
+"dks__jungle__parkway_2course__displaylists_8inc_8h.html#a9e30a917635464c40670ad86caf5c1eb":[8,0,0,5,3,31],
+"dks__jungle__parkway_2course__displaylists_8inc_8h.html#a9fd594a6d8cbb079a1c36c5a400d3b0e":[8,0,0,5,3,44],
+"dks__jungle__parkway_2course__displaylists_8inc_8h.html#aa275d5e004f597fcbe1d6b414c292611":[8,0,0,5,3,114],
 "dks__jungle__parkway_2course__displaylists_8inc_8h.html#aa50656fd84ed92a320f0dfacfcb58ac6":[8,0,0,5,3,175],
 "dks__jungle__parkway_2course__displaylists_8inc_8h.html#aa5a8794a4e986eb2c764ce247709eaa1":[8,0,0,5,3,157],
 "dks__jungle__parkway_2course__displaylists_8inc_8h.html#aa70eba1410d97abbf318472c2fba8d49":[8,0,0,5,3,167],
@@ -245,9 +249,5 @@ var NAVTREEINDEX31 =
 "effects_8c.html#a5aaa7a81c3bdd6f940a7cc710dd1d9df":[8,0,3,35,72],
 "effects_8c.html#a5b9e2c886a5267f2cca1190984277a38":[8,0,3,35,106],
 "effects_8c.html#a5f19eaaa048055d292d02c717e635786":[8,0,3,35,40],
-"effects_8c.html#a61126d13d531b163c4fa478c8d2b50e7":[8,0,3,35,88],
-"effects_8c.html#a636d79377420f04052f19cee3d44435d":[8,0,3,35,98],
-"effects_8c.html#a663cb8df8b606cf00e361977c9d6d834":[8,0,3,35,37],
-"effects_8c.html#a6c3b0953758b6f1d7235ab4647a3b8d0":[8,0,3,35,76],
-"effects_8c.html#a6e0f00966e2ba79110862539bf89105c":[8,0,3,35,89]
+"effects_8c.html#a61126d13d531b163c4fa478c8d2b50e7":[8,0,3,35,88]
 };

@@ -1,5 +1,14 @@
 var NAVTREEINDEX86 =
 {
+"osInitialize_8c.html#a5187f33fb7a3dfda9eb75dd10a308b9c":[8,0,3,7,76,11],
+"osInitialize_8c.html#a710667fb116fff9559086a26b8cfba09":[8,0,3,7,76,3],
+"osInitialize_8c.html#a73decdcff42cf813e4f32cb79f561f4e":[8,0,3,7,76,1],
+"osInitialize_8c.html#a83d490c4d3467e04fb5c91a7311a145b":[8,0,3,7,76,7],
+"osInitialize_8c.html#ab19ef11fe2223eec70fe5555f1743d91":[8,0,3,7,76,4],
+"osInitialize_8c.html#ac070686413d4896482718d2a30bb3ad0":[8,0,3,7,76,8],
+"osInitialize_8c.html#ac08f435ce95238bf55b63576f669f6b1":[8,0,3,7,76,9],
+"osInitialize_8c.html#ac3f701802ea091ac52d9d80840bb7cd0":[8,0,3,7,76,2],
+"osInitialize_8c.html#acfb0fdf45b4ccc5ad77f155cf184c910":[8,0,3,7,76,6],
 "osJamMesg_8c.html":[8,0,3,7,78],
 "osJamMesg_8c.html#ac69f7738a5120910a2f6202d27fb44f4":[8,0,3,7,78,0],
 "osLeoDiskInit_8c.html":[8,0,3,7,79],
@@ -240,14 +249,5 @@ var NAVTREEINDEX86 =
 "os_8h.html#a7b7ba9cdc456ba7b3d9df539d834b200":[8,0,2,2,7,61],
 "os_8h.html#a7bdbccd890d64974ac4a3cab446c16d6":[8,0,2,2,7,202],
 "os_8h.html#a7c11df029362134aee4be73bd42919f0":[8,0,2,2,7,155],
-"os_8h.html#a7e5cb4e77f3dd3fda99122ec2fd7f8f1":[8,0,2,2,7,135],
-"os_8h.html#a7eae5e1128e7538c52c5ea524eaacd23":[8,0,2,2,7,121],
-"os_8h.html#a7f16fdeed2020a117c890bd4e840ddb4":[8,0,2,2,7,69],
-"os_8h.html#a82ebd2b6f561b5040e79022138d0c17b":[8,0,2,2,7,109],
-"os_8h.html#a8302cdcc1ac2756d1f4cff09f7340d44":[8,0,2,2,7,58],
-"os_8h.html#a830c3bb63dee94be6f16a9c5455e5ef3":[8,0,2,2,7,57],
-"os_8h.html#a863866f8e5c5983cc0845532eb3f860e":[8,0,2,2,7,212],
-"os_8h.html#a86ea97242887d4cc91bd2cba874fa1d6":[8,0,2,2,7,142],
-"os_8h.html#a887056ff629ec5fb0b415bdac018b907":[8,0,2,2,7,98],
-"os_8h.html#a887766b7004812180bd8c6b3df3bcfc7":[8,0,2,2,7,170]
+"os_8h.html#a7e5cb4e77f3dd3fda99122ec2fd7f8f1":[8,0,2,2,7,135]
 };
