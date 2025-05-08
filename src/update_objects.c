@@ -7813,22 +7813,12 @@ void func_80085F74(s32 objectIndex) {
     }
 }
 
-#ifdef NON_MATCHING
-/**
- * arg1 is pushed onto the stack prior to set_obj_origin_pos, which is correct.
- * But then it get popped back into v0 when its supposed to be popped into t0.
- * I really, really don't get why that's happening and the permuter hasn't found anything
- **/
-
 void func_80086074(s32 objectIndex, s32 arg1) {
-    set_obj_origin_pos(objectIndex, D_800E6734[arg1][0] * xOrientation, D_800E6734[arg1][1], D_800E6734[arg1][2]);
-    init_texture_object(objectIndex, d_course_rainbow_road_static_tluts[arg1],
-                        d_course_rainbow_road_static_textures[arg1], 64, 64);
+    set_obj_origin_pos(objectIndex, D_800E6734[arg1 * 3 + 0] * xOrientation, D_800E6734[arg1 * 3 + 1], D_800E6734[arg1 * 3 + 2]);
+    init_texture_object(objectIndex, &d_course_rainbow_road_static_tluts[arg1 * 256],
+                        &d_course_rainbow_road_static_textures[arg1], 64, 64);
     func_80085BB4(objectIndex);
 }
-#else
-    GLOBAL_ASM("asm/non_matchings/update_objects/func_80086074.s")
-#endif
 
 void func_80086110(s32 objectIndex, s32 arg1) {
     switch (gObjectList[objectIndex].state) {

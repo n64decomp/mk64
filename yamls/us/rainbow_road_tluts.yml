@@ -1,0 +1,66 @@
+# This file is only used for compilation
+# Because u16 output is required.
+# The png output in assets/courses/ is from the identical .json extraction file
+:config:
+  segments:
+    - [0x06, 0x872A00]
+  header:
+    code:
+    - '#include <macros.h>'
+    - '#include <defines.h>'
+gTLUTRainbowRoadNeonPeach:
+  symbol: gTLUTRainbowRoadNeonPeach
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x07200
+  format: rgba16
+gTLUTRainbowRoadNeonLuigi:
+  symbol: gTLUTRainbowRoadNeonLuigi
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x07400
+  format: rgba16
+gTLUTRainbowRoadNeonDonkeyKong:
+  symbol: gTLUTRainbowRoadNeonDonkeyKong
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x07600
+  format: rgba16
+gTLUTRainbowRoadNeonYoshi:
+  symbol: gTLUTRainbowRoadNeonYoshi
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x07800
+  format: rgba16
+gTLUTRainbowRoadNeonBowser:
+  symbol: gTLUTRainbowRoadNeonBowser
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x07A00
+  format: rgba16
+gTLUTRainbowRoadNeonWario:
+  symbol: gTLUTRainbowRoadNeonWario
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x07C00
+  format: rgba16
+gTLUTRainbowRoadNeonToad:
+  symbol: gTLUTRainbowRoadNeonToad
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x07E00
+  format: rgba16
