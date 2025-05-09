@@ -6745,11 +6745,12 @@ void update_crabs(void) {
 }
 
 void func_80082F1C(s32 objectIndex, s32 arg1) {
-    gObjectList[objectIndex].model = (Gfx*)d_course_yoshi_valley_unk5;
-    gObjectList[objectIndex].vertex = (Vtx*)d_course_yoshi_valley_unk4;
+    gObjectList[objectIndex].model = (Gfx*) d_course_yoshi_valley_unk5;
+    gObjectList[objectIndex].vertex = (Vtx*) d_course_yoshi_valley_unk4;
     gObjectList[objectIndex].sizeScaling = 0.027f;
     object_next_state(objectIndex);
-    set_obj_origin_pos(objectIndex, D_800E5DF4[arg1 * 4 + 0] * xOrientation, D_800E5DF4[arg1 * 4 + 1], D_800E5DF4[arg1 * 4 + 2]);
+    set_obj_origin_pos(objectIndex, D_800E5DF4[arg1 * 4 + 0] * xOrientation, D_800E5DF4[arg1 * 4 + 1],
+                       D_800E5DF4[arg1 * 4 + 2]);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
     set_obj_direction_angle(objectIndex, 0U, D_800E5DF4[arg1 * 4 + 3], 0U);
 }
@@ -7814,7 +7815,8 @@ void func_80085F74(s32 objectIndex) {
 }
 
 void func_80086074(s32 objectIndex, s32 arg1) {
-    set_obj_origin_pos(objectIndex, D_800E6734[arg1 * 3 + 0] * xOrientation, D_800E6734[arg1 * 3 + 1], D_800E6734[arg1 * 3 + 2]);
+    set_obj_origin_pos(objectIndex, D_800E6734[arg1 * 3 + 0] * xOrientation, D_800E6734[arg1 * 3 + 1],
+                       D_800E6734[arg1 * 3 + 2]);
     init_texture_object(objectIndex, &d_course_rainbow_road_static_tluts[arg1 * 256],
                         &d_course_rainbow_road_static_textures[arg1], 64, 64);
     func_80085BB4(objectIndex);

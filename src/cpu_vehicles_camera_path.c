@@ -1893,7 +1893,7 @@ void func_8000B140(s32 playerId) {
         }
     }
     j = 0;
-    i = 0; 
+    i = 0;
     while (i < 8) {
         if (i != playerId) {
             player = &gPlayers[i];
@@ -1913,7 +1913,6 @@ void func_8000B140(s32 playerId) {
                         sp74[j] = temp_f2 - temp_f0_2;
                         j++;
                     }
-        
                 }
             }
         }
@@ -1932,9 +1931,9 @@ void func_8000B140(s32 playerId) {
     for (i = 0; i < j; i++) {
         temp_f2 = gTrackPositionFactor[sp9C[i]];
         if ((temp_f2 > (-1.0f)) && (temp_f2 < 1.0f)) {
-            
-            temp_f12 = temp_ft2 = ((0.2f * (20.0f / (spB0[i] + 20.0f))) * ((sp74[i]) + 10.0f))  / 20.0f;
-            
+
+            temp_f12 = temp_ft2 = ((0.2f * (20.0f / (spB0[i] + 20.0f))) * ((sp74[i]) + 10.0f)) / 20.0f;
+
             if ((var_f18 == 1.0f) && (var_f20 == (-1.0f))) {
                 var_f18 = temp_f2 - temp_f12;
                 var_f20 = temp_f2 + temp_f12;
