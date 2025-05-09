@@ -755,7 +755,6 @@ void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
     seqPlayer->scriptState.pc = sequenceData;
 }
 
-
 #ifdef VERSION_EU
 GLOBAL_ASM("asm/eu_nonmatchings/audio_init.s")
 #else
@@ -779,7 +778,7 @@ void audio_init(void) {
     UNUSED s32 lim2, lim3;
     s32 size;
     u64* ptr64;
-    UNUSED void *data;
+    UNUSED void* data;
     UNUSED s32 one = 1;
     u8* test;
 
@@ -792,7 +791,10 @@ void audio_init(void) {
 #ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.
     ptr64 = (u64*) ((u8*) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
-    for (k = ((uintptr_t) &gAudioGlobalsEndMarker - (uintptr_t) ((u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer))) ) / 8; k >= 0; k--) {
+    for (k = ((uintptr_t) &gAudioGlobalsEndMarker -
+              (uintptr_t) ((u64*) ((u8*) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer)))) /
+             8;
+         k >= 0; k--) {
         *ptr64++ = 0;
     }
 #endif

@@ -420,7 +420,7 @@ void func_8006F8CC(void) {
 
 void func_8006FA94(void) {
     s32 i;
-    Player *player;
+    Player* player;
 
     func_8006F8CC();
     track_minimap_settings();
@@ -440,69 +440,69 @@ void func_8006FA94(void) {
     D_801658BC = D_801658C6 = D_801658CE = D_801658DC = D_801658EC = D_801658F4 = D_801658E4 = D_801658D6 = 0;
 
     switch (gPlayerCount) {
-    case 1:
-        if (gModeSelection == 0) {
-            D_8018D114 = 0;
-            D_8018D178 = 150;
-            D_8018D180 = 240;
-        } else {
-            D_8018D114 = 1;
-            D_8018D178 = 10;
-            D_8018D180 = 0;
-        }
-        break;
-    case 2:
-        if (gScreenModeSelection == 1) {
+        case 1:
             if (gModeSelection == 0) {
-                D_8018D114 = 2;
+                D_8018D114 = 0;
                 D_8018D178 = 150;
                 D_8018D180 = 240;
-                D_8018D2AC = 60;
-            } else if (gModeSelection == 2) {
-                D_8018D114 = 3;
-                D_8018D178 = 30;
-                D_8018D180 = 30;
-                D_8018D2AC = 60;
             } else {
-                D_8018D114 = 4;
-                D_8018D178 = 40;
-                D_8018D180 = 40;
-                D_8018D2AC = 60;
+                D_8018D114 = 1;
+                D_8018D178 = 10;
+                D_8018D180 = 0;
             }
-        } else if (gModeSelection == 0) {
-            D_8018D114 = 5;
-        } else if (gModeSelection == 2) {
-            D_8018D114 = 6;
-        } else {
-            D_8018D114 = 7;
-        }
-        break;
-    case 3:
-        if (gModeSelection == 2) {
-            D_8018D114 = 8;
-            D_8018D178 = 0x00000064;
-            D_8018D180 = 0x00000096;
-            D_8018D2AC = 0x0000003C;
-        } else {
-            D_8018D114 = 9;
-            D_8018D178 = 0x00000064;
-            D_8018D180 = 0x00000096;
-            D_8018D2AC = 0x0000003C;
-        }
-        break;
-    case 4:
-        if (gModeSelection == 2) {
-            D_8018D114 = 0x0000000A;
-            D_8018D178 = 0x0000001E;
-            D_8018D180 = 0x0000001E;
-            D_8018D2AC = 0x0000000A;
-        } else {
-            D_8018D114 = 0x0000000B;
-            D_8018D178 = 0x0000001E;
-            D_8018D180 = 0x0000001E;
-            D_8018D2AC = 0x0000000A;
-        }
-        break;
+            break;
+        case 2:
+            if (gScreenModeSelection == 1) {
+                if (gModeSelection == 0) {
+                    D_8018D114 = 2;
+                    D_8018D178 = 150;
+                    D_8018D180 = 240;
+                    D_8018D2AC = 60;
+                } else if (gModeSelection == 2) {
+                    D_8018D114 = 3;
+                    D_8018D178 = 30;
+                    D_8018D180 = 30;
+                    D_8018D2AC = 60;
+                } else {
+                    D_8018D114 = 4;
+                    D_8018D178 = 40;
+                    D_8018D180 = 40;
+                    D_8018D2AC = 60;
+                }
+            } else if (gModeSelection == 0) {
+                D_8018D114 = 5;
+            } else if (gModeSelection == 2) {
+                D_8018D114 = 6;
+            } else {
+                D_8018D114 = 7;
+            }
+            break;
+        case 3:
+            if (gModeSelection == 2) {
+                D_8018D114 = 8;
+                D_8018D178 = 0x00000064;
+                D_8018D180 = 0x00000096;
+                D_8018D2AC = 0x0000003C;
+            } else {
+                D_8018D114 = 9;
+                D_8018D178 = 0x00000064;
+                D_8018D180 = 0x00000096;
+                D_8018D2AC = 0x0000003C;
+            }
+            break;
+        case 4:
+            if (gModeSelection == 2) {
+                D_8018D114 = 0x0000000A;
+                D_8018D178 = 0x0000001E;
+                D_8018D180 = 0x0000001E;
+                D_8018D2AC = 0x0000000A;
+            } else {
+                D_8018D114 = 0x0000000B;
+                D_8018D178 = 0x0000001E;
+                D_8018D180 = 0x0000001E;
+                D_8018D2AC = 0x0000000A;
+            }
+            break;
     }
     if (gEnableDebugMode == 0) {
         D_8016576A = 0;
