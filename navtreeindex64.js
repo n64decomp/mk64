@@ -1,5 +1,14 @@
 var NAVTREEINDEX64 =
 {
+"koopa__troopa__beach_2course__textures_8linkonly_8h.html#a43530598d021cbb27b4b6e1eae51d17b":[8,0,0,9,6,3],
+"koopa__troopa__beach_2course__textures_8linkonly_8h.html#a448f8a10938a68ba2ba1e0ab4a86d6a8":[8,0,0,9,6,14],
+"koopa__troopa__beach_2course__textures_8linkonly_8h.html#a47b229650a4ba980021ef1e557714c29":[8,0,0,9,6,0],
+"koopa__troopa__beach_2course__textures_8linkonly_8h.html#a4b5e129457e661102effc6e064f7cb21":[8,0,0,9,6,7],
+"koopa__troopa__beach_2course__textures_8linkonly_8h.html#a547d5598209ae72f6545dd9e825448aa":[8,0,0,9,6,11],
+"koopa__troopa__beach_2course__textures_8linkonly_8h.html#a5fbdb96e96b26399a21cc68b6ebafa09":[8,0,0,9,6,12],
+"koopa__troopa__beach_2course__textures_8linkonly_8h.html#a9b68e5349483b5ffb8fe569d2d13666f":[8,0,0,9,6,15],
+"koopa__troopa__beach_2course__textures_8linkonly_8h.html#aa7ac6c446cf4ac21dfac083c2d94d1bd":[8,0,0,9,6,8],
+"koopa__troopa__beach_2course__textures_8linkonly_8h.html#abb50afc215209da8bf15412eaa11cdb5":[8,0,0,9,6,6],
 "koopa__troopa__beach_2course__textures_8linkonly_8h.html#abcec373caf8b7d6c73189ccc30c13ea3":[8,0,0,9,6,5],
 "koopa__troopa__beach_2course__textures_8linkonly_8h.html#ae4a463607d262954ed48503724f06e98":[8,0,0,9,6,10],
 "koopa__troopa__beach_2course__textures_8linkonly_8h.html#af10da9d6836b8d0f0667707b2dd2ca11":[8,0,0,9,6,13],
@@ -240,14 +249,5 @@ var NAVTREEINDEX64 =
 "load_8h.html#a4dea9c88977f11f7fa2f54639958efd9":[8,0,3,1,11,59],
 "load_8h.html#a4f3c39697cc74a48e1393a64a241bef2":[8,0,3,1,11,7],
 "load_8h.html#a532042ad44f378a1f5ed57d2145c306a":[8,0,3,1,11,58],
-"load_8h.html#a5eaed89d49cd1fe9a137cd8568a63e84":[8,0,3,1,11,56],
-"load_8h.html#a636ae6ff6664cbd72e6ab4a2bb29b122":[8,0,3,1,11,19],
-"load_8h.html#a63efd7ba57a890b91c2cca76a112a4e8":[8,0,3,1,11,17],
-"load_8h.html#a6419f1b73da584071051dcccbdab2537":[8,0,3,1,11,9],
-"load_8h.html#a65f23ef5a6f5c47cdfbe8079381f845b":[8,0,3,1,11,35],
-"load_8h.html#a6c69b9261bc9ce0ff307451c65cd2efd":[8,0,3,1,11,54],
-"load_8h.html#a6c99c08ed5a0ac0321dfa18527e49987":[8,0,3,1,11,26],
-"load_8h.html#a6e02c49376843af189a363f33ce8ad34":[8,0,3,1,11,4],
-"load_8h.html#a6f47ff3e37159c5e19e7101134663a99":[8,0,3,1,11,62],
-"load_8h.html#a7483d07c768051b3af3132b188384a1f":[8,0,3,1,11,40]
+"load_8h.html#a5eaed89d49cd1fe9a137cd8568a63e84":[8,0,3,1,11,56]
 };

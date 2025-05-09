@@ -1,5 +1,14 @@
 var NAVTREEINDEX112 =
 {
+"structCamera.html#a2970cfcff0b562c8033422defcc15a50":[7,0,56,2],
+"structCamera.html#a31cf15c24e5c99b43400e165e2007269":[7,0,56,8],
+"structCamera.html#a61e38a801b8f416d689c81eae166c19e":[7,0,56,17],
+"structCamera.html#a77d5fb9976392a938f9b37145a56b5f3":[7,0,56,12],
+"structCamera.html#a88ed7d5dfdbf522ce88132d5aaf2279a":[7,0,56,14],
+"structCamera.html#a9ef6c05c079b57a4ebfcf0f2c28e1704":[7,0,56,7],
+"structCamera.html#aa41528fb3d92947fbd847bb427622383":[7,0,56,20],
+"structCamera.html#aa746a36785af3a009ad44385e7613e89":[7,0,56,15],
+"structCamera.html#aaa7eaab22236f016fd933666bd90c741":[7,0,56,3],
 "structCamera.html#aabd0fd674bc8669577184f6f815367b6":[7,0,56,19],
 "structCamera.html#abcd135482fb218dfd8387c282bbe8074":[7,0,56,9],
 "structCamera.html#ace6326d21c5f4e8aad4314a99839bafd":[7,0,56,21],
@@ -240,14 +249,5 @@ var NAVTREEINDEX112 =
 "structGfxPool.html#a6412eaab6e773364bbe4a114f7ce5381":[7,0,87,2],
 "structGfxPool.html#a705e6036f85bdb4c3f708e0e938610db":[7,0,87,8],
 "structGfxPool.html#a70f20c70d9af0bf2e7001d904987cb0e":[7,0,87,12],
-"structGfxPool.html#a7b4ba3aad2315e3d209f42511c456cb6":[7,0,87,0],
-"structGfxPool.html#ab22fac4de0b34cb404e4f8ec5a21e4bf":[7,0,87,7],
-"structGfxPool.html#ab6bc5412ee4f45f34352dad5a25272b1":[7,0,87,10],
-"structGfxPool.html#acd57249fe31bc64d0f95e82440bc9b1a":[7,0,87,11],
-"structGfxPool.html#ad5847246ca49bf89413868fd6c21c46f":[7,0,87,9],
-"structGfxPool.html#ae9b65fcb21baa5953f70af3011434de6":[7,0,87,1],
-"structHegdehogSpawn.html":[7,0,88],
-"structHegdehogSpawn.html#a58433c04af615dda3729d29a555bdb5a":[7,0,88,1],
-"structHegdehogSpawn.html#a7722b6074c53f514bcacd6a7ea798175":[7,0,88,0],
-"structISVDbg.html":[7,0,91]
+"structGfxPool.html#a7b4ba3aad2315e3d209f42511c456cb6":[7,0,87,0]
 };

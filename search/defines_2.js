@@ -37,13 +37,14 @@ var searchData=
   ['boot_5faddress_5findy_34',['BOOT_ADDRESS_INDY',['../os_8h.html#a3cba2e502a5fb5cfa46cea91b62ecbf9',1,'os.h']]],
   ['boot_5faddress_5fultra_35',['BOOT_ADDRESS_ULTRA',['../os_8h.html#a79528dff3e2720a81c796314bd50b22a',1,'os.h']]],
   ['border_5fheight_36',['BORDER_HEIGHT',['../mk64_8h.html#a8d1345c22c668be330e8ff3ee4fb2463',1,'mk64.h']]],
-  ['bowser_37',['BOWSER',['../defines_8h.html#a25bbf0d263c780d3379040bf765369e2',1,'defines.h']]],
-  ['bowser_5fsize_38',['BOWSER_SIZE',['../defines_8h.html#a73fadc5bf872808026c6a1a4fef9672a',1,'defines.h']]],
-  ['bowtie_5fval_39',['BOWTIE_VAL',['../gbi_8h.html#a9375c2fc1e5370d91c65aeb5a3576439',1,'gbi.h']]],
-  ['bswap16_40',['BSWAP16',['../audio_2effects_8h.html#a5b9670220af6a7b1f964e53887255cab',1,'effects.h']]],
-  ['buff_5flen_41',['BUFF_LEN',['../__Ldtob_8c.html#a6ac7d11a56af31a55035980e2fed464a',1,'BUFF_LEN:&#160;_Ldtob.c'],['../__Litob_8c.html#a6ac7d11a56af31a55035980e2fed464a',1,'BUFF_LEN:&#160;_Litob.c']]],
-  ['buffer_5fmanager_5ferror_42',['BUFFER_MANAGER_ERROR',['../hardware_8h.html#a5ffc9b4a1a0b44ff997295302fc0c1a3',1,'hardware.h']]],
-  ['buffer_5fmanager_5finterrupt_43',['BUFFER_MANAGER_INTERRUPT',['../hardware_8h.html#a3949e617d780b9c8f577690ab7e875b5',1,'hardware.h']]],
-  ['buffer_5fmanager_5freset_44',['BUFFER_MANAGER_RESET',['../hardware_8h.html#a0a11bb115bc7b87616fd4eff7f76b784',1,'hardware.h']]],
-  ['busy_5fstate_45',['BUSY_STATE',['../hardware_8h.html#a4821f69a5605c2618cd4dc4d3f60979c',1,'hardware.h']]]
+  ['border_5fwidth_37',['BORDER_WIDTH',['../crash__screen_8c.html#a4221b0a24a1716cf086b820f988e4285',1,'crash_screen.c']]],
+  ['bowser_38',['BOWSER',['../defines_8h.html#a25bbf0d263c780d3379040bf765369e2',1,'defines.h']]],
+  ['bowser_5fsize_39',['BOWSER_SIZE',['../defines_8h.html#a73fadc5bf872808026c6a1a4fef9672a',1,'defines.h']]],
+  ['bowtie_5fval_40',['BOWTIE_VAL',['../gbi_8h.html#a9375c2fc1e5370d91c65aeb5a3576439',1,'gbi.h']]],
+  ['bswap16_41',['BSWAP16',['../audio_2effects_8h.html#a5b9670220af6a7b1f964e53887255cab',1,'effects.h']]],
+  ['buff_5flen_42',['BUFF_LEN',['../__Ldtob_8c.html#a6ac7d11a56af31a55035980e2fed464a',1,'BUFF_LEN:&#160;_Ldtob.c'],['../__Litob_8c.html#a6ac7d11a56af31a55035980e2fed464a',1,'BUFF_LEN:&#160;_Litob.c']]],
+  ['buffer_5fmanager_5ferror_43',['BUFFER_MANAGER_ERROR',['../hardware_8h.html#a5ffc9b4a1a0b44ff997295302fc0c1a3',1,'hardware.h']]],
+  ['buffer_5fmanager_5finterrupt_44',['BUFFER_MANAGER_INTERRUPT',['../hardware_8h.html#a3949e617d780b9c8f577690ab7e875b5',1,'hardware.h']]],
+  ['buffer_5fmanager_5freset_45',['BUFFER_MANAGER_RESET',['../hardware_8h.html#a0a11bb115bc7b87616fd4eff7f76b784',1,'hardware.h']]],
+  ['busy_5fstate_46',['BUSY_STATE',['../hardware_8h.html#a4821f69a5605c2618cd4dc4d3f60979c',1,'hardware.h']]]
 ];

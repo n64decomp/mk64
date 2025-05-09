@@ -9,6 +9,7 @@ var searchData=
   ['watchlo_5frtrap_6',['WATCHLO_RTRAP',['../R4300_8h.html#a552a19ef457161fb18082a5ff0a44bd6',1,'R4300.h']]],
   ['watchlo_5fvalidmask_7',['WATCHLO_VALIDMASK',['../R4300_8h.html#a55fdad7366f8ba76401505cac62053ce',1,'R4300.h']]],
   ['watchlo_5fwtrap_8',['WATCHLO_WTRAP',['../R4300_8h.html#a0a8e20512cbeb46cf186698b59425afd',1,'R4300.h']]],
-  ['write_5fprotect_5ferror_9',['WRITE_PROTECT_ERROR',['../hardware_8h.html#a662c43b9eb64d896d3cac6c4073e9ba8',1,'hardware.h']]],
-  ['wrong_5fdirection_5fframes_5flimit_10',['WRONG_DIRECTION_FRAMES_LIMIT',['../cpu__vehicles__camera__path_8h.html#a4b618b87d235d8e7b1c1d37dfb490532',1,'cpu_vehicles_camera_path.h']]]
+  ['white_5fcolour_9',['WHITE_COLOUR',['../crash__screen_8c.html#aad02939da416336a05981ba7525073c1',1,'crash_screen.c']]],
+  ['write_5fprotect_5ferror_10',['WRITE_PROTECT_ERROR',['../hardware_8h.html#a662c43b9eb64d896d3cac6c4073e9ba8',1,'hardware.h']]],
+  ['wrong_5fdirection_5fframes_5flimit_11',['WRONG_DIRECTION_FRAMES_LIMIT',['../cpu__vehicles__camera__path_8h.html#a4b618b87d235d8e7b1c1d37dfb490532',1,'cpu_vehicles_camera_path.h']]]
 ];

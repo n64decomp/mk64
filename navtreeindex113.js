@@ -1,5 +1,14 @@
 var NAVTREEINDEX113 =
 {
+"structGfxPool.html#ab22fac4de0b34cb404e4f8ec5a21e4bf":[7,0,87,7],
+"structGfxPool.html#ab6bc5412ee4f45f34352dad5a25272b1":[7,0,87,10],
+"structGfxPool.html#acd57249fe31bc64d0f95e82440bc9b1a":[7,0,87,11],
+"structGfxPool.html#ad5847246ca49bf89413868fd6c21c46f":[7,0,87,9],
+"structGfxPool.html#ae9b65fcb21baa5953f70af3011434de6":[7,0,87,1],
+"structHegdehogSpawn.html":[7,0,88],
+"structHegdehogSpawn.html#a58433c04af615dda3729d29a555bdb5a":[7,0,88,1],
+"structHegdehogSpawn.html#a7722b6074c53f514bcacd6a7ea798175":[7,0,88,0],
+"structISVDbg.html":[7,0,91],
 "structISVDbg.html#a11325b5715d2bf4c90af9014be896a62":[7,0,91,1],
 "structISVDbg.html#a3271fd64600c0d487bfb12008c917da7":[7,0,91,2],
 "structISVDbg.html#a94786b7280f6ce4f9ec51a171151435a":[7,0,91,5],
@@ -240,14 +249,5 @@ var NAVTREEINDEX113 =
 "structOSEventMessageStruct__0__s.html":[7,0,116],
 "structOSEventMessageStruct__0__s.html#a5e38fae09a84df1598d28ab574708add":[7,0,116,1],
 "structOSEventMessageStruct__0__s.html#af1a57f744f32174015a18c0be67cacb1":[7,0,116,0],
-"structOSIoMesg.html":[7,0,117],
-"structOSIoMesg.html#a075b3767e072fcc9fe1058b64eb5b87e":[7,0,117,0],
-"structOSIoMesg.html#a3513926dcc38ed394eabf006c9e3a222":[7,0,117,2],
-"structOSIoMesg.html#a66a22832e13e54b5484f27452070ed85":[7,0,117,3],
-"structOSIoMesg.html#ad0797b3af59ea96f7675d0be10c26252":[7,0,117,1],
-"structOSIoMesg.html#ada0dde3ada8378b50479abf6dd10bab6":[7,0,117,4],
-"structOSIoMesgHdr.html":[7,0,118],
-"structOSIoMesgHdr.html#a3acd06409f805eb4070f307113705937":[7,0,118,0],
-"structOSIoMesgHdr.html#a8ee587cb2585eb317de503f96576167a":[7,0,118,1],
-"structOSIoMesgHdr.html#ab4cdc7ba07db7b772c40dd79b5add26a":[7,0,118,3]
+"structOSIoMesg.html":[7,0,117]
 };

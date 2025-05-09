@@ -1,8 +1,17 @@
 var crash__screen_8c =
 [
     [ "BLACK_COLOUR", "crash__screen_8c.html#a140d13d2e3e6fd06c56ce399396def23", null ],
+    [ "BORDER_WIDTH", "crash__screen_8c.html#a4221b0a24a1716cf086b820f988e4285", null ],
     [ "CHARACTER_DASH", "crash__screen_8c.html#aa33ddf6455297cb41a553e1c153fe24c", null ],
     [ "DRAW_CODE", "crash__screen_8c.html#a6e86d9bd5fab8cd3013afe8a9d74d1dd", null ],
+    [ "RED_COLOUR", "crash__screen_8c.html#a100955df7cdce4891c63c186be8fbfd9", null ],
+    [ "SQUARE_SIZE_X", "crash__screen_8c.html#a7b0ea17a3c8828a80cea499ef89bfd2d", null ],
+    [ "SQUARE_SIZE_Y", "crash__screen_8c.html#a3c5d538b8e65f39520dbe81f98771fba", null ],
+    [ "SQUARE_X", "crash__screen_8c.html#a286df5091d847579fca20dba63c83477", null ],
+    [ "SQUARE_X2", "crash__screen_8c.html#a17fc0fe6a2fece7ea04fec4efe8426cd", null ],
+    [ "SQUARE_Y", "crash__screen_8c.html#a1edf9d97feb3c294031371f10e8e3df0", null ],
+    [ "SQUARE_Y2", "crash__screen_8c.html#a0af0e3416a1004097b62a5968e2bc902", null ],
+    [ "WHITE_COLOUR", "crash__screen_8c.html#aad02939da416336a05981ba7525073c1", null ],
     [ "crash_screen_draw_glyph", "crash__screen_8c.html#a54d41e42f5dd58eafcd03aefecbee26d", null ],
     [ "crash_screen_draw_info", "crash__screen_8c.html#affae45bedac61b2d5c4e3f57283ba099", null ],
     [ "crash_screen_draw_square", "crash__screen_8c.html#a271e93a6c95f12117f19c86234fb1d05", null ],
