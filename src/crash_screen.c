@@ -56,11 +56,10 @@ void crash_screen_draw_glyph(u16* framebuffer, s32 x, s32 y, s32 glyph) {
 
 void crash_screen_draw_square(u16* framebuffer);
 
-//                   0xRGBA (I think A maybe not).
 #define WHITE_COLOUR 0xFFFF
 #define RED_COLOUR 0xF801
 
-// top left of square position
+// (x,y) of top left pixel of square
 #define SQUARE_X 40
 #define SQUARE_Y 40
 
