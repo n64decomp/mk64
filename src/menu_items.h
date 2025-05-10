@@ -397,7 +397,7 @@ Gfx* func_800959F8(Gfx*, Vtx*);
 Gfx* func_80095BD0(Gfx*, u8*, f32, f32, u32, u32, f32, f32);
 Gfx* func_80095E10(Gfx*, s8, s32, s32, s32, s32, s32, s32, s32, s32, u8*, u32, u32);
 Gfx* func_800963F0(Gfx*, s8, s32, s32, f32, f32, s32, s32, s32, s32, s32, s32, u8*, u32, u32);
-Gfx* func_80096CD8(Gfx*, s32, s32, u32, u32);
+Gfx* func_80096CD8(Gfx* displayListHead, s32 xPos, s32 yPos, u32 width, u32 height);
 Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8,
                    s32 arg9, u16* argA, u32 argB, u32 argC, s32 argD);
 Gfx* func_80097A14(Gfx*, s8, s32, s32, s32, s32, s32, s32, u8*, u32, u32);

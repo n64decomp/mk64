@@ -631,67 +631,81 @@ Acmd* final_resample(Acmd* acmd, struct NoteSynthesisState* synthesisState, s32 
     return acmd;
 }
 
-#ifdef NON_MATCHING
-// I wish I knew what was up with this function
-// It doesn't quite match either the EU or Shindou versions
-// of process_envelope.
-// What's here appears to have the right "shape" based on
-// the M2C output, but beyond that I can't really tell what's
-// going on
 Acmd* func_800B86A0(Acmd* cmd, struct NoteSubEu* note, struct NoteSynthesisState* synthesisState, s32 nSamples,
                     u16 inBuf, s32 headsetPanSettings, UNUSED u32 flags) {
+    UNUSED s32 pad[2];
     u16 sourceRight;
     u16 sourceLeft;
     u16 targetLeft;
     u16 targetRight;
-    s32 rampLeft;
-    s32 rampRight;
-    UNUSED s32 sourceReverbVol;
-    UNUSED s16 rampReverb;
-    UNUSED s32 reverbVolDiff = 0;
+    s16 rampLeft;
+    s16 rampRight;
 
     sourceLeft = synthesisState->curVolLeft;
     sourceRight = synthesisState->curVolRight;
-    targetLeft = note->targetVolLeft;
-    targetRight = note->targetVolRight;
-    targetLeft <<= 4;
-    targetRight <<= 4;
+    
+    targetLeft = (note->targetVolLeft) << 4;
+    targetRight = (note->targetVolRight) << 4;
 
-    rampLeft = (targetLeft - sourceLeft) / (nSamples >> 3);
-    rampRight = (targetRight - sourceRight) / (nSamples >> 3);
-    synthesisState->curVolLeft = sourceLeft + rampLeft * (nSamples >> 3);
-    synthesisState->curVolRight = sourceRight + rampRight * (nSamples >> 3);
+    rampLeft  = ((targetLeft  - sourceLeft)  / (nSamples >> 3));
+    rampRight = ((targetRight - sourceRight) / (nSamples >> 3));
+    targetLeft  = sourceLeft  + rampLeft  * (nSamples >> 3);
+    targetRight = sourceRight + rampRight * (nSamples >> 3);
+
+    synthesisState->curVolLeft = targetLeft;
+    synthesisState->curVolRight = targetRight;
 
     if (note->usesHeadsetPanEffects) {
         aClearBuffer(cmd++, DMEM_ADDR_NOTE_PAN_TEMP, DEFAULT_LEN_1CH);
-        aEnvSetup1(cmd++, note->reverbVol, (((sourceLeft & 0xFF) << 8) | (sourceRight & 0xFF)), rampRight, rampLeft);
+        aEnvSetup1Alt(cmd++, note->reverbVol, sourceLeft, sourceRight, (u32)rampLeft, (u32)rampRight);
         aEnvSetup2(cmd++, sourceLeft, sourceRight);
 
-        switch (headsetPanSettings) {
+        switch (headsetPanSettings) {;
             case 1:
-                aEnvMixer(cmd++, inBuf, nSamples, 0, note->stereoStrongRight, note->stereoStrongLeft,
-                          DMEM_ADDR_NOTE_PAN_TEMP, DMEM_ADDR_RIGHT_CH, DMEM_ADDR_WET_LEFT_CH, DMEM_ADDR_WET_RIGHT_CH);
+                aEnvMixer(cmd++,
+                    inBuf, nSamples,
+                    0,
+                    note->stereoStrongRight, note->stereoStrongLeft,
+                    DMEM_ADDR_NOTE_PAN_TEMP,
+                    DMEM_ADDR_RIGHT_CH,
+                    DMEM_ADDR_WET_LEFT_CH,
+                    DMEM_ADDR_WET_RIGHT_CH);
                 break;
             case 2:
-                aEnvMixer(cmd++, inBuf, nSamples, 0, note->stereoStrongRight, note->stereoStrongLeft, DMEM_ADDR_LEFT_CH,
-                          DMEM_ADDR_NOTE_PAN_TEMP, DMEM_ADDR_WET_LEFT_CH, DMEM_ADDR_WET_RIGHT_CH);
+                aEnvMixer(cmd++,
+                    inBuf, nSamples,
+                    0,
+                    note->stereoStrongRight, note->stereoStrongLeft,
+                    DMEM_ADDR_LEFT_CH,
+                    DMEM_ADDR_NOTE_PAN_TEMP,
+                    DMEM_ADDR_WET_LEFT_CH,
+                    DMEM_ADDR_WET_RIGHT_CH);
                 break;
             default:
-                aEnvMixer(cmd++, inBuf, nSamples, 0, note->stereoStrongRight, note->stereoStrongLeft, DMEM_ADDR_LEFT_CH,
-                          DMEM_ADDR_RIGHT_CH, DMEM_ADDR_WET_LEFT_CH, DMEM_ADDR_WET_RIGHT_CH);
+                aEnvMixer(cmd++,
+                    inBuf, nSamples,
+                    0,
+                    note->stereoStrongRight, note->stereoStrongLeft,
+                    DMEM_ADDR_LEFT_CH,
+                    DMEM_ADDR_RIGHT_CH,
+                    DMEM_ADDR_WET_LEFT_CH,
+                    DMEM_ADDR_WET_RIGHT_CH);
                 break;
         }
     } else {
-        aEnvSetup1(cmd++, note->reverbVol, (((sourceLeft & 0xFF) << 8) | (sourceRight & 0xFF)), rampLeft, rampRight);
+        aEnvSetup1Alt(cmd++, note->reverbVol, sourceLeft, sourceRight, (u32)rampLeft, (u32)rampRight);
         aEnvSetup2(cmd++, sourceLeft, sourceRight);
-        aEnvMixer(cmd++, inBuf, nSamples, 0, note->stereoStrongRight, note->stereoStrongLeft, DMEM_ADDR_LEFT_CH,
-                  DMEM_ADDR_RIGHT_CH, DMEM_ADDR_WET_LEFT_CH, DMEM_ADDR_WET_RIGHT_CH);
+        aEnvMixer(cmd++,
+                inBuf, nSamples,
+                0,
+                note->stereoStrongRight, note->stereoStrongLeft,
+                DMEM_ADDR_LEFT_CH,
+                DMEM_ADDR_RIGHT_CH,
+                DMEM_ADDR_WET_LEFT_CH,
+                DMEM_ADDR_WET_RIGHT_CH);
     }
     return cmd;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/synthesis/func_800B86A0.s")
-#endif
 
 Acmd* note_apply_headset_pan_effects(Acmd* acmd, struct NoteSubEu* noteSubEu, struct NoteSynthesisState* note,
                                      s32 bufLen, s32 flags, s32 leftRight) {
