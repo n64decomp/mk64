@@ -506,7 +506,7 @@ SECTIONS
    END_SEG(other_textures)
 
    /* 0x802BA370 724220-729A30 [0x5810] */
-   BEGIN_SEG(trigTables, 0x802BA370) // FIXME: _buffersSegmentNoloadStart is shifted in EU, uses a fixed address similar to us
+   BEGIN_SEG(trigTables, _buffersSegmentNoloadStart)
    {
         BUILD_DIR/src/buffers/trig_tables.o(.data);
         . = ALIGN(0x10);
