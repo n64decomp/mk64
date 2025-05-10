@@ -1467,7 +1467,7 @@ void func_8004B310(s32 alpha) {
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, alpha);
 }
 
-void func_8004B35C(s32 red, s32 green, s32 blue, s32 alpha) {
+void func_8004B35C(u32 red, u32 green, u32 blue, u32 alpha) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(gDisplayListHead++, 0, 0, red, green, blue, alpha);
 }
@@ -1518,7 +1518,7 @@ void func_8004B6C4(s32 red, s32 green, s32 blue) {
     gDPSetPrimColor(gDisplayListHead++, 0, 0, red, green, blue, 0xFF);
 }
 
-void func_8004B72C(s32 primRed, s32 primGreen, s32 primBlue, s32 envRed, s32 envGreen, s32 envBlue, s32 primAlpha) {
+void func_8004B72C(u32 primRed, u32 primGreen, u32 primBlue, u32 envRed, u32 envGreen, u32 envBlue, u32 primAlpha) {
     gDPSetPrimColor(gDisplayListHead++, 0, 0, primRed, primGreen, primBlue, primAlpha);
     gDPSetEnvColor(gDisplayListHead++, envRed, envGreen, envBlue, 0xFF);
     gDPSetCombineLERP(gDisplayListHead++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0,
@@ -2465,59 +2465,34 @@ void render_mini_map_finish_line(s32 arg0) {
 #endif
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/FxA1w
-/**
- * characterId of 8 appears to be a type of null check or control flow alteration.
- */
-#define EXPLICIT_AND 1
 void draw_minimap_character(s32 arg0, s32 playerId, s32 characterId) {
     f32 thing0;
     f32 thing1;
     s16 x;
     s16 y;
-    Player* player = &gPlayerOne[playerId];
+    Player *player = &gPlayerOne[playerId];
 
     if (player->type & (1 << 15)) {
         thing0 = player->pos[0] * gMiniMapMarkerScale;
         thing1 = player->pos[2] * gMiniMapMarkerScale;
-        x = ((gMiniMapFinishLineX[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + gMiniMapX + (s16) (thing0);
-        y = ((gMiniMapFinishLineY[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + gMiniMapY + (s16) (thing1);
+        x = ((gMiniMapFinishLineX[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + gMiniMapX + (s16)(thing0);
+        y = ((gMiniMapFinishLineY[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + gMiniMapY + (s16)(thing1);
+        // huh?
         if (characterId != 8) {
             if ((gGPCurrentRaceRankByPlayerId[playerId] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
-#if EXPLICIT_AND == 1
-                func_80046424(x, y, (player->rotation[1] + 0x8000) & 0xFFFF, 1.0f,
-                              (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
-                              8, 8, 8, 8);
-#else
-                func_80046424(x, y, player->rotation[1] + 0x8000, 1.0f,
-                              (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
-                              8, 8, 8, 8);
-#endif
+                func_80046424(x, y, player->rotation[1] + 0x8000, 1.0f, (u8*)&common_texture_minimap_kart_mario[characterId * 64], common_vtx_player_minimap_icon, 8, 8, 8, 8);
             } else {
-#if EXPLICIT_AND == 1
-                func_800463B0(x, y, (player->rotation[1] + 0x8000) & 0xFFFF, 1.0f,
-                              (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
-                              8, 8, 8, 8);
-#else
-                func_800463B0(x, y, player->rotation[1] + 0x8000, 1.0f,
-                              (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
-                              8, 8, 8, 8);
-#endif
+                func_800463B0(x, y, player->rotation[1] + 0x8000, 1.0f, (u8*)&common_texture_minimap_kart_mario[characterId * 64], common_vtx_player_minimap_icon, 8, 8, 8, 8);
             }
         } else {
             if (gGPCurrentRaceRankByPlayerId[playerId] == 0) {
-                func_8004C450(x, y, 8, 8, (u8*) common_texture_minimap_progress_dot);
+                func_8004C450(x, y, 8, 8, (u8 *) common_texture_minimap_progress_dot);
             } else {
-                draw_hud_2d_texture(x, y, 8, 8, (u8*) common_texture_minimap_progress_dot);
+                draw_hud_2d_texture(x, y, 8, 8, (u8 *) common_texture_minimap_progress_dot);
             }
         }
     }
 }
-#undef EXPLICIT_AND
-#else
-GLOBAL_ASM("asm/non_matchings/render_objects/draw_minimap_character.s")
-#endif
 
 // WTF is up with the gPlayerOne access in this function?
 void func_8004F3E4(s32 arg0) {
@@ -2965,25 +2940,19 @@ void func_80050C68(void) {
     }
 }
 
-#ifdef NON_MATCHING
-
-// Something about the handling of the `player` variable is weird.
-// All commands are present and correct, 2 of them are out of position
-// https://decomp.me/scratch/PvJ5D
 void func_80050E34(s32 playerId, s32 arg1) {
     s32 objectIndex;
     s32 spD0;
     s32 spCC;
-    UNUSED s32 stackPadding;
+    Player *dummy = &gPlayerOne[playerId];
     s32 spC4;
     s32 lapCount;
     s32 characterId;
     s32 spB8;
     s32 temp_v0_2;
     Object* object;
-    Player* player;
+    Player *player = &gPlayerOne[playerId];
 
-    player = &gPlayerOne[playerId];
     lapCount = gLapCountByPlayerId[playerId];
     characterId = player->characterId;
     objectIndex = D_8018CE10[playerId].objectIndex;
@@ -3048,9 +3017,6 @@ void func_80050E34(s32 playerId, s32 arg1) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/render_objects/func_80050E34.s")
-#endif
 
 void func_800514BC(void) {
     s32 temp_a0;

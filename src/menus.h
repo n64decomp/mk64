@@ -200,7 +200,7 @@ void course_data_menu_act(struct Controller*, u16);
 void logo_intro_menu_act(struct Controller*, u16);
 void controller_pak_menu_act(struct Controller*, u16);
 void splash_menu_act(struct Controller*, u16);
-void setup_game_mode_selected(void);
+void setup_selected_game_mode(void);
 void main_menu_act(struct Controller*, u16);
 bool is_character_spot_free(s32);
 void player_select_menu_act(struct Controller*, u16);

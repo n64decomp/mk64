@@ -48,9 +48,6 @@
     common_texture_particle_smoke:
       range: [0x2BC58, 0x2C858]
       mode: APPEND
-    common_texture_minimap_kart_character:
-      range: [0x2CCD8, 0x2D058]
-      mode: APPEND
 common_tlut_finish_line_banner:
   symbol: common_tlut_finish_line_banner
   type: texture
