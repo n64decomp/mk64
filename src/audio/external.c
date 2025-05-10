@@ -227,16 +227,16 @@ s8 func_800C15D0(u8 bank, u8 soundId, u8 channel) {
     return var_a0;
 }
 
-// This is likely functionally equivallent.
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/99CQl
 s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
     f32 var_f0;
     f32 var_f14;
+    f32 new_var;
+    f32 *new_var2;
     f32 var_f16;
     f32 var_f18;
     f32 var_f20;
     f32 var_f2;
+    new_var2 = &var_f0;
 
     if (D_800EA1C0 == 0) {
         if (D_800EA0F4 != 0) {
@@ -245,9 +245,9 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
             var_f16 = 10.0f;
             var_f18 = 2.5f;
         } else {
-            var_f2 = 100.0f;
+            var_f0 = 100.0f;
+            var_f2 = *new_var2;
             var_f14 = 200.0f;
-            if (1) {}
             var_f16 = 5.0f;
             var_f18 = 3.3333333f;
         }
@@ -256,16 +256,17 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
         if (var_f2 < var_f20) {
             var_f20 = var_f2;
         }
-        var_f0 = (arg1 < 0.0f) ? -arg1 : arg1;
 
-        if (var_f2 < var_f0) {
+        new_var = arg0;
+        var_f0 = (arg1 < 0.0f) ? -arg1 : arg1;
+        if (var_f2 < (var_f0 = *new_var2)) {
             var_f0 = var_f2;
         }
-        if ((arg0 == 0.0f) && (arg1 == 0.0f)) {
+        if ((new_var == 0.0f) && (arg1 == 0.0f)) {
             var_f2 = 0.5f;
-        } else if ((arg0 >= 0.0f) && (var_f0 <= var_f20)) {
+        } else if ((new_var >= 0.0f) && (var_f0 <= var_f20)) {
             var_f2 = 1.0f - ((var_f14 - var_f20) / (var_f16 * (var_f14 - var_f0)));
-        } else if ((arg0 < 0.0f) && (var_f0 <= var_f20)) {
+        } else if ((new_var < 0.0f) && (var_f0 <= var_f20)) {
             var_f2 = (var_f14 - var_f20) / (var_f16 * (var_f14 - var_f0));
         } else {
             var_f2 = (arg0 / (var_f18 * var_f0)) + 0.5f;
@@ -280,9 +281,6 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
     }
     return (cameraId & 1) * 0x7F;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C16E8.s")
-#endif
 
 f32 func_800C1934(u8 bank, u8 soundId) {
     f32 phi_f2;
