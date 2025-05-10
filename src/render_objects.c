@@ -2940,25 +2940,19 @@ void func_80050C68(void) {
     }
 }
 
-#ifdef NON_MATCHING
-
-// Something about the handling of the `player` variable is weird.
-// All commands are present and correct, 2 of them are out of position
-// https://decomp.me/scratch/PvJ5D
 void func_80050E34(s32 playerId, s32 arg1) {
     s32 objectIndex;
     s32 spD0;
     s32 spCC;
-    UNUSED s32 stackPadding;
+    Player *dummy = &gPlayerOne[playerId];
     s32 spC4;
     s32 lapCount;
     s32 characterId;
     s32 spB8;
     s32 temp_v0_2;
     Object* object;
-    Player* player;
+    Player *player = &gPlayerOne[playerId];
 
-    player = &gPlayerOne[playerId];
     lapCount = gLapCountByPlayerId[playerId];
     characterId = player->characterId;
     objectIndex = D_8018CE10[playerId].objectIndex;
@@ -3023,9 +3017,6 @@ void func_80050E34(s32 playerId, s32 arg1) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/render_objects/func_80050E34.s")
-#endif
 
 void func_800514BC(void) {
     s32 temp_a0;
