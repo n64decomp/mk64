@@ -639,7 +639,7 @@ void data_menu_act(struct Controller* controller, UNUSED u16 controllerIdx) {
     u16 btnAndStick = (controller->buttonPressed | controller->stickPressed);
 
     // Make pressing Start have the same effect as pressing A
-    if ((gEnableDebugMode == 0) && ((btnAndStick & START_BUTTON) != 0)) {
+    if (!gEnableDebugMode && ((btnAndStick & START_BUTTON) != 0)) {
         btnAndStick |= A_BUTTON;
     }
 
@@ -1284,12 +1284,12 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                 break;
             case MAIN_MENU_PLAYER_SELECT:
                 if ((btnAndStick & R_JPAD) && (gPlayerCount < 4)) {
-                    gPlayerCount++;
+                    gPlayerCount += 1;
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
                 if ((btnAndStick & L_JPAD) && (gPlayerCount >= 2)) {
-                    gPlayerCount--;
+                    gPlayerCount -= 1;
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
@@ -1308,7 +1308,7 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 if (btnAndStick & B_BUTTON) {
                     func_8009E0F0(0x14);
-                    func_800CA330(0x19U);
+                    func_800CA330(0x19);
                     gMenuFadeType = MENU_FADE_TYPE_BACK;
                     play_sound2(SOUND_MENU_GO_BACK);
                     break;
@@ -1399,7 +1399,7 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
 
                 subMode = gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
                 if ((btnAndStick & U_JPAD) && (subMode > 0)) {
-                    gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]--;
+                    gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]] -= 1;
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
@@ -1508,7 +1508,7 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
     u16 btnAndStick;
 
     btnAndStick = (controller->buttonPressed | controller->stickPressed);
-    if ((gEnableDebugMode == 0) && (btnAndStick & START_BUTTON)) {
+    if (!gEnableDebugMode && (btnAndStick & START_BUTTON)) {
         btnAndStick |= A_BUTTON;
     }
 
@@ -1686,7 +1686,7 @@ void course_select_menu_act(struct Controller* arg0, u16 controllerIdx) {
         btnAndStick |= A_BUTTON;
     }
 
-    if (is_screen_being_faded() == 0) {
+    if (!is_screen_being_faded()) {
         switch (gSubMenuSelection) {
             case SUB_MENU_MAP_SELECT_CUP:
                 if ((btnAndStick & R_JPAD) != 0) {
