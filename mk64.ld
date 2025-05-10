@@ -656,13 +656,11 @@ SECTIONS
       #else
       BUILD_DIR/data/sound_data/sequences.o(.data);
       #endif
+      . = ALIGN(0x40);
    }
    END_SEG(sequences)
-   BEGIN_SEG(instrument_sets, 0x282E80)
+   BEGIN_SEG(instrument_sets, .)
    {
-      #ifdef VERSION_EU
-      . += 0x20;
-      #endif
       BUILD_DIR/data/sound_data/instrument_sets.o(.data);
    }
    END_SEG(instrument_sets)

@@ -964,9 +964,6 @@ void func_800C36C4(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     D_801930D0[arg0].unk_012 = 1;
 }
 
-#ifdef VERSION_EU
-GLOBAL_ASM("asm/eu_nonmatchings/func_800C3724.s")
-#else
 void func_800C3724(void) {
     u8 seqPlayerIndex;
     f32 volume;
@@ -1097,6 +1094,12 @@ void func_800C3724(void) {
             }
         }
         if (D_801930D0[seqPlayerIndex].unk_041) {
+#ifdef VERSION_EU
+            if (func_800C357C_eu(-0x10000000, -0x10000000) == 0) {
+                D_801930D0[seqPlayerIndex].unk_041 = 0;
+                return;
+            }  
+#endif
             if (D_801930D0[seqPlayerIndex].unk_040 != 0) {
                 D_801930D0[seqPlayerIndex].unk_040--;
                 continue;
@@ -1156,7 +1159,6 @@ void func_800C3724(void) {
         }
     }
 }
-#endif
 
 void func_800C3F70(void) {
     u8 var_v0;
