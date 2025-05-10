@@ -755,11 +755,6 @@ void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
     seqPlayer->scriptState.pc = sequenceData;
 }
 
-
-#ifdef VERSION_EU
-GLOBAL_ASM("asm/eu_nonmatchings/audio_init.s")
-#else
-
 extern u8 _audio_banksSegmentRomStart;
 extern u8 _audio_tablesSegmentRomStart;
 extern u8 _instrument_setsSegmentRomStart;
@@ -797,6 +792,10 @@ void audio_init(void) {
     }
 #endif
 
+#ifdef VERSION_EU
+    D_803B7178 = 20.03042f;
+    gRefreshRate = 50;
+#else // US
     switch (osTvType) { /* irregular */
         case 0:
             D_803B7178 = 20.03042f;
@@ -812,6 +811,7 @@ void audio_init(void) {
             gRefreshRate = 0x0000003C;
             break;
     }
+#endif
     port_eu_init();
     if (k) {} // fake
     for (i = 0; i < NUMAIBUFFERS; i++) {
@@ -880,4 +880,3 @@ void audio_init(void) {
     init_sequence_players();
     gAudioLoadLock = 0x76557364;
 }
-#endif

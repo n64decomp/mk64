@@ -506,7 +506,7 @@ SECTIONS
    END_SEG(other_textures)
 
    /* 0x802BA370 724220-729A30 [0x5810] */
-   BEGIN_SEG(trigTables, _buffersSegmentNoloadStart)
+   BEGIN_SEG(trigTables, 0x802BA370) // FIXME: _buffersSegmentNoloadStart is shifted in EU, uses a fixed address similar to us
    {
         BUILD_DIR/src/buffers/trig_tables.o(.data);
         . = ALIGN(0x10);
@@ -656,13 +656,11 @@ SECTIONS
       #else
       BUILD_DIR/data/sound_data/sequences.o(.data);
       #endif
+      . = ALIGN(0x40);
    }
    END_SEG(sequences)
-   BEGIN_SEG(instrument_sets, 0x282E80)
+   BEGIN_SEG(instrument_sets, .)
    {
-      #ifdef VERSION_EU
-      . += 0x20;
-      #endif
       BUILD_DIR/data/sound_data/instrument_sets.o(.data);
    }
    END_SEG(instrument_sets)
