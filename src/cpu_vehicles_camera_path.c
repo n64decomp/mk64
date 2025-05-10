@@ -1212,22 +1212,18 @@ f32 func_80009258(UNUSED s32 playerId, f32 arg1, f32 arg2) {
     return gCourseTimer - ((COURSE_TIMER_ITER_f * temp_f2) / (temp_f2 + temp_f12));
 }
 
-#ifdef NON_MATCHING
-// Weird stack issue, can't figure out how to get rid of it
 void update_player_path_completion(s32 playerId, Player* player) {
     f32 playerX;
     f32 playerY;
     f32 playerZ;
     s32 var_v0;
-    s32 var_v1;
+    UNUSED s16 pad;
     f32 previousPlayerZ;
-    UNUSED s16 stackPadding0;
-    s16 var_t0;
-    UNUSED s32 stackPadding1;
 
     playerX = player->pos[0];
     playerY = player->pos[1];
     playerZ = player->pos[2];
+    previousPlayerZ = gPreviousPlayerZ[playerId];
     gIsPlayerNewPathPoint = false;
     D_80163240[playerId] = 0;
     sSomeNearestPathPoint = update_player_path(playerX, playerY, playerZ, gNearestPathPointByPlayerId[playerId], player,
@@ -1244,8 +1240,8 @@ void update_player_path_completion(s32 playerId, Player* player) {
     }
     if ((sSomeNearestPathPoint < 0x14) || ((gPathCountByPathIndex[gPlayerPathIndex] - 0x14) < sSomeNearestPathPoint) ||
         (gCurrentCourseId == COURSE_KALAMARI_DESERT)) {
-        var_v1 = 0;
-        var_t0 = 0;
+        s16 var_v1 = 0;
+        s16 var_t0 = 0;
         if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
             D_801634EC = 0;
             if (player->effects & 0x200) {
@@ -1280,15 +1276,15 @@ void update_player_path_completion(s32 playerId, Player* player) {
                 gLapCountByPlayerId[playerId]++;
                 if ((gModeSelection == 0) && (gLapCountByPlayerId[playerId] == 5)) {
                     if (gGPCurrentRaceRankByPlayerIdDup[playerId] == 7) {
-                        for (var_v0 = 0; var_v0 < NUM_PLAYERS; var_v0++) {
-                            gLapCountByPlayerId[var_v0]--;
-                        }
+                        // clang-format off
+                        for (var_v0 = 0; var_v0 < NUM_PLAYERS; var_v0++) { gLapCountByPlayerId[var_v0]--; } // has to be one line to match
+                        // clang-format on
                     }
                 }
                 D_80163240[playerId] = 1;
                 update_player_completion(playerId);
                 reset_cpu_behaviour(playerId);
-                cpu_ItemStrategy[playerId].timer = 0;
+                cpu_ItemStrategy[playerId].numItemUse = 0;
                 if ((D_8016348C == 0) && !(player->type & PLAYER_CINEMATIC_MODE)) {
                     gTimePlayerLastTouchedFinishLine[playerId] = func_80009258(playerId, previousPlayerZ, playerZ);
                 }
@@ -1320,9 +1316,6 @@ void update_player_path_completion(s32 playerId, Player* player) {
     }
     update_player_position_factor(playerId, sSomeNearestPathPoint, gPlayerPathIndex);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/cpu_vehicles_camera_path/update_player_path_completion.s")
-#endif
 
 void update_vehicles(void) {
     s32 i;
