@@ -1524,8 +1524,8 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
 
                 if (btnAndStick & B_BUTTON) {
-                    if (gCharacterGridIsSelected[controllerIdx] != 0) {
-                        gCharacterGridIsSelected[controllerIdx] = 0;
+                    if (gCharacterGridIsSelected[controllerIdx] != false) {
+                        gCharacterGridIsSelected[controllerIdx] = false;
                         play_sound2(SOUND_MENU_GO_BACK);
                     } else {
                         func_8009E208();
@@ -1534,25 +1534,25 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
             
                 if ((btnAndStick & A_BUTTON) && (gCharacterGridIsSelected[controllerIdx] == 0)) {
-                    gCharacterGridIsSelected[controllerIdx] = 1;
+                    gCharacterGridIsSelected[controllerIdx] = true;
                     func_800C90F4(controllerIdx, ((sCharacterGridOrder - 1)[gCharacterGridSelections[controllerIdx]] * 0x10) + 0x2900800E);
                 }
 
                 selected = false;
-                for (i = 0; i < 4; i++) {
-                    if ((gCharacterGridSelections[i] != 0) && (gCharacterGridIsSelected[i] == 0)) {
+                for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
+                    if ((gCharacterGridSelections[i] != 0) && (gCharacterGridIsSelected[i] == false)) {
                         selected = true;
                         break;
                     }
                 }
 
                 if (!selected) {
-                    gPlayerSelectMenuSelection = 2;
+                    gPlayerSelectMenuSelection = PLAYER_SELECT_MENU_OK;
                     reset_cycle_flash_menu();
                     gMenuTimingCounter = 0;
                 }
 
-                if (gCharacterGridIsSelected[controllerIdx] != 0) {
+                if (gCharacterGridIsSelected[controllerIdx] != false) {
                     break;
                 }
                 j = gCharacterGridSelections[controllerIdx];
@@ -1655,8 +1655,8 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     }
                 }
                 if (btnAndStick & B_BUTTON) {
-                    gPlayerSelectMenuSelection = 1;
-                    gCharacterGridIsSelected[controllerIdx] = 0;
+                    gPlayerSelectMenuSelection = PLAYER_SELECT_MENU_MAIN;
+                    gCharacterGridIsSelected[controllerIdx] = false;
                     play_sound2(SOUND_MENU_GO_BACK);
                     break;
                 }
