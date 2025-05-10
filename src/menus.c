@@ -1172,7 +1172,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                     }
                     play_sound2(SOUND_MENU_SELECT);
                     break;
-                } else if (btnAndStick & CONT_L) {
+                } else if (btnAndStick & L_TRIG) {
                     reset_save_data_grand_prix_points_and_sound_mode();
                     for (i = 0; i < 16; i++) {
                         func_800B5404(i / 4, i);
@@ -1206,7 +1206,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                 func_800CA330(0x19);
                 gDebugMenuSelection = DEBUG_MENU_OPTION_SELECTED;
 
-                if (controller->button & CONT_L) {
+                if (controller->button & L_TRIG) {
                     gDemoMode = DEMO_MODE_ACTIVE;
                 } else {
                     gDemoMode = DEMO_MODE_INACTIVE;
@@ -1226,7 +1226,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                 gDebugMenuSelection = DEBUG_MENU_OPTION_SELECTED;
                 gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_DEFAULT;
                 play_sound2(SOUND_MENU_OK_CLICKED);
-            } else if (btnAndStick & CONT_R) {
+            } else if (btnAndStick & R_TRIG) {
                 gDebugMenuSelection = DEBUG_MENU_DISABLED;
                 play_sound2(SOUND_MENU_SELECT);
             }
@@ -1234,7 +1234,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
     }
 }
 
-void setup_game_mode_selected(void) {
+void setup_selected_game_mode(void) {
     // For Grand Prix and Versus, this will be the CC mode selected. For Time Trials, it will
     // be whether 'Begin' or 'Data' is selected. Not used for Battle.
     s8 subMenuMode = gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
@@ -1268,38 +1268,31 @@ void setup_game_mode_selected(void) {
 /**
  * Navigation of the main game mode select screen
  */
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/93qj8
-// nonmatching: regalloc; controllerIdx is not AND-ed back into $a1, reg chaos follows
 void main_menu_act(struct Controller* controller, u16 controllerIdx) {
-    u16 btnAndStick; // sp2E
-    s32 subMode;
-    bool cursorMoved;
-    s32 newMode; // temp_v1_2?
+    u16 btnAndStick;
+    s32 subMode; // subMode
+    bool cursorMoved; // cursorMoved
 
     btnAndStick = controller->buttonPressed | controller->stickPressed;
-    if (!gEnableDebugMode && (btnAndStick & START_BUTTON)) {
+    if ((gEnableDebugMode == 0) && (btnAndStick & START_BUTTON)) {
         btnAndStick |= A_BUTTON;
     }
 
-    if (!is_screen_being_faded()) {
+    if (is_screen_being_faded() == 0) {
         switch (gMainMenuSelection) {
-            case MAIN_MENU_NONE: {
-                newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
+            case MAIN_MENU_NONE:
                 break;
-            }
-            case MAIN_MENU_PLAYER_SELECT: {
-                if ((btnAndStick & R_JPAD) && gPlayerCount < 4) {
-                    gPlayerCount += 1;
+            case MAIN_MENU_PLAYER_SELECT:
+                if ((btnAndStick & R_JPAD) && (gPlayerCount < 4)) {
+                    gPlayerCount++;
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
-                if ((btnAndStick & L_JPAD) && gPlayerCount >= 2) {
-                    gPlayerCount -= 1;
+                if ((btnAndStick & L_JPAD) && (gPlayerCount >= 2)) {
+                    gPlayerCount--;
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
-                // L800B2B38
                 gPlayerCountSelection1 = gPlayerCount;
                 switch (gPlayerCountSelection1) {
                     case 1:
@@ -1313,36 +1306,33 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                         gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
                         break;
                 }
-                // L800B2B94
                 if (btnAndStick & B_BUTTON) {
                     func_8009E0F0(0x14);
-                    func_800CA330(0x19);
+                    func_800CA330(0x19U);
                     gMenuFadeType = MENU_FADE_TYPE_BACK;
                     play_sound2(SOUND_MENU_GO_BACK);
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
-                } else if (btnAndStick & A_BUTTON) {
-                    // L800B2C00
+                    break;
+                }
+                if (btnAndStick & A_BUTTON) {
                     gMainMenuSelection = MAIN_MENU_MODE_SELECT;
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_SELECT);
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
-                } else if (btnAndStick & CONT_L) {
-                    // L800B2C58
+                    break;
+                }
+                if (btnAndStick & L_TRIG) {
                     gMainMenuSelection = MAIN_MENU_OPTION;
                     func_8009E280();
                     play_sound2(SOUND_MENU_OPTION);
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
-                } else if (btnAndStick & CONT_R) {
+                    break;
+                }
+                if (btnAndStick & R_TRIG) {
                     gMainMenuSelection = MAIN_MENU_DATA;
                     func_8009E258();
                     play_sound2(SOUND_MENU_DATA);
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
-                } else {
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
+                    break;
                 }
                 break;
-            }
-            case MAIN_MENU_MODE_SELECT: {
+            case MAIN_MENU_MODE_SELECT:
                 if (btnAndStick & D_JPAD) {
                     if (gGameModeMenuColumn[gPlayerCount - 1] < gPlayerModeSelection[gPlayerCount - 1]) {
                         gGameModeMenuColumn[gPlayerCount - 1] += 1;
@@ -1350,7 +1340,6 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
                     }
                 }
-                // L800B2D94
                 if (btnAndStick & U_JPAD) {
                     if (gGameModeMenuColumn[gPlayerCount - 1] > 0) {
                         gGameModeMenuColumn[gPlayerCount - 1] -= 1;
@@ -1358,15 +1347,18 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
                     }
                 }
-                // L800B2DE0
                 if (btnAndStick & B_BUTTON) {
                     gMainMenuSelection = MAIN_MENU_PLAYER_SELECT;
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_GO_BACK);
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
-                } else if (btnAndStick & A_BUTTON) {
-                    // L800B2E3C
+                    break;
+                }
+                
+                if (btnAndStick & A_BUTTON) {
                     switch (gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
+                        default:
+                            gMainMenuSelection = MAIN_MENU_OK_SELECT;
+                            break;
                         case 0:
                             gMainMenuSelection = MAIN_MENU_MODE_SUB_SELECT;
                             play_sound2(SOUND_MENU_GP);
@@ -1383,91 +1375,80 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                             gMainMenuSelection = MAIN_MENU_OK_SELECT;
                             play_sound2(SOUND_MENU_BATTLE);
                             break;
-                        default:
-                            gMainMenuSelection = MAIN_MENU_OK_SELECT;
-                            break;
                     }
-                    // L800B2F04
                     reset_cycle_flash_menu();
                     gMenuTimingCounter = 0;
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
-                } else {
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
+                    break;
                 }
                 break;
-            }
             case MAIN_MENU_MODE_SUB_SELECT:
-            case MAIN_MENU_MODE_SUB_SELECT_GO_BACK: {
+            case MAIN_MENU_MODE_SUB_SELECT_GO_BACK:
                 if (controllerIdx == PLAYER_ONE) {
                     gMenuTimingCounter++;
-                    if ((gMenuTimingCounter == 100 || gMenuTimingCounter % 300 == 0)) {
-                        // L800B2FAC
-                        if (gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]] == 0 ||
-                            gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]] == 2) {
-                            play_sound2(SOUND_MENU_SELECT_LEVEL);
+                    if ((gMenuTimingCounter == 100) || !(gMenuTimingCounter % 300)) {
+                        switch (gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
+                            case 0:
+                            case 2:
+                                play_sound2(SOUND_MENU_SELECT_LEVEL);
+                                break;
+                            default:
+                                break;
                         }
                     }
                 }
-                // L800B3000
+
                 subMode = gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
                 if ((btnAndStick & U_JPAD) && (subMode > 0)) {
-                    gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]] -= 1;
+                    gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]--;
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
-                // L800B3068
                 if (btnAndStick & D_JPAD) {
                     cursorMoved = false;
                     if (has_unlocked_extra_mode()) {
-                        if (subMode <
-                            sGameModePlayerColumnExtra[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
+                        if (subMode < sGameModePlayerColumnExtra[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
                             cursorMoved = true;
                         }
                     } else {
-                        // L800B30D4
-                        if (subMode <
-                            sGameModePlayerColumnDefault[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
+                        if (subMode < sGameModePlayerColumnDefault[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
                             cursorMoved = true;
                         }
                     }
-                    // L800B3110
                     if (cursorMoved) {
                         gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]++;
                         reset_cycle_flash_menu();
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
                     }
                 }
-                // L800B3150
                 subMode = gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
+
                 if (btnAndStick & B_BUTTON) {
                     gMainMenuSelection = MAIN_MENU_MODE_SELECT;
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_GO_BACK);
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
-                } else if (btnAndStick & A_BUTTON) {
-                    // L800B31DC
+                    break;
+                } 
+                if (btnAndStick & A_BUTTON) {
                     reset_cycle_flash_menu();
-                    if (gPlayerCount == 1 && gGameModeMenuColumn[gPlayerCount - 1] == 1 && subMode == 1) { // DATA
+                    if ((gPlayerCount == 1) && ((gGameModeMenuColumn - 1)[gPlayerCount] == 1) && (subMode == 1)) {
                         func_8009E258();
                         play_sound2(SOUND_MENU_DATA);
-                    } else { // BEGIN
+                    } else {
                         gMainMenuSelection = MAIN_MENU_OK_SELECT;
                         play_sound2(SOUND_MENU_SELECT);
                         gMenuTimingCounter = 0;
                     }
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
-                } else {
-                    // L800B3294
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
+                    break;
                 }
                 break;
-            }
             case MAIN_MENU_OK_SELECT:
-            case MAIN_MENU_OK_SELECT_GO_BACK: {
-                if ((controllerIdx == PLAYER_ONE) && (++gMenuTimingCounter == 60 || gMenuTimingCounter % 300 == 0)) {
-                    play_sound2(SOUND_MENU_OK);
+            case MAIN_MENU_OK_SELECT_GO_BACK:
+                if (controllerIdx == PLAYER_ONE) {
+                    gMenuTimingCounter++;
+                    if ((gMenuTimingCounter == 60) || !(gMenuTimingCounter % 300)) {
+                        play_sound2(SOUND_MENU_OK);
+                    }
                 }
-                // L800B330C
                 if (btnAndStick & B_BUTTON) {
                     switch (gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
                         case 0:
@@ -1475,43 +1456,32 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                         case 2:
                             gMainMenuSelection = MAIN_MENU_MODE_SUB_SELECT;
                             break;
-                        case 3:
                         default:
+                        case 3:
                             gMainMenuSelection = MAIN_MENU_MODE_SELECT;
                             break;
                     }
-                    // L800B3384
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_GO_BACK);
                     gMenuTimingCounter = 0;
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
-                } else if (btnAndStick & A_BUTTON) {
-                    // L800B33D8
+                    break;
+                }
+                if (btnAndStick & A_BUTTON) {
                     func_8009E1C0();
                     play_sound2(SOUND_MENU_OK_CLICKED);
-                    setup_game_mode_selected();
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
-                } else {
-                    newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
+                    setup_selected_game_mode();
+                    break;
                 }
                 break;
-            }
             case MAIN_MENU_OPTION:
-            case MAIN_MENU_DATA: {
-                newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
+            case MAIN_MENU_DATA:
                 break;
-            }
-            default: {
-                newMode = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
+            default:
                 break;
-            }
         }
-        gModeSelection = newMode;
+        gModeSelection = gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]];
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/main_menu_act.s")
-#endif
 
 /**
  * Check if there is no currently selected and/or
@@ -1531,195 +1501,180 @@ bool is_character_spot_free(s32 gridId) {
  * Navigation of the player select screen
  * Grid positions are from right to left, then top to bottom
  */
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/6R4jX
-// nonmatching: the gCharacterGridSelections pointer is not promoted to $s0
 void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
-    s8* bar;
-    s8 selected;
     s8 i;
-    s8 savedSelection;
+    s8 j;
+    s32 selected;
     u16 btnAndStick;
 
-    btnAndStick = (controller->buttonPressed) | (controller->stickPressed);
-    if (!gEnableDebugMode && btnAndStick & CONT_START) {
+    btnAndStick = (controller->buttonPressed | controller->stickPressed);
+    if ((gEnableDebugMode == 0) && (btnAndStick & START_BUTTON)) {
         btnAndStick |= A_BUTTON;
     }
 
     if (!is_screen_being_faded()) {
         switch (gPlayerSelectMenuSelection) {
-            case PLAYER_SELECT_MENU_MAIN: {
-                savedSelection = gCharacterGridSelections[controllerIdx];
-                if (savedSelection == 0) {
+            case PLAYER_SELECT_MENU_MAIN:
+                if (gCharacterGridSelections[controllerIdx] == 0) {
                     if (btnAndStick & B_BUTTON) {
                         func_8009E208();
-                        play_sound2(0x49008002);
+                        play_sound2(SOUND_MENU_GO_BACK);
                     }
                     return;
                 }
-                // L800B3630
+
                 if (btnAndStick & B_BUTTON) {
-                    if (gCharacterGridIsSelected[controllerIdx]) {
-                        gCharacterGridIsSelected[controllerIdx] = false;
+                    if (gCharacterGridIsSelected[controllerIdx] != 0) {
+                        gCharacterGridIsSelected[controllerIdx] = 0;
                         play_sound2(SOUND_MENU_GO_BACK);
                     } else {
                         func_8009E208();
-                        play_sound2(0x49008002);
+                        play_sound2(SOUND_MENU_GO_BACK);
                     }
                 }
-                // L800B3684
+            
                 if ((btnAndStick & A_BUTTON) && (gCharacterGridIsSelected[controllerIdx] == 0)) {
-                    gCharacterGridIsSelected[controllerIdx] = true;
-                    i = sCharacterGridOrder[gCharacterGridSelections[controllerIdx] - 1];
-                    func_800C90F4(controllerIdx, 0x2900800e + (i << 4));
+                    gCharacterGridIsSelected[controllerIdx] = 1;
+                    func_800C90F4(controllerIdx, ((sCharacterGridOrder - 1)[gCharacterGridSelections[controllerIdx]] * 0x10) + 0x2900800E);
                 }
-                // L800B36F4
+
                 selected = false;
-                for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
+                for (i = 0; i < 4; i++) {
                     if ((gCharacterGridSelections[i] != 0) && (gCharacterGridIsSelected[i] == 0)) {
                         selected = true;
                         break;
                     }
                 }
-                // L800B3738
 
                 if (!selected) {
-                    gPlayerSelectMenuSelection = PLAYER_SELECT_MENU_OK;
+                    gPlayerSelectMenuSelection = 2;
                     reset_cycle_flash_menu();
                     gMenuTimingCounter = 0;
                 }
 
-                // L800B3768
-                if (gCharacterGridIsSelected[controllerIdx] == 0) {
-                    if ((btnAndStick & CONT_RIGHT) && (btnAndStick & CONT_DOWN)) {
-                        if (savedSelection == 1 || savedSelection == 2 || savedSelection == 3) {
-                            // L800B37B0
-                            savedSelection += 5;
-                            if (is_character_spot_free(savedSelection)) {
-                                gCharacterGridSelections[controllerIdx] = savedSelection;
-                                play_sound2(0x49008000);
-                            }
+                if (gCharacterGridIsSelected[controllerIdx] != 0) {
+                    break;
+                }
+                j = gCharacterGridSelections[controllerIdx];
+                if ((btnAndStick & R_JPAD) && (btnAndStick & D_JPAD)) {
+                    if ((gCharacterGridSelections[controllerIdx] == 1U) || (gCharacterGridSelections[controllerIdx] == 2U) || (gCharacterGridSelections[controllerIdx] == 3U)) {
+                        j = gCharacterGridSelections[controllerIdx] + 5;
+                        if (is_character_spot_free(j)) {
+                            gCharacterGridSelections[controllerIdx] = j;
+                            play_sound2(SOUND_MENU_CURSOR_MOVE);
                         }
-                        return;
                     }
-                    // L800B37E4
-                    if ((btnAndStick & CONT_LEFT) && (btnAndStick & CONT_DOWN)) {
-                        if (savedSelection == 2 || savedSelection == 3 || savedSelection == 4) {
-                            savedSelection += 3;
-                            if (is_character_spot_free(savedSelection)) {
-                                gCharacterGridSelections[controllerIdx] = savedSelection;
-                                play_sound2(0x49008000);
-                            }
+                    return;
+                }
+                if ((btnAndStick & L_JPAD) && (btnAndStick & D_JPAD)) {
+                    if ((gCharacterGridSelections[controllerIdx] == 2U) || (gCharacterGridSelections[controllerIdx] == 3U) || (gCharacterGridSelections[controllerIdx] == 4U)) {
+                        j = gCharacterGridSelections[controllerIdx] + 3;
+                        if (is_character_spot_free(j)) {
+                            gCharacterGridSelections[controllerIdx] = j;
+                            play_sound2(SOUND_MENU_CURSOR_MOVE);
                         }
-                        return;
                     }
-                    // L800B3844
-                    if ((btnAndStick & CONT_RIGHT) && (btnAndStick & CONT_UP)) {
-                        if (savedSelection == 5 || savedSelection == 6 || savedSelection == 7) {
-                            savedSelection -= 3;
-                            if (is_character_spot_free(savedSelection)) {
-                                gCharacterGridSelections[controllerIdx] = savedSelection;
-                                play_sound2(0x49008000);
-                            }
+                    return;
+                }
+                if ((btnAndStick & R_JPAD) && (btnAndStick & U_JPAD)) {
+                    if ((gCharacterGridSelections[controllerIdx] == 5U) || (gCharacterGridSelections[controllerIdx] == 6U) || (gCharacterGridSelections[controllerIdx] == 7U)) {
+                        j = gCharacterGridSelections[controllerIdx] - 3;
+                        if (is_character_spot_free(j)) {
+                            gCharacterGridSelections[controllerIdx] = j;
+                            play_sound2(SOUND_MENU_CURSOR_MOVE);
                         }
-                        return;
                     }
-                    // L800B38A0
-                    if ((btnAndStick & CONT_LEFT) && (btnAndStick & CONT_UP)) {
-                        if (savedSelection == 6 || savedSelection == 7 || savedSelection == 8) {
-                            savedSelection -= 5;
-                            if (is_character_spot_free(savedSelection)) {
-                                gCharacterGridSelections[controllerIdx] = savedSelection;
-                                play_sound2(0x49008000);
-                            }
+                    return;
+                }
+
+                if ((btnAndStick & L_JPAD) && (btnAndStick & U_JPAD)) {
+                    if ((gCharacterGridSelections[controllerIdx] == 6U) || (gCharacterGridSelections[controllerIdx] == 7U) || (gCharacterGridSelections[controllerIdx] == 8U)) {
+                        j = gCharacterGridSelections[controllerIdx] - 5;
+                        if (is_character_spot_free(j)) {
+                            gCharacterGridSelections[controllerIdx] = j;
+                            play_sound2(SOUND_MENU_CURSOR_MOVE);
                         }
-                        return;
                     }
-                    // L800B38FC
-                    if (btnAndStick & CONT_RIGHT) {
-                        if (savedSelection == 4 || savedSelection == 8)
-                            return;
-                        savedSelection += 1;
+                    return;
+                    
+                }
+                if (btnAndStick & R_JPAD) {
+                    if ((gCharacterGridSelections[controllerIdx] != 4U) && (gCharacterGridSelections[controllerIdx] != 8U)) {
+                        j = gCharacterGridSelections[controllerIdx] + 1;
                         do {
-                            // L800B391C
-                            if (is_character_spot_free(savedSelection)) {
-                                gCharacterGridSelections[controllerIdx] = savedSelection;
-                                play_sound2(0x49008000); // play_sound2(0x49008000);
+                            if (is_character_spot_free(j)) {
+                                gCharacterGridSelections[controllerIdx] = j;
+                                play_sound2(SOUND_MENU_CURSOR_MOVE);
+                                return;
+                            }
+
+                            j++;
+                            if (j == 5 || j == 9) {
                                 break;
                             }
-                            savedSelection += 1;
-                            if ((savedSelection == 5) || (savedSelection == 9))
-                                return;
-                        } while (savedSelection < 10);
-                        return;
+                        } while (j < 10);
                     }
-                    // L800B3978
-                    if (btnAndStick & CONT_LEFT) {
-                        if (savedSelection == 1 || savedSelection == 5)
-                            return;
-                        savedSelection -= 1;
+                    return;
+                }
+                if (btnAndStick & L_JPAD) {
+                    if ((gCharacterGridSelections[controllerIdx] != 1U) && (gCharacterGridSelections[controllerIdx] != 5U)) {
+                        j = gCharacterGridSelections[controllerIdx] - 1;
                         do {
-                            if (is_character_spot_free(savedSelection)) {
-                                gCharacterGridSelections[controllerIdx] = savedSelection;
-                                play_sound2(0x49008000);
+                            if (is_character_spot_free(j)) {
+                                gCharacterGridSelections[controllerIdx] = j;
+                                play_sound2(SOUND_MENU_CURSOR_MOVE);
+                                return;
+                            }
+                            
+                            j--;
+                            if (j == 0 || j == 4) {
                                 break;
                             }
-                            savedSelection -= 1;
-                            if ((savedSelection == 0) || (savedSelection == 4))
-                                return;
-                        } while (savedSelection >= 0);
-                        return;
+                        } while (j >= 0);
                     }
-                    // L800B39F4
-                    if ((btnAndStick & CONT_UP) && (savedSelection >= 5)) {
-                        savedSelection = savedSelection - 4;
-                    }
-                    if ((btnAndStick & CONT_DOWN) && (savedSelection < 5)) {
-                        savedSelection = savedSelection + 4;
-                    }
-                    // L800B3A30
-                    if (is_character_spot_free(savedSelection)) {
-                        gCharacterGridSelections[controllerIdx] = savedSelection;
-                        play_sound2(0x49008000);
-                    }
+                    return;
+                }
+
+                if ((btnAndStick & U_JPAD) && (gCharacterGridSelections[controllerIdx] >= 5)) {
+                    j = gCharacterGridSelections[controllerIdx] - 4;
+                }
+                if ((btnAndStick & D_JPAD) && (gCharacterGridSelections[controllerIdx] < 5)) {
+                    j = gCharacterGridSelections[controllerIdx] + 4;
+                }
+                if (is_character_spot_free(j)) {
+                    gCharacterGridSelections[controllerIdx] = j;
+                    play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
                 break;
-            }
-            case 2:
-            case 3:
+            case PLAYER_SELECT_MENU_OK:
+            case PLAYER_SELECT_MENU_OK_GO_BACK:
                 if (controllerIdx == 0) {
                     gMenuTimingCounter++;
-                    if ((gMenuTimingCounter == 60) || ((gMenuTimingCounter % 300) == 0)) {
-                        // L800B3A94
-                        play_sound2(0x4900900F);
+                    if (gMenuTimingCounter == 0x3C || !(gMenuTimingCounter % 300)) {
+                        play_sound2(SOUND_MENU_OK);
                     }
                 }
-                // L800B3AA4
                 if (btnAndStick & B_BUTTON) {
-                    gPlayerSelectMenuSelection = PLAYER_SELECT_MENU_MAIN;
-                    gCharacterGridIsSelected[controllerIdx] = false;
+                    gPlayerSelectMenuSelection = 1;
+                    gCharacterGridIsSelected[controllerIdx] = 0;
                     play_sound2(SOUND_MENU_GO_BACK);
                     break;
                 }
                 if (btnAndStick & A_BUTTON) {
                     func_8009E1C0();
-                    play_sound2(0x49008016);
+                    play_sound2(SOUND_MENU_OK_CLICKED);
                     func_8000F124();
                 }
                 break;
             default:
                 break;
         }
-        // L800B3B24
+
         if (gCharacterGridSelections[controllerIdx] != 0) {
-            gCharacterSelections[controllerIdx] = sCharacterGridOrder[gCharacterGridSelections[controllerIdx] - 1];
+            gCharacterSelections[controllerIdx] = (sCharacterGridOrder - 1)[gCharacterGridSelections[controllerIdx]];
         }
     }
-    // L800B3B44
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/player_select_menu_act.s")
-#endif
 
 /**
  * Navigation of the map select course menu screen

@@ -1830,11 +1830,11 @@ void func_8000B140(s32 playerId) {
     f32 temp_f0_2;
     f32 var_f18;
     f32 var_f20;
-    s32 pad[5];
+    UNUSED s32 pad[5];
     s16 spB0[8];
-    f32 stackPadding8;
+    UNUSED f32 pad2;
     s16 sp9C[8];
-    f32 stackPadding9;
+    UNUSED f32 pad3;
     f32 temp_f2;
     f32 sp74[8];
     s32 temp_a1_2;

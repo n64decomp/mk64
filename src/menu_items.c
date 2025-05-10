@@ -3015,7 +3015,6 @@ Gfx* func_80096CD8(Gfx* displayListHead, s32 arg1, s32 arg2, u32 width, u32 arg4
 GLOBAL_ASM("asm/non_matchings/menu_items/func_80096CD8.s")
 #endif
 
-#ifdef NON_MATCHING
 Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8,
                    s32 arg9, UNUSED u16* argA, u32 argB, u32 argC, UNUSED s32 argD) {
     u32 var_a1_2 = arg4;
@@ -3028,103 +3027,82 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     s32 sp68 = 0;
     s32 sp64 = 0;
     s32 var_v0_2;
-
     gDPPipeSync(displayListHead++);
     gDPSetCycleType(displayListHead++, G_CYC_2CYCLE);
     gDPSetTextureLOD(displayListHead++, G_TL_TILE);
     gDPSetPrimColor(displayListHead++, 0, 0, 0, 0, 0, gGlobalTimer % 256);
-    gDPSetCombineLERP(displayListHead++, TEXEL1, TEXEL0, PRIMITIVE_ALPHA, TEXEL0, TEXEL1, TEXEL0, PRIMITIVE, TEXEL0, 0,
-                      0, 0, COMBINED, 0, 0, 0, COMBINED);
-
-    while (var_t0 < (s32) argB) {
+    gDPSetCombineLERP(displayListHead++, TEXEL1, TEXEL0, PRIMITIVE_ALPHA, TEXEL0, TEXEL1, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED);
+    while ((u32)var_t0 < argB) {
         var_t0 *= 2;
     }
-
     temp_lo = 0x400 / var_t0;
-
-    while ((temp_lo / 2) > (s32) argC) {
+    while((u32)(temp_lo / 2) > argC) {
         temp_lo /= 2;
     }
-
     var_v0_2 = var_t0;
     while (var_v0_2 > 1) {
         var_v0_2 /= 2;
         sp68 += 1;
     }
     var_v0_2 = temp_lo;
-
     while (var_v0_2 > 1) {
         var_v0_2 /= 2;
         sp64 += 1;
     }
-
     if (arg8 < 0) {
         arg4 -= arg8;
         arg8 = 0;
-    } else if (((arg6 - arg4) + arg8) > SCREEN_WIDTH) {
-        arg6 = (arg4 - arg8) + SCREEN_WIDTH;
+    } else if (((arg6 - arg4) + arg8) > 320) {
+        arg6 = (arg4 - arg8) + 320;
     }
-
     if (arg9 < 0) {
         arg5 -= arg9;
         arg9 = 0;
-    } else if (((arg7 - arg5) + arg9) > SCREEN_HEIGHT) {
-        arg7 = (arg5 - arg9) + SCREEN_HEIGHT;
+    } else if (((arg7 - arg5) + arg9) > 240) {
+        arg7 = (arg5 - arg9) + 240;
     }
-
     if (arg6 < arg4) {
         return displayListHead;
     }
     if (arg7 < arg5) {
         return displayListHead;
     }
-    sp7C = arg8;
-    for (var_s3 = arg5; var_s3 < (u32) arg7; var_s3 += temp_lo) {
-
-        if (arg7 < (s32) (temp_lo + var_s3)) {
-            var_s4 = arg7 - var_s3;
-            if (!var_s4) {
-                break;
-            }
-        } else {
-            var_s4 = temp_lo;
-        }
-
-        for (var_a1_2 = arg4; var_a1_2 < (u32) arg6; var_a1_2 += var_t0) {
-
-            if (arg6 < (s32) (var_t0 + var_a1_2)) {
-                var_s2 = arg6 - var_a1_2;
-                if (!var_s2) {
+        sp7C = arg8;
+          for (var_s3 = arg5; var_s3 < (u32)arg7; var_s3 += temp_lo) {
+            if ((u32)arg7 < temp_lo + var_s3) {
+                var_s4 = arg7 - var_s3;
+                if (!var_s4) {
                     break;
                 }
             } else {
-                var_s2 = var_t0;
+                var_s4 = temp_lo;
             }
-
-            gDPLoadMultiTile(displayListHead++, arg1, 0, G_TX_RENDERTILE, arg2, G_IM_SIZ_16b, argB, argC, var_a1_2,
-                             var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0, G_TX_WRAP, G_TX_WRAP, sp68, sp64,
-                             G_TX_NOLOD, G_TX_NOLOD);
-
-            gDPLoadMultiTile(displayListHead++, D_0B002A00 + random_int(128) * 2, 256, G_TX_RENDERTILE + 1, arg2,
-                             G_IM_SIZ_16b, argB, argC, var_a1_2, var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0,
-                             G_TX_WRAP, G_TX_WRAP, sp68, sp64, G_TX_NOLOD, G_TX_NOLOD);
-
-            gSPTextureRectangle(displayListHead++, arg8 * 4, arg9 * 4, (arg8 + var_s2) * 4, (arg9 + var_s4) * 4, 0,
-                                (var_a1_2 * 32) & 0xFFFF, (var_s3 * 32) & 0xFFFF, arg2, arg3);
-
-            arg8 += var_t0;
-        }
-
-        arg8 = sp7C;
-        arg9 += temp_lo;
-    }
+                for (var_a1_2 = arg4; var_a1_2 < (u32)arg6; var_a1_2 += var_t0) {
+                    if ((u32)arg6 < var_t0 + var_a1_2) {
+                        var_s2 = arg6 - var_a1_2;
+                        if (!var_s2) {
+                            break;
+                        }
+                    } else {
+                        var_s2 = var_t0;
+                    }
+                    gDPLoadMultiTile(displayListHead++, argA, 0, G_TX_RENDERTILE, arg1, G_IM_SIZ_16b,
+                        argB, argC, var_a1_2, var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0,
+                        G_TX_WRAP, G_TX_WRAP, sp68, sp64, G_TX_NOLOD, G_TX_NOLOD);
+                    gDPLoadMultiTile(displayListHead++, D_0B002A00 + random_int(128) * 2, 256, G_TX_RENDERTILE+1, arg1, G_IM_SIZ_16b,
+                        argB, argC, var_a1_2, var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0,
+                        G_TX_WRAP, G_TX_WRAP, sp68, sp64, G_TX_NOLOD, G_TX_NOLOD);
+                        gSPTextureRectangle(displayListHead++, arg8 * 4, arg9 * 4, (arg8 + var_s2) * 4, (arg9 + var_s4) * 4, 0,
+                    (var_a1_2 * 32) & 0xFFFF, (var_s3 * 32) & 0xFFFF, arg2, arg3);
+                        arg8 += var_t0;
+                    }
+                arg8 = sp7C;
+                arg9 += temp_lo;
+                }
     gDPPipeSync(displayListHead++);
     gDPSetCycleType(displayListHead++, G_CYC_1CYCLE);
     return displayListHead;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menu_items/func_80097274.s")
-#endif
 
 Gfx* func_80097A14(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, u8* arg8,
                    u32 arg9, u32 argA) {
@@ -3727,29 +3705,22 @@ void func_80099E60(MenuTexture* arg0, s32 arg1, s32 arg2) {
     var_v1->unk6 = arg2;
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/rUXbD
-// Some fakematch nonsense, may or may not be necessary
-// Issue is with instruction ordering near the first `osPiStartDma` call
 void func_80099EC4(void) {
     s8 var_s4;
     s32 var_s0;
-    UNUSED s32 stackPadding0;
-    UNUSED s32 stackPadding1;
+    UNUSED s32 pad[2];
     OSIoMesg sp68;
     OSMesg sp64;
     s32 huh;
-    u8* test;
-    MenuTexture* temp_s2;
-    struct_8018E0E8_entry* var_s1;
+    MenuTexture *temp_s2;
+    struct_8018E0E8_entry *var_s1;
 
     var_s4 = 0;
     var_s1 = D_8018E0E8;
     temp_s2 = var_s1->mk64Texture;
-
-    if (temp_s2 == NULL)
-        return;
-
+    
+    if (temp_s2 == NULL) return;
+    
     huh = temp_s2->size;
     if (huh != 0) {
         var_s0 = huh;
@@ -3759,12 +3730,9 @@ void func_80099EC4(void) {
     if (var_s0 % 8) {
         var_s0 = ((var_s0 / 8) * 8) + 8;
     }
-    osInvalDCache(gMenuCompressedBuffer, var_s0);
-    test = &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)];
-    osPiStartDma(&sp68, 0, 0, (uintptr_t) test, gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
+    osInvalDCache((void*)gMenuCompressedBuffer, var_s0);
+    osPiStartDma(&sp68, 0, 0, (u32)_textures_0aSegmentRomStart + SEGMENT_OFFSET(temp_s2->textureData), gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
     if ((var_s0 && var_s0) && var_s0) {}
-    // osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-    // gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     while (1) {
         if ((var_s1 + 1)->mk64Texture == NULL) {
@@ -3780,16 +3748,13 @@ void func_80099EC4(void) {
             if (var_s0 % 8) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
-            osInvalDCache(gMenuCompressedBuffer + 0x1400, var_s0);
-            osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                         gMenuCompressedBuffer + 0x1400, var_s0, &gDmaMesgQueue);
+            osInvalDCache(gMenuCompressedBuffer + 0x500, var_s0);
+            osPiStartDma(&sp68, 0, 0, (u32)_textures_0aSegmentRomStart + SEGMENT_OFFSET(temp_s2->textureData), gMenuCompressedBuffer + 0x500, var_s0, &gDmaMesgQueue);
         }
-        mio0decode((u8*) gMenuCompressedBuffer,
-                   (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        mio0decode((u8*)gMenuCompressedBuffer, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
-        if (var_s4 != 0)
-            break;
+        if (var_s4 != 0) break;
         osRecvMesg(&gDmaMesgQueue, &sp64, 1);
         if ((var_s1 + 1)->mk64Texture == NULL) {
             var_s4 += 1;
@@ -3805,21 +3770,15 @@ void func_80099EC4(void) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
             osInvalDCache(gMenuCompressedBuffer, var_s0);
-            osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                         gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
+            osPiStartDma(&sp68, 0, 0, (u32)_textures_0aSegmentRomStart + SEGMENT_OFFSET(temp_s2->textureData), gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
         }
-        mio0decode((u8*) gMenuCompressedBuffer + 0x1400,
-                   (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        mio0decode((u8*)(gMenuCompressedBuffer + 0x500), D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
-        if (var_s4 != 0)
-            break;
+        if (var_s4 != 0) break;
         osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menu_items/func_80099EC4.s")
-#endif
 
 void func_8009A238(MenuTexture* arg0, s32 arg1) {
     s32 var_a3;
@@ -7557,21 +7516,16 @@ void render_lap_time(s32 lapNumber, s32 column, s32 row) {
     func_800939C8(column + 0x55, row, sp34, 0, 0.7f, 0.7f);
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/mWCHC
-// The majority of th diff is from the handling of `textColor`. There is something super fucky there.
-// The permuter found a decent improvement with making `textColor` a `volatile` variable but that
-// seems wrong for several reasons
-
 void render_lap_times(s32 recordType, s32 column, s32 row) {
-    UNUSED s32 stackPadding0;
+    UNUSED s32 pad;
     u32 timeRecord;
+    UNUSED s32 pad2;
     s32 textColor;
     s32 temp_t0;
-    s32 characterId;
     char sp38[3];
-    MenuItem* temp_v0;
+    MenuItem* item;
     s32 sp30;
+
     if (gGamestate == RACING) {
         sp30 = 0;
     } else {
@@ -7587,27 +7541,24 @@ void render_lap_times(s32 recordType, s32 column, s32 row) {
     } else {
         if (sp30 == 0) {
             timeRecord = func_800B4F2C();
-        } else {
+        }
+        else {
             timeRecord = func_800B4FB0(gTimeTrialDataCourseIndex);
         }
     }
     func_800939C8(column + 0x14, row, D_800E7744[recordType], 2, 0.65f, 0.65f);
     if (sp30 == 0) {
-        temp_v0 = find_menu_items_dupe(MENU_ITEM_TYPE_0BB);
+        item = find_menu_items_dupe(0x000000BB);
         if (recordType < 5) {
-            if (recordType == temp_v0->param1) {
+            if (recordType == item->param1) {
                 textColor = gGlobalTimer % 3;
             } else {
                 textColor = TEXT_YELLOW;
             }
+        } else if (item->param2 != 0) {
+            textColor = gGlobalTimer % 3;
         } else {
-            // huh?
             textColor = TEXT_YELLOW;
-            if (temp_v0->param2 != 0) {
-                textColor = gGlobalTimer;
-                textColor %= 3;
-            } else {
-            }
         }
     } else {
         textColor = TEXT_YELLOW;
@@ -7617,22 +7568,18 @@ void render_lap_times(s32 recordType, s32 column, s32 row) {
     get_time_record_minutes(temp_t0, sp38);
     func_800939C8(column + 0x27, row, sp38, 0, 0.65f, 0.65f);
     print_text_mode_1(column + 0x32, row, "'", 0, 0.65f, 0.65f);
-    if (!textColor) {}
     get_time_record_seconds(temp_t0, sp38);
     func_800939C8(column + 0x3B, row, sp38, 0, 0.65f, 0.65f);
     print_text_mode_1(column + 0x46, row, "\"", 0, 0.65f, 0.65f);
     get_time_record_centiseconds(temp_t0, sp38);
     func_800939C8(column + 0x50, row, sp38, 0, 0.65f, 0.65f);
-    if (temp_t0 < 0x927C0) {
-        characterId = timeRecord >> 0x14;
+    if ((u32)temp_t0 < 600000U) {
+        textColor = timeRecord >> 0x14;
     } else {
-        characterId = 8;
+        textColor = 8;
     }
-    print_text1_center_mode_1(column + 0x78, row, D_800E76A8[characterId], 0, 0.65f, 0.65f);
+    print_text1_center_mode_1(column + 0x78, row, D_800E76A8[textColor], 0, 0.65f, 0.65f);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menu_items/render_lap_times.s")
-#endif
 
 void render_menu_item_announce_ghost(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
@@ -10291,139 +10238,125 @@ void func_800AB290(MenuItem* arg0) {
     }
 }
 
-#ifdef NON_MATCHING
-// Decent work has been done, but not quite right
-// https://decomp.me/scratch/YLbkC
-void func_800AB314(MenuItem* arg0) {
-    s32 var_a1;
-    s32 one = 1;
-    s32 four = 4;
-    MenuItem* sp24[4];
-    s32 var_v0;
+void func_800AB314(MenuItem* item) {
+    s32 i;
+    UNUSED s32 pad[2];
+    MenuItem* _items[4]; // Added _ to help distinguish between the function argument and this
 
-    for (var_a1 = 0; var_a1 < 4; var_a1++) {
-        sp24[var_a1] = find_menu_items_dupe(var_a1 + 0x5F);
+    for (i = 0; i < 4; i++) {
+        _items[i] = find_menu_items_dupe(i + 0x5F);
     }
-    switch (gModeSelection) {
-        default:
-            if (gSubMenuSelection != SUB_MENU_MAP_SELECT_CUP) {
-                arg0->state = 0;
-                arg0->param2 = 0;
-                for (var_a1 = 0; var_a1 < 4; var_a1++) {
-                    if (gCourseIndexInCup == var_a1) {
-                        sp24[var_a1]->visible = one;
-                        if (arg0->param1 != var_a1) {
-                            arg0->param1 = var_a1;
-                        }
-                    } else {
-                        sp24[var_a1]->visible = 0;
+    if (gModeSelection != 0) {
+        if (gSubMenuSelection != SUB_MENU_MAP_SELECT_CUP) {
+            item->state = 0;
+            item->param2 = 0;
+
+            for (i = 0; i < 4; i++) {
+                if (gCourseIndexInCup == i) {
+                    _items[i]->visible = 1;
+                    if (item->param1 != i) {
+                        item->param1 = i;
                     }
-                }
-            } else {
-                arg0->state = 3;
-                for (var_a1 = 0; var_a1 < 4; var_a1++) {
-                    sp24[var_a1]->visible = one;
-                    sp24[var_a1]->priority = 6;
+                } else {
+                    _items[i]->visible = 0;
                 }
             }
-            break;
-        case 0:
-            switch (arg0->state) { /* irregular */
-                case 0:
-                    if ((arg0->param1 / 4) == gCupSelection) {
-                        arg0->param2++;
-                        if (arg0->param2 >= 0x33) {
-                            arg0->state = one;
-                            arg0->param2 = 0;
-                            var_v0 = gCupSelection * 4;
-                            arg0->param1 = var_v0 + 1;
-                        }
-                    } else {
-                        arg0->param2 = 0;
-                        arg0->param1 = gCupSelection * 4;
-                    }
-                    if (gSubMenuSelection == SUB_MENU_MAP_SELECT_OK) {
-                        arg0->state = 2;
-                        arg0->param2 = 0;
-                    }
-                    break;
-                case 1:
-                    if ((arg0->param1 / 4) != gCupSelection) {
-                        arg0->state = 0;
-                        arg0->param2 = 0;
-                        arg0->param1 = 0;
-                    } else {
-                        arg0->param2++;
-                        if (arg0->param2 >= 0x1F) {
-                            arg0->param2 = 0;
-                            arg0->param1 = (gCupSelection * 4) + (((arg0->param1 % 4) + one) % 4);
-                        } else {
-                            if (gSubMenuSelection == SUB_MENU_MAP_SELECT_OK) {
-                                arg0->state = 2;
-                                arg0->param2 = 0;
-                            }
-                        }
-                    }
-                    break;
-                case 2:
-                    arg0->param2++;
-                    if (arg0->param2 >= 0x1A) {
-                        arg0->state = 3;
-                        arg0->param2 = 0;
-                    }
-                    if (gSubMenuSelection != SUB_MENU_MAP_SELECT_OK) {
-                        arg0->state = 0;
-                        arg0->param2 = 0;
-                        arg0->param1 = 0;
-                    }
-                    break;
-                case 3:
-                    if (gSubMenuSelection != SUB_MENU_MAP_SELECT_OK) {
-                        arg0->state = 0;
-                        arg0->param2 = 0;
-                        arg0->param1 = 0;
-                    }
-                    break;
+        } else {
+            item->state = 3;
+            for (i = 0; i < 4; i++) {
+                _items[i]->visible = 1;
+                _items[i]->priority = 6;
             }
-            switch (arg0->state) {
-                case 0:
-                case 1:
-                    for (var_a1 = 0; var_a1 < 4; var_a1++) {
-                        if ((arg0->param1 % 4) == var_a1) {
-                            sp24[var_a1]->visible = one;
-                        } else {
-                            sp24[var_a1]->visible = 0;
-                        }
-                        sp24[var_a1]->priority = 6;
+        }
+    } else {
+        switch (item->state) {
+            case 0:
+                if (gCupSelection == (item->param1 / 4)) {
+                    if (++item->param2 > 50) {
+                        item->state = 1;
+                        item->param2 = 0;
+                        item->param1 = (gCupSelection * 4) + 1;
                     }
+                } else {
+                    item->param2 = 0;
+                    item->param1 = gCupSelection * 4;
+                }
+                if (gSubMenuSelection == SUB_MENU_MAP_SELECT_OK) {
+                    item->state = 2;
+                    item->param2 = 0;
+                }
+                break;
+            case 1:
+                if (gCupSelection != (item->param1 / 4)) {
+                    item->state = 0;
+                    item->param2 = 0;
+                    item->param1 = 0;
                     break;
-                case 2:
-                    for (var_a1 = 0; var_a1 < 4; var_a1++) {
-                        if (var_a1 == (arg0->param1 % 4)) {
-                            sp24[var_a1]->priority = 6;
-                        } else if (arg0->param2 < (var_a1 * 5)) {
-                            sp24[var_a1]->priority = four;
-                        } else {
-                            sp24[var_a1]->priority = 8;
-                        }
-                        sp24[var_a1]->visible = one;
+                }
+
+                if (++item->param2 > 30) {
+                    item->param2 = 0;
+                    item->param1 = (gCupSelection * 4) + (((item->param1 % 4) + 1) % 4);
+                    break;
+                }
+                if (gSubMenuSelection == SUB_MENU_MAP_SELECT_OK) {
+                    item->state = 2;
+                    item->param2 = 0;
+                }
+                break;
+            case 2:
+                if (++item->param2 > 25) {
+                    item->state = 3;
+                    item->param2 = 0;
+                }
+                if (gSubMenuSelection != SUB_MENU_MAP_SELECT_OK) {
+                    item->state = 0;
+                    item->param2 = 0;
+                    item->param1 = 0;
+                }
+                break;
+            case 3:
+                if (gSubMenuSelection != SUB_MENU_MAP_SELECT_OK) {
+                    item->state = 0;
+                    item->param2 = 0;
+                    item->param1 = 0;
+                }
+                break;
+        }
+
+        switch (item->state) {
+            case 0:
+            case 1:
+                for (i = 0; i < 4; i++) {
+                    if ((item->param1 % 4) == i) {
+                        _items[i]->visible = 1;
+                    } else {
+                        _items[i]->visible = 0;
                     }
-                    break;
-                case 3:
-                    for (var_a1 = 0; var_a1 < 4; var_a1++) {
-                        sp24[var_a1]->visible = one;
-                        sp24[var_a1]->priority = 6;
+                    _items[i]->priority = 6;
+                }
+                break;
+            case 2:
+                for (i = 0; i < 4; i++) {
+                    if ((item->param1 % 4) == i) {
+                        _items[i]->priority = 6;
+                    } else if (item->param2 < (i * 5)) {
+                        _items[i]->priority = 4;
+                    } else {
+                        _items[i]->priority = 8;
                     }
-                    break;
-                default:
-                    break;
-            }
-            break;
+                    _items[i]->visible = 1;
+                }
+                break;
+            case 3:
+                for (i = 0; i < 4; i++) {
+                    _items[i]->visible = 1;
+                    _items[i]->priority = 6;
+                }
+                break;
+        }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menu_items/func_800AB314.s")
-#endif
 
 void func_800AB904(MenuItem* arg0) {
     Unk_D_800E70A0* temp_a1;

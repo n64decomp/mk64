@@ -27,7 +27,7 @@ typedef struct {
     /* 0x08 */ s32 subState; // This is used but I can't tell what for
     /* 0x0C */ s32 column;
     /* 0x10 */ s32 row;
-    /* 0x14 */ u8 priority;   // priority/depth/z-level. Higher values are drawn on top of lower values
+    /* 0x14 */ s8 priority;   // priority/depth/z-level. Higher values are drawn on top of lower values
                               // If equal, later entries in gMenuItems are on top
     /* 0x15 */ bool8 visible; // active? If 1 its displayed, if 0 its not
     // These seem to be generic space available for use by the struct, no 1 purpose for any given member
