@@ -311,7 +311,7 @@ void func_800CA984(u8);
 void func_800CAACC(u8);
 void func_800CAB4C(u8);
 void func_800CAC08(void);
-void func_800CAC60(s32);
+void func_800CAC60(u8);
 void func_800CAD40(s32);
 void func_800CAEC4(u8, f32);
 void func_800CAFC0(u8);

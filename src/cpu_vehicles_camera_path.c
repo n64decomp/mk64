@@ -3885,11 +3885,6 @@ void func_8001AAAC(s16 arg0, s16 arg1, s16 arg2) {
 
 #include "cpu_vehicles_camera_path/cpu_item_strategy.inc.c"
 
-#ifdef NON_MATCHING
-// By the looks of this function is probably something like `cpu_use_item_strategy`
-// The use of several different actor types might make getting a match hard(er),
-// might have to get creative/ugly with just a single generic `Actor` variable.
-// https://decomp.me/scratch/FOlbG
 void cpu_use_item_strategy(s32 playerId) {
     Player* player = &gPlayerOne[playerId];
     struct Actor* actor;
@@ -4355,7 +4350,7 @@ void cpu_use_item_strategy(s32 playerId) {
                 if (FAKE_ITEMBOX_ACTOR(actor)->rot[0] != playerId) {}
 
             } else {
-                func_802A1064(actor);
+                func_802A1064((struct FakeItemBox*)actor);
                 if (D_801631E0[playerId] == true) {
                     FAKE_ITEMBOX_ACTOR(actor)->pos[1] =
                         get_surface_height(FAKE_ITEMBOX_ACTOR(actor)->pos[0], FAKE_ITEMBOX_ACTOR(actor)->pos[1] + 30.0, FAKE_ITEMBOX_ACTOR(actor)->pos[2]) +
@@ -4444,8 +4439,8 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((((s16) cpuStrategy->timer) % 60) == 0) {
                 player->soundEffects |= BOOST_SOUND_EFFECT;
                 if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
-                    cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                     cpuStrategy->timer = 0;
+                    cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }
             }
             break;
@@ -4461,9 +4456,6 @@ void cpu_use_item_strategy(s32 playerId) {
         cpuStrategy->timer = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/cpu_vehicles_camera_path/cpu_use_item_strategy.s")
-#endif
 
 #undef BANANA_ACTOR
 #undef SHELL_ACTOR

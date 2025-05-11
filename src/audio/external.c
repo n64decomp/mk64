@@ -3445,7 +3445,7 @@ void func_800CAC08() {
     }
 }
 
-void func_800CAC60(UNUSED s32 arg0) {
+void func_800CAC60(UNUSED u8 arg0) {
     if ((D_800EA108 == 0) && (D_800EA0F0 == 0)) {
         play_sound(SOUND_ACTION_EXPLOSION_2, &D_800EA1C8, 0U, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
         if ((D_800EA10C[0] != 1) && (D_800EA10C[1] != 1)) {
