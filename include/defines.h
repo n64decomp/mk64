@@ -54,12 +54,12 @@
 
 // Float version required for matching
 #ifdef VERSION_EU
-#define COURSE_TIMER_ITER 0.020041665999999999    // 1 / 50
-    #ifdef AVOID_UB
-    #define COURSE_TIMER_ITER_f 0.020041665999999999f // 1 / 50
-    #else
-    #define COURSE_TIMER_ITER_f 0.01666666f //! 1 / 60 - Float unchanged in EU
-    #endif
+#define COURSE_TIMER_ITER 0.020041665999999999 // 1 / 50
+#ifdef AVOID_UB
+#define COURSE_TIMER_ITER_f 0.020041665999999999f // 1 / 50
+#else
+#define COURSE_TIMER_ITER_f 0.01666666f //! 1 / 60 - Float unchanged in EU
+#endif
 #else
 #define COURSE_TIMER_ITER 0.01666666    // 1 / 60
 #define COURSE_TIMER_ITER_f 0.01666666f // 1 / 60

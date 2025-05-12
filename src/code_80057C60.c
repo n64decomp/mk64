@@ -5131,21 +5131,31 @@ void func_80065F0C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         spD4[2] = 0;
         func_800652D4(&spDC[0], &spD4[0], player->unk_258[10 + arg2].unk_00C * player->size);
         if (((s32) player->unk_258[10 + arg2].unk_014) != 8) {
-            primRed = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            primGreen = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            primBlue = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            envRed = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            envGreen = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            envBlue = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            primRed =
+                ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            primGreen =
+                ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            primBlue =
+                ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envRed =
+                ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envGreen =
+                ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envBlue =
+                ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
             primAlpha = player->unk_258[10 + arg2].unk_03E;
             if (player->unk_258[10 + arg2].unk_040 == 0) {
                 gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0,
+                                    G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
+                                    G_TX_NOLOD, G_TX_NOLOD);
                 func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
                 gSPDisplayList(gDisplayListHead++, D_0D008E48);
             } else {
                 gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0,
+                                    G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
+                                    G_TX_NOLOD, G_TX_NOLOD);
                 func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
                 gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
                 gSPDisplayList(gDisplayListHead++, D_0D008E48);
@@ -5156,7 +5166,9 @@ void func_80065F0C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
             primBlue = player->unk_258[10 + arg2].unk_03C;
             gSPDisplayList(gDisplayListHead++, D_0D008C90);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
-            gDPLoadTextureBlock(gDisplayListHead++, D_8018D498, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureBlock(gDisplayListHead++, D_8018D498, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0,
+                                G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK,
+                                G_TX_NOLOD, G_TX_NOLOD);
             func_8004B35C(primRed, primGreen, primBlue, 0x000000FF);
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
             gSPVertex(gDisplayListHead++, D_800E8C00, 4, 0);
