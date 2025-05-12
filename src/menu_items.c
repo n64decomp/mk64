@@ -1106,12 +1106,12 @@ f64 menu_pow(f64 arg0, f64 arg1) {
         }
     }
     if (arg0 > 0.0) {
-        return menu_exponential(ln(arg0) * arg1);
+        return menu_exponential(menu_ln(arg0) * arg1);
     }
     return 0.0;
 }
 
-f64 ln(f64 arg0) {
+f64 menu_ln(f64 arg0) {
     s32 var_v0;
     s32 sp38;
     f64 var_f2;
