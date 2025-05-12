@@ -1186,7 +1186,7 @@ f64 menu_pow2(f64 value, s32 exponent) {
  * Its unclear what exact purpose this function serves
  * The function multiplies/divides arg0 by 2 until its in
  * the range (0.5, 1.0].
- * arg2 appears to track the exponent in the menu_power-of-2
+ * arg2 appears to track the exponent in the power-of-2
  * that would undo the changes to arg0
  **/
 f64 normalize_to_unit_interval(f64 arg0, s32* arg2) {
