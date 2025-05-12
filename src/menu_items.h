@@ -330,10 +330,10 @@ enum TEXT_MENU_ID { CONTINUE_GAME, RETRY, COURSE_CHANGE, DRIVER_CHANGE, QUIT_TEX
 /* Function Prototypes */
 
 f64 exponent_by_squaring(f64, s32);
-f64 pow(f64, f64);
-f64 ln(f64);
-f64 exponential(f64);
-f64 pow2(f64, s32);
+f64 menu_pow(f64, f64);
+f64 menu_ln(f64);
+f64 menu_exponential(f64);
+f64 menu_pow2(f64, s32);
 f64 normalize_to_unit_interval(f64, s32*);
 void swap_values(s32*, s32*);
 s32 func_80091D74(void);
