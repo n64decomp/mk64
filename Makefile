@@ -36,19 +36,20 @@ DEBUG ?= 0
 GCC ?= 0
 
 # VERSION - selects the version of the game to build
-#   us - builds the 1997 North American version
-#   eu - builds the 1997 1.1 PAL version
+#  us     - builds the 1997 North American version
+#  eu.v10 - builds the 1997 1.0 PAL version
+#  eu.v11 - builds the 1997 1.1 PAL version
 VERSION ?= us
-$(eval $(call validate-option,VERSION,us eu-1.0 eu-final))
+$(eval $(call validate-option,VERSION,us eu.v10 eu.v11))
 
 ifeq      ($(VERSION),us)
   DEFINES += VERSION_US=1
   GRUCODE   ?= f3dex_old
-else ifeq ($(VERSION),eu-1.0)
-  DEFINES += VERSION_EU=1 VERSION_EU_1_0=1
+else ifeq ($(VERSION),eu.v10)
+  DEFINES += VERSION_EU=1 VERSION_EU_V10=1
   GRUCODE   ?= f3dex_old
-else ifeq ($(VERSION),eu-final)
-  DEFINES += VERSION_EU=1 VERSION_EU_1_1=1
+else ifeq ($(VERSION),eu.v11)
+  DEFINES += VERSION_EU=1 VERSION_EU_V11=1
   GRUCODE   ?= f3dex_old
 endif
 

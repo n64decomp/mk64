@@ -55,32 +55,33 @@ void crash_screen_draw_glyph(u16* framebuffer, s32 x, s32 y, s32 glyph) {
 }
 
 void crash_screen_draw_square(u16* framebuffer);
-// Functionally Equivallent.
-#ifdef NON_MATCHING
 
-//                   0xRGBA (I think A maybe not).
 #define WHITE_COLOUR 0xFFFF
 #define RED_COLOUR 0xF801
 
-/**
- * The big mismatch is the handling of the '6' used in the if statement
- * In the target assembly that 6 is saved to 5 different temp registers,
- * while in this non-matching decomp its only saved to one temp register.
- * This seems to be related to how the innermost for loop is unrolled, but
- * its not clear why the target assembley would save the same immediate to
- * 5 different registers instead of just re-using one
- * There's some stack related differences too, maybe that's related?
- **/
-void crash_screen_draw_square(u16* framebuffer) {
-    s32 s0_end;
-    s32 s2_start;
-    s32 row;
-    s32 column;
+// (x,y) of top left pixel of square
+#define SQUARE_X 40
+#define SQUARE_Y 40
 
-    for (s2_start = 0x28, s0_end = s2_start + 6; s0_end != 0x2C; s0_end--, s2_start++) {
-        for (row = s2_start; row < s0_end; row++) {
-            for (column = s2_start; column < s0_end; column++) {
-                framebuffer[row * 320 + column] = s0_end - s2_start == 6 ? 0xF801 : 0xFFFF;
+#define SQUARE_SIZE_X 6
+#define SQUARE_SIZE_Y 6
+
+// width of the square's border being drawn.
+#define BORDER_WIDTH 1
+
+#define SQUARE_X2 SQUARE_X + SQUARE_SIZE_Y
+#define SQUARE_Y2 SQUARE_Y + SQUARE_SIZE_X
+
+// Here's to you, Yoshimoto, for writing this stupid function. 3 years. 3 years to match.
+void crash_screen_draw_square(u16* framebuffer) {
+    s32 h;
+    s32 i;
+    s32 j;
+
+    for (h = 0; h < 2; h++) {
+        for (i = (h * BORDER_WIDTH) + SQUARE_Y; i < (SQUARE_Y2 - (h * BORDER_WIDTH)); i++) {
+            for (j = (h * BORDER_WIDTH) + SQUARE_X; j < (SQUARE_X2 - (h * BORDER_WIDTH)); j++) {
+                framebuffer[(i * 320) + j] = (h == 0) ? (RED_COLOUR) : (WHITE_COLOUR);
             }
         }
     }
@@ -88,9 +89,6 @@ void crash_screen_draw_square(u16* framebuffer) {
     osWritebackDCacheAll();
     osViSwapBuffer(framebuffer);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/crash_screen/crash_screen_draw_square.s")
-#endif
 
 /**
  * Draws three black boxes then prints crash info in the following format:

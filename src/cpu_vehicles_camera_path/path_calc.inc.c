@@ -243,7 +243,7 @@ s16 calculate_angle_path(s32 pathIndex, s32 pathPointIndex) {
     sp24[0] = temp_v0->posX;
     sp24[1] = temp_v0->posY;
     sp24[2] = temp_v0->posZ;
-    ret = get_angle_between_two_vectors(sp30, sp24);
+    ret = get_angle_between_points(sp30, sp24);
     return -ret;
 }
 
