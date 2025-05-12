@@ -1,7 +1,7 @@
 var coursesmenu =
 [
     [ "Courses", "courses.html", [
-      [ "Courses", "courses.html#courses-1", null ]
+      [ "Courses", "courses.html#courses", null ]
     ] ],
     [ "Surface Types", "surfacetypes.html", null ]
 ];
