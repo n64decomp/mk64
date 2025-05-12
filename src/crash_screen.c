@@ -79,9 +79,9 @@ void crash_screen_draw_square(u16* framebuffer) {
     s32 j;
 
     for (h = 0; h < 2; h++) {
-        for (i = (h * BORDER_WIDTH) + SQUARE_Y; i < (((SQUARE_Y2 - (h * BORDER_WIDTH)))); i++) {
-            for (j = (h * BORDER_WIDTH) + SQUARE_X; j < (((SQUARE_X2 - (h * BORDER_WIDTH)))); j++) {
-                framebuffer[(i * 320) + j] = (h == 0) ? (0xF801) : (0xFFFF);
+        for (i = (h * BORDER_WIDTH) + SQUARE_Y; i < (SQUARE_Y2 - (h * BORDER_WIDTH)); i++) {
+            for (j = (h * BORDER_WIDTH) + SQUARE_X; j < (SQUARE_X2 - (h * BORDER_WIDTH)); j++) {
+                framebuffer[(i * 320) + j] = (h == 0) ? (RED_COLOUR) : (WHITE_COLOUR);
             }
         }
     }

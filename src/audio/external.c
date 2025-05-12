@@ -227,16 +227,16 @@ s8 func_800C15D0(u8 bank, u8 soundId, u8 channel) {
     return var_a0;
 }
 
-// This is likely functionally equivallent.
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/99CQl
 s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
     f32 var_f0;
     f32 var_f14;
+    f32 new_var;
+    f32 *new_var2;
     f32 var_f16;
     f32 var_f18;
     f32 var_f20;
     f32 var_f2;
+    new_var2 = &var_f0;
 
     if (D_800EA1C0 == 0) {
         if (D_800EA0F4 != 0) {
@@ -245,9 +245,9 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
             var_f16 = 10.0f;
             var_f18 = 2.5f;
         } else {
-            var_f2 = 100.0f;
+            var_f0 = 100.0f;
+            var_f2 = *new_var2;
             var_f14 = 200.0f;
-            if (1) {}
             var_f16 = 5.0f;
             var_f18 = 3.3333333f;
         }
@@ -256,16 +256,17 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
         if (var_f2 < var_f20) {
             var_f20 = var_f2;
         }
-        var_f0 = (arg1 < 0.0f) ? -arg1 : arg1;
 
-        if (var_f2 < var_f0) {
+        new_var = arg0;
+        var_f0 = (arg1 < 0.0f) ? -arg1 : arg1;
+        if (var_f2 < (var_f0 = *new_var2)) {
             var_f0 = var_f2;
         }
-        if ((arg0 == 0.0f) && (arg1 == 0.0f)) {
+        if ((new_var == 0.0f) && (arg1 == 0.0f)) {
             var_f2 = 0.5f;
-        } else if ((arg0 >= 0.0f) && (var_f0 <= var_f20)) {
+        } else if ((new_var >= 0.0f) && (var_f0 <= var_f20)) {
             var_f2 = 1.0f - ((var_f14 - var_f20) / (var_f16 * (var_f14 - var_f0)));
-        } else if ((arg0 < 0.0f) && (var_f0 <= var_f20)) {
+        } else if ((new_var < 0.0f) && (var_f0 <= var_f20)) {
             var_f2 = (var_f14 - var_f20) / (var_f16 * (var_f14 - var_f0));
         } else {
             var_f2 = (arg0 / (var_f18 * var_f0)) + 0.5f;
@@ -280,9 +281,6 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
     }
     return (cameraId & 1) * 0x7F;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C16E8.s")
-#endif
 
 f32 func_800C1934(u8 bank, u8 soundId) {
     f32 phi_f2;
@@ -341,8 +339,8 @@ void func_800C19D0(u8 arg0, u8 arg1, u8 arg2) {
 
 struct Unk_8018EFD8* func_800C1C88(u8 arg0, Vec3f position, f32* velocity, f32* arg3, u8 arg4, u32 soundBits) {
     struct Unk_8018EFD8* temp_a1;
-    struct Unk_8018EFD8* temp_v1;
-    u8 temp_t7;
+    UNUSED struct Unk_8018EFD8* temp_v1;
+    UNUSED u8 temp_t7;
     u8 why1;
 
     if (D_8018EFD8[D_8018FB90].next != 0xFF) {
@@ -1104,6 +1102,7 @@ void func_800C3724(void) {
                 D_801930D0[seqPlayerIndex].unk_040--;
                 continue;
             }
+
             if (gSequencePlayers[seqPlayerIndex].enabled != 0) {
                 continue;
             }
@@ -1294,7 +1293,7 @@ void func_800C4398(void) {
     u8 soundIndex;
     u8 var_a3;
     struct Sound* var_a2;
-    s32 pad;
+    UNUSED s32 pad;
     u8 var_t2;
     u32 var_t3;
 
@@ -1350,7 +1349,7 @@ void func_800C4398(void) {
     }
     if ((sSoundBanks[bank][sSoundBankFreeListFront[bank]].next != 0xFF) && (soundIndex != 0)) {
         var_t2 = soundIndex = sSoundBankFreeListFront[bank];
-        sSoundBanks[bank][soundIndex].unk00 = &(*var_a2->position)[0];
+        sSoundBanks[bank][soundIndex].unk00 = (Vec3f*)&(*var_a2->position)[0];
         sSoundBanks[bank][soundIndex].unk04 = &(*var_a2->position)[1];
         sSoundBanks[bank][soundIndex].unk08 = &(*var_a2->position)[2];
         sSoundBanks[bank][soundIndex].cameraId = var_a2->cameraId;
@@ -1395,159 +1394,163 @@ void delete_sound_from_bank(u8 bankId, u8 soundId) {
     temp->soundStatus = 0;
 }
 
-// Guessing this is `select_current_sounds`?
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/cqBii
-struct why {
+struct ActiveSfx {
     u32 priority;
     u8 soundIndex;
 };
+#define AUDIO_MK_CMD(b0,b1,b2,b3) ((((b0) & 0xFF) << 0x18) | (((b1) & 0xFF) << 0x10) | (((b2) & 0xFF) << 0x8) | (((b3) & 0xFF) << 0))
 void func_800C4888(u8 bankId) {
-    u8 i;
     u8 j;
+    u8 numChannels;
+    u8 chosenEntryIndex;
+    u8 i;
     u8 k;
-    u8 latestSoundIndex;
-    u8 var_s2;
-    u8 var_v1;
+    u8 numChosenSfx;
+    u8 needNewSfx;
     u8 soundIndex;
-    u8 var_t1;
-    u8 someTemp;
+    u8 requestedPriority;
+    u8 temp_t8;
     f32 var_f0;
-    s32 requestedPriority;
-    struct why sp7C[8];
-    s32 temp_t8;
-    struct SoundCharacteristics* temp_t2;
+    struct ActiveSfx* activeSfx;
+    struct ActiveSfx chosenSfx[8];
+    struct SoundCharacteristics* entry;
 
-    var_s2 = 0;
+    numChosenSfx = 0;
     for (i = 0; i < 8; i++) {
-        sp7C[i].priority = 0x7FFFFFFF;
-        sp7C[i].soundIndex = 0xFF;
+        chosenSfx[i].priority = 0x7FFFFFFF;
+        chosenSfx[i].soundIndex = 0xFF;
     }
-    latestSoundIndex = 0;
+
     soundIndex = sSoundBanks[bankId][0].next;
+    k = 0;
     while (soundIndex != 0xFF) {
-        temp_t2 = &sSoundBanks[bankId][soundIndex];
-        if ((temp_t2->soundStatus == 1) && ((temp_t2->soundBits & 0x08000000) == 0x08000000)) {
-            temp_t2->freshness -= 1;
+        if ((sSoundBanks[bankId][soundIndex].soundStatus == 1) && ((sSoundBanks[bankId][soundIndex].soundBits & 0x08000000) == 0x08000000)) {
+            sSoundBanks[bankId][soundIndex].freshness -= 1;
         }
-        if (temp_t2->freshness == 0) {
+        
+        if (sSoundBanks[bankId][soundIndex].freshness == 0) {
             delete_sound_from_bank(bankId, soundIndex);
-        } else if (temp_t2->soundStatus != 0) {
-            if (D_800EA1C8 == *temp_t2->unk00) {
-                temp_t2->distance = 0.0f;
+        } else if (sSoundBanks[bankId][soundIndex].soundStatus != 0) {
+            entry = &sSoundBanks[bankId][soundIndex];
+            
+            if (&D_800EA1C8 == entry[0].unk00) {
+                entry->distance = 0.0f;
             } else {
-                temp_t2->distance = ((*temp_t2->unk00)[0] * (*temp_t2->unk00)[0]) + (*temp_t2->unk08 * *temp_t2->unk08);
+                entry->distance =
+                    (*entry->unk00[0] * *entry->unk00[0]) + (*entry->unk08 * *entry->unk08);
             }
-            requestedPriority = ((u32) (temp_t2->soundBits & 0xFF00) >> 8) & 0xFF;
-            if (temp_t2->soundBits & 0x100000) {
-                temp_t2->priority =
-                    (0xFF - requestedPriority) * (0xFF - requestedPriority) * 0x5A4; // 0x5a4 = 1444 = 38 * 38
+            requestedPriority = (((u32) (entry->soundBits & 0xFF00)) >> 8);
+            if (entry->soundBits & 0x100000) {
+                entry->priority = ((0xFF - requestedPriority) * (0xFF - requestedPriority)) * (38 * 38);
             } else {
-                temp_t2->priority = (u32) temp_t2->distance + ((0xFF - requestedPriority) * (0xFF - requestedPriority) *
-                                                               0x5A4); // 0x5a4 = 1444 = 38 * 38
-                if (*temp_t2->unk08 > 0.0f) {
-                    temp_t2->priority += (s32) (*temp_t2->unk08 * 6.0f);
+                entry->priority =
+                    ((u32) entry->distance) + (((0xFF - requestedPriority) * (0xFF - requestedPriority)) * (38 * 38));
+
+                if ((*entry->unk08) > 0.0f) {
+                    entry->priority += (s32) ((*entry->unk08) * 6.0f);
                 }
             }
-            temp_t8 = ((u32) (temp_t2->soundBits & 0x30000) >> 0x10) & 0xFF;
-            if (temp_t8 != 0) {
-                var_f0 = 4000000.0f / (f32) (temp_t8 * temp_t8);
+            temp_t8 = (((u32) (entry->soundBits & 0x30000)) >> 0x10);
+            if (temp_t8) {
+                var_f0 = (2000.0f * 2000.0f) / ((f32) (temp_t8 * temp_t8));
             } else {
-                var_f0 = 1e10f;
+                var_f0 = 1e5f * 1e5f;
             }
-            if (var_f0 < temp_t2->distance) {
-                if (temp_t2->soundStatus == 4) {
-                    func_800CBBE8((temp_t2->unk2C << 8) | 0x06020000, 0);
-                    if (temp_t2->soundBits & 0x08000000) {
+            if (var_f0 < entry->distance) {
+                if (entry->soundStatus == 4) {
+                    func_800CBBE8(AUDIO_MK_CMD(0x06, 2, entry->unk2C, 0), 0);
+                    if (entry->soundBits & 0x08000000) {
                         delete_sound_from_bank(bankId, soundIndex);
-                        soundIndex = latestSoundIndex;
+                        soundIndex = k;
                     }
                 }
             } else {
-                var_t1 = D_800EA188[D_800EA1C0][bankId];
-                for (i = 0; i < var_t1; i++) {
-                    if (sp7C[i].priority >= temp_t2->priority) {
-                        if (var_s2 < var_t1) {
-                            var_s2++;
+                numChannels = D_800EA188[D_800EA1C0][bankId];
+                for (i = 0; i < numChannels; i++) {
+                    if (chosenSfx[i].priority >= entry->priority) {
+                        if (numChosenSfx < D_800EA188[D_800EA1C0][bankId]) {
+                            numChosenSfx++;
                         }
-                        for (j = var_t1 - 1; j > i; j--) {
-                            sp7C[j].priority = sp7C[j - 1].priority;
-                            sp7C[j].soundIndex = sp7C[j - 1].soundIndex;
+                        for (j = numChannels - 1; j > i; j--) {
+                            chosenSfx[j].priority = chosenSfx[j - 1].priority;
+                            chosenSfx[j].soundIndex = chosenSfx[j - 1].soundIndex;
                         }
-                        sp7C[i].priority = temp_t2->priority;
-                        sp7C[i].soundIndex = soundIndex;
-                        i = var_t1;
+
+                        chosenSfx[i].priority = entry->priority;
+                        chosenSfx[i].soundIndex = soundIndex;
+                        i = numChannels;
                     }
                 }
             }
-            latestSoundIndex = soundIndex;
+            k = soundIndex;
         }
-        soundIndex = sSoundBanks[bankId][latestSoundIndex].next;
+        soundIndex = sSoundBanks[bankId][k].next;
     }
-    var_t1 = D_800EA188[D_800EA1C0][bankId];
-    for (i = 0; i < var_s2; i++) {
-        someTemp = sSoundBanks[bankId][sp7C[i].soundIndex].soundStatus;
-        if (someTemp == 1) {
-            sSoundBanks[bankId][sp7C[i].soundIndex].soundStatus = 2;
-        } else if (someTemp == 4) {
-            sSoundBanks[bankId][sp7C[i].soundIndex].soundStatus = 3;
+
+    numChannels = D_800EA188[D_800EA1C0][bankId];
+    for (i = 0; i < numChosenSfx; i++) {
+        if (sSoundBanks[bankId][chosenSfx[i].soundIndex].soundStatus == 1) {
+            sSoundBanks[bankId][chosenSfx[i].soundIndex].soundStatus = 2;
+        } else if (sSoundBanks[bankId][chosenSfx[i].soundIndex].soundStatus == 4) {
+            sSoundBanks[bankId][chosenSfx[i].soundIndex].soundStatus = 3;
         }
     }
-    for (i = 0; i < var_t1; i++) {
-        var_v1 = 0;
-        soundIndex = D_80192AB8[bankId][i][4];
-        if (soundIndex == 0xFF) {
-            var_v1 = 1;
+
+    for (i = 0; i < numChannels; i++) {
+        needNewSfx = false;
+        activeSfx = (struct ActiveSfx*)&D_80192AB8[bankId][i];
+
+        if (activeSfx->soundIndex == 0xFF) {
+            needNewSfx = true;
         } else {
-            temp_t2 = &sSoundBanks[bankId][soundIndex];
-            if (temp_t2->soundStatus == 4) {
-                if (temp_t2->soundBits & 0x08000000) {
-                    delete_sound_from_bank(bankId, soundIndex);
-                    var_v1 = 1;
+            entry = &sSoundBanks[bankId][activeSfx->soundIndex];
+            if (entry->soundStatus == 4) {
+                if (entry->soundBits & 0x08000000) {
+                    delete_sound_from_bank(bankId, activeSfx->soundIndex);
                 } else {
-                    temp_t2->soundStatus = 1;
-                    var_v1 = 1;
+                    entry->soundStatus = 1;
                 }
-            } else if (temp_t2->soundStatus == 0) {
-                D_80192AB8[bankId][i][4] = 0xFF;
-                var_v1 = 1;
+                needNewSfx = true;
+            } else if (entry->soundStatus == 0) {
+                activeSfx->soundIndex = 0xFF;
+                needNewSfx = true;
             } else {
-                for (j = 0; j < var_t1; j++) {
-                    if (soundIndex == sp7C[j].soundIndex) {
-                        sp7C[j].soundIndex = 0xFF;
-                        j = var_t1;
+                for (j = 0; j < numChannels; j++) {
+                    if (activeSfx->soundIndex == chosenSfx[j].soundIndex) {
+                        chosenSfx[j].soundIndex = 0xFF;
+                        j = numChannels;
                     }
                 }
+                numChosenSfx--;
             }
         }
-        var_s2--;
-        if (var_v1 == 1) {
-            for (j = 0; j < var_t1; j++) {
-                soundIndex = sp7C[j].soundIndex;
-                if ((soundIndex != 0xFF) && (sSoundBanks[bankId][soundIndex].soundStatus != 3)) {
-                    for (k = 0; k < var_t1; k++) {
-                        if (soundIndex == D_80192AB8[bankId][k][4]) {
-                            var_v1 = 0;
-                            k = var_t1;
+
+        if (needNewSfx == true) {
+            for (j = 0; j < numChannels; j++) {
+                chosenEntryIndex = chosenSfx[j].soundIndex;
+                if ((chosenEntryIndex != 0xFF) && (sSoundBanks[bankId][chosenEntryIndex].soundStatus != 3)) {
+                    for (k = 0; k < numChannels; k++) {
+                        if (chosenEntryIndex == ((struct ActiveSfx*)(D_80192AB8[bankId]))[k].soundIndex) {
+                            needNewSfx = false;
+                            k = numChannels;
                         }
                     }
-                    if (var_v1 == 1) {
-                        D_80192AB8[bankId][i][4] = soundIndex;
-                        sp7C[j].soundIndex = 0xFF;
-                        j = var_t1 + 1;
-                        var_s2--;
+
+                    if (needNewSfx == true) {
+                        activeSfx->soundIndex = chosenEntryIndex;
+                        chosenSfx[j].soundIndex = 0xFF;
+                        j = numChannels + 1;
+                        numChosenSfx--;
                     }
                 }
             }
-            if (j == var_t1) {
-                D_80192AB8[bankId][i][4] = 0xFF;
+
+            if (j == numChannels) {
+                activeSfx->soundIndex = 0xFF;
             }
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C4888.s")
-#endif
 
 void func_800C4FE4(u8 bankId) {
     u8 soundId;
@@ -3444,7 +3447,7 @@ void func_800CAC08() {
     }
 }
 
-void func_800CAC60(UNUSED s32 arg0) {
+void func_800CAC60(UNUSED u8 arg0) {
     if ((D_800EA108 == 0) && (D_800EA0F0 == 0)) {
         play_sound(SOUND_ACTION_EXPLOSION_2, &D_800EA1C8, 0U, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
         if ((D_800EA10C[0] != 1) && (D_800EA10C[1] != 1)) {
