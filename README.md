@@ -1,5 +1,5 @@
 # Mario Kart 64   
-This work-in-progress decompilation of Mario Kart 64 pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality.
+This decompilation of Mario Kart 64 pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality.
 
 This repository does not contain assets. Compiling requires asset extraction from a prior copy of the game.
 
@@ -11,26 +11,11 @@ It supports and builds the following versions:
 | mk64.eu.v10.z64 | EUR 1.0 | a729039453210b84f17019dda3f248d5888f7690 |
 | mk64.eu.v11.z64 | EUR 1.1 | f6b5f519dd57ea59e9f013cc64816e9d273b2329 |
 
-[![Linux Compile](https://github.com/n64decomp/mk64/actions/workflows/linux-compile.yml/badge.svg)](https://github.com/n64decomp/mk64/actions/workflows/linux-compile.yml)
-
 ## Progress
 
-Total progress consists of all code segments together.
-
-Game code progress consists of `main`, `ending` and `racing`.
+[![Linux Compile](https://github.com/n64decomp/mk64/actions/workflows/linux-compile.yml/badge.svg)](https://github.com/n64decomp/mk64/actions/workflows/linux-compile.yml)
 
 ![Build Status](https://n64decomp.github.io/mk64/total_progress.svg)
-![Build Status](https://n64decomp.github.io/mk64/game_progress.svg)
-
-![Build Status](https://n64decomp.github.io/mk64/asm_funcs.svg)
-![Build Status](https://n64decomp.github.io/mk64/m2c_funcs.svg)
-![Build Status](https://n64decomp.github.io/mk64/nonmatching_funcs.svg)
-
-- ![Build Status](https://n64decomp.github.io/mk64/seg_main_progress.svg)
-- ![Build Status](https://n64decomp.github.io/mk64/seg_ending_progress.svg)
-- ![Build Status](https://n64decomp.github.io/mk64/seg_racing_progress.svg)
-- ![Build Status](https://n64decomp.github.io/mk64/audio_progress.svg)
-- ![Build Status](https://n64decomp.github.io/mk64/libultra_progress.svg)
 
 ## Quick Start
 
@@ -50,7 +35,8 @@ See also, the comprehensive API and documentation which includes an overview of 
 
 ## Current State
 
-The code-base may change significanty overtime as naming and documentation continues. The code-base is shiftable.
+The code-base may change significanty overtime as naming and documentation continues.
+Adjustments to the game require compiling with AVOID_UB=1 to enable shiftability. Use DEBUG=1 to enable the games debug mode.
 
 Some menu textures are compressed using a format called tkmk00. A byte-matching compressor/decompressor does not yet exist.   
 
