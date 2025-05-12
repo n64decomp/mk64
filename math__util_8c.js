@@ -37,7 +37,7 @@ var math__util_8c =
     [ "func_802B7F7C", "math__util_8c.html#aad57b20a709b8ebe6b6c4d095a3007aa", null ],
     [ "func_802B8414", "math__util_8c.html#a0ca3a6d6b27b22a7a1d98253a3d5c899", null ],
     [ "func_802B8614", "math__util_8c.html#af425e5d57e6b7eae769783c4e455fd24", null ],
-    [ "get_angle_between_two_vectors", "math__util_8c.html#a84cf9d4ec33146a64c230ed4cec56632", null ],
+    [ "get_angle_between_points", "math__util_8c.html#a963f23fd2ffec93350816627af02b9da", null ],
     [ "is_visible_between_angle", "math__util_8c.html#a3eb0db0895b2c11953df746ce49b782e", null ],
     [ "is_within_render_distance", "math__util_8c.html#a5e1d12b8745a8d5f8d73ab366328d3cd", null ],
     [ "mtxf_copy", "math__util_8c.html#a613531b5381a729fcb7a622957694d3b", null ],

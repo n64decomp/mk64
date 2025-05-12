@@ -149,7 +149,7 @@ var menus_8h =
     [ "player_select_menu_act", "menus_8h.html#a12782c6dfda55fb80c3fdf7d11d302f0", null ],
     [ "reset_cycle_flash_menu", "menus_8h.html#a731c3b189d850a260426f1823e593273", null ],
     [ "set_sound_mode", "menus_8h.html#ac9f18df3bed3128812e7edb31f84300f", null ],
-    [ "setup_game_mode_selected", "menus_8h.html#ac6e39e50381ae8908aa5e7053c3d35a0", null ],
+    [ "setup_selected_game_mode", "menus_8h.html#aa2d8b2f3c0ee80588432b9a3addbc372", null ],
     [ "splash_menu_act", "menus_8h.html#a52ab81a056590cac214809800c31ab29", null ],
     [ "update_menus", "menus_8h.html#a5fd6ba9b77c684f7c5e0f4732de81953", null ],
     [ "gBattleResultCursorSelection", "menus_8h.html#ace9e890b58621a60a66563c7ebd25c6d", null ],

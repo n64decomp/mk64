@@ -332,8 +332,8 @@ Functions</h2></td></tr>
 <tr class="separator:a42969711e851727f1392c77bd1d47638"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52ab81a056590cac214809800c31ab29" id="r_a52ab81a056590cac214809800c31ab29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52ab81a056590cac214809800c31ab29">splash_menu_act</a> (struct <a class="el" href="structController.html">Controller</a> *, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>)</td></tr>
 <tr class="separator:a52ab81a056590cac214809800c31ab29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6e39e50381ae8908aa5e7053c3d35a0" id="r_ac6e39e50381ae8908aa5e7053c3d35a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6e39e50381ae8908aa5e7053c3d35a0">setup_game_mode_selected</a> (void)</td></tr>
-<tr class="separator:ac6e39e50381ae8908aa5e7053c3d35a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2d8b2f3c0ee80588432b9a3addbc372" id="r_aa2d8b2f3c0ee80588432b9a3addbc372"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2d8b2f3c0ee80588432b9a3addbc372">setup_selected_game_mode</a> (void)</td></tr>
+<tr class="separator:aa2d8b2f3c0ee80588432b9a3addbc372"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29ee3f2a988bfa836ca9314af24fcfe5" id="r_a29ee3f2a988bfa836ca9314af24fcfe5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29ee3f2a988bfa836ca9314af24fcfe5">main_menu_act</a> (struct <a class="el" href="structController.html">Controller</a> *, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>)</td></tr>
 <tr class="separator:a29ee3f2a988bfa836ca9314af24fcfe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa566884e5153b1d13a03fdecd08d8456" id="r_aa566884e5153b1d13a03fdecd08d8456"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa566884e5153b1d13a03fdecd08d8456">is_character_spot_free</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)</td></tr>
@@ -819,7 +819,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Navigation of the player select screen Grid positions are from right to left, then top to bottom Navigation of the map select course menu screen </p>
+<p>Navigation of the map select course menu screen </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -868,7 +868,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Navigation of the main game mode select screen Check if there is no currently selected and/or hovered character at grid position <code>gridId</code> </p>
+<p>Check if there is no currently selected and/or hovered character at grid position <code>gridId</code> </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="menus_8h_aa566884e5153b1d13a03fdecd08d8456_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -953,15 +958,21 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void main_menu_act </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structController.html">Controller</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+          <td class="paramtype">struct <a class="el" href="structController.html">Controller</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a></td>          <td class="paramname"><span class="paramname"><em>controllerIdx</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Navigation of the main game mode select screen </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="menus_8h_a29ee3f2a988bfa836ca9314af24fcfe5_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1011,15 +1022,21 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void player_select_menu_act </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structController.html">Controller</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+          <td class="paramtype">struct <a class="el" href="structController.html">Controller</a> *</td>          <td class="paramname"><span class="paramname"><em>controller</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a></td>          <td class="paramname"><span class="paramname"><em>controllerIdx</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Navigation of the player select screen Grid positions are from right to left, then top to bottom </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="menus_8h_a12782c6dfda55fb80c3fdf7d11d302f0_cgraph.svg" width="100%" height="586"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1046,7 +1063,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="menus_8h_a731c3b189d850a260426f1823e593273_icgraph.svg" width="100%" height="475"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="menus_8h_a731c3b189d850a260426f1823e593273_icgraph.svg" width="100%" height="512"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -1079,20 +1096,25 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ac6e39e50381ae8908aa5e7053c3d35a0" name="ac6e39e50381ae8908aa5e7053c3d35a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6e39e50381ae8908aa5e7053c3d35a0">&#9670;&#160;</a></span>setup_game_mode_selected()</h2>
+<a id="aa2d8b2f3c0ee80588432b9a3addbc372" name="aa2d8b2f3c0ee80588432b9a3addbc372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2d8b2f3c0ee80588432b9a3addbc372">&#9670;&#160;</a></span>setup_selected_game_mode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void setup_game_mode_selected </td>
+          <td class="memname">void setup_selected_game_mode </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="menus_8h_aa2d8b2f3c0ee80588432b9a3addbc372_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>

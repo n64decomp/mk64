@@ -325,7 +325,7 @@ var menu__items_8h =
     [ "func_80095BD0", "menu__items_8h.html#a61cf55c28f8456b37e21357ffc16bba9", null ],
     [ "func_80095E10", "menu__items_8h.html#af5f6d8464bdb41870a9fec760c59851b", null ],
     [ "func_800963F0", "menu__items_8h.html#ab8d5e15b1a10f84181eb91494c9b3dfb", null ],
-    [ "func_80096CD8", "menu__items_8h.html#ab1d4efb139e7bc96d62eb1dce5f50baf", null ],
+    [ "func_80096CD8", "menu__items_8h.html#a7e6e535c0feca5102aea56e21c636dca", null ],
     [ "func_80097274", "menu__items_8h.html#aab23f26f9961699108a8c6d5e8157ced", null ],
     [ "func_80097A14", "menu__items_8h.html#adfb729043ddda1b686bb84a815ab3ac9", null ],
     [ "func_80097AE4", "menu__items_8h.html#a98e61b0d43182dc2f2d74e1187276da9", null ],

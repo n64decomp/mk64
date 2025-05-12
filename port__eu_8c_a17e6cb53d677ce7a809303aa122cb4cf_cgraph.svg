@@ -987,20 +987,20 @@ var sectionId = 'dynsection-1';
 </a>
 </g>
 </g>
-<!-- Node132 -->
-<g id="Node000132" class="node">
-<title>Node132</title>
-<g id="a_Node000132"><a xlink:href="synthesis_8c.html#ab469a6d9522ccd7bdcef898769a46a7a" target="_top" xlink:title=" ">
+<!-- Node138 -->
+<g id="Node000138" class="node">
+<title>Node138</title>
+<g id="a_Node000138"><a xlink:href="synthesis_8c.html#ab469a6d9522ccd7bdcef898769a46a7a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="515,-350.5 399,-350.5 399,-320.5 515,-320.5 515,-350.5"/>
 <text text-anchor="start" x="407" y="-338.5" font-family="Helvetica,sans-Serif" font-size="10.00">synthesis_load_note</text>
 <text text-anchor="middle" x="457" y="-327.5" font-family="Helvetica,sans-Serif" font-size="10.00">_subs_eu</text>
 </a>
 </g>
 </g>
-<!-- Node83&#45;&gt;Node132 -->
-<g id="edge70_Node000083_Node000132" class="edge">
-<title>Node83&#45;&gt;Node132</title>
-<g id="a_edge70_Node000083_Node000132"><a xlink:title=" ">
+<!-- Node83&#45;&gt;Node138 -->
+<g id="edge70_Node000083_Node000138" class="edge">
+<title>Node83&#45;&gt;Node138</title>
+<g id="a_edge70_Node000083_Node000138"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M314.39,-297.1C336.22,-303.02 364.89,-310.79 390.72,-317.8"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="389.89,-321.2 400.46,-320.44 391.72,-314.44 389.89,-321.2"/>
 </a>
@@ -1110,8 +1110,8 @@ var sectionId = 'dynsection-1';
 <!-- Node127 -->
 <g id="Node000127" class="node">
 <title>Node127</title>
-<g id="a_Node000127"><a xlink:href="synthesis_8h.html#a118f48c8fedabdaea7a5ae803cdf7bc2" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="698.5,-244 565.5,-244 565.5,-225 698.5,-225 698.5,-244"/>
+<g id="a_Node000127"><a xlink:href="synthesis_8c.html#aa715dbf2ff0e1ec35eabeb43fa3bf999" target="_top" xlink:title=" ">
+<polygon fill="#fff0f0" stroke="red" points="698.5,-244 565.5,-244 565.5,-225 698.5,-225 698.5,-244"/>
 <text text-anchor="middle" x="632" y="-232" font-family="Helvetica,sans-Serif" font-size="10.00">synthesis_process_note</text>
 </a>
 </g>
@@ -1125,20 +1125,20 @@ var sectionId = 'dynsection-1';
 </a>
 </g>
 </g>
-<!-- Node128 -->
-<g id="Node000128" class="node">
-<title>Node128</title>
-<g id="a_Node000128"><a xlink:href="synthesis_8c.html#aaf9767ca9ae81766b960502e1161e025" target="_top" xlink:title=" ">
+<!-- Node134 -->
+<g id="Node000134" class="node">
+<title>Node134</title>
+<g id="a_Node000134"><a xlink:href="synthesis_8c.html#aaf9767ca9ae81766b960502e1161e025" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="689,-292.5 575,-292.5 575,-262.5 689,-262.5 689,-292.5"/>
 <text text-anchor="start" x="583" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00">synthesis_resample</text>
 <text text-anchor="middle" x="632" y="-269.5" font-family="Helvetica,sans-Serif" font-size="10.00">_and_mix_reverb</text>
 </a>
 </g>
 </g>
-<!-- Node126&#45;&gt;Node128 -->
-<g id="edge69_Node000126_Node000128" class="edge">
-<title>Node126&#45;&gt;Node128</title>
-<g id="a_edge69_Node000126_Node000128"><a xlink:title=" ">
+<!-- Node126&#45;&gt;Node134 -->
+<g id="edge69_Node000126_Node000134" class="edge">
+<title>Node126&#45;&gt;Node134</title>
+<g id="a_edge69_Node000126_Node000134"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M525.38,-254.3C538.46,-257.17 552.15,-260.18 565.18,-263.04"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="564.48,-266.47 574.99,-265.2 565.98,-259.63 564.48,-266.47"/>
 </a>

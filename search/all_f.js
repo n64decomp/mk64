@@ -26,7 +26,7 @@ var searchData=
   ['main_5fmenu_5f100cc_23',['MAIN_MENU_100CC',['../menu__items_8h.html#a1dfc635b44835e2c75290f9a9a2c3643a6aaaf041980be57c8acfc9e3e928adbc',1,'menu_items.h']]],
   ['main_5fmenu_5f150cc_24',['MAIN_MENU_150CC',['../menu__items_8h.html#a1dfc635b44835e2c75290f9a9a2c3643a404d5fb2044448ba79eff9e418fa9535',1,'menu_items.h']]],
   ['main_5fmenu_5f50cc_25',['MAIN_MENU_50CC',['../menu__items_8h.html#a1dfc635b44835e2c75290f9a9a2c3643a538bb6de1cdf422d502b42c1b5669e7f',1,'menu_items.h']]],
-  ['main_5fmenu_5fact_26',['main_menu_act',['../menus_8h.html#a29ee3f2a988bfa836ca9314af24fcfe5',1,'menus.h']]],
+  ['main_5fmenu_5fact_26',['main_menu_act',['../menus_8c.html#aef64385c89890d30a22aff22c0928448',1,'main_menu_act(struct Controller *controller, u16 controllerIdx):&#160;menus.c'],['../menus_8h.html#a29ee3f2a988bfa836ca9314af24fcfe5',1,'main_menu_act(struct Controller *, u16):&#160;menus.c']]],
   ['main_5fmenu_5fbackground_27',['MAIN_MENU_BACKGROUND',['../menu__items_8h.html#a1dfc635b44835e2c75290f9a9a2c3643a527e244188d2e256582b7e5baac4a4ec',1,'menu_items.h']]],
   ['main_5fmenu_5fdata_28',['MAIN_MENU_DATA',['../menus_8h.html#ad5aa1f6b0b486ffbb500442c627f8b3ca5eb616a929dc40790526d085cc204e8b',1,'menus.h']]],
   ['main_5fmenu_5fdata_5fgfx_29',['MAIN_MENU_DATA_GFX',['../menu__items_8h.html#a1dfc635b44835e2c75290f9a9a2c3643a7d029e378fe1d967b5998d9d77efb3cc',1,'menu_items.h']]],

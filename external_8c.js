@@ -1,6 +1,8 @@
 var external_8c =
 [
+    [ "ActiveSfx", "structActiveSfx.html", "structActiveSfx" ],
     [ "AUDIO_LEFT_TYRE", "external_8c.html#a58d23d666321d5851d59dd07027a5bdf", null ],
+    [ "AUDIO_MK_CMD", "external_8c.html#aa1011af2f9b4c8ef0bf711965fd56d44", null ],
     [ "AUDIO_RIGHT_TYRE", "external_8c.html#a627582fcc9de130ccaf1dda2c1e34aa5", null ],
     [ "audio_reset_session_eu", "external_8c.html#ab9be808e2c53e522a41d57926aa1ae12", null ],
     [ "delete_sound_from_bank", "external_8c.html#ac0fb767de7e14a03f1bcfa53f0abd23b", null ],
@@ -8,6 +10,7 @@ var external_8c =
     [ "func_800C13F0", "external_8c.html#a3e03b5fc0c689242a0a9ca2dea4e2f7e", null ],
     [ "func_800C1480", "external_8c.html#a7c5fca784863e31605bd8b74245cfe71", null ],
     [ "func_800C15D0", "external_8c.html#a4cf11e0e399291054f01691f17ba9fe1", null ],
+    [ "func_800C16E8", "external_8c.html#ae3feba4046aa4919699eb9a1867e18a6", null ],
     [ "func_800C1934", "external_8c.html#a95c3a61cfafc15fd58396f61e16e543a", null ],
     [ "func_800C19D0", "external_8c.html#ac5f404602d7b245deb29ed9291c1c1c2", null ],
     [ "func_800C1C88", "external_8c.html#a747de0be4005b4b29150d5c068564b7d", null ],
@@ -34,6 +37,7 @@ var external_8c =
     [ "func_800C40F0", "external_8c.html#a358ac55e8ab5262dcae8037334be06d7", null ],
     [ "func_800C41CC", "external_8c.html#ab83bd36e63f0f1baddcb2482b5ad31b0", null ],
     [ "func_800C4398", "external_8c.html#a0c8652d74f5c631ea42f379434f4bc1d", null ],
+    [ "func_800C4888", "external_8c.html#aa2da83679c349d5c9a635b347aebe5a4", null ],
     [ "func_800C4FE4", "external_8c.html#aa337ad8192c51101a37fc5ea8b3306b2", null ],
     [ "func_800C5278", "external_8c.html#a3d8334bd4e9a682bd18c614fd427004e", null ],
     [ "func_800C5384", "external_8c.html#a187d9f590686ca9c9b6590d7a5b2bafa", null ],
@@ -103,7 +107,7 @@ var external_8c =
     [ "func_800CAACC", "external_8c.html#a3138069310bbed5109964d607d51811f", null ],
     [ "func_800CAB4C", "external_8c.html#ab3e41422317f1d656be9e9b0d5947bb8", null ],
     [ "func_800CAC08", "external_8c.html#acc8bf31951751f8c1884eb37d49f4fbd", null ],
-    [ "func_800CAC60", "external_8c.html#ac1a703ccfd39decb3d7935ced254afd8", null ],
+    [ "func_800CAC60", "external_8c.html#adba9962f7a010c08ac0f257c12388648", null ],
     [ "func_800CAD40", "external_8c.html#a136efe63ecddf15d836c739c28cbfe41", null ],
     [ "func_800CADD0", "external_8c.html#a342e9bedd11bafb3f5cbe4513a263be4", null ],
     [ "func_800CAEC4", "external_8c.html#af5a8c5a8f496b82d7534fc25dd156067", null ],
