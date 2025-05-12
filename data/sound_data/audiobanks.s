@@ -7,7 +7,7 @@
 
 # Audiobank data
 
-.ifdef VERSION_EU_1_0
+.ifdef VERSION_EU_V10
     .incbin "bin/audiobanks.eu.bin"
 .else
     .incbin "bin/audiobanks.us.bin"
