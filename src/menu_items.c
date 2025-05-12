@@ -436,7 +436,7 @@ char* D_800E7778[] = {
 // This is plain data, it should not end up in rodata
 char gTextMenuAnnounceGhost[] = "NOW-MEET THE COURSE GHOST!!!";
 
-char* gTextNoController[] = { "CONNECT A CONTROLLER TO SOCKET 1,", "THEN menu_powER ON AGAIN" };
+char* gTextNoController[] = { "CONNECT A CONTROLLER TO SOCKET 1,", "THEN POWER ON AGAIN" };
 
 char* gTextBattleIntroduction[] = {
     "BATTLE GAME",
