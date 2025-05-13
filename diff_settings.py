@@ -8,6 +8,10 @@ def add_custom_arguments(parser):
             help="Set version to EU 1.0.")
     group.add_argument('-eu11', dest='lang', action='store_const', const='eu.v11',
             help="Set version to EU 1.1.")
+    group.add_argument('-jp10', dest='lang', action='store_const', const='jp.v10',
+            help="Set version to JP 1.0.")
+    group.add_argument('-jp11', dest='lang', action='store_const', const='jp.v11',
+            help="Set version to JP 1.1.")
 
 def apply(config, args):
     lang = args.lang or 'us'
