@@ -33,11 +33,12 @@
 .ascii "E"                      /* NTSC-U (North America) */
 .endif
 
+
 .ifdef VERSION_EU_V11
 .set REVISION_V11, 1
 .endif
 
-.ifdef VERSION_JP
+.ifdef VERSION_JP_V11
 .set REVISION_V11, 1
 .endif
 

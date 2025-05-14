@@ -48,6 +48,15 @@ SECTIONS
       BUILD_DIR/src/main.o(.text*);
       BUILD_DIR/src/code_800029B0.o(.text*);
       BUILD_DIR/src/profiler.o(.text*);
+#ifdef VERSION_JP // TODO: Arrange these in data, rodata and bss
+      BUILD_DIR/src/staff_ghosts.o(.text*);
+      BUILD_DIR/src/camera.o(.text*);
+      BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.text*);
+      BUILD_DIR/src/animation.o(.text*);
+      BUILD_DIR/src/render_player.o(.text*);
+      BUILD_DIR/src/crash_screen.o(.text*);
+      BUILD_DIR/src/kart_dma.o(.text*);
+#else
       BUILD_DIR/src/crash_screen.o(.text*);
       BUILD_DIR/src/animation.o(.text*);
       BUILD_DIR/src/staff_ghosts.o(.text*);
@@ -56,6 +65,7 @@ SECTIONS
       BUILD_DIR/src/camera.o(.text*);
       BUILD_DIR/src/render_player.o(.text*);
       BUILD_DIR/src/kart_dma.o(.text*);
+#endif
       BUILD_DIR/src/player_controller.o(.text*);
       BUILD_DIR/src/spawn_players.o(.text*);
       BUILD_DIR/src/code_8003DC40.o(.text*);
