@@ -1270,7 +1270,7 @@ void setup_selected_game_mode(void) {
  */
 void main_menu_act(struct Controller* controller, u16 controllerIdx) {
     u16 btnAndStick;
-    s32 subMode; // subMode
+    s32 subMode;      // subMode
     bool cursorMoved; // cursorMoved
 
     btnAndStick = controller->buttonPressed | controller->stickPressed;
@@ -1353,7 +1353,7 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                     play_sound2(SOUND_MENU_GO_BACK);
                     break;
                 }
-                
+
                 if (btnAndStick & A_BUTTON) {
                     switch (gGameModePlayerSelection[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
                         default:
@@ -1406,11 +1406,13 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if (btnAndStick & D_JPAD) {
                     cursorMoved = false;
                     if (has_unlocked_extra_mode()) {
-                        if (subMode < sGameModePlayerColumnExtra[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
+                        if (subMode <
+                            sGameModePlayerColumnExtra[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
                             cursorMoved = true;
                         }
                     } else {
-                        if (subMode < sGameModePlayerColumnDefault[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
+                        if (subMode <
+                            sGameModePlayerColumnDefault[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
                             cursorMoved = true;
                         }
                     }
@@ -1427,7 +1429,7 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_GO_BACK);
                     break;
-                } 
+                }
                 if (btnAndStick & A_BUTTON) {
                     reset_cycle_flash_menu();
                     if ((gPlayerCount == 1) && ((gGameModeMenuColumn - 1)[gPlayerCount] == 1) && (subMode == 1)) {
@@ -1532,10 +1534,12 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                         play_sound2(SOUND_MENU_GO_BACK);
                     }
                 }
-            
+
                 if ((btnAndStick & A_BUTTON) && (gCharacterGridIsSelected[controllerIdx] == 0)) {
                     gCharacterGridIsSelected[controllerIdx] = true;
-                    func_800C90F4(controllerIdx, ((sCharacterGridOrder - 1)[gCharacterGridSelections[controllerIdx]] * 0x10) + 0x2900800E);
+                    func_800C90F4(controllerIdx,
+                                  ((sCharacterGridOrder - 1)[gCharacterGridSelections[controllerIdx]] * 0x10) +
+                                      0x2900800E);
                 }
 
                 selected = false;
@@ -1557,7 +1561,9 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 j = gCharacterGridSelections[controllerIdx];
                 if ((btnAndStick & R_JPAD) && (btnAndStick & D_JPAD)) {
-                    if ((gCharacterGridSelections[controllerIdx] == 1U) || (gCharacterGridSelections[controllerIdx] == 2U) || (gCharacterGridSelections[controllerIdx] == 3U)) {
+                    if ((gCharacterGridSelections[controllerIdx] == 1U) ||
+                        (gCharacterGridSelections[controllerIdx] == 2U) ||
+                        (gCharacterGridSelections[controllerIdx] == 3U)) {
                         j = gCharacterGridSelections[controllerIdx] + 5;
                         if (is_character_spot_free(j)) {
                             gCharacterGridSelections[controllerIdx] = j;
@@ -1567,7 +1573,9 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     return;
                 }
                 if ((btnAndStick & L_JPAD) && (btnAndStick & D_JPAD)) {
-                    if ((gCharacterGridSelections[controllerIdx] == 2U) || (gCharacterGridSelections[controllerIdx] == 3U) || (gCharacterGridSelections[controllerIdx] == 4U)) {
+                    if ((gCharacterGridSelections[controllerIdx] == 2U) ||
+                        (gCharacterGridSelections[controllerIdx] == 3U) ||
+                        (gCharacterGridSelections[controllerIdx] == 4U)) {
                         j = gCharacterGridSelections[controllerIdx] + 3;
                         if (is_character_spot_free(j)) {
                             gCharacterGridSelections[controllerIdx] = j;
@@ -1577,7 +1585,9 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     return;
                 }
                 if ((btnAndStick & R_JPAD) && (btnAndStick & U_JPAD)) {
-                    if ((gCharacterGridSelections[controllerIdx] == 5U) || (gCharacterGridSelections[controllerIdx] == 6U) || (gCharacterGridSelections[controllerIdx] == 7U)) {
+                    if ((gCharacterGridSelections[controllerIdx] == 5U) ||
+                        (gCharacterGridSelections[controllerIdx] == 6U) ||
+                        (gCharacterGridSelections[controllerIdx] == 7U)) {
                         j = gCharacterGridSelections[controllerIdx] - 3;
                         if (is_character_spot_free(j)) {
                             gCharacterGridSelections[controllerIdx] = j;
@@ -1588,7 +1598,9 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
 
                 if ((btnAndStick & L_JPAD) && (btnAndStick & U_JPAD)) {
-                    if ((gCharacterGridSelections[controllerIdx] == 6U) || (gCharacterGridSelections[controllerIdx] == 7U) || (gCharacterGridSelections[controllerIdx] == 8U)) {
+                    if ((gCharacterGridSelections[controllerIdx] == 6U) ||
+                        (gCharacterGridSelections[controllerIdx] == 7U) ||
+                        (gCharacterGridSelections[controllerIdx] == 8U)) {
                         j = gCharacterGridSelections[controllerIdx] - 5;
                         if (is_character_spot_free(j)) {
                             gCharacterGridSelections[controllerIdx] = j;
@@ -1596,10 +1608,10 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                         }
                     }
                     return;
-                    
                 }
                 if (btnAndStick & R_JPAD) {
-                    if ((gCharacterGridSelections[controllerIdx] != 4U) && (gCharacterGridSelections[controllerIdx] != 8U)) {
+                    if ((gCharacterGridSelections[controllerIdx] != 4U) &&
+                        (gCharacterGridSelections[controllerIdx] != 8U)) {
                         j = gCharacterGridSelections[controllerIdx] + 1;
                         do {
                             if (is_character_spot_free(j)) {
@@ -1617,7 +1629,8 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     return;
                 }
                 if (btnAndStick & L_JPAD) {
-                    if ((gCharacterGridSelections[controllerIdx] != 1U) && (gCharacterGridSelections[controllerIdx] != 5U)) {
+                    if ((gCharacterGridSelections[controllerIdx] != 1U) &&
+                        (gCharacterGridSelections[controllerIdx] != 5U)) {
                         j = gCharacterGridSelections[controllerIdx] - 1;
                         do {
                             if (is_character_spot_free(j)) {
@@ -1625,7 +1638,7 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                                 play_sound2(SOUND_MENU_CURSOR_MOVE);
                                 return;
                             }
-                            
+
                             j--;
                             if (j == 0 || j == 4) {
                                 break;

@@ -1053,7 +1053,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
             var_v0++;
         }
     }
-    
+
     var_a0_4 = 0;
     for (i = 0; i < gPlayerCount; i++) {
         if (gGPCurrentRaceRankByPlayerId[i] < arg2) {
@@ -1064,7 +1064,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
     // FAKE
     var_t1 = (arg2 - (var_v0 & 0xFFFF)) - var_a0_4;
     arg2 -= var_v0;
-    
+
     if ((var_v0 > 0) || (var_a0_4 > 0)) {
         var_t1++;
     }
@@ -1404,7 +1404,6 @@ void update_player(s32 playerId) {
     s16 angle;
     s16 steeringSensitivity;
 
-
     s32 maxAngle;
     Player* player;
     UNUSED s32 pad3[10];
@@ -1638,7 +1637,12 @@ void update_player(s32 playerId) {
                         pathIndex %= gSelectedPathCount;
                         set_track_offset_position(pathIndex, -0.7f, gPlayerPathIndex);
                     }
-                    if (1) { } if (1) { } if (1) { } if (1) { } if (1) { } if (1) { }
+                    if (1) {}
+                    if (1) {}
+                    if (1) {}
+                    if (1) {}
+                    if (1) {}
+                    if (1) {}
                     if (gPlayerPathIndex == 0) {
                         func_8000B140(playerId);
                         if (D_80162FF8[playerId] > 0) {
@@ -1824,7 +1828,7 @@ void func_8000B140(s32 playerId) {
         }
     }
     j = 0;
-    i = 0; 
+    i = 0;
     while (i < 8) {
         if (i != playerId) {
             player = &gPlayers[i];
@@ -1844,7 +1848,6 @@ void func_8000B140(s32 playerId) {
                         sp74[j] = temp_f2 - temp_f0_2;
                         j++;
                     }
-        
                 }
             }
         }
@@ -1863,9 +1866,9 @@ void func_8000B140(s32 playerId) {
     for (i = 0; i < j; i++) {
         temp_f2 = gTrackPositionFactor[sp9C[i]];
         if ((temp_f2 > (-1.0f)) && (temp_f2 < 1.0f)) {
-            
-            temp_f12 = temp_ft2 = ((0.2f * (20.0f / (spB0[i] + 20.0f))) * ((sp74[i]) + 10.0f))  / 20.0f;
-            
+
+            temp_f12 = temp_ft2 = ((0.2f * (20.0f / (spB0[i] + 20.0f))) * ((sp74[i]) + 10.0f)) / 20.0f;
+
             if ((var_f18 == 1.0f) && (var_f20 == (-1.0f))) {
                 var_f18 = temp_f2 - temp_f12;
                 var_f20 = temp_f2 + temp_f12;
@@ -2853,12 +2856,14 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
     sp58 = gPathCountByPathIndex[pathIndex];
     D_80163238 = playerId;
     sp56 = gNearestPathPointByCameraId[cameraId];
-    gNearestPathPointByCameraId[cameraId] = func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestPathPointByCameraId[cameraId], pathIndex);
+    gNearestPathPointByCameraId[cameraId] =
+        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestPathPointByCameraId[cameraId], pathIndex);
     if (gCurrentCourseId == 4) {
         if ((sp56 != gNearestPathPointByCameraId[cameraId]) && (gNearestPathPointByCameraId[cameraId] == 1)) {
             D_80163DD8[cameraId] = random_int(4);
             pathIndex = D_80163DD8[cameraId];
-            gNearestPathPointByCameraId[cameraId] = func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestPathPointByCameraId[cameraId], pathIndex);
+            gNearestPathPointByCameraId[cameraId] = func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2],
+                                                                  gNearestPathPointByCameraId[cameraId], pathIndex);
         }
     }
     sp6E = (gNearestPathPointByCameraId[cameraId] + 0xA) % sp58;
@@ -2904,7 +2909,7 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
     camera->pos[0] = sp98;
     camera->pos[2] = sp90;
     camera->pos[1] = sp94 + 10.0;
-    
+
     D_801645F8[cameraId] = sp98;
     D_80164618[cameraId] = sp94;
     D_80164638[cameraId] = sp90;
@@ -3879,13 +3884,13 @@ void cpu_use_item_strategy(s32 playerId) {
     CpuItemStrategyData* cpuStrategy = &cpu_ItemStrategy[playerId];
     TrackPathPoint* pathPoint;
     bool isValidBanana1;
-    bool isValidBanana2; 
+    bool isValidBanana2;
 
 // Only used in this function
-#define BANANA_ACTOR(actor) ((struct BananaActor*)(actor))
-#define SHELL_ACTOR(actor) ((struct ShellActor*)(actor))
-#define FAKE_ITEMBOX_ACTOR(actor) ((struct FakeItemBox*)(actor))
-#define BANANA_BUNCH_ACTOR(actor) ((struct BananaBunchParent*)(actor))
+#define BANANA_ACTOR(actor) ((struct BananaActor*) (actor))
+#define SHELL_ACTOR(actor) ((struct ShellActor*) (actor))
+#define FAKE_ITEMBOX_ACTOR(actor) ((struct FakeItemBox*) (actor))
+#define BANANA_BUNCH_ACTOR(actor) ((struct BananaBunchParent*) (actor))
 
     if (gModeSelection == TIME_TRIALS) {
         return;
@@ -3904,9 +3909,9 @@ void cpu_use_item_strategy(s32 playerId) {
             cpuStrategy->actorIndex = -1;
             if ((((playerId * 20) + 100) < gNumPathPointsTraversed[playerId]) && (cpuStrategy->timer >= 0x259) &&
                 (cpuStrategy->numItemUse < 3) && (gLapCountByPlayerId[playerId] < 3)) {
-                cpu_decisions_branch_item(playerId, &cpuStrategy->branch,
-                                            cpu_gen_random_item((s16) gLapCountByPlayerId[playerId],
-                                                                gGPCurrentRaceRankByPlayerId[playerId]));
+                cpu_decisions_branch_item(
+                    playerId, &cpuStrategy->branch,
+                    cpu_gen_random_item((s16) gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]));
             } else {
                 func_8001ABE0(playerId, cpuStrategy);
             }
@@ -3914,28 +3919,30 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_ITEM_BANANA:
             // never true
-            if ((gLapCountByPlayerId[playerId] > 0) && (gGPCurrentRaceRankByPlayerId[playerId] > gGPCurrentRaceRankByPlayerId[gBestRankedHumanPlayer]) && (gGPCurrentRaceRankByPlayerId[gBestRankedHumanPlayer] == FIRST_PLACE)) {
+            if ((gLapCountByPlayerId[playerId] > 0) &&
+                (gGPCurrentRaceRankByPlayerId[playerId] > gGPCurrentRaceRankByPlayerId[gBestRankedHumanPlayer]) &&
+                (gGPCurrentRaceRankByPlayerId[gBestRankedHumanPlayer] == FIRST_PLACE)) {
                 switch (player->characterId) {
                     case DK:
                         if (is_path_point_in_range(gNearestPathPointByPlayerId[playerId],
-                                                    gNearestPathPointByPlayerId[gBestRankedHumanPlayer], 40, 2,
-                                                    gSelectedPathCount) > 0) {
+                                                   gNearestPathPointByPlayerId[gBestRankedHumanPlayer], 40, 2,
+                                                   gSelectedPathCount) > 0) {
                             cpuStrategy->branch = CPU_STRATEGY_THROW_BANANA;
                         }
                         break;
 
                     case PEACH:
                         if (is_path_point_in_range(gNearestPathPointByPlayerId[playerId],
-                                                    gNearestPathPointByPlayerId[gBestRankedHumanPlayer], 4, 2,
-                                                    gSelectedPathCount) > 0) {
+                                                   gNearestPathPointByPlayerId[gBestRankedHumanPlayer], 4, 2,
+                                                   gSelectedPathCount) > 0) {
                             cpuStrategy->branch = CPU_STRATEGY_THROW_BANANA;
                         }
                         break;
 
                     default:
                         if (is_path_point_in_range(gNearestPathPointByPlayerId[playerId],
-                                                    gNearestPathPointByPlayerId[gBestRankedHumanPlayer], 10, 2,
-                                                    gSelectedPathCount) > 0) {
+                                                   gNearestPathPointByPlayerId[gBestRankedHumanPlayer], 10, 2,
+                                                   gSelectedPathCount) > 0) {
                             cpuStrategy->branch = CPU_STRATEGY_THROW_BANANA;
                         }
                         break;
@@ -3957,8 +3964,8 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_HOLD_BANANA:
             actor = &gActorList[cpuStrategy->actorIndex];
-            if ((!(BANANA_ACTOR(actor)->flags & 0x8000)) || (BANANA_ACTOR(actor)->type != ACTOR_BANANA) || (BANANA_ACTOR(actor)->state != HELD_BANANA) ||
-                (playerId != BANANA_ACTOR(actor)->playerId)) {
+            if ((!(BANANA_ACTOR(actor)->flags & 0x8000)) || (BANANA_ACTOR(actor)->type != ACTOR_BANANA) ||
+                (BANANA_ACTOR(actor)->state != HELD_BANANA) || (playerId != BANANA_ACTOR(actor)->playerId)) {
 
                 // FAKE
                 if (!(BANANA_ACTOR(actor)->flags & 0x8000)) {}
@@ -3977,7 +3984,7 @@ void cpu_use_item_strategy(s32 playerId) {
         case CPU_STRATEGY_DROP_BANANA:
             actor = &gActorList[cpuStrategy->actorIndex];
             if ((((!(BANANA_ACTOR(actor)->flags & 0x8000)) || (BANANA_ACTOR(actor)->type != ACTOR_BANANA)) ||
-                    (BANANA_ACTOR(actor)->state != HELD_BANANA)) ||
+                 (BANANA_ACTOR(actor)->state != HELD_BANANA)) ||
                 (playerId != BANANA_ACTOR(actor)->playerId)) {
 
                 // FAKE
@@ -4013,7 +4020,7 @@ void cpu_use_item_strategy(s32 playerId) {
                 cpuStrategy->numItemUse += 1;
                 pathPoint = &gTrackPaths[gPathIndexByPlayerId[0]]
                                         [(gNearestPathPointByPlayerId[gBestRankedHumanPlayer] + 30) %
-                                            gPathCountByPathIndex[gPathIndexByPlayerId[gBestRankedHumanPlayer]]];
+                                         gPathCountByPathIndex[gPathIndexByPlayerId[gBestRankedHumanPlayer]]];
                 BANANA_ACTOR(actor)->velocity[0] = (pathPoint->posX - player->pos[0]) / 20.0;
                 BANANA_ACTOR(actor)->velocity[1] = ((pathPoint->posY - player->pos[1]) / 20.0) + 4.0;
                 BANANA_ACTOR(actor)->velocity[2] = (pathPoint->posZ - player->pos[2]) / 20.0;
@@ -4029,7 +4036,7 @@ void cpu_use_item_strategy(s32 playerId) {
         case CPU_STRATEGY_HOLD_THROW_BANANA:
             actor = &gActorList[cpuStrategy->actorIndex];
             if ((((!(BANANA_ACTOR(actor)->flags & 0x8000)) || (BANANA_ACTOR(actor)->type != ACTOR_BANANA)) ||
-                    (BANANA_ACTOR(actor)->state != BANANA_ON_GROUND)) ||
+                 (BANANA_ACTOR(actor)->state != BANANA_ON_GROUND)) ||
                 (playerId != BANANA_ACTOR(actor)->playerId)) {
 
                 // FAKE
@@ -4055,7 +4062,7 @@ void cpu_use_item_strategy(s32 playerId) {
         case CPU_STRATEGY_END_THROW_BANANA:
             actor = &gActorList[cpuStrategy->actorIndex];
             if ((((!(BANANA_ACTOR(actor)->flags & 0x8000)) || (BANANA_ACTOR(actor)->type != ACTOR_BANANA)) ||
-                    (BANANA_ACTOR(actor)->state != BANANA_ON_GROUND)) ||
+                 (BANANA_ACTOR(actor)->state != BANANA_ON_GROUND)) ||
                 (playerId != BANANA_ACTOR(actor)->playerId)) {
 
                 // FAKE
@@ -4070,7 +4077,8 @@ void cpu_use_item_strategy(s32 playerId) {
                 BANANA_ACTOR(actor)->velocity[1] = 0.0f;
                 BANANA_ACTOR(actor)->velocity[2] = 0.0f;
                 BANANA_ACTOR(actor)->pos[1] =
-                    get_surface_height(BANANA_ACTOR(actor)->pos[0], BANANA_ACTOR(actor)->pos[1] + 30.0, BANANA_ACTOR(actor)->pos[2]) +
+                    get_surface_height(BANANA_ACTOR(actor)->pos[0], BANANA_ACTOR(actor)->pos[1] + 30.0,
+                                       BANANA_ACTOR(actor)->pos[2]) +
                     (BANANA_ACTOR(actor)->boundingBoxSize + 1.0f);
             }
             player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
@@ -4096,8 +4104,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_HOLD_GREEN_SHELL:
             actor = &gActorList[cpuStrategy->actorIndex];
-            if ((((!(actor->flags & 0x8000)) || (actor->type != ACTOR_GREEN_SHELL)) ||
-                    (actor->state != HELD_SHELL)) ||
+            if ((((!(actor->flags & 0x8000)) || (actor->type != ACTOR_GREEN_SHELL)) || (actor->state != HELD_SHELL)) ||
                 (playerId != actor->rot[2])) {
 
                 // FAKE
@@ -4116,8 +4123,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_THROW_GREEN_SHELL:
             actor = &gActorList[cpuStrategy->actorIndex];
-            if ((((!(actor->flags & 0x8000)) || (actor->type != ACTOR_GREEN_SHELL)) ||
-                    (actor->state != HELD_SHELL)) ||
+            if ((((!(actor->flags & 0x8000)) || (actor->type != ACTOR_GREEN_SHELL)) || (actor->state != HELD_SHELL)) ||
                 (playerId != actor->rot[2])) {
 
                 // FAKE
@@ -4154,7 +4160,7 @@ void cpu_use_item_strategy(s32 playerId) {
         case CPU_STRATEGY_HOLD_RED_SHELL:
             actor = &gActorList[cpuStrategy->actorIndex];
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (SHELL_ACTOR(actor)->type != ACTOR_RED_SHELL)) ||
-                    (SHELL_ACTOR(actor)->state != HELD_SHELL)) ||
+                 (SHELL_ACTOR(actor)->state != HELD_SHELL)) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
 
                 // FAKE
@@ -4174,7 +4180,7 @@ void cpu_use_item_strategy(s32 playerId) {
             clear_expired_strategies(cpuStrategy);
             actor = &gActorList[cpuStrategy->actorIndex];
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (SHELL_ACTOR(actor)->type != ACTOR_RED_SHELL)) ||
-                    (SHELL_ACTOR(actor)->state != HELD_SHELL)) ||
+                 (SHELL_ACTOR(actor)->state != HELD_SHELL)) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
 
                 // FAKE
@@ -4282,9 +4288,10 @@ void cpu_use_item_strategy(s32 playerId) {
                             break;
                     }
 
-                    if (((BANANA_BUNCH_ACTOR(actor)->type == ACTOR_BANANA_BUNCH) && (BANANA_BUNCH_ACTOR(actor)->state == 6)) &&
+                    if (((BANANA_BUNCH_ACTOR(actor)->type == ACTOR_BANANA_BUNCH) &&
+                         (BANANA_BUNCH_ACTOR(actor)->state == 6)) &&
                         (isValidBanana1 == true)) {
-                        drop_banana_in_banana_bunch((struct BananaBunchParent*)actor);
+                        drop_banana_in_banana_bunch((struct BananaBunchParent*) actor);
                     }
                     cpuStrategy->numDroppedBananaBunch += 1;
                 } else {
@@ -4308,8 +4315,9 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_HOLD_FAKE_ITEM_BOX:
             actor = &gActorList[cpuStrategy->actorIndex];
-            if ((((!(FAKE_ITEMBOX_ACTOR(actor)->flags & 0x8000)) || (FAKE_ITEMBOX_ACTOR(actor)->type != ACTOR_FAKE_ITEM_BOX)) ||
-                    (FAKE_ITEMBOX_ACTOR(actor)->state != 0)) ||
+            if ((((!(FAKE_ITEMBOX_ACTOR(actor)->flags & 0x8000)) ||
+                  (FAKE_ITEMBOX_ACTOR(actor)->type != ACTOR_FAKE_ITEM_BOX)) ||
+                 (FAKE_ITEMBOX_ACTOR(actor)->state != 0)) ||
                 (playerId != ((s32) FAKE_ITEMBOX_ACTOR(actor)->playerId))) {
 
                 // FAKE
@@ -4327,8 +4335,9 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_THROW_FAKE_ITEM_BOX:
             actor = &gActorList[cpuStrategy->actorIndex];
-            if ((((!(FAKE_ITEMBOX_ACTOR(actor)->flags & 0x8000)) || (FAKE_ITEMBOX_ACTOR(actor)->type != ACTOR_FAKE_ITEM_BOX)) ||
-                    (FAKE_ITEMBOX_ACTOR(actor)->state != 0)) ||
+            if ((((!(FAKE_ITEMBOX_ACTOR(actor)->flags & 0x8000)) ||
+                  (FAKE_ITEMBOX_ACTOR(actor)->type != ACTOR_FAKE_ITEM_BOX)) ||
+                 (FAKE_ITEMBOX_ACTOR(actor)->state != 0)) ||
                 (playerId != ((s32) FAKE_ITEMBOX_ACTOR(actor)->playerId))) {
 
                 // FAKE
@@ -4338,10 +4347,11 @@ void cpu_use_item_strategy(s32 playerId) {
                 if (FAKE_ITEMBOX_ACTOR(actor)->rot[0] != playerId) {}
 
             } else {
-                func_802A1064((struct FakeItemBox*)actor);
+                func_802A1064((struct FakeItemBox*) actor);
                 if (D_801631E0[playerId] == true) {
                     FAKE_ITEMBOX_ACTOR(actor)->pos[1] =
-                        get_surface_height(FAKE_ITEMBOX_ACTOR(actor)->pos[0], FAKE_ITEMBOX_ACTOR(actor)->pos[1] + 30.0, FAKE_ITEMBOX_ACTOR(actor)->pos[2]) +
+                        get_surface_height(FAKE_ITEMBOX_ACTOR(actor)->pos[0], FAKE_ITEMBOX_ACTOR(actor)->pos[1] + 30.0,
+                                           FAKE_ITEMBOX_ACTOR(actor)->pos[2]) +
                         FAKE_ITEMBOX_ACTOR(actor)->boundingBoxSize;
                 }
             }
