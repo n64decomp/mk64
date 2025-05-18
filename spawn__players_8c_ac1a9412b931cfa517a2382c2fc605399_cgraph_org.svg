@@ -528,9 +528,9 @@
 <!-- Node40 -->
 <g id="Node000040" class="node">
 <title>Node40</title>
-<g id="a_Node000040"><a xlink:href="cpu__vehicles__camera__path_8c.html#a1d577f6ac2cae56acf36da0dcc5e21f8" target="_top" xlink:title=" ">
-<polygon fill="#fff0f0" stroke="red" points="561.5,-376 463.5,-376 463.5,-357 561.5,-357 561.5,-376"/>
-<text text-anchor="middle" x="512.5" y="-364" font-family="Helvetica,sans-Serif" font-size="10.00">clear_path_point</text>
+<g id="a_Node000040"><a xlink:href="cpu__vehicles__camera__path_8c.html#a72ce70bb47f21d3217bad362d438041b" target="_top" xlink:title=" ">
+<polygon fill="#fff0f0" stroke="red" points="558.5,-376 466.5,-376 466.5,-357 558.5,-357 558.5,-376"/>
+<text text-anchor="middle" x="512.5" y="-364" font-family="Helvetica,sans-Serif" font-size="10.00">clear_pathPoint</text>
 </a>
 </g>
 </g>
@@ -538,8 +538,8 @@
 <g id="edge18_Node000032_Node000040" class="edge">
 <title>Node32&#45;&gt;Node40</title>
 <g id="a_edge18_Node000032_Node000040"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M388.34,-385.96C409.26,-382.66 432.65,-378.96 453.38,-375.68"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="453.99,-379.13 463.32,-374.11 452.9,-372.22 453.99,-379.13"/>
+<path fill="none" stroke="#63b8ff" d="M388.34,-385.96C410.25,-382.5 434.88,-378.61 456.33,-375.22"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="456.92,-378.67 466.25,-373.65 455.83,-371.75 456.92,-378.67"/>
 </a>
 </g>
 </g>

@@ -1,6 +1,6 @@
 <map id="update_vehicle_tanker_trucks" name="update_vehicle_tanker_trucks">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,173,175,213"/>
-<area shape="rect" id="Node000002" href="$vehicle__utils_8inc_8c.html#a99144559f0973d72038cdccbe00881b6" title=" " alt="" coords="223,173,391,213"/>
+<area shape="rect" id="Node000002" href="$vehicle__utils_8inc_8c.html#a936e91c360ecd0a5b230df3f1f7868f0" title=" " alt="" coords="223,173,391,213"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,190,209,190,209,195,175,195"/>
 <area shape="rect" id="Node000003" href="$render__player_8c.html#af630bf89117f79abdb4e5edc8c67d00f" title=" " alt="" coords="449,5,554,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="321,171,369,112,402,79,437,48,457,35,460,39,440,52,405,83,373,116,325,174"/>
@@ -29,8 +29,8 @@
 <area shape="poly" id="edge13_Node000005_Node000014" title=" " alt="" coords="767,216,856,218,856,223,767,222"/>
 <area shape="rect" id="Node000008" href="$collision_8c.html#a37aa55b3768d001533ad75e7f1b8388a" title=" " alt="" coords="1089,213,1277,239"/>
 <area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1002,183,1113,208,1112,213,1001,188"/>
-<area shape="rect" id="Node000012" href="$path__utils_8inc_8c.html#a64865cf2565ef9f4215c5fa73b04233f" title=" " alt="" coords="1096,99,1271,139"/>
-<area shape="poly" id="edge11_Node000007_Node000012" title=" " alt="" coords="1001,157,1082,139,1083,144,1002,162"/>
+<area shape="rect" id="Node000012" href="$path__utils_8inc_8c.html#ab96cbd71b16b521d82bee529494f1351" title=" " alt="" coords="1099,99,1267,139"/>
+<area shape="poly" id="edge11_Node000007_Node000012" title=" " alt="" coords="1001,157,1086,138,1087,143,1002,162"/>
 <area shape="rect" id="Node000013" href="$collision_8c.html#a053809031f467d0a6747788211e0ec69" title=" " alt="" coords="1105,164,1261,189"/>
 <area shape="poly" id="edge12_Node000007_Node000013" title=" " alt="" coords="1006,171,1092,172,1091,178,1006,176"/>
 <area shape="rect" id="Node000009" href="$collision_8c.html#ac312bf382cb40752f6b790a99e7cdcb6" title=" " alt="" coords="1325,263,1469,288"/>

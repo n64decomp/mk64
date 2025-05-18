@@ -410,9 +410,9 @@
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="path__utils_8inc_8c.html#a64865cf2565ef9f4215c5fa73b04233f" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1190,-469.7 1059,-469.7 1059,-439.7 1190,-439.7 1190,-469.7"/>
-<text text-anchor="start" x="1067" y="-457.7" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_path_point</text>
+<g id="a_Node000012"><a xlink:href="path__utils_8inc_8c.html#ab96cbd71b16b521d82bee529494f1351" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1187.5,-469.7 1061.5,-469.7 1061.5,-439.7 1187.5,-439.7 1187.5,-469.7"/>
+<text text-anchor="start" x="1069.5" y="-457.7" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_pathPoint</text>
 <text text-anchor="middle" x="1124.5" y="-446.7" font-family="Helvetica,sans-Serif" font-size="10.00">_track_section</text>
 </a>
 </g>
@@ -421,8 +421,8 @@
 <g id="edge12_Node000011_Node000012" class="edge">
 <title>Node11&#45;&gt;Node12</title>
 <g id="a_edge12_Node000011_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M991.34,-479.21C1008.8,-475.97 1029.17,-472.19 1048.63,-468.59"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1049.5,-471.98 1058.7,-466.72 1048.23,-465.1 1049.5,-471.98"/>
+<path fill="none" stroke="#63b8ff" d="M991.34,-479.21C1009.66,-475.81 1031.21,-471.82 1051.52,-468.05"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1052.18,-471.49 1061.38,-466.22 1050.91,-464.6 1052.18,-471.49"/>
 </a>
 </g>
 </g>
@@ -591,10 +591,10 @@
 <!-- Node33 -->
 <g id="Node000033" class="node">
 <title>Node33</title>
-<g id="a_Node000033"><a xlink:href="vehicle__utils_8inc_8c.html#a99144559f0973d72038cdccbe00881b6" target="_top" xlink:title=" ">
+<g id="a_Node000033"><a xlink:href="vehicle__utils_8inc_8c.html#a936e91c360ecd0a5b230df3f1f7868f0" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="448,-496.7 322,-496.7 322,-466.7 448,-466.7 448,-496.7"/>
 <text text-anchor="start" x="330" y="-484.7" font-family="Helvetica,sans-Serif" font-size="10.00">update_vehicle_follow</text>
-<text text-anchor="middle" x="385" y="-473.7" font-family="Helvetica,sans-Serif" font-size="10.00">_path_point</text>
+<text text-anchor="middle" x="385" y="-473.7" font-family="Helvetica,sans-Serif" font-size="10.00">_pathPoint</text>
 </a>
 </g>
 </g>
@@ -990,10 +990,10 @@
 <!-- Node50 -->
 <g id="Node000050" class="node">
 <title>Node50</title>
-<g id="a_Node000050"><a xlink:href="path__utils_8inc_8c.html#a3397bd912fcc6eb0f3ae931186ca1f2d" target="_top" xlink:title=" ">
+<g id="a_Node000050"><a xlink:href="path__utils_8inc_8c.html#a1196cc6fd964765f84153c6bda74028e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="823.5,-373.7 703.5,-373.7 703.5,-343.7 823.5,-343.7 823.5,-373.7"/>
 <text text-anchor="start" x="711.5" y="-361.7" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_vehicles</text>
-<text text-anchor="middle" x="763.5" y="-350.7" font-family="Helvetica,sans-Serif" font-size="10.00">_path_point</text>
+<text text-anchor="middle" x="763.5" y="-350.7" font-family="Helvetica,sans-Serif" font-size="10.00">_pathPoint</text>
 </a>
 </g>
 </g>

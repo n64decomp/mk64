@@ -473,10 +473,10 @@ var sectionId = 'dynsection-23';
 <!-- Node29 -->
 <g id="Node000029" class="node">
 <title>Node29</title>
-<g id="a_Node000029"><a xlink:href="vehicle__utils_8inc_8c.html#a99144559f0973d72038cdccbe00881b6" target="_top" xlink:title=" ">
+<g id="a_Node000029"><a xlink:href="vehicle__utils_8inc_8c.html#a936e91c360ecd0a5b230df3f1f7868f0" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="906,-524.62 780,-524.62 780,-494.62 906,-494.62 906,-524.62"/>
 <text text-anchor="start" x="788" y="-512.62" font-family="Helvetica,sans-Serif" font-size="10.00">update_vehicle_follow</text>
-<text text-anchor="middle" x="843" y="-501.62" font-family="Helvetica,sans-Serif" font-size="10.00">_path_point</text>
+<text text-anchor="middle" x="843" y="-501.62" font-family="Helvetica,sans-Serif" font-size="10.00">_pathPoint</text>
 </a>
 </g>
 </g>

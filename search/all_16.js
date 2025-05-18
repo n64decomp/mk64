@@ -232,6 +232,5 @@ var searchData=
   ['typeh_229',['typeh',['../struct____OSContRequesFormat.html#a80d4fe189a7cfba5039db54eb62474ed',1,'__OSContRequesFormat::typeh'],['../struct____OSContRequesFormatShort.html#a41dadecdf276106af319132f83676e4b',1,'__OSContRequesFormatShort::typeh']]],
   ['typel_230',['typel',['../struct____OSContRequesFormat.html#af4b94504c17988bc257ae9c47db6493d',1,'__OSContRequesFormat::typel'],['../struct____OSContRequesFormatShort.html#a11335316967e1abb320c2c5afb9e1c0d',1,'__OSContRequesFormatShort::typel']]],
   ['types_231',['Surface Types',['../surfacetypes.html',1,'coursesmenu']]],
-  ['tyres_232',['tyres',['../structPlayer.html#a10190a87a5e057ff575044158fe6f1a5',1,'Player']]],
-  ['tyrespeed_233',['tyreSpeed',['../structPlayer.html#a592abaa1cad965d73c7d35e98e02637b',1,'Player']]]
+  ['tyres_232',['tyres',['../structPlayer.html#a10190a87a5e057ff575044158fe6f1a5',1,'Player']]]
 ];

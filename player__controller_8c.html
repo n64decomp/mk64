@@ -257,8 +257,8 @@ Functions</h2></td></tr>
 <tr class="separator:af664eee1a948701ecb82a1ed9d3881c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0dbd1e70372263a934b5ce4907aa491" id="r_ab0dbd1e70372263a934b5ce4907aa491"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0dbd1e70372263a934b5ce4907aa491">player_accelerate</a> (<a class="el" href="structPlayer.html">Player</a> *player)</td></tr>
 <tr class="separator:ab0dbd1e70372263a934b5ce4907aa491"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a179bafe2f3564cef92bacebc2b770bf1" id="r_a179bafe2f3564cef92bacebc2b770bf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a179bafe2f3564cef92bacebc2b770bf1">player_decelerate</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> speed)</td></tr>
-<tr class="separator:a179bafe2f3564cef92bacebc2b770bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af83cd9c36e6a1e62b4146b1216443e90" id="r_af83cd9c36e6a1e62b4146b1216443e90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af83cd9c36e6a1e62b4146b1216443e90">decelerate_player</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> speed)</td></tr>
+<tr class="separator:af83cd9c36e6a1e62b4146b1216443e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3236e6369c678a81362382d7101b14a2" id="r_a3236e6369c678a81362382d7101b14a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3236e6369c678a81362382d7101b14a2">detect_triple_b_combo_b_released</a> (<a class="el" href="structPlayer.html">Player</a> *player)</td></tr>
 <tr class="separator:a3236e6369c678a81362382d7101b14a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38d09485c11cb0e6262e4cd7becde84c" id="r_a38d09485c11cb0e6262e4cd7becde84c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38d09485c11cb0e6262e4cd7becde84c">detect_triple_b_combo_b_pressed</a> (<a class="el" href="structPlayer.html">Player</a> *player)</td></tr>
@@ -618,6 +618,37 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="player__controller_8c_a8e6865020b9110bd4dc3353cb7ef0a00_icgraph.svg" width="100%" height="401"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="af83cd9c36e6a1e62b4146b1216443e90" name="af83cd9c36e6a1e62b4146b1216443e90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af83cd9c36e6a1e62b4146b1216443e90">&#9670;&#160;</a></span>decelerate_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void decelerate_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPlayer.html">Player</a> *</td>          <td class="paramname"><span class="paramname"><em>player</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a></td>          <td class="paramname"><span class="paramname"><em>speed</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="player__controller_8c_af83cd9c36e6a1e62b4146b1216443e90_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="player__controller_8c_af83cd9c36e6a1e62b4146b1216443e90_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -3283,37 +3314,6 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="player__controller_8c_ab0dbd1e70372263a934b5ce4907aa491_icgraph.svg" width="100%" height="403"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="a179bafe2f3564cef92bacebc2b770bf1" name="a179bafe2f3564cef92bacebc2b770bf1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a179bafe2f3564cef92bacebc2b770bf1">&#9670;&#160;</a></span>player_decelerate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void player_decelerate </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structPlayer.html">Player</a> *</td>          <td class="paramname"><span class="paramname"><em>player</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a></td>          <td class="paramname"><span class="paramname"><em>speed</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="player__controller_8c_a179bafe2f3564cef92bacebc2b770bf1_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="player__controller_8c_a179bafe2f3564cef92bacebc2b770bf1_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>

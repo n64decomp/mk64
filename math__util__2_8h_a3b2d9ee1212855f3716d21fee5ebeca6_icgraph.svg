@@ -758,9 +758,9 @@ var sectionId = 'dynsection-36';
 <!-- Node53 -->
 <g id="Node000053" class="node">
 <title>Node53</title>
-<g id="a_Node000053"><a xlink:href="cpu__vehicles__camera__path_8c.html#a20d054883ba7ddebb1b79918d9ac5c86" target="_top" xlink:title=" ">
-<polygon fill="#fff0f0" stroke="red" points="315,-921.5 175,-921.5 175,-902.5 315,-902.5 315,-921.5"/>
-<text text-anchor="middle" x="245" y="-909.5" font-family="Helvetica,sans-Serif" font-size="10.00">render_bomb_karts_wrap</text>
+<g id="a_Node000053"><a xlink:href="cpu__vehicles__camera__path_8c.html#a761381294ee13d0b5b7ecad6fb27c1e7" target="_top" xlink:title=" ">
+<polygon fill="#fff0f0" stroke="red" points="291,-921.5 199,-921.5 199,-902.5 291,-902.5 291,-921.5"/>
+<text text-anchor="middle" x="245" y="-909.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_8001C3C4</text>
 </a>
 </g>
 </g>
@@ -768,7 +768,7 @@ var sectionId = 'dynsection-36';
 <g id="edge26_Node000052_Node000053" class="edge">
 <title>Node52&#45;&gt;Node53</title>
 <g id="a_edge26_Node000052_Node000053"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M366.38,-914.74C350.16,-914.37 332.21,-913.96 315.23,-913.58"/>
+<path fill="none" stroke="#63b8ff" d="M366.64,-914.75C342.41,-914.2 314.27,-913.56 291.27,-913.03"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="366.68,-918.25 376.76,-914.98 366.84,-911.25 366.68,-918.25"/>
 </a>
 </g>
