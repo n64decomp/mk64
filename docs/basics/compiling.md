@@ -88,16 +88,16 @@ make -j
 Building EU requires US to be built first. See above.
 
 mk64 decomp supports two EU versions
-* EU 1.0 `eu-1.0`
-* EU 1.1 `eu-final`
+* EU 1.0 `eu.v10`
+* EU 1.1 `eu.v11`
 
 Build using
 ```bash
-make -j VERSION=eu-1.0
+make -j VERSION=eu.v10
 ```
 or
 ```bash
-make -j VERSION=eu-final
+make -j VERSION=eu.v11
 ```
 
 First-diff/diff commands for EU

@@ -1891,7 +1891,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
         case 2:
             func_80090178(player, playerId, sp44, sp38);
             // Fakematch found by Verti, who knows what's going on here
-            player->rotation[1] = (u16) -get_angle_between_two_vectors(sp44, sp38) & 0xFFFF;
+            player->rotation[1] = (u16) -get_angle_between_points(sp44, sp38) & 0xFFFF;
             player->pos[0] = sp44[0];
             player->pos[1] = sp44[1] + 40.0f;
             player->pos[2] = sp44[2];

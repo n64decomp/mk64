@@ -754,7 +754,7 @@ void update_vehicle_follow_path_point(VehicleStuff* vehicle) {
     sp34[0] = vehicle->position[1];
     sp34[1] = 0.0f;
     sp34[2] = sqrtf((temp_f0_3 * temp_f0_3) + (temp_f2_2 * temp_f2_2));
-    thing = get_angle_between_two_vectors(sp40, sp34);
+    thing = get_angle_between_points(sp40, sp34);
     adjust_angle(&vehicle->rotation[0], -thing, 100);
     vehicle->velocity[0] = vehicle->position[0] - sp5C;
     vehicle->velocity[1] = vehicle->position[1] - sp58;

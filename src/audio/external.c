@@ -227,16 +227,16 @@ s8 func_800C15D0(u8 bank, u8 soundId, u8 channel) {
     return var_a0;
 }
 
-// This is likely functionally equivallent.
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/99CQl
 s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
     f32 var_f0;
     f32 var_f14;
+    f32 new_var;
+    f32 *new_var2;
     f32 var_f16;
     f32 var_f18;
     f32 var_f20;
     f32 var_f2;
+    new_var2 = &var_f0;
 
     if (D_800EA1C0 == 0) {
         if (D_800EA0F4 != 0) {
@@ -245,9 +245,9 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
             var_f16 = 10.0f;
             var_f18 = 2.5f;
         } else {
-            var_f2 = 100.0f;
+            var_f0 = 100.0f;
+            var_f2 = *new_var2;
             var_f14 = 200.0f;
-            if (1) {}
             var_f16 = 5.0f;
             var_f18 = 3.3333333f;
         }
@@ -256,16 +256,17 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
         if (var_f2 < var_f20) {
             var_f20 = var_f2;
         }
-        var_f0 = (arg1 < 0.0f) ? -arg1 : arg1;
 
-        if (var_f2 < var_f0) {
+        new_var = arg0;
+        var_f0 = (arg1 < 0.0f) ? -arg1 : arg1;
+        if (var_f2 < (var_f0 = *new_var2)) {
             var_f0 = var_f2;
         }
-        if ((arg0 == 0.0f) && (arg1 == 0.0f)) {
+        if ((new_var == 0.0f) && (arg1 == 0.0f)) {
             var_f2 = 0.5f;
-        } else if ((arg0 >= 0.0f) && (var_f0 <= var_f20)) {
+        } else if ((new_var >= 0.0f) && (var_f0 <= var_f20)) {
             var_f2 = 1.0f - ((var_f14 - var_f20) / (var_f16 * (var_f14 - var_f0)));
-        } else if ((arg0 < 0.0f) && (var_f0 <= var_f20)) {
+        } else if ((new_var < 0.0f) && (var_f0 <= var_f20)) {
             var_f2 = (var_f14 - var_f20) / (var_f16 * (var_f14 - var_f0));
         } else {
             var_f2 = (arg0 / (var_f18 * var_f0)) + 0.5f;
@@ -280,9 +281,6 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
     }
     return (cameraId & 1) * 0x7F;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C16E8.s")
-#endif
 
 f32 func_800C1934(u8 bank, u8 soundId) {
     f32 phi_f2;
@@ -341,8 +339,8 @@ void func_800C19D0(u8 arg0, u8 arg1, u8 arg2) {
 
 struct Unk_8018EFD8* func_800C1C88(u8 arg0, Vec3f position, f32* velocity, f32* arg3, u8 arg4, u32 soundBits) {
     struct Unk_8018EFD8* temp_a1;
-    struct Unk_8018EFD8* temp_v1;
-    u8 temp_t7;
+    UNUSED struct Unk_8018EFD8* temp_v1;
+    UNUSED u8 temp_t7;
     u8 why1;
 
     if (D_8018EFD8[D_8018FB90].next != 0xFF) {
@@ -624,242 +622,273 @@ void func_800C2474(void) {
     D_8018EFD8[var_v0].next = 0xFF;
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/B9kUf
-// No idea what's up with this function. `arg1_copy` is a huge improvement but feels very silly
-// Presumably there's some macro being used to do all the or'ing (creating soundbits), that might
-// matter for match purposes
 void func_800C284C(u8 arg0, u8 arg1, u8 arg2, u16 arg3) {
     u8 var_v1;
-    u8* arg1_copy = &arg1;
+    UNUSED s32 pad;
 
-    if ((D_800EA1EC == 0) || (arg0 == 2)) {
-        if (1) {}
-        func_800CBBB8(0x82000000 | (arg0 << 0x10) | (*arg1_copy << 8), arg3);
-        D_801930D0[arg0].unk_248 = *arg1_copy | (arg2 << 8);
-        if (D_801930D0[arg0].unk_000 != 1.0f) {
-            func_800CBB88(0x41000000 | (arg0 << 0x10), D_801930D0[arg0].unk_000);
-        }
-        D_801930D0[arg0].unk_028 = 0;
-        D_801930D0[arg0].unk_018 = 0;
-        D_801930D0[arg0].unk_014 = 0;
-        for (var_v1 = 0; var_v1 < 16; var_v1++) {
-            D_801930D0[arg0].unk_044[var_v1].unk_00 = 1.0f;
-            D_801930D0[arg0].unk_044[var_v1].unk_0C = 0;
-            D_801930D0[arg0].unk_044[var_v1].unk_10 = 1.0f;
-            D_801930D0[arg0].unk_044[var_v1].unk_1C = 0;
-        }
-        D_801930D0[arg0].unk_244 = 0;
-        D_801930D0[arg0].unk_246 = 0;
+    if ((D_800EA1EC != 0) && (arg0 != 2)) {
+        return;
     }
+
+    func_800CBBB8(0x82000000 | (((u32) arg0 & 0xFF) << 0x10) | (((u32) arg1 & 0xFF) << 8), arg3);
+    D_801930D0[arg0].unk_248 = arg1 | (arg2 << 8);
+    if (D_801930D0[arg0].unk_000 != 1.0f) {
+        func_800CBB88(0x41000000 | (((u32) arg0 & 0xFF) << 0x10), D_801930D0[arg0].unk_000);
+    }
+    D_801930D0[arg0].unk_028 = 0;
+    D_801930D0[arg0].unk_018 = 0;
+    D_801930D0[arg0].unk_014 = 0;
+
+    for (var_v1 = 0; var_v1 < 16; var_v1++) {
+        D_801930D0[arg0].unk_044[var_v1].unk_00 = 1.0f;
+        D_801930D0[arg0].unk_044[var_v1].unk_0C = 0;
+        D_801930D0[arg0].unk_044[var_v1].unk_10 = 1.0f;
+        D_801930D0[arg0].unk_044[var_v1].unk_1C = 0;
+    }
+
+    D_801930D0[arg0].unk_244 = 0;
+    D_801930D0[arg0].unk_246 = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C284C.s")
-#endif
 
 void func_800C29B4(u8 arg0, u16 arg1) {
     func_800CBBB8(((arg0 & 0xFF) << 0x10) | 0x83000000, arg1);
     D_801930D0[arg0].unk_248 = 0xFFFF;
 }
 
-#ifdef NON_MATCHING
-/**
- * https://decomp.me/scratch/TS7EW
- * The last big thing is the for loop in `case 10`. For some reason the 0 used for loop initialization is saved to 2
- *variables? I speculate that this is functionally equivalent although its hard to tell with all the register allocation
- *differences `arg0` is almost certainly `soundbits`, so all the `why*` variables are probably the results of macros
- *pulling out the different parts of the full sound specification.
- **/
-void func_800C2A2C(u32 arg0) {
-    u16 var_a3;
-    u16 var_a0;
-    s32 var_a2;
-    u8 var_a1;
-    u8 var_t0;
-    u8 var_v1;
-    struct_D_801930D0_entry* temp_v0_3;
-    u8 test;
-    u8 why;
-    u16 why2;
-    u8 why3;
-    u8 why4;
-    u8 why5;
-    u8 temp_a1;
+void func_800C2A2C(u32 cmd) {
+    f32 freqScaleTarget;
+    u16 channelMaskDisable;
+    u16 val;
+    u16 fadeTimer;
+    u8 priority;
+    u8 ioPort;
+    u8 i;
+    u8 duration;
+    u8 channelIndex;
+    u8 found;
+    u8 seqId;
+    u8 subArgs;
+    u8 op;
+    u8 seqPlayerIndex;
 
-    test = arg0 & 0xFF;
-    why = (arg0 & 0xFF00) >> 8;
-    why2 = (arg0 & 0xFF0000) >> 0xD;
-    why3 = (arg0 & 0xFF0000) >> 0xF;
-    why4 = (arg0 & 0xFF0000) >> 0x10;
-    why5 = (arg0 & 0xF00) >> 8;
-    temp_a1 = (arg0 & 0x0F000000) >> 0x18;
-    switch ((arg0 >> 0x1C) & 0xFF) {
+    op = cmd >> 28;
+    seqPlayerIndex = (cmd & 0xF000000) >> 24;
+
+    switch (op) {
         case 0:
-            func_800C284C(temp_a1, arg0 & 0xFF, why, why2);
+            seqId = cmd & 0xFF;
+            subArgs = (cmd & 0xFF00) >> 8;
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+            func_800C284C(seqPlayerIndex, seqId, subArgs, fadeTimer);
             break;
+
         case 1:
-            func_800C29B4(temp_a1, why2);
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+            func_800C29B4(seqPlayerIndex, fadeTimer);
             break;
+
         case 2:
-            for (var_v1 = 0; var_v1 < D_80192CC6[temp_a1]; var_v1++) {
-                if (test == D_80192CA8[temp_a1][var_v1].thing0) {
-                    if (var_v1 == 0) {
-                        func_800C284C(temp_a1, test, why, why2);
+            seqId = cmd & 0xFF;
+            subArgs = (cmd & 0xFF00) >> 8;
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+            priority = subArgs;
+
+            for (i = 0; i < D_80192CC6[seqPlayerIndex]; i++) {
+                if (D_80192CA8[seqPlayerIndex][i].thing0 == seqId) {
+                    if (i == 0) {
+                        func_800C284C(seqPlayerIndex, seqId, subArgs, fadeTimer);
                     }
                     return;
                 }
             }
-            var_t0 = D_80192CC6[temp_a1];
-            for (var_v1 = 0; var_v1 < D_80192CC6[temp_a1]; var_v1++) {
-                if (why >= D_80192CA8[temp_a1][var_v1].thing1) {
-                    var_t0 = var_v1;
-                    var_v1 = D_80192CC6[temp_a1];
+
+            found = D_80192CC6[seqPlayerIndex];
+            for (i = 0; i < D_80192CC6[seqPlayerIndex]; i++) {
+                if (priority >= D_80192CA8[seqPlayerIndex][i].thing1) {
+                    found = i;
+                    i = D_80192CC6[seqPlayerIndex];
                 }
             }
-            if ((var_t0 != D_80192CC6[temp_a1]) || (var_t0 == 0)) {
-                if (D_80192CC6[temp_a1] < 5) {
-                    D_80192CC6[temp_a1]++;
+
+            if ((found != D_80192CC6[seqPlayerIndex]) || (found == 0)) {
+                if (D_80192CC6[seqPlayerIndex] < 5) {
+                    D_80192CC6[seqPlayerIndex]++;
                 }
-                for (var_v1 = D_80192CC6[temp_a1] - 1; var_v1 != var_t0; var_v1--) {
-                    D_80192CA8[temp_a1][var_v1].thing1 = D_80192CA8[temp_a1][var_v1 - 1].thing1;
-                    D_80192CA8[temp_a1][var_v1].thing0 = D_80192CA8[temp_a1][var_v1 - 1].thing0;
+                for (i = D_80192CC6[seqPlayerIndex] - 1; i != found; i--) {
+                    D_80192CA8[seqPlayerIndex][i].thing1 = D_80192CA8[seqPlayerIndex][i - 1].thing1;
+                    D_80192CA8[seqPlayerIndex][i].thing0 = D_80192CA8[seqPlayerIndex][i - 1].thing0;
                 }
-                D_80192CA8[temp_a1][var_t0].thing1 = why;
-                D_80192CA8[temp_a1][var_t0].thing0 = test;
+
+                D_80192CA8[seqPlayerIndex][found].thing1 = subArgs;
+                D_80192CA8[seqPlayerIndex][found].thing0 = seqId;
             }
-            if (var_t0 == 0) {
-                func_800C284C(temp_a1, test, why, why2);
+            if (found == 0) {
+                func_800C284C(seqPlayerIndex, seqId, subArgs, fadeTimer);
             }
             break;
+
         case 3:
-            var_t0 = D_80192CC6[temp_a1];
-            for (var_v1 = 0; var_v1 < D_80192CC6[temp_a1]; var_v1++) {
-                if (test == D_80192CA8[temp_a1][var_v1].thing0) {
-                    var_t0 = var_v1;
-                    var_v1 = D_80192CC6[temp_a1];
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+
+            found = D_80192CC6[seqPlayerIndex];
+            for (i = 0; i < D_80192CC6[seqPlayerIndex]; i++) {
+                seqId = cmd & 0xFF;
+                if (D_80192CA8[seqPlayerIndex][i].thing0 == seqId) {
+                    found = i;
+                    i = D_80192CC6[seqPlayerIndex];
                 }
             }
-            if (var_t0 != D_80192CC6[temp_a1]) {
-                for (var_v1 = var_t0; var_v1 < D_80192CC6[temp_a1] - 1; var_v1++) {
-                    D_80192CA8[temp_a1][var_v1].thing1 = D_80192CA8[temp_a1][var_v1 + 1].thing1;
-                    D_80192CA8[temp_a1][var_v1].thing0 = D_80192CA8[temp_a1][var_v1 + 1].thing0;
+
+            if (found != D_80192CC6[seqPlayerIndex]) {
+                for (i = found; i < (D_80192CC6[seqPlayerIndex] - 1); i++) {
+                    D_80192CA8[seqPlayerIndex][i].thing1 = D_80192CA8[seqPlayerIndex][i + 1].thing1;
+                    D_80192CA8[seqPlayerIndex][i].thing0 = D_80192CA8[seqPlayerIndex][i + 1].thing0;
                 }
-                D_80192CC6[temp_a1]--;
+
+                D_80192CC6[seqPlayerIndex]--;
             }
-            if (var_t0 == 0) {
-                func_800C29B4(temp_a1, why2);
-                if (D_80192CC6[temp_a1] != 0) {
-                    func_800C284C(temp_a1, D_80192CA8[temp_a1][0].thing0, D_80192CA8[temp_a1][0].thing1, why2);
+            if (found == 0) {
+                func_800C29B4(seqPlayerIndex, fadeTimer);
+                if (D_80192CC6[seqPlayerIndex] != 0) {
+                    func_800C284C(seqPlayerIndex, D_80192CA8[seqPlayerIndex][0].thing0,
+                                  D_80192CA8[seqPlayerIndex][0].thing1, fadeTimer);
                 }
             }
             break;
+
         case 4:
-            var_a1 = why3;
-            if (var_a1 == 0) {
-                var_a1++;
+            duration = (cmd & 0xFF0000) >> 15;
+            val = cmd & 0xFF;
+
+            if (duration == 0) {
+                duration++;
             }
 
-            temp_v0_3 = &D_801930D0[temp_a1 & 0xFF];
-            temp_v0_3->unk_004 = (arg0 & 0xFF) / 127.0f;
-            if (temp_v0_3->unk_000 != temp_v0_3->unk_004) {
-                temp_v0_3->unk_008 = (temp_v0_3->unk_000 - temp_v0_3->unk_004) / var_a1;
-                temp_v0_3->unk_00C = var_a1;
+            D_801930D0[seqPlayerIndex].unk_004 = val / 127.0f;
+            if (D_801930D0[seqPlayerIndex].unk_000 != D_801930D0[seqPlayerIndex].unk_004) {
+                D_801930D0[seqPlayerIndex].unk_008 =
+                    (D_801930D0[seqPlayerIndex].unk_000 - D_801930D0[seqPlayerIndex].unk_004) / duration;
+                D_801930D0[seqPlayerIndex].unk_00C = duration;
             }
             break;
+
         case 5:
-            var_a1 = why3;
-            if (var_a1 == 0) {
-                var_a1++;
+            duration = (cmd & 0xFF0000) >> 15;
+            val = cmd & 0xFFFF;
+
+            if (duration == 0) {
+                duration++;
+            }
+            freqScaleTarget = (f32) val / 1000.0f;
+            for (i = 0; i < 0x10; i++) {
+                D_801930D0[seqPlayerIndex].unk_044[i].unk_14 = freqScaleTarget;
+                D_801930D0[seqPlayerIndex].unk_044[i].unk_1C = duration;
+                D_801930D0[seqPlayerIndex].unk_044[i].unk_18 =
+                    (D_801930D0[seqPlayerIndex].unk_044[i].unk_10 - freqScaleTarget) / duration;
             }
 
-            temp_v0_3 = &D_801930D0[var_a1 & 0xFF];
-            for (var_v1 = 0; var_v1 < 0x10; var_v1++) {
-                temp_v0_3->unk_044[var_v1].unk_14 = ((arg0 & 0xFFFF) / 1000.0f);
-                temp_v0_3->unk_044[var_v1].unk_18 =
-                    (temp_v0_3->unk_044[var_v1].unk_10 - temp_v0_3->unk_044[var_v1].unk_14) / var_a1;
-                temp_v0_3->unk_044[var_v1].unk_1C = var_a1;
-            }
-            D_801930D0[var_a1].unk_244 = 0xFFFF;
+            D_801930D0[seqPlayerIndex].unk_244 = 0xFFFF;
             break;
+
         case 6:
-            var_a1 = why3;
-            if (var_a1 == 0) {
-                var_a1++;
-            }
-            var_v1 = ((arg0 & 0xF00) >> 8) & 0xFF;
+            duration = (cmd & 0xFF0000) >> 15;
+            channelIndex = (cmd & 0xF00) >> 8;
+            val = cmd & 0xFF;
 
-            D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_04 = test / 127.0f;
-            if (D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_00 != D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_04) {
-                D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_08 = (D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_00 -
-                                                                    D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_04) /
-                                                                   var_a1;
-                D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_0C = var_a1;
-                D_801930D0[var_a1 & 0xFF].unk_244 |= 1 << var_v1;
+            if (duration == 0) {
+                duration++;
+            }
+
+            D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_04 = val / 127.0f;
+            if (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00 !=
+                D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_04) {
+                D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_08 =
+                    (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00 -
+                     D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_04) /
+                    duration;
+                D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_0C = duration;
+                D_801930D0[seqPlayerIndex].unk_244 |= 1 << channelIndex;
             }
             break;
+
         case 7:
-            func_800CBBE8(0x46000000 | (temp_a1 & 0xFF) << 0x10 | (why4 & 0xFF) << 8, (u64) arg0);
+            ioPort = (cmd & 0xFF0000) >> 16;
+            val = cmd & 0xFF;
+            func_800CBBE8((0x46000000 | ((seqPlayerIndex & 0xFF) << 0x10)) | ((ioPort & 0xFF) << 8), val);
             break;
+
         case 8:
-            if (!(D_801930D0[temp_a1].unk_24A & (1 << why5))) {
-                func_800CBBE8(0x06000000 | ((temp_a1 & 0xFF) << 0x10) | (why5 & 0xFF) << 8 | (why4 & 0xFF), (u64) arg0);
+            channelIndex = (cmd & 0xF00) >> 8;
+            ioPort = (cmd & 0xFF0000) >> 16;
+            val = cmd & 0xFF;
+            if (!(D_801930D0[seqPlayerIndex].unk_24A & (1 << channelIndex))) {
+                func_800CBBE8(((0x06000000 | ((seqPlayerIndex & 0xFF) << 0x10)) | (((u32) channelIndex & 0xFF) << 8)) |
+                                  (ioPort & 0xFF),
+                              val);
             }
             break;
+
         case 9:
-            D_801930D0[temp_a1].unk_24A = arg0;
+            D_801930D0[seqPlayerIndex].unk_24A = cmd & 0xFFFF;
             break;
+
         case 10:
-            var_a0 = 1;
-            var_a3 = arg0 & 0xFFFF;
-            for (var_v1 = 0; var_v1 < 0x10; var_v1++) {
-                if (var_a3 & var_a0) {
-                    var_a2 = 1;
-                } else {
-                    var_a2 = 0;
-                }
-                func_800CBBE8(((temp_a1 & 0xFF) << 0x10) | 0x08000000 | ((var_v1 & 0xFF) << 8), var_a2);
-                var_a0 *= 2;
+            val = 1;
+            channelMaskDisable = cmd & 0xFFFF;
+            for (i = 0; i < 0x10; i++) {
+                func_800CBBE8(0x08000000 | ((seqPlayerIndex & 0xFF) << 0x10) | (((u32) i & 0xFF) << 8),
+                              (channelMaskDisable & val) ? 1 : 0);
+                val <<= 1;
             }
+
             break;
+
         case 11:
-            D_801930D0[temp_a1].unk_014 = arg0;
+            D_801930D0[seqPlayerIndex].unk_014 = cmd;
             break;
+
         case 12:
-            temp_v0_3 = &D_801930D0[temp_a1 & 0xFF];
-            if ((((arg0 & 0xF00000) >> 0x14) & 0xFF) != 0xF) {
-                var_t0 = temp_v0_3->unk_041++;
-                if (var_t0 < 5) {
-                    temp_v0_3->unk_02C[var_t0] = arg0;
-                    temp_v0_3->unk_040 = 2;
+            subArgs = (cmd & 0xF00000) >> 20;
+            if (subArgs != 0xF) {
+                found = D_801930D0[seqPlayerIndex].unk_041++;
+                if (found < 5) {
+                    D_801930D0[seqPlayerIndex].unk_02C[found] = cmd;
+                    D_801930D0[seqPlayerIndex].unk_040 = 2;
                 }
             } else {
-                temp_v0_3->unk_041 = 0;
+                D_801930D0[seqPlayerIndex].unk_041 = 0;
             }
             break;
+
         case 14:
-            switch (why5) { /* switch 1; irregular */
-                case 0:     /* switch 1 */
-                    func_800CBBB8(0xF0000000U, D_800EA1F0[arg0 & 0xFF]);
+            subArgs = (cmd & 0xF00) >> 8;
+            val = cmd & 0xFF;
+            switch (subArgs) {
+                case 0:
+                    func_800CBBB8(0xF0000000, D_800EA1F0[val]);
                     break;
-                case 1: /* switch 1 */
-                    D_800EA1EC = arg0 & 1;
+
+                case 1:
+                    D_800EA1EC = val & 1;
                     break;
             }
+
             break;
+
         case 15:
-            D_800EA1C0 = (arg0 & 0xFF00) >> 8;
-            audio_reset_session_eu((void*) test);
-            D_800EA1F4[0] = test;
-            func_800CBBE8(0x46020000U, why);
+            seqId = cmd & 0xFF;
+            subArgs = (cmd & 0xFF00) >> 8;
+            D_800EA1C0 = subArgs;
+            audio_reset_session_eu((void*) seqId);
+            D_800EA1F4[0] = seqId;
+            func_800CBBE8(0x46020000, subArgs);
             func_800C5C40();
             break;
+
         default:
             break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C2A2C.s")
-#endif
 
 void func_800C3448(u32 arg0) {
     D_80192CD0[D_800EA1E4] = arg0;
@@ -933,184 +962,202 @@ void func_800C36C4(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     D_801930D0[arg0].unk_012 = 1;
 }
 
-#ifdef NON_MATCHING
-// generated by m2c commit 1c7b040b356d06b5171add65d8ee527a500b156e on Apr-01-2024
 void func_800C3724(void) {
-    u8 var_s5;
-    f32 var_f0;
-    u16 temp_a3_2;
-    s32 temp_lo;
-    s32 temp_s1;
-    s32 temp_t9_2;
-    u16 var_a2;
-    u8 var_s2;
-    u8 var_t0;
-    u32 temp_t5_3;
-    u8 temp_a1_3;
-    s32 var_a1;
-    struct_D_801930D0_entry* temp_s0;
-    struct_D_801930D0_entry* temp_s2;
-    struct_D_801930D0_entry* temp_s4_2;
+    u8 seqPlayerIndex;
+    f32 volume;
+    u8 tempoOp;
+    u16 tempoTarget;
+    u8 channelIndex;
+    u8 j;
+    u32 tempoCmd;
+    u16 tempoPrev;
+    u8 tempoTimer;
+    u8 setupOp;
+    u8 targetSeqPlayerIndex;
+    u8 setupVal1;
+    u8 setupVal2;
+    u16 seqId;
 
-    for (var_s5 = 0; var_s5 < 3; var_s5++) {
-        if (D_801930D0[var_s5].unk_012 != 0) {
-            var_f0 = 1.0f;
-            for (var_s2 = 0; var_s2 < 3; var_s2++) {
-                temp_s4_2 = &D_801930D0[var_s5];
-                var_f0 *= temp_s4_2->unk_00E[var_s2] / 127.0f;
+    for (seqPlayerIndex = 0; seqPlayerIndex < 3; seqPlayerIndex++) {
+        if (D_801930D0[seqPlayerIndex].unk_012) {
+            volume = 1.0f;
+            for (j = 0; j < 3; j++) {
+                volume *= D_801930D0[seqPlayerIndex].unk_00E[j] / 127.0f;
             }
-            func_800C3448((D_801930D0[var_s5].unk_011 << 0x10) | 0x40000000 | ((var_s5 & 0xFF) << 0x18) |
-                          ((u32) (var_f0 * 127.0f) & 0xFF));
-            D_801930D0[var_s5].unk_012 = 0;
+
+            func_800C3448(0x40000000 | (((u8) seqPlayerIndex) << 0x18) |
+                          (((u8) D_801930D0[seqPlayerIndex].unk_011) << 0x10) | ((u16) (u8) (volume * 127.0f)));
+
+            D_801930D0[seqPlayerIndex].unk_012 = 0;
         }
-        if (D_801930D0[var_s5].unk_00C != 0) {
-            D_801930D0[var_s5].unk_00C--;
-            if (D_801930D0[var_s5].unk_00C) {
-                D_801930D0[var_s5].unk_000 -= D_801930D0[var_s5].unk_008;
+        if (D_801930D0[seqPlayerIndex].unk_00C != 0) {
+            D_801930D0[seqPlayerIndex].unk_00C--;
+            if (D_801930D0[seqPlayerIndex].unk_00C) {
+                D_801930D0[seqPlayerIndex].unk_000 -= D_801930D0[seqPlayerIndex].unk_008;
             } else {
-                D_801930D0[var_s5].unk_000 = D_801930D0[var_s5].unk_004;
+                D_801930D0[seqPlayerIndex].unk_000 = D_801930D0[seqPlayerIndex].unk_004;
             }
-            func_800CBB88(((var_s5 & 0xFF) << 0x10) | 0x41000000, D_801930D0[var_s5].unk_000);
+            func_800CBB88(0x41000000 | (((u32) seqPlayerIndex & 0xFF) << 0x10), D_801930D0[seqPlayerIndex].unk_000);
         }
-        if (D_801930D0[var_s5].unk_014 != 0) {
-            var_t0 = (u32) (D_801930D0[var_s5].unk_014 & 0xFF0000) >> 0xF;
-            var_a1 = D_801930D0[var_s5].unk_014 & 0xFFF;
-            var_a2 = var_a1;
-            if (var_t0 == 0) {
-                var_t0++;
+        if (D_801930D0[seqPlayerIndex].unk_014 != 0) {
+            tempoCmd = D_801930D0[seqPlayerIndex].unk_014;
+            tempoTimer = (tempoCmd & 0xFF0000) >> 0xF;
+            tempoTarget = tempoCmd & 0xFFF;
+            if (tempoTimer == 0) {
+                tempoTimer++;
             }
-            if (gSequencePlayers[var_s5 & 0xFF].enabled != 0) {
-                temp_lo = (s32) gSequencePlayers[var_s5 & 0xFF].tempo / TATUMS_PER_BEAT;
-                temp_a3_2 = temp_lo;
-                temp_t9_2 = ((D_801930D0[var_s5].unk_014 & 0xF000) >> 0xC) & 0xFF;
-                switch (temp_t9_2) { /* switch 1; irregular */
+            if (gSequencePlayers[seqPlayerIndex].enabled != 0) {
+                tempoPrev = gSequencePlayers[seqPlayerIndex].tempo / 48;
+                tempoOp = (tempoCmd & 0xF000) >> 0xC;
+                switch (tempoOp) {
                     case 1:
-                        var_a2 += temp_a3_2;
+                        tempoTarget += tempoPrev;
                         break;
-                    case 2: /* switch 1 */
-                        if (var_a1 < temp_a3_2) {
-                            var_a2 = (temp_a3_2 - var_a1);
+
+                    case 2:
+                        if (tempoTarget < tempoPrev) {
+                            tempoTarget = tempoPrev - tempoTarget;
                         }
                         break;
-                    case 3: /* switch 1 */
-                        var_a2 = (u32) (temp_a3_2 * ((f32) (var_a1 & 0xFFFF) / 100.0f));
+
+                    case 3:
+                        tempoTarget = tempoPrev * (tempoTarget / 100.0f);
                         break;
-                    case 4: /* switch 1 */
-                        if (D_801930D0[var_s5].unk_018 != 0) {
-                            var_a2 = D_801930D0[var_s5].unk_018;
-                        } else {
-                            var_a2 = temp_a3_2;
-                        }
+
+                    case 4:
+                        tempoTarget =
+                            (D_801930D0[seqPlayerIndex].unk_018 != 0) ? D_801930D0[seqPlayerIndex].unk_018 : tempoPrev;
+                        break;
+                    default:
                         break;
                 }
-                if (var_a2 >= 0x12D) {
-                    var_a2 = 0x12C;
+
+                if (tempoTarget > 300) {
+                    tempoTarget = 300;
                 }
-                if (D_801930D0[var_s5].unk_018 == 0) {
-                    D_801930D0[var_s5].unk_018 = temp_a3_2;
+                if (D_801930D0[seqPlayerIndex].unk_018 == 0) {
+                    D_801930D0[seqPlayerIndex].unk_018 = tempoPrev;
                 }
-                D_801930D0[var_s5].unk_020 = var_a2;
-                D_801930D0[var_s5].unk_01C = temp_lo;
-                D_801930D0[var_s5].unk_024 = (D_801930D0[var_s5].unk_01C - D_801930D0[var_s5].unk_020) / var_t0;
-                D_801930D0[var_s5].unk_028 = (u16) var_t0;
+                D_801930D0[seqPlayerIndex].unk_020 = tempoTarget;
+                D_801930D0[seqPlayerIndex].unk_01C = gSequencePlayers[seqPlayerIndex].tempo / 48;
+                D_801930D0[seqPlayerIndex].unk_024 =
+                    (D_801930D0[seqPlayerIndex].unk_01C - D_801930D0[seqPlayerIndex].unk_020) / tempoTimer;
+                D_801930D0[seqPlayerIndex].unk_028 = tempoTimer;
             }
-            D_801930D0[var_s5].unk_014 = 0;
+            D_801930D0[seqPlayerIndex].unk_014 = 0;
         }
-        if (D_801930D0[var_s5].unk_028 != 0) {
-            D_801930D0[var_s5].unk_028--;
-            if (D_801930D0[var_s5].unk_028) {
-                D_801930D0[var_s5].unk_01C -= D_801930D0[var_s5].unk_024;
+        if (D_801930D0[seqPlayerIndex].unk_028 != 0) {
+            D_801930D0[seqPlayerIndex].unk_028--;
+            if (D_801930D0[seqPlayerIndex].unk_028) {
+                D_801930D0[seqPlayerIndex].unk_01C -= D_801930D0[seqPlayerIndex].unk_024;
             } else {
-                D_801930D0[var_s5].unk_01C = D_801930D0[var_s5].unk_020;
+                D_801930D0[seqPlayerIndex].unk_01C = D_801930D0[seqPlayerIndex].unk_020;
             }
-            func_800CBBB8(((var_s5 & 0xFF) << 0x10) | 0x47000000, (u32) (s32) D_801930D0[var_s5].unk_01C);
+            func_800CBBB8(0x47000000 | (((u32) seqPlayerIndex & 0xFF) << 0x10),
+                          (s32) D_801930D0[seqPlayerIndex].unk_01C);
         }
-        if (D_801930D0[var_s5].unk_246 != 0) {
-            for (var_s2 = 0; var_s2 < 0x10; var_s2++) {
-                temp_s4_2 = &D_801930D0[var_s5];
-                if (temp_s4_2->unk_044[var_s2].unk_0C != 0) {
-                    temp_s4_2->unk_044[var_s2].unk_0C--;
-                    if (temp_s4_2->unk_044[var_s2].unk_0C) {
-                        temp_s4_2->unk_044[var_s2].unk_00 -= temp_s4_2->unk_044[var_s2].unk_08;
+
+        if (D_801930D0[seqPlayerIndex].unk_246 != 0) {
+            for (channelIndex = 0; channelIndex < 0x10; channelIndex++) {
+                if (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_0C != 0) {
+                    D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_0C--;
+                    if (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_0C) {
+                        D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00 -=
+                            D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_08;
                     } else {
-                        temp_s4_2->unk_044[var_s2].unk_00 = temp_s4_2->unk_044[var_s2].unk_04;
-                        temp_s4_2->unk_246 ^= 1 << var_s2;
+                        D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00 =
+                            D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_04;
+                        D_801930D0[seqPlayerIndex].unk_246 ^= 1 << channelIndex;
                     }
-                    func_800CBB88(((var_s5 & 0xFF) << 0x10) | 0x01000000 | ((var_s2 & 0xFF) << 8),
-                                  temp_s4_2->unk_044[var_s2].unk_00);
+                    func_800CBB88(0x01000000 | ((seqPlayerIndex & 0xFF) << 0x10) | (((u32) channelIndex & 0xFF) << 8),
+                                  D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00);
                 }
             }
         }
-        if (D_801930D0[var_s5].unk_244 != 0) {
-            for (var_s2 = 0; var_s2 < 0x10; var_s2++) {
-                temp_s4_2 = &D_801930D0[var_s5];
-                if (temp_s4_2->unk_044[var_s2].unk_1C != 0) {
-                    temp_s4_2->unk_044[var_s2].unk_1C--;
-                    if (temp_s4_2->unk_044[var_s2].unk_1C) {
-                        temp_s4_2->unk_044[var_s2].unk_10 -= temp_s4_2->unk_044[var_s2].unk_18;
+        if (D_801930D0[seqPlayerIndex].unk_244 != 0) {
+            for (channelIndex = 0; channelIndex < 0x10; channelIndex++) {
+                if (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_1C != 0) {
+                    D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_1C--;
+                    if (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_1C) {
+                        D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_10 -=
+                            D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_18;
                     } else {
-                        temp_s4_2->unk_044[var_s2].unk_10 = temp_s4_2->unk_044[var_s2].unk_14;
-                        temp_s4_2->unk_244 ^= 1 << var_s2;
+                        D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_10 =
+                            D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_14;
+                        D_801930D0[seqPlayerIndex].unk_244 ^= 1 << channelIndex;
                     }
-                    func_800CBB88(((var_s5 & 0xFF) << 0x10) | 0x04000000 | ((var_s2 & 0xFF) << 8),
-                                  temp_s4_2->unk_044[var_s2].unk_10);
+                    func_800CBB88(0x04000000 | ((seqPlayerIndex & 0xFF) << 0x10) | (((u32) channelIndex & 0xFF) << 8),
+                                  D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_10);
                 }
             }
         }
-        if (D_801930D0[var_s5].unk_041 != 0) {
-            if (D_801930D0[var_s5].unk_040 != 0) {
-                D_801930D0[var_s5].unk_040--;
-            } else {
-                if (gSequencePlayers[var_s5].enabled == 0) {
-                    for (var_s2 = 0; var_s2 < D_801930D0[var_s5].unk_041; var_s2++) {
-                        temp_s4_2 = &D_801930D0[var_s5];
-                        var_a1 = temp_s4_2->unk_02C[var_s2] & 0xFF;
-                        temp_t5_3 = ((u32) (temp_s4_2->unk_02C[var_s2] & 0xF00000) >> 0x14) & 0xFF;
-                        temp_s1 = ((u32) (temp_s4_2->unk_02C[var_s2] & 0xF0000) >> 0x10) & 0xFF;
-                        temp_a1_3 = ((u32) (temp_s4_2->unk_02C[var_s2] & 0xFF00) >> 8) & 0xFF;
-                        switch (temp_t5_3) {
-                            case 0:
-                                D_801930D0[temp_s1].unk_012 = 1;
-                                D_801930D0[temp_s1].unk_00E[1] = 0x7F;
-                                break;
-                            case 1:
-                                func_800C3448(temp_s4_2->unk_248 | 0x30000000 | (var_s5 << 0x18));
-                                break;
-                            case 2:
-                                func_800C3448(D_801930D0[temp_s1].unk_248 | (temp_s1 << 0x18) | 0x10000);
-                                D_801930D0[temp_s1].unk_012 = 1;
-                                D_801930D0[temp_s1].unk_00E[1] = 0x7F;
-                                break;
-                            case 3:
-                                func_800C3448((temp_s1 << 0x18) | 0xB0003000 | (temp_a1_3 << 0x10) | var_a1);
-                                break;
-                            case 4:
-                                func_800C3448((temp_s1 << 0x18) | 0xB0004000 | (var_a1 << 0x10));
-                                break;
-                            case 5:
-                                func_800C3448((D_801930D0[temp_s1].unk_042 << 0x10) | (temp_s1 << 0x18) |
-                                              (temp_s4_2->unk_02C[var_s2] & 0xFFFF));
-                                func_800C36C4(temp_s1 & 0xFF, 1U, 0x7FU, 0U);
-                                D_801930D0[temp_s1].unk_042 = 0;
-                                break;
-                            case 6:
-                                temp_s4_2->unk_042 = temp_a1_3;
-                                break;
-                        }
-                    }
-                    D_801930D0[var_s5].unk_041 = 0;
+        if (D_801930D0[seqPlayerIndex].unk_041) {
+#ifdef VERSION_EU
+            if (func_800C357C_eu(-0x10000000, -0x10000000) == 0) {
+                D_801930D0[seqPlayerIndex].unk_041 = 0;
+                return;
+            }  
+#endif
+            if (D_801930D0[seqPlayerIndex].unk_040 != 0) {
+                D_801930D0[seqPlayerIndex].unk_040--;
+                continue;
+            }
+
+            if (gSequencePlayers[seqPlayerIndex].enabled != 0) {
+                continue;
+            }
+
+            for (j = 0; j < D_801930D0[seqPlayerIndex].unk_041; j++) {
+                setupOp = (D_801930D0[seqPlayerIndex].unk_02C[j] & 0xF00000) >> 0x14;
+                targetSeqPlayerIndex = (D_801930D0[seqPlayerIndex].unk_02C[j] & 0xF0000) >> 0x10;
+                setupVal2 = (D_801930D0[seqPlayerIndex].unk_02C[j] & 0xFF00) >> 8;
+                setupVal1 = D_801930D0[seqPlayerIndex].unk_02C[j] & 0xFF;
+                switch (setupOp) {
+                    case 0:
+                        D_801930D0[targetSeqPlayerIndex].unk_012 = 1;
+                        D_801930D0[targetSeqPlayerIndex].unk_00E[1] = 0x7F;
+                        break;
+
+                    case 1:
+                        func_800C3448(0x30000000 | ((u8) seqPlayerIndex) << 0x18 |
+                                      (D_801930D0[seqPlayerIndex].unk_248));
+                        break;
+
+                    case 2:
+                        func_800C3448((((u8) targetSeqPlayerIndex) << 0x18) | 0x10000 |
+                                      (u16) (D_801930D0[targetSeqPlayerIndex].unk_248));
+                        D_801930D0[targetSeqPlayerIndex].unk_012 = 1;
+                        D_801930D0[targetSeqPlayerIndex].unk_00E[1] = 0x7F;
+                        break;
+
+                    case 3:
+                        func_800C3448(0xB0003000 | (((u8) targetSeqPlayerIndex) << 0x18) | (((u8) setupVal2) << 0x10) |
+                                      (u16) setupVal1);
+                        break;
+
+                    case 4:
+                        func_800C3448(0xB0004000 | (((u8) targetSeqPlayerIndex) << 0x18) | (((u8) setupVal1) << 0x10));
+                        break;
+
+                    case 5:
+                        seqId = D_801930D0[seqPlayerIndex].unk_02C[j] & 0xFFFF;
+                        func_800C3448((((u8) targetSeqPlayerIndex) << 0x18) |
+                                      (((u8) D_801930D0[targetSeqPlayerIndex].unk_042) << 0x10) | ((u16) seqId));
+
+                        func_800C36C4(targetSeqPlayerIndex, 1, 0x7F, 0);
+                        D_801930D0[targetSeqPlayerIndex].unk_042 = 0;
+                        break;
+
+                    case 6:
+                        D_801930D0[seqPlayerIndex].unk_042 = setupVal2;
+                        break;
                 }
             }
+
+            D_801930D0[seqPlayerIndex].unk_041 = 0;
         }
     }
 }
-#else
-#ifdef VERSION_EU
-GLOBAL_ASM("asm/eu_nonmatchings/func_800C3724.s")
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C3724.s")
-#endif
-#endif
 
 void func_800C3F70(void) {
     u8 var_v0;
@@ -1241,21 +1288,19 @@ void func_800C41CC(u8 arg0, struct SoundCharacteristics* arg1) {
     }
 }
 
-// Probably a variant of `process_sound_request` from SM64
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/fmmyb
-// Stack issue concerning `var_t2` and `var_t3`, no idea how to fix it
 void func_800C4398(void) {
     u8 bank;
     u8 soundIndex;
     u8 var_a3;
     struct Sound* var_a2;
+    UNUSED s32 pad;
     u8 var_t2;
     u32 var_t3;
 
     var_a2 = &sSoundRequests[sNumProcessedSoundRequests];
-    if (var_a2->soundBits == 0)
+    if (var_a2->soundBits == 0) {
         return;
+    }
 
     bank = ((u32) (var_a2->soundBits & 0xF0000000) >> 0x1C);
     soundIndex = sSoundBanks[bank][0].next;
@@ -1303,14 +1348,14 @@ void func_800C4398(void) {
         }
     }
     if ((sSoundBanks[bank][sSoundBankFreeListFront[bank]].next != 0xFF) && (soundIndex != 0)) {
-        soundIndex = sSoundBankFreeListFront[bank];
-        sSoundBanks[bank][soundIndex].unk00 = &(*var_a2->position)[0];
+        var_t2 = soundIndex = sSoundBankFreeListFront[bank];
+        sSoundBanks[bank][soundIndex].unk00 = (Vec3f*)&(*var_a2->position)[0];
         sSoundBanks[bank][soundIndex].unk04 = &(*var_a2->position)[1];
         sSoundBanks[bank][soundIndex].unk08 = &(*var_a2->position)[2];
         sSoundBanks[bank][soundIndex].cameraId = var_a2->cameraId;
         sSoundBanks[bank][soundIndex].unk10 = var_a2->unk0C;
         sSoundBanks[bank][soundIndex].unk14 = var_a2->unk10;
-        sSoundBanks[bank][0, soundIndex].unk18 = var_a2->unk14;
+        sSoundBanks[bank][soundIndex].unk18 = var_a2->unk14;
         sSoundBanks[bank][soundIndex].soundBits = var_a2->soundBits;
         sSoundBanks[bank][soundIndex].soundStatus = (u8) ((u32) (var_a2->soundBits & 0x01000000) >> 0x18);
         sSoundBanks[bank][soundIndex].freshness = 2;
@@ -1319,16 +1364,13 @@ void func_800C4398(void) {
         sSoundBankUsedListBack[bank] = sSoundBankFreeListFront[bank];
         sSoundBankFreeListFront[bank] = sSoundBanks[bank][sSoundBankFreeListFront[bank]].next;
         sSoundBanks[bank][sSoundBankFreeListFront[bank]].prev = 0xFF;
-        sSoundBanks[bank][soundIndex].next = 0xFF;
+        sSoundBanks[bank][var_t2].next = 0xFF;
     } else if (sSoundBanks[bank][sSoundBankFreeListFront[bank]].next == 0xFF) {
         if (D_800EA1C8 != *var_a2->position) {
             (*var_a2->position)[1] = 100000.0f;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C4398.s")
-#endif
 
 void delete_sound_from_bank(u8 bankId, u8 soundId) {
     UNUSED s32 stackPadding;
@@ -1352,163 +1394,164 @@ void delete_sound_from_bank(u8 bankId, u8 soundId) {
     temp->soundStatus = 0;
 }
 
-// Guessing this is `select_current_sounds`?
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/cqBii
-struct why {
+struct ActiveSfx {
     u32 priority;
     u8 soundIndex;
 };
+#define AUDIO_MK_CMD(b0,b1,b2,b3) ((((b0) & 0xFF) << 0x18) | (((b1) & 0xFF) << 0x10) | (((b2) & 0xFF) << 0x8) | (((b3) & 0xFF) << 0))
 void func_800C4888(u8 bankId) {
-    u8 i;
     u8 j;
+    u8 numChannels;
+    u8 chosenEntryIndex;
+    u8 i;
     u8 k;
-    u8 latestSoundIndex;
-    u8 var_s2;
-    u8 var_v1;
+    u8 numChosenSfx;
+    u8 needNewSfx;
     u8 soundIndex;
-    u8 var_t1;
-    u8 someTemp;
+    u8 requestedPriority;
+    u8 temp_t8;
     f32 var_f0;
-    s32 requestedPriority;
-    struct why sp7C[8];
-    s32 temp_t8;
-    struct SoundCharacteristics* temp_t2;
+    struct ActiveSfx* activeSfx;
+    struct ActiveSfx chosenSfx[8];
+    struct SoundCharacteristics* entry;
 
-    var_s2 = 0;
+    numChosenSfx = 0;
     for (i = 0; i < 8; i++) {
-        sp7C[i].priority = 0x7FFFFFFF;
-        sp7C[i].soundIndex = 0xFF;
+        chosenSfx[i].priority = 0x7FFFFFFF;
+        chosenSfx[i].soundIndex = 0xFF;
     }
-    latestSoundIndex = 0;
+
     soundIndex = sSoundBanks[bankId][0].next;
+    k = 0;
     while (soundIndex != 0xFF) {
-        temp_t2 = &sSoundBanks[bankId][soundIndex];
-        if ((temp_t2->soundStatus == 1) && ((temp_t2->soundBits & 0x08000000) == 0x08000000)) {
-            temp_t2->freshness -= 1;
+        if ((sSoundBanks[bankId][soundIndex].soundStatus == 1) && ((sSoundBanks[bankId][soundIndex].soundBits & 0x08000000) == 0x08000000)) {
+            sSoundBanks[bankId][soundIndex].freshness -= 1;
         }
-        if (temp_t2->freshness == 0) {
+        
+        if (sSoundBanks[bankId][soundIndex].freshness == 0) {
             delete_sound_from_bank(bankId, soundIndex);
-        } else if (temp_t2->soundStatus != 0) {
-            if (D_800EA1C8 == *temp_t2->unk00) {
-                temp_t2->distance = 0.0f;
+        } else if (sSoundBanks[bankId][soundIndex].soundStatus != 0) {
+            entry = &sSoundBanks[bankId][soundIndex];
+            
+            if (&D_800EA1C8 == entry[0].unk00) {
+                entry->distance = 0.0f;
             } else {
-                temp_t2->distance = ((*temp_t2->unk00)[0] * (*temp_t2->unk00)[0]) + (*temp_t2->unk08 * *temp_t2->unk08);
+                entry->distance =
+                    (*entry->unk00[0] * *entry->unk00[0]) + (*entry->unk08 * *entry->unk08);
             }
-            requestedPriority = ((u32) (temp_t2->soundBits & 0xFF00) >> 8) & 0xFF;
-            if (temp_t2->soundBits & 0x100000) {
-                temp_t2->priority =
-                    (0xFF - requestedPriority) * (0xFF - requestedPriority) * 0x5A4; // 0x5a4 = 1444 = 38 * 38
+            requestedPriority = (((u32) (entry->soundBits & 0xFF00)) >> 8);
+            if (entry->soundBits & 0x100000) {
+                entry->priority = ((0xFF - requestedPriority) * (0xFF - requestedPriority)) * (38 * 38);
             } else {
-                temp_t2->priority = (u32) temp_t2->distance + ((0xFF - requestedPriority) * (0xFF - requestedPriority) *
-                                                               0x5A4); // 0x5a4 = 1444 = 38 * 38
-                if (*temp_t2->unk08 > 0.0f) {
-                    temp_t2->priority += (s32) (*temp_t2->unk08 * 6.0f);
+                entry->priority =
+                    ((u32) entry->distance) + (((0xFF - requestedPriority) * (0xFF - requestedPriority)) * (38 * 38));
+
+                if ((*entry->unk08) > 0.0f) {
+                    entry->priority += (s32) ((*entry->unk08) * 6.0f);
                 }
             }
-            temp_t8 = ((u32) (temp_t2->soundBits & 0x30000) >> 0x10) & 0xFF;
-            if (temp_t8 != 0) {
-                var_f0 = 4000000.0f / (f32) (temp_t8 * temp_t8);
+            temp_t8 = (((u32) (entry->soundBits & 0x30000)) >> 0x10);
+            if (temp_t8) {
+                var_f0 = (2000.0f * 2000.0f) / ((f32) (temp_t8 * temp_t8));
             } else {
-                var_f0 = 1e10f;
+                var_f0 = 1e5f * 1e5f;
             }
-            if (var_f0 < temp_t2->distance) {
-                if (temp_t2->soundStatus == 4) {
-                    func_800CBBE8((temp_t2->unk2C << 8) | 0x06020000, 0);
-                    if (temp_t2->soundBits & 0x08000000) {
+            if (var_f0 < entry->distance) {
+                if (entry->soundStatus == 4) {
+                    func_800CBBE8(AUDIO_MK_CMD(0x06, 2, entry->unk2C, 0), 0);
+                    if (entry->soundBits & 0x08000000) {
                         delete_sound_from_bank(bankId, soundIndex);
-                        soundIndex = latestSoundIndex;
+                        soundIndex = k;
                     }
                 }
             } else {
-                var_t1 = D_800EA188[D_800EA1C0][bankId];
-                for (i = 0; i < var_t1; i++) {
-                    if (sp7C[i].priority >= temp_t2->priority) {
-                        if (var_s2 < var_t1) {
-                            var_s2++;
+                numChannels = D_800EA188[D_800EA1C0][bankId];
+                for (i = 0; i < numChannels; i++) {
+                    if (chosenSfx[i].priority >= entry->priority) {
+                        if (numChosenSfx < D_800EA188[D_800EA1C0][bankId]) {
+                            numChosenSfx++;
                         }
-                        for (j = var_t1 - 1; j > i; j--) {
-                            sp7C[j].priority = sp7C[j - 1].priority;
-                            sp7C[j].soundIndex = sp7C[j - 1].soundIndex;
+                        for (j = numChannels - 1; j > i; j--) {
+                            chosenSfx[j].priority = chosenSfx[j - 1].priority;
+                            chosenSfx[j].soundIndex = chosenSfx[j - 1].soundIndex;
                         }
-                        sp7C[i].priority = temp_t2->priority;
-                        sp7C[i].soundIndex = soundIndex;
-                        i = var_t1;
+
+                        chosenSfx[i].priority = entry->priority;
+                        chosenSfx[i].soundIndex = soundIndex;
+                        i = numChannels;
                     }
                 }
             }
-            latestSoundIndex = soundIndex;
+            k = soundIndex;
         }
-        soundIndex = sSoundBanks[bankId][latestSoundIndex].next;
+        soundIndex = sSoundBanks[bankId][k].next;
     }
-    var_t1 = D_800EA188[D_800EA1C0][bankId];
-    for (i = 0; i < var_s2; i++) {
-        someTemp = sSoundBanks[bankId][sp7C[i].soundIndex].soundStatus;
-        if (someTemp == 1) {
-            sSoundBanks[bankId][sp7C[i].soundIndex].soundStatus = 2;
-        } else if (someTemp == 4) {
-            sSoundBanks[bankId][sp7C[i].soundIndex].soundStatus = 3;
+
+    numChannels = D_800EA188[D_800EA1C0][bankId];
+    for (i = 0; i < numChosenSfx; i++) {
+        if (sSoundBanks[bankId][chosenSfx[i].soundIndex].soundStatus == 1) {
+            sSoundBanks[bankId][chosenSfx[i].soundIndex].soundStatus = 2;
+        } else if (sSoundBanks[bankId][chosenSfx[i].soundIndex].soundStatus == 4) {
+            sSoundBanks[bankId][chosenSfx[i].soundIndex].soundStatus = 3;
         }
     }
-    for (i = 0; i < var_t1; i++) {
-        var_v1 = 0;
-        soundIndex = D_80192AB8[bankId][i][4];
-        if (soundIndex == 0xFF) {
-            var_v1 = 1;
+
+    for (i = 0; i < numChannels; i++) {
+        needNewSfx = false;
+        activeSfx = (struct ActiveSfx*)&D_80192AB8[bankId][i];
+
+        if (activeSfx->soundIndex == 0xFF) {
+            needNewSfx = true;
         } else {
-            temp_t2 = &sSoundBanks[bankId][soundIndex];
-            if (temp_t2->soundStatus == 4) {
-                if (temp_t2->soundBits & 0x08000000) {
-                    delete_sound_from_bank(bankId, soundIndex);
-                    var_v1 = 1;
+            entry = &sSoundBanks[bankId][activeSfx->soundIndex];
+            if (entry->soundStatus == 4) {
+                if (entry->soundBits & 0x08000000) {
+                    delete_sound_from_bank(bankId, activeSfx->soundIndex);
                 } else {
-                    temp_t2->soundStatus = 1;
-                    var_v1 = 1;
+                    entry->soundStatus = 1;
                 }
-            } else if (temp_t2->soundStatus == 0) {
-                D_80192AB8[bankId][i][4] = 0xFF;
-                var_v1 = 1;
+                needNewSfx = true;
+            } else if (entry->soundStatus == 0) {
+                activeSfx->soundIndex = 0xFF;
+                needNewSfx = true;
             } else {
-                for (j = 0; j < var_t1; j++) {
-                    if (soundIndex == sp7C[j].soundIndex) {
-                        sp7C[j].soundIndex = 0xFF;
-                        j = var_t1;
+                for (j = 0; j < numChannels; j++) {
+                    if (activeSfx->soundIndex == chosenSfx[j].soundIndex) {
+                        chosenSfx[j].soundIndex = 0xFF;
+                        j = numChannels;
                     }
                 }
+                numChosenSfx--;
             }
         }
-        var_s2--;
-        if (var_v1 == 1) {
-            for (j = 0; j < var_t1; j++) {
-                soundIndex = sp7C[j].soundIndex;
-                if ((soundIndex != 0xFF) && (sSoundBanks[bankId][soundIndex].soundStatus != 3)) {
-                    for (k = 0; k < var_t1; k++) {
-                        if (soundIndex == D_80192AB8[bankId][k][4]) {
-                            var_v1 = 0;
-                            k = var_t1;
+
+        if (needNewSfx == true) {
+            for (j = 0; j < numChannels; j++) {
+                chosenEntryIndex = chosenSfx[j].soundIndex;
+                if ((chosenEntryIndex != 0xFF) && (sSoundBanks[bankId][chosenEntryIndex].soundStatus != 3)) {
+                    for (k = 0; k < numChannels; k++) {
+                        if (chosenEntryIndex == ((struct ActiveSfx*)(D_80192AB8[bankId]))[k].soundIndex) {
+                            needNewSfx = false;
+                            k = numChannels;
                         }
                     }
-                    if (var_v1 == 1) {
-                        D_80192AB8[bankId][i][4] = soundIndex;
-                        sp7C[j].soundIndex = 0xFF;
-                        j = var_t1 + 1;
-                        var_s2--;
+
+                    if (needNewSfx == true) {
+                        activeSfx->soundIndex = chosenEntryIndex;
+                        chosenSfx[j].soundIndex = 0xFF;
+                        j = numChannels + 1;
+                        numChosenSfx--;
                     }
                 }
             }
-            if (j == var_t1) {
-                D_80192AB8[bankId][i][4] = 0xFF;
+
+            if (j == numChannels) {
+                activeSfx->soundIndex = 0xFF;
             }
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C4888.s")
-#endif
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/Lm9EX
-/* ~*~*~* UwU Resgister allocation OwO *~*~*~ */
 void func_800C4FE4(u8 bankId) {
     u8 soundId;
     u8 var_s4;
@@ -1529,8 +1572,8 @@ void func_800C4FE4(u8 bankId) {
                     D_801930D0->unk_00E[2] = 0x28;
                 }
                 func_800C19D0(bankId, soundId, D_80192C38);
-                func_800CBBE8((D_80192C38 << 8) | 0x06020000, 1);
-                func_800CBBE8((D_80192C38 << 8) | 0x06020000 | 4, temp_s0->soundBits & 0xFF);
+                func_800CBBE8(((D_80192C38 & 0xFF) << 8) | 0x06020000, 1);
+                func_800CBBE8(((D_80192C38 & 0xFF) << 8) | 0x06020000 | 4, (u8) (temp_s0->soundBits & 0xFF));
                 temp_s0->soundStatus = 4U;
             } else if (((u8) thing->soundScriptIO[7]) == 0x80) {
                 func_800CBBE8(((D_80192C38 & 0xFF) << 8) | 0x06020000 | 7, 0);
@@ -1543,9 +1586,6 @@ void func_800C4FE4(u8 bankId) {
         D_80192C38 += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C4FE4.s")
-#endif
 
 // Seems somewhat similar to certain parts of `select_current_sounds` from SM64
 void func_800C5278(u8 bankId) {
@@ -1904,24 +1944,24 @@ void func_800C6108(u8 playerId) {
 #ifdef VERSION_EU
     if ((D_800E9EE4[playerId] > 0.5f) || (D_800E9EE4[playerId] < -0.5f))
 #else
-    if ((D_800E9EE4[playerId] > 0.5f) || (D_800E9EE4[playerId] < 0.5f)) {
+    if ((D_800E9EE4[playerId] > 0.5f) || (D_800E9EE4[playerId] < 0.5f))
 #endif
+    {
         D_800E9ED4[playerId] = D_800E9EE4[playerId] * 0.25f;
-    D_800E9F7C[playerId].unk_0C = D_800E9EC4[playerId] + D_800E9ED4[playerId] + D_800E9F34[playerId];
-}
-else {
+        D_800E9F7C[playerId].unk_0C = D_800E9EC4[playerId] + D_800E9ED4[playerId] + D_800E9F34[playerId];
+    } else {
     D_800E9F7C[playerId].unk_0C = D_800E9EB4[playerId] + D_800E9F34[playerId];
-}
+    }
 #ifdef VERSION_EU
-if (D_800E9F7C[playerId].unk_0C < 0.0f) {
-    D_800E9F7C[playerId].unk_0C = 0.0f;
-}
+    if (D_800E9F7C[playerId].unk_0C < 0.0f) {
+        D_800E9F7C[playerId].unk_0C = 0.0f;
+    }
 #endif
-if (D_800E9F7C[playerId].unk_0C > 4.0f) {
-    D_800E9F7C[playerId].unk_0C = 4.0f;
-}
-D_800E9EC4[playerId] = D_800E9F7C[playerId].unk_0C;
-D_800E9F7C[playerId].unk_38 = (D_800E9F7C[playerId].unk_0C / 1.5f) + 0.4f;
+    if (D_800E9F7C[playerId].unk_0C > 4.0f) {
+        D_800E9F7C[playerId].unk_0C = 4.0f;
+    }
+    D_800E9EC4[playerId] = D_800E9F7C[playerId].unk_0C;
+    D_800E9F7C[playerId].unk_38 = (D_800E9F7C[playerId].unk_0C / 1.5f) + 0.4f;
 }
 
 void func_800C64A0(u8 playerId) {
@@ -2458,8 +2498,9 @@ void func_800C76C0(u8 playerId) {
                             } else if ((D_800EA104 == 1) && (D_800EA0EC[playerId] == 1)) {
                                 func_800C5278(5U);
 #ifndef VERSION_EU
-                                if (func_800C3508(1) != 0x000D) {
+                                if (func_800C3508(1) != 0x000D)
 #endif
+                                {
                                     D_800EA104 = 0;
                                     func_800CA414(0x000EU, 0x0017U);
                                 }
@@ -2481,8 +2522,9 @@ void func_800C76C0(u8 playerId) {
                             } else if ((D_800EA104 == 2) && (D_800EA0EC[playerId] == 1)) {
                                 func_800C5278(5U);
 #ifndef VERSION_EU
-                                if (func_800C3508(1) != 0x000E) {
+                                if (func_800C3508(1) != 0x000E)
 #endif
+                                {
                                     D_800EA104 = 0;
                                     func_800CA414(0x000EU, 0x0017U);
                                 }
@@ -3405,7 +3447,7 @@ void func_800CAC08() {
     }
 }
 
-void func_800CAC60(UNUSED s32 arg0) {
+void func_800CAC60(UNUSED u8 arg0) {
     if ((D_800EA108 == 0) && (D_800EA0F0 == 0)) {
         play_sound(SOUND_ACTION_EXPLOSION_2, &D_800EA1C8, 0U, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
         if ((D_800EA10C[0] != 1) && (D_800EA10C[1] != 1)) {

@@ -117,16 +117,6 @@ D_800E8C00:
   type: vtx
   offset: 0x800E8C00
   count: 4
-D_800E8C40:
-  symbol: D_800E8C40
-  type: vtx
-  offset: 0x800E8C40
-  count: 8
-D_800E8CC0:
-  symbol: D_800E8CC0
-  type: vtx
-  offset: 0x800E8CC0
-  count: 8
 D_800E8D40:
   symbol: D_800E8D40
   type: gfx

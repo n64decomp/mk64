@@ -1487,28 +1487,38 @@ u8 d_course_rainbow_road_neon_boo_tlut_list[][512] = {
     },
 };
 
-u8 d_course_rainbow_road_static_tluts[][512] = {
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonPeach.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonLuigi.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonDonkeyKong.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonYoshi.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonBowser.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonWario.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonToad.inc.c"
-    },
+u16 d_course_rainbow_road_static_tluts[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonPeach.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_luigi[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonLuigi.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_dk[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonDonkeyKong.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_yoshi[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonYoshi.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_bowser[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonBowser.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_wario[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonWario.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_toad[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonToad.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_mushroom[] = {

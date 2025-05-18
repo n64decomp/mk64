@@ -1467,7 +1467,7 @@ void func_8004B310(s32 alpha) {
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, alpha);
 }
 
-void func_8004B35C(s32 red, s32 green, s32 blue, s32 alpha) {
+void func_8004B35C(u32 red, u32 green, u32 blue, u32 alpha) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(gDisplayListHead++, 0, 0, red, green, blue, alpha);
 }
@@ -1518,7 +1518,7 @@ void func_8004B6C4(s32 red, s32 green, s32 blue) {
     gDPSetPrimColor(gDisplayListHead++, 0, 0, red, green, blue, 0xFF);
 }
 
-void func_8004B72C(s32 primRed, s32 primGreen, s32 primBlue, s32 envRed, s32 envGreen, s32 envBlue, s32 primAlpha) {
+void func_8004B72C(u32 primRed, u32 primGreen, u32 primBlue, u32 envRed, u32 envGreen, u32 envBlue, u32 primAlpha) {
     gDPSetPrimColor(gDisplayListHead++, 0, 0, primRed, primGreen, primBlue, primAlpha);
     gDPSetEnvColor(gDisplayListHead++, envRed, envGreen, envBlue, 0xFF);
     gDPSetCombineLERP(gDisplayListHead++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0,
@@ -1764,54 +1764,49 @@ void func_8004C628(s32 arg0, s32 arg1, u32 arg2, u32 arg3, u8* texture) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/TqXqn
-// There's a weird fakematch concerning `xPos`, don't know that to make of. Can't quite get it over the finish line
-// though
 void render_texture_tile_rgba32_block(s16 x, s16 y, u8* texture, u32 width, u32 height) {
     s32 texSizeLess;
     s32 i;
-    s32 yPos;
-    s32 xPos;
-    s32 texBlockCount;
+    s32 centerY;
+    s32 centerX;
+    s32 numTextureBlocks;
     u32 texSize;
     s32 heightDiv;
-    s32 realCount;
+    s32 size;
     u8* textureCopy;
 
-    xPos = x - (width / 2);
-    yPos = y - (height / 2);
+    centerX = x - (width / 2);
+    centerY = y - (height / 2);
     textureCopy = texture;
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
     gDPSetRenderMode(gDisplayListHead++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     texSize = width * height * 4;
-    texBlockCount = texSize / 4096;
+    numTextureBlocks = texSize / 4096;
     if (texSize % 4096) {
-        texBlockCount++;
+        numTextureBlocks++;
     }
-    heightDiv = height / texBlockCount;
-    realCount = texBlockCount;
-    for (i = 0; i < realCount; i++) {
+    heightDiv = height / numTextureBlocks;
+    size = numTextureBlocks;
+    for (i = 0; i < size; i++) {
         load_texture_tile_rgba32_nomirror(textureCopy, width, heightDiv);
-        render_texture_rectangle_wrap(xPos, yPos, width, heightDiv, 1);
-        texSizeLess = texSize - (width * heightDiv * 4);
+        render_texture_rectangle_wrap(centerX, centerY, width, heightDiv, 1);
         textureCopy += (width * heightDiv * 4);
+        texSizeLess = texSize - (width * heightDiv * 4);
         if (texSizeLess < 0) {
             heightDiv = texSize / width;
         } else {
-            texSize = texSizeLess;
+            texSize -= (width * heightDiv * 4);
         }
-        // Weird fakematch that is a HUGE improvement
-        xPos += yPos * 0;
-        yPos += heightDiv;
-    }
 
+
+        centerY += heightDiv;
+    }
+    
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
+    // FAKE
+    centerX++;
+    centerX--;
 }
-#else
-void render_texture_tile_rgba32_block(s16 x, s16 y, u8* texture, u32 width, u32 height);
-GLOBAL_ASM("asm/non_matchings/render_objects/render_texture_tile_rgba32_block.s")
-#endif
 
 void render_game_logo(s16 x, s16 y) {
     render_texture_tile_rgba32_block(x, y, gGameLogoAddress, 256, 128);
@@ -2470,59 +2465,34 @@ void render_mini_map_finish_line(s32 arg0) {
 #endif
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/FxA1w
-/**
- * characterId of 8 appears to be a type of null check or control flow alteration.
- */
-#define EXPLICIT_AND 1
 void draw_minimap_character(s32 arg0, s32 playerId, s32 characterId) {
     f32 thing0;
     f32 thing1;
     s16 x;
     s16 y;
-    Player* player = &gPlayerOne[playerId];
+    Player *player = &gPlayerOne[playerId];
 
     if (player->type & (1 << 15)) {
         thing0 = player->pos[0] * gMiniMapMarkerScale;
         thing1 = player->pos[2] * gMiniMapMarkerScale;
-        x = ((gMiniMapFinishLineX[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + gMiniMapX + (s16) (thing0);
-        y = ((gMiniMapFinishLineY[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + gMiniMapY + (s16) (thing1);
+        x = ((gMiniMapFinishLineX[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + gMiniMapX + (s16)(thing0);
+        y = ((gMiniMapFinishLineY[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + gMiniMapY + (s16)(thing1);
+        // huh?
         if (characterId != 8) {
             if ((gGPCurrentRaceRankByPlayerId[playerId] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
-#if EXPLICIT_AND == 1
-                func_80046424(x, y, (player->rotation[1] + 0x8000) & 0xFFFF, 1.0f,
-                              (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
-                              8, 8, 8, 8);
-#else
-                func_80046424(x, y, player->rotation[1] + 0x8000, 1.0f,
-                              (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
-                              8, 8, 8, 8);
-#endif
+                func_80046424(x, y, player->rotation[1] + 0x8000, 1.0f, (u8*)&common_texture_minimap_kart_mario[characterId * 64], common_vtx_player_minimap_icon, 8, 8, 8, 8);
             } else {
-#if EXPLICIT_AND == 1
-                func_800463B0(x, y, (player->rotation[1] + 0x8000) & 0xFFFF, 1.0f,
-                              (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
-                              8, 8, 8, 8);
-#else
-                func_800463B0(x, y, player->rotation[1] + 0x8000, 1.0f,
-                              (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
-                              8, 8, 8, 8);
-#endif
+                func_800463B0(x, y, player->rotation[1] + 0x8000, 1.0f, (u8*)&common_texture_minimap_kart_mario[characterId * 64], common_vtx_player_minimap_icon, 8, 8, 8, 8);
             }
         } else {
             if (gGPCurrentRaceRankByPlayerId[playerId] == 0) {
-                func_8004C450(x, y, 8, 8, (u8*) common_texture_minimap_progress_dot);
+                func_8004C450(x, y, 8, 8, (u8 *) common_texture_minimap_progress_dot);
             } else {
-                draw_hud_2d_texture(x, y, 8, 8, (u8*) common_texture_minimap_progress_dot);
+                draw_hud_2d_texture(x, y, 8, 8, (u8 *) common_texture_minimap_progress_dot);
             }
         }
     }
 }
-#undef EXPLICIT_AND
-#else
-GLOBAL_ASM("asm/non_matchings/render_objects/draw_minimap_character.s")
-#endif
 
 // WTF is up with the gPlayerOne access in this function?
 void func_8004F3E4(s32 arg0) {
@@ -2970,25 +2940,19 @@ void func_80050C68(void) {
     }
 }
 
-#ifdef NON_MATCHING
-
-// Something about the handling of the `player` variable is weird.
-// All commands are present and correct, 2 of them are out of position
-// https://decomp.me/scratch/PvJ5D
 void func_80050E34(s32 playerId, s32 arg1) {
     s32 objectIndex;
     s32 spD0;
     s32 spCC;
-    UNUSED s32 stackPadding;
+    Player *dummy = &gPlayerOne[playerId];
     s32 spC4;
     s32 lapCount;
     s32 characterId;
     s32 spB8;
     s32 temp_v0_2;
     Object* object;
-    Player* player;
+    Player *player = &gPlayerOne[playerId];
 
-    player = &gPlayerOne[playerId];
     lapCount = gLapCountByPlayerId[playerId];
     characterId = player->characterId;
     objectIndex = D_8018CE10[playerId].objectIndex;
@@ -3053,9 +3017,6 @@ void func_80050E34(s32 playerId, s32 arg1) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/render_objects/func_80050E34.s")
-#endif
 
 void func_800514BC(void) {
     s32 temp_a0;

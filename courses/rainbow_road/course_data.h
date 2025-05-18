@@ -63,7 +63,7 @@ extern TrackPathPoint d_course_rainbow_road_track_path[];
 extern u8 d_course_rainbow_road_neon_mushroom_tlut_list[][512];
 extern u8 d_course_rainbow_road_neon_mario_tlut_list[][512];
 extern u8 d_course_rainbow_road_neon_boo_tlut_list[][512];
-extern u8 d_course_rainbow_road_static_tluts[][512];
+extern u16 d_course_rainbow_road_static_tluts[];
 extern u8 d_course_rainbow_road_neon_mushroom[];
 extern u8 d_course_rainbow_road_neon_mario[];
 extern u8 d_course_rainbow_road_neon_boo[];

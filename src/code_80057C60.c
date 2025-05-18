@@ -364,13 +364,13 @@ s16 gGPCurrentRaceCharacterIdByRank[8];
 s16 D_8018CF90;
 s16 D_8018CF98[8];
 s16 D_8018CFA8;
-s8 D_8018CFAC[4];
+u8 D_8018CFAC[4];
 s16 D_8018CFB0;
-s8 D_8018CFB4[4];
+u8 D_8018CFB4[4];
 s16 D_8018CFB8;
-s8 D_8018CFBC[4];
+u8 D_8018CFBC[4];
 s16 D_8018CFC0;
-s8 D_8018CFC4[4];
+u8 D_8018CFC4[4];
 s16 D_8018CFC8;
 f32 D_8018CFCC;
 s16 D_8018CFD0;
@@ -3368,11 +3368,6 @@ void func_8005ED48(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     }
 }
 
-#ifdef NON_MATCHING
-// Its close, there's some register allocation issue though
-// Permuter hasn't found anything
-// https://decomp.me/scratch/WjMqd
-
 void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 var_t1;
     u8 surfaceType;
@@ -3386,12 +3381,12 @@ void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         var_f2 = player->pos[1] - player->boundingBoxSize;
         var_f12 = player->pos[2];
         var_t1 = 1;
-        surfaceType = player->tyres[BACK_LEFT].surfaceType;
+        surfaceType = player->tyres[BACK_LEFT].surfaceType & 0xFF;
     } else {
         var_f0 = player->pos[0];
         var_f2 = player->pos[1] - player->boundingBoxSize;
         var_f12 = player->pos[2];
-        surfaceType = player->tyres[BACK_RIGHT].surfaceType;
+        surfaceType = player->tyres[BACK_RIGHT].surfaceType & 0xFF;
     }
     switch (surfaceType) {
         case DIRT:
@@ -3552,9 +3547,6 @@ void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005F90C.s")
-#endif
 
 void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     UNUSED s32 thing1;
@@ -5067,9 +5059,6 @@ void func_800658A0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-#ifdef NON_MATCHING
-// Something about the handling of the prim/env colors is off,
-// its causing a huge diff. Can't figure out what's up.
 void func_80065AB0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f spB4;
     Vec3s spAC;
@@ -5122,13 +5111,7 @@ void func_80065AB0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80065AB0.s")
-#endif
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/KEz08
-//  Something is very wrong with the handling of prim/evn colors, but I can't figuer out what.
 void func_80065F0C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f spDC;
     Vec3s spD4;
@@ -5136,10 +5119,9 @@ void func_80065F0C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 primGreen;
     s16 primBlue;
     s16 primAlpha;
-    u8 envRed;
+    s16 envRed;
     s16 envGreen;
     s16 envBlue;
-
     if ((player->unk_258[10 + arg2].unk_01C == 1) && (player->unk_258[10 + arg2].unk_01E != 0)) {
         spDC[0] = player->unk_258[10 + arg2].unk_000[0];
         spDC[1] = player->unk_258[10 + arg2].unk_000[1];
@@ -5147,33 +5129,23 @@ void func_80065F0C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         spD4[0] = 0;
         spD4[1] = player->unk_048[arg3];
         spD4[2] = 0;
-        func_800652D4(spDC, spD4, player->unk_258[10 + arg2].unk_00C * player->size);
-        if ((s32) player->unk_258[10 + arg2].unk_014 != 8) {
-            primRed =
-                ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            primGreen =
-                ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            primBlue =
-                ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            envRed =
-                ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            envGreen =
-                ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            envBlue =
-                ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+        func_800652D4(&spDC[0], &spD4[0], player->unk_258[10 + arg2].unk_00C * player->size);
+        if (((s32) player->unk_258[10 + arg2].unk_014) != 8) {
+            primRed = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            primGreen = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            primBlue = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envRed = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envGreen = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envBlue = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
             primAlpha = player->unk_258[10 + arg2].unk_03E;
             if (player->unk_258[10 + arg2].unk_040 == 0) {
                 gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0,
-                                    G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
-                                    G_TX_NOLOD, G_TX_NOLOD);
+                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
                 gSPDisplayList(gDisplayListHead++, D_0D008E48);
             } else {
                 gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0,
-                                    G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
-                                    G_TX_NOLOD, G_TX_NOLOD);
+                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
                 gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
                 gSPDisplayList(gDisplayListHead++, D_0D008E48);
@@ -5184,9 +5156,7 @@ void func_80065F0C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
             primBlue = player->unk_258[10 + arg2].unk_03C;
             gSPDisplayList(gDisplayListHead++, D_0D008C90);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
-            gDPLoadTextureBlock(gDisplayListHead++, D_8018D498, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0,
-                                G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK,
-                                G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureBlock(gDisplayListHead++, D_8018D498, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B35C(primRed, primGreen, primBlue, 0x000000FF);
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
             gSPVertex(gDisplayListHead++, D_800E8C00, 4, 0);
@@ -5195,9 +5165,6 @@ void func_80065F0C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80065F0C.s")
-#endif
 
 void func_800664E0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp54;

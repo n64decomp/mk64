@@ -755,29 +755,28 @@ void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
     seqPlayer->scriptState.pc = sequenceData;
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/5FBUM
-//  There is some wild bullshit going on in this function
-//  It is an unholy cross between SM64's EU and Shindou
-//  verions of this function, with the for loop towards
-//  the bottom resembling stuff from bank_load_async
 extern u8 _audio_banksSegmentRomStart;
 extern u8 _audio_tablesSegmentRomStart;
 extern u8 _instrument_setsSegmentRomStart;
 extern u8 _sequencesSegmentRomStart;
-
+/**
+ * There is some wild bullshit going on in this function
+ *  It is an unholy cross between SM64's EU and Shindou
+ *  verions of this function, with the for loop towards
+ *  the bottom resembling stuff from bank_load_async
+ */
 void audio_init(void) {
     s32 i;
-    UNUSED s32 pad[2];
-    s32 j;
-    UNUSED s32 pad2[6];
-    u32 sp60[2];
-    UNUSED s32 pad1[2];
-    s32 aaa;
+    UNUSED s32 pad[6];
+    s32 j, k;
+    s32 ctlSeqCount;
+    u32 buf[2];
+    UNUSED s32 lim2, lim3;
     s32 size;
-    UNUSED u64* ptr64;
+    u64* ptr64;
+    UNUSED s32 pad2;
     UNUSED s32 one = 1;
-    u8* test;
+    void* data;
 
     gAudioLoadLock = 0;
 
@@ -788,30 +787,33 @@ void audio_init(void) {
 #ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.
     ptr64 = (u64*) ((u8*) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
-    for (i = ((uintptr_t) &gAudioGlobalsEndMarker -
-              (uintptr_t) ((u64*) ((u8*) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer)))) /
-             8;
-         i >= 0; i--) {
+    for (k = ((uintptr_t) &gAudioGlobalsEndMarker - (uintptr_t) ((u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer))) ) / 8; k >= 0; k--) {
         *ptr64++ = 0;
     }
 #endif
 
-    switch (osTvType) { /* irregular */
-        case 0:
+#ifdef VERSION_EU
+    D_803B7178 = 20.03042f;
+    gRefreshRate = 50;
+#else // US
+    switch (osTvType) {
+        case TV_TYPE_PAL:
             D_803B7178 = 20.03042f;
-            gRefreshRate = 0x00000032;
+            gRefreshRate = 50;
             break;
-        case 2:
+        case TV_TYPE_MPAL:
             D_803B7178 = 16.546f;
-            gRefreshRate = 0x0000003C;
+            gRefreshRate = 60;
             break;
-        case 1:
+        case TV_TYPE_NTSC:
         default:
             D_803B7178 = 16.713f;
-            gRefreshRate = 0x0000003C;
+            gRefreshRate = 60;
             break;
     }
+#endif
     port_eu_init();
+    if (k) {} // fake
     for (i = 0; i < NUMAIBUFFERS; i++) {
         gAiBufferLengths[i] = 0xa0;
     }
@@ -840,48 +842,49 @@ void audio_init(void) {
     gAudioResetPresetIdToLoad = 0;
     gAudioResetStatus = one;
     audio_shut_down_and_reset_step();
-    gSeqFileHeader = (ALSeqFile*) sp60;
-    test = &_sequencesSegmentRomStart;
-    audio_dma_copy_immediate(test, gSeqFileHeader, 0x00000010U);
+
+    // Load headers for sounds and sequences
+    gSeqFileHeader = (ALSeqFile*) buf;
+    data = &_sequencesSegmentRomStart;
+    audio_dma_copy_immediate(data, gSeqFileHeader, 0x10);
     gSequenceCount = gSeqFileHeader->seqCount;
     size = gSequenceCount * sizeof(ALSeqData) + 4;
     size = ALIGN16(size);
     gSeqFileHeader = soundAlloc(&gAudioInitPool, size);
-    audio_dma_copy_immediate(test, gSeqFileHeader, size);
-    func_800BB43C(gSeqFileHeader, test);
-    gAlCtlHeader = (ALSeqFile*) sp60;
-    test = &_audio_banksSegmentRomStart;
-    audio_dma_copy_immediate(test, gAlCtlHeader, 0x00000010U);
-    aaa = gAlCtlHeader->seqCount;
-    size = ALIGN16(aaa * sizeof(ALSeqData) + 4);
-    gAlCtlHeader = soundAlloc(&gAudioInitPool, size);
-    audio_dma_copy_immediate(test, gAlCtlHeader, size);
-    func_800BB43C(gAlCtlHeader, test);
-    gCtlEntries = soundAlloc(&gAudioInitPool, aaa * 0xC);
-    for (i = 0; i < aaa; i++) {
-        audio_dma_copy_immediate(gAlCtlHeader->seqArray[i].offset, sp60, 0x00000010U);
+    audio_dma_copy_immediate(data, gSeqFileHeader, size);
+    func_800BB43C(gSeqFileHeader, data);
 
-        gCtlEntries[i].numInstruments = sp60[0];
-        gCtlEntries[i].numDrums = sp60[1];
+    // Load header for CTL (instrument metadata)
+    gAlCtlHeader = (ALSeqFile*) buf;
+    data = &_audio_banksSegmentRomStart;
+    audio_dma_copy_immediate(data, gAlCtlHeader, 0x10);
+    ctlSeqCount = gAlCtlHeader->seqCount;
+    size = ALIGN16(ctlSeqCount * sizeof(ALSeqData) + 4);
+    gAlCtlHeader = soundAlloc(&gAudioInitPool, size);
+    audio_dma_copy_immediate(data, gAlCtlHeader, size);
+    func_800BB43C(gAlCtlHeader, data);
+    gCtlEntries = soundAlloc(&gAudioInitPool, ctlSeqCount * sizeof(struct CtlEntry));
+    for (i = 0; i < ctlSeqCount; i++) {
+        audio_dma_copy_immediate(gAlCtlHeader->seqArray[i].offset, buf, 0x10);
+        gCtlEntries[i].numInstruments = buf[0];
+        gCtlEntries[i].numDrums = buf[1];
     }
-    gAlTbl = (ALSeqFile*) sp60;
-    test = &_audio_tablesSegmentRomStart;
-    audio_dma_copy_immediate(test, gAlTbl, 0x00000010U);
+
+    // Load header for TBL (raw sound data)
+    gAlTbl = (ALSeqFile*) buf;
+    data = &_audio_tablesSegmentRomStart;
+    audio_dma_copy_immediate(data, gAlTbl, 0x10);
     size = gAlTbl->seqCount * sizeof(ALSeqData) + 4;
     size = ALIGN16(size);
     gAlTbl = soundAlloc(&gAudioInitPool, size);
-    audio_dma_copy_immediate(test, gAlTbl, size);
-    func_800BB43C(gAlTbl, test);
-    gAlBankSets = soundAlloc(&gAudioInitPool, 0x00000100U);
-    audio_dma_copy_immediate((u32) &_instrument_setsSegmentRomStart, gAlBankSets, 0x00000100U);
+    audio_dma_copy_immediate(data, gAlTbl, size);
+    func_800BB43C(gAlTbl, data);
+
+    // Load bank sets for each sequence
+    gAlBankSets = soundAlloc(&gAudioInitPool, 0x100);
+    audio_dma_copy_immediate((u8 *) &_instrument_setsSegmentRomStart, gAlBankSets, 0x100);
+
     sound_alloc_pool_init(&gUnkPool1.pool, soundAlloc(&gAudioInitPool, (u32) D_800EA5D8), (u32) D_800EA5D8);
     init_sequence_players();
     gAudioLoadLock = 0x76557364;
 }
-#else
-#ifdef VERSION_EU
-GLOBAL_ASM("asm/eu_nonmatchings/audio_init.s")
-#else
-GLOBAL_ASM("asm/non_matchings/audio/load/audio_init.s")
-#endif
-#endif

@@ -193,7 +193,7 @@ void set_color_render(s32, s32, s32, s32, s32, s32, s32);
 void func_8004B254(s32, s32, s32);
 void set_transparency(s32);
 void func_8004B310(s32);
-void func_8004B35C(s32, s32, s32, s32);
+void func_8004B35C(u32, u32, u32, u32);
 void func_8004B3C8(s32);
 void func_8004B414(s32, s32, s32, s32);
 void func_8004B480(s32, s32, s32);
@@ -202,13 +202,13 @@ void func_8004B554(s32);
 void func_8004B5A8(s32, s32, s32, s32);
 void func_8004B614(s32, s32, s32, s32, s32, s32, s32);
 void func_8004B6C4(s32, s32, s32);
-void func_8004B72C(s32, s32, s32, s32, s32, s32, s32);
+void func_8004B72C(u32, u32, u32, u32, u32, u32, u32);
 void render_texture_rectangle_wrap(s32, s32, s32, s32, s32);
 void func_8004BB34(void);
 void func_8004BB3C(s32, s32, s32, s32, f32);
 void func_8004BD14(s32, s32, u32, u32, s32, u8*, u8*);
 
-void func_8004C6FC(s16, s16, u8*, u32, u32);
+void render_texture_tile_rgba32_block(s16 x, s16 y, u8* texture, u32 width, u32 height);
 
 void func_8004C024(s16, s16, s16, u16, u16, u16, u16);
 void func_8004C148(s16, s16, s16, u16, u16, u16, u16);
