@@ -67,10 +67,10 @@ var sectionId = 'dynsection-53';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="vehicle__utils_8inc_8c.html#a936e91c360ecd0a5b230df3f1f7868f0" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="vehicle__utils_8inc_8c.html#a99144559f0973d72038cdccbe00881b6" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="276,-118.5 150,-118.5 150,-88.5 276,-88.5 276,-118.5"/>
 <text text-anchor="start" x="158" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">update_vehicle_follow</text>
-<text text-anchor="middle" x="213" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">_pathPoint</text>
+<text text-anchor="middle" x="213" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">_path_point</text>
 </a>
 </g>
 </g>
@@ -329,9 +329,9 @@ var sectionId = 'dynsection-53';
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="path__utils_8inc_8c.html#ab96cbd71b16b521d82bee529494f1351" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="933.5,-173.5 807.5,-173.5 807.5,-143.5 933.5,-143.5 933.5,-173.5"/>
-<text text-anchor="start" x="815.5" y="-161.5" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_pathPoint</text>
+<g id="a_Node000012"><a xlink:href="path__utils_8inc_8c.html#a64865cf2565ef9f4215c5fa73b04233f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="936,-173.5 805,-173.5 805,-143.5 936,-143.5 936,-173.5"/>
+<text text-anchor="start" x="813" y="-161.5" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_path_point</text>
 <text text-anchor="middle" x="870.5" y="-150.5" font-family="Helvetica,sans-Serif" font-size="10.00">_track_section</text>
 </a>
 </g>
@@ -340,8 +340,8 @@ var sectionId = 'dynsection-53';
 <g id="edge11_Node000007_Node000012" class="edge">
 <title>Node7&#45;&gt;Node12</title>
 <g id="a_edge11_Node000007_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M734.14,-128.08C753.13,-132.35 776.04,-137.5 797.57,-142.33"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="796.81,-145.75 807.34,-144.53 798.35,-138.92 796.81,-145.75"/>
+<path fill="none" stroke="#63b8ff" d="M734.14,-128.08C752.43,-132.19 774.34,-137.12 795.16,-141.79"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="794.42,-145.22 804.94,-143.99 795.96,-138.39 794.42,-145.22"/>
 </a>
 </g>
 </g>

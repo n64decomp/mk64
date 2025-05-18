@@ -273,9 +273,9 @@
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:href="path__utils_8inc_8c.html#ab96cbd71b16b521d82bee529494f1351" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="814.5,-656 688.5,-656 688.5,-626 814.5,-626 814.5,-656"/>
-<text text-anchor="start" x="696.5" y="-644" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_pathPoint</text>
+<g id="a_Node000010"><a xlink:href="path__utils_8inc_8c.html#a64865cf2565ef9f4215c5fa73b04233f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="817,-656 686,-656 686,-626 817,-626 817,-656"/>
+<text text-anchor="start" x="694" y="-644" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_path_point</text>
 <text text-anchor="middle" x="751.5" y="-633" font-family="Helvetica,sans-Serif" font-size="10.00">_track_section</text>
 </a>
 </g>
@@ -284,8 +284,8 @@
 <g id="edge9_Node000005_Node000010" class="edge">
 <title>Node5&#45;&gt;Node10</title>
 <g id="a_edge9_Node000005_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M613.99,-610.58C633.24,-614.87 656.47,-620.05 678.27,-624.9"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="677.64,-628.35 688.16,-627.11 679.16,-621.52 677.64,-628.35"/>
+<path fill="none" stroke="#63b8ff" d="M613.99,-610.58C632.53,-614.71 654.75,-619.66 675.84,-624.36"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="675.23,-627.81 685.75,-626.57 676.75,-620.98 675.23,-627.81"/>
 </a>
 </g>
 </g>

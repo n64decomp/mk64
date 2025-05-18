@@ -66,9 +66,9 @@ var sectionId = 'dynsection-48';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="player__controller_8c.html#af83cd9c36e6a1e62b4146b1216443e90" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="player__controller_8c.html#ab0dbd1e70372263a934b5ce4907aa491" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="232,-433.5 128,-433.5 128,-414.5 232,-414.5 232,-433.5"/>
-<text text-anchor="middle" x="180" y="-421.5" font-family="Helvetica,sans-Serif" font-size="10.00">decelerate_player</text>
+<text text-anchor="middle" x="180" y="-421.5" font-family="Helvetica,sans-Serif" font-size="10.00">player_accelerate</text>
 </a>
 </g>
 </g>
@@ -84,9 +84,9 @@ var sectionId = 'dynsection-48';
 <!-- Node25 -->
 <g id="Node000025" class="node">
 <title>Node25</title>
-<g id="a_Node000025"><a xlink:href="player__controller_8c.html#ab0dbd1e70372263a934b5ce4907aa491" target="_top" xlink:title=" ">
+<g id="a_Node000025"><a xlink:href="player__controller_8c.html#a179bafe2f3564cef92bacebc2b770bf1" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="232,-396.5 128,-396.5 128,-377.5 232,-377.5 232,-396.5"/>
-<text text-anchor="middle" x="180" y="-384.5" font-family="Helvetica,sans-Serif" font-size="10.00">player_accelerate</text>
+<text text-anchor="middle" x="180" y="-384.5" font-family="Helvetica,sans-Serif" font-size="10.00">player_decelerate</text>
 </a>
 </g>
 </g>

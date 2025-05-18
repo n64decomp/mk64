@@ -20,10 +20,10 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="vehicle__utils_8inc_8c.html#a936e91c360ecd0a5b230df3f1f7868f0" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="vehicle__utils_8inc_8c.html#a99144559f0973d72038cdccbe00881b6" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="312,-118.5 186,-118.5 186,-88.5 312,-88.5 312,-118.5"/>
 <text text-anchor="start" x="194" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">update_vehicle_follow</text>
-<text text-anchor="middle" x="249" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">_pathPoint</text>
+<text text-anchor="middle" x="249" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">_path_point</text>
 </a>
 </g>
 </g>
@@ -282,9 +282,9 @@
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="path__utils_8inc_8c.html#ab96cbd71b16b521d82bee529494f1351" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="969.5,-173.5 843.5,-173.5 843.5,-143.5 969.5,-143.5 969.5,-173.5"/>
-<text text-anchor="start" x="851.5" y="-161.5" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_pathPoint</text>
+<g id="a_Node000012"><a xlink:href="path__utils_8inc_8c.html#a64865cf2565ef9f4215c5fa73b04233f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="972,-173.5 841,-173.5 841,-143.5 972,-143.5 972,-173.5"/>
+<text text-anchor="start" x="849" y="-161.5" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_path_point</text>
 <text text-anchor="middle" x="906.5" y="-150.5" font-family="Helvetica,sans-Serif" font-size="10.00">_track_section</text>
 </a>
 </g>
@@ -293,8 +293,8 @@
 <g id="edge11_Node000007_Node000012" class="edge">
 <title>Node7&#45;&gt;Node12</title>
 <g id="a_edge11_Node000007_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M770.14,-128.08C789.13,-132.35 812.04,-137.5 833.57,-142.33"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="832.81,-145.75 843.34,-144.53 834.35,-138.92 832.81,-145.75"/>
+<path fill="none" stroke="#63b8ff" d="M770.14,-128.08C788.43,-132.19 810.34,-137.12 831.16,-141.79"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="830.42,-145.22 840.94,-143.99 831.96,-138.39 830.42,-145.22"/>
 </a>
 </g>
 </g>

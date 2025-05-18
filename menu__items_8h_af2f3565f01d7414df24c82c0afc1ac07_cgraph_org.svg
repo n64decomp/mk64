@@ -625,9 +625,9 @@
 <!-- Node64 -->
 <g id="Node000064" class="node">
 <title>Node64</title>
-<g id="a_Node000064"><a xlink:href="menu__items_8c.html#a1471cd7a8b6e19674777d36b1629b9d9" target="_top" xlink:title=" ">
-<polygon fill="#fff0f0" stroke="red" points="586.5,-439 494.5,-439 494.5,-420 586.5,-420 586.5,-439"/>
-<text text-anchor="middle" x="540.5" y="-427" font-family="Helvetica,sans-Serif" font-size="10.00">func_800917B0</text>
+<g id="a_Node000064"><a xlink:href="menu__items_8c.html#af720e7943acc5f09af58b1a9a801aff9" target="_top" xlink:title=" ">
+<polygon fill="#fff0f0" stroke="red" points="575.5,-439 505.5,-439 505.5,-420 575.5,-420 575.5,-439"/>
+<text text-anchor="middle" x="540.5" y="-427" font-family="Helvetica,sans-Serif" font-size="10.00">menu_pow</text>
 </a>
 </g>
 </g>
@@ -635,8 +635,8 @@
 <g id="edge17_Node000063_Node000064" class="edge">
 <title>Node63&#45;&gt;Node64</title>
 <g id="a_edge17_Node000063_Node000064"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M380.6,-493.99C397.28,-488.6 417.66,-481.2 435,-472.5 452.19,-463.87 453.52,-456.5 471,-448.5 476.05,-446.19 481.44,-444.1 486.9,-442.23"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="488.26,-445.47 496.73,-439.1 486.14,-438.8 488.26,-445.47"/>
+<path fill="none" stroke="#63b8ff" d="M380.6,-493.99C397.28,-488.6 417.66,-481.2 435,-472.5 452.19,-463.87 453.52,-456.5 471,-448.5 478.74,-444.96 487.29,-441.94 495.64,-439.43"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="496.62,-442.79 505.3,-436.71 494.72,-436.05 496.62,-442.79"/>
 </a>
 </g>
 </g>

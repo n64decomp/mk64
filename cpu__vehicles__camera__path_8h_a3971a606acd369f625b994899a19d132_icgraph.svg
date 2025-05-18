@@ -139,10 +139,10 @@ var sectionId = 'dynsection-65';
 <!-- Node32 -->
 <g id="Node000032" class="node">
 <title>Node32</title>
-<g id="a_Node000032"><a xlink:href="vehicle__utils_8inc_8c.html#a936e91c360ecd0a5b230df3f1f7868f0" target="_top" xlink:title=" ">
+<g id="a_Node000032"><a xlink:href="vehicle__utils_8inc_8c.html#a99144559f0973d72038cdccbe00881b6" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1562.5,-227.5 1436.5,-227.5 1436.5,-197.5 1562.5,-197.5 1562.5,-227.5"/>
 <text text-anchor="start" x="1444.5" y="-215.5" font-family="Helvetica,sans-Serif" font-size="10.00">update_vehicle_follow</text>
-<text text-anchor="middle" x="1499.5" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00">_pathPoint</text>
+<text text-anchor="middle" x="1499.5" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00">_path_point</text>
 </a>
 </g>
 </g>

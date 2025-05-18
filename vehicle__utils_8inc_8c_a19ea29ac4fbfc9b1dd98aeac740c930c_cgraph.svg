@@ -734,9 +734,9 @@ var sectionId = 'dynsection-38';
 <!-- Node30 -->
 <g id="Node000030" class="node">
 <title>Node30</title>
-<g id="a_Node000030"><a xlink:href="path__utils_8inc_8c.html#ab96cbd71b16b521d82bee529494f1351" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1041,-182 915,-182 915,-152 1041,-152 1041,-182"/>
-<text text-anchor="start" x="923" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_pathPoint</text>
+<g id="a_Node000030"><a xlink:href="path__utils_8inc_8c.html#a64865cf2565ef9f4215c5fa73b04233f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1043.5,-182 912.5,-182 912.5,-152 1043.5,-152 1043.5,-182"/>
+<text text-anchor="start" x="920.5" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_path_point</text>
 <text text-anchor="middle" x="978" y="-159" font-family="Helvetica,sans-Serif" font-size="10.00">_track_section</text>
 </a>
 </g>
@@ -745,8 +745,8 @@ var sectionId = 'dynsection-38';
 <g id="edge33_Node000029_Node000030" class="edge">
 <title>Node29&#45;&gt;Node30</title>
 <g id="a_edge33_Node000029_Node000030"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M842.05,-168.5C860.99,-168.29 883.44,-168.04 904.54,-167.8"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="904.8,-171.3 914.76,-167.69 904.73,-164.3 904.8,-171.3"/>
+<path fill="none" stroke="#63b8ff" d="M842.05,-168.5C860.27,-168.29 881.75,-168.06 902.15,-167.83"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="902.42,-171.33 912.38,-167.72 902.34,-164.33 902.42,-171.33"/>
 </a>
 </g>
 </g>
@@ -879,10 +879,10 @@ var sectionId = 'dynsection-38';
 <!-- Node41 -->
 <g id="Node000041" class="node">
 <title>Node41</title>
-<g id="a_Node000041"><a xlink:href="path__utils_8inc_8c.html#a1196cc6fd964765f84153c6bda74028e" target="_top" xlink:title=" ">
+<g id="a_Node000041"><a xlink:href="path__utils_8inc_8c.html#a3397bd912fcc6eb0f3ae931186ca1f2d" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="676.5,-30 556.5,-30 556.5,0 676.5,0 676.5,-30"/>
 <text text-anchor="start" x="564.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_vehicles</text>
-<text text-anchor="middle" x="616.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">_pathPoint</text>
+<text text-anchor="middle" x="616.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">_path_point</text>
 </a>
 </g>
 </g>

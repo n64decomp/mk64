@@ -124,12 +124,12 @@ $(function(){initNavTree('bug.html',''); initResizable(true); });
 <dt>Global <a class="el" href="seqplayer_8h.html#a96fd2718691a0e1c86de13d55670a8b1">init_sequence_players</a>  (void)</dt>
 <dd><a class="anchor" id="_bug000006"></a>Size of wrong array. Zeroes out second half of gSequenceChannels[0], all of gSequenceChannels[1..31], and part of gSequenceLayers[0]. However, this is only called at startup, so it's harmless.  </dd>
 <dt>Global <a class="el" href="code__80281780_8h.html#af227cfd0f1fd3d6adbe9a29ad59b4dc8">load_ceremony_cutscene</a>  (void)</dt>
-<dd><a class="anchor" id="_bug000009"></a>these segmented addresses need to be symbols for mobility  </dd>
+<dd><a class="anchor" id="_bug000011"></a>these segmented addresses need to be symbols for mobility  </dd>
 <dt>Global <a class="el" href="load_8h.html#a2481529a2e9892b5e55865a80299c48b">load_sequence_internal</a>  (u32, u32, s32)</dt>
 <dd><a class="anchor" id="_bug000004"></a>This should set the last bank (i.e. the first in the JSON) as default, not the missing one. This code path never gets taken, though &ndash; all sequence loading is synchronous.  </dd>
 <dt>Global <a class="el" href="podium__ceremony__actors_8h.html#a186674a03da1d9fce04a3211d6f4ec4d">new_actor</a>  (<a class="el" href="structActorInitParams.html">ActorInitParams</a> *)</dt>
-<dd><p class="startdd"><a class="anchor" id="_bug000010"></a>No null check. </p>
-<p class="enddd"><a class="anchor" id="_bug000011"></a> </p>
+<dd><p class="startdd"><a class="anchor" id="_bug000009"></a>No null check. </p>
+<p class="enddd"><a class="anchor" id="_bug000010"></a> </p>
 </dd>
 <dt>Global <a class="el" href="playback_8h.html#a281646ee32b4a0af33bcb1e95afd624e">note_set_vel_pan_reverb</a>  (struct <a class="el" href="structNote.html">Note</a> *note, f32 velocity, u8 pan, u8 reverbVol)</dt>
 <dd><a class="anchor" id="_bug000005"></a>for the change to UQ0.7, the if statement should also have been changed accordingly  </dd>

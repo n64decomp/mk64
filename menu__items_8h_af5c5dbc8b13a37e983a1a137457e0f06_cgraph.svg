@@ -824,9 +824,9 @@ var sectionId = 'dynsection-477';
 <!-- Node64 -->
 <g id="Node000064" class="node">
 <title>Node64</title>
-<g id="a_Node000064"><a xlink:href="menu__items_8c.html#a1471cd7a8b6e19674777d36b1629b9d9" target="_top" xlink:title=" ">
-<polygon fill="#fff0f0" stroke="red" points="600.5,-518 508.5,-518 508.5,-499 600.5,-499 600.5,-518"/>
-<text text-anchor="middle" x="554.5" y="-506" font-family="Helvetica,sans-Serif" font-size="10.00">func_800917B0</text>
+<g id="a_Node000064"><a xlink:href="menu__items_8c.html#af720e7943acc5f09af58b1a9a801aff9" target="_top" xlink:title=" ">
+<polygon fill="#fff0f0" stroke="red" points="589.5,-518 519.5,-518 519.5,-499 589.5,-499 589.5,-518"/>
+<text text-anchor="middle" x="554.5" y="-506" font-family="Helvetica,sans-Serif" font-size="10.00">menu_pow</text>
 </a>
 </g>
 </g>
@@ -834,8 +834,8 @@ var sectionId = 'dynsection-477';
 <g id="edge15_Node000063_Node000064" class="edge">
 <title>Node63&#45;&gt;Node64</title>
 <g id="a_edge15_Node000063_Node000064"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M433.58,-508.5C454.93,-508.5 478,-508.5 498.14,-508.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="498.38,-512 508.38,-508.5 498.38,-505 498.38,-512"/>
+<path fill="none" stroke="#63b8ff" d="M433.58,-508.5C458.98,-508.5 486.82,-508.5 509.27,-508.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="509.5,-512 519.5,-508.5 509.5,-505 509.5,-512"/>
 </a>
 </g>
 </g>
