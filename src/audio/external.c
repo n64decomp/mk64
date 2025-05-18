@@ -231,7 +231,7 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
     f32 var_f0;
     f32 var_f14;
     f32 new_var;
-    f32 *new_var2;
+    f32* new_var2;
     f32 var_f16;
     f32 var_f18;
     f32 var_f20;
@@ -1096,7 +1096,7 @@ void func_800C3724(void) {
             if (func_800C357C_eu(-0x10000000, -0x10000000) == 0) {
                 D_801930D0[seqPlayerIndex].unk_041 = 0;
                 return;
-            }  
+            }
 #endif
             if (D_801930D0[seqPlayerIndex].unk_040 != 0) {
                 D_801930D0[seqPlayerIndex].unk_040--;
@@ -1349,7 +1349,7 @@ void func_800C4398(void) {
     }
     if ((sSoundBanks[bank][sSoundBankFreeListFront[bank]].next != 0xFF) && (soundIndex != 0)) {
         var_t2 = soundIndex = sSoundBankFreeListFront[bank];
-        sSoundBanks[bank][soundIndex].unk00 = (Vec3f*)&(*var_a2->position)[0];
+        sSoundBanks[bank][soundIndex].unk00 = (Vec3f*) &(*var_a2->position)[0];
         sSoundBanks[bank][soundIndex].unk04 = &(*var_a2->position)[1];
         sSoundBanks[bank][soundIndex].unk08 = &(*var_a2->position)[2];
         sSoundBanks[bank][soundIndex].cameraId = var_a2->cameraId;
@@ -1398,7 +1398,8 @@ struct ActiveSfx {
     u32 priority;
     u8 soundIndex;
 };
-#define AUDIO_MK_CMD(b0,b1,b2,b3) ((((b0) & 0xFF) << 0x18) | (((b1) & 0xFF) << 0x10) | (((b2) & 0xFF) << 0x8) | (((b3) & 0xFF) << 0))
+#define AUDIO_MK_CMD(b0, b1, b2, b3) \
+    ((((b0) & 0xFF) << 0x18) | (((b1) & 0xFF) << 0x10) | (((b2) & 0xFF) << 0x8) | (((b3) & 0xFF) << 0))
 void func_800C4888(u8 bankId) {
     u8 j;
     u8 numChannels;
@@ -1424,20 +1425,20 @@ void func_800C4888(u8 bankId) {
     soundIndex = sSoundBanks[bankId][0].next;
     k = 0;
     while (soundIndex != 0xFF) {
-        if ((sSoundBanks[bankId][soundIndex].soundStatus == 1) && ((sSoundBanks[bankId][soundIndex].soundBits & 0x08000000) == 0x08000000)) {
+        if ((sSoundBanks[bankId][soundIndex].soundStatus == 1) &&
+            ((sSoundBanks[bankId][soundIndex].soundBits & 0x08000000) == 0x08000000)) {
             sSoundBanks[bankId][soundIndex].freshness -= 1;
         }
-        
+
         if (sSoundBanks[bankId][soundIndex].freshness == 0) {
             delete_sound_from_bank(bankId, soundIndex);
         } else if (sSoundBanks[bankId][soundIndex].soundStatus != 0) {
             entry = &sSoundBanks[bankId][soundIndex];
-            
+
             if (&D_800EA1C8 == entry[0].unk00) {
                 entry->distance = 0.0f;
             } else {
-                entry->distance =
-                    (*entry->unk00[0] * *entry->unk00[0]) + (*entry->unk08 * *entry->unk08);
+                entry->distance = (*entry->unk00[0] * *entry->unk00[0]) + (*entry->unk08 * *entry->unk08);
             }
             requestedPriority = (((u32) (entry->soundBits & 0xFF00)) >> 8);
             if (entry->soundBits & 0x100000) {
@@ -1498,7 +1499,7 @@ void func_800C4888(u8 bankId) {
 
     for (i = 0; i < numChannels; i++) {
         needNewSfx = false;
-        activeSfx = (struct ActiveSfx*)&D_80192AB8[bankId][i];
+        activeSfx = (struct ActiveSfx*) &D_80192AB8[bankId][i];
 
         if (activeSfx->soundIndex == 0xFF) {
             needNewSfx = true;
@@ -1530,7 +1531,7 @@ void func_800C4888(u8 bankId) {
                 chosenEntryIndex = chosenSfx[j].soundIndex;
                 if ((chosenEntryIndex != 0xFF) && (sSoundBanks[bankId][chosenEntryIndex].soundStatus != 3)) {
                     for (k = 0; k < numChannels; k++) {
-                        if (chosenEntryIndex == ((struct ActiveSfx*)(D_80192AB8[bankId]))[k].soundIndex) {
+                        if (chosenEntryIndex == ((struct ActiveSfx*) (D_80192AB8[bankId]))[k].soundIndex) {
                             needNewSfx = false;
                             k = numChannels;
                         }
@@ -1950,7 +1951,7 @@ void func_800C6108(u8 playerId) {
         D_800E9ED4[playerId] = D_800E9EE4[playerId] * 0.25f;
         D_800E9F7C[playerId].unk_0C = D_800E9EC4[playerId] + D_800E9ED4[playerId] + D_800E9F34[playerId];
     } else {
-    D_800E9F7C[playerId].unk_0C = D_800E9EB4[playerId] + D_800E9F34[playerId];
+        D_800E9F7C[playerId].unk_0C = D_800E9EB4[playerId] + D_800E9F34[playerId];
     }
 #ifdef VERSION_EU
     if (D_800E9F7C[playerId].unk_0C < 0.0f) {
