@@ -564,7 +564,7 @@ s16 get_angle_between_path(Vec3f arg0, Vec3f arg1) {
     return phi_v1;
 }
 
-bool is_collide_with_vehicle(f32 vehicleX, f32 vehicleY, f32 vehicleVelocityX, f32 vehicleVelocityZ, f32 distanceX,
+bool is_collide_with_vehicle(f32 vehicleX, f32 vehicleZ, f32 vehicleVelocityX, f32 vehicleVelocityZ, f32 distanceX,
                              f32 distanceY, f32 playerX, f32 playerZ) {
     f32 velocity;
     f32 temp_f18;
@@ -574,10 +574,10 @@ bool is_collide_with_vehicle(f32 vehicleX, f32 vehicleY, f32 vehicleVelocityX, f
         return false;
     }
     temp_f18 =
-        ((vehicleVelocityX / velocity) * (playerX - vehicleX)) + ((vehicleVelocityZ / velocity) * (playerZ - vehicleY));
+        ((vehicleVelocityX / velocity) * (playerX - vehicleX)) + ((vehicleVelocityZ / velocity) * (playerZ - vehicleZ));
     if ((-distanceX < temp_f18) && (temp_f18 < distanceX)) {
         temp_f18 = ((vehicleVelocityZ / velocity) * (playerX - vehicleX)) +
-                   (-(vehicleVelocityX / velocity) * (playerZ - vehicleY));
+                   (-(vehicleVelocityX / velocity) * (playerZ - vehicleZ));
         if ((-distanceY < temp_f18) && (temp_f18 < distanceY)) {
             return true;
         }
@@ -1113,7 +1113,7 @@ s32 update_player_path_selection(s32 payerId, s32 pathIndex) {
     stackPadding = pathIndex;
     trackSectionId = get_track_section_id(player->collision.meshIndexZX);
     gPlayersTrackSectionId[payerId] = trackSectionId;
-    sSomeNearestPathPoint = find_closest_pathPoint_track_section(posX, posY, posZ, trackSectionId, &pathIndex);
+    sSomeNearestPathPoint = find_closest_path_point_track_section(posX, posY, posZ, trackSectionId, &pathIndex);
     gNearestPathPointByPlayerId[payerId] = sSomeNearestPathPoint;
     if (pathIndex) {};
     gPathIndexByPlayerId[payerId] = pathIndex;
@@ -1445,7 +1445,7 @@ void update_player(s32 playerId) {
                     }
                     break;
                 case COURSE_DK_JUNGLE:
-                    handle_paddleBoats_interactions(player);
+                    handle_paddle_boats_interactions(player);
                     break;
                 case COURSE_TOADS_TURNPIKE:
                     handle_box_trucks_interactions(playerId, player);
@@ -1697,7 +1697,7 @@ void update_player(s32 playerId) {
                         }
                         break;
                 }
-                if ((cpu_BehaviourState[playerId] == cpu_BEHAVIOUR_STATE_RUNNING) &&
+                if ((cpu_BehaviourState[playerId] == CPU_BEHAVIOUR_STATE_RUNNING) &&
                     ((gTrackPositionFactor[playerId] > 0.9f) || (gTrackPositionFactor[playerId] < -0.9f))) {
                     D_801630E8[playerId] = 0;
                     player->effects &= ~0x10;
@@ -1978,7 +1978,7 @@ void func_8000F124(void) {
 }
 
 // Delete track path
-void clear_pathPoint(TrackPathPoint* arg0, size_t size) {
+void clear_path_point(TrackPathPoint* arg0, size_t size) {
     bzero((void*) arg0, size * sizeof(TrackPathPoint));
 }
 
@@ -2017,9 +2017,9 @@ void init_course_path_point(void) {
     // zero allocated memory?
     //! @warning does not appear to zero all the above allocated variables.
     for (i = 0; i < 4; i++) {
-        clear_pathPoint(gTrackPaths[i], gSizePath[i]);
-        clear_pathPoint(gTrackLeftPaths[i], gSizePath[i]);
-        clear_pathPoint(gTrackRightPaths[i], gSizePath[i]);
+        clear_path_point(gTrackPaths[i], gSizePath[i]);
+        clear_path_point(gTrackLeftPaths[i], gSizePath[i]);
+        clear_path_point(gTrackRightPaths[i], gSizePath[i]);
     }
 
     // Skip several cpu cycles.
@@ -4563,7 +4563,7 @@ void func_8001C14C(void) {
     }
 }
 
-void func_8001C3C4(s32 cameraId) {
+void render_bomb_karts_wrap(s32 cameraId) {
     if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
         if (gBombKarts[0].pathPointIndex >= 16) {
             func_80057114(PLAYER_FOUR);
