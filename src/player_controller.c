@@ -1096,10 +1096,10 @@ void func_8002A704(Player* player, s8 arg1) {
 
 void func_8002A79C(Player* player, s8 arg1) {
     if (((player->effects & UNKNOWN_EFFECT_0x100) != UNKNOWN_EFFECT_0x100) &&
-        ((player->effects & UNKNOWN_EFFECT_0x10) != UNKNOWN_EFFECT_0x10) && (player->unk_22A >= 2)) {
+        ((player->effects & UNKNOWN_EFFECT_0x10) != UNKNOWN_EFFECT_0x10) && (player->driftState >= 2)) {
         player->effects |= UNKNOWN_EFFECT_0x100;
         player->unk_23A = 0;
-        player->unk_22A = 0;
+        player->driftState = 0;
         player->unk_228 = 0;
         if (D_8015F890 != 1) {
             if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
@@ -1113,7 +1113,7 @@ void func_8002A79C(Player* player, s8 arg1) {
         if (player->unk_23A >= 0x1F) {
             player->unk_23A = 0;
             player->effects &= ~0x100;
-            player->unk_22A = 0;
+            player->driftState = 0;
             player->unk_228 = 0;
         }
     }
@@ -1130,15 +1130,15 @@ void func_8002A8A4(Player* player, s8 arg1) {
             }
         } else {
             if ((player->unk_228 >= 0x12) && (player->unk_228 < 0x64)) {
-                if (player->unk_22A < 3) {
-                    player->unk_22A++;
+                if (player->driftState < 3) {
+                    player->driftState++;
                 }
             }
             if ((player->unk_228 >= 0xA) && (player->unk_228 < 0x64)) {
                 player->unk_228 = 0x000A;
             } else {
                 player->unk_228 = 0;
-                player->unk_22A = 0;
+                player->driftState = 0;
             }
         }
     } else if (((s32) player->unk_07C >> 0x10) >= 0xA) {
@@ -1150,15 +1150,15 @@ void func_8002A8A4(Player* player, s8 arg1) {
         }
     } else {
         if ((player->unk_228 >= 0x12) && (player->unk_228 < 0x64)) {
-            if (player->unk_22A < 3) {
-                player->unk_22A++;
+            if (player->driftState < 3) {
+                player->driftState++;
             }
         }
         if ((player->unk_228 >= 0xA) && (player->unk_228 < 0x64)) {
             player->unk_228 = 0x000A;
         } else {
             player->unk_228 = 0;
-            player->unk_22A = 0;
+            player->driftState = 0;
         }
     }
 }
@@ -4065,8 +4065,8 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
                 }
             }
             player->unk_228 = 0;
-            if (player->unk_22A < 2) {
-                player->unk_22A = 0;
+            if (player->driftState < 2) {
+                player->driftState = 0;
             }
         }
     } else if (((player->effects & 8) != 8) && ((player->effects & 2) != 2)) {
@@ -4374,6 +4374,7 @@ void func_80037614(Player* player, Vec3f arg1, Vec3f arg2) {
     arg2[2] = arg1[2];
 }
 
+
 void func_8003777C(Player* player, Vec3f arg1, Vec3f arg2) {
     f32 var_f12;
     f32 var_f2;
@@ -4553,14 +4554,14 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 arg2) {
             }
         }
         if ((!(player->effects & BOOST_RAMP_ASPHALT_EFFECT)) && (!(player->effects & 4))) {
-            if (((func_800388B0(controller) < (-0x31)) && (((player->speed / 18.0f) * 216.0f) <= 5.0f)) &&
+            if (((get_clamped_stickY_with_deadzone(controller) < (-0x31)) && (((player->speed / 18.0f) * 216.0f) <= 5.0f)) &&
                 (controller->button & B_BUTTON)) {
                 player->currentSpeed = 140.0f;
                 player->unk_044 |= 1;
                 player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
                 player->unk_20C = 0.0f;
             }
-            if ((func_800388B0(controller) >= -0x1D) || (!(controller->button & B_BUTTON))) {
+            if ((get_clamped_stickY_with_deadzone(controller) >= -0x1D) || (!(controller->button & B_BUTTON))) {
                 if ((player->unk_044 & 1) == 1) {
                     player->unk_044 &= 0xFFFE;
                     player->currentSpeed = 0.0f;
@@ -4730,58 +4731,58 @@ s16 func_80038534(struct Controller* controller) {
     return temp_v0;
 }
 
-s16 func_800388B0(struct Controller* controller) {
-    s16 temp_a2;
-    s16 var_a3;
-    s16 var_t0;
-    s16 temp_v0;
+s16 get_clamped_stickY_with_deadzone(struct Controller* controller) {
+    s16 temp_StickY;
+    s16 temp_StickX2;
+    s16 temp_StickY2;
+    s16 temp_StickX;
 
-    temp_v0 = controller->rawStickX;
-    temp_a2 = controller->rawStickY;
-    var_a3 = temp_v0;
-    var_t0 = temp_a2;
+    temp_StickX = controller->rawStickX;
+    temp_StickY = controller->rawStickY;
+    temp_StickX2 = temp_StickX;
+    temp_StickY2 = temp_StickY;
 
-    if (temp_v0 > 0xC) {
-        var_t0 = (temp_a2 * 0x000C) / temp_v0;
-        var_a3 = 0x000C;
+    if (temp_StickX > 0xC) {
+        temp_StickY2 = (temp_StickY * 0x000C) / temp_StickX;
+        temp_StickX2 = 0x000C;
     }
-    if (var_a3 < -0xC) {
-        var_t0 = (var_t0 * 0x000C) / -var_a3;
-        var_a3 = -0x000C;
+    if (temp_StickX2 < -0xC) {
+        temp_StickY2 = (temp_StickY2 * 0x000C) / -temp_StickX2;
+        temp_StickX2 = -0x000C;
     }
-    if (var_t0 > 0xC) {
-        var_a3 = (var_a3 * 0x000C) / var_t0;
-        var_t0 = 0x000C;
+    if (temp_StickY2 > 0xC) {
+        temp_StickX2 = (temp_StickX2 * 0x000C) / temp_StickY2;
+        temp_StickY2 = 0x000C;
     }
-    if (var_t0 < -0xC) {
-        var_a3 = (var_a3 * 0x000C) / -var_t0;
-        var_t0 = -0x000C;
+    if (temp_StickY2 < -0xC) {
+        temp_StickX2 = (temp_StickX2 * 0x000C) / -temp_StickY2;
+        temp_StickY2 = -0x000C;
     }
     if ((((controller->rawStickX > -0xD) && (controller->rawStickX < 0xD)) && (controller->rawStickY > -0xD)) &&
         (controller->rawStickY < 0xD)) {
-        temp_v0 = 0;
-        temp_a2 = 0;
+        temp_StickX = 0;
+        temp_StickY = 0;
     } else {
-        temp_v0 -= var_a3;
-        temp_a2 -= var_t0;
+        temp_StickX -= temp_StickX2;
+        temp_StickY -= temp_StickY2;
     }
-    if (temp_v0 > 0x35) {
-        temp_a2 = (temp_a2 * 0x0035) / temp_v0;
-        temp_v0 = 0x0035;
+    if (temp_StickX > 0x35) {
+        temp_StickY = (temp_StickY * 0x0035) / temp_StickX;
+        temp_StickX = 0x0035;
     }
-    if (temp_v0 < -0x35) {
-        temp_a2 = (temp_a2 * 0x0035) / -temp_v0;
-        temp_v0 = -0x0035;
+    if (temp_StickX < -0x35) {
+        temp_StickY = (temp_StickY * 0x0035) / -temp_StickX;
+        temp_StickX = -0x0035;
     }
-    if (temp_a2 > 0x35) {
-        temp_v0 = (temp_v0 * 0x0035) / temp_a2;
-        temp_a2 = 0x0035;
+    if (temp_StickY > 0x35) {
+        temp_StickX = (temp_StickX * 0x0035) / temp_StickY;
+        temp_StickY = 0x0035;
     }
-    if (temp_a2 < -0x35) {
-        temp_v0 = (temp_v0 * 0x0035) / -temp_a2;
-        temp_a2 = -0x0035;
+    if (temp_StickY < -0x35) {
+        temp_StickX = (temp_StickX * 0x0035) / -temp_StickY;
+        temp_StickY = -0x0035;
     }
-    return temp_a2;
+    return temp_StickY;
 }
 
 void func_80038BE4(Player* player, s16 arg1) {

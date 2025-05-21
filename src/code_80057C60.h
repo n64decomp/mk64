@@ -117,15 +117,15 @@ void func_8005D1F4(s32);
 
 void func_8005D290(void);
 void func_8005D6C0(Player*);
-void func_8005D794(Player*, UnkPlayerStruct258*, f32, f32, f32, s8, s8);
-s32 func_8005D7D8(UnkPlayerStruct258*, s8, f32);
-s32 func_8005D800(UnkPlayerStruct258*, s32, s16);
-s32 func_8005D82C(UnkPlayerStruct258*, s32, s16);
-void func_8005D898(Player*, s16, s32, s8, s8);
-void func_8005DA30(Player*, s16, s32, s8, s8);
+void set_tyre_particle_position_and_rotation(Player*, TyreParticle*, f32, f32, f32, s8, s8);
+s32 set_tyre_particle_active(TyreParticle*, s8, f32);
+s32 set_tyre_particle_colour(TyreParticle*, s32, s16);
+s32 set_tyre_particle_colour_randomly_varried(TyreParticle*, s32, s16);
+void set_tyre_drift_effect(Player*, s16, s32, s8, s8);
+void check_tyre_drift_effect_setup_valid(Player*, s16, s32, s8, s8);
 void func_8005DAD0(void);
-void func_8005DAD8(UnkPlayerStruct258*, s16, s16, s16);
-void func_8005DAF4(Player*, s16, s32, s8, s8);
+void func_8005DAD8(TyreParticle*, s16, s16, s16);
+void render_tyres_particles(Player*, s16, s32, s8, s8);
 void func_8005EA94(Player*, s16, s32, s8, s8);
 void func_8005ED48(Player*, s16, s32, s8, s8);
 
@@ -150,7 +150,7 @@ void func_80061D4C(Player*, s16, s32, s8, s8);
 void func_80061EF4(Player*, s16, s32, s8, s8);
 
 void func_800621BC(Player*, s16, s32, s8, s8);
-void func_80062484(Player*, UnkPlayerStruct258*, s32);
+void func_80062484(Player*, TyreParticle*, s32);
 void func_800624D8(Player*, s32, s32, s8, s8);
 void func_800628C0(Player*, s8, s8, s8);
 void func_80062914(Player*, s8, s8, s8);
@@ -162,7 +162,7 @@ void func_80062B18(f32*, f32*, f32*, f32, f32, f32, u16, u16);
 void func_80062C74(Player*, s16, s32, s32);
 void func_80062F98(Player*, s16, s8, s8);
 
-void func_800630C0(Player*, s16, s8, s8);
+void set_oob_splash_velocity(Player*, s16, s8, s8);
 void func_800631A8(Player*, s16, s8, s8);
 void func_80063268(Player*, s16, s8, s8);
 void func_80063408(Player*, s16, s8, s8);

@@ -107,7 +107,7 @@ void func_80037CFC(Player*, struct Controller*, s8);
 void func_800381AC(Player*, struct Controller*, s8);
 void func_800382DC(void);
 s16 func_80038534(struct Controller*);
-s16 func_800388B0(struct Controller*);
+s16 get_clamped_stickY_with_deadzone(struct Controller*);
 void func_80038BE4(Player*, s16);
 void func_80038C6C(Player*, Camera*, s8, s8);
 
