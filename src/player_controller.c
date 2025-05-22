@@ -3845,7 +3845,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         player->unk_044 &= 0xFFF9;
     }
     sp2E4 = player->unk_07C;
-    temp_v0_3 = func_80038534(controller);
+    temp_v0_3 = get_clamped_stickX_with_deadzone(controller);
     if (((player->unk_044 & 1) == 1) || ((player->unk_044 & 8) == 8)) {
         temp_v0_3 = -temp_v0_3;
     }
@@ -4678,57 +4678,57 @@ void func_800382DC(void) {
     }
 }
 
-s16 func_80038534(struct Controller* controller) {
-    s16 temp_a2;
-    s16 var_a3;
-    s16 var_t0;
-    s16 temp_v0;
+s16 get_clamped_stickX_with_deadzone(struct Controller* controller) {
+    s16 temp_stickY;
+    s16 temp_stickX2;
+    s16 temp_stickY2;
+    s16 temp_stickX;
 
-    temp_v0 = controller->rawStickX;
-    temp_a2 = controller->rawStickY;
-    var_a3 = temp_v0;
-    var_t0 = temp_a2;
+    temp_stickX = controller->rawStickX;
+    temp_stickY = controller->rawStickY;
+    temp_stickX2 = temp_stickX;
+    temp_stickY2 = temp_stickY;
 
-    if (temp_v0 > 0xC) {
-        var_t0 = (temp_a2 * 0x000C) / temp_v0;
-        var_a3 = 0x000C;
+    if (temp_stickX > 0xC) {
+        temp_stickY2 = (temp_stickY * 0x000C) / temp_stickX;
+        temp_stickX2 = 0x000C;
     }
-    if (var_a3 < -0xC) {
-        var_t0 = (var_t0 * 0x000C) / -var_a3;
-        var_a3 = -0x000C;
+    if (temp_stickX2 < -0xC) {
+        temp_stickY2 = (temp_stickY2 * 0x000C) / -temp_stickX2;
+        temp_stickX2 = -0x000C;
     }
-    if (var_t0 > 0xC) {
-        var_a3 = (var_a3 * 0x000C) / var_t0;
-        var_t0 = 0x000C;
+    if (temp_stickY2 > 0xC) {
+        temp_stickX2 = (temp_stickX2 * 0x000C) / temp_stickY2;
+        temp_stickY2 = 0x000C;
     }
-    if (var_t0 < -0xC) {
-        var_a3 = (var_a3 * 0x000C) / -var_t0;
-        var_t0 = -0x000C;
+    if (temp_stickY2 < -0xC) {
+        temp_stickX2 = (temp_stickX2 * 0x000C) / -temp_stickY2;
+        temp_stickY2 = -0x000C;
     }
     if ((((controller->rawStickX > -0xD) && (controller->rawStickX < 0xD)) && (controller->rawStickY > -0xD)) &&
         (controller->rawStickY < 0xD)) {
-        temp_v0 = 0;
-        temp_a2 = 0;
+        temp_stickX = 0;
+        temp_stickY = 0;
     } else {
-        temp_v0 -= var_a3;
-        temp_a2 -= var_t0;
+        temp_stickX -= temp_stickX2;
+        temp_stickY -= temp_stickY2;
     }
-    if (temp_v0 > 0x35) {
-        temp_a2 = (temp_a2 * 0x0035) / temp_v0;
-        temp_v0 = 0x0035;
+    if (temp_stickX > 0x35) {
+        temp_stickY = (temp_stickY * 0x0035) / temp_stickX;
+        temp_stickX = 0x0035;
     }
-    if (temp_v0 < -0x35) {
-        temp_a2 = (temp_a2 * 0x0035) / -temp_v0;
-        temp_v0 = -0x0035;
+    if (temp_stickX < -0x35) {
+        temp_stickY = (temp_stickY * 0x0035) / -temp_stickX;
+        temp_stickX = -0x0035;
     }
-    if (temp_a2 > 0x35) {
-        temp_v0 = (temp_v0 * 0x0035) / temp_a2;
-        temp_a2 = 0x0035;
+    if (temp_stickY > 0x35) {
+        temp_stickX = (temp_stickX * 0x0035) / temp_stickY;
+        temp_stickY = 0x0035;
     }
-    if (temp_a2 < -0x35) {
-        temp_v0 = (temp_v0 * 0x0035) / -temp_a2;
+    if (temp_stickY < -0x35) {
+        temp_stickX = (temp_stickX * 0x0035) / -temp_stickY;
     }
-    return temp_v0;
+    return temp_stickX;
 }
 
 s16 get_clamped_stickY_with_deadzone(struct Controller* controller) {
