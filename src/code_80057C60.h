@@ -121,11 +121,11 @@ void set_tyre_particle_position_and_rotation(Player*, TyreParticle*, f32, f32, f
 s32 set_tyre_particle_active(TyreParticle*, s8, f32);
 s32 set_tyre_particle_colour(TyreParticle*, s32, s16);
 s32 set_tyre_particle_colour_randomly_varried(TyreParticle*, s32, s16);
-void set_tyre_drift_effect(Player*, s16, s32, s8, s8);
-void check_tyre_drift_effect_setup_valid(Player*, s16, s32, s8, s8);
+void set_tyre_drift_particles(Player*, s16, s32, s8, s8);
+void check_tyre_drift_particles_setup_valid(Player*, s16, s32, s8, s8);
 void func_8005DAD0(void);
 void func_8005DAD8(TyreParticle*, s16, s16, s16);
-void render_tyres_particles(Player*, s16, s32, s8, s8);
+void setup_tyre_particles(Player*, s16, s32, s8, s8);
 void func_8005EA94(Player*, s16, s32, s8, s8);
 void func_8005ED48(Player*, s16, s32, s8, s8);
 
@@ -162,7 +162,7 @@ void func_80062B18(f32*, f32*, f32*, f32, f32, f32, u16, u16);
 void func_80062C74(Player*, s16, s32, s32);
 void func_80062F98(Player*, s16, s8, s8);
 
-void set_oob_splash_velocity(Player*, s16, s8, s8);
+void set_oob_splash_particle_position(Player*, s16, s8, s8);
 void func_800631A8(Player*, s16, s8, s8);
 void func_80063268(Player*, s16, s8, s8);
 void func_80063408(Player*, s16, s8, s8);
@@ -200,19 +200,19 @@ void func_80066998(Player*, s8, s16, s8);
 void func_80066BAC(Player*, s8, s16, s8);
 
 void func_80067280(Player*, s8, s16, s8);
-void func_80067604(Player*, s8, s16, s8);
-void func_80067964(Player*, s8, f32, s8, s8);
-void func_80067D3C(Player*, s8, u8*, s8, f32, s32);
+void render_boost_spark_particles(Player*, s8, s16, s8);
+void render_whirrr_onomatopoeia(Player*, s8, f32, s8, s8);
+void render_speech_bubble(Player*, s8, u8*, s8, f32, s32);
 
-void func_8006801C(Player*, s8, u8*, s8, f32, s32);
+void render_music_note(Player*, s8, u8*, s8, f32, s32);
 void func_80068310(Player*, s8, f32, s8, s8);
 void func_80068724(Player*, s8, f32, s8, s8);
-void func_80068AA4(Player*, s8, f32, s8, s8);
-void func_80068DA0(Player*, s8, f32, s8, s8);
+void render_boing_onomatopoeia(Player*, s8, f32, s8, s8);
+void render_pomp_onomatopoeia(Player*, s8, f32, s8, s8);
 
-void func_800691B8(Player*, s8, s16, s8);
+void render_actor_bonk_particles(Player*, s8, s16, s8);
 void func_80069444(Player*, s8, s16, s8);
-void func_800696CC(Player*, s8, s16, s8, f32);
+void render_wall_bonk_star_particles(Player*, s8, s16, s8, f32);
 void func_80069938(Player*, s8, s16, s8);
 void func_80069BA8(Player*, s8, s16, s8);
 void func_80069DB8(Player*, s8, s16, s8);

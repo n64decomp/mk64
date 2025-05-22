@@ -142,7 +142,7 @@ typedef struct {
 typedef struct {
     // This will need lots of expanding/documenting
     // Its 147 words of space being used
-    /* 0x000 */ f32 pos;
+    /* 0x000 */ f32 unk_000;
     /* 0x004 */ f32 unk_004;
     /* 0x008 */ f32 unk_008;
     /* 0x00C */ u16 unk_00C;
@@ -154,7 +154,7 @@ typedef struct {
     /* 0x018 */ u16 unk_018;
     /* 0x01A */ u16 unk_01A;
     /* 0x01C */ f32 unk_01C;
-    /* 0x020 */ f32 rotation;
+    /* 0x020 */ f32 unk_020;
     /* 0x024 */ f32 unk_024;
     /* 0x028 */ u16 unk_028;
     /* 0x02A */ u16 unk_02A;

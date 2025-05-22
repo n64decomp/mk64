@@ -353,7 +353,7 @@ typedef struct {
     /* 0x024C */ u16 animGroupSelector[4];
     /* 0x0254 */ u16 characterId;
     /* 0x0256 */ u16 unk_256;
-    /* 0x0258 */ TyreParticle tyreParticles[40];
+    /* 0x0258 */ TyreParticle particles[40];
     /* 0x0D98 */ s16 unk_D98;
     /* 0x0D9A */ s16 unk_D9A;
     /* 0x0D9C */ f32 unk_D9C;

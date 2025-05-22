@@ -2749,9 +2749,9 @@ void func_8005D290(void) {
     D_8018D420 = dma_textures(gTexture69B03C, 0x100, 0x100);
     D_8018D424 = dma_textures(gTexture69B140, 0x400, 0x400);
     D_8018D478 = dma_textures(gTexture69C1E8, 0x200, 0x200);
-    D_8018D480 = dma_textures(gTexture69BA28, 0x400, 0x400);
-    D_8018D484 = dma_textures(gTexture69B960, 0x400, 0x400);
-    D_8018D48C = dma_textures(gTexture69C354, 0x400, 0x400);
+    D_8018D480 = dma_textures(gTextureSpeechBubble, 0x400, 0x400);
+    D_8018D484 = dma_textures(gTextureMusicNote, 0x400, 0x400);
+    D_8018D48C = dma_textures(gTextureSmokePuff, 0x400, 0x400);
     D_8018D494 = dma_textures(gTexture69C4E4, 0x400, 0x400);
     D_8018D490 = D_8018D48C;
     D_8018D498 = dma_textures(gTexture69B378, 0x1000, 0x1000);
@@ -2788,34 +2788,34 @@ void func_8005D6C0(Player* player) {
     s32 temp_v0;
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->tyreParticles[temp_v0].active = 0;
-        player->tyreParticles[temp_v0].particle_timer = 0;
-        player->tyreParticles[temp_v0].particle_type = 0;
+        player->particles[temp_v0].active = 0;
+        player->particles[temp_v0].particle_timer = 0;
+        player->particles[temp_v0].particle_type = 0;
     }
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->tyreParticles[30 + temp_v0].active = 0;
-        player->tyreParticles[30 + temp_v0].particle_timer = 0;
-        player->tyreParticles[30 + temp_v0].particle_type = 0;
+        player->particles[30 + temp_v0].active = 0;
+        player->particles[30 + temp_v0].particle_timer = 0;
+        player->particles[30 + temp_v0].particle_type = 0;
     }
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->tyreParticles[10 + temp_v0].active = 0;
-        player->tyreParticles[10 + temp_v0].particle_timer = 0;
-        player->tyreParticles[10 + temp_v0].particle_type = 0;
+        player->particles[10 + temp_v0].active = 0;
+        player->particles[10 + temp_v0].particle_timer = 0;
+        player->particles[10 + temp_v0].particle_type = 0;
     }
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->tyreParticles[20 + temp_v0].active = 0;
-        player->tyreParticles[20 + temp_v0].particle_timer = 0;
-        player->tyreParticles[20 + temp_v0].particle_type = 0;
+        player->particles[20 + temp_v0].active = 0;
+        player->particles[20 + temp_v0].particle_timer = 0;
+        player->particles[20 + temp_v0].particle_type = 0;
     }
 }
 
-void set_tyre_particle_position_and_rotation(Player* player, TyreParticle* arg1, f32 arg2, f32 arg3, f32 arg4, s8 surfaceType, s8 arg6) {
-    arg1->pos[2] = arg4;
-    arg1->pos[0] = arg2;
-    arg1->pos[1] = arg3;
+void set_tyre_particle_position_and_rotation(Player* player, TyreParticle* arg1, f32 x, f32 y, f32 z, s8 surfaceType, s8 arg6) {
+    arg1->pos[2] = z;
+    arg1->pos[0] = x;
+    arg1->pos[1] = y;
     arg1->rotation = -player->rotation[1];
     arg1->unk_014 = surfaceType;
     arg1->unk_010 = arg6;
@@ -2844,49 +2844,49 @@ s32 set_tyre_particle_colour_randomly_varried(TyreParticle* arg0, s32 arg1, s16 
     arg0->alpha = arg2;
 }
 
-void set_tyre_drift_effect(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
+void set_tyre_drift_particles(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 temp_lo;
 
     if (player->unk_0C0 >= 0) {
-        set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], player->tyres[BACK_LEFT].pos[0],
+        set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], player->tyres[BACK_LEFT].pos[0],
                       player->tyres[BACK_LEFT].baseHeight + 2.0f, player->tyres[BACK_LEFT].pos[2],
                       player->tyres[BACK_LEFT].surfaceType, 1);
     } else {
-        set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], player->tyres[BACK_RIGHT].pos[0],
+        set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], player->tyres[BACK_RIGHT].pos[0],
                       player->tyres[BACK_RIGHT].baseHeight + 2.0f, player->tyres[BACK_RIGHT].pos[2],
                       player->tyres[BACK_RIGHT].surfaceType, 0);
     }
 
     temp_lo = player->unk_0C0 / 182;
     if ((temp_lo >= 7) || (temp_lo < -6)) {
-        set_tyre_particle_active(&player->tyreParticles[10 + arg1], 1, 0.35f);
+        set_tyre_particle_active(&player->particles[10 + arg1], 1, 0.35f);
         if (player->driftState == 0) {
-            set_tyre_particle_colour(&player->tyreParticles[10 + arg1], 0xFFFFFF, 0x70);
+            set_tyre_particle_colour(&player->particles[10 + arg1], 0xFFFFFF, 0x70);
         }
 
         if (player->driftState == 1) {
-            set_tyre_particle_colour(&player->tyreParticles[10 + arg1], 0xFFFF00, 0x70);
+            set_tyre_particle_colour(&player->particles[10 + arg1], 0xFFFF00, 0x70);
         }
 
         if (player->driftState >= 2) {
-            set_tyre_particle_colour(&player->tyreParticles[10 + arg1], 0xFF9600, 0x70);
+            set_tyre_particle_colour(&player->particles[10 + arg1], 0xFF9600, 0x70);
         }
 
         if (player->driftState >= 2) {
             // Why not put this in previous if statement?
-            player->tyreParticles[10 + arg1].unk_040 = 2;
+            player->particles[10 + arg1].unk_040 = 2;
             return;
         }
 
-        player->tyreParticles[10 + arg1].unk_040 = player->driftState;
+        player->particles[10 + arg1].unk_040 = player->driftState;
     }
 }
 
-void check_tyre_drift_effect_setup_valid(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
-    if ((arg1 == 0) && ((player->tyreParticles[10 + arg2].particle_timer >= 3) || (player->tyreParticles[10 + arg2].active == 0))) {
-        set_tyre_drift_effect(player, arg1, arg2, arg3, arg4);
-    } else if (player->tyreParticles[10 + arg2].particle_timer >= 3) {
-        set_tyre_drift_effect(player, arg1, arg2, arg3, arg4);
+void check_tyre_drift_particles_setup_valid(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
+    if ((arg1 == 0) && ((player->particles[10 + arg2].particle_timer >= 3) || (player->particles[10 + arg2].active == 0))) {
+        set_tyre_drift_particles(player, arg1, arg2, arg3, arg4);
+    } else if (player->particles[10 + arg2].particle_timer >= 3) {
+        set_tyre_drift_particles(player, arg1, arg2, arg3, arg4);
     }
 }
 
@@ -2899,224 +2899,223 @@ void func_8005DAD8(TyreParticle* arg0, s16 arg1, s16 arg2, s16 arg3) {
     arg0->unk_040 = arg2;
 }
 
-void render_tyres_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
-    //Particles when spinning out are handeled elsewhere.
+void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     UNUSED s32 stackPadding;
     s32 surfaceType;
     s32 var_t3;
-    f32 var_f2;
-    f32 var_f12;
-    f32 var_f14;
+    f32 tyre_x;
+    f32 tyre_y;
+    f32 tyre_z;
     s32 temp_v0;
     static s32 test = 8;
 
     surfaceType = 0x000000FF;
     temp_v0 = random_int(test);
     if ((temp_v0 == 0) || (temp_v0 == 4)) {
-        var_f2 = player->tyres[BACK_LEFT].pos[0];
-        var_f12 = player->tyres[BACK_LEFT].baseHeight + 2.0f;
-        var_f14 = player->tyres[BACK_LEFT].pos[2];
+        tyre_x = player->tyres[BACK_LEFT].pos[0];
+        tyre_y = player->tyres[BACK_LEFT].baseHeight + 2.0f;
+        tyre_z = player->tyres[BACK_LEFT].pos[2];
         var_t3 = 1;
         surfaceType = player->tyres[BACK_LEFT].surfaceType;
     }
     if ((temp_v0 == 2) || (temp_v0 == 6)) {
-        var_f2 = player->tyres[BACK_RIGHT].pos[0];
-        var_f12 = player->tyres[BACK_RIGHT].baseHeight + 2.0f;
-        var_f14 = player->tyres[BACK_RIGHT].pos[2];
+        tyre_x = player->tyres[BACK_RIGHT].pos[0];
+        tyre_y = player->tyres[BACK_RIGHT].baseHeight + 2.0f;
+        tyre_z = player->tyres[BACK_RIGHT].pos[2];
         var_t3 = 0;
         surfaceType = player->tyres[BACK_RIGHT].surfaceType;
     }
     switch (surfaceType) {
         case DIRT:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
+                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
                     if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
-                        func_8005DAD8(&player->tyreParticles[10 + arg1], 1, 0, 0x0080);
+                        func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                     }
                     if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
-                        func_8005DAD8(&player->tyreParticles[10 + arg1], 7, 0, 0x0080);
+                        func_8005DAD8(&player->particles[10 + arg1], 7, 0, 0x0080);
                     }
                     if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
-                        func_8005DAD8(&player->tyreParticles[10 + arg1], 8, 0, 0x0080);
+                        func_8005DAD8(&player->particles[10 + arg1], 8, 0, 0x0080);
                     }
                     if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-                        func_8005DAD8(&player->tyreParticles[10 + arg1], 9, 0, 0x0080);
+                        func_8005DAD8(&player->particles[10 + arg1], 9, 0, 0x0080);
                     }
                     if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-                        func_8005DAD8(&player->tyreParticles[10 + arg1], 10, 0, 0x0080);
+                        func_8005DAD8(&player->particles[10 + arg1], 10, 0, 0x0080);
                     }
                     if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                        func_8005DAD8(&player->tyreParticles[10 + arg1], 11, 0, 0x0080);
+                        func_8005DAD8(&player->particles[10 + arg1], 11, 0, 0x0080);
                     }
-                    player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                    player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->tyreParticles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
+                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 1, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 7, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 7, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 8, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 8, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 9, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 9, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 10, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 10, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 11, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 11, 0, 0x0080);
                 }
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case GRASS:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->tyreParticles[10 + arg1], 3, 1.0f);
-                    set_tyre_particle_colour(&player->tyreParticles[10 + arg1], 0x00FFFFFF, 0x00FF);
-                    player->tyreParticles[10 + arg1].red -= arg1 * 8;
-                    player->tyreParticles[10 + arg1].green -= arg1 * 8;
-                    player->tyreParticles[10 + arg1].blue -= arg1 * 8;
+                    set_tyre_particle_active(&player->particles[10 + arg1], 3, 1.0f);
+                    set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+                    player->particles[10 + arg1].red -= arg1 * 8;
+                    player->particles[10 + arg1].green -= arg1 * 8;
+                    player->particles[10 + arg1].blue -= arg1 * 8;
                 }
-            } else if ((player->tyreParticles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 3, 1.0f);
-                set_tyre_particle_colour(&player->tyreParticles[10 + arg1], 0x00FFFFFF, 0x00FF);
-                player->tyreParticles[10 + arg1].red -= arg1 * 8;
-                player->tyreParticles[10 + arg1].green -= arg1 * 8;
-                player->tyreParticles[10 + arg1].blue -= arg1 * 8;
+                set_tyre_particle_active(&player->particles[10 + arg1], 3, 1.0f);
+                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+                player->particles[10 + arg1].red -= arg1 * 8;
+                player->particles[10 + arg1].green -= arg1 * 8;
+                player->particles[10 + arg1].blue -= arg1 * 8;
             }
-            player->tyreParticles[10 + arg1].pos[1] -= 1.5;
+            player->particles[10 + arg1].pos[1] -= 1.5;
             break;
         case SAND_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 2, 1, 0x00A8);
-                    player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
+                    player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->tyreParticles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 2, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case SAND:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 3, 1, 0x00A8);
-                    player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
+                    player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->tyreParticles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 3, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case WET_SAND:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 4, 1, 0x00A8);
-                    player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
+                    player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->tyreParticles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 4, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case DIRT_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 5, 1, 0x00A8);
-                    player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
+                    player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->tyreParticles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                set_tyre_particle_colour_randomly_varried(&player->tyreParticles[10 + arg1], 0x00FFA54F, 0x00AF);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 5, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                set_tyre_particle_colour_randomly_varried(&player->particles[10 + arg1], 0x00FFA54F, 0x00AF);
+                func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case SNOW:
         case SNOW_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 6, 1, 0x00A8);
-                    player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
+                    player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->tyreParticles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 6, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case ASPHALT:
         case STONE:
         case BRIDGE:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
                 if (((((player->speed / 18.0f) * 216.0f) >= 30.0f) &&
                      ((((player->unk_0C0 / 182) > 0x14) || ((player->unk_0C0 / 182) < (-0x14))))) ||
                     ((player->previousSpeed - player->speed) >= 0.04)) {
-                    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 0, 0, 0x0080);
-                    player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
+                    player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->tyreParticles[10 + arg2].particle_timer > 0) &&
+            } else if ((player->particles[10 + arg2].particle_timer > 0) &&
                        (((((player->speed / 18.0f) * 216.0f) >= 30.0f) &&
                          (((player->unk_0C0 / 182) >= 0x15) || ((player->unk_0C0 / 182) < -0x14))) ||
                         ((player->previousSpeed - player->speed) >= 0.04))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 2, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 0, 0, 0x0080);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         default:
@@ -3155,16 +3154,16 @@ void func_8005EA94(Player* player, s16 arg1, s32 arg2, s8 arg3, UNUSED s8 arg4) 
     }
     if (1) {}
     if (var_t0 == 0) {
-        if ((arg1 == 0) && ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
+        if ((arg1 == 0) && ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
             if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, var_t0, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 9, 0.8f);
-                set_tyre_particle_colour(&player->tyreParticles[10 + arg1], 0x00FFFFFF, 0x00AF);
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f2, var_f12, var_f14, var_t0, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 9, 0.8f);
+                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00AF);
             }
-        } else if ((player->tyreParticles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-            set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f2, var_f12, var_f14, var_t0, var_t1);
-            set_tyre_particle_active(&player->tyreParticles[10 + arg1], 9, 0.8f);
-            set_tyre_particle_colour(&player->tyreParticles[10 + arg1], 0x00FFFFFF, 0x00AF);
+        } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+            set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f2, var_f12, var_f14, var_t0, var_t1);
+            set_tyre_particle_active(&player->particles[10 + arg1], 9, 0.8f);
+            set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00AF);
         }
     }
 }
@@ -3197,170 +3196,170 @@ void func_8005ED48(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     switch (surfaceType) {
         case DIRT:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 1, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 7, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 7, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 8, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 8, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 9, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 9, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 10, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 10, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 11, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 11, 0, 0x0080);
                 }
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 1, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 7, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 7, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 8, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 8, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 9, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 9, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 0x000A, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 0x000A, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 0x000B, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 0x000B, 0, 0x0080);
                 }
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case GRASS:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.1f);
-                set_tyre_particle_colour(&player->tyreParticles[10 + arg1], 0x00FFFFFF, 0x00FF);
-                player->tyreParticles[10 + arg1].red -= arg1 * 8;
-                player->tyreParticles[10 + arg1].green -= arg1 * 8;
-                player->tyreParticles[10 + arg1].blue -= arg1 * 8;
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.1f);
+                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+                player->particles[10 + arg1].red -= arg1 * 8;
+                player->particles[10 + arg1].green -= arg1 * 8;
+                player->particles[10 + arg1].blue -= arg1 * 8;
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.1f);
-                set_tyre_particle_colour(&player->tyreParticles[10 + arg1], 0x00FFFFFF, 0x00FF);
-                player->tyreParticles[10 + arg1].red -= arg1 * 8;
-                player->tyreParticles[10 + arg1].green -= arg1 * 8;
-                player->tyreParticles[10 + arg1].blue -= arg1 * 8;
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.1f);
+                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+                player->particles[10 + arg1].red -= arg1 * 8;
+                player->particles[10 + arg1].green -= arg1 * 8;
+                player->particles[10 + arg1].blue -= arg1 * 8;
             }
-            player->tyreParticles[10 + arg1].pos[1] -= 1.5;
+            player->particles[10 + arg1].pos[1] -= 1.5;
             break;
         case SAND_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 2, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 2, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case SAND:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 3, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 3, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case WET_SAND:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 4, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 4, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case DIRT_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 5, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 5, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case SNOW:
         case SNOW_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 6, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 6, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case ASPHALT:
         case STONE:
         case BRIDGE:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 0, 0, 0x0080);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 5, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 0, 0, 0x0080);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         default:
@@ -3391,156 +3390,156 @@ void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     switch (surfaceType) {
         case DIRT:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 1, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 7, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 7, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 8, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 8, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 9, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 9, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 0x000A, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 0x000A, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 0x000B, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 0x000B, 0, 0x0080);
                 }
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 1, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 7, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 7, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 8, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 8, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 9, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 9, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 0x000A, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 0x000A, 0, 0x0080);
                 }
                 if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                    func_8005DAD8(&player->tyreParticles[10 + arg1], 0x000B, 0, 0x0080);
+                    func_8005DAD8(&player->particles[10 + arg1], 0x000B, 0, 0x0080);
                 }
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case GRASS:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.1f);
-                set_tyre_particle_colour(&player->tyreParticles[10 + arg1], 0x00FFFFFF, 0x00FF);
-                player->tyreParticles[10 + arg1].red -= arg1 * 8;
-                player->tyreParticles[10 + arg1].green -= arg1 * 8;
-                player->tyreParticles[10 + arg1].blue -= arg1 * 8;
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.1f);
-                set_tyre_particle_colour(&player->tyreParticles[10 + arg1], 0x00FFFFFF, 0x00FF);
-                player->tyreParticles[10 + arg1].red -= arg1 * 8;
-                player->tyreParticles[10 + arg1].green -= arg1 * 8;
-                player->tyreParticles[10 + arg1].blue -= arg1 * 8;
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.1f);
+                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+                player->particles[10 + arg1].red -= arg1 * 8;
+                player->particles[10 + arg1].green -= arg1 * 8;
+                player->particles[10 + arg1].blue -= arg1 * 8;
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.1f);
+                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+                player->particles[10 + arg1].red -= arg1 * 8;
+                player->particles[10 + arg1].green -= arg1 * 8;
+                player->particles[10 + arg1].blue -= arg1 * 8;
             }
-            player->tyreParticles[10 + arg1].pos[1] -= 1.5;
+            player->particles[10 + arg1].pos[1] -= 1.5;
             break;
         case SAND_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 2, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 2, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case SAND:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 3, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 3, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case WET_SAND:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 4, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 4, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case DIRT_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 5, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 5, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case SNOW:
         case SNOW_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 6, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 6, 1, 0x00A8);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case ASPHALT:
         case STONE:
         case BRIDGE:
             if ((arg1 == 0) &&
-                ((player->tyreParticles[10 + arg2].particle_timer > 0) || (player->tyreParticles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 0, 0, 0x0080);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->tyreParticles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->tyreParticles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->tyreParticles[10 + arg1], 4, 0.46f);
-                func_8005DAD8(&player->tyreParticles[10 + arg1], 0, 0, 0x0080);
-                player->tyreParticles[10 + arg1].green = random_int(0x0010U);
+                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
+                player->particles[10 + arg1].green = random_int(0x0010U);
+            } else if (player->particles[10 + arg2].particle_timer > 0) {
+                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
+                player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         default:
@@ -3567,53 +3566,53 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     }
     temp_v0 = random_int(var_v0);
     if ((temp_v0 == 1) || (temp_v0 == 2) || (temp_v0 == 3)) {
-        if ((arg1 == 0) && ((player->tyreParticles[arg2].particle_timer > 0) || (player->tyreParticles[arg2].active == 0))) {
+        if ((arg1 == 0) && ((player->particles[arg2].particle_timer > 0) || (player->particles[arg2].active == 0))) {
             sp4C = player->pos[1] - 2.5;
             sp48 = player->pos[2];
             sp50 = player->pos[0];
-            set_tyre_particle_position_and_rotation(player, &player->tyreParticles[arg1], sp50, sp4C, sp48, 0, 0);
-            set_tyre_particle_active(&player->tyreParticles[arg1], 1, 0.5f);
-        } else if (player->tyreParticles[arg2].particle_timer > 0) {
+            set_tyre_particle_position_and_rotation(player, &player->particles[arg1], sp50, sp4C, sp48, 0, 0);
+            set_tyre_particle_active(&player->particles[arg1], 1, 0.5f);
+        } else if (player->particles[arg2].particle_timer > 0) {
             sp4C = player->pos[1] - 2.5;
             sp48 = player->pos[2];
             sp50 = player->pos[0];
-            set_tyre_particle_position_and_rotation(player, &player->tyreParticles[arg1], sp50, sp4C, sp48, 0, 0);
-            set_tyre_particle_active(&player->tyreParticles[arg1], 1, 0.5f);
+            set_tyre_particle_position_and_rotation(player, &player->particles[arg1], sp50, sp4C, sp48, 0, 0);
+            set_tyre_particle_active(&player->particles[arg1], 1, 0.5f);
         }
     }
-    player->tyreParticles[arg1].unk_024 = 0.0f;
+    player->particles[arg1].unk_024 = 0.0f;
     if ((player->unk_044 & 0x20) == 0x20) {
-        player->tyreParticles[arg1].unk_040 = 0;
+        player->particles[arg1].unk_040 = 0;
         if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
-            set_tyre_particle_colour(&player->tyreParticles[arg1], 0x00FFFF00, 0x0080);
-            player->tyreParticles[arg1].red = 1;
+            set_tyre_particle_colour(&player->particles[arg1], 0x00FFFF00, 0x0080);
+            player->particles[arg1].red = 1;
         } else {
-            set_tyre_particle_colour(&player->tyreParticles[arg1], 0x00FFFFFF, 0x0070);
-            player->tyreParticles[arg1].red = 0;
+            set_tyre_particle_colour(&player->particles[arg1], 0x00FFFFFF, 0x0070);
+            player->particles[arg1].red = 0;
         }
     } else {
-        player->tyreParticles[arg1].unk_040 = 1;
+        player->particles[arg1].unk_040 = 1;
         if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
-            set_tyre_particle_colour(&player->tyreParticles[arg1], 0x00FFFF00, 0x0080);
-            player->tyreParticles[arg1].red = 1;
+            set_tyre_particle_colour(&player->particles[arg1], 0x00FFFF00, 0x0080);
+            player->particles[arg1].red = 1;
         } else {
-            set_tyre_particle_colour(&player->tyreParticles[arg1], 0x00FFFFFF, 0x0070);
-            player->tyreParticles[arg1].red = 0;
+            set_tyre_particle_colour(&player->particles[arg1], 0x00FFFFFF, 0x0070);
+            player->particles[arg1].red = 0;
         }
     }
-    thing2 = (player->tyreParticles[arg1].rotation - (player->unk_0C0 / 2));
-    if (player->tyreParticles[arg1].unk_040 == 0) {
+    thing2 = (player->particles[arg1].rotation - (player->unk_0C0 / 2));
+    if (player->particles[arg1].unk_040 == 0) {
         var_f0 = -((player->unk_098 / 3000.0f) + 0.1);
     } else {
         var_f0 = -((player->unk_098 / 5000.0f) + 0.1);
     }
-    func_80062B18(&sp50, &sp4C, &sp48, 0.0f, 4.5f, (player->tyreParticles[arg1].particle_timer * var_f0) + -5.5, -thing2,
+    func_80062B18(&sp50, &sp4C, &sp48, 0.0f, 4.5f, (player->particles[arg1].particle_timer * var_f0) + -5.5, -thing2,
                   -player->unk_206 * 2);
-    player->tyreParticles[arg1].pos[0] = player->pos[0] + sp50;
+    player->particles[arg1].pos[0] = player->pos[0] + sp50;
     sp4C = sp4C + (player->pos[1] - player->boundingBoxSize);
-    player->tyreParticles[arg1].pos[2] = player->pos[2] + sp48;
-    player->tyreParticles[arg1].pos[1] = player->tyreParticles[arg1].unk_024 + sp4C;
-    player->tyreParticles[arg1].unk_010 = 0;
+    player->particles[arg1].pos[2] = player->pos[2] + sp48;
+    player->particles[arg1].pos[1] = player->particles[arg1].unk_024 + sp4C;
+    player->particles[arg1].unk_010 = 0;
 }
 
 void func_800608E0(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8 arg4) {
@@ -3631,26 +3630,26 @@ void func_800608E0(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
         var_f0 = 2.5f;
         sp4C = (f32) ((f64) (D_801652A0[arg3] - player->pos[1]) + 0.1);
     }
-    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-    set_tyre_particle_active(&player->tyreParticles[arg1], 3, var_f0);
+    set_tyre_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+    set_tyre_particle_active(&player->particles[arg1], 3, var_f0);
     if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
-        set_tyre_particle_colour(&player->tyreParticles[arg1], 0, 0x00AF);
+        set_tyre_particle_colour(&player->particles[arg1], 0, 0x00AF);
     } else {
-        set_tyre_particle_colour(&player->tyreParticles[arg1], 0x00FFFFFF, 0x00CF);
+        set_tyre_particle_colour(&player->particles[arg1], 0x00FFFFFF, 0x00CF);
     }
     func_80062B18(&sp50, &sp4C, &sp48, 0.0f, sp4C,
-                  ((-player->tyreParticles[arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 10.0f) + -4.0f,
-                  -player->tyreParticles[arg1].rotation, -player->unk_206 * 2);
-    player->tyreParticles[arg1].pos[0] = player->pos[0] + sp50;
-    player->tyreParticles[arg1].pos[2] = player->pos[2] + sp48;
-    player->tyreParticles[arg1].pos[1] = player->pos[1] + sp4C;
+                  ((-player->particles[arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 10.0f) + -4.0f,
+                  -player->particles[arg1].rotation, -player->unk_206 * 2);
+    player->particles[arg1].pos[0] = player->pos[0] + sp50;
+    player->particles[arg1].pos[2] = player->pos[2] + sp48;
+    player->particles[arg1].pos[1] = player->pos[1] + sp4C;
 }
 
 void func_80060B14(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     if ((gCurrentCourseId != COURSE_SKYSCRAPER) && (gCurrentCourseId != COURSE_RAINBOW_ROAD)) {
-        if ((arg1 == 0) && ((player->tyreParticles[arg2].particle_timer > 0) || (player->tyreParticles[arg2].active == 0))) {
+        if ((arg1 == 0) && ((player->particles[arg2].particle_timer > 0) || (player->particles[arg2].active == 0))) {
             func_800608E0(player, arg1, arg2, arg3, arg4);
-        } else if (player->tyreParticles[arg2].particle_timer > 0) {
+        } else if (player->particles[arg2].particle_timer > 0) {
             func_800608E0(player, arg1, arg2, arg3, arg4);
         }
     }
@@ -3676,70 +3675,70 @@ void func_80060BCC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     if (player != gPlayerOne) {
         return;
     }
-    if ((arg1 == 0) && ((player->tyreParticles[arg2 + 10].particle_timer > 0) || (player->tyreParticles[arg2 + 10].active == 0))) {
-        set_tyre_particle_position_and_rotation(player, &player->tyreParticles[arg1 + 10], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-        set_tyre_particle_active(&player->tyreParticles[arg1 + 10], 0x0B, 0.4f);
-        set_tyre_particle_colour(&player->tyreParticles[arg1 + 10], 0x00FFFFFF, 0x00FF);
-        player->tyreParticles[arg1 + 10].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -1.8);
-        player->tyreParticles[arg1 + 10].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -1.8);
-        player->tyreParticles[arg1 + 10].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
-        player->tyreParticles[arg1 + 10].unk_018 = sp44 + 1.0f;
-        player->tyreParticles[arg1 + 10].scale = (sp48 + 2.0f) / 10.0f;
-    } else if (player->tyreParticles[arg2 + 10].particle_timer > 0) {
-        set_tyre_particle_position_and_rotation(player, &player->tyreParticles[arg1 + 10], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-        set_tyre_particle_active(&player->tyreParticles[arg1 + 10], 0x0B, 0.4f);
-        set_tyre_particle_colour(&player->tyreParticles[arg1 + 10], 0x00FFFFFF, 0x00FF);
-        player->tyreParticles[arg1 + 10].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -1.8);
-        player->tyreParticles[arg1 + 10].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -1.8);
-        player->tyreParticles[arg1 + 10].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
-        player->tyreParticles[arg1 + 10].unk_018 = sp44 + 1.0f;
-        player->tyreParticles[arg1 + 10].scale = (sp48 + 2.0f) / 10.0f;
+    if ((arg1 == 0) && ((player->particles[arg2 + 10].particle_timer > 0) || (player->particles[arg2 + 10].active == 0))) {
+        set_tyre_particle_position_and_rotation(player, &player->particles[arg1 + 10], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+        set_tyre_particle_active(&player->particles[arg1 + 10], 0x0B, 0.4f);
+        set_tyre_particle_colour(&player->particles[arg1 + 10], 0x00FFFFFF, 0x00FF);
+        player->particles[arg1 + 10].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -1.8);
+        player->particles[arg1 + 10].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -1.8);
+        player->particles[arg1 + 10].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
+        player->particles[arg1 + 10].unk_018 = sp44 + 1.0f;
+        player->particles[arg1 + 10].scale = (sp48 + 2.0f) / 10.0f;
+    } else if (player->particles[arg2 + 10].particle_timer > 0) {
+        set_tyre_particle_position_and_rotation(player, &player->particles[arg1 + 10], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+        set_tyre_particle_active(&player->particles[arg1 + 10], 0x0B, 0.4f);
+        set_tyre_particle_colour(&player->particles[arg1 + 10], 0x00FFFFFF, 0x00FF);
+        player->particles[arg1 + 10].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -1.8);
+        player->particles[arg1 + 10].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -1.8);
+        player->particles[arg1 + 10].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
+        player->particles[arg1 + 10].unk_018 = sp44 + 1.0f;
+        player->particles[arg1 + 10].scale = (sp48 + 2.0f) / 10.0f;
     }
 }
 
 void func_80060F50(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8 arg4) {
-    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
-    set_tyre_particle_active(&player->tyreParticles[arg1], 5, 4.0f);
+    set_tyre_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
+    set_tyre_particle_active(&player->particles[arg1], 5, 4.0f);
 
     if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
-        set_tyre_particle_colour(&player->tyreParticles[arg1], 0xFF0000, 0xFF);
+        set_tyre_particle_colour(&player->particles[arg1], 0xFF0000, 0xFF);
     } else {
-        set_tyre_particle_colour(&player->tyreParticles[arg1], 0xFFFFFF, 0xFF);
+        set_tyre_particle_colour(&player->particles[arg1], 0xFFFFFF, 0xFF);
     }
 
-    player->tyreParticles[arg1].pos[2] = player->pos[2] + (coss(player->tyreParticles[arg1].rotation) * -5.8);
-    player->tyreParticles[arg1].pos[0] = player->pos[0] + (sins(player->tyreParticles[arg1].rotation) * -5.8);
-    player->tyreParticles[arg1].pos[1] = D_801652A0[arg3];
+    player->particles[arg1].pos[2] = player->pos[2] + (coss(player->particles[arg1].rotation) * -5.8);
+    player->particles[arg1].pos[0] = player->pos[0] + (sins(player->particles[arg1].rotation) * -5.8);
+    player->particles[arg1].pos[1] = D_801652A0[arg3];
     player->unk_0DE &= ~0x0008;
 }
 
 void func_80061094(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     if (arg1 == 0) {
-        set_tyre_particle_position_and_rotation(player, &player->tyreParticles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
-        set_tyre_particle_active(&player->tyreParticles[arg1], 6, 3.8f);
-        set_tyre_particle_colour(&player->tyreParticles[arg1], 0xFFFFFF, 0xFF);
-        player->tyreParticles[arg1].red = 0;
-        player->tyreParticles[arg1].green = 0;
-        player->tyreParticles[arg1].blue = 0;
+        set_tyre_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
+        set_tyre_particle_active(&player->particles[arg1], 6, 3.8f);
+        set_tyre_particle_colour(&player->particles[arg1], 0xFFFFFF, 0xFF);
+        player->particles[arg1].red = 0;
+        player->particles[arg1].green = 0;
+        player->particles[arg1].blue = 0;
     }
 }
 
 void func_80061130(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
-    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
-    set_tyre_particle_active(&player->tyreParticles[arg1], 7, 0.6f);
-    set_tyre_particle_colour(&player->tyreParticles[arg1], 0xFFFFFF, 0xD0);
+    set_tyre_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
+    set_tyre_particle_active(&player->particles[arg1], 7, 0.6f);
+    set_tyre_particle_colour(&player->particles[arg1], 0xFFFFFF, 0xD0);
 
-    player->tyreParticles[arg1].pos[2] = player->pos[2] + (coss(player->tyreParticles[arg1].rotation) * 6.0f);
-    player->tyreParticles[arg1].pos[0] = player->pos[0] + (sins(player->tyreParticles[arg1].rotation) * 6.0f);
-    player->tyreParticles[arg1].pos[1] = player->pos[1] - 5.0f;
-    player->tyreParticles[arg1].unk_040 = 0;
-    player->tyreParticles[arg1].unk_024 = 0.0f;
+    player->particles[arg1].pos[2] = player->pos[2] + (coss(player->particles[arg1].rotation) * 6.0f);
+    player->particles[arg1].pos[0] = player->pos[0] + (sins(player->particles[arg1].rotation) * 6.0f);
+    player->particles[arg1].pos[1] = player->pos[1] - 5.0f;
+    player->particles[arg1].unk_040 = 0;
+    player->particles[arg1].unk_024 = 0.0f;
 }
 
 void func_80061224(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
-    if ((arg1 == 0) && ((player->tyreParticles[arg2].particle_timer > 0) || (player->tyreParticles[arg1].active == 0))) {
+    if ((arg1 == 0) && ((player->particles[arg2].particle_timer > 0) || (player->particles[arg1].active == 0))) {
         func_80061130(player, arg1, arg2, arg3, arg4);
-    } else if (player->tyreParticles[arg2].particle_timer >= 2) {
+    } else if (player->particles[arg2].particle_timer >= 2) {
         func_80061130(player, arg1, arg2, arg3, arg4);
         if (arg1 == 9) {
             player->unk_044 &= ~0x0200;
@@ -3751,16 +3750,16 @@ void func_800612F8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     s32 var_s2;
 
     for (var_s2 = 0; var_s2 < 10; var_s2++) {
-        player->tyreParticles[0x1E + var_s2].active = 1;
-        player->tyreParticles[0x1E + var_s2].unk_028 = player->pos[1] + 5.0f;
-        player->tyreParticles[0x1E + var_s2].rotation = (0x1C70 * var_s2) - player->rotation[1];
-        player->tyreParticles[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;
-        player->tyreParticles[0x1E + var_s2].green = 0;
-        player->tyreParticles[0x1E + var_s2].particle_type = 1;
-        player->tyreParticles[0x1E + var_s2].particle_timer = 0;
-        player->tyreParticles[0x1E + var_s2].alpha = 0x00FF;
-        player->tyreParticles[0x1E + var_s2].pos[2] = player->pos[2];
-        player->tyreParticles[0x1E + var_s2].pos[0] = player->pos[0];
+        player->particles[0x1E + var_s2].active = 1;
+        player->particles[0x1E + var_s2].unk_028 = player->pos[1] + 5.0f;
+        player->particles[0x1E + var_s2].rotation = (0x1C70 * var_s2) - player->rotation[1];
+        player->particles[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;
+        player->particles[0x1E + var_s2].green = 0;
+        player->particles[0x1E + var_s2].particle_type = 1;
+        player->particles[0x1E + var_s2].particle_timer = 0;
+        player->particles[0x1E + var_s2].alpha = 0x00FF;
+        player->particles[0x1E + var_s2].pos[2] = player->pos[2];
+        player->particles[0x1E + var_s2].pos[0] = player->pos[0];
     }
     player->unk_046 &= ~0x0008;
 }
@@ -3769,18 +3768,18 @@ void func_80061430(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     s32 var_s2;
 
     for (var_s2 = 0; var_s2 < 7; var_s2++) {
-        player->tyreParticles[0x1E + var_s2].active = 1;
-        player->tyreParticles[0x1E + var_s2].unk_028 = player->pos[1] - 4.0f;
-        player->tyreParticles[0x1E + var_s2].rotation = (0x1C70 * var_s2) - player->rotation[1];
+        player->particles[0x1E + var_s2].active = 1;
+        player->particles[0x1E + var_s2].unk_028 = player->pos[1] - 4.0f;
+        player->particles[0x1E + var_s2].rotation = (0x1C70 * var_s2) - player->rotation[1];
         // ???
-        player->tyreParticles[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.9;
-        player->tyreParticles[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;
-        player->tyreParticles[0x1E + var_s2].green = 0;
-        player->tyreParticles[0x1E + var_s2].particle_type = 9;
-        player->tyreParticles[0x1E + var_s2].particle_timer = 0;
-        player->tyreParticles[0x1E + var_s2].alpha = 0x00FF;
-        player->tyreParticles[0x1E + var_s2].pos[2] = player->pos[2];
-        player->tyreParticles[0x1E + var_s2].pos[0] = player->pos[0];
+        player->particles[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.9;
+        player->particles[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;
+        player->particles[0x1E + var_s2].green = 0;
+        player->particles[0x1E + var_s2].particle_type = 9;
+        player->particles[0x1E + var_s2].particle_timer = 0;
+        player->particles[0x1E + var_s2].alpha = 0x00FF;
+        player->particles[0x1E + var_s2].pos[2] = player->pos[2];
+        player->particles[0x1E + var_s2].pos[0] = player->pos[0];
     }
     player->unk_044 &= ~0x1000;
 }
@@ -3793,20 +3792,20 @@ void func_800615AC(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
     f32 sp28[10] = { -182.0f, 182.0f, 364.0f, -364.0f, 546.0f, -546.0f, 728.0f, -728.0f, 910.0f, -910.0f };
 
     if (random_int(3U) == 2.0f) {
-        player->tyreParticles[0x1E + arg1].active = 1;
-        player->tyreParticles[0x1E + arg1].pos[0] = player->pos[0];
-        player->tyreParticles[0x1E + arg1].pos[2] = player->pos[2];
-        player->tyreParticles[0x1E + arg1].rotation = -player->rotation[1] + sp28[arg1];
-        player->tyreParticles[0x1E + arg1].unk_018 = random_int(1U) + 2.0f;
+        player->particles[0x1E + arg1].active = 1;
+        player->particles[0x1E + arg1].pos[0] = player->pos[0];
+        player->particles[0x1E + arg1].pos[2] = player->pos[2];
+        player->particles[0x1E + arg1].rotation = -player->rotation[1] + sp28[arg1];
+        player->particles[0x1E + arg1].unk_018 = random_int(1U) + 2.0f;
         temp_f0 = random_int(4U);
         temp_f0 -= test;
-        player->tyreParticles[0x1E + arg1].unk_014 = temp_f0;
-        player->tyreParticles[0x1E + arg1].pos[1] = player->pos[1] + temp_f0;
-        player->tyreParticles[0x1E + arg1].scale = 0.15f;
-        player->tyreParticles[0x1E + arg1].particle_type = 5;
-        player->tyreParticles[0x1E + arg1].particle_timer = 0;
-        player->tyreParticles[0x1E + arg1].alpha = 0x00FF;
-        player->tyreParticles[0x1E + arg1].red = 0;
+        player->particles[0x1E + arg1].unk_014 = temp_f0;
+        player->particles[0x1E + arg1].pos[1] = player->pos[1] + temp_f0;
+        player->particles[0x1E + arg1].scale = 0.15f;
+        player->particles[0x1E + arg1].particle_type = 5;
+        player->particles[0x1E + arg1].particle_timer = 0;
+        player->particles[0x1E + arg1].alpha = 0x00FF;
+        player->particles[0x1E + arg1].red = 0;
     }
 }
 
@@ -3822,31 +3821,31 @@ void func_80061754(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3, U
     temp_s1 = random_int(0x0060U);
     sp44 = random_int(6U);
     sp48 = random_int(2U);
-    set_tyre_particle_position_and_rotation(player, &player->tyreParticles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-    set_tyre_particle_active(&player->tyreParticles[0x1E + arg1], 6, 1.0f);
+    set_tyre_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+    set_tyre_particle_active(&player->particles[0x1E + arg1], 6, 1.0f);
     if ((player->effects & HIT_BY_ITEM_EFFECT) || ((player->effects) & UNKNOWN_EFFECT_0x1000000) ||
         ((player->effects) & 0x400) || ((player->effects) & BOO_EFFECT)) {
-        set_tyre_particle_colour(&player->tyreParticles[0x1E + arg1], 0x00FFFFFF, 0x00A0);
-        player->tyreParticles[0x1E + arg1].red -= temp_s1;
-        player->tyreParticles[0x1E + arg1].green -= temp_s1;
-        player->tyreParticles[0x1E + arg1].blue -= temp_s1;
+        set_tyre_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x00A0);
+        player->particles[0x1E + arg1].red -= temp_s1;
+        player->particles[0x1E + arg1].green -= temp_s1;
+        player->particles[0x1E + arg1].blue -= temp_s1;
     } else {
-        set_tyre_particle_colour(&player->tyreParticles[0x1E + arg1], 0, 0x00A0);
-        player->tyreParticles[0x1E + arg1].red += temp_s1;
-        player->tyreParticles[0x1E + arg1].green += temp_s1;
-        player->tyreParticles[0x1E + arg1].blue += temp_s1;
+        set_tyre_particle_colour(&player->particles[0x1E + arg1], 0, 0x00A0);
+        player->particles[0x1E + arg1].red += temp_s1;
+        player->particles[0x1E + arg1].green += temp_s1;
+        player->particles[0x1E + arg1].blue += temp_s1;
     }
-    player->tyreParticles[0x1E + arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -5.0f);
-    player->tyreParticles[0x1E + arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -5.0f);
-    player->tyreParticles[0x1E + arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
-    player->tyreParticles[0x1E + arg1].unk_018 = sp44 + 1.0f;
-    player->tyreParticles[0x1E + arg1].scale = sp48 + 1.0f;
+    player->particles[0x1E + arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -5.0f);
+    player->particles[0x1E + arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -5.0f);
+    player->particles[0x1E + arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
+    player->particles[0x1E + arg1].unk_018 = sp44 + 1.0f;
+    player->particles[0x1E + arg1].scale = sp48 + 1.0f;
 }
 
 void func_8006199C(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
-    if ((arg1 == 0) && ((player->tyreParticles[0x1E + arg2].particle_timer > 0) || (player->tyreParticles[0x1E + arg2].active == 0))) {
+    if ((arg1 == 0) && ((player->particles[0x1E + arg2].particle_timer > 0) || (player->particles[0x1E + arg2].active == 0))) {
         func_80061754(player, arg1, arg2, (s32) arg3, arg4);
-    } else if (player->tyreParticles[0x1E + arg2].particle_timer > 0) {
+    } else if (player->particles[0x1E + arg2].particle_timer > 0) {
         func_80061754(player, arg1, arg2, (s32) arg3, arg4);
     }
 }
@@ -3862,22 +3861,22 @@ void func_80061A34(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     sp4C = random_int(6U);
     random_int(6U);
     sp48 = (f32) random_int(3U);
-    if ((arg1 == 0) && ((player->tyreParticles[0x1E + arg2].particle_timer > 0) || (player->tyreParticles[0x1E + arg2].active == 0))) {
-        set_tyre_particle_position_and_rotation(player, &player->tyreParticles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-        set_tyre_particle_active(&player->tyreParticles[0x1E + arg1], 7, 1.0f);
-        set_tyre_particle_colour(&player->tyreParticles[0x1E + arg1], 0x00FFFFFF, 0x00FF);
-        player->tyreParticles[0x1E + arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -2.0);
-        player->tyreParticles[0x1E + arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -2.0);
-        player->tyreParticles[0x1E + arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
-        player->tyreParticles[0x1E + arg1].scale = (sp48 + 2.0f) / 10.0f;
-    } else if (player->tyreParticles[0x1E + arg2].particle_timer > 0) {
-        set_tyre_particle_position_and_rotation(player, &player->tyreParticles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-        set_tyre_particle_active(&player->tyreParticles[0x1E + arg1], 7, 1.0f);
-        set_tyre_particle_colour(&player->tyreParticles[0x1E + arg1], 0x00FFFFFF, 0x00FF);
-        player->tyreParticles[0x1E + arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -2.0);
-        player->tyreParticles[0x1E + arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -2.0);
-        player->tyreParticles[0x1E + arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + (f32) sp4C + 2.0f;
-        player->tyreParticles[0x1E + arg1].scale = (sp48 + 2.0f) / 10.0f;
+    if ((arg1 == 0) && ((player->particles[0x1E + arg2].particle_timer > 0) || (player->particles[0x1E + arg2].active == 0))) {
+        set_tyre_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+        set_tyre_particle_active(&player->particles[0x1E + arg1], 7, 1.0f);
+        set_tyre_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x00FF);
+        player->particles[0x1E + arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -2.0);
+        player->particles[0x1E + arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -2.0);
+        player->particles[0x1E + arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
+        player->particles[0x1E + arg1].scale = (sp48 + 2.0f) / 10.0f;
+    } else if (player->particles[0x1E + arg2].particle_timer > 0) {
+        set_tyre_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+        set_tyre_particle_active(&player->particles[0x1E + arg1], 7, 1.0f);
+        set_tyre_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x00FF);
+        player->particles[0x1E + arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -2.0);
+        player->particles[0x1E + arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -2.0);
+        player->particles[0x1E + arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + (f32) sp4C + 2.0f;
+        player->particles[0x1E + arg1].scale = (sp48 + 2.0f) / 10.0f;
     }
 }
 
@@ -3889,18 +3888,18 @@ void func_80061D4C(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
     f32 sp20[10] = { -182.0f, 182.0f, 364.0f, -364.0f, 546.0f, -546.0f, 728.0f, -728.0f, 910.0f, -910.0f };
 
     if (random_int(3U) == 2.0f) {
-        player->tyreParticles[0x1E + arg1].active = 1;
-        player->tyreParticles[0x1E + arg1].pos[0] = player->pos[0];
-        player->tyreParticles[0x1E + arg1].pos[1] = player->pos[1] + 2.0f;
-        player->tyreParticles[0x1E + arg1].pos[2] = player->pos[2];
-        player->tyreParticles[0x1E + arg1].rotation = -player->rotation[1] + sp20[arg1];
-        player->tyreParticles[0x1E + arg1].unk_018 = random_int(3U) + 2.0f;
-        player->tyreParticles[0x1E + arg1].unk_014 = random_int(4U);
-        player->tyreParticles[0x1E + arg1].unk_014 -= test;
-        player->tyreParticles[0x1E + arg1].scale = 0.4f;
-        player->tyreParticles[0x1E + arg1].particle_type = 2;
-        player->tyreParticles[0x1E + arg1].particle_timer = 0;
-        player->tyreParticles[0x1E + arg1].alpha = 0x00FF;
+        player->particles[0x1E + arg1].active = 1;
+        player->particles[0x1E + arg1].pos[0] = player->pos[0];
+        player->particles[0x1E + arg1].pos[1] = player->pos[1] + 2.0f;
+        player->particles[0x1E + arg1].pos[2] = player->pos[2];
+        player->particles[0x1E + arg1].rotation = -player->rotation[1] + sp20[arg1];
+        player->particles[0x1E + arg1].unk_018 = random_int(3U) + 2.0f;
+        player->particles[0x1E + arg1].unk_014 = random_int(4U);
+        player->particles[0x1E + arg1].unk_014 -= test;
+        player->particles[0x1E + arg1].scale = 0.4f;
+        player->particles[0x1E + arg1].particle_type = 2;
+        player->particles[0x1E + arg1].particle_timer = 0;
+        player->particles[0x1E + arg1].alpha = 0x00FF;
     }
 }
 
@@ -3926,38 +3925,38 @@ void func_80061EF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     }
     if (var_t0 == 0) {
         if ((arg1 == 0) &&
-            ((player->tyreParticles[0x1E + arg2].particle_timer > 0) || (player->tyreParticles[0x1E + arg2].active == 0))) {
-            set_tyre_particle_position_and_rotation(player, &player->tyreParticles[0x1E + arg1], 0.0f, var_f2, 0.0f, (s8) var_t0, (s8) var_t1);
-            set_tyre_particle_active(&player->tyreParticles[0x1E + arg1], 3, 0.5f);
-            set_tyre_particle_colour(&player->tyreParticles[0x1E + arg1], 0x00FFFFFF, 0x0060);
-            player->tyreParticles[0x1E + arg1].rotation = 0;
-            if (player->tyreParticles[0x1E + arg1].unk_010 == 1) {
-                player->tyreParticles[0x1E + arg1].rotation += 0x888;
+            ((player->particles[0x1E + arg2].particle_timer > 0) || (player->particles[0x1E + arg2].active == 0))) {
+            set_tyre_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, var_f2, 0.0f, (s8) var_t0, (s8) var_t1);
+            set_tyre_particle_active(&player->particles[0x1E + arg1], 3, 0.5f);
+            set_tyre_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x0060);
+            player->particles[0x1E + arg1].rotation = 0;
+            if (player->particles[0x1E + arg1].unk_010 == 1) {
+                player->particles[0x1E + arg1].rotation += 0x888;
             } else {
-                player->tyreParticles[0x1E + arg1].rotation -= 0x888;
+                player->particles[0x1E + arg1].rotation -= 0x888;
             }
-            player->tyreParticles[0x1E + arg1].pos[2] =
+            player->particles[0x1E + arg1].pos[2] =
                 player->pos[2] +
-                (coss(player->tyreParticles[0x1E + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
-            player->tyreParticles[0x1E + arg1].pos[0] =
+                (coss(player->particles[0x1E + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+            player->particles[0x1E + arg1].pos[0] =
                 player->pos[0] +
-                (sins(player->tyreParticles[0x1E + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
-        } else if (player->tyreParticles[0x1E + arg2].particle_timer > 0) {
-            set_tyre_particle_position_and_rotation(player, &player->tyreParticles[0x1E + arg1], 0.0f, var_f2, 0.0f, (s8) var_t0, (s8) var_t1);
-            set_tyre_particle_active(&player->tyreParticles[0x1E + arg1], 3, 0.5f);
-            set_tyre_particle_colour(&player->tyreParticles[0x1E + arg1], 0x00FFFFFF, 0x0060);
-            player->tyreParticles[0x1E + arg1].rotation = 0;
-            if (player->tyreParticles[0x1E + arg1].unk_010 == 1) {
-                player->tyreParticles[0x1E + arg1].rotation += 0x888;
+                (sins(player->particles[0x1E + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+        } else if (player->particles[0x1E + arg2].particle_timer > 0) {
+            set_tyre_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, var_f2, 0.0f, (s8) var_t0, (s8) var_t1);
+            set_tyre_particle_active(&player->particles[0x1E + arg1], 3, 0.5f);
+            set_tyre_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x0060);
+            player->particles[0x1E + arg1].rotation = 0;
+            if (player->particles[0x1E + arg1].unk_010 == 1) {
+                player->particles[0x1E + arg1].rotation += 0x888;
             } else {
-                player->tyreParticles[0x1E + arg1].rotation -= 0x888;
+                player->particles[0x1E + arg1].rotation -= 0x888;
             }
-            player->tyreParticles[0x1E + arg1].pos[2] =
+            player->particles[0x1E + arg1].pos[2] =
                 player->pos[2] +
-                (coss(player->tyreParticles[0x1E + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
-            player->tyreParticles[0x1E + arg1].pos[0] =
+                (coss(player->particles[0x1E + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+            player->particles[0x1E + arg1].pos[0] =
                 player->pos[0] +
-                (sins(player->tyreParticles[0x1E + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+                (sins(player->particles[0x1E + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
         }
     }
 }
@@ -3987,46 +3986,46 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     }
 
     if (phi_t0 == 0) {
-        if ((arg1 == 0) && ((player->tyreParticles[30 + arg2].particle_timer > 0) || (player->tyreParticles[30 + arg2].active == 0))) {
-            set_tyre_particle_position_and_rotation(player, &player->tyreParticles[30 + arg1], 0.0f, phi_f2, 0.0f, phi_t0, phi_t1);
-            set_tyre_particle_active(&player->tyreParticles[30 + arg1], 8, 1.0f);
-            set_tyre_particle_colour(&player->tyreParticles[30 + arg1], 0xFFFF20, 0xFF);
+        if ((arg1 == 0) && ((player->particles[30 + arg2].particle_timer > 0) || (player->particles[30 + arg2].active == 0))) {
+            set_tyre_particle_position_and_rotation(player, &player->particles[30 + arg1], 0.0f, phi_f2, 0.0f, phi_t0, phi_t1);
+            set_tyre_particle_active(&player->particles[30 + arg1], 8, 1.0f);
+            set_tyre_particle_colour(&player->particles[30 + arg1], 0xFFFF20, 0xFF);
 
-            player->tyreParticles[30 + arg1].rotation = 0;
-            if (player->tyreParticles[30 + arg1].unk_010 == 1) {
-                player->tyreParticles[30 + arg1].rotation += 2184;
+            player->particles[30 + arg1].rotation = 0;
+            if (player->particles[30 + arg1].unk_010 == 1) {
+                player->particles[30 + arg1].rotation += 2184;
             } else {
-                player->tyreParticles[30 + arg1].rotation -= 2184;
+                player->particles[30 + arg1].rotation -= 2184;
             }
 
-            player->tyreParticles[30 + arg1].pos[2] =
+            player->particles[30 + arg1].pos[2] =
                 player->pos[2] +
-                (coss((player->tyreParticles[30 + arg1].rotation - player->rotation[1]) - player->unk_0C0) * 5.0f);
-            player->tyreParticles[30 + arg1].pos[0] =
+                (coss((player->particles[30 + arg1].rotation - player->rotation[1]) - player->unk_0C0) * 5.0f);
+            player->particles[30 + arg1].pos[0] =
                 player->pos[0] +
-                (sins((player->tyreParticles[30 + arg1].rotation - player->rotation[1]) - player->unk_0C0) * 5.0f);
+                (sins((player->particles[30 + arg1].rotation - player->rotation[1]) - player->unk_0C0) * 5.0f);
             return;
         }
 
         new_var2 = player;
-        if (new_var2->tyreParticles[30 + arg2].particle_timer > 0) {
-            set_tyre_particle_position_and_rotation(new_var2, &new_var2->tyreParticles[30 + arg1], 0.0f, phi_f2, 0.0f, phi_t0, phi_t1);
-            set_tyre_particle_active(&new_var2->tyreParticles[30 + arg1], 8, 1.0f);
-            set_tyre_particle_colour(&new_var2->tyreParticles[30 + arg1], 0xFFFF20, 0xFF);
-            new_var2->tyreParticles[30 + arg1].rotation = 0;
-            if (new_var2->tyreParticles[30 + arg1].unk_010 == 1) {
-                new_var2->tyreParticles[30 + arg1].rotation += 2184;
+        if (new_var2->particles[30 + arg2].particle_timer > 0) {
+            set_tyre_particle_position_and_rotation(new_var2, &new_var2->particles[30 + arg1], 0.0f, phi_f2, 0.0f, phi_t0, phi_t1);
+            set_tyre_particle_active(&new_var2->particles[30 + arg1], 8, 1.0f);
+            set_tyre_particle_colour(&new_var2->particles[30 + arg1], 0xFFFF20, 0xFF);
+            new_var2->particles[30 + arg1].rotation = 0;
+            if (new_var2->particles[30 + arg1].unk_010 == 1) {
+                new_var2->particles[30 + arg1].rotation += 2184;
             } else {
-                new_var2->tyreParticles[30 + arg1].rotation -= 2184;
+                new_var2->particles[30 + arg1].rotation -= 2184;
             }
 
             new_var = new_var2;
-            new_var->tyreParticles[30 + arg1].pos[2] =
+            new_var->particles[30 + arg1].pos[2] =
                 new_var->pos[2] +
-                (coss((new_var->tyreParticles[30 + arg1].rotation - new_var->rotation[1]) - new_var->unk_0C0) * 5.0f);
-            new_var->tyreParticles[30 + arg1].pos[0] =
+                (coss((new_var->particles[30 + arg1].rotation - new_var->rotation[1]) - new_var->unk_0C0) * 5.0f);
+            new_var->particles[30 + arg1].pos[0] =
                 new_var->pos[0] +
-                (sins((new_var->tyreParticles[30 + arg1].rotation - new_var->rotation[1]) - new_var->unk_0C0) * 5.0f);
+                (sins((new_var->particles[30 + arg1].rotation - new_var->rotation[1]) - new_var->unk_0C0) * 5.0f);
         }
     }
 }
@@ -4048,67 +4047,67 @@ void func_800624D8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
         case DIRT:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
-                    func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 1, 0, 0x00A8);
+                    func_8005DAD8(&player->particles[0x1E + var_s1], 1, 0, 0x00A8);
                 }
                 if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
-                    func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 7, 0, 0x00A8);
+                    func_8005DAD8(&player->particles[0x1E + var_s1], 7, 0, 0x00A8);
                 }
                 if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
-                    func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 8, 0, 0x00A8);
+                    func_8005DAD8(&player->particles[0x1E + var_s1], 8, 0, 0x00A8);
                 }
                 if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-                    func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 9, 0, 0x00A8);
+                    func_8005DAD8(&player->particles[0x1E + var_s1], 9, 0, 0x00A8);
                 }
                 if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-                    func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 0x000A, 0, 0x00A8);
+                    func_8005DAD8(&player->particles[0x1E + var_s1], 0x000A, 0, 0x00A8);
                 }
                 if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                    func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 0x000B, 0, 0x00A8);
+                    func_8005DAD8(&player->particles[0x1E + var_s1], 0x000B, 0, 0x00A8);
                 }
-                func_80062484(player, &player->tyreParticles[0x1E + var_s1], var_s1);
+                func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
             player->unk_044 &= ~0x0100;
             break;
         case GRASS:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
-                func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 2, 1, 0x00A8);
-                func_80062484(player, &player->tyreParticles[0x1E + var_s1], var_s1);
+                func_8005DAD8(&player->particles[0x1E + var_s1], 2, 1, 0x00A8);
+                func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
             player->unk_044 &= ~0x0100;
             break;
         case SAND_OFFROAD:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
-                func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 2, 1, 0x00A8);
-                func_80062484(player, &player->tyreParticles[0x1E + var_s1], var_s1);
+                func_8005DAD8(&player->particles[0x1E + var_s1], 2, 1, 0x00A8);
+                func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
             player->unk_044 &= ~0x0100;
             break;
         case SAND:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
-                func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 3, 1, 0x00A8);
-                func_80062484(player, &player->tyreParticles[0x1E + var_s1], var_s1);
+                func_8005DAD8(&player->particles[0x1E + var_s1], 3, 1, 0x00A8);
+                func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
             player->unk_044 &= ~0x0100;
             break;
         case WET_SAND:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
-                func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 4, 1, 0x00A8);
-                func_80062484(player, &player->tyreParticles[0x1E + var_s1], var_s1);
+                func_8005DAD8(&player->particles[0x1E + var_s1], 4, 1, 0x00A8);
+                func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
             player->unk_044 &= ~0x0100;
             break;
         case DIRT_OFFROAD:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
-                func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 5, 1, 0x00A8);
-                func_80062484(player, &player->tyreParticles[0x1E + var_s1], var_s1);
+                func_8005DAD8(&player->particles[0x1E + var_s1], 5, 1, 0x00A8);
+                func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
             player->unk_044 &= ~0x0100;
             break;
         case SNOW:
         case SNOW_OFFROAD:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
-                func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 6, 1, 0x00A8);
-                func_80062484(player, &player->tyreParticles[0x1E + var_s1], var_s1);
+                func_8005DAD8(&player->particles[0x1E + var_s1], 6, 1, 0x00A8);
+                func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
             player->unk_044 &= ~0x0100;
             break;
@@ -4116,15 +4115,15 @@ void func_800624D8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
         case STONE:
         case BRIDGE:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
-                func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 0, 0, 0x00A8);
-                func_80062484(player, &player->tyreParticles[0x1E + var_s1], var_s1);
+                func_8005DAD8(&player->particles[0x1E + var_s1], 0, 0, 0x00A8);
+                func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
             player->unk_044 &= ~0x0100;
             break;
         default:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
-                func_8005DAD8(&player->tyreParticles[0x1E + var_s1], 0, 0, 0x00A8);
-                func_80062484(player, &player->tyreParticles[0x1E + var_s1], var_s1);
+                func_8005DAD8(&player->particles[0x1E + var_s1], 0, 0, 0x00A8);
+                func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
             player->unk_044 &= ~0x0100;
             break;
@@ -4132,56 +4131,56 @@ void func_800624D8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
 }
 
 void func_800628C0(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->tyreParticles[20 + arg3].active = 1;
-    player->tyreParticles[20 + arg3].rotation = -player->rotation[1];
-    player->tyreParticles[20 + arg3].particle_type = 2;
-    player->tyreParticles[20 + arg3].particle_timer = 0;
-    player->tyreParticles[20 + arg3].scale = 0.2f;
+    player->particles[20 + arg3].active = 1;
+    player->particles[20 + arg3].rotation = -player->rotation[1];
+    player->particles[20 + arg3].particle_type = 2;
+    player->particles[20 + arg3].particle_timer = 0;
+    player->particles[20 + arg3].scale = 0.2f;
 }
 
 void func_80062914(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->tyreParticles[20 + arg3].active = 1;
-    player->tyreParticles[20 + arg3].rotation = -player->rotation[1];
-    player->tyreParticles[20 + arg3].particle_type = 4;
-    player->tyreParticles[20 + arg3].particle_timer = 0;
-    player->tyreParticles[20 + arg3].scale = 1.0f;
+    player->particles[20 + arg3].active = 1;
+    player->particles[20 + arg3].rotation = -player->rotation[1];
+    player->particles[20 + arg3].particle_type = 4;
+    player->particles[20 + arg3].particle_timer = 0;
+    player->particles[20 + arg3].scale = 1.0f;
 }
 
 void func_80062968(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->tyreParticles[20 + arg3].active = 1;
-    player->tyreParticles[20 + arg3].rotation = -player->rotation[1];
-    player->tyreParticles[20 + arg3].particle_type = 5;
-    player->tyreParticles[20 + arg3].particle_timer = 0;
-    player->tyreParticles[20 + arg3].scale = 0.2f;
+    player->particles[20 + arg3].active = 1;
+    player->particles[20 + arg3].rotation = -player->rotation[1];
+    player->particles[20 + arg3].particle_type = 5;
+    player->particles[20 + arg3].particle_timer = 0;
+    player->particles[20 + arg3].scale = 0.2f;
 }
 
 void func_800629BC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->tyreParticles[20 + arg3].active = 1;
-    player->tyreParticles[20 + arg3].rotation = -player->rotation[1];
-    player->tyreParticles[20 + arg3].particle_type = 6;
-    player->tyreParticles[20 + arg3].particle_timer = 0;
-    player->tyreParticles[20 + arg3].scale = 0.2f;
-    player->tyreParticles[20 + arg3].pos[1] = 0.0f;
+    player->particles[20 + arg3].active = 1;
+    player->particles[20 + arg3].rotation = -player->rotation[1];
+    player->particles[20 + arg3].particle_type = 6;
+    player->particles[20 + arg3].particle_timer = 0;
+    player->particles[20 + arg3].scale = 0.2f;
+    player->particles[20 + arg3].pos[1] = 0.0f;
 }
 
 void func_80062A18(Player* player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->tyreParticles[20 + arg3].active = 1;
-    player->tyreParticles[20 + arg3].particle_type = 3;
-    player->tyreParticles[20 + arg1 /* arg1 instead of arg3 */].scale = 0.2f;
-    player->tyreParticles[20 + arg3].particle_timer = 1;
-    player->tyreParticles[20 + arg3].rotation = 0;
+    player->particles[20 + arg3].active = 1;
+    player->particles[20 + arg3].particle_type = 3;
+    player->particles[20 + arg1 /* arg1 instead of arg3 */].scale = 0.2f;
+    player->particles[20 + arg3].particle_timer = 1;
+    player->particles[20 + arg3].rotation = 0;
     player->unk_0B6 &= ~0x0080;
-    player->tyreParticles[20 + arg3].pos[2] = player->pos[2];
-    player->tyreParticles[20 + arg3].pos[0] = player->pos[0];
-    player->tyreParticles[20 + arg3].pos[1] = (player->pos[1] + 4.0f);
+    player->particles[20 + arg3].pos[2] = player->pos[2];
+    player->particles[20 + arg3].pos[0] = player->pos[0];
+    player->particles[20 + arg3].pos[1] = (player->pos[1] + 4.0f);
 }
 
 void func_80062AA8(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->tyreParticles[20 + arg3].active = 1;
-    player->tyreParticles[20 + arg3].particle_type = 5;
-    player->tyreParticles[20 + arg3].scale = 0.1f;
-    player->tyreParticles[20 + arg3].particle_timer = 0;
-    player->tyreParticles[20 + arg3].pos[1] = (player->pos[1] + player->boundingBoxSize) - 2.5;
+    player->particles[20 + arg3].active = 1;
+    player->particles[20 + arg3].particle_type = 5;
+    player->particles[20 + arg3].scale = 0.1f;
+    player->particles[20 + arg3].particle_timer = 0;
+    player->particles[20 + arg3].pos[1] = (player->pos[1] + player->boundingBoxSize) - 2.5;
 }
 
 void func_80062B18(f32* arg0, f32* arg1, f32* arg2, f32 arg3, f32 arg4, f32 arg5, u16 arg6, u16 arg7) {
@@ -4228,178 +4227,178 @@ void func_80062C74(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     f32 sp38;
     s16 thing;
 
-    player->tyreParticles[arg1].particle_timer += 1;
-    if (player->tyreParticles[arg1].particle_timer == 0x000C) {
-        player->tyreParticles[arg1].active = 0;
-        player->tyreParticles[arg1].particle_timer = 0;
-        player->tyreParticles[arg1].particle_type = 0;
+    player->particles[arg1].particle_timer += 1;
+    if (player->particles[arg1].particle_timer == 0x000C) {
+        player->particles[arg1].active = 0;
+        player->particles[arg1].particle_timer = 0;
+        player->particles[arg1].particle_type = 0;
     }
-    player->tyreParticles[arg1].unk_018 = 2.0f;
-    if (player->tyreParticles[arg1].unk_040 == 0) {
-        player->tyreParticles[arg1].scale = player->tyreParticles[arg1].scale + 0.07;
-        player->tyreParticles[arg1].unk_024 = player->tyreParticles[arg1].unk_024 + 0.3;
-        if (player->tyreParticles[arg1].particle_timer >= 3) {
-            player->tyreParticles[arg1].alpha -= 3;
+    player->particles[arg1].unk_018 = 2.0f;
+    if (player->particles[arg1].unk_040 == 0) {
+        player->particles[arg1].scale = player->particles[arg1].scale + 0.07;
+        player->particles[arg1].unk_024 = player->particles[arg1].unk_024 + 0.3;
+        if (player->particles[arg1].particle_timer >= 3) {
+            player->particles[arg1].alpha -= 3;
         }
-        if (player->tyreParticles[arg1].alpha <= 0) {
-            player->tyreParticles[arg1].alpha = 0;
+        if (player->particles[arg1].alpha <= 0) {
+            player->particles[arg1].alpha = 0;
         }
     } else {
-        player->tyreParticles[arg1].scale = player->tyreParticles[arg1].scale + 0.1;
-        player->tyreParticles[arg1].unk_024 = player->tyreParticles[arg1].unk_024 + 0.3;
-        if (player->tyreParticles[arg1].particle_timer >= 3) {
-            player->tyreParticles[arg1].alpha -= 2;
+        player->particles[arg1].scale = player->particles[arg1].scale + 0.1;
+        player->particles[arg1].unk_024 = player->particles[arg1].unk_024 + 0.3;
+        if (player->particles[arg1].particle_timer >= 3) {
+            player->particles[arg1].alpha -= 2;
         }
-        if (player->tyreParticles[arg1].alpha <= 0) {
-            player->tyreParticles[arg1].alpha = 0;
+        if (player->particles[arg1].alpha <= 0) {
+            player->particles[arg1].alpha = 0;
         }
     }
-    thing = player->tyreParticles[arg1].rotation - (player->unk_0C0 / 2);
-    if (player->tyreParticles[arg1].unk_040 == 0) {
+    thing = player->particles[arg1].rotation - (player->unk_0C0 / 2);
+    if (player->particles[arg1].unk_040 == 0) {
         var_f6 = -((player->unk_098 / 5000.0f) + 0.1);
     } else {
         var_f6 = -((player->unk_098 / 6000.0f) + 0.1);
     }
-    if (((player->effects & BOOST_EFFECT) == BOOST_EFFECT) && (player->tyreParticles[arg1].particle_timer >= 6)) {
-        player->tyreParticles[arg1].scale = player->tyreParticles[arg1].scale + 0.06;
+    if (((player->effects & BOOST_EFFECT) == BOOST_EFFECT) && (player->particles[arg1].particle_timer >= 6)) {
+        player->particles[arg1].scale = player->particles[arg1].scale + 0.06;
     }
-    player->tyreParticles[arg1].unk_010++;
-    if (player->tyreParticles[arg1].unk_010 >= 3) {
-        player->tyreParticles[arg1].unk_010 = 0;
+    player->particles[arg1].unk_010++;
+    if (player->particles[arg1].unk_010 >= 3) {
+        player->particles[arg1].unk_010 = 0;
     }
-    func_80062B18(&sp40, &sp38, &sp3C, 0.0f, sp48[player->characterId], (player->tyreParticles[arg1].particle_timer * var_f6) + -5.5,
+    func_80062B18(&sp40, &sp38, &sp3C, 0.0f, sp48[player->characterId], (player->particles[arg1].particle_timer * var_f6) + -5.5,
                   -thing, -player->unk_206 * 2);
-    player->tyreParticles[arg1].pos[0] = player->pos[0] + sp40;
+    player->particles[arg1].pos[0] = player->pos[0] + sp40;
     sp38 = (player->pos[1] - player->boundingBoxSize) + sp38;
-    player->tyreParticles[arg1].pos[2] = player->pos[2] + sp3C;
-    player->tyreParticles[arg1].pos[1] = player->tyreParticles[arg1].unk_024 + sp38;
+    player->particles[arg1].pos[2] = player->pos[2] + sp3C;
+    player->particles[arg1].pos[1] = player->particles[arg1].unk_024 + sp38;
 }
 
 void func_80062F98(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     f32 temp_f0;
 
-    temp_f0 = player->tyreParticles[10 + arg1].unk_018 / 10.0f;
-    ++player->tyreParticles[10 + arg1].particle_timer;
-    player->tyreParticles[10 + arg1].pos[1] += temp_f0;
+    temp_f0 = player->particles[10 + arg1].unk_018 / 10.0f;
+    ++player->particles[10 + arg1].particle_timer;
+    player->particles[10 + arg1].pos[1] += temp_f0;
     if ((player->unk_0CA & 1) == 1) {
-        player->tyreParticles[10 + arg1].pos[1] += (temp_f0 + 0.3);
-        if ((player->tyreParticles[10 + arg1].particle_timer == 0x10) ||
-            ((D_801652A0[arg2] - player->tyreParticles[10 + arg1].pos[1]) < 3.0f)) {
-            player->tyreParticles[10 + arg1].active = 0;
-            player->tyreParticles[10 + arg1].particle_timer = 0;
-            player->tyreParticles[10 + arg1].particle_type = 0;
+        player->particles[10 + arg1].pos[1] += (temp_f0 + 0.3);
+        if ((player->particles[10 + arg1].particle_timer == 0x10) ||
+            ((D_801652A0[arg2] - player->particles[10 + arg1].pos[1]) < 3.0f)) {
+            player->particles[10 + arg1].active = 0;
+            player->particles[10 + arg1].particle_timer = 0;
+            player->particles[10 + arg1].particle_type = 0;
         }
-    } else if ((player->tyreParticles[10 + arg1].particle_timer == 0xA) ||
-               ((D_801652A0[arg2] - player->tyreParticles[10 + arg1].pos[1]) < 3.0f)) {
-        player->tyreParticles[10 + arg1].active = 0;
-        player->tyreParticles[10 + arg1].particle_timer = 0;
-        player->tyreParticles[10 + arg1].particle_type = 0;
+    } else if ((player->particles[10 + arg1].particle_timer == 0xA) ||
+               ((D_801652A0[arg2] - player->particles[10 + arg1].pos[1]) < 3.0f)) {
+        player->particles[10 + arg1].active = 0;
+        player->particles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].particle_type = 0;
     }
 }
 
-void set_oob_splash_velocity(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
-    ++player->tyreParticles[arg1].particle_timer;
-    player->tyreParticles[arg1].pos[2] = player->pos[2] + coss(player->tyreParticles[arg1].rotation) * -5.8;
-    player->tyreParticles[arg1].pos[0] = player->pos[0] + sins(player->tyreParticles[arg1].rotation) * -5.8;
-    player->tyreParticles[arg1].pos[1] = D_801652A0[arg2];
-    if (player->tyreParticles[arg1].particle_timer == 15) {
-        player->tyreParticles[arg1].active = 0;
-        player->tyreParticles[arg1].particle_timer = 0;
-        player->tyreParticles[arg1].particle_type = 0;
+void set_oob_splash_particle_position(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
+    ++player->particles[arg1].particle_timer;
+    player->particles[arg1].pos[2] = player->pos[2] + coss(player->particles[arg1].rotation) * -5.8;
+    player->particles[arg1].pos[0] = player->pos[0] + sins(player->particles[arg1].rotation) * -5.8;
+    player->particles[arg1].pos[1] = D_801652A0[arg2];
+    if (player->particles[arg1].particle_timer == 15) {
+        player->particles[arg1].active = 0;
+        player->particles[arg1].particle_timer = 0;
+        player->particles[arg1].particle_type = 0;
     }
 }
 
 void func_800631A8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    ++player->tyreParticles[arg1].particle_timer;
-    if ((s32) player->tyreParticles[arg1].particle_timer < 9) {
-        if ((player->tyreParticles[arg1].particle_timer & 1) != 0) {
-            player->tyreParticles[arg1].red = 8;
+    ++player->particles[arg1].particle_timer;
+    if ((s32) player->particles[arg1].particle_timer < 9) {
+        if ((player->particles[arg1].particle_timer & 1) != 0) {
+            player->particles[arg1].red = 8;
         } else {
-            player->tyreParticles[arg1].red = 0;
+            player->particles[arg1].red = 0;
         }
-    } else if (((player->tyreParticles[arg1].particle_timer & 1) != 0) ||
-               ((player->tyreParticles[arg1].particle_timer >= 9) && (player->tyreParticles[arg1].particle_timer < 12))) {
-        player->tyreParticles[arg1].red = 0xFF;
-    } else if ((player->tyreParticles[arg1].particle_timer & 2) != 0) {
-        player->tyreParticles[arg1].red = 8;
+    } else if (((player->particles[arg1].particle_timer & 1) != 0) ||
+               ((player->particles[arg1].particle_timer >= 9) && (player->particles[arg1].particle_timer < 12))) {
+        player->particles[arg1].red = 0xFF;
+    } else if ((player->particles[arg1].particle_timer & 2) != 0) {
+        player->particles[arg1].red = 8;
     } else {
-        player->tyreParticles[arg1].red = 0;
+        player->particles[arg1].red = 0;
     }
-    player->tyreParticles[arg1].green = 0;
-    player->tyreParticles[arg1].blue = 0;
-    if ((s32) player->tyreParticles[arg1].particle_timer >= 0x19) {
-        player->tyreParticles[arg1].active = 0;
-        player->tyreParticles[arg1].particle_timer = 0;
-        player->tyreParticles[arg1].particle_type = 0;
+    player->particles[arg1].green = 0;
+    player->particles[arg1].blue = 0;
+    if ((s32) player->particles[arg1].particle_timer >= 0x19) {
+        player->particles[arg1].active = 0;
+        player->particles[arg1].particle_timer = 0;
+        player->particles[arg1].particle_type = 0;
     }
 }
 
 void func_80063268(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    if (player->tyreParticles[arg1].particle_timer >= 0x1E) {
-        player->tyreParticles[arg1].unk_040 += 0x1FFE;
+    if (player->particles[arg1].particle_timer >= 0x1E) {
+        player->particles[arg1].unk_040 += 0x1FFE;
     } else {
-        player->tyreParticles[arg1].unk_040 += 0x1554;
+        player->particles[arg1].unk_040 += 0x1554;
     }
 
-    player->tyreParticles[arg1].unk_024 += 0.25;
-    player->tyreParticles[arg1].pos[2] =
-        player->pos[2] + (coss((player->tyreParticles[arg1].rotation + player->tyreParticles[arg1].unk_040)) * 5.5);
-    player->tyreParticles[arg1].pos[0] =
-        player->pos[0] + (sins((player->tyreParticles[arg1].rotation + player->tyreParticles[arg1].unk_040)) * 5.5);
-    player->tyreParticles[arg1].pos[1] = ((player->pos[1] - 5.0f) + player->tyreParticles[arg1].unk_024);
-    ++player->tyreParticles[arg1].particle_timer;
-    player->tyreParticles[arg1].scale += 0.05;
-    player->tyreParticles[arg1].alpha -= 5;
+    player->particles[arg1].unk_024 += 0.25;
+    player->particles[arg1].pos[2] =
+        player->pos[2] + (coss((player->particles[arg1].rotation + player->particles[arg1].unk_040)) * 5.5);
+    player->particles[arg1].pos[0] =
+        player->pos[0] + (sins((player->particles[arg1].rotation + player->particles[arg1].unk_040)) * 5.5);
+    player->particles[arg1].pos[1] = ((player->pos[1] - 5.0f) + player->particles[arg1].unk_024);
+    ++player->particles[arg1].particle_timer;
+    player->particles[arg1].scale += 0.05;
+    player->particles[arg1].alpha -= 5;
 
-    if ((s32) player->tyreParticles[arg1].alpha <= 0) {
-        player->tyreParticles[arg1].alpha = 0;
+    if ((s32) player->particles[arg1].alpha <= 0) {
+        player->particles[arg1].alpha = 0;
     }
 
-    if ((s32) player->tyreParticles[arg1].particle_timer >= 0x28) {
-        player->tyreParticles[arg1].active = 0;
-        player->tyreParticles[arg1].particle_timer = 0;
-        player->tyreParticles[arg1].particle_type = 0;
+    if ((s32) player->particles[arg1].particle_timer >= 0x28) {
+        player->particles[arg1].active = 0;
+        player->particles[arg1].particle_timer = 0;
+        player->particles[arg1].particle_type = 0;
     }
 }
 
 void func_80063408(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    if (player->tyreParticles[10 + arg1].unk_010 == 1) {
-        player->tyreParticles[10 + arg1].pos[2] =
+    if (player->particles[10 + arg1].unk_010 == 1) {
+        player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_LEFT].pos[2] +
-            (player->tyreParticles[10 + arg1].particle_timer * -7) * coss(player->tyreParticles[10 + arg1].rotation);
-        player->tyreParticles[10 + arg1].pos[0] =
+            (player->particles[10 + arg1].particle_timer * -7) * coss(player->particles[10 + arg1].rotation);
+        player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_LEFT].pos[0] +
-            (player->tyreParticles[10 + arg1].particle_timer * -7) * sins(player->tyreParticles[10 + arg1].rotation);
+            (player->particles[10 + arg1].particle_timer * -7) * sins(player->particles[10 + arg1].rotation);
     } else {
-        player->tyreParticles[10 + arg1].pos[2] =
+        player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            (player->tyreParticles[10 + arg1].particle_timer * -7) * coss(player->tyreParticles[10 + arg1].rotation);
-        player->tyreParticles[10 + arg1].pos[0] =
+            (player->particles[10 + arg1].particle_timer * -7) * coss(player->particles[10 + arg1].rotation);
+        player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            (player->tyreParticles[10 + arg1].particle_timer * -7) * sins(player->tyreParticles[10 + arg1].rotation);
+            (player->particles[10 + arg1].particle_timer * -7) * sins(player->particles[10 + arg1].rotation);
     }
 
-    ++player->tyreParticles[10 + arg1].particle_timer;
-    player->tyreParticles[10 + arg1].pos[1] += 1.0f;
+    ++player->particles[10 + arg1].particle_timer;
+    player->particles[10 + arg1].pos[1] += 1.0f;
 
     if (((player->effects & 0x80) != 0) || ((player->effects & 0x40) != 0)) {
-        player->tyreParticles[10 + arg1].active = 0;
-        player->tyreParticles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].active = 0;
+        player->particles[10 + arg1].particle_timer = 0;
     }
 
-    if (player->tyreParticles[10 + arg1].particle_timer == 8) {
-        player->tyreParticles[10 + arg1].particle_timer = 0;
-        player->tyreParticles[10 + arg1].active = 0;
-        player->tyreParticles[10 + arg1].particle_type = 0;
+    if (player->particles[10 + arg1].particle_timer == 8) {
+        player->particles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].active = 0;
+        player->particles[10 + arg1].particle_type = 0;
     }
 
-    player->tyreParticles[10 + arg1].scale += 0.08;
-    if (player->tyreParticles[10 + arg1].particle_timer >= 4) {
-        player->tyreParticles[10 + arg1].alpha -= 16;
+    player->particles[10 + arg1].scale += 0.08;
+    if (player->particles[10 + arg1].particle_timer >= 4) {
+        player->particles[10 + arg1].alpha -= 16;
     }
 
-    if (player->tyreParticles[10 + arg1].alpha <= 0) {
-        player->tyreParticles[10 + arg1].alpha = 0;
+    if (player->particles[10 + arg1].alpha <= 0) {
+        player->particles[10 + arg1].alpha = 0;
     }
 }
 
@@ -4408,181 +4407,181 @@ void func_800635D4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     f32 sp40;
     f32 sp3C;
 
-    if (player->tyreParticles[10 + arg1].unk_010 == 1) {
+    if (player->particles[10 + arg1].unk_010 == 1) {
         if ((player->effects & LIGHTNING_EFFECT)) {
             func_80062B18(&sp44, &sp40, &sp3C, -2.0f, 0.0f,
-                          (-player->tyreParticles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16,
-                          -player->tyreParticles[10 + arg1].rotation, 2 * -player->unk_206);
-            player->tyreParticles[10 + arg1].pos[0] = player->tyres[BACK_LEFT].pos[0] + sp44;
-            player->tyreParticles[10 + arg1].pos[2] = player->tyres[BACK_LEFT].pos[2] + sp3C;
+                          (-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16,
+                          -player->particles[10 + arg1].rotation, 2 * -player->unk_206);
+            player->particles[10 + arg1].pos[0] = player->tyres[BACK_LEFT].pos[0] + sp44;
+            player->particles[10 + arg1].pos[2] = player->tyres[BACK_LEFT].pos[2] + sp3C;
         } else {
-            player->tyreParticles[10 + arg1].pos[2] =
+            player->particles[10 + arg1].pos[2] =
                 player->tyres[BACK_LEFT].pos[2] +
-                ((-player->tyreParticles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
-                    coss(player->tyreParticles[10 + arg1].rotation);
-            player->tyreParticles[10 + arg1].pos[0] =
+                ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
+                    coss(player->particles[10 + arg1].rotation);
+            player->particles[10 + arg1].pos[0] =
                 player->tyres[BACK_LEFT].pos[0] +
-                ((-player->tyreParticles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
-                    sins(player->tyreParticles[10 + arg1].rotation);
+                ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
+                    sins(player->particles[10 + arg1].rotation);
         }
     } else if ((player->effects & LIGHTNING_EFFECT)) {
         func_80062B18(&sp44, &sp40, &sp3C, 2.0f, 0.0f,
-                      (-player->tyreParticles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16,
-                      -player->tyreParticles[10 + arg1].rotation, 2 * -player->unk_206);
-        player->tyreParticles[10 + arg1].pos[0] = player->tyres[BACK_RIGHT].pos[0] + sp44;
-        player->tyreParticles[10 + arg1].pos[2] = player->tyres[BACK_RIGHT].pos[2] + sp3C;
+                      (-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16,
+                      -player->particles[10 + arg1].rotation, 2 * -player->unk_206);
+        player->particles[10 + arg1].pos[0] = player->tyres[BACK_RIGHT].pos[0] + sp44;
+        player->particles[10 + arg1].pos[2] = player->tyres[BACK_RIGHT].pos[2] + sp3C;
     } else {
-        player->tyreParticles[10 + arg1].pos[2] =
+        player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            ((-player->tyreParticles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
-                coss(player->tyreParticles[10 + arg1].rotation);
-        player->tyreParticles[10 + arg1].pos[0] =
+            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
+                coss(player->particles[10 + arg1].rotation);
+        player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            ((-player->tyreParticles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
-                sins(player->tyreParticles[10 + arg1].rotation);
+            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
+                sins(player->particles[10 + arg1].rotation);
     }
 
-    ++player->tyreParticles[10 + arg1].particle_timer;
-    player->tyreParticles[10 + arg1].pos[1] += 0.2;
+    ++player->particles[10 + arg1].particle_timer;
+    player->particles[10 + arg1].pos[1] += 0.2;
     if (((player->effects & 0x80) != 0) || ((player->effects & 0x40) != 0)) {
-        player->tyreParticles[10 + arg1].active = 0;
-        player->tyreParticles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].active = 0;
+        player->particles[10 + arg1].particle_timer = 0;
     }
 
-    if (player->tyreParticles[10 + arg1].particle_timer == 8) {
-        player->tyreParticles[10 + arg1].active = 0;
-        player->tyreParticles[10 + arg1].particle_timer = 0;
-        player->tyreParticles[10 + arg1].particle_type = 0;
+    if (player->particles[10 + arg1].particle_timer == 8) {
+        player->particles[10 + arg1].active = 0;
+        player->particles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].particle_type = 0;
     }
 
-    player->tyreParticles[10 + arg1].scale += 0.1;
-    if (player->tyreParticles[10 + arg1].unk_040 == 0) {
-        if (player->tyreParticles[10 + arg1].particle_timer >= 4) {
-            player->tyreParticles[10 + arg1].alpha -= 12;
+    player->particles[10 + arg1].scale += 0.1;
+    if (player->particles[10 + arg1].unk_040 == 0) {
+        if (player->particles[10 + arg1].particle_timer >= 4) {
+            player->particles[10 + arg1].alpha -= 12;
         }
-        if (player->tyreParticles[10 + arg1].alpha <= 0) {
-            player->tyreParticles[10 + arg1].alpha = 0;
+        if (player->particles[10 + arg1].alpha <= 0) {
+            player->particles[10 + arg1].alpha = 0;
         }
     } else {
-        if (player->tyreParticles[10 + arg1].particle_timer >= 4) {
-            player->tyreParticles[10 + arg1].alpha -= 16;
+        if (player->particles[10 + arg1].particle_timer >= 4) {
+            player->particles[10 + arg1].alpha -= 16;
         }
-        if (player->tyreParticles[10 + arg1].alpha <= 0) {
-            player->tyreParticles[10 + arg1].alpha = 0;
+        if (player->particles[10 + arg1].alpha <= 0) {
+            player->particles[10 + arg1].alpha = 0;
         }
     }
 }
 
 void func_800639DC(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    if (player->tyreParticles[10 + arg1].unk_010 == 1) {
-        player->tyreParticles[10 + arg1].pos[2] =
+    if (player->particles[10 + arg1].unk_010 == 1) {
+        player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_LEFT].pos[2] +
-            (-1.8f * player->tyreParticles[10 + arg1].particle_timer) * coss(player->tyreParticles[10 + arg1].rotation);
-        player->tyreParticles[10 + arg1].pos[0] =
+            (-1.8f * player->particles[10 + arg1].particle_timer) * coss(player->particles[10 + arg1].rotation);
+        player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_LEFT].pos[0] +
-            (-1.8f * player->tyreParticles[10 + arg1].particle_timer) * sins(player->tyreParticles[10 + arg1].rotation);
+            (-1.8f * player->particles[10 + arg1].particle_timer) * sins(player->particles[10 + arg1].rotation);
     } else {
-        player->tyreParticles[10 + arg1].pos[2] =
+        player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            (-1.8f * player->tyreParticles[10 + arg1].particle_timer) * coss(player->tyreParticles[10 + arg1].rotation);
-        player->tyreParticles[10 + arg1].pos[0] =
+            (-1.8f * player->particles[10 + arg1].particle_timer) * coss(player->particles[10 + arg1].rotation);
+        player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            (-1.8f * player->tyreParticles[10 + arg1].particle_timer) * sins(player->tyreParticles[10 + arg1].rotation);
+            (-1.8f * player->particles[10 + arg1].particle_timer) * sins(player->particles[10 + arg1].rotation);
     }
-    ++player->tyreParticles[10 + arg1].particle_timer;
-    player->tyreParticles[10 + arg1].pos[1] += 0.3;
-    if (player->tyreParticles[10 + arg1].particle_timer == 8) {
-        player->tyreParticles[10 + arg1].active = 0;
-        player->tyreParticles[10 + arg1].particle_timer = 0;
-        player->tyreParticles[10 + arg1].particle_type = 0;
+    ++player->particles[10 + arg1].particle_timer;
+    player->particles[10 + arg1].pos[1] += 0.3;
+    if (player->particles[10 + arg1].particle_timer == 8) {
+        player->particles[10 + arg1].active = 0;
+        player->particles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].particle_type = 0;
     }
 
-    player->tyreParticles[10 + arg1].scale += 0.15;
-    if (player->tyreParticles[10 + arg1].unk_040 == 0) {
-        if ((s32) player->tyreParticles[10 + arg1].particle_timer >= 4) {
-            --player->tyreParticles[10 + arg1].alpha;
+    player->particles[10 + arg1].scale += 0.15;
+    if (player->particles[10 + arg1].unk_040 == 0) {
+        if ((s32) player->particles[10 + arg1].particle_timer >= 4) {
+            --player->particles[10 + arg1].alpha;
         }
-        if ((s32) player->tyreParticles[10 + arg1].alpha <= 0) {
-            player->tyreParticles[10 + arg1].alpha = 0;
+        if ((s32) player->particles[10 + arg1].alpha <= 0) {
+            player->particles[10 + arg1].alpha = 0;
         }
     } else {
-        if ((s32) player->tyreParticles[10 + arg1].particle_timer >= 4) {
-            player->tyreParticles[10 + arg1].alpha -= 16;
+        if ((s32) player->particles[10 + arg1].particle_timer >= 4) {
+            player->particles[10 + arg1].alpha -= 16;
         }
-        if ((s32) player->tyreParticles[10 + arg1].alpha <= 0) {
+        if ((s32) player->particles[10 + arg1].alpha <= 0) {
 
-            player->tyreParticles[10 + arg1].alpha = 0;
+            player->particles[10 + arg1].alpha = 0;
         }
     }
 }
 
 void func_80063BD4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    if (player->tyreParticles[10 + arg1].unk_010 == 1) {
-        player->tyreParticles[10 + arg1].pos[2] =
+    if (player->particles[10 + arg1].unk_010 == 1) {
+        player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_LEFT].pos[2] +
-            (-2 * player->tyreParticles[10 + arg1].particle_timer * coss(player->tyreParticles[10 + arg1].rotation));
-        player->tyreParticles[10 + arg1].pos[0] =
+            (-2 * player->particles[10 + arg1].particle_timer * coss(player->particles[10 + arg1].rotation));
+        player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_LEFT].pos[0] +
-            (-2 * player->tyreParticles[10 + arg1].particle_timer * sins(player->tyreParticles[10 + arg1].rotation));
+            (-2 * player->particles[10 + arg1].particle_timer * sins(player->particles[10 + arg1].rotation));
     } else {
-        player->tyreParticles[10 + arg1].pos[2] =
+        player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            (-2 * player->tyreParticles[10 + arg1].particle_timer * coss(player->tyreParticles[10 + arg1].rotation));
-        player->tyreParticles[10 + arg1].pos[0] =
+            (-2 * player->particles[10 + arg1].particle_timer * coss(player->particles[10 + arg1].rotation));
+        player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            (-2 * player->tyreParticles[10 + arg1].particle_timer * sins(player->tyreParticles[10 + arg1].rotation));
+            (-2 * player->particles[10 + arg1].particle_timer * sins(player->particles[10 + arg1].rotation));
     }
 
-    ++player->tyreParticles[10 + arg1].particle_timer;
-    player->tyreParticles[10 + arg1].pos[1] += 0.2;
-    if (player->tyreParticles[10 + arg1].particle_timer == 8) {
-        player->tyreParticles[10 + arg1].active = 0;
-        player->tyreParticles[10 + arg1].particle_timer = 0;
-        player->tyreParticles[10 + arg1].particle_type = 0;
+    ++player->particles[10 + arg1].particle_timer;
+    player->particles[10 + arg1].pos[1] += 0.2;
+    if (player->particles[10 + arg1].particle_timer == 8) {
+        player->particles[10 + arg1].active = 0;
+        player->particles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].particle_type = 0;
     }
 
-    player->tyreParticles[10 + arg1].unk_018 = 2.0f;
-    player->tyreParticles[10 + arg1].scale -= 0.06;
+    player->particles[10 + arg1].unk_018 = 2.0f;
+    player->particles[10 + arg1].scale -= 0.06;
 }
 
 void func_80063D58(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    if (player->tyreParticles[10 + arg1].unk_010 == 1) {
-        player->tyreParticles[10 + arg1].pos[2] =
+    if (player->particles[10 + arg1].unk_010 == 1) {
+        player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_LEFT].pos[2] +
-            ((-player->tyreParticles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
-                coss(player->tyreParticles[10 + arg1].rotation);
-        player->tyreParticles[10 + arg1].pos[0] =
+            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
+                coss(player->particles[10 + arg1].rotation);
+        player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_LEFT].pos[0] +
-            ((-player->tyreParticles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
-                sins(player->tyreParticles[10 + arg1].rotation);
+            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
+                sins(player->particles[10 + arg1].rotation);
     } else {
-        player->tyreParticles[10 + arg1].pos[2] =
+        player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            ((-player->tyreParticles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
-                coss(player->tyreParticles[10 + arg1].rotation);
-        player->tyreParticles[10 + arg1].pos[0] =
+            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
+                coss(player->particles[10 + arg1].rotation);
+        player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            ((-player->tyreParticles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
-                sins(player->tyreParticles[10 + arg1].rotation);
+            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
+                sins(player->particles[10 + arg1].rotation);
     }
 
-    ++player->tyreParticles[10 + arg1].particle_timer;
-    if (player->tyreParticles[10 + arg1].particle_timer == 8) {
-        player->tyreParticles[10 + arg1].particle_timer = 0;
-        player->tyreParticles[10 + arg1].active = 0;
-        player->tyreParticles[10 + arg1].particle_type = 0;
+    ++player->particles[10 + arg1].particle_timer;
+    if (player->particles[10 + arg1].particle_timer == 8) {
+        player->particles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].active = 0;
+        player->particles[10 + arg1].particle_type = 0;
     }
 
-    player->tyreParticles[10 + arg1].scale += 0.2;
-    if (player->tyreParticles[10 + arg1].particle_timer >= 4) {
-        player->tyreParticles[10 + arg1].alpha -= 18;
-        player->tyreParticles[10 + arg1].pos[1] -= 0.1;
+    player->particles[10 + arg1].scale += 0.2;
+    if (player->particles[10 + arg1].particle_timer >= 4) {
+        player->particles[10 + arg1].alpha -= 18;
+        player->particles[10 + arg1].pos[1] -= 0.1;
     } else {
-        player->tyreParticles[10 + arg1].pos[1] += 0.4;
+        player->particles[10 + arg1].pos[1] += 0.4;
     }
 
-    if (player->tyreParticles[10 + arg1].alpha <= 0) {
-        player->tyreParticles[10 + arg1].alpha = 0;
+    if (player->particles[10 + arg1].alpha <= 0) {
+        player->particles[10 + arg1].alpha = 0;
     }
 }
 
@@ -4591,23 +4590,23 @@ void func_80063FBC(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     f32 sp38;
     f32 sp34;
 
-    if (player->tyreParticles[10 + arg1].unk_010 == 1) {
+    if (player->particles[10 + arg1].unk_010 == 1) {
         func_80062B18(&sp3C, &sp34, &sp38, 3.0f, 0.0f,
-                      -5.5 - (player->tyreParticles[10 + arg1].particle_timer * (((player->speed / 18.0f) * 216.0f) / 15.0f)),
-                      -player->tyreParticles[10 + arg1].rotation, 0);
+                      -5.5 - (player->particles[10 + arg1].particle_timer * (((player->speed / 18.0f) * 216.0f) / 15.0f)),
+                      -player->particles[10 + arg1].rotation, 0);
     } else {
         func_80062B18(&sp3C, &sp34, &sp38, -3.0f, 0.0f,
-                      -5.5 - (player->tyreParticles[10 + arg1].particle_timer * (((player->speed / 18.0f) * 216.0f) / 15.0f)),
-                      -player->tyreParticles[10 + arg1].rotation, 0);
+                      -5.5 - (player->particles[10 + arg1].particle_timer * (((player->speed / 18.0f) * 216.0f) / 15.0f)),
+                      -player->particles[10 + arg1].rotation, 0);
     }
-    player->tyreParticles[10 + arg1].pos[0] = player->pos[0] + sp3C;
-    player->tyreParticles[10 + arg1].pos[2] = player->pos[2] + sp38;
-    player->tyreParticles[10 + arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp34;
-    player->tyreParticles[10 + arg1].particle_timer++;
-    if (player->tyreParticles[10 + arg1].particle_timer == 6) {
-        player->tyreParticles[10 + arg1].active = 0;
-        player->tyreParticles[10 + arg1].particle_timer = 0;
-        player->tyreParticles[10 + arg1].particle_type = 0;
+    player->particles[10 + arg1].pos[0] = player->pos[0] + sp3C;
+    player->particles[10 + arg1].pos[2] = player->pos[2] + sp38;
+    player->particles[10 + arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp34;
+    player->particles[10 + arg1].particle_timer++;
+    if (player->particles[10 + arg1].particle_timer == 6) {
+        player->particles[10 + arg1].active = 0;
+        player->particles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].particle_type = 0;
     }
 }
 
@@ -4622,47 +4621,47 @@ void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     }
 
     func_80062B18(&sp44, &sp40, &sp3C, 0.0f, sp40,
-                  -4.0f + ((-player->tyreParticles[arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 10.0f),
-                  -player->tyreParticles[arg1].rotation, 2 * -player->unk_206);
-    player->tyreParticles[arg1].pos[0] = player->pos[0] + sp44;
-    player->tyreParticles[arg1].pos[2] = player->pos[2] + sp3C;
-    player->tyreParticles[arg1].pos[1] = player->pos[1] + sp40;
-    ++player->tyreParticles[arg1].particle_timer;
-    if ((player->tyreParticles[arg1].particle_timer == 12) || (D_801652A0[arg2] <= (player->pos[1] - player->boundingBoxSize))) {
-        player->tyreParticles[arg1].active = 0;
-        player->tyreParticles[arg1].particle_timer = 0;
-        player->tyreParticles[arg1].particle_type = 0;
+                  -4.0f + ((-player->particles[arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 10.0f),
+                  -player->particles[arg1].rotation, 2 * -player->unk_206);
+    player->particles[arg1].pos[0] = player->pos[0] + sp44;
+    player->particles[arg1].pos[2] = player->pos[2] + sp3C;
+    player->particles[arg1].pos[1] = player->pos[1] + sp40;
+    ++player->particles[arg1].particle_timer;
+    if ((player->particles[arg1].particle_timer == 12) || (D_801652A0[arg2] <= (player->pos[1] - player->boundingBoxSize))) {
+        player->particles[arg1].active = 0;
+        player->particles[arg1].particle_timer = 0;
+        player->particles[arg1].particle_type = 0;
     }
-    player->tyreParticles[arg1].unk_018 = 2.0f;
-    player->tyreParticles[arg1].scale -= 0.35;
-    if (player->tyreParticles[arg1].scale < 0.0f) {
-        player->tyreParticles[arg1].scale = 0.0f;
+    player->particles[arg1].unk_018 = 2.0f;
+    player->particles[arg1].scale -= 0.35;
+    if (player->particles[arg1].scale < 0.0f) {
+        player->particles[arg1].scale = 0.0f;
     }
 
-    player->tyreParticles[arg1].alpha -= 22;
-    if (player->tyreParticles[arg1].alpha <= 0) {
-        player->tyreParticles[arg1].alpha = 0;
+    player->particles[arg1].alpha -= 22;
+    if (player->particles[arg1].alpha <= 0) {
+        player->particles[arg1].alpha = 0;
     }
 }
 
 void func_800643A8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    player->tyreParticles[10 + arg1].pos[2] =
-        player->pos[2] + (-1.2 * player->tyreParticles[10 + arg1].particle_timer * coss(player->tyreParticles[10 + arg1].rotation));
-    player->tyreParticles[10 + arg1].pos[0] =
-        player->pos[0] + (-1.2 * player->tyreParticles[10 + arg1].particle_timer * sins(player->tyreParticles[10 + arg1].rotation));
-    player->tyreParticles[10 + arg1].pos[1] = player->tyreParticles[10 + arg1].pos[1] + 0.5;
+    player->particles[10 + arg1].pos[2] =
+        player->pos[2] + (-1.2 * player->particles[10 + arg1].particle_timer * coss(player->particles[10 + arg1].rotation));
+    player->particles[10 + arg1].pos[0] =
+        player->pos[0] + (-1.2 * player->particles[10 + arg1].particle_timer * sins(player->particles[10 + arg1].rotation));
+    player->particles[10 + arg1].pos[1] = player->particles[10 + arg1].pos[1] + 0.5;
 
-    ++player->tyreParticles[10 + arg1].particle_timer;
-    if (player->tyreParticles[10 + arg1].particle_timer == 10) {
-        player->tyreParticles[10 + arg1].active = 0;
-        player->tyreParticles[10 + arg1].particle_timer = 0;
-        player->tyreParticles[10 + arg1].particle_type = 0;
+    ++player->particles[10 + arg1].particle_timer;
+    if (player->particles[10 + arg1].particle_timer == 10) {
+        player->particles[10 + arg1].active = 0;
+        player->particles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].particle_type = 0;
     }
 
-    player->tyreParticles[10 + arg1].scale += 0.2;
-    player->tyreParticles[10 + arg1].alpha -= 8;
-    if (player->tyreParticles[10 + arg1].alpha <= 0) {
-        player->tyreParticles[10 + arg1].alpha = 0;
+    player->particles[10 + arg1].scale += 0.2;
+    player->particles[10 + arg1].alpha -= 8;
+    if (player->particles[10 + arg1].alpha <= 0) {
+        player->particles[10 + arg1].alpha = 0;
     }
 }
 
@@ -4672,27 +4671,27 @@ void func_800644E8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     s32 thing;
     UNUSED s32 stackPadding1;
 
-    if (player->tyreParticles[30 + arg1].particle_timer >= 9) {
-        player->tyreParticles[30 + arg1].particle_timer = 9;
+    if (player->particles[30 + arg1].particle_timer >= 9) {
+        player->particles[30 + arg1].particle_timer = 9;
     }
-    thing2 = player->tyreParticles[30 + arg1].unk_024;
-    thing = player->tyreParticles[30 + arg1].particle_timer;
-    player->tyreParticles[30 + arg1].pos[2] =
-        player->pos[2] + (coss(player->tyreParticles[30 + arg1].rotation) * (-0.7 * thing));
-    player->tyreParticles[30 + arg1].pos[0] =
-        player->pos[0] + (sins(player->tyreParticles[30 + arg1].rotation) * (-0.7 * thing));
-    player->tyreParticles[30 + arg1].particle_timer++;
-    player->tyreParticles[30 + arg1].pos[1] =
-        player->tyreParticles[30 + arg1].unk_028 + (f32) ((thing * thing2) - (0.2 * (thing * thing)));
-    if (player->tyreParticles[30 + arg1].particle_timer == 0x000A) {
-        player->tyreParticles[30 + arg1].particle_timer = 0;
-        player->tyreParticles[30 + arg1].active = 0;
-        player->tyreParticles[30 + arg1].particle_type = 0;
+    thing2 = player->particles[30 + arg1].unk_024;
+    thing = player->particles[30 + arg1].particle_timer;
+    player->particles[30 + arg1].pos[2] =
+        player->pos[2] + (coss(player->particles[30 + arg1].rotation) * (-0.7 * thing));
+    player->particles[30 + arg1].pos[0] =
+        player->pos[0] + (sins(player->particles[30 + arg1].rotation) * (-0.7 * thing));
+    player->particles[30 + arg1].particle_timer++;
+    player->particles[30 + arg1].pos[1] =
+        player->particles[30 + arg1].unk_028 + (f32) ((thing * thing2) - (0.2 * (thing * thing)));
+    if (player->particles[30 + arg1].particle_timer == 0x000A) {
+        player->particles[30 + arg1].particle_timer = 0;
+        player->particles[30 + arg1].active = 0;
+        player->particles[30 + arg1].particle_type = 0;
     }
-    if (player->tyreParticles[30 + arg1].particle_timer >= 7) {
-        player->tyreParticles[30 + arg1].alpha -= 0x60;
-        if (player->tyreParticles[30 + arg1].alpha <= 0) {
-            player->tyreParticles[30 + arg1].alpha = 0;
+    if (player->particles[30 + arg1].particle_timer >= 7) {
+        player->particles[30 + arg1].alpha -= 0x60;
+        if (player->particles[30 + arg1].alpha <= 0) {
+            player->particles[30 + arg1].alpha = 0;
         }
     }
 }
@@ -4703,262 +4702,262 @@ void func_80064664(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     s32 temp_v1;
     UNUSED s32 stackPadding1;
 
-    temp_v1 = player->tyreParticles[30 + arg1].particle_timer;
-    temp_f4 = player->tyreParticles[30 + arg1].unk_024;
-    player->tyreParticles[30 + arg1].pos[2] =
-        player->pos[2] + (coss(player->tyreParticles[30 + arg1].rotation) * (-0.6 * temp_v1));
-    player->tyreParticles[30 + arg1].pos[0] =
-        player->pos[0] + (sins(player->tyreParticles[30 + arg1].rotation) * (-0.6 * temp_v1));
-    player->tyreParticles[30 + arg1].particle_timer++;
-    player->tyreParticles[30 + arg1].pos[1] =
-        player->tyreParticles[30 + arg1].unk_028 + (f32) ((temp_v1 * temp_f4) - (0.1 * (temp_v1 * temp_v1)));
-    if (player->tyreParticles[30 + arg1].particle_timer == 0x0019) {
-        player->tyreParticles[30 + arg1].particle_timer = 0;
-        player->tyreParticles[30 + arg1].active = 0;
-        player->tyreParticles[30 + arg1].particle_type = 0;
+    temp_v1 = player->particles[30 + arg1].particle_timer;
+    temp_f4 = player->particles[30 + arg1].unk_024;
+    player->particles[30 + arg1].pos[2] =
+        player->pos[2] + (coss(player->particles[30 + arg1].rotation) * (-0.6 * temp_v1));
+    player->particles[30 + arg1].pos[0] =
+        player->pos[0] + (sins(player->particles[30 + arg1].rotation) * (-0.6 * temp_v1));
+    player->particles[30 + arg1].particle_timer++;
+    player->particles[30 + arg1].pos[1] =
+        player->particles[30 + arg1].unk_028 + (f32) ((temp_v1 * temp_f4) - (0.1 * (temp_v1 * temp_v1)));
+    if (player->particles[30 + arg1].particle_timer == 0x0019) {
+        player->particles[30 + arg1].particle_timer = 0;
+        player->particles[30 + arg1].active = 0;
+        player->particles[30 + arg1].particle_type = 0;
     }
-    if (player->tyreParticles[30 + arg1].particle_timer >= 7) {
-        player->tyreParticles[30 + arg1].alpha -= 0x6;
-        if (player->tyreParticles[30 + arg1].alpha <= 0) {
-            player->tyreParticles[30 + arg1].alpha = 0;
+    if (player->particles[30 + arg1].particle_timer >= 7) {
+        player->particles[30 + arg1].alpha -= 0x6;
+        if (player->particles[30 + arg1].alpha <= 0) {
+            player->particles[30 + arg1].alpha = 0;
         }
     }
 }
 
 void func_800647C8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
-    ++player->tyreParticles[30 + arg1].particle_timer;
-    player->tyreParticles[30 + arg1].pos[2] =
-        player->pos[2] + ((-0.8 * (player->tyreParticles[30 + arg1].particle_timer)) * coss(player->tyreParticles[30 + arg1].rotation));
-    player->tyreParticles[30 + arg1].pos[0] =
-        player->pos[0] + ((-0.8 * (player->tyreParticles[30 + arg1].particle_timer)) * sins(player->tyreParticles[30 + arg1].rotation));
-    player->tyreParticles[30 + arg1].pos[1] = (player->unk_074 + 2.0f);
+    ++player->particles[30 + arg1].particle_timer;
+    player->particles[30 + arg1].pos[2] =
+        player->pos[2] + ((-0.8 * (player->particles[30 + arg1].particle_timer)) * coss(player->particles[30 + arg1].rotation));
+    player->particles[30 + arg1].pos[0] =
+        player->pos[0] + ((-0.8 * (player->particles[30 + arg1].particle_timer)) * sins(player->particles[30 + arg1].rotation));
+    player->particles[30 + arg1].pos[1] = (player->unk_074 + 2.0f);
 
-    if (player->tyreParticles[30 + arg1].particle_timer == 14) {
-        player->tyreParticles[30 + arg1].active = 0;
-        player->tyreParticles[30 + arg1].particle_timer = 0;
-        player->tyreParticles[30 + arg1].particle_type = 0;
+    if (player->particles[30 + arg1].particle_timer == 14) {
+        player->particles[30 + arg1].active = 0;
+        player->particles[30 + arg1].particle_timer = 0;
+        player->particles[30 + arg1].particle_type = 0;
     }
 
-    player->tyreParticles[30 + arg1].alpha -= 12;
-    if (player->tyreParticles[30 + arg1].alpha <= 0) {
-        player->tyreParticles[30 + arg1].alpha = 0;
+    player->particles[30 + arg1].alpha -= 12;
+    if (player->particles[30 + arg1].alpha <= 0) {
+        player->particles[30 + arg1].alpha = 0;
     }
 }
 
 void func_800648E4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    ++player->tyreParticles[30 + arg1].particle_timer;
-    player->tyreParticles[30 + arg1].scale -= 0.06;
-    player->tyreParticles[30 + arg1].pos[1] += 0.1;
-    player->tyreParticles[30 + arg1].alpha -= 12;
+    ++player->particles[30 + arg1].particle_timer;
+    player->particles[30 + arg1].scale -= 0.06;
+    player->particles[30 + arg1].pos[1] += 0.1;
+    player->particles[30 + arg1].alpha -= 12;
 
-    if (player->tyreParticles[30 + arg1].alpha <= 0) {
-        player->tyreParticles[30 + arg1].alpha = 0;
+    if (player->particles[30 + arg1].alpha <= 0) {
+        player->particles[30 + arg1].alpha = 0;
     }
 
-    if (player->tyreParticles[30 + arg1].particle_timer == 10) {
-        player->tyreParticles[30 + arg1].active = 0;
-        player->tyreParticles[30 + arg1].particle_timer = 0;
-        player->tyreParticles[30 + arg1].particle_type = 0;
+    if (player->particles[30 + arg1].particle_timer == 10) {
+        player->particles[30 + arg1].active = 0;
+        player->particles[30 + arg1].particle_timer = 0;
+        player->particles[30 + arg1].particle_type = 0;
     }
 }
 
 void func_80064988(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    ++player->tyreParticles[30 + arg1].particle_timer;
-    player->tyreParticles[30 + arg1].pos[1] -= 0.3;
+    ++player->particles[30 + arg1].particle_timer;
+    player->particles[30 + arg1].pos[1] -= 0.3;
 
-    if (player->tyreParticles[30 + arg1].particle_timer == 10) {
-        player->tyreParticles[30 + arg1].active = 0;
-        player->tyreParticles[30 + arg1].particle_timer = 0;
-        player->tyreParticles[30 + arg1].particle_type = 0;
+    if (player->particles[30 + arg1].particle_timer == 10) {
+        player->particles[30 + arg1].active = 0;
+        player->particles[30 + arg1].particle_timer = 0;
+        player->particles[30 + arg1].particle_type = 0;
     }
 }
 
 void func_800649F4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     f32 temp;
-    temp = player->tyreParticles[30 + arg1].unk_018;
+    temp = player->particles[30 + arg1].unk_018;
 
-    player->tyreParticles[30 + arg1].pos[2] =
-        player->unk_21C + (((-temp) * player->tyreParticles[30 + arg1].particle_timer) * coss(player->tyreParticles[30 + arg1].rotation));
-    player->tyreParticles[30 + arg1].pos[0] =
-        player->unk_218 + (((-temp) * player->tyreParticles[30 + arg1].particle_timer) * sins(player->tyreParticles[30 + arg1].rotation));
-    player->tyreParticles[30 + arg1].pos[1] = player->pos[1] + player->tyreParticles[30 + arg1].unk_014;
-    player->tyreParticles[30 + arg1].scale += 0.04;
+    player->particles[30 + arg1].pos[2] =
+        player->unk_21C + (((-temp) * player->particles[30 + arg1].particle_timer) * coss(player->particles[30 + arg1].rotation));
+    player->particles[30 + arg1].pos[0] =
+        player->unk_218 + (((-temp) * player->particles[30 + arg1].particle_timer) * sins(player->particles[30 + arg1].rotation));
+    player->particles[30 + arg1].pos[1] = player->pos[1] + player->particles[30 + arg1].unk_014;
+    player->particles[30 + arg1].scale += 0.04;
 
-    ++player->tyreParticles[30 + arg1].particle_timer;
-    if (player->tyreParticles[30 + arg1].particle_timer == 12) {
-        player->tyreParticles[30 + arg1].particle_timer = 0;
-        player->tyreParticles[30 + arg1].active = 0;
-        player->tyreParticles[30 + arg1].particle_type = 0;
+    ++player->particles[30 + arg1].particle_timer;
+    if (player->particles[30 + arg1].particle_timer == 12) {
+        player->particles[30 + arg1].particle_timer = 0;
+        player->particles[30 + arg1].active = 0;
+        player->particles[30 + arg1].particle_type = 0;
     }
 
-    if (player->tyreParticles[30 + arg1].particle_timer >= 9) {
-        player->tyreParticles[30 + arg1].alpha -= 0x10;
-        if (player->tyreParticles[30 + arg1].alpha <= 0) {
-            player->tyreParticles[30 + arg1].alpha = 0;
+    if (player->particles[30 + arg1].particle_timer >= 9) {
+        player->particles[30 + arg1].alpha -= 0x10;
+        if (player->particles[30 + arg1].alpha <= 0) {
+            player->particles[30 + arg1].alpha = 0;
         }
     }
 }
 
 void func_80064B30(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     f32 temp;
-    temp = player->tyreParticles[30 + arg1].unk_018 * 1.2;
+    temp = player->particles[30 + arg1].unk_018 * 1.2;
 
-    player->tyreParticles[30 + arg1].pos[2] =
-        (player->pos[2] + (-temp * player->tyreParticles[30 + arg1].particle_timer) * (coss(player->tyreParticles[30 + arg1].rotation)));
-    player->tyreParticles[30 + arg1].pos[0] =
-        (player->pos[0] + (-temp * player->tyreParticles[30 + arg1].particle_timer) * (sins(player->tyreParticles[30 + arg1].rotation)));
-    player->tyreParticles[30 + arg1].pos[1] += 0.1;
+    player->particles[30 + arg1].pos[2] =
+        (player->pos[2] + (-temp * player->particles[30 + arg1].particle_timer) * (coss(player->particles[30 + arg1].rotation)));
+    player->particles[30 + arg1].pos[0] =
+        (player->pos[0] + (-temp * player->particles[30 + arg1].particle_timer) * (sins(player->particles[30 + arg1].rotation)));
+    player->particles[30 + arg1].pos[1] += 0.1;
 
-    ++player->tyreParticles[30 + arg1].particle_timer;
-    if (player->tyreParticles[30 + arg1].particle_timer == 10) {
-        player->tyreParticles[30 + arg1].particle_timer = 0;
-        player->tyreParticles[30 + arg1].active = 0;
-        player->tyreParticles[30 + arg1].particle_type = 0;
+    ++player->particles[30 + arg1].particle_timer;
+    if (player->particles[30 + arg1].particle_timer == 10) {
+        player->particles[30 + arg1].particle_timer = 0;
+        player->particles[30 + arg1].active = 0;
+        player->particles[30 + arg1].particle_type = 0;
     }
 
-    player->tyreParticles[30 + arg1].red += 1820;
-    if (player->tyreParticles[30 + arg1].particle_timer >= 6) {
-        player->tyreParticles[30 + arg1].alpha -= 16;
-        if (player->tyreParticles[30 + arg1].alpha <= 0) {
-            player->tyreParticles[30 + arg1].alpha = 0;
+    player->particles[30 + arg1].red += 1820;
+    if (player->particles[30 + arg1].particle_timer >= 6) {
+        player->particles[30 + arg1].alpha -= 16;
+        if (player->particles[30 + arg1].alpha <= 0) {
+            player->particles[30 + arg1].alpha = 0;
         }
     }
 }
 
 void func_80064C74(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
-    if (player->tyreParticles[30 + arg1].unk_010 == 1) {
-        player->tyreParticles[30 + arg1].rotation += 2184;
+    if (player->particles[30 + arg1].unk_010 == 1) {
+        player->particles[30 + arg1].rotation += 2184;
     } else {
-        player->tyreParticles[30 + arg1].rotation -= 2184;
+        player->particles[30 + arg1].rotation -= 2184;
     }
 
-    player->tyreParticles[30 + arg1].pos[2] =
-        player->pos[2] + (coss(player->tyreParticles[30 + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
-    player->tyreParticles[30 + arg1].pos[0] =
-        player->pos[0] + (sins(player->tyreParticles[30 + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
-    player->tyreParticles[30 + arg1].pos[1] = player->pos[1] - 1.0f;
-    player->tyreParticles[30 + arg1].scale += 0.4;
-    ++player->tyreParticles[30 + arg1].particle_timer;
+    player->particles[30 + arg1].pos[2] =
+        player->pos[2] + (coss(player->particles[30 + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+    player->particles[30 + arg1].pos[0] =
+        player->pos[0] + (sins(player->particles[30 + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+    player->particles[30 + arg1].pos[1] = player->pos[1] - 1.0f;
+    player->particles[30 + arg1].scale += 0.4;
+    ++player->particles[30 + arg1].particle_timer;
 
-    if (player->tyreParticles[30 + arg1].particle_timer == 10) {
-        player->tyreParticles[30 + arg1].particle_timer = 0;
-        player->tyreParticles[30 + arg1].active = 0;
-        player->tyreParticles[30 + arg1].particle_type = 0;
+    if (player->particles[30 + arg1].particle_timer == 10) {
+        player->particles[30 + arg1].particle_timer = 0;
+        player->particles[30 + arg1].active = 0;
+        player->particles[30 + arg1].particle_type = 0;
     }
-    if (player->tyreParticles[30 + arg1].particle_timer >= 5) {
-        player->tyreParticles[30 + arg1].alpha -= 20;
-        if (player->tyreParticles[30 + arg1].alpha <= 0) {
-            player->tyreParticles[30 + arg1].alpha = 0;
+    if (player->particles[30 + arg1].particle_timer >= 5) {
+        player->particles[30 + arg1].alpha -= 20;
+        if (player->particles[30 + arg1].alpha <= 0) {
+            player->particles[30 + arg1].alpha = 0;
         }
     }
 }
 
 void func_80064DEC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 
-    player->tyreParticles[20 + arg3].pos[1] = player->pos[1];
-    ++player->tyreParticles[20 + arg3].particle_timer;
+    player->particles[20 + arg3].pos[1] = player->pos[1];
+    ++player->particles[20 + arg3].particle_timer;
 
-    if (player->tyreParticles[20 + arg3].particle_timer == 9) {
+    if (player->particles[20 + arg3].particle_timer == 9) {
         player->unk_0B6 &= ~0x0040;
-        player->tyreParticles[20 + arg3].active = 0;
-        player->tyreParticles[20 + arg3].particle_timer = 0;
-        player->tyreParticles[20 + arg3].particle_type = 0;
+        player->particles[20 + arg3].active = 0;
+        player->particles[20 + arg3].particle_timer = 0;
+        player->particles[20 + arg3].particle_type = 0;
     }
 
-    player->tyreParticles[20 + arg3].scale += 0.8;
-    if (player->tyreParticles[20 + arg3].scale >= (f64) 2.5) {
-        player->tyreParticles[20 + arg3].scale = 2.5f;
+    player->particles[20 + arg3].scale += 0.8;
+    if (player->particles[20 + arg3].scale >= (f64) 2.5) {
+        player->particles[20 + arg3].scale = 2.5f;
     }
 }
 
 void func_80064EA4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    ++player->tyreParticles[20 + arg3].particle_timer;
-    if (player->tyreParticles[20 + arg3].particle_timer < 4) {
-        player->tyreParticles[20 + arg3].scale += 1.2;
-        if (player->tyreParticles[20 + arg3].scale >= 3.5) {
-            player->tyreParticles[20 + arg3].scale = 3.5f;
+    ++player->particles[20 + arg3].particle_timer;
+    if (player->particles[20 + arg3].particle_timer < 4) {
+        player->particles[20 + arg3].scale += 1.2;
+        if (player->particles[20 + arg3].scale >= 3.5) {
+            player->particles[20 + arg3].scale = 3.5f;
         }
     } else {
-        player->tyreParticles[20 + arg3].scale -= 1.8;
-        if (player->tyreParticles[20 + arg3].scale <= 0.0f) {
+        player->particles[20 + arg3].scale -= 1.8;
+        if (player->particles[20 + arg3].scale <= 0.0f) {
             player->unk_0B6 &= ~0x1000;
-            player->tyreParticles[20 + arg3].active = 0;
-            player->tyreParticles[20 + arg3].particle_timer = 0;
-            player->tyreParticles[20 + arg3].particle_type = 0;
+            player->particles[20 + arg3].active = 0;
+            player->particles[20 + arg3].particle_timer = 0;
+            player->particles[20 + arg3].particle_type = 0;
         }
     }
 }
 
 void func_80064F88(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    ++player->tyreParticles[20 + arg3].particle_timer;
-    player->tyreParticles[20 + arg3].scale += 0.15;
+    ++player->particles[20 + arg3].particle_timer;
+    player->particles[20 + arg3].scale += 0.15;
 
-    if (1.2 <= player->tyreParticles[20 + arg3].scale) {
-        player->tyreParticles[20 + arg3].scale = 1.2f;
+    if (1.2 <= player->particles[20 + arg3].scale) {
+        player->particles[20 + arg3].scale = 1.2f;
     }
-    if (player->tyreParticles[20 + arg3].particle_timer >= 12) {
+    if (player->particles[20 + arg3].particle_timer >= 12) {
         player->unk_0B6 &= ~0x0800;
-        player->tyreParticles[20 + arg3].active = 0;
-        player->tyreParticles[20 + arg3].particle_timer = 0;
-        player->tyreParticles[20 + arg3].particle_type = 0;
+        player->particles[20 + arg3].active = 0;
+        player->particles[20 + arg3].particle_timer = 0;
+        player->particles[20 + arg3].particle_type = 0;
     }
 }
 
 void func_80065030(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    ++player->tyreParticles[20 + arg3].particle_timer;
+    ++player->particles[20 + arg3].particle_timer;
 
-    player->tyreParticles[20 + arg3].pos[1] += 0.8;
-    player->tyreParticles[20 + arg3].scale += 0.4;
-    if (player->tyreParticles[20 + arg3].scale >= (f64) 1.5) {
-        player->tyreParticles[20 + arg3].scale = 1.5f;
+    player->particles[20 + arg3].pos[1] += 0.8;
+    player->particles[20 + arg3].scale += 0.4;
+    if (player->particles[20 + arg3].scale >= (f64) 1.5) {
+        player->particles[20 + arg3].scale = 1.5f;
     }
 
-    if (player->tyreParticles[20 + arg3].particle_timer >= 12) {
+    if (player->particles[20 + arg3].particle_timer >= 12) {
         player->unk_0B6 &= ~0x0100;
-        player->tyreParticles[20 + arg3].active = 0;
-        player->tyreParticles[20 + arg3].particle_timer = 0;
-        player->tyreParticles[20 + arg3].particle_type = 0;
+        player->particles[20 + arg3].active = 0;
+        player->particles[20 + arg3].particle_timer = 0;
+        player->particles[20 + arg3].particle_type = 0;
     }
 }
 
 void func_800650FC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->tyreParticles[20 + arg3].pos[2] = (f32) player->pos[2];
-    player->tyreParticles[20 + arg3].pos[0] = (f32) player->pos[0];
-    player->tyreParticles[20 + arg3].pos[1] = (f32) (player->pos[1] + 4.0f);
+    player->particles[20 + arg3].pos[2] = (f32) player->pos[2];
+    player->particles[20 + arg3].pos[0] = (f32) player->pos[0];
+    player->particles[20 + arg3].pos[1] = (f32) (player->pos[1] + 4.0f);
     if ((player->effects & 0x80) == 0x80) {
-        player->tyreParticles[20 + arg3].rotation += 4732;
+        player->particles[20 + arg3].rotation += 4732;
     } else {
-        player->tyreParticles[20 + arg3].rotation -= 4732;
+        player->particles[20 + arg3].rotation -= 4732;
     }
 
     if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40)) {
-        player->tyreParticles[20 + arg3].active = 0;
-        player->tyreParticles[20 + arg3].particle_timer = 0;
-        player->tyreParticles[20 + arg3].particle_type = 0;
+        player->particles[20 + arg3].active = 0;
+        player->particles[20 + arg3].particle_timer = 0;
+        player->particles[20 + arg3].particle_type = 0;
     }
 
-    player->tyreParticles[20 + arg3].scale += 0.08;
-    if (player->tyreParticles[20 + arg3].scale >= 1.5) {
-        player->tyreParticles[20 + arg3].scale = 1.5f;
+    player->particles[20 + arg3].scale += 0.08;
+    if (player->particles[20 + arg3].scale >= 1.5) {
+        player->particles[20 + arg3].scale = 1.5f;
     }
 }
 
 void func_800651F4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    ++player->tyreParticles[20 + arg3].particle_timer;
-    if (player->tyreParticles[20 + arg3].particle_timer < 8) {
-        player->tyreParticles[20 + arg3].scale += 0.2;
-        if (1.2 <= player->tyreParticles[20 + arg3].scale) {
-            player->tyreParticles[20 + arg3].scale = 1.2f;
+    ++player->particles[20 + arg3].particle_timer;
+    if (player->particles[20 + arg3].particle_timer < 8) {
+        player->particles[20 + arg3].scale += 0.2;
+        if (1.2 <= player->particles[20 + arg3].scale) {
+            player->particles[20 + arg3].scale = 1.2f;
         }
     } else {
-        player->tyreParticles[20 + arg3].scale -= 0.4;
-        if (player->tyreParticles[20 + arg3].scale <= 0.0f) {
+        player->particles[20 + arg3].scale -= 0.4;
+        if (player->particles[20 + arg3].scale <= 0.0f) {
             player->unk_0B6 &= ~0x0020;
-            player->tyreParticles[20 + arg3].active = 0;
-            player->tyreParticles[20 + arg3].particle_timer = 0;
-            player->tyreParticles[20 + arg3].particle_type = 0;
+            player->particles[20 + arg3].active = 0;
+            player->particles[20 + arg3].particle_timer = 0;
+            player->particles[20 + arg3].particle_type = 0;
         }
     }
 }
@@ -4986,10 +4985,10 @@ void func_8006538C(Player* player, s8 arg1, s16 arg2, s8 arg3) {
     s16 envGreen;
     s16 envBlue;
 
-    if (player->tyreParticles[arg2].active == 1) {
-        spB4[0] = player->tyreParticles[arg2].pos[0];
-        spB4[1] = player->tyreParticles[arg2].pos[1];
-        spB4[2] = player->tyreParticles[arg2].pos[2];
+    if (player->particles[arg2].active == 1) {
+        spB4[0] = player->particles[arg2].pos[0];
+        spB4[1] = player->particles[arg2].pos[1];
+        spB4[2] = player->particles[arg2].pos[2];
         spAC[0] = 0;
         spAC[1] = player->unk_048[arg3];
         spAC[2] = 0;
@@ -5000,26 +4999,26 @@ void func_8006538C(Player* player, s8 arg1, s16 arg2, s8 arg3) {
             envRed = (envColors[1] >> 0x10) & 0xFF;
             envGreen = (envColors[1] >> 0x08) & 0xFF;
             envBlue = (envColors[1] >> 0x00) & 0xFF;
-            primAlpha = player->tyreParticles[arg2].alpha;
-            func_800652D4(spB4, spAC, ((player->tyreParticles[arg2].scale * player->size) * 1.4));
+            primAlpha = player->particles[arg2].alpha;
+            func_800652D4(spB4, spAC, ((player->particles[arg2].scale * player->size) * 1.4));
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-            gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_smoke[player->tyreParticles[arg2].unk_010],
+            gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_smoke[player->particles[arg2].unk_010],
                                 G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                 G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
         } else {
-            primRed = (primColors[player->tyreParticles[arg2].red] >> 0x10) & 0xFF;
-            primGreen = (primColors[player->tyreParticles[arg2].red] >> 0x08) & 0xFF;
-            primBlue = (primColors[player->tyreParticles[arg2].red] >> 0x00) & 0xFF;
-            envRed = (envColors[player->tyreParticles[arg2].red] >> 0x10) & 0xFF;
-            envGreen = (envColors[player->tyreParticles[arg2].red] >> 0x08) & 0xFF;
-            envBlue = (envColors[player->tyreParticles[arg2].red] >> 0x00) & 0xFF;
-            primAlpha = player->tyreParticles[arg2].alpha;
-            func_800652D4(spB4, spAC, player->tyreParticles[arg2].scale * player->size);
+            primRed = (primColors[player->particles[arg2].red] >> 0x10) & 0xFF;
+            primGreen = (primColors[player->particles[arg2].red] >> 0x08) & 0xFF;
+            primBlue = (primColors[player->particles[arg2].red] >> 0x00) & 0xFF;
+            envRed = (envColors[player->particles[arg2].red] >> 0x10) & 0xFF;
+            envGreen = (envColors[player->particles[arg2].red] >> 0x08) & 0xFF;
+            envBlue = (envColors[player->particles[arg2].red] >> 0x00) & 0xFF;
+            primAlpha = player->particles[arg2].alpha;
+            func_800652D4(spB4, spAC, player->particles[arg2].scale * player->size);
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-            gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_smoke[player->tyreParticles[arg2].unk_010],
+            gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_smoke[player->particles[arg2].unk_010],
                                 G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                 G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
@@ -5037,18 +5036,18 @@ void func_800658A0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->tyreParticles[arg2].active == 1) {
-        red = player->tyreParticles[arg2].red;
-        green = player->tyreParticles[arg2].green;
-        blue = player->tyreParticles[arg2].blue;
-        alpha = player->tyreParticles[arg2].alpha;
-        sp54[0] = player->tyreParticles[arg2].pos[0];
-        sp54[1] = player->tyreParticles[arg2].pos[1];
-        sp54[2] = player->tyreParticles[arg2].pos[2];
+    if (player->particles[arg2].active == 1) {
+        red = player->particles[arg2].red;
+        green = player->particles[arg2].green;
+        blue = player->particles[arg2].blue;
+        alpha = player->particles[arg2].alpha;
+        sp54[0] = player->particles[arg2].pos[0];
+        sp54[1] = player->particles[arg2].pos[1];
+        sp54[2] = player->particles[arg2].pos[2];
         sp4C[0] = 0;
         sp4C[1] = player->unk_048[arg3];
         sp4C[2] = 0;
-        func_800652D4(sp54, sp4C, player->tyreParticles[arg2].scale * player->size);
+        func_800652D4(sp54, sp4C, player->particles[arg2].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0,
                             G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
@@ -5071,26 +5070,26 @@ void func_80065AB0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 envGreen;
     s16 envBlue;
     s32 sp8C[] = { 0x00ffffff, 0x00ffff00, 0x00ff9600 };
-    if (player->tyreParticles[10 + arg2].active == 1) {
+    if (player->particles[10 + arg2].active == 1) {
         if (player->unk_204 >= 0x32) {
             var_s0 = 1;
         } else {
             var_s0 = 0;
         }
-        primRed = player->tyreParticles[10 + arg2].red;
-        primGreen = player->tyreParticles[10 + arg2].green;
-        primBlue = player->tyreParticles[10 + arg2].blue;
-        primAlpha = player->tyreParticles[10 + arg2].alpha;
-        envRed = (sp8C[player->tyreParticles[10 + arg2].unk_040] >> 0x10) & 0xFF;
-        envGreen = (sp8C[player->tyreParticles[10 + arg2].unk_040] >> 0x08) & 0xFF;
-        envBlue = (sp8C[player->tyreParticles[10 + arg2].unk_040] >> 0x00) & 0xFF;
-        spB4[0] = player->tyreParticles[10 + arg2].pos[0];
-        spB4[1] = player->tyreParticles[10 + arg2].pos[1];
-        spB4[2] = player->tyreParticles[10 + arg2].pos[2];
+        primRed = player->particles[10 + arg2].red;
+        primGreen = player->particles[10 + arg2].green;
+        primBlue = player->particles[10 + arg2].blue;
+        primAlpha = player->particles[10 + arg2].alpha;
+        envRed = (sp8C[player->particles[10 + arg2].unk_040] >> 0x10) & 0xFF;
+        envGreen = (sp8C[player->particles[10 + arg2].unk_040] >> 0x08) & 0xFF;
+        envBlue = (sp8C[player->particles[10 + arg2].unk_040] >> 0x00) & 0xFF;
+        spB4[0] = player->particles[10 + arg2].pos[0];
+        spB4[1] = player->particles[10 + arg2].pos[1];
+        spB4[2] = player->particles[10 + arg2].pos[2];
         spAC[0] = 0;
         spAC[1] = player->unk_048[arg3];
         spAC[2] = 0;
-        func_800652D4(spB4, spAC, player->tyreParticles[10 + arg2].scale * player->size);
+        func_800652D4(spB4, spAC, player->particles[10 + arg2].scale * player->size);
         if (var_s0 == 0) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, D_800E4770[var_s0][0], G_IM_FMT_I, G_IM_SIZ_8b, 16, 16, 0,
@@ -5122,23 +5121,23 @@ void func_80065F0C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 envRed;
     s16 envGreen;
     s16 envBlue;
-    if ((player->tyreParticles[10 + arg2].active == 1) && (player->tyreParticles[10 + arg2].particle_timer != 0)) {
-        spDC[0] = player->tyreParticles[10 + arg2].pos[0];
-        spDC[1] = player->tyreParticles[10 + arg2].pos[1];
-        spDC[2] = player->tyreParticles[10 + arg2].pos[2];
+    if ((player->particles[10 + arg2].active == 1) && (player->particles[10 + arg2].particle_timer != 0)) {
+        spDC[0] = player->particles[10 + arg2].pos[0];
+        spDC[1] = player->particles[10 + arg2].pos[1];
+        spDC[2] = player->particles[10 + arg2].pos[2];
         spD4[0] = 0;
         spD4[1] = player->unk_048[arg3];
         spD4[2] = 0;
-        func_800652D4(&spDC[0], &spD4[0], player->tyreParticles[10 + arg2].scale * player->size);
-        if (((s32) player->tyreParticles[10 + arg2].unk_014) != 8) {
-            primRed = ((D_800E47DC[player->tyreParticles[10 + arg2].red] >> 0x10) & 0xFF) - player->tyreParticles[10 + arg2].green;
-            primGreen = ((D_800E47DC[player->tyreParticles[10 + arg2].red] >> 0x08) & 0xFF) - player->tyreParticles[10 + arg2].green;
-            primBlue = ((D_800E47DC[player->tyreParticles[10 + arg2].red] >> 0x00) & 0xFF) - player->tyreParticles[10 + arg2].green;
-            envRed = ((D_800E480C[player->tyreParticles[10 + arg2].red] >> 0x10) & 0xFF) - player->tyreParticles[10 + arg2].green;
-            envGreen = ((D_800E480C[player->tyreParticles[10 + arg2].red] >> 0x08) & 0xFF) - player->tyreParticles[10 + arg2].green;
-            envBlue = ((D_800E480C[player->tyreParticles[10 + arg2].red] >> 0x00) & 0xFF) - player->tyreParticles[10 + arg2].green;
-            primAlpha = player->tyreParticles[10 + arg2].alpha;
-            if (player->tyreParticles[10 + arg2].unk_040 == 0) {
+        func_800652D4(&spDC[0], &spD4[0], player->particles[10 + arg2].scale * player->size);
+        if (((s32) player->particles[10 + arg2].unk_014) != 8) {
+            primRed = ((D_800E47DC[player->particles[10 + arg2].red] >> 0x10) & 0xFF) - player->particles[10 + arg2].green;
+            primGreen = ((D_800E47DC[player->particles[10 + arg2].red] >> 0x08) & 0xFF) - player->particles[10 + arg2].green;
+            primBlue = ((D_800E47DC[player->particles[10 + arg2].red] >> 0x00) & 0xFF) - player->particles[10 + arg2].green;
+            envRed = ((D_800E480C[player->particles[10 + arg2].red] >> 0x10) & 0xFF) - player->particles[10 + arg2].green;
+            envGreen = ((D_800E480C[player->particles[10 + arg2].red] >> 0x08) & 0xFF) - player->particles[10 + arg2].green;
+            envBlue = ((D_800E480C[player->particles[10 + arg2].red] >> 0x00) & 0xFF) - player->particles[10 + arg2].green;
+            primAlpha = player->particles[10 + arg2].alpha;
+            if (player->particles[10 + arg2].unk_040 == 0) {
                 gSPDisplayList(gDisplayListHead++, D_0D008DB8);
                 gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
                 func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
@@ -5151,9 +5150,9 @@ void func_80065F0C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
                 gSPDisplayList(gDisplayListHead++, D_0D008E48);
             }
         } else {
-            primRed = player->tyreParticles[10 + arg2].red;
-            primGreen = player->tyreParticles[10 + arg2].green;
-            primBlue = player->tyreParticles[10 + arg2].blue;
+            primRed = player->particles[10 + arg2].red;
+            primGreen = player->particles[10 + arg2].green;
+            primBlue = player->particles[10 + arg2].blue;
             gSPDisplayList(gDisplayListHead++, D_0D008C90);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D498, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5174,18 +5173,18 @@ void func_800664E0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->tyreParticles[10 + arg2].active == 1) {
-        red = player->tyreParticles[10 + arg2].red;
-        green = player->tyreParticles[10 + arg2].green;
-        blue = player->tyreParticles[10 + arg2].blue;
-        alpha = player->tyreParticles[10 + arg2].alpha;
-        sp54[0] = player->tyreParticles[10 + arg2].pos[0];
-        sp54[1] = player->tyreParticles[10 + arg2].pos[1];
-        sp54[2] = player->tyreParticles[10 + arg2].pos[2];
+    if (player->particles[10 + arg2].active == 1) {
+        red = player->particles[10 + arg2].red;
+        green = player->particles[10 + arg2].green;
+        blue = player->particles[10 + arg2].blue;
+        alpha = player->particles[10 + arg2].alpha;
+        sp54[0] = player->particles[10 + arg2].pos[0];
+        sp54[1] = player->particles[10 + arg2].pos[1];
+        sp54[2] = player->particles[10 + arg2].pos[2];
         sp4C[0] = 0;
         sp4C[1] = player->unk_048[arg3];
         sp4C[2] = 0;
-        func_800652D4(sp54, sp4C, player->tyreParticles[10 + arg2].scale * player->size);
+        func_800652D4(sp54, sp4C, player->particles[10 + arg2].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0,
@@ -5205,18 +5204,18 @@ void func_80066714(Player* player, UNUSED s32 arg1, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->tyreParticles[10 + arg2].active == 1) {
-        red = player->tyreParticles[10 + arg2].red;
-        green = player->tyreParticles[10 + arg2].green;
-        blue = player->tyreParticles[10 + arg2].blue;
-        alpha = player->tyreParticles[10 + arg2].alpha;
-        sp5C[0] = player->tyreParticles[10 + arg2].pos[0];
-        sp5C[1] = player->tyreParticles[10 + arg2].pos[1];
-        sp5C[2] = player->tyreParticles[10 + arg2].pos[2];
+    if (player->particles[10 + arg2].active == 1) {
+        red = player->particles[10 + arg2].red;
+        green = player->particles[10 + arg2].green;
+        blue = player->particles[10 + arg2].blue;
+        alpha = player->particles[10 + arg2].alpha;
+        sp5C[0] = player->particles[10 + arg2].pos[0];
+        sp5C[1] = player->particles[10 + arg2].pos[1];
+        sp5C[2] = player->particles[10 + arg2].pos[2];
         sp54[0] = 0;
         sp54[1] = player->unk_048[arg3];
         sp54[2] = 0;
-        func_800652D4(sp5C, sp54, player->tyreParticles[10 + arg2].scale * player->size);
+        func_800652D4(sp5C, sp54, player->particles[10 + arg2].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008C90);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
         gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_fire, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0,
@@ -5238,18 +5237,18 @@ void func_80066998(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->tyreParticles[arg2].active == 1) {
-        red = player->tyreParticles[arg2].red;
-        green = player->tyreParticles[arg2].green;
-        blue = player->tyreParticles[arg2].blue;
-        alpha = player->tyreParticles[arg2].alpha;
-        sp54[0] = player->tyreParticles[arg2].pos[0];
-        sp54[1] = player->tyreParticles[arg2].pos[1];
-        sp54[2] = player->tyreParticles[arg2].pos[2];
+    if (player->particles[arg2].active == 1) {
+        red = player->particles[arg2].red;
+        green = player->particles[arg2].green;
+        blue = player->particles[arg2].blue;
+        alpha = player->particles[arg2].alpha;
+        sp54[0] = player->particles[arg2].pos[0];
+        sp54[1] = player->particles[arg2].pos[1];
+        sp54[2] = player->particles[arg2].pos[2];
         sp4C[0] = 0x4000;
         sp4C[1] = player->unk_048[arg3];
         sp4C[2] = 0;
-        func_800652D4(sp54, sp4C, player->tyreParticles[arg2].scale * player->size);
+        func_800652D4(sp54, sp4C, player->particles[arg2].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0,
                             G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
@@ -5265,7 +5264,7 @@ void func_80066BAC(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3s spD4;
     UNUSED s32 stackPadding;
 
-    if ((player->tyreParticles[arg2].active == 1) && (player->tyreParticles[arg2].red != 0x00FF)) {
+    if ((player->particles[arg2].active == 1) && (player->particles[arg2].red != 0x00FF)) {
 
         if (player->collision.surfaceDistance[2] >= 300.0f) {
             spDC[1] = player->pos[1] + 5.0f;
@@ -5281,20 +5280,20 @@ void func_80066BAC(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         }
         spD4[1] = player->unk_048[arg3];
         spD4[2] = 0;
-        func_800652D4(spDC, spD4, player->tyreParticles[arg2].scale * player->size);
-        if (player->tyreParticles[arg2].red == 0) {
+        func_800652D4(spDC, spD4, player->particles[arg2].scale * player->size);
+        if (player->particles[arg2].red == 0) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
             gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C4, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 64, 0,
                                 G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
                                 G_TX_NOLOD, G_TX_NOLOD);
-            gSPVertex(gDisplayListHead++, &D_800E8900[0][player->tyreParticles[arg2].red], 4, 0);
+            gSPVertex(gDisplayListHead++, &D_800E8900[0][player->particles[arg2].red], 4, 0);
             gSPDisplayList(gDisplayListHead++, common_square_plain_render);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C8, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 64, 0,
                                 G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
                                 G_TX_NOLOD, G_TX_NOLOD);
-            gSPVertex(gDisplayListHead++, &D_800E8900[1][player->tyreParticles[arg2].red], 4, 0);
+            gSPVertex(gDisplayListHead++, &D_800E8900[1][player->particles[arg2].red], 4, 0);
             gSPDisplayList(gDisplayListHead++, D_0D008DA0);
         } else {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
@@ -5303,12 +5302,12 @@ void func_80066BAC(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C8, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 64, 0,
                                 G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
                                 G_TX_NOLOD, G_TX_NOLOD);
-            gSPVertex(gDisplayListHead++, &D_800E8900[0][player->tyreParticles[arg2].red], 4, 0);
+            gSPVertex(gDisplayListHead++, &D_800E8900[0][player->particles[arg2].red], 4, 0);
             gSPDisplayList(gDisplayListHead++, common_square_plain_render);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C4, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 64, 0,
                                 G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
                                 G_TX_NOLOD, G_TX_NOLOD);
-            gSPVertex(gDisplayListHead++, &D_800E8900[1][player->tyreParticles[arg2].red], 4, 0);
+            gSPVertex(gDisplayListHead++, &D_800E8900[1][player->particles[arg2].red], 4, 0);
             gSPDisplayList(gDisplayListHead++, D_0D008DA0);
         }
         gMatrixEffectCount += 1;
@@ -5323,19 +5322,19 @@ void func_80067280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->tyreParticles[30 + arg2].active == 1) {
-        red = player->tyreParticles[30 + arg2].red;
-        green = player->tyreParticles[30 + arg2].green;
-        blue = player->tyreParticles[30 + arg2].blue;
-        alpha = player->tyreParticles[30 + arg2].alpha;
-        sp7C[0] = player->tyreParticles[30 + arg2].pos[0];
-        sp7C[1] = player->tyreParticles[30 + arg2].pos[1];
-        sp7C[2] = player->tyreParticles[30 + arg2].pos[2];
+    if (player->particles[30 + arg2].active == 1) {
+        red = player->particles[30 + arg2].red;
+        green = player->particles[30 + arg2].green;
+        blue = player->particles[30 + arg2].blue;
+        alpha = player->particles[30 + arg2].alpha;
+        sp7C[0] = player->particles[30 + arg2].pos[0];
+        sp7C[1] = player->particles[30 + arg2].pos[1];
+        sp7C[2] = player->particles[30 + arg2].pos[2];
         sp74[0] = -0x071C;
         sp74[2] = 0;
-        if (player->tyreParticles[30 + arg2].unk_010 == 1) {
+        if (player->particles[30 + arg2].unk_010 == 1) {
             sp74[1] = player->unk_048[arg3] - 0x2000;
-            func_800652D4(sp7C, sp74, player->tyreParticles[30 + arg2].scale * player->size);
+            func_800652D4(sp7C, sp74, player->particles[30 + arg2].scale * player->size);
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0,
                                 G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
@@ -5344,7 +5343,7 @@ void func_80067280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
             gSPDisplayList(gDisplayListHead++, D_0D008E70);
         } else {
             sp74[1] = player->unk_048[arg3] + 0x2000;
-            func_800652D4(sp7C, sp74, player->tyreParticles[30 + arg2].scale * player->size);
+            func_800652D4(sp7C, sp74, player->particles[30 + arg2].scale * player->size);
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0,
                                 G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
@@ -5356,20 +5355,20 @@ void func_80067280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_80067604(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void render_boost_spark_particles(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp8C;
     Vec3s sp84;
     UNUSED s32 stackPadding[4];
 
-    if (player->tyreParticles[30 + arg2].active == 1) {
-        sp8C[0] = player->tyreParticles[30 + arg2].pos[0];
-        sp8C[1] = player->tyreParticles[30 + arg2].pos[1];
-        sp8C[2] = player->tyreParticles[30 + arg2].pos[2];
+    if (player->particles[30 + arg2].active == 1) {
+        sp8C[0] = player->particles[30 + arg2].pos[0];
+        sp8C[1] = player->particles[30 + arg2].pos[1];
+        sp8C[2] = player->particles[30 + arg2].pos[2];
         sp84[0] = 0;
         sp84[1] = player->unk_048[arg3];
         sp84[2] = 0;
-        func_800652D4(sp8C, sp84, player->tyreParticles[30 + arg2].scale * player->size);
-        if (player->tyreParticles[30 + arg2].unk_010 == 1) {
+        func_800652D4(sp8C, sp84, player->particles[30 + arg2].scale * player->size);
+        if (player->particles[30 + arg2].unk_010 == 1) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_spark, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0,
                                 G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
@@ -5388,17 +5387,17 @@ void func_80067604(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_80067964(Player* player, UNUSED s8 arg1, f32 arg2, UNUSED s8 arg3, s8 arg4) {
+void render_whirrr_onomatopoeia(Player* player, UNUSED s8 arg1, f32 arg2, UNUSED s8 arg3, s8 arg4) {
     Vec3f sp9C;
     Vec3s sp94;
     UNUSED s32 stackPadding[2];
 
-    if (player->tyreParticles[20 + arg4].active == 1) {
-        sp9C[0] = player->tyreParticles[20 + arg4].pos[0];
-        sp9C[1] = player->tyreParticles[20 + arg4].pos[1];
-        sp9C[2] = player->tyreParticles[20 + arg4].pos[2];
+    if (player->particles[20 + arg4].active == 1) {
+        sp9C[0] = player->particles[20 + arg4].pos[0];
+        sp9C[1] = player->particles[20 + arg4].pos[1];
+        sp9C[2] = player->particles[20 + arg4].pos[2];
         sp94[0] = 0;
-        sp94[1] = player->tyreParticles[20 + arg4].rotation;
+        sp94[1] = player->particles[20 + arg4].rotation;
         sp94[2] = 0;
         func_800652D4(sp9C, sp94, player->size * arg2);
         gSPDisplayList(gDisplayListHead++, D_0D008C90);
@@ -5419,7 +5418,7 @@ void func_80067964(Player* player, UNUSED s8 arg1, f32 arg2, UNUSED s8 arg3, s8 
     }
 }
 
-void func_80067D3C(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, s32 arg5) {
+void render_speech_bubble(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, s32 arg5) {
     Vec3f sp7C;
     Vec3s sp74;
     f32 sp54[8] = { 0.0f, -1.2f, 0.1f, 1.2f, -1.7f, -0.8f, -0.2f, -1.9f };
@@ -5429,14 +5428,14 @@ void func_80067D3C(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, s32 
     s16 blue = ((arg5 >> 0x00) & 0xFF) & 0xFF;
     // ????????????????????????????????????????
 
-    if (player->tyreParticles[20 + arg3].active == 1) {
+    if (player->particles[20 + arg3].active == 1) {
         sp74[0] = 0;
         sp74[1] = player->unk_048[arg1];
         sp74[2] = 0;
         sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
         sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
-        func_800652D4(sp7C, sp74, player->tyreParticles[20 + arg3].scale * player->size);
+        func_800652D4(sp7C, sp74, player->particles[20 + arg3].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP,
                             G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5447,7 +5446,7 @@ void func_80067D3C(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, s32 
     }
 }
 
-void func_8006801C(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, s32 arg5) {
+void render_music_note(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, s32 arg5) {
     Vec3f sp7C;
     Vec3s sp74;
     f32 sp54[8] = { -0.7f, -1.9f, -0.6f, 0.4f, -2.5f, -1.6f, -0.95f, -2.7f };
@@ -5457,14 +5456,14 @@ void func_8006801C(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, s32 
     s16 blue = ((arg5 >> 0x00) & 0xFF) & 0xFF;
     // ????????????????????????????????????????
 
-    if (player->tyreParticles[20 + arg3].active == 1) {
+    if (player->particles[20 + arg3].active == 1) {
         sp74[0] = 0;
         sp74[1] = player->unk_048[arg1];
         sp74[2] = 0;
         sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
         sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
-        func_800652D4(sp7C, sp74, player->tyreParticles[20 + arg3].scale * player->size * 0.8);
+        func_800652D4(sp7C, sp74, player->particles[20 + arg3].scale * player->size * 0.8);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP,
                             G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5480,14 +5479,14 @@ void func_80068310(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 
     Vec3f sp9C;
     Vec3s sp94;
 
-    if (player->tyreParticles[20 + arg4].active == 1) {
-        sp9C[1] = player->tyreParticles[20 + arg4].pos[1];
+    if (player->particles[20 + arg4].active == 1) {
+        sp9C[1] = player->particles[20 + arg4].pos[1];
         sp9C[2] = player->pos[2] + (coss(player->unk_048[arg3]) * -10.0f);
         sp9C[0] = player->pos[0] + (sins(player->unk_048[arg3]) * -10.0f);
         sp94[0] = 0;
         sp94[1] = player->unk_048[arg3];
         sp94[2] = 0;
-        func_800652D4(sp9C, sp94, player->tyreParticles[20 + arg4].scale * player->size);
+        func_800652D4(sp9C, sp94, player->particles[20 + arg4].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008C90);
         gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -5510,14 +5509,14 @@ void func_80068724(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 
     Vec3f sp84;
     Vec3s sp7C;
 
-    if (player->tyreParticles[20 + arg4].active == 1) {
+    if (player->particles[20 + arg4].active == 1) {
         sp84[1] = player->pos[1] - 3.0f;
         sp84[2] = player->pos[2] + (coss(player->unk_048[arg3]) * -10.0f);
         sp84[0] = player->pos[0] + (sins(player->unk_048[arg3]) * -10.0f);
         sp7C[0] = 0;
         sp7C[1] = player->unk_048[arg3];
         sp7C[2] = 0;
-        func_800652D4(sp84, sp7C, player->tyreParticles[20 + arg4].scale * player->size);
+        func_800652D4(sp84, sp7C, player->particles[20 + arg4].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
@@ -5535,18 +5534,18 @@ void func_80068724(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 
     }
 }
 
-void func_80068AA4(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 arg4) {
+void render_boing_onomatopoeia(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 arg4) {
     Vec3f sp64;
     Vec3s sp5C;
 
-    if ((player->tyreParticles[20 + arg4].active == 1) && (player->animFrameSelector[arg3] < 0xD)) {
+    if ((player->particles[20 + arg4].active == 1) && (player->animFrameSelector[arg3] < 0xD)) {
         sp64[1] = player->pos[1] - 3.0f;
-        sp64[2] = player->pos[2] + ((-2.5 * player->tyreParticles[20 + arg4].particle_timer) * coss(player->unk_048[arg3]));
-        sp64[0] = player->pos[0] + ((-2.5 * player->tyreParticles[20 + arg4].particle_timer) * sins(player->unk_048[arg3]));
+        sp64[2] = player->pos[2] + ((-2.5 * player->particles[20 + arg4].particle_timer) * coss(player->unk_048[arg3]));
+        sp64[0] = player->pos[0] + ((-2.5 * player->particles[20 + arg4].particle_timer) * sins(player->unk_048[arg3]));
         sp5C[0] = 0;
         sp5C[1] = player->unk_048[arg3];
         sp5C[2] = 0;
-        func_800652D4(sp64, sp5C, player->tyreParticles[20 + arg4].scale * player->size);
+        func_800652D4(sp64, sp5C, player->particles[20 + arg4].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4A0, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 32, 0,
@@ -5560,18 +5559,18 @@ void func_80068AA4(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 
     }
 }
 
-void func_80068DA0(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 arg4) {
+void render_pomp_onomatopoeia(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 arg4) {
     Vec3f sp9C;
     Vec3s sp94;
 
-    if ((player->tyreParticles[20 + arg4].active == 1) && ((s32) player->animFrameSelector[arg3] < 0xD)) {
-        sp9C[1] = (player->pos[1] - 3.0f) + player->tyreParticles[20 + arg4].pos[1];
+    if ((player->particles[20 + arg4].active == 1) && ((s32) player->animFrameSelector[arg3] < 0xD)) {
+        sp9C[1] = (player->pos[1] - 3.0f) + player->particles[20 + arg4].pos[1];
         sp9C[2] = player->pos[2] + (coss(player->unk_048[arg3]) * -10.0f);
         sp9C[0] = player->pos[0] + (sins(player->unk_048[arg3]) * -10.0f);
         sp94[0] = 0;
         sp94[1] = player->unk_048[arg3];
         sp94[2] = 0;
-        func_800652D4(sp9C, sp94, player->tyreParticles[20 + arg4].scale * player->size);
+        func_800652D4(sp9C, sp94, player->particles[20 + arg4].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008C90);
         gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -5589,20 +5588,19 @@ void func_80068DA0(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 
     }
 }
 
-void func_800691B8(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void render_actor_bonk_particles(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp5C;
     Vec3s sp54;
     s16 alpha;
-
-    if (player->tyreParticles[30 + arg2].active == 1) {
-        alpha = player->tyreParticles[30 + arg2].alpha;
-        sp5C[0] = player->tyreParticles[30 + arg2].pos[0];
-        sp5C[1] = player->tyreParticles[30 + arg2].pos[1];
-        sp5C[2] = player->tyreParticles[30 + arg2].pos[2];
+    if (player->particles[30 + arg2].active == 1) {
+        alpha = player->particles[30 + arg2].alpha;
+        sp5C[0] = player->particles[30 + arg2].pos[0];
+        sp5C[1] = player->particles[30 + arg2].pos[1];
+        sp5C[2] = player->particles[30 + arg2].pos[2];
         sp54[0] = 0;
         sp54[1] = player->unk_048[arg3];
-        player->tyreParticles[30 + arg2].green += 0x1C71;
-        sp54[2] = player->tyreParticles[30 + arg2].green;
+        player->particles[30 + arg2].green += 0x1C71;
+        sp54[2] = player->particles[30 + arg2].green;
         func_800652D4(sp5C, sp54, player->size * 0.5);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
@@ -5628,19 +5626,19 @@ void func_80069444(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 envGreen;
     s16 envBlue;
     u16 test;
-    if (player->tyreParticles[30 + arg2].active == 1) {
-        primRed = (D_800E47DC[player->tyreParticles[30 + arg2].red] >> 0x10) & 0xFF;
-        primGreen = (D_800E47DC[player->tyreParticles[30 + arg2].red] >> 8) & 0xFF;
-        primBlue = D_800E47DC[player->tyreParticles[30 + arg2].red] & 0xFF;
+    if (player->particles[30 + arg2].active == 1) {
+        primRed = (D_800E47DC[player->particles[30 + arg2].red] >> 0x10) & 0xFF;
+        primGreen = (D_800E47DC[player->particles[30 + arg2].red] >> 8) & 0xFF;
+        primBlue = D_800E47DC[player->particles[30 + arg2].red] & 0xFF;
 
-        envRed = (D_800E480C[player->tyreParticles[30 + arg2].red] >> 0x10) & 0xFF;
-        envGreen = (D_800E480C[player->tyreParticles[30 + arg2].red] >> 8) & 0xFF;
-        envBlue = D_800E480C[player->tyreParticles[30 + arg2].red] & 0xFF;
-        primAlpha = player->tyreParticles[30 + arg2].alpha;
+        envRed = (D_800E480C[player->particles[30 + arg2].red] >> 0x10) & 0xFF;
+        envGreen = (D_800E480C[player->particles[30 + arg2].red] >> 8) & 0xFF;
+        envBlue = D_800E480C[player->particles[30 + arg2].red] & 0xFF;
+        primAlpha = player->particles[30 + arg2].alpha;
 
-        sp74[0] = player->tyreParticles[30 + arg2].pos[0];
-        sp74[1] = player->tyreParticles[30 + arg2].pos[1];
-        sp74[2] = player->tyreParticles[30 + arg2].pos[2];
+        sp74[0] = player->particles[30 + arg2].pos[0];
+        sp74[1] = player->particles[30 + arg2].pos[1];
+        sp74[2] = player->particles[30 + arg2].pos[2];
         sp6C[0] = 0;
         sp6C[1] = player->unk_048[arg3];
         sp6C[2] = 0;
@@ -5660,16 +5658,15 @@ void func_80069444(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_800696CC(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3, f32 arg4) {
+void render_wall_bonk_star_particles(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3, f32 arg4) {
     Vec3f sp5C;
     Vec3s sp54;
     s16 alpha;
-
-    if (player->tyreParticles[30 + arg2].active == 1) {
-        alpha = player->tyreParticles[30 + arg2].alpha;
-        sp5C[0] = player->tyreParticles[30 + arg2].pos[0];
-        sp5C[1] = player->tyreParticles[30 + arg2].pos[1];
-        sp5C[2] = player->tyreParticles[30 + arg2].pos[2];
+    if (player->particles[30 + arg2].active == 1) {
+        alpha = player->particles[30 + arg2].alpha;
+        sp5C[0] = player->particles[30 + arg2].pos[0];
+        sp5C[1] = player->particles[30 + arg2].pos[1];
+        sp5C[2] = player->particles[30 + arg2].pos[2];
         sp54[0] = 0;
         sp54[1] = player->unk_048[arg3];
         sp54[2] = 0;
@@ -5691,16 +5688,15 @@ void func_80069938(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp5C;
     Vec3s sp54;
     s16 alpha;
-
-    if (player->tyreParticles[30 + arg2].active == 1) {
-        alpha = player->tyreParticles[30 + arg2].alpha;
-        sp5C[0] = player->tyreParticles[30 + arg2].pos[0];
-        sp5C[1] = player->tyreParticles[30 + arg2].pos[1];
-        sp5C[2] = player->tyreParticles[30 + arg2].pos[2];
+    if (player->particles[30 + arg2].active == 1) {
+        alpha = player->particles[30 + arg2].alpha;
+        sp5C[0] = player->particles[30 + arg2].pos[0];
+        sp5C[1] = player->particles[30 + arg2].pos[1];
+        sp5C[2] = player->particles[30 + arg2].pos[2];
         sp54[0] = 0;
         sp54[1] = player->unk_048[arg3];
-        sp54[2] = player->tyreParticles[30 + arg2].red;
-        func_800652D4(sp5C, sp54, player->tyreParticles[30 + arg2].scale * player->size);
+        sp54[2] = player->particles[30 + arg2].red;
+        func_800652D4(sp5C, sp54, player->particles[30 + arg2].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D488, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0,
@@ -5722,18 +5718,18 @@ void func_80069BA8(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->tyreParticles[30 + arg2].active == 1) {
-        red = player->tyreParticles[30 + arg2].red;
-        green = player->tyreParticles[30 + arg2].green;
-        blue = player->tyreParticles[30 + arg2].blue;
-        alpha = player->tyreParticles[30 + arg2].alpha;
-        sp54[0] = player->tyreParticles[30 + arg2].pos[0];
-        sp54[1] = player->tyreParticles[30 + arg2].pos[1];
-        sp54[2] = player->tyreParticles[30 + arg2].pos[2];
+    if (player->particles[30 + arg2].active == 1) {
+        red = player->particles[30 + arg2].red;
+        green = player->particles[30 + arg2].green;
+        blue = player->particles[30 + arg2].blue;
+        alpha = player->particles[30 + arg2].alpha;
+        sp54[0] = player->particles[30 + arg2].pos[0];
+        sp54[1] = player->particles[30 + arg2].pos[1];
+        sp54[2] = player->particles[30 + arg2].pos[2];
         sp4C[0] = 0;
         sp4C[1] = player->unk_048[arg3];
         sp4C[2] = 0;
-        func_800652D4(sp54, sp4C, player->tyreParticles[30 + arg2].scale * player->size);
+        func_800652D4(sp54, sp4C, player->particles[30 + arg2].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0,
                             G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
@@ -5749,14 +5745,14 @@ void func_80069DB8(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3s sp54;
     UNUSED s32 stackPadding[2];
 
-    if (player->tyreParticles[30 + arg2].active == 1) {
-        sp5C[0] = player->tyreParticles[30 + arg2].pos[0];
-        sp5C[1] = player->tyreParticles[30 + arg2].pos[1];
-        sp5C[2] = player->tyreParticles[30 + arg2].pos[2];
+    if (player->particles[30 + arg2].active == 1) {
+        sp5C[0] = player->particles[30 + arg2].pos[0];
+        sp5C[1] = player->particles[30 + arg2].pos[1];
+        sp5C[2] = player->particles[30 + arg2].pos[2];
         sp54[0] = 0;
         sp54[1] = player->unk_048[arg3];
         sp54[2] = 0;
-        func_800652D4(sp5C, sp54, player->tyreParticles[30 + arg2].scale * player->size);
+        func_800652D4(sp5C, sp54, player->particles[30 + arg2].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D49C, G_IM_FMT_IA, G_IM_SIZ_16b, 16, 16, 0,
@@ -5774,14 +5770,14 @@ void func_8006A01C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp54;
     Vec3s sp4C;
 
-    if (player->tyreParticles[arg2].active == 1) {
-        sp54[0] = player->tyreParticles[10 + arg2].pos[0];
-        sp54[1] = player->tyreParticles[10 + arg2].pos[1];
-        sp54[2] = player->tyreParticles[10 + arg2].pos[2];
+    if (player->particles[arg2].active == 1) {
+        sp54[0] = player->particles[10 + arg2].pos[0];
+        sp54[1] = player->particles[10 + arg2].pos[1];
+        sp54[2] = player->particles[10 + arg2].pos[2];
         sp4C[0] = 0;
         sp4C[1] = player->unk_048[arg3];
         sp4C[2] = 0;
-        func_800652D4(sp54, sp4C, player->tyreParticles[10 + arg2].scale * player->size);
+        func_800652D4(sp54, sp4C, player->particles[10 + arg2].scale * player->size);
 
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
@@ -5803,20 +5799,20 @@ void func_8006A280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 green;
     s16 blue;
 
-    if (player->tyreParticles[arg2].active == 1) {
-        red = player->tyreParticles[arg2].red;
-        green = player->tyreParticles[arg2].green;
-        blue = player->tyreParticles[arg2].blue;
-        sp5C[0] = player->tyreParticles[arg2].pos[0];
-        sp5C[1] = player->tyreParticles[arg2].pos[1];
-        sp5C[2] = player->tyreParticles[arg2].pos[2];
+    if (player->particles[arg2].active == 1) {
+        red = player->particles[arg2].red;
+        green = player->particles[arg2].green;
+        blue = player->particles[arg2].blue;
+        sp5C[0] = player->particles[arg2].pos[0];
+        sp5C[1] = player->particles[arg2].pos[1];
+        sp5C[2] = player->particles[arg2].pos[2];
         sp54[0] = 0;
         sp54[1] = player->unk_048[arg3];
         sp54[2] = 0;
-        func_800652D4(sp5C, sp54, player->tyreParticles[arg2].scale * player->size);
+        func_800652D4(sp5C, sp54, player->particles[arg2].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
-        gDPLoadTextureBlock_4b(gDisplayListHead++, *D_800E47A0[player->tyreParticles[arg2].particle_timer], G_IM_FMT_I, 64, 64, 0,
+        gDPLoadTextureBlock_4b(gDisplayListHead++, *D_800E47A0[player->particles[arg2].particle_timer], G_IM_FMT_I, 64, 64, 0,
                                G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK,
                                G_TX_NOLOD, G_TX_NOLOD);
         func_8004B414(red, green, blue, 0x000000FF);
@@ -6233,8 +6229,8 @@ void func_8006C6AC(Player* player, s16 arg1, s8 arg2, s8 arg3) {
     if (sp28 < 0) {
         sp28 = 9;
     }
-    if (player->tyreParticles[10 + arg1].active == 1) {
-        switch (player->tyreParticles[10 + arg1].particle_type) {
+    if (player->particles[10 + arg1].active == 1) {
+        switch (player->particles[10 + arg1].particle_type) {
             case 1:
                 func_80063408(player, arg1, arg2_copy, arg3);
                 break;
@@ -6265,7 +6261,7 @@ void func_8006C6AC(Player* player, s16 arg1, s8 arg2, s8 arg3) {
         } else if (!(player->effects & 8) && !(player->effects & 2)) {
             if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) &&
                 ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
-                check_tyre_drift_effect_setup_valid(player, arg1, sp28, arg2_copy, arg3);
+                check_tyre_drift_particles_setup_valid(player, arg1, sp28, arg2_copy, arg3);
             } else if (((f64) (D_801652A0[arg2_copy] - player->tyres[BACK_RIGHT].baseHeight) >= 3.5) ||
                        ((f64) (D_801652A0[arg2_copy] - player->tyres[BACK_LEFT].baseHeight) >= 3.5)) {
                 func_8005EA94(player, arg1, sp28, arg2_copy, arg3);
@@ -6275,7 +6271,7 @@ void func_8006C6AC(Player* player, s16 arg1, s8 arg2, s8 arg3) {
                        (player->effects & 0x800) || (player->effects & 0x20) || (player->unk_044 & 0x4000)) {
                 func_8005ED48(player, arg1, sp28, arg2_copy, arg3);
             } else {
-                render_tyres_particles(player, arg1, sp28, arg2_copy, arg3);
+                setup_tyre_particles(player, arg1, sp28, arg2_copy, arg3);
             }
         }
     }
@@ -6288,8 +6284,8 @@ void func_8006C9B8(Player* player, s16 arg1, s8 arg2, s8 arg3) {
     if (sp28 < 0) {
         sp28 = 9;
     }
-    if (player->tyreParticles[30 + arg1].active == 1) {
-        switch (player->tyreParticles[30 + arg1].particle_type) {
+    if (player->particles[30 + arg1].active == 1) {
+        switch (player->particles[30 + arg1].particle_type) {
             case 1:
                 func_800644E8(player, arg1, arg2, arg3);
                 break;
@@ -6392,8 +6388,8 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
         sp20 = 9;
     }
     //Spawn particles when oob
-    if (arg0->tyreParticles[arg1].active == 1) {
-        switch (arg0->tyreParticles[arg1].particle_type) {
+    if (arg0->particles[arg1].active == 1) {
+        switch (arg0->particles[arg1].particle_type) {
             case 1:
                 func_80062C74(arg0, arg1, arg2, arg3);
                 break;
@@ -6401,7 +6397,7 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
                 func_80064184(arg0, arg1, arg2, arg3);
                 break;
             case 5:
-                set_oob_splash_velocity(arg0, arg1, arg2, arg3);
+                set_oob_splash_particle_position(arg0, arg1, arg2, arg3);
                 break;
             case 6:
                 func_800631A8(arg0, arg1, arg2, arg3);
@@ -6453,8 +6449,8 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
 }
 
 void func_8006D194(Player* player, s8 arg1, s8 arg2) {
-    if (player->tyreParticles[0x14].active == 1) {
-        switch (player->tyreParticles[0x14].particle_type) {
+    if (player->particles[0x14].active == 1) {
+        switch (player->particles[0x14].particle_type) {
             case 2:
                 func_80064DEC(player, arg1, arg2, 0);
                 break;
@@ -6488,8 +6484,8 @@ void func_8006D194(Player* player, s8 arg1, s8 arg2) {
             func_800629BC(player, arg1, arg2, 0);
         }
     }
-    if (player->tyreParticles[0x15].active == 1) {
-        if (player->tyreParticles[0x15].particle_type == 5) {
+    if (player->particles[0x15].active == 1) {
+        if (player->particles[0x15].particle_type == 5) {
             func_800651F4(player, arg1, arg2, 1);
         }
     } else if ((player->unk_0B6 & 0x20) == 0x20) {
@@ -6501,7 +6497,7 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
     s16 var_s2;
     if ((player->unk_002 & (8 << (screenId * 4))) == (8 << (screenId * 4))) {
         for (var_s2 = 0; var_s2 < 10; var_s2++) {
-            switch (player->tyreParticles[var_s2].particle_type) {
+            switch (player->particles[var_s2].particle_type) {
                 case 1:
                     if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                         if (screenId == playerId) {
@@ -6521,20 +6517,20 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
                     }
                     break;
             }
-            switch (player->tyreParticles[var_s2 + 30].particle_type) {
+            switch (player->particles[var_s2 + 30].particle_type) {
                 case 1:
                 case 9:
                     if (gActiveScreenMode == SCREEN_MODE_1P) {
-                        func_800691B8(player, playerId, var_s2, screenId);
+                        render_actor_bonk_particles(player, playerId, var_s2, screenId);
                     } else if (screenId == playerId) {
-                        func_800691B8(player, playerId, var_s2, screenId);
+                        render_actor_bonk_particles(player, playerId, var_s2, screenId);
                     }
                     break;
                 case 2:
                     if (gActiveScreenMode == SCREEN_MODE_1P) {
-                        func_800696CC(player, playerId, var_s2, screenId, player->tyreParticles[var_s2 + 30].scale);
+                        render_wall_bonk_star_particles(player, playerId, var_s2, screenId, player->particles[var_s2 + 30].scale);
                     } else if (screenId == playerId) {
-                        func_800696CC(player, playerId, var_s2, screenId, player->tyreParticles[var_s2 + 30].scale);
+                        render_wall_bonk_star_particles(player, playerId, var_s2, screenId, player->particles[var_s2 + 30].scale);
                     }
                     break;
                 case 3:
@@ -6574,13 +6570,13 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
                     break;
                 case 8:
                     if (gActiveScreenMode == SCREEN_MODE_1P) {
-                        func_80067604(player, playerId, var_s2, screenId);
+                        render_boost_spark_particles(player, playerId, var_s2, screenId);
                     } else if (screenId == playerId) {
-                        func_80067604(player, playerId, var_s2, screenId);
+                        render_boost_spark_particles(player, playerId, var_s2, screenId);
                     }
                     break;
             }
-            switch (player->tyreParticles[var_s2 + 10].particle_type) {
+            switch (player->particles[var_s2 + 10].particle_type) {
                 case 1:
                     if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                         if (screenId == playerId) {
@@ -6635,7 +6631,7 @@ void func_8006DC54(Player* player, s8 arg1, s8 arg2) {
     bitwiseMask = 8 << (arg2 * 4);
     if (bitwiseMask == (player->unk_002 & bitwiseMask)) {
         for (i = 0; i < 10; i++) {
-            if (player->tyreParticles[i].particle_type == 7) {
+            if (player->particles[i].particle_type == 7) {
                 func_800658A0(player, arg1, i, arg2);
             }
         }
@@ -6649,7 +6645,7 @@ void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
     temp_v0 = 8 << (arg2 * 4);
     if (temp_v0 == (arg0->unk_002 & temp_v0)) {
         for (temp_s0 = 0; temp_s0 < 10; ++temp_s0) {
-            temp_v0 = arg0->tyreParticles[temp_s0].particle_type;
+            temp_v0 = arg0->particles[temp_s0].particle_type;
             if (temp_v0 != 3) {
                 if (temp_v0 == 5) {
                     func_8006A280(arg0, arg1, temp_s0, arg2);
@@ -6664,26 +6660,26 @@ void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
         }
 
         if (((arg0->type & 0x4000) == 0x4000) && (arg2 == arg1)) {
-            switch (arg0->tyreParticles[20].particle_type) {
+            switch (arg0->particles[20].particle_type) {
                 case 2:
-                    func_80068310(arg0, arg1, arg0->tyreParticles[20].scale, arg2, 0);
+                    func_80068310(arg0, arg1, arg0->particles[20].scale, arg2, 0);
                     break;
                 case 3:
-                    func_80067964(arg0, arg1, arg0->tyreParticles[20].scale, arg2, 0);
+                    render_whirrr_onomatopoeia(arg0, arg1, arg0->particles[20].scale, arg2, 0);
                     break;
                 case 4:
-                    func_80068724(arg0, arg1, arg0->tyreParticles[20].scale, arg2, 0);
+                    func_80068724(arg0, arg1, arg0->particles[20].scale, arg2, 0);
                     break;
                 case 5:
-                    func_80068AA4(arg0, arg1, arg0->tyreParticles[20].scale, arg2, 0);
+                    render_boing_onomatopoeia(arg0, arg1, arg0->particles[20].scale, arg2, 0);
                     break;
                 case 6:
-                    func_80068DA0(arg0, arg1, arg0->tyreParticles[20].scale, arg2, 0);
+                    render_pomp_onomatopoeia(arg0, arg1, arg0->particles[20].scale, arg2, 0);
                     break;
             }
-            if (arg0->tyreParticles[21].particle_type == 5) {
-                func_80067D3C(arg0, arg2, D_8018D480, 1, 1.6f, 0xFFFFFF);
-                func_8006801C(arg0, arg2, D_8018D484, 1, 1.6f, 0xFF);
+            if (arg0->particles[21].particle_type == 5) {
+                render_speech_bubble(arg0, arg2, D_8018D480, 1, 1.6f, 0xFFFFFF);
+                render_music_note(arg0, arg2, D_8018D484, 1, 1.6f, 0xFF);
             }
         }
     }

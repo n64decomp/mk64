@@ -632,8 +632,8 @@ void func_800C284C(u8 arg0, u8 arg1, u8 arg2, u16 arg3) {
 
     func_800CBBB8(0x82000000 | (((u32) arg0 & 0xFF) << 0x10) | (((u32) arg1 & 0xFF) << 8), arg3);
     D_801930D0[arg0].unk_248 = arg1 | (arg2 << 8);
-    if (D_801930D0[arg0].pos != 1.0f) {
-        func_800CBB88(0x41000000 | (((u32) arg0 & 0xFF) << 0x10), D_801930D0[arg0].pos);
+    if (D_801930D0[arg0].unk_000 != 1.0f) {
+        func_800CBB88(0x41000000 | (((u32) arg0 & 0xFF) << 0x10), D_801930D0[arg0].unk_000);
     }
     D_801930D0[arg0].unk_028 = 0;
     D_801930D0[arg0].unk_018 = 0;
@@ -765,9 +765,9 @@ void func_800C2A2C(u32 cmd) {
             }
 
             D_801930D0[seqPlayerIndex].unk_004 = val / 127.0f;
-            if (D_801930D0[seqPlayerIndex].pos != D_801930D0[seqPlayerIndex].unk_004) {
+            if (D_801930D0[seqPlayerIndex].unk_000 != D_801930D0[seqPlayerIndex].unk_004) {
                 D_801930D0[seqPlayerIndex].unk_008 =
-                    (D_801930D0[seqPlayerIndex].pos - D_801930D0[seqPlayerIndex].unk_004) / duration;
+                    (D_801930D0[seqPlayerIndex].unk_000 - D_801930D0[seqPlayerIndex].unk_004) / duration;
                 D_801930D0[seqPlayerIndex].unk_00C = duration;
             }
             break;
@@ -993,11 +993,11 @@ void func_800C3724(void) {
         if (D_801930D0[seqPlayerIndex].unk_00C != 0) {
             D_801930D0[seqPlayerIndex].unk_00C--;
             if (D_801930D0[seqPlayerIndex].unk_00C) {
-                D_801930D0[seqPlayerIndex].pos -= D_801930D0[seqPlayerIndex].unk_008;
+                D_801930D0[seqPlayerIndex].unk_000 -= D_801930D0[seqPlayerIndex].unk_008;
             } else {
-                D_801930D0[seqPlayerIndex].pos = D_801930D0[seqPlayerIndex].unk_004;
+                D_801930D0[seqPlayerIndex].unk_000 = D_801930D0[seqPlayerIndex].unk_004;
             }
-            func_800CBB88(0x41000000 | (((u32) seqPlayerIndex & 0xFF) << 0x10), D_801930D0[seqPlayerIndex].pos);
+            func_800CBB88(0x41000000 | (((u32) seqPlayerIndex & 0xFF) << 0x10), D_801930D0[seqPlayerIndex].unk_000);
         }
         if (D_801930D0[seqPlayerIndex].unk_014 != 0) {
             tempoCmd = D_801930D0[seqPlayerIndex].unk_014;
@@ -1038,10 +1038,10 @@ void func_800C3724(void) {
                 if (D_801930D0[seqPlayerIndex].unk_018 == 0) {
                     D_801930D0[seqPlayerIndex].unk_018 = tempoPrev;
                 }
-                D_801930D0[seqPlayerIndex].rotation = tempoTarget;
+                D_801930D0[seqPlayerIndex].unk_020 = tempoTarget;
                 D_801930D0[seqPlayerIndex].unk_01C = gSequencePlayers[seqPlayerIndex].tempo / 48;
                 D_801930D0[seqPlayerIndex].unk_024 =
-                    (D_801930D0[seqPlayerIndex].unk_01C - D_801930D0[seqPlayerIndex].rotation) / tempoTimer;
+                    (D_801930D0[seqPlayerIndex].unk_01C - D_801930D0[seqPlayerIndex].unk_020) / tempoTimer;
                 D_801930D0[seqPlayerIndex].unk_028 = tempoTimer;
             }
             D_801930D0[seqPlayerIndex].unk_014 = 0;
@@ -1051,7 +1051,7 @@ void func_800C3724(void) {
             if (D_801930D0[seqPlayerIndex].unk_028) {
                 D_801930D0[seqPlayerIndex].unk_01C -= D_801930D0[seqPlayerIndex].unk_024;
             } else {
-                D_801930D0[seqPlayerIndex].unk_01C = D_801930D0[seqPlayerIndex].rotation;
+                D_801930D0[seqPlayerIndex].unk_01C = D_801930D0[seqPlayerIndex].unk_020;
             }
             func_800CBBB8(0x47000000 | (((u32) seqPlayerIndex & 0xFF) << 0x10),
                           (s32) D_801930D0[seqPlayerIndex].unk_01C);
@@ -1165,7 +1165,7 @@ void func_800C3F70(void) {
     for (var_v0 = 0; var_v0 < 3; var_v0++) {
         D_80192CC6[var_v0] = 0;
         D_801930D0[var_v0].unk_248 = 0xFFFF;
-        D_801930D0[var_v0].pos = 1.0f;
+        D_801930D0[var_v0].unk_000 = 1.0f;
         D_801930D0[var_v0].unk_00C = 0;
         D_801930D0[var_v0].unk_028 = 0;
         D_801930D0[var_v0].unk_018 = 0;
@@ -1903,7 +1903,7 @@ void func_800C6108(u8 playerId) {
     Player* player;
 
     player = &gPlayers[playerId];
-    D_800E9E64[playerId] = (0.0 / D_800E9DC4[playerId]) + D_800E9DD4[playerId];
+    D_800E9E64[playerId] = (player->unk_098 / D_800E9DC4[playerId]) + D_800E9DD4[playerId];
     if ((player->unk_098 < 1800.0f) && ((player->unk_044 & 0x20) != 0x20)) {
         D_800E9E64[playerId] = (player->unk_098 / D_800E9F7C[playerId].unk_34) + D_800E9F7C[playerId].unk_28;
         if (D_800E9EC4) {} // ?
