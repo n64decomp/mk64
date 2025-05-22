@@ -2812,7 +2812,7 @@ void func_8005D6C0(Player* player) {
     }
 }
 
-void set_tyre_particle_position_and_rotation(Player* player, TyreParticle* arg1, f32 x, f32 y, f32 z, s8 surfaceType, s8 arg6) {
+void set_tyre_particle_position_and_rotation(Player* player, Particle* arg1, f32 x, f32 y, f32 z, s8 surfaceType, s8 arg6) {
     arg1->pos[2] = z;
     arg1->pos[0] = x;
     arg1->pos[1] = y;
@@ -2821,21 +2821,21 @@ void set_tyre_particle_position_and_rotation(Player* player, TyreParticle* arg1,
     arg1->unk_010 = arg6;
 }
 
-s32 set_tyre_particle_active(TyreParticle* arg0, s8 arg1, f32 scale) {
+s32 set_tyre_particle_active(Particle* arg0, s8 arg1, f32 scale) {
     arg0->active = 1;
     arg0->particle_type = arg1;
     arg0->particle_timer = 0;
     arg0->scale = scale;
 }
 
-s32 set_tyre_particle_colour(TyreParticle* arg0, s32 arg1, s16 arg2) {
+s32 set_tyre_particle_colour(Particle* arg0, s32 arg1, s16 arg2) {
     arg0->red = (u8) (arg1 >> 16);
     arg0->green = (u8) (arg1 >> 8);
     arg0->blue = (u8) arg1;
     arg0->alpha = arg2;
 }
 
-s32 set_tyre_particle_colour_randomly_varried(TyreParticle* arg0, s32 arg1, s16 arg2) {
+s32 set_tyre_particle_colour_randomly_varried(Particle* arg0, s32 arg1, s16 arg2) {
     s32 temp_v0;
     temp_v0 = random_int(0x30);
     arg0->red = (u8) ((u8) (arg1 >> 0x10) - temp_v0);
@@ -2893,7 +2893,7 @@ void check_tyre_drift_particles_setup_valid(Player* player, s16 arg1, s32 arg2, 
 UNUSED void func_8005DAD0(void) {
 }
 
-void func_8005DAD8(TyreParticle* arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_8005DAD8(Particle* arg0, s16 arg1, s16 arg2, s16 arg3) {
     arg0->red = arg1;
     arg0->alpha = arg3;
     arg0->unk_040 = arg2;
@@ -4030,7 +4030,7 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     }
 }
 
-void func_80062484(Player* player, TyreParticle* arg1, s32 arg2) {
+void func_80062484(Player* player, Particle* arg1, s32 arg2) {
     arg1->active = 1;
     arg1->pos[1] = player->unk_074 + 1.0f;
     arg1->pos[2] = player->pos[2];

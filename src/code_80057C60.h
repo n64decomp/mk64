@@ -117,14 +117,14 @@ void func_8005D1F4(s32);
 
 void func_8005D290(void);
 void func_8005D6C0(Player*);
-void set_tyre_particle_position_and_rotation(Player*, TyreParticle*, f32, f32, f32, s8, s8);
-s32 set_tyre_particle_active(TyreParticle*, s8, f32);
-s32 set_tyre_particle_colour(TyreParticle*, s32, s16);
-s32 set_tyre_particle_colour_randomly_varried(TyreParticle*, s32, s16);
+void set_tyre_particle_position_and_rotation(Player*, Particle*, f32, f32, f32, s8, s8);
+s32 set_tyre_particle_active(Particle*, s8, f32);
+s32 set_tyre_particle_colour(Particle*, s32, s16);
+s32 set_tyre_particle_colour_randomly_varried(Particle*, s32, s16);
 void set_tyre_drift_particles(Player*, s16, s32, s8, s8);
 void check_tyre_drift_particles_setup_valid(Player*, s16, s32, s8, s8);
 void func_8005DAD0(void);
-void func_8005DAD8(TyreParticle*, s16, s16, s16);
+void func_8005DAD8(Particle*, s16, s16, s16);
 void setup_tyre_particles(Player*, s16, s32, s8, s8);
 void func_8005EA94(Player*, s16, s32, s8, s8);
 void func_8005ED48(Player*, s16, s32, s8, s8);
@@ -150,7 +150,7 @@ void func_80061D4C(Player*, s16, s32, s8, s8);
 void func_80061EF4(Player*, s16, s32, s8, s8);
 
 void func_800621BC(Player*, s16, s32, s8, s8);
-void func_80062484(Player*, TyreParticle*, s32);
+void func_80062484(Player*, Particle*, s32);
 void func_800624D8(Player*, s32, s32, s8, s8);
 void func_800628C0(Player*, s8, s8, s8);
 void func_80062914(Player*, s8, s8, s8);

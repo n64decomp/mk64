@@ -171,7 +171,7 @@ typedef struct {
     /* 0x42 */ s16 unk_042;
     /* 0x44 */ s16 unk_044;
     /* 0x46 */ s16 unk_046;
-} TyreParticle; // size = 0x48
+} Particle; // size = 0x48
 
 // This struct is almost identical to the GBI Vtx_t type,
 // except that its missing the "flag" member.
@@ -353,7 +353,7 @@ typedef struct {
     /* 0x024C */ u16 animGroupSelector[4];
     /* 0x0254 */ u16 characterId;
     /* 0x0256 */ u16 unk_256;
-    /* 0x0258 */ TyreParticle particles[40];
+    /* 0x0258 */ Particle particles[40];
     /* 0x0D98 */ s16 unk_D98;
     /* 0x0D9A */ s16 unk_D9A;
     /* 0x0D9C */ f32 unk_D9C;
