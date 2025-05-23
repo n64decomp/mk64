@@ -4993,7 +4993,7 @@ void func_8006538C(Player* player, s8 arg1, s16 arg2, s8 arg3) {
         spAC[0] = 0;
         spAC[1] = player->unk_048[arg3];
         spAC[2] = 0;
-        if ((player->effects & STAR_EFFECT) && (((s32) gCourseTimer - D_8018D930[arg1]) < 9)) {
+        if ((player->effects & STAR_EFFECT) && (((s32) gCourseTimer - gPlayerStarEffectStartTime[arg1]) < 9)) {
             primRed = (primColors[1] >> 0x10) & 0xFF;
             primGreen = (primColors[1] >> 0x08) & 0xFF;
             primBlue = (primColors[1] >> 0x00) & 0xFF;
@@ -5932,7 +5932,7 @@ void func_8006A7C0(Player* player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
         move_s16_towards(&D_8018D890[arg3][arg4], 0, 0.1f);
         move_s16_towards(&D_8018D860[arg3][arg4], 0, 0.1f);
         if (D_8018D8D0[arg3][arg4] >= 0x78) {
-            func_8006B974((s32) player, arg3, arg4);
+            set_player_balloon_to_gone((s32) player, arg3, arg4);
         }
     }
 }
@@ -6031,16 +6031,16 @@ void func_8006B7E4(Player* player, s8 arg1) {
     gPlayerBalloonCount[arg1] = 2;
 }
 
-void func_8006B87C(UNUSED Player* player, s8 playerIndex) {
+void set_all_player_baloons_to_gone(UNUSED Player* player, s8 playerIndex) {
     gPlayerBalloonStatus[playerIndex][0] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][1] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][2] = BALLOON_STATUS_GONE;
 }
 
-void func_8006B8B4(Player* player, s8 playerIndex) {
+void remove_battle_balloon_from_player(Player* player, s8 playerIndex) {
     if (gPlayerBalloonCount[playerIndex] >= 0) {
-        gPlayerBalloonStatus[playerIndex][gPlayerBalloonCount[playerIndex]] &= ~1;
-        gPlayerBalloonStatus[playerIndex][gPlayerBalloonCount[playerIndex]] |= 2;
+        gPlayerBalloonStatus[playerIndex][gPlayerBalloonCount[playerIndex]] &= ~BALLOON_STATUS_PRESENT;
+        gPlayerBalloonStatus[playerIndex][gPlayerBalloonCount[playerIndex]] |= BALLOON_STATUS_DEPARTING;
         gPlayerBalloonCount[playerIndex]--;
         func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x51));
         if (gPlayerBalloonCount[playerIndex] < 0) {
@@ -6049,28 +6049,28 @@ void func_8006B8B4(Player* player, s8 playerIndex) {
     }
 }
 
-void func_8006B974(UNUSED s32 arg0, s8 playerIndex, s8 balloonIndex) {
+void set_player_balloon_to_gone(UNUSED s32 arg0, s8 playerIndex, s8 balloonIndex) {
     if (gPlayerBalloonCount[playerIndex] >= 0) {
         gPlayerBalloonStatus[playerIndex][balloonIndex] = BALLOON_STATUS_GONE;
     }
 }
 
-void func_8006B9CC(Player* player, s8 arg1) {
-    if (gPlayerBalloonStatus[arg1][0] != 0) {
-        func_8006A7C0(player, 0.0f, 0.0f, arg1, 0);
+void func_8006B9CC(Player* player, s8 playerIndex) {
+    if (gPlayerBalloonStatus[playerIndex][0] != BALLOON_STATUS_GONE) {
+        func_8006A7C0(player, 0.0f, 0.0f, playerIndex, 0);
     }
 
-    if (gPlayerBalloonStatus[arg1][1] != 0) {
+    if (gPlayerBalloonStatus[playerIndex][1] != BALLOON_STATUS_GONE) {
 
-        func_8006A7C0(player, 1.8f, 2.6f, arg1, 1);
+        func_8006A7C0(player, 1.8f, 2.6f, playerIndex, 1);
     }
 
-    if (gPlayerBalloonStatus[arg1][2] != 0) {
-        func_8006A7C0(player, -1.8f, 2.6f, arg1, 2);
+    if (gPlayerBalloonStatus[playerIndex][2] != BALLOON_STATUS_GONE) {
+        func_8006A7C0(player, -1.8f, 2.6f, playerIndex, 2);
     }
 }
 
-void func_8006BA94(Player* player, s8 playerIndex, s8 arg2) {
+void render_remaining_battle_balloons(Player* player, s8 playerIndex, s8 arg2) {
     if (gPlayerBalloonStatus[playerIndex][0] != BALLOON_STATUS_GONE) {
         render_battle_balloon(player, playerIndex, 0, arg2);
     }
@@ -6350,7 +6350,7 @@ void func_8006C9B8(Player* player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if ((player->effects & STAR_EFFECT) && ((((s32) gCourseTimer) - D_8018D930[arg2]) < 9)) {
+        if ((player->effects & STAR_EFFECT) && ((((s32) gCourseTimer) - gPlayerStarEffectStartTime[arg2]) < 9)) {
             func_800615AC(player, arg1, sp28, arg2, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
@@ -6623,7 +6623,7 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
         }
     }
     if ((gModeSelection == BATTLE) && (player->unk_002 & (2 << (screenId * 4)))) {
-        func_8006BA94(player, playerId, screenId);
+        render_remaining_battle_balloons(player, playerId, screenId);
     }
 }
 
