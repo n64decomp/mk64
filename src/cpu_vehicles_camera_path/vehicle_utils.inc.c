@@ -172,7 +172,7 @@ void spawn_course_vehicles(void) {
 #endif
 }
 
-void set_vehicle_pos_pathPoint(TrainCarStuff* trainCar, Path2D* posXZ, u16 pathPoint) {
+void set_vehicle_pos_path_point(TrainCarStuff* trainCar, Path2D* posXZ, u16 pathPoint) {
     trainCar->position[0] = (f32) posXZ->x;
     trainCar->position[1] = (f32) D_80162EB0;
     trainCar->position[2] = (f32) posXZ->z;
@@ -206,18 +206,18 @@ void init_vehicles_trains(void) {
             pathPointOffset += 4;
             ptr1 = &gTrainList[i].passengerCars[j];
             pos = &gVehicle2DPathPoint[pathPointOffset];
-            set_vehicle_pos_pathPoint(ptr1, pos, pathPointOffset);
+            set_vehicle_pos_path_point(ptr1, pos, pathPointOffset);
         }
         // Smaller offset for the tender
         pathPointOffset += 3;
         ptr1 = &gTrainList[i].tender;
         pos = &gVehicle2DPathPoint[pathPointOffset];
-        set_vehicle_pos_pathPoint(ptr1, pos, pathPointOffset);
+        set_vehicle_pos_path_point(ptr1, pos, pathPointOffset);
 
         pathPointOffset += 4;
         ptr1 = &gTrainList[i].locomotive;
         pos = &gVehicle2DPathPoint[pathPointOffset];
-        set_vehicle_pos_pathPoint(ptr1, pos, pathPointOffset);
+        set_vehicle_pos_path_point(ptr1, pos, pathPointOffset);
 
         // Only use locomotive unless overwritten below.
         gTrainList[i].numCars = LOCOMOTIVE_ONLY;
@@ -595,7 +595,7 @@ void update_vehicle_paddle_boats(void) {
     }
 }
 
-void handle_paddleBoats_interactions(Player* player) {
+void handle_paddle_boats_interactions(Player* player) {
     s32 someIndex;
     PaddleBoatStuff* tempPaddleWheelBoat;
     f32 x_diff;
@@ -709,7 +709,7 @@ f32 func_80013C74(s16 someType, s16 pathPointIndex) {
     return var_f2;
 }
 
-void update_vehicle_follow_pathPoint(VehicleStuff* vehicle) {
+void update_vehicle_follow_path_point(VehicleStuff* vehicle) {
     f32 temp_f0_2;
     f32 temp_f0_3;
     f32 sp5C;
@@ -993,7 +993,7 @@ void init_vehicles_box_trucks(void) {
 void update_vehicle_box_trucks(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_BOX_TRUCKS; loopIndex++) {
-        update_vehicle_follow_pathPoint(&gBoxTruckList[loopIndex]);
+        update_vehicle_follow_path_point(&gBoxTruckList[loopIndex]);
     }
 }
 
@@ -1021,7 +1021,7 @@ void init_vehicles_school_buses(void) {
 void update_vehicle_school_bus(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_SCHOOL_BUSES; loopIndex++) {
-        update_vehicle_follow_pathPoint(&gSchoolBusList[loopIndex]);
+        update_vehicle_follow_path_point(&gSchoolBusList[loopIndex]);
     }
 }
 
@@ -1049,7 +1049,7 @@ void init_vehicles_trucks(void) {
 void update_vehicle_tanker_trucks(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_TANKER_TRUCKS; loopIndex++) {
-        update_vehicle_follow_pathPoint(&gTankerTruckList[loopIndex]);
+        update_vehicle_follow_path_point(&gTankerTruckList[loopIndex]);
     }
 }
 
@@ -1077,7 +1077,7 @@ void init_vehicles_cars(void) {
 void update_vehicle_cars(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_CARS; loopIndex++) {
-        update_vehicle_follow_pathPoint(&gCarList[loopIndex]);
+        update_vehicle_follow_path_point(&gCarList[loopIndex]);
     }
 }
 

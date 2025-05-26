@@ -8,13 +8,13 @@ void copy_courses_cpu_behaviour(void) {
 void reset_cpu_behaviour_none(s32 playerIndex) {
     gCurrentCPUBehaviourId[playerIndex] = 0;
     gPreviousCPUBehaviourId[playerIndex] = 0;
-    cpu_BehaviourState[playerIndex] = cpu_BEHAVIOUR_STATE_NONE;
+    cpu_BehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_NONE;
 }
 
 void reset_cpu_behaviour(s32 playerIndex) {
     gCurrentCPUBehaviourId[playerIndex] = 0;
     gPreviousCPUBehaviourId[playerIndex] = 0;
-    cpu_BehaviourState[playerIndex] = cpu_BEHAVIOUR_STATE_START;
+    cpu_BehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
 }
 
 void cpu_behaviour_start(s32 playerId, Player* player) {
@@ -38,7 +38,7 @@ void cpu_behaviour_start(s32 playerId, Player* player) {
         return;
     }
     if ((u32) playerPathPoint == (u32) pathPointStart) {
-        cpu_BehaviourState[playerId] = cpu_BEHAVIOUR_STATE_RUNNING;
+        cpu_BehaviourState[playerId] = CPU_BEHAVIOUR_STATE_RUNNING;
         gPreviousCPUBehaviourId[playerId] = gCurrentCPUBehaviourId[playerId];
         gCurrentCPUBehaviourId[playerId]++;
         switch (behaviourType) {
@@ -60,16 +60,16 @@ void cpu_behaviour_start(s32 playerId, Player* player) {
                 gPlayerTrackPositionFactorInstruction[playerId].target = 0.6f;
                 break;
             case BEHAVIOUR_NORMAL_SPEED:
-                gSpeedCPUBehaviour[playerId] = SPEED_cpu_BEHAVIOUR_NORMAL;
+                gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_NORMAL;
                 break;
             case BEHAVIOUR_FAST_SPEED:
-                gSpeedCPUBehaviour[playerId] = SPEED_cpu_BEHAVIOUR_FAST;
+                gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_FAST;
                 break;
             case BEHAVIOUR_SLOW_SPEED:
-                gSpeedCPUBehaviour[playerId] = SPEED_cpu_BEHAVIOUR_SLOW;
+                gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_SLOW;
                 break;
             case BEHAVIOUR_MAX_SPEED:
-                gSpeedCPUBehaviour[playerId] = SPEED_cpu_BEHAVIOUR_MAX;
+                gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_MAX;
                 break;
             case BEHAVIOUR_9:
                 D_801633F8[playerId] = 1;
@@ -97,14 +97,14 @@ void cpu_behaviour_end(s32 playerIndex, Player* player) {
             case BEHAVIOUR_1:
                 player->effects &= ~0x10;
                 D_801630E8[playerIndex] = 0;
-                cpu_BehaviourState[playerIndex] = cpu_BEHAVIOUR_STATE_START;
+                cpu_BehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
                 break;
             case BEHAVIOUR_DRIVE_CENTER:
             case BEHAVIOUR_DRIVE_LEFT:
             case BEHAVIOUR_DRIVE_OUTER:
                 gPlayerTrackPositionFactorInstruction[playerIndex].target =
                     gPlayerTrackPositionFactorInstruction[playerIndex].unkC;
-                cpu_BehaviourState[playerIndex] = cpu_BEHAVIOUR_STATE_START;
+                cpu_BehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
                 break;
             case BEHAVIOUR_HOP:
             case BEHAVIOUR_NORMAL_SPEED:
@@ -113,7 +113,7 @@ void cpu_behaviour_end(s32 playerIndex, Player* player) {
             case BEHAVIOUR_9:
             case BEHAVIOUR_10:
             case BEHAVIOUR_MAX_SPEED:
-                cpu_BehaviourState[playerIndex] = cpu_BEHAVIOUR_STATE_START;
+                cpu_BehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
                 break;
             default:
                 break;
@@ -125,12 +125,12 @@ void cpu_behaviour(s32 playerIndex) {
     Player* player = gPlayerOne + playerIndex;
 
     switch (cpu_BehaviourState[playerIndex]) {
-        case cpu_BEHAVIOUR_STATE_NONE:
+        case CPU_BEHAVIOUR_STATE_NONE:
             break;
-        case cpu_BEHAVIOUR_STATE_START:
+        case CPU_BEHAVIOUR_STATE_START:
             cpu_behaviour_start(playerIndex, player);
             break;
-        case cpu_BEHAVIOUR_STATE_RUNNING:
+        case CPU_BEHAVIOUR_STATE_RUNNING:
             cpu_behaviour_end(playerIndex, player);
             break;
     }

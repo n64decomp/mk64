@@ -1746,21 +1746,21 @@ void func_80026A48(Player* player, s8 arg1) {
     f32 temp_f0;
 
     if (((player->effects & 0x4000) == 0x4000) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
-        player->unk_240 += D_800DDE74[8];
-        if (player->unk_240 >= 0x400) {
-            player->unk_240 = 0;
+        player->tyreSpeed += D_800DDE74[8];
+        if (player->tyreSpeed >= 0x400) {
+            player->tyreSpeed = 0;
         }
         return;
     }
 
     temp_f0 = ((player->speed * (1.0f + player->unk_104)) / 18.0f) * 216.0f;
     if ((temp_f0 <= 1.0f) || (gIsPlayerTripleBButtonCombo[arg1] == true)) {
-        player->unk_240 = 0;
+        player->tyreSpeed = 0;
     } else {
-        player->unk_240 += D_800DDE74[(s32) (temp_f0 / 12.0f)];
+        player->tyreSpeed += D_800DDE74[(s32) (temp_f0 / 12.0f)];
     }
-    if (player->unk_240 >= 0x400) {
-        player->unk_240 = 0;
+    if (player->tyreSpeed >= 0x400) {
+        player->tyreSpeed = 0;
     }
 }
 
@@ -1774,7 +1774,7 @@ void func_80026A48(Player* player, s8 arg1) {
 void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     s16 frameId = gLastAnimFrameSelector[screenId][playerId];
     s16 groupId = gLastAnimGroupSelector[screenId][playerId];
-    s16 temp_t2 = player->unk_240;
+    s16 temp_t2 = player->tyreSpeed;
     s16 temp_num = 0x40; // setting this as a variable gets rid of regalloc
 
     if (((player->effects & 0x4000) == 0x4000) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {

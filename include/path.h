@@ -21,27 +21,27 @@ enum {
 /**
  * These are per-path arrays that contain some information relating to path
  * The arrays in gTrackPaths contain X/Y/Z and track segment information
- * The arrays in gTrackLeftPaths and gCurrentTrackRightPath track some other X/Y/Z, but the track segment is always 0
- *(so, untracked/unused) Its unclear how these arrays relate to each other
+ * The arrays in gTrackLeftPaths and gTrackRightPaths track some other X/Y/Z, but the track segment is always 0
+ * (so, untracked/unused) Its unclear how these arrays relate to each other
  **/
 extern TrackPathPoint* gTrackPaths[];
 extern TrackPathPoint* gTrackLeftPaths[];
 extern TrackPathPoint* gTrackRightPaths[];
 
 /**
- * Don't know what exactly these are, but like gTrackPaths, gTrackLeftPaths, and gCurrentTrackRightPath
+ * Don't know what exactly these are, but like gTrackPaths, gTrackLeftPaths, and gTrackRightPaths
  * they track something about the path on a per-path basis
  **/
 // PathPoint types?
 extern s16* gTrackSectionTypes[];
-// Based on analyse_angle_path this may be angles between path
-// gPathExpectedRotation[i] = atan2(pathPoint_i, pathPoint_i+1)?
+// Based on analyse_angle_path this may be angles between path point
+// gPathExpectedRotation[i] = atan2(path_point_i, path_point_i+1)?
 extern s16* gPathExpectedRotation[];
 // No idea. Adjacency list?
 extern s16* gTrackConsecutiveCurveCounts[];
 
 /**
- * Certain parts of the pathPoint logic will copy some path/player specific data to a temporary variable.
+ * Certain parts of the path point logic will copy some path/player specific data to a temporary variable.
  * For example: gCurrentTrackPath is always a value from gTrackPaths. Depending on which path
  * a given player is on, the specific value may change
  **/
@@ -51,7 +51,7 @@ extern s16 sSomeNearestPathPoint;
 extern s32 gPlayerPathIndex;
 // Shadows values from gTrackLeftPaths
 extern TrackPathPoint* gCurrentTrackLeftPath;
-// Shadows values from gCurrentTrackRightPath
+// Shadows values from gTrackRightPaths
 extern TrackPathPoint* gCurrentTrackRightPath;
 // Shadows values from gTrackSectionTypes
 extern s16* gCurrentTrackSectionTypesPath;
@@ -65,7 +65,7 @@ extern TrackPathPoint* gCurrentTrackPath;
 extern s16* gCurrentTrackConsecutiveCurveCountsPath;
 
 extern u16 gNearestPathPointByPlayerId[]; // D_80164438
-// Total path passed by playerId?
+// Total path point passed by playerId?
 extern s32 gNumPathPointsTraversed[];
 extern u16 gPathIndexByPlayerId[];  // D_801645B0
 extern u16 gPathCountByPathIndex[]; // D_801645C8
@@ -74,7 +74,7 @@ extern s16 gNearestPathPointByCameraId[]; // D_80164668
 
 /**
  * Stuff that may not be directly related to path, but are only referenced in cpu_vehicles_camera_path.
- * So they are at least pathPoint adjacent.
+ * So they are at least path point adjacent.
  **/
 
 // Tracks something on a per-player basis, no idea what though
@@ -82,9 +82,9 @@ extern f32 gTrackPositionFactor[];
 // Track segment by playerId, although it curiously does NOT track values for human players
 // So, in 2 Player Grand Prix, the first 2 entries are always 0
 extern u16 gPlayersTrackSectionId[];
-// Seems to be a per-path overcount of the pathPoint count
-extern s32 D_80163368[];
-// Seemingly the Z position of the 1st pathPoint in the 0th path?
+// Seems to be a per-path overcount of the path point count
+extern s32 gSizePath[];
+// Seemingly the Z position of the 1st path point in the 0th path?
 extern f32 gPathStartZ;
 // These seem to track whether a player has entered or exited the "unknown" zone in yoshi's valley
 // See yoshi_valley_cpu_path and update_cpu_path_completion
