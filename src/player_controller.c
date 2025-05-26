@@ -4623,7 +4623,7 @@ void handle_a_press_for_player_during_race(Player* player, struct Controller* co
 }
 
 void handle_a_press_for_all_players_during_race(void) {
-    u16 temp_v0_3
+    u16 temp_v0_3;
     u16 temp_v0_4;
     u16 temp_v0_5;
     u16 temp_v0_6;

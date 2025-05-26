@@ -727,7 +727,7 @@ void apply_hit_effect(Player* player, s8 playerIndex) {
     player->unk_08C = 0.0f;
     player->currentSpeed = 0.0f;
     // clang-format off
-    if ((player->collision.surfaceDistance[2] >= 600.0f) || ((player->effects & UNKNOWN_EFFECT_0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
+    if ((player->collision.surfaceDistance[2] >= 600.0f) || ((player->effects & UNKNOWN_EFFECT_0x1000) != 0)) { D_8018D990[playerIndex] = 3; } // placed block on same line to match
     // clang-format on
 
     switch (D_8018D990[playerIndex]) {
@@ -1027,20 +1027,20 @@ void apply_reverse_sound_effect(Player* player, s8 playerIndex) {
 
     player->soundEffects &= ~(REVERSE_SOUND_EFFECT | 0x80000);
     player->unk_0B6 |= 0x40;
-    gTimerBoostTripleACombo[arg1] = 0;
-    gIsPlayerTripleAButtonCombo[arg1] = false;
-    gCountASwitch[arg1] = 0;
-    gFrameSinceLastACombo[arg1] = 0;
+    gTimerBoostTripleACombo[playerIndex] = 0;
+    gIsPlayerTripleAButtonCombo[playerIndex] = false;
+    gCountASwitch[playerIndex] = 0;
+    gFrameSinceLastACombo[playerIndex] = 0;
 }
 
-void func_8008E884(Player* player, s8 arg1) {
+void func_8008E884(Player* player, s8 playerIndex) {
     player->effects &= ~UNKNOWN_EFFECT_0x1000000;
     player->unk_0A8 = 0;
     player->unk_236 = 0;
-    D_80165190[0][arg1] = 1;
-    D_80165190[1][arg1] = 1;
-    D_80165190[2][arg1] = 1;
-    D_80165190[3][arg1] = 1;
+    D_80165190[0][playerIndex] = 1;
+    D_80165190[1][playerIndex] = 1;
+    D_80165190[2][playerIndex] = 1;
+    D_80165190[3][playerIndex] = 1;
     player->unk_042 = 0;
 }
 
