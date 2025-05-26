@@ -274,7 +274,7 @@ void func_8008C73C(Player* player, s8 playerIndex) {
         D_80165190[1][playerIndex] = 1;
         D_80165190[2][playerIndex] = 1;
         D_80165190[3][playerIndex] = 1;
-        D_80165280[playerIndex] = player->currentSpeed;
+        gPlayerCurrentSpeed[playerIndex] = player->currentSpeed;
         gTimerBoostTripleACombo[playerIndex] = 0;
         gIsPlayerTripleAButtonCombo[playerIndex] = false;
         gCountASwitch[playerIndex] = 0;
