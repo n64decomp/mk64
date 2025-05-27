@@ -224,8 +224,8 @@ void func_8006A7C0(Player*, f32, f32, s8, s8);
 void render_battle_balloon(Player*, s8, s16, s8);
 
 void func_8006B7E4(Player*, s8);
-void set_all_player_baloons_to_gone(Player*, s8);
-void remove_battle_balloon_from_player(Player*, s8);
+void clear_all_player_balloons(Player*, s8);
+void pop_player_balloon(Player*, s8);
 void set_player_balloon_to_gone(s32, s8, s8);
 void func_8006B9CC(Player*, s8);
 void render_remaining_battle_balloons(Player*, s8, s8);

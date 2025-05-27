@@ -356,7 +356,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     D_8018CE10[playerIndex].unk_04[2] = 0.0f;
     func_80295BF8(playerIndex);
     func_8005D6C0(player);
-    set_all_player_baloons_to_gone(player, playerIndex);
+    clear_all_player_balloons(player, playerIndex);
     if (gModeSelection == BATTLE) {
         func_8006B7E4(player, playerIndex);
     }

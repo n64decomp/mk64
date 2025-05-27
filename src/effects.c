@@ -231,7 +231,7 @@ void func_8008C62C(Player* player, s8 playerIndex) {
             player->unk_0A8 = 0x2000;
             func_8008C6D0(player, playerIndex);
             if (gModeSelection == BATTLE) {
-                remove_battle_balloon_from_player(player, playerIndex);
+                pop_player_balloon(player, playerIndex);
             }
         }
     }
@@ -342,7 +342,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
             player->unk_0B2--;
             if (player->unk_0B2 <= 0) {
                 if (gModeSelection == BATTLE) {
-                    remove_battle_balloon_from_player(player, playerIndex);
+                    pop_player_balloon(player, playerIndex);
                 }
                 func_8008C8C4(player, playerIndex);
             }
@@ -356,7 +356,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
             if (player->unk_0B2 <= 0) {
                 func_8008C8C4(player, playerIndex);
                 if (gModeSelection == BATTLE) {
-                    remove_battle_balloon_from_player(player, playerIndex);
+                    pop_player_balloon(player, playerIndex);
                 }
             }
         }
@@ -857,7 +857,7 @@ void apply_hit_rotating_sound_effect(Player* player, s8 playerIndex) {
         play_cpu_sound_effect(playerIndex, player);
     }
     if (gModeSelection == BATTLE) {
-        remove_battle_balloon_from_player(player, playerIndex);
+        pop_player_balloon(player, playerIndex);
     }
 }
 
@@ -963,7 +963,7 @@ void func_8008E4A4(Player* player, s8 playerIndex) {
             player->currentSpeed += 100.0f;
         }
         if (gModeSelection == BATTLE) {
-            remove_battle_balloon_from_player(player, playerIndex);
+            pop_player_balloon(player, playerIndex);
         }
     } else {
         player->unk_0A8 += 0x80;
@@ -980,7 +980,7 @@ void func_8008E4A4(Player* player, s8 playerIndex) {
                 player->unk_042 = 0;
 
                 if (gModeSelection == BATTLE) {
-                    remove_battle_balloon_from_player(player, playerIndex);
+                    pop_player_balloon(player, playerIndex);
                 }
                 if ((gIsPlayerTripleAButtonCombo[playerIndex] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                     player->currentSpeed += 100.0f;
@@ -1074,7 +1074,7 @@ void apply_hit_by_item_effect(Player* player, s8 playerIndex) {
         }
 
         if (gModeSelection == BATTLE) {
-            remove_battle_balloon_from_player(player, playerIndex);
+            pop_player_balloon(player, playerIndex);
         }
     } else {
         player->unk_0A8 = (s16) (player->unk_0A8 + 0x90);
@@ -1094,7 +1094,7 @@ void apply_hit_by_item_effect(Player* player, s8 playerIndex) {
                 }
 
                 if (gModeSelection == BATTLE) {
-                    remove_battle_balloon_from_player(player, playerIndex);
+                    pop_player_balloon(player, playerIndex);
                 }
             }
         }
@@ -1348,7 +1348,7 @@ void func_8008F494(Player* player, s8 playerIndex) {
 void func_8008F5A4(Player* player, s8 playerIndex) {
 
     if ((player->unk_044 & 0x8000) != 0) {
-        remove_battle_balloon_from_player(player, playerIndex);
+        pop_player_balloon(player, playerIndex);
         player->unk_044 &= ~0x8000;
     }
 
@@ -1936,7 +1936,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                         func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
                     }
                     if (gModeSelection == BATTLE) {
-                        remove_battle_balloon_from_player(player, playerId);
+                        pop_player_balloon(player, playerId);
                     }
                     player->unk_0CA &= ~0x0002;
                     player->unk_0DE &= ~0x0004;

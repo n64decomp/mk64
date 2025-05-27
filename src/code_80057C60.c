@@ -6031,13 +6031,13 @@ void func_8006B7E4(Player* player, s8 arg1) {
     gPlayerBalloonCount[arg1] = 2;
 }
 
-void set_all_player_baloons_to_gone(UNUSED Player* player, s8 playerIndex) {
+void clear_all_player_balloons(UNUSED Player* player, s8 playerIndex) {
     gPlayerBalloonStatus[playerIndex][0] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][1] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][2] = BALLOON_STATUS_GONE;
 }
 
-void remove_battle_balloon_from_player(Player* player, s8 playerIndex) {
+void pop_player_balloon(Player* player, s8 playerIndex) {
     if (gPlayerBalloonCount[playerIndex] >= 0) {
         gPlayerBalloonStatus[playerIndex][gPlayerBalloonCount[playerIndex]] &= ~BALLOON_STATUS_PRESENT;
         gPlayerBalloonStatus[playerIndex][gPlayerBalloonCount[playerIndex]] |= BALLOON_STATUS_DEPARTING;
