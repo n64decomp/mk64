@@ -4318,7 +4318,7 @@ void func_8007C684(s32 objectIndex) {
     }
 }
 
-void func_8007C7B4(s32 someIndex, s32 arg1) {
+void func_8007C7B4(s32 someIndex, s32 playerIndex) {
     s32 temp_a0;
     s32 objectIndex;
     s16 temp_s1_2;
@@ -4329,7 +4329,7 @@ void func_8007C7B4(s32 someIndex, s32 arg1) {
     for (temp_a0 = 0; temp_a0 < 5; temp_a0++) {
         objectIndex = indexObjectList3[someIndex + temp_a0];
         init_object(objectIndex, 1);
-        gObjectList[objectIndex].unk_0D1 = arg1;
+        gObjectList[objectIndex].unk_0D1 = playerIndex;
         temp_s1_2 = random_int(0x003CU) - 0x1E;
         temp_s4 = random_int(0x0014U) - 0xA;
         temp_s5 = random_int(0x0050U) - 0x28;
@@ -4340,7 +4340,7 @@ void func_8007C7B4(s32 someIndex, s32 arg1) {
         gObjectList[objectIndex].origin_pos[1] = (f32) temp_s4;
         gObjectList[objectIndex].origin_pos[2] = (f32) temp_s5;
     }
-    func_800C9060(arg1, 0x1900705AU);
+    func_800C9060(playerIndex, 0x1900705AU);
 
     if (someIndex == 0) {
         D_8018CFF0 = 1;
@@ -6378,14 +6378,14 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
 void func_80081D34(s32 objectIndex) {
     Player* player;
     Camera* var_s4;
-    s32 var_s2;
+    s32 playerIndex;
     s32 var_s5;
     Object* object;
 
     var_s5 = 0;
     player = gPlayerOne;
     var_s4 = camera1;
-    for (var_s2 = 0; var_s2 < D_8018D158; var_s2++, player++, var_s4++) {
+    for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++, var_s4++) {
         if ((is_obj_flag_status_active(objectIndex, 0x00000200) != 0) && !(player->effects & 0x80000000) &&
             (has_collided_with_player(objectIndex, player) != 0)) {
             if ((player->type & PLAYER_EXISTS) && !(player->type & 0x100)) {
@@ -6395,7 +6395,7 @@ void func_80081D34(s32 objectIndex) {
                     func_80072180();
                 }
                 if (player->effects & 0x200) {
-                    func_800C9060(var_s2, 0x1900A046U);
+                    func_800C9060(playerIndex, 0x1900A046U);
                 } else {
                     player->soundEffects |= 2;
                 }

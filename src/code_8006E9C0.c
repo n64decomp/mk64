@@ -382,7 +382,7 @@ void func_8006F8CC(void) {
         D_801657E8 = 1;
         D_80165800[0] = D_80165800[1] = 1;
         if (gPlayerCount == 4) {
-            if (gModeSelection != 3) {
+            if (gModeSelection != BATTLE) {
                 D_801657E4 = 1;
                 D_801657F0 = 1;
                 D_801657F8 = 1;
@@ -395,7 +395,7 @@ void func_8006F8CC(void) {
             D_801657E8 = 0;
             D_801657F8 = 1;
         } else if (gPlayerCount == 2) {
-            if (gModeSelection != (s32) 3) {
+            if (gModeSelection != (s32) BATTLE) {
                 D_801657E4 = 1;
                 D_801657F0 = 1;
                 D_80165800[0] = D_80165800[1] = 0;
@@ -441,7 +441,7 @@ void func_8006FA94(void) {
 
     switch (gPlayerCount) {
     case 1:
-        if (gModeSelection == 0) {
+        if (gModeSelection == GRAND_PRIX) {
             D_8018D114 = 0;
             D_8018D178 = 150;
             D_8018D180 = 240;
@@ -452,13 +452,13 @@ void func_8006FA94(void) {
         }
         break;
     case 2:
-        if (gScreenModeSelection == 1) {
-            if (gModeSelection == 0) {
+        if (gScreenModeSelection == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) {
+            if (gModeSelection == GRAND_PRIX) {
                 D_8018D114 = 2;
                 D_8018D178 = 150;
                 D_8018D180 = 240;
                 D_8018D2AC = 60;
-            } else if (gModeSelection == 2) {
+            } else if (gModeSelection == VERSUS) {
                 D_8018D114 = 3;
                 D_8018D178 = 30;
                 D_8018D180 = 30;
@@ -469,16 +469,16 @@ void func_8006FA94(void) {
                 D_8018D180 = 40;
                 D_8018D2AC = 60;
             }
-        } else if (gModeSelection == 0) {
+        } else if (gModeSelection == GRAND_PRIX) {
             D_8018D114 = 5;
-        } else if (gModeSelection == 2) {
+        } else if (gModeSelection == VERSUS) {
             D_8018D114 = 6;
         } else {
             D_8018D114 = 7;
         }
         break;
     case 3:
-        if (gModeSelection == 2) {
+        if (gModeSelection == VERSUS) {
             D_8018D114 = 8;
             D_8018D178 = 0x00000064;
             D_8018D180 = 0x00000096;
@@ -491,7 +491,7 @@ void func_8006FA94(void) {
         }
         break;
     case 4:
-        if (gModeSelection == 2) {
+        if (gModeSelection == VERSUS) {
             D_8018D114 = 0x0000000A;
             D_8018D178 = 0x0000001E;
             D_8018D180 = 0x0000001E;
