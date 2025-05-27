@@ -1087,13 +1087,13 @@ void func_80089538(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 soundB
 
 s32 func_800895E4(s32 objectIndex) {
     Player* player;
-    s32 var_s1;
+    s32 playerIndex;
     s32 var_s6;
 
     var_s6 = 0;
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
+        for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
             if ((gObjectList[objectIndex].state != 0) &&
                 (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
@@ -1108,11 +1108,11 @@ s32 func_800895E4(s32 objectIndex) {
 
 void func_800896D4(s32 objectIndex, f32 arg1, f32 arg2) {
     Player* player;
-    s32 var_s1;
+    s32 playerIndex;
 
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
+        for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & (STAR_EFFECT | BOO_EFFECT)) &&
                 (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 func_8008933C(player, objectIndex, arg1, arg2 * 1.1);
@@ -1126,12 +1126,12 @@ void func_800896D4(s32 objectIndex, f32 arg1, f32 arg2) {
 
 void func_80089820(s32 objectIndex, f32 arg1, f32 arg2, u32 arg3) {
     Player* player;
-    s32 var_s1;
+    s32 playerIndex;
 
     player = gPlayerOne;
     set_object_flag_status_false(objectIndex, 0x02000000);
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
+        for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & BOO_EFFECT)) {
                 if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) &&
                     (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
@@ -1143,7 +1143,7 @@ void func_80089820(s32 objectIndex, f32 arg1, f32 arg2, u32 arg3) {
                         }
                         if ((func_8008933C(player, objectIndex, arg1, arg2 * 1.1) >= 4.0) &&
                             ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
-                            func_800C9060(var_s1, arg3);
+                            func_800C9060(playerIndex, arg3);
                         }
                     }
                 }
@@ -1154,11 +1154,11 @@ void func_80089820(s32 objectIndex, f32 arg1, f32 arg2, u32 arg3) {
 
 void func_80089A04(s32 objectIndex, f32 arg1, f32 arg2) {
     Player* player;
-    s32 var_s1;
+    s32 playerIndex;
 
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
+        for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & (BOO_EFFECT | STAR_EFFECT)) &&
                 (has_collided_with_player(objectIndex, player) != 0)) {
                 func_8008933C(player, objectIndex, arg1, arg2 * 1.1);
@@ -1173,14 +1173,14 @@ void func_80089A04(s32 objectIndex, f32 arg1, f32 arg2) {
 s32 func_80089B50(s32 objectIndex) {
     Player* player;
     s32 sp40;
-    s32 var_s1;
+    s32 playerIndex;
     s32 test;
 
     test = 0;
     sp40 = 0;
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++, test++) {
+        for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++, test++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & (BOO_EFFECT | UNKNOWN_EFFECT_0x1000000)) &&
                 (player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) &&
                 (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
@@ -1201,13 +1201,13 @@ s32 func_80089B50(s32 objectIndex) {
 
 s32 func_80089CBC(s32 objectIndex, f32 arg1) {
     Player* player;
-    s32 var_s1;
+    s32 playerIndex;
     s32 var_s7;
 
     var_s7 = 0;
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
+        for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & (BOO_EFFECT | UNKNOWN_EFFECT_0x1000000))) {
                 if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) &&
                     (has_collided_with_player_and_within_height(objectIndex, player, arg1) != 0)) {
@@ -1227,13 +1227,13 @@ s32 func_80089CBC(s32 objectIndex, f32 arg1) {
 
 s32 func_80089E18(s32 objectIndex) {
     Player* player;
-    s32 var_s1;
+    s32 playerIndex;
     s32 var_s6;
 
     var_s6 = 0;
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
+        for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x800000C0) &&
                 (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (player->effects & STAR_EFFECT) {
@@ -1249,13 +1249,13 @@ s32 func_80089E18(s32 objectIndex) {
 
 s32 func_80089F24(s32 objectIndex) {
     Player* player;
-    s32 var_s1;
+    s32 playerIndex;
     s32 var_s7;
 
     var_s7 = 0;
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
+        for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x800002C0)) {
                 if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) &&
                     (has_collided_horizontally_with_player(objectIndex, player) != 0)) {

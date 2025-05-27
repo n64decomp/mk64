@@ -2942,9 +2942,9 @@ void func_800C90F4(u8 playerId, u32 soundBits) {
     }
 }
 
-void func_800C9250(u8 arg0) {
-    func_800C90F4(arg0,
-                  (gPlayers[arg0].characterId * 0x10) + (gAudioRandom & 1) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x01));
+void func_800C9250(u8 playerIndex) {
+    func_800C90F4(playerIndex,
+                  (gPlayers[playerIndex].characterId * 0x10) + (gAudioRandom & 1) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x01));
 }
 
 void func_800C92CC(u8 playerId, u32 soundBits) {
@@ -3263,8 +3263,8 @@ void func_800CA118(u8 arg0) {
     }
 }
 
-void func_800CA24C(u8 arg0) {
-    D_800EA0EC[arg0] = 2;
+void func_800CA24C(u8 playerIndex) {
+    D_800EA0EC[playerIndex] = 2;
 }
 
 void func_800CA270() {
@@ -3311,10 +3311,10 @@ void func_800CA414(u16 arg0, u16 arg1) {
     D_800EA104 = 1;
 }
 
-void func_800CA49C(u8 arg0) {
+void func_800CA49C(u8 playerIndex) {
     if (D_800EA108 == 0) {
         if (D_800EA1C0 >= 2) {
-            func_800C9060(arg0, 0x1900FF3A);
+            func_800C9060(playerIndex, 0x1900FF3A);
         } else if (D_800EA164 != 0) {
             func_800C3448(0x100100FF); // 0x19000000
             func_800C3448(0x110100FF);
@@ -3419,17 +3419,17 @@ void func_800CAACC(u8 playerId) {
     }
 }
 
-void func_800CAB4C(u8 arg0) {
+void func_800CAB4C(u8 playerIndex) {
     UNUSED u8* temp_v1;
     UNUSED u8 temp_v0;
 
     if (D_800EA108 == 0) {
-        switch (D_800EA0EC[arg0]) {
+        switch (D_800EA0EC[playerIndex]) {
             case 2:
-                D_800EA0EC[arg0] = 1;
+                D_800EA0EC[playerIndex] = 1;
             case 0:
                 func_800C36C4(0, 1U, 0x55U, 5);
-                func_800C9060(arg0, 0x1900F013U);
+                func_800C9060(playerIndex, 0x1900F013U);
                 play_sound(SOUND_ITEM_THUNDERBOLT, &D_800EA1C8, 0U, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
                 break;
             default:

@@ -257,13 +257,13 @@ void func_8008C6D0(Player* player, s8 playerIndex) {
 
 void func_8008C73C(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
-    if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40)) {
-        player->effects &= ~0x10;
+    if (((player->effects & UNKNOWN_EFFECT_0x80) != UNKNOWN_EFFECT_0x80) && ((player->effects & UNKNOWN_EFFECT_0x40) != UNKNOWN_EFFECT_0x40)) {
+        player->effects &= ~UNKNOWN_EFFECT_0x10;
 
         if ((player->unk_0C0 / 182) >= 0) {
-            player->effects |= 0x40;
+            player->effects |= UNKNOWN_EFFECT_0x40;
         } else {
-            player->effects |= 0x80;
+            player->effects |= UNKNOWN_EFFECT_0x80;
         }
 
         player->unk_0B6 |= 0x80;
@@ -291,8 +291,8 @@ void func_8008C73C(Player* player, s8 playerIndex) {
 }
 
 void func_8008C8C4(Player* player, s8 playerId) {
-    player->effects &= ~0x80;
-    player->effects &= ~0x40;
+    player->effects &= ~UNKNOWN_EFFECT_0x80;
+    player->effects &= ~UNKNOWN_EFFECT_0x40;
     player->unk_0A8 = 0;
     player->rotation[1] = player->unk_0AE;
     player->unk_07C = 0;
@@ -580,7 +580,7 @@ void func_8008D570(Player* player, s8 playerIndex) {
     }
 }
 
-void func_8008D698(Player* player, s8 arg1) {
+void func_8008D698(Player* player, s8 playerIndex) {
     s16 temp;
 
     if (player->unk_0B2 == 0) {
@@ -588,8 +588,8 @@ void func_8008D698(Player* player, s8 arg1) {
         temp = 0;
     } else {
         player->rotation[1] -= 1820;
-        D_8018D920[arg1] -= 1820;
-        temp = ((u16) D_8018D920[arg1] / 1820);
+        D_8018D920[playerIndex] -= 1820;
+        temp = ((u16) D_8018D920[playerIndex] / 1820);
     }
     if (temp == 0) {
         --player->unk_0B2;
@@ -634,7 +634,7 @@ void func_8008D7B0(Player* player, s8 playerIndex) {
     }
 }
 
-void func_8008D8B4(Player* player, s8 arg1) {
+void func_8008D8B4(Player* player, s8 playerIndex) {
     s16 temp;
 
     if (player->unk_0B2 == 0) {
@@ -642,8 +642,8 @@ void func_8008D8B4(Player* player, s8 arg1) {
         temp = 0;
     } else {
         player->rotation[1] -= 1820;
-        D_8018D920[arg1] -= 1820;
-        temp = ((u16) (D_8018D920[arg1]) / 1820);
+        D_8018D920[playerIndex] -= 1820;
+        temp = ((u16) (D_8018D920[playerIndex]) / 1820);
     }
     if (temp == 0) {
         --player->unk_0B2;
@@ -1134,14 +1134,14 @@ void apply_hit_by_item_sound_effect(Player* player, s8 playerIndex) {
     gFrameSinceLastACombo[playerIndex] = 0;
 }
 
-void remove_hit_by_item_effect(Player* player, s8 arg1) {
+void remove_hit_by_item_effect(Player* player, s8 playerIndex) {
     player->effects &= ~HIT_BY_ITEM_EFFECT;
     player->unk_0A8 = 0;
     player->unk_236 = 0;
-    D_80165190[0][arg1] = 1;
-    D_80165190[1][arg1] = 1;
-    D_80165190[2][arg1] = 1;
-    D_80165190[3][arg1] = 1;
+    D_80165190[0][playerIndex] = 1;
+    D_80165190[1][playerIndex] = 1;
+    D_80165190[2][playerIndex] = 1;
+    D_80165190[3][playerIndex] = 1;
     player->unk_042 = 0;
 }
 
@@ -1412,14 +1412,14 @@ void apply_star_sound_effect(Player* player, s8 playerIndex) {
     }
 }
 
-void func_8008F86C(Player* player, s8 arg1) {
+void func_8008F86C(Player* player, s8 playerIndex) {
     player->effects &= ~STAR_EFFECT;
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
-        func_800CA730(arg1);
+        func_800CA730(playerIndex);
         return;
     }
-    func_800CAACC(arg1);
+    func_800CAACC(playerIndex);
 }
 
 void apply_boo_effect(Player* arg0, s8 playerIndex) {
