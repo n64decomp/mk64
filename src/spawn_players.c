@@ -358,7 +358,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     func_8005D6C0(player);
     clear_all_player_balloons(player, playerIndex);
     if (gModeSelection == BATTLE) {
-        func_8006B7E4(player, playerIndex);
+        init_all_player_balloons(player, playerIndex);
     }
     calculate_orientation_matrix(player->unk_150, player->unk_058, player->unk_05C, player->unk_060,
                                  player->rotation[1]);

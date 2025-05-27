@@ -5827,7 +5827,7 @@ void func_8006A280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_8006A50C(Player* player, f32 arg1, f32 arg2, s8 playerIndex, s8 balloonIndex, s16 arg5) {
+void init_balloon(Player* player, f32 arg1, f32 arg2, s8 playerIndex, s8 balloonIndex, s16 rotation) {
     f32 someX;
     f32 someY;
     f32 someZ;
@@ -5843,11 +5843,11 @@ void func_8006A50C(Player* player, f32 arg1, f32 arg2, s8 playerIndex, s8 balloo
     D_8018D830[playerIndex][balloonIndex] = 1;
     D_8018D620[playerIndex][balloonIndex] = -player->rotation[1] - player->unk_0C0;
     func_80062B18(&someX, &someY, &someZ, arg1, 4.0f, arg2 + -3.8, -player->rotation[1], 0);
-    D_8018D4D0[playerIndex][balloonIndex] = player->pos[0] + someX;
-    D_8018D590[playerIndex][balloonIndex] = player->pos[2] + someZ;
-    D_8018D530[playerIndex][balloonIndex] = (player->pos[1] - player->boundingBoxSize) + someY;
+    gPlayerBalloonPosX[playerIndex][balloonIndex] = player->pos[0] + someX;
+    gPlayerBalloonPosZ[playerIndex][balloonIndex] = player->pos[2] + someZ;
+    gPlayerBalloonPosY[playerIndex][balloonIndex] = (player->pos[1] - player->boundingBoxSize) + someY;
     gPlayerBalloonStatus[playerIndex][balloonIndex] |= BALLOON_STATUS_PRESENT;
-    D_8018D860[playerIndex][balloonIndex] = arg5;
+    gPlayerBalloonRotation[playerIndex][balloonIndex] = rotation; // Sprite rotation
     D_8018D890[playerIndex][balloonIndex] = 0;
 }
 
@@ -5922,16 +5922,16 @@ void func_8006A7C0(Player* player, f32 arg1, f32 arg2, s8 playerIndex, s8 balloo
     func_80062B18(&someX, &someY, &someZ, arg1, sp80[player->characterId] - D_8018D710[playerIndex][balloonIndex],
                   arg2 + -3.2 + (sp6C * 1), -D_8018D620[playerIndex][balloonIndex], -player->unk_206 * 2);
     if ((gPlayerBalloonStatus[playerIndex][balloonIndex] & BALLOON_STATUS_DEPARTING) != BALLOON_STATUS_DEPARTING) {
-        D_8018D530[playerIndex][balloonIndex] = (player->pos[1] - player->boundingBoxSize) + someY;
-        D_8018D4D0[playerIndex][balloonIndex] = player->pos[0] + someX;
-        D_8018D590[playerIndex][balloonIndex] = player->pos[2] + someZ;
-        D_8018D8D0[playerIndex][balloonIndex] = 0;
+        gPlayerBalloonPosY[playerIndex][balloonIndex] = (player->pos[1] - player->boundingBoxSize) + someY;
+        gPlayerBalloonPosX[playerIndex][balloonIndex] = player->pos[0] + someX;
+        gPlayerBalloonPosZ[playerIndex][balloonIndex] = player->pos[2] + someZ;
+        gPlayerBalloonDepartingTimer[playerIndex][balloonIndex] = 0;
     } else {
-        D_8018D530[playerIndex][balloonIndex] += 0.2;
-        D_8018D8D0[playerIndex][balloonIndex] += 1;
+        gPlayerBalloonPosY[playerIndex][balloonIndex] += 0.2; // Balloon is departing, so it rises
+        gPlayerBalloonDepartingTimer[playerIndex][balloonIndex] += 1; // Increment the timer
         move_s16_towards(&D_8018D890[playerIndex][balloonIndex], 0, 0.1f);
-        move_s16_towards(&D_8018D860[playerIndex][balloonIndex], 0, 0.1f);
-        if (D_8018D8D0[playerIndex][balloonIndex] >= 0x78) {
+        move_s16_towards(&gPlayerBalloonRotation[playerIndex][balloonIndex], 0, 0.1f);
+        if (gPlayerBalloonDepartingTimer[playerIndex][balloonIndex] >= 0x78) { // Gone after 120 frames
             set_player_balloon_to_gone((s32) player, playerIndex, balloonIndex);
         }
     }
@@ -5987,12 +5987,12 @@ void render_battle_balloon(Player* player, s8 playerIndex, s16 balloonIndex, s8 
             var_f20 = 0.3f;
         }
     }
-    sp134[0] = D_8018D4D0[playerIndex][balloonIndex];
-    sp134[1] = D_8018D530[playerIndex][balloonIndex];
-    sp134[2] = D_8018D590[playerIndex][balloonIndex];
+    sp134[0] = gPlayerBalloonPosX[playerIndex][balloonIndex];
+    sp134[1] = gPlayerBalloonPosY[playerIndex][balloonIndex];
+    sp134[2] = gPlayerBalloonPosZ[playerIndex][balloonIndex];
     sp12C[0] = -((D_8018D890[playerIndex][balloonIndex] * 4) * coss(temp_t1));
     sp12C[1] = player->unk_048[screenId];
-    sp12C[2] = D_8018D7D0[playerIndex][balloonIndex] - (D_8018D860[playerIndex][balloonIndex] * coss(temp_t1)) -
+    sp12C[2] = D_8018D7D0[playerIndex][balloonIndex] - (gPlayerBalloonRotation[playerIndex][balloonIndex] * coss(temp_t1)) -
                ((D_8018D890[playerIndex][balloonIndex] * 8) * sins(temp_t1));
     mtxf_translate_rotate(sp140, sp134, sp12C);
     mtxf_scale2(sp140, var_f20);
@@ -6024,11 +6024,11 @@ void render_battle_balloon(Player* player, s8 playerIndex, s16 balloonIndex, s8 
     gMatrixEffectCount++;
 }
 
-void func_8006B7E4(Player* player, s8 arg1) {
-    func_8006A50C(player, 0.0f, 0.0f, arg1, (s8) 0, (s16) 0);
-    func_8006A50C(player, 1.5f, 2.0f, arg1, (s8) 1, (s16) 0x1C70);
-    func_8006A50C(player, -1.5f, 2.0f, arg1, (s8) 2, (s16) -0x1C70);
-    gPlayerBalloonCount[arg1] = 2;
+void init_all_player_balloons(Player* player, s8 playerIndex) {
+    init_balloon(player, 0.0f, 0.0f, playerIndex, (s8) 0, (s16) 0);
+    init_balloon(player, 1.5f, 2.0f, playerIndex, (s8) 1, (s16) 0x1C70);
+    init_balloon(player, -1.5f, 2.0f, playerIndex, (s8) 2, (s16) -0x1C70);
+    gPlayerBalloonCount[playerIndex] = 2;
 }
 
 void clear_all_player_balloons(UNUSED Player* player, s8 playerIndex) {
