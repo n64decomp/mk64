@@ -5827,31 +5827,31 @@ void func_8006A280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_8006A50C(Player* player, f32 arg1, f32 arg2, s8 arg3, s8 arg4, s16 arg5) {
+void func_8006A50C(Player* player, f32 arg1, f32 arg2, s8 playerIndex, s8 balloonIndex, s16 arg5) {
     f32 someX;
     f32 someY;
     f32 someZ;
 
-    gPlayerBalloonStatus[arg3][arg4] = 0;
-    D_8018D650[arg3][arg4] = 0.1f;
-    D_8018D6B0[arg3][arg4] = 0.0f;
-    D_8018D710[arg3][arg4] = 0.0f;
-    D_8018D770[arg3][arg4] = 0;
-    D_8018D7A0[arg3][arg4] = 0;
-    D_8018D7D0[arg3][arg4] = 0;
-    D_8018D800[arg3][arg4] = 5;
-    D_8018D830[arg3][arg4] = 1;
-    D_8018D620[arg3][arg4] = -player->rotation[1] - player->unk_0C0;
+    gPlayerBalloonStatus[playerIndex][balloonIndex] = BALLOON_STATUS_GONE;
+    D_8018D650[playerIndex][balloonIndex] = 0.1f;
+    D_8018D6B0[playerIndex][balloonIndex] = 0.0f;
+    D_8018D710[playerIndex][balloonIndex] = 0.0f;
+    D_8018D770[playerIndex][balloonIndex] = 0;
+    D_8018D7A0[playerIndex][balloonIndex] = 0;
+    D_8018D7D0[playerIndex][balloonIndex] = 0;
+    D_8018D800[playerIndex][balloonIndex] = 5;
+    D_8018D830[playerIndex][balloonIndex] = 1;
+    D_8018D620[playerIndex][balloonIndex] = -player->rotation[1] - player->unk_0C0;
     func_80062B18(&someX, &someY, &someZ, arg1, 4.0f, arg2 + -3.8, -player->rotation[1], 0);
-    D_8018D4D0[arg3][arg4] = player->pos[0] + someX;
-    D_8018D590[arg3][arg4] = player->pos[2] + someZ;
-    D_8018D530[arg3][arg4] = (player->pos[1] - player->boundingBoxSize) + someY;
-    gPlayerBalloonStatus[arg3][arg4] |= 1;
-    D_8018D860[arg3][arg4] = arg5;
-    D_8018D890[arg3][arg4] = 0;
+    D_8018D4D0[playerIndex][balloonIndex] = player->pos[0] + someX;
+    D_8018D590[playerIndex][balloonIndex] = player->pos[2] + someZ;
+    D_8018D530[playerIndex][balloonIndex] = (player->pos[1] - player->boundingBoxSize) + someY;
+    gPlayerBalloonStatus[playerIndex][balloonIndex] |= BALLOON_STATUS_PRESENT;
+    D_8018D860[playerIndex][balloonIndex] = arg5;
+    D_8018D890[playerIndex][balloonIndex] = 0;
 }
 
-void func_8006A7C0(Player* player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
+void func_8006A7C0(Player* player, f32 arg1, f32 arg2, s8 playerIndex, s8 balloonIndex) {
     f32 sp80[] = {
         9.0f, 10.0f, 9.0f, 8.0f, 10.0f, 9.5f, 9.5f, 11.0f,
     };
@@ -5864,80 +5864,80 @@ void func_8006A7C0(Player* player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
     UNUSED s32 stackPadding2;
 
     sp6C = (-(player->speed / 18.0f) * 216.0f) / 10.0f;
-    if ((gPlayerBalloonStatus[arg3][arg4] & 2) != 2) {
-        D_8018D650[arg3][arg4] += -0.003 + (-player->speed * 0.0006);
-        if (D_8018D650[arg3][arg4] >= 0.05) {
-            D_8018D650[arg3][arg4] = 0.05f;
+    if ((gPlayerBalloonStatus[playerIndex][balloonIndex] & BALLOON_STATUS_DEPARTING) != BALLOON_STATUS_DEPARTING) {
+        D_8018D650[playerIndex][balloonIndex] += -0.003 + (-player->speed * 0.0006);
+        if (D_8018D650[playerIndex][balloonIndex] >= 0.05) {
+            D_8018D650[playerIndex][balloonIndex] = 0.05f;
         }
-        if (D_8018D650[arg3][arg4] <= -0.05) {
-            D_8018D650[arg3][arg4] = -0.05f;
+        if (D_8018D650[playerIndex][balloonIndex] <= -0.05) {
+            D_8018D650[playerIndex][balloonIndex] = -0.05f;
         }
-        D_8018D6B0[arg3][arg4] += D_8018D650[arg3][arg4];
-        if (D_8018D6B0[arg3][arg4] >= 0.06) {
-            D_8018D6B0[arg3][arg4] = 0.06f;
+        D_8018D6B0[playerIndex][balloonIndex] += D_8018D650[playerIndex][balloonIndex];
+        if (D_8018D6B0[playerIndex][balloonIndex] >= 0.06) {
+            D_8018D6B0[playerIndex][balloonIndex] = 0.06f;
         }
-        if (D_8018D6B0[arg3][arg4] <= -0.06) {
-            D_8018D6B0[arg3][arg4] = -0.06f;
+        if (D_8018D6B0[playerIndex][balloonIndex] <= -0.06) {
+            D_8018D6B0[playerIndex][balloonIndex] = -0.06f;
         }
-        D_8018D710[arg3][arg4] += D_8018D6B0[arg3][arg4];
-        if (D_8018D710[arg3][arg4] < 0.0f) {
-            D_8018D650[arg3][arg4] = random_int(0x000BU) / 10;
-            D_8018D6B0[arg3][arg4] = 0.0f;
-            D_8018D710[arg3][arg4] = 0.0f;
+        D_8018D710[playerIndex][balloonIndex] += D_8018D6B0[playerIndex][balloonIndex];
+        if (D_8018D710[playerIndex][balloonIndex] < 0.0f) {
+            D_8018D650[playerIndex][balloonIndex] = random_int(0x000BU) / 10;
+            D_8018D6B0[playerIndex][balloonIndex] = 0.0f;
+            D_8018D710[playerIndex][balloonIndex] = 0.0f;
         }
-        D_8018D620[arg3][arg4] = -player->rotation[1] - player->unk_0C0;
-        move_s16_towards(&D_8018D890[arg3][arg4], player->speed * 182.0f, 0.1f);
+        D_8018D620[playerIndex][balloonIndex] = -player->rotation[1] - player->unk_0C0;
+        move_s16_towards(&D_8018D890[playerIndex][balloonIndex], player->speed * 182.0f, 0.1f);
     }
-    if (D_8018D830[arg3][arg4] == 1) {
-        D_8018D770[arg3][arg4] += D_8018D800[arg3][arg4] - player->speed;
+    if (D_8018D830[playerIndex][balloonIndex] == 1) {
+        D_8018D770[playerIndex][balloonIndex] += D_8018D800[playerIndex][balloonIndex] - player->speed;
     } else {
-        D_8018D770[arg3][arg4] += D_8018D800[arg3][arg4] + player->speed;
+        D_8018D770[playerIndex][balloonIndex] += D_8018D800[playerIndex][balloonIndex] + player->speed;
     }
-    if (D_8018D770[arg3][arg4] >= 0xB) {
-        D_8018D770[arg3][arg4] = 0x000B;
+    if (D_8018D770[playerIndex][balloonIndex] >= 0xB) {
+        D_8018D770[playerIndex][balloonIndex] = 0x000B;
     }
-    if (D_8018D770[arg3][arg4] < -0xA) {
-        D_8018D770[arg3][arg4] = -0x000B;
+    if (D_8018D770[playerIndex][balloonIndex] < -0xA) {
+        D_8018D770[playerIndex][balloonIndex] = -0x000B;
     }
-    D_8018D7A0[arg3][arg4] += D_8018D770[arg3][arg4];
-    if (D_8018D7A0[arg3][arg4] >= 0x29) {
-        D_8018D7A0[arg3][arg4] = 0x0029;
+    D_8018D7A0[playerIndex][balloonIndex] += D_8018D770[playerIndex][balloonIndex];
+    if (D_8018D7A0[playerIndex][balloonIndex] >= 0x29) {
+        D_8018D7A0[playerIndex][balloonIndex] = 0x0029;
     }
-    if (D_8018D7A0[arg3][arg4] < -0x28) {
-        D_8018D7A0[arg3][arg4] = -0x0029;
+    if (D_8018D7A0[playerIndex][balloonIndex] < -0x28) {
+        D_8018D7A0[playerIndex][balloonIndex] = -0x0029;
     }
-    D_8018D7D0[arg3][arg4] += D_8018D7A0[arg3][arg4];
-    if (D_8018D7D0[arg3][arg4] >= 0x38E) {
-        D_8018D800[arg3][arg4] = -random_int(8U);
-        if (D_8018D830[arg3][arg4] != 1) {
-            D_8018D830[arg3][arg4] = 1;
+    D_8018D7D0[playerIndex][balloonIndex] += D_8018D7A0[playerIndex][balloonIndex];
+    if (D_8018D7D0[playerIndex][balloonIndex] >= 0x38E) {
+        D_8018D800[playerIndex][balloonIndex] = -random_int(8U);
+        if (D_8018D830[playerIndex][balloonIndex] != 1) {
+            D_8018D830[playerIndex][balloonIndex] = 1;
         }
     }
-    if (D_8018D7D0[arg3][arg4] < -0x38D) {
-        D_8018D800[arg3][arg4] = random_int(8U);
-        if (D_8018D830[arg3][arg4] != -1) {
-            D_8018D830[arg3][arg4] = -1;
+    if (D_8018D7D0[playerIndex][balloonIndex] < -0x38D) {
+        D_8018D800[playerIndex][balloonIndex] = random_int(8U);
+        if (D_8018D830[playerIndex][balloonIndex] != -1) {
+            D_8018D830[playerIndex][balloonIndex] = -1;
         }
     }
-    func_80062B18(&someX, &someY, &someZ, arg1, sp80[player->characterId] - D_8018D710[arg3][arg4],
-                  arg2 + -3.2 + (sp6C * 1), -D_8018D620[arg3][arg4], -player->unk_206 * 2);
-    if ((gPlayerBalloonStatus[arg3][arg4] & 2) != 2) {
-        D_8018D530[arg3][arg4] = (player->pos[1] - player->boundingBoxSize) + someY;
-        D_8018D4D0[arg3][arg4] = player->pos[0] + someX;
-        D_8018D590[arg3][arg4] = player->pos[2] + someZ;
-        D_8018D8D0[arg3][arg4] = 0;
+    func_80062B18(&someX, &someY, &someZ, arg1, sp80[player->characterId] - D_8018D710[playerIndex][balloonIndex],
+                  arg2 + -3.2 + (sp6C * 1), -D_8018D620[playerIndex][balloonIndex], -player->unk_206 * 2);
+    if ((gPlayerBalloonStatus[playerIndex][balloonIndex] & BALLOON_STATUS_DEPARTING) != BALLOON_STATUS_DEPARTING) {
+        D_8018D530[playerIndex][balloonIndex] = (player->pos[1] - player->boundingBoxSize) + someY;
+        D_8018D4D0[playerIndex][balloonIndex] = player->pos[0] + someX;
+        D_8018D590[playerIndex][balloonIndex] = player->pos[2] + someZ;
+        D_8018D8D0[playerIndex][balloonIndex] = 0;
     } else {
-        D_8018D530[arg3][arg4] += 0.2;
-        D_8018D8D0[arg3][arg4] += 1;
-        move_s16_towards(&D_8018D890[arg3][arg4], 0, 0.1f);
-        move_s16_towards(&D_8018D860[arg3][arg4], 0, 0.1f);
-        if (D_8018D8D0[arg3][arg4] >= 0x78) {
-            set_player_balloon_to_gone((s32) player, arg3, arg4);
+        D_8018D530[playerIndex][balloonIndex] += 0.2;
+        D_8018D8D0[playerIndex][balloonIndex] += 1;
+        move_s16_towards(&D_8018D890[playerIndex][balloonIndex], 0, 0.1f);
+        move_s16_towards(&D_8018D860[playerIndex][balloonIndex], 0, 0.1f);
+        if (D_8018D8D0[playerIndex][balloonIndex] >= 0x78) {
+            set_player_balloon_to_gone((s32) player, playerIndex, balloonIndex);
         }
     }
 }
 
-void render_battle_balloon(Player* player, s8 arg1, s16 arg2, s8 arg3) {
+void render_battle_balloon(Player* player, s8 playerIndex, s16 balloonIndex, s8 screenId) {
     Mat4 sp140;
     Vec3f sp134;
     Vec3s sp12C;
@@ -5967,14 +5967,14 @@ void render_battle_balloon(Player* player, s8 arg1, s16 arg2, s8 arg3) {
     envRed = (envColors[player->characterId] >> 0x10) & 0xFF;
     envGreen = (envColors[player->characterId] >> 0x08) & 0xFF;
     envBlue = (envColors[player->characterId] >> 0x00) & 0xFF;
-    temp_t1 = (((player->unk_048[arg3] + player->rotation[1] + player->unk_0C0) & 0xFFFF) / 128);
+    temp_t1 = (((player->unk_048[screenId] + player->rotation[1] + player->unk_0C0) & 0xFFFF) / 128);
     temp_t1 <<= 7;
-    if (arg3 == arg1) {
+    if (screenId == playerIndex) {
         var_f20 = 0.3f;
     } else {
         // wut?
-        xdiff = (var_f20 = player->pos[0] - cameras[arg3].pos[0]);
-        zdiff = player->pos[2] - cameras[arg3].pos[2];
+        xdiff = (var_f20 = player->pos[0] - cameras[screenId].pos[0]);
+        zdiff = player->pos[2] - cameras[screenId].pos[2];
         if (gActiveScreenMode != 3) {
             var_f20 = sqrtf((xdiff * xdiff) + (zdiff * zdiff)) / 300.0f;
         } else {
@@ -5987,13 +5987,13 @@ void render_battle_balloon(Player* player, s8 arg1, s16 arg2, s8 arg3) {
             var_f20 = 0.3f;
         }
     }
-    sp134[0] = D_8018D4D0[arg1][arg2];
-    sp134[1] = D_8018D530[arg1][arg2];
-    sp134[2] = D_8018D590[arg1][arg2];
-    sp12C[0] = -((D_8018D890[arg1][arg2] * 4) * coss(temp_t1));
-    sp12C[1] = player->unk_048[arg3];
-    sp12C[2] = D_8018D7D0[arg1][arg2] - (D_8018D860[arg1][arg2] * coss(temp_t1)) -
-               ((D_8018D890[arg1][arg2] * 8) * sins(temp_t1));
+    sp134[0] = D_8018D4D0[playerIndex][balloonIndex];
+    sp134[1] = D_8018D530[playerIndex][balloonIndex];
+    sp134[2] = D_8018D590[playerIndex][balloonIndex];
+    sp12C[0] = -((D_8018D890[playerIndex][balloonIndex] * 4) * coss(temp_t1));
+    sp12C[1] = player->unk_048[screenId];
+    sp12C[2] = D_8018D7D0[playerIndex][balloonIndex] - (D_8018D860[playerIndex][balloonIndex] * coss(temp_t1)) -
+               ((D_8018D890[playerIndex][balloonIndex] * 8) * sins(temp_t1));
     mtxf_translate_rotate(sp140, sp134, sp12C);
     mtxf_scale2(sp140, var_f20);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp140);
@@ -6070,15 +6070,15 @@ void func_8006B9CC(Player* player, s8 playerIndex) {
     }
 }
 
-void render_remaining_battle_balloons(Player* player, s8 playerIndex, s8 arg2) {
+void render_remaining_battle_balloons(Player* player, s8 playerIndex, s8 screenId) {
     if (gPlayerBalloonStatus[playerIndex][0] != BALLOON_STATUS_GONE) {
-        render_battle_balloon(player, playerIndex, 0, arg2);
+        render_battle_balloon(player, playerIndex, 0, screenId);
     }
     if (gPlayerBalloonStatus[playerIndex][1] != BALLOON_STATUS_GONE) {
-        render_battle_balloon(player, playerIndex, 1, arg2);
+        render_battle_balloon(player, playerIndex, 1, screenId);
     }
     if (gPlayerBalloonStatus[playerIndex][2] != BALLOON_STATUS_GONE) {
-        render_battle_balloon(player, playerIndex, 2, arg2);
+        render_battle_balloon(player, playerIndex, 2, screenId);
     }
 }
 
