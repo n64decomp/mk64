@@ -4973,7 +4973,7 @@ void func_800652D4(Vec3f arg0, Vec3s arg1, f32 arg2) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
-void func_8006538C(Player* player, s8 arg1, s16 arg2, s8 arg3) {
+void func_8006538C(Player* player, s8 playerIndex, s16 arg2, s8 arg3) {
     Vec3f spB4;
     Vec3s spAC;
     s32 primColors[] = { MAKE_RGB(0xFB, 0xFF, 0xFB), MAKE_RGB(0xFF, 0xFB, 0x86) };
@@ -4993,7 +4993,7 @@ void func_8006538C(Player* player, s8 arg1, s16 arg2, s8 arg3) {
         spAC[0] = 0;
         spAC[1] = player->unk_048[arg3];
         spAC[2] = 0;
-        if ((player->effects & STAR_EFFECT) && (((s32) gCourseTimer - gPlayerStarEffectStartTime[arg1]) < 9)) {
+        if ((player->effects & STAR_EFFECT) && (((s32) gCourseTimer - gPlayerStarEffectStartTime[playerIndex]) < STAR_DURATION - 1)) {
             primRed = (primColors[1] >> 0x10) & 0xFF;
             primGreen = (primColors[1] >> 0x08) & 0xFF;
             primBlue = (primColors[1] >> 0x00) & 0xFF;
@@ -5029,7 +5029,7 @@ void func_8006538C(Player* player, s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_800658A0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void func_800658A0(Player* player, UNUSED s8 playerIndex, s16 arg2, s8 arg3) {
     Vec3f sp54;
     Vec3s sp4C;
     s16 red;
@@ -5059,7 +5059,7 @@ void func_800658A0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_80065AB0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void func_80065AB0(Player* player, UNUSED s8 playerIndex, s16 arg2, s8 arg3) {
     Vec3f spB4;
     Vec3s spAC;
     s32 var_s0;
@@ -5112,7 +5112,7 @@ void func_80065AB0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_80065F0C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void func_80065F0C(Player* player, UNUSED s8 playerIndex, s16 arg2, s8 arg3) {
     Vec3f spDC;
     Vec3s spD4;
     s16 primRed;
@@ -5166,7 +5166,7 @@ void func_80065F0C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void func_800664E0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void func_800664E0(Player* player, UNUSED s8 playerIndex, s16 arg2, s8 arg3) {
     Vec3f sp54;
     Vec3s sp4C;
     s16 red;
