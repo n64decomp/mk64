@@ -136,35 +136,35 @@ void cpu_behaviour(s32 playerIndex) {
     }
 }
 
-void func_80011EC0(s32 arg0, Player* player, s32 arg2, UNUSED u16 arg3) {
-    if ((((player->speed / 18.0f) * 216.0f) >= 45.0f) && (D_801630E8[arg0] == 0)) {
+void func_80011EC0(s32 playerIndex, Player* player, s32 arg2, UNUSED u16 arg3) {
+    if ((((player->speed / 18.0f) * 216.0f) >= 45.0f) && (D_801630E8[playerIndex] == 0)) {
         switch (gCurrentTrackSectionTypesPath[sSomeNearestPathPoint]) {
             case RIGHT_LEANING_CURVE:
             case RIGHT_CURVE:
-                if ((arg2 >= -9) && (D_80162FF8[arg0] == 0)) {
-                    if ((gTrackPositionFactor[arg0] > -0.8) && (gTrackPositionFactor[arg0] < 0.5)) {
+                if ((arg2 >= -9) && (D_80162FF8[playerIndex] == 0)) {
+                    if ((gTrackPositionFactor[playerIndex] > -0.8) && (gTrackPositionFactor[playerIndex] < 0.5)) {
                         kart_hop(player);
                         player->effects |= UNKNOWN_EFFECT_0x10;
-                        D_801630E8[arg0] = 1;
+                        D_801630E8[playerIndex] = 1;
                         break;
                     }
                 }
-                D_801630E8[arg0] = 2;
+                D_801630E8[playerIndex] = 2;
                 break;
             case LEFT_LEANING_CURVE:
             case LEFT_CURVE:
-                if ((arg2 < 0xA) && (D_80162FF8[arg0] == 0)) {
-                    if ((gTrackPositionFactor[arg0] > -0.5) && (gTrackPositionFactor[arg0] < 0.8)) {
+                if ((arg2 < 0xA) && (D_80162FF8[playerIndex] == 0)) {
+                    if ((gTrackPositionFactor[playerIndex] > -0.5) && (gTrackPositionFactor[playerIndex] < 0.8)) {
                         kart_hop(player);
                         player->effects |= UNKNOWN_EFFECT_0x10;
-                        D_801630E8[arg0] = -1;
+                        D_801630E8[playerIndex] = -1;
                         break;
                     }
                 }
-                D_801630E8[arg0] = -2;
+                D_801630E8[playerIndex] = -2;
                 break;
         }
     } else {
-        D_801630E8[arg0] = 3;
+        D_801630E8[playerIndex] = 3;
     }
 }

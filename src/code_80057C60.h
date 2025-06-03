@@ -219,16 +219,16 @@ void func_80069DB8(Player*, s8, s16, s8);
 
 void func_8006A01C(Player*, s8, s16, s8);
 void func_8006A280(Player*, s8, s16, s8);
-void func_8006A50C(Player*, f32, f32, s8, s8, s16);
+void init_balloon(Player*, f32, f32, s8, s8, s16);
 void func_8006A7C0(Player*, f32, f32, s8, s8);
 void render_battle_balloon(Player*, s8, s16, s8);
 
-void func_8006B7E4(Player*, s8);
-void func_8006B87C(Player*, s8);
-void func_8006B8B4(Player*, s8);
-void func_8006B974(s32, s8, s8);
+void init_all_player_balloons(Player*, s8);
+void clear_all_player_balloons(Player*, s8);
+void pop_player_balloon(Player*, s8);
+void set_player_balloon_to_gone(s32, s8, s8);
 void func_8006B9CC(Player*, s8);
-void func_8006BA94(Player*, s8, s8);
+void render_remaining_battle_balloons(Player*, s8, s8);
 void render_balloon(Vec3f, f32, s16, s16);
 
 void func_8006C0C8(Vec3f, f32, s32, s16);
@@ -627,9 +627,9 @@ extern u8* D_8018D4BC;
 extern u8* D_8018D4C0;
 extern u8* D_8018D4C4;
 extern u8* D_8018D4C8;
-extern Vec3f D_8018D4D0[];
-extern Vec3f D_8018D530[];
-extern Vec3f D_8018D590[];
+extern Vec3f gPlayerBalloonPosX[];
+extern Vec3f gPlayerBalloonPosY[];
+extern Vec3f gPlayerBalloonPosZ[];
 extern u16 gPlayerBalloonStatus[8][3];
 extern Vec3s D_8018D620[];
 extern Vec3f D_8018D650[];
@@ -642,10 +642,10 @@ extern Vec3s D_8018D7D0[];
 
 extern Vec3s D_8018D800[];
 extern Vec3s D_8018D830[];
-extern Vec3s D_8018D860[];
+extern Vec3s gPlayerBalloonRotation[]; // Sprite rotation for each player balloon
 extern Vec3s D_8018D890[];
 extern s16 gPlayerBalloonCount[]; // D_8018D8C0
-extern Vec3s D_8018D8D0[];
+extern Vec3s gPlayerBalloonDepartingTimer[];
 
 /** @endcond */
 
