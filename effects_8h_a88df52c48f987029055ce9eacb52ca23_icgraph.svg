@@ -48,7 +48,7 @@
 <script type="application/ecmascript">
 var viewWidth = 1956;
 var viewHeight = 194;
-var sectionId = 'dynsection-111';
+var sectionId = 'dynsection-112';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-111';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="effects_8c.html#a6e21e42b0229fe1e1829bd8909527e2b" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="effects_8c.html#a3bed0c3da44bfea1616d42194ba2f527" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1819,-130 1685,-130 1685,-111 1819,-111 1819,-130"/>
 <text text-anchor="middle" x="1752" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">apply_boo_sound_effect</text>
 </a>

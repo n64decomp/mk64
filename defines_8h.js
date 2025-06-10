@@ -107,6 +107,7 @@ var defines_8h =
     [ "SPAWN_SECOND_SHELL", "defines_8h.html#ab629e9e6fb6ab443caf4f9a723e8f367", null ],
     [ "SPAWN_THIRD_SHELL", "defines_8h.html#a385595a2d1be736f2e8212c4d76e27fe", null ],
     [ "STAR_EFFECT", "defines_8h.html#a8162db60017841c732d51d0c3a4a5269", null ],
+    [ "STAR_EFFECT_DURATION", "defines_8h.html#a9b3de65f2f2b99a397c6fd5faa4952e1", null ],
     [ "STAR_SOUND_EFFECT", "defines_8h.html#aee266a50899889872809281fc533bf6b", null ],
     [ "START_MENU", "defines_8h.html#a1f9423c18ac50fcb6645899b4a6e2bd3", null ],
     [ "START_MENU_FROM_QUIT", "defines_8h.html#a0976e0ab380716d82db18ceb5b43e75b", null ],

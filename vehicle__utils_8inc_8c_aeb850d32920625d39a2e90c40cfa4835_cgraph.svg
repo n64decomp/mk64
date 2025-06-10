@@ -265,9 +265,9 @@ var sectionId = 'dynsection-34';
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:href="path__utils_8inc_8c.html#ab96cbd71b16b521d82bee529494f1351" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="793.5,-233.5 667.5,-233.5 667.5,-203.5 793.5,-203.5 793.5,-233.5"/>
-<text text-anchor="start" x="675.5" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_pathPoint</text>
+<g id="a_Node000010"><a xlink:href="path__utils_8inc_8c.html#a64865cf2565ef9f4215c5fa73b04233f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="796,-233.5 665,-233.5 665,-203.5 796,-203.5 796,-233.5"/>
+<text text-anchor="start" x="673" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_path_point</text>
 <text text-anchor="middle" x="730.5" y="-210.5" font-family="Helvetica,sans-Serif" font-size="10.00">_track_section</text>
 </a>
 </g>

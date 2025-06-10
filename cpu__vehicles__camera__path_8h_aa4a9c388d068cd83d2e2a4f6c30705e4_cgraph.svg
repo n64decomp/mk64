@@ -383,10 +383,10 @@ var sectionId = 'dynsection-234';
 <!-- Node19 -->
 <g id="Node000019" class="node">
 <title>Node19</title>
-<g id="a_Node000019"><a xlink:href="path__utils_8inc_8c.html#a1196cc6fd964765f84153c6bda74028e" target="_top" xlink:title=" ">
+<g id="a_Node000019"><a xlink:href="path__utils_8inc_8c.html#a3397bd912fcc6eb0f3ae931186ca1f2d" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="493.5,-67.5 373.5,-67.5 373.5,-37.5 493.5,-37.5 493.5,-67.5"/>
 <text text-anchor="start" x="381.5" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_vehicles</text>
-<text text-anchor="middle" x="433.5" y="-44.5" font-family="Helvetica,sans-Serif" font-size="10.00">_pathPoint</text>
+<text text-anchor="middle" x="433.5" y="-44.5" font-family="Helvetica,sans-Serif" font-size="10.00">_path_point</text>
 </a>
 </g>
 </g>

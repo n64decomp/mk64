@@ -319,9 +319,9 @@ var sectionId = 'dynsection-456';
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:href="path__utils_8inc_8c.html#ab96cbd71b16b521d82bee529494f1351" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="777.5,-435 651.5,-435 651.5,-405 777.5,-405 777.5,-435"/>
-<text text-anchor="start" x="659.5" y="-423" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_pathPoint</text>
+<g id="a_Node000010"><a xlink:href="path__utils_8inc_8c.html#a64865cf2565ef9f4215c5fa73b04233f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="780,-435 649,-435 649,-405 780,-405 780,-435"/>
+<text text-anchor="start" x="657" y="-423" font-family="Helvetica,sans-Serif" font-size="10.00">find_closest_path_point</text>
 <text text-anchor="middle" x="714.5" y="-412" font-family="Helvetica,sans-Serif" font-size="10.00">_track_section</text>
 </a>
 </g>
@@ -330,8 +330,8 @@ var sectionId = 'dynsection-456';
 <g id="edge9_Node000005_Node000010" class="edge">
 <title>Node5&#45;&gt;Node10</title>
 <g id="a_edge9_Node000005_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M581.34,-420C599.58,-420 621.01,-420 641.25,-420"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="641.38,-423.5 651.38,-420 641.38,-416.5 641.38,-423.5"/>
+<path fill="none" stroke="#63b8ff" d="M581.34,-420C598.8,-420 619.17,-420 638.63,-420"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="638.7,-423.5 648.7,-420 638.7,-416.5 638.7,-423.5"/>
 </a>
 </g>
 </g>
