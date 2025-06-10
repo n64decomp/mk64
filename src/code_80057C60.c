@@ -6817,7 +6817,7 @@ void render_kart_particle_on_screen_one(Player* player, s8 playerId, s8 screenId
     }
 }
 
-void render_kart_particle_on_screen_two(Player* player, s8 playerIndex, s8 arg2) {
+void render_kart_particle_on_screen_two(Player* player, s8 playerIndex, s8 screenId) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (playerIndex == screenId) {
