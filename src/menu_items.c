@@ -10924,12 +10924,12 @@ void func_800ACC50(MenuItem* arg0) {
 
 void func_800ACF40(MenuItem* arg0) {
     Unk_D_800E70A0* temp_v0_2;
-    s32 temp_a2;
+    s32 somePlayerIndex;
     s32 temp_a1;
     s32 var_v1;
     UNUSED s32 stackPadding0;
 
-    temp_a2 = arg0->type - 0xB1;
+    somePlayerIndex = arg0->type - 0xB1;
     temp_a1 = D_800EFD64[gCharacterSelections[arg0->type - 0xB1]];
     switch (arg0->state) {
         case 0:
@@ -10938,7 +10938,7 @@ void func_800ACF40(MenuItem* arg0) {
             arg0->state = 1;
             break;
         case 1:
-            temp_v0_2 = &D_800E7300[((gPlayerCount - 2) * 4) + temp_a2];
+            temp_v0_2 = &D_800E7300[((gPlayerCount - 2) * 4) + somePlayerIndex];
             func_800A9208(arg0, temp_v0_2->column);
             func_800A9278(arg0, temp_v0_2->row);
             if (arg0->column == temp_v0_2->column) {
@@ -10950,12 +10950,12 @@ void func_800ACF40(MenuItem* arg0) {
             var_v1 = 0;
             switch (gModeSelection) {
                 case 2:
-                    if (gGPCurrentRaceRankByPlayerId[temp_a2] != 0) {
+                    if (gGPCurrentRaceRankByPlayerId[somePlayerIndex] != 0) {
                         var_v1 = 1;
                     }
                     break;
                 case 3:
-                    if (temp_a2 != gPlayerWinningIndex) {
+                    if (somePlayerIndex != gPlayerWinningIndex) {
                         var_v1 = 1;
                     }
                     break;
@@ -10964,18 +10964,18 @@ void func_800ACF40(MenuItem* arg0) {
                 arg0->param2++;
                 if (arg0->param2 >= 0x1F) {
                     if (find_menu_items_dupe(0x000000B0)->state >= 2) {
-                        func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2,
+                        func_8009A640(arg0->D_8018DEE0_index, 0, somePlayerIndex,
                                       segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
                         arg0->state = 3;
-                        func_800CA24C(temp_a2);
-                        func_800C90F4(temp_a2, (gCharacterSelections[temp_a2] * 0x10) + 0x29008007);
+                        func_800CA24C(somePlayerIndex);
+                        func_800C90F4(somePlayerIndex, (gCharacterSelections[somePlayerIndex] * 0x10) + 0x29008007);
                     }
                 }
             }
             break;
         case 3:
             if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= D_800E8440[temp_a1]) {
-                func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2, segmented_to_virtual_dupe_2(D_800E83A0[temp_a1]));
+                func_8009A640(arg0->D_8018DEE0_index, 0, somePlayerIndex, segmented_to_virtual_dupe_2(D_800E83A0[temp_a1]));
                 arg0->state = 4;
             }
             break;

@@ -350,6 +350,12 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define LIGHTNING_EFFECT 0x40000000          // being hit by lightning
 #define BOO_EFFECT 0x80000000                // being a boo
 
+
+/**
+ * @brief durations of effects
+ */
+#define STAR_EFFECT_DURATION 0xA
+
 /**
  * @brief shell state
  *
