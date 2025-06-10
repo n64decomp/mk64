@@ -1798,10 +1798,9 @@ void render_texture_tile_rgba32_block(s16 x, s16 y, u8* texture, u32 width, u32 
             texSize -= (width * heightDiv * 4);
         }
 
-
         centerY += heightDiv;
     }
-    
+
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
     // FAKE
     centerX++;
@@ -2470,25 +2469,29 @@ void draw_minimap_character(s32 arg0, s32 playerId, s32 characterId) {
     f32 thing1;
     s16 x;
     s16 y;
-    Player *player = &gPlayerOne[playerId];
+    Player* player = &gPlayerOne[playerId];
 
     if (player->type & (1 << 15)) {
         thing0 = player->pos[0] * gMiniMapMarkerScale;
         thing1 = player->pos[2] * gMiniMapMarkerScale;
-        x = ((gMiniMapFinishLineX[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + gMiniMapX + (s16)(thing0);
-        y = ((gMiniMapFinishLineY[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + gMiniMapY + (s16)(thing1);
+        x = ((gMiniMapFinishLineX[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + gMiniMapX + (s16) (thing0);
+        y = ((gMiniMapFinishLineY[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + gMiniMapY + (s16) (thing1);
         // huh?
         if (characterId != 8) {
             if ((gGPCurrentRaceRankByPlayerId[playerId] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
-                func_80046424(x, y, player->rotation[1] + 0x8000, 1.0f, (u8*)&common_texture_minimap_kart_mario[characterId * 64], common_vtx_player_minimap_icon, 8, 8, 8, 8);
+                func_80046424(x, y, player->rotation[1] + 0x8000, 1.0f,
+                              (u8*) &common_texture_minimap_kart_mario[characterId * 64],
+                              common_vtx_player_minimap_icon, 8, 8, 8, 8);
             } else {
-                func_800463B0(x, y, player->rotation[1] + 0x8000, 1.0f, (u8*)&common_texture_minimap_kart_mario[characterId * 64], common_vtx_player_minimap_icon, 8, 8, 8, 8);
+                func_800463B0(x, y, player->rotation[1] + 0x8000, 1.0f,
+                              (u8*) &common_texture_minimap_kart_mario[characterId * 64],
+                              common_vtx_player_minimap_icon, 8, 8, 8, 8);
             }
         } else {
             if (gGPCurrentRaceRankByPlayerId[playerId] == 0) {
-                func_8004C450(x, y, 8, 8, (u8 *) common_texture_minimap_progress_dot);
+                func_8004C450(x, y, 8, 8, (u8*) common_texture_minimap_progress_dot);
             } else {
-                draw_hud_2d_texture(x, y, 8, 8, (u8 *) common_texture_minimap_progress_dot);
+                draw_hud_2d_texture(x, y, 8, 8, (u8*) common_texture_minimap_progress_dot);
             }
         }
     }
@@ -2944,14 +2947,14 @@ void func_80050E34(s32 playerId, s32 arg1) {
     s32 objectIndex;
     s32 spD0;
     s32 spCC;
-    Player *dummy = &gPlayerOne[playerId];
+    Player* dummy = &gPlayerOne[playerId];
     s32 spC4;
     s32 lapCount;
     s32 characterId;
     s32 spB8;
     s32 temp_v0_2;
     Object* object;
-    Player *player = &gPlayerOne[playerId];
+    Player* player = &gPlayerOne[playerId];
 
     lapCount = gLapCountByPlayerId[playerId];
     characterId = player->characterId;

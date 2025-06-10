@@ -4993,7 +4993,8 @@ void func_8006538C(Player* player, s8 playerIndex, s16 arg2, s8 arg3) {
         spAC[0] = 0;
         spAC[1] = player->unk_048[arg3];
         spAC[2] = 0;
-        if ((player->effects & STAR_EFFECT) && (((s32) gCourseTimer - gPlayerStarEffectStartTime[playerIndex]) < STAR_EFFECT_DURATION - 1)) {
+        if ((player->effects & STAR_EFFECT) &&
+            (((s32) gCourseTimer - gPlayerStarEffectStartTime[playerIndex]) < STAR_EFFECT_DURATION - 1)) {
             primRed = (primColors[1] >> 0x10) & 0xFF;
             primGreen = (primColors[1] >> 0x08) & 0xFF;
             primBlue = (primColors[1] >> 0x00) & 0xFF;
@@ -5131,21 +5132,31 @@ void func_80065F0C(Player* player, UNUSED s8 playerIndex, s16 arg2, s8 arg3) {
         spD4[2] = 0;
         func_800652D4(&spDC[0], &spD4[0], player->unk_258[10 + arg2].unk_00C * player->size);
         if (((s32) player->unk_258[10 + arg2].unk_014) != 8) {
-            primRed = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            primGreen = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            primBlue = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            envRed = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            envGreen = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
-            envBlue = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            primRed =
+                ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            primGreen =
+                ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            primBlue =
+                ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envRed =
+                ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envGreen =
+                ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envBlue =
+                ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
             primAlpha = player->unk_258[10 + arg2].unk_03E;
             if (player->unk_258[10 + arg2].unk_040 == 0) {
                 gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0,
+                                    G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
+                                    G_TX_NOLOD, G_TX_NOLOD);
                 func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
                 gSPDisplayList(gDisplayListHead++, D_0D008E48);
             } else {
                 gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0,
+                                    G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
+                                    G_TX_NOLOD, G_TX_NOLOD);
                 func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
                 gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
                 gSPDisplayList(gDisplayListHead++, D_0D008E48);
@@ -5156,7 +5167,9 @@ void func_80065F0C(Player* player, UNUSED s8 playerIndex, s16 arg2, s8 arg3) {
             primBlue = player->unk_258[10 + arg2].unk_03C;
             gSPDisplayList(gDisplayListHead++, D_0D008C90);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
-            gDPLoadTextureBlock(gDisplayListHead++, D_8018D498, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureBlock(gDisplayListHead++, D_8018D498, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0,
+                                G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK,
+                                G_TX_NOLOD, G_TX_NOLOD);
             func_8004B35C(primRed, primGreen, primBlue, 0x000000FF);
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
             gSPVertex(gDisplayListHead++, D_800E8C00, 4, 0);
@@ -5927,7 +5940,7 @@ void func_8006A7C0(Player* player, f32 arg1, f32 arg2, s8 playerIndex, s8 balloo
         gPlayerBalloonPosZ[playerIndex][balloonIndex] = player->pos[2] + someZ;
         gPlayerBalloonDepartingTimer[playerIndex][balloonIndex] = 0;
     } else {
-        gPlayerBalloonPosY[playerIndex][balloonIndex] += 0.2; // Balloon is departing, so it rises
+        gPlayerBalloonPosY[playerIndex][balloonIndex] += 0.2;         // Balloon is departing, so it rises
         gPlayerBalloonDepartingTimer[playerIndex][balloonIndex] += 1; // Increment the timer
         move_s16_towards(&D_8018D890[playerIndex][balloonIndex], 0, 0.1f);
         move_s16_towards(&gPlayerBalloonRotation[playerIndex][balloonIndex], 0, 0.1f);
@@ -5992,7 +6005,8 @@ void render_battle_balloon(Player* player, s8 playerIndex, s16 balloonIndex, s8 
     sp134[2] = gPlayerBalloonPosZ[playerIndex][balloonIndex];
     sp12C[0] = -((D_8018D890[playerIndex][balloonIndex] * 4) * coss(temp_t1));
     sp12C[1] = player->unk_048[screenId];
-    sp12C[2] = D_8018D7D0[playerIndex][balloonIndex] - (gPlayerBalloonRotation[playerIndex][balloonIndex] * coss(temp_t1)) -
+    sp12C[2] = D_8018D7D0[playerIndex][balloonIndex] -
+               (gPlayerBalloonRotation[playerIndex][balloonIndex] * coss(temp_t1)) -
                ((D_8018D890[playerIndex][balloonIndex] * 8) * sins(temp_t1));
     mtxf_translate_rotate(sp140, sp134, sp12C);
     mtxf_scale2(sp140, var_f20);
@@ -6350,7 +6364,8 @@ void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if ((player->effects & STAR_EFFECT) && ((((s32) gCourseTimer) - gPlayerStarEffectStartTime[playerIndex]) < STAR_EFFECT_DURATION - 1)) {
+        if ((player->effects & STAR_EFFECT) &&
+            ((((s32) gCourseTimer) - gPlayerStarEffectStartTime[playerIndex]) < STAR_EFFECT_DURATION - 1)) {
             func_800615AC(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;

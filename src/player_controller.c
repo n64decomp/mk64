@@ -3667,34 +3667,44 @@ void player_decelerate(Player* player, f32 speedReduction) {
 }
 
 void player_accelerate_global(Player* player, s32 playerIndex) {
-    if ((gPlayerCurrentSpeed[playerIndex] >= 0.0) && (gPlayerCurrentSpeed[playerIndex] < ((f64) player->topSpeed * 0.1))) {
+    if ((gPlayerCurrentSpeed[playerIndex] >= 0.0) &&
+        (gPlayerCurrentSpeed[playerIndex] < ((f64) player->topSpeed * 0.1))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][0] * 3.2;
     }
-    if (((player->topSpeed * 0.1) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.2))) {
+    if (((player->topSpeed * 0.1) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.2))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][1] * 3.2;
     }
-    if (((player->topSpeed * 0.2) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.3))) {
+    if (((player->topSpeed * 0.2) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.3))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][2] * 3.2;
     }
-    if (((player->topSpeed * 0.3) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.4))) {
+    if (((player->topSpeed * 0.3) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.4))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][3] * 3.2;
     }
-    if (((player->topSpeed * 0.4) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.5))) {
+    if (((player->topSpeed * 0.4) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.5))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][4] * 3.2;
     }
-    if (((player->topSpeed * 0.5) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.6))) {
+    if (((player->topSpeed * 0.5) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.6))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][5] * 3.2;
     }
-    if (((player->topSpeed * 0.6) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.7))) {
+    if (((player->topSpeed * 0.6) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.7))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][6] * 3.2;
     }
-    if (((player->topSpeed * 0.7) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.8))) {
+    if (((player->topSpeed * 0.7) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.8))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][7] * 2.8;
     }
-    if (((player->topSpeed * 0.8) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.9))) {
+    if (((player->topSpeed * 0.8) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.9))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][8] * 2.8;
     }
-    if (((player->topSpeed * 0.9) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] <= (player->topSpeed * 1.0))) {
+    if (((player->topSpeed * 0.9) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] <= (player->topSpeed * 1.0))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][9] * 2.8;
     }
     player->unk_044 |= 0x20;
@@ -4604,7 +4614,7 @@ void handle_a_press_for_player_during_race(Player* player, struct Controller* co
                 func_80037CFC(player, controller, playerIndex);
             }
             D_80164A89 = 1;
-        // If start sequence and unknown condition
+            // If start sequence and unknown condition
         } else if (D_8018D168 == 1) {
             if (D_801656F0 == 1) {
                 if (D_801652E0[playerIndex] == 0) {
