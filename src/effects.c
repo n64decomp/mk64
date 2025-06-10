@@ -1370,7 +1370,7 @@ void func_8008F5A4(Player* player, s8 playerIndex) {
 }
 
 void apply_star_effect(Player* player, s8 playerIndex) {
-    if (((s32) gCourseTimer - gPlayerStarEffectStartTime[playerIndex]) >= 9) {
+    if (((s32) gCourseTimer - gPlayerStarEffectStartTime[playerIndex]) >= STAR_EFFECT_DURATION - 1) {
         D_8018D900[playerIndex] = 1;
 
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&

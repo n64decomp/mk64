@@ -3843,11 +3843,11 @@ void func_80061754(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3, U
     player->unk_258[0x1E + arg1].unk_00C = sp48 + 1.0f;
 }
 
-void func_8006199C(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
+void func_8006199C(Player* player, s16 arg1, s32 arg2, s8 playerIndex, s8 arg4) {
     if ((arg1 == 0) && ((player->unk_258[0x1E + arg2].unk_01E > 0) || (player->unk_258[0x1E + arg2].unk_01C == 0))) {
-        func_80061754(player, arg1, arg2, (s32) arg3, arg4);
+        func_80061754(player, arg1, arg2, (s32) playerIndex, arg4);
     } else if (player->unk_258[0x1E + arg2].unk_01E > 0) {
-        func_80061754(player, arg1, arg2, (s32) arg3, arg4);
+        func_80061754(player, arg1, arg2, (s32) playerIndex, arg4);
     }
 }
 
@@ -4993,7 +4993,7 @@ void func_8006538C(Player* player, s8 playerIndex, s16 arg2, s8 arg3) {
         spAC[0] = 0;
         spAC[1] = player->unk_048[arg3];
         spAC[2] = 0;
-        if ((player->effects & STAR_EFFECT) && (((s32) gCourseTimer - gPlayerStarEffectStartTime[playerIndex]) < STAR_DURATION - 1)) {
+        if ((player->effects & STAR_EFFECT) && (((s32) gCourseTimer - gPlayerStarEffectStartTime[playerIndex]) < STAR_EFFECT_DURATION - 1)) {
             primRed = (primColors[1] >> 0x10) & 0xFF;
             primGreen = (primColors[1] >> 0x08) & 0xFF;
             primBlue = (primColors[1] >> 0x00) & 0xFF;
@@ -6281,7 +6281,7 @@ void func_8006C6AC(Player* player, s16 arg1, s8 arg2, s8 arg3) {
     }
 }
 
-void func_8006C9B8(Player* player, s16 arg1, s8 arg2, s8 arg3) {
+void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
     UNUSED s32 stackPadding;
     s32 sp28;
     sp28 = arg1 - 1;
@@ -6291,39 +6291,39 @@ void func_8006C9B8(Player* player, s16 arg1, s8 arg2, s8 arg3) {
     if (player->unk_258[30 + arg1].unk_01C == 1) {
         switch (player->unk_258[30 + arg1].unk_012) {
             case 1:
-                func_800644E8(player, arg1, arg2, arg3);
+                func_800644E8(player, arg1, playerIndex, arg3);
                 break;
 
             case 2:
-                func_800649F4(player, arg1, arg2, arg3);
+                func_800649F4(player, arg1, playerIndex, arg3);
                 break;
 
             case 3:
-                func_80064C74(player, arg1, arg2, arg3);
+                func_80064C74(player, arg1, playerIndex, arg3);
                 break;
 
             case 4:
-                func_800647C8(player, arg1, arg2, arg3);
+                func_800647C8(player, arg1, playerIndex, arg3);
                 break;
 
             case 5:
-                func_80064B30(player, arg1, arg2, arg3);
+                func_80064B30(player, arg1, playerIndex, arg3);
                 break;
 
             case 6:
-                func_800648E4(player, arg1, arg2, arg3);
+                func_800648E4(player, arg1, playerIndex, arg3);
                 break;
 
             case 7:
-                func_80064988(player, arg1, arg2, arg3);
+                func_80064988(player, arg1, playerIndex, arg3);
                 break;
 
             case 8:
-                func_80064C74(player, arg1, arg2, arg3);
+                func_80064C74(player, arg1, playerIndex, arg3);
                 break;
 
             case 9:
-                func_80064664(player, arg1, arg2, arg3);
+                func_80064664(player, arg1, playerIndex, arg3);
                 break;
 
             default:
@@ -6331,7 +6331,7 @@ void func_8006C9B8(Player* player, s16 arg1, s8 arg2, s8 arg3) {
         }
     } else {
         if (player->unk_044 & 0x1000) {
-            func_80061430(player, arg1, sp28, arg2, arg3);
+            func_80061430(player, arg1, sp28, playerIndex, arg3);
             player->unk_044 &= ~0x0100;
             return;
         }
@@ -6339,47 +6339,47 @@ void func_8006C9B8(Player* player, s16 arg1, s8 arg2, s8 arg3) {
               ((player->unk_0E0 < 2) && (player->effects & UNKNOWN_EFFECT_0x1000000))) ||
              ((player->unk_0E0 < 2) && (player->effects & HIT_BY_ITEM_EFFECT))) ||
             (player->effects & 0x400)) {
-            func_8006199C(player, arg1, sp28, arg2, arg3);
+            func_8006199C(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
             return;
         }
         if ((player->unk_0CA & 0x2000) == 0x2000) {
-            func_80061A34(player, arg1, sp28, arg2, arg3);
+            func_80061A34(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
             return;
         }
-        if ((player->effects & STAR_EFFECT) && ((((s32) gCourseTimer) - gPlayerStarEffectStartTime[arg2]) < 9)) {
-            func_800615AC(player, arg1, sp28, arg2, arg3);
+        if ((player->effects & STAR_EFFECT) && ((((s32) gCourseTimer) - gPlayerStarEffectStartTime[playerIndex]) < STAR_EFFECT_DURATION - 1)) {
+            func_800615AC(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
             return;
         }
         if ((player->unk_046 & 8) == 8) {
-            func_800612F8(player, arg1, sp28, arg2, arg3);
+            func_800612F8(player, arg1, sp28, playerIndex, arg3);
             player->unk_044 &= ~0x0100;
             return;
         }
         if (((player->unk_046 & 0x20) == 0x20) && (((player->speed / 18.0f) * 216.0f) >= 20.0f)) {
-            func_80061D4C(player, arg1, sp28, arg2, arg3);
+            func_80061D4C(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
             return;
         }
         if ((player->effects & BOOST_EFFECT) && (player->type & PLAYER_HUMAN)) {
-            func_800621BC(player, arg1, sp28, arg2, arg3);
+            func_800621BC(player, arg1, sp28, playerIndex, arg3);
             return;
         }
         if (((player->effects & 0x200000) || (player->effects & BOOST_RAMP_ASPHALT_EFFECT)) &&
             ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
-            func_80061EF4(player, arg1, sp28, arg2, arg3);
+            func_80061EF4(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
             return;
         }
         if ((player->unk_044 & 0x100) == 0x100) {
-            func_800624D8(player, arg1, sp28, arg2, arg3);
+            func_800624D8(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
         }
     }
@@ -6451,48 +6451,48 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
     }
 }
 
-void func_8006D194(Player* player, s8 arg1, s8 arg2) {
+void func_8006D194(Player* player, s8 playerIndex, s8 arg2) {
     if (player->unk_258[0x14].unk_01C == 1) {
         switch (player->unk_258[0x14].unk_012) {
             case 2:
-                func_80064DEC(player, arg1, arg2, 0);
+                func_80064DEC(player, playerIndex, arg2, 0);
                 break;
             case 3:
-                func_800650FC(player, arg1, arg2, 0);
+                func_800650FC(player, playerIndex, arg2, 0);
                 break;
             case 4:
-                func_80064EA4(player, arg1, arg2, 0);
+                func_80064EA4(player, playerIndex, arg2, 0);
                 break;
             case 5:
-                func_80064F88(player, arg1, arg2, 0);
+                func_80064F88(player, playerIndex, arg2, 0);
                 break;
             case 6:
-                func_80065030(player, arg1, arg2, 0);
+                func_80065030(player, playerIndex, arg2, 0);
                 break;
         }
     } else {
         if ((player->unk_0B6 & 0x40) == 0x40) {
-            func_800628C0(player, arg1, arg2, 0);
+            func_800628C0(player, playerIndex, arg2, 0);
         }
         if ((player->unk_0B6 & 0x800) == 0x800) {
-            func_80062968(player, arg1, arg2, 0);
+            func_80062968(player, playerIndex, arg2, 0);
         }
         if ((player->unk_0B6 & 0x1000) == 0x1000) {
-            func_80062914(player, arg1, arg2, 0);
+            func_80062914(player, playerIndex, arg2, 0);
         }
         if ((player->unk_0B6 & 0x80) == 0x80) {
-            func_80062A18(player, arg1, arg2, 0);
+            func_80062A18(player, playerIndex, arg2, 0);
         }
         if ((player->unk_0B6 & 0x100) == 0x100) {
-            func_800629BC(player, arg1, arg2, 0);
+            func_800629BC(player, playerIndex, arg2, 0);
         }
     }
     if (player->unk_258[0x15].unk_01C == 1) {
         if (player->unk_258[0x15].unk_012 == 5) {
-            func_800651F4(player, arg1, arg2, 1);
+            func_800651F4(player, playerIndex, arg2, 1);
         }
     } else if ((player->unk_0B6 & 0x20) == 0x20) {
-        func_80062AA8(player, arg1, arg2, 1);
+        func_80062AA8(player, playerIndex, arg2, 1);
     }
 }
 
@@ -6627,15 +6627,15 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
     }
 }
 
-void func_8006DC54(Player* player, s8 arg1, s8 arg2) {
+void func_8006DC54(Player* player, s8 playerIndex, s8 screenId) {
     s16 i;
     s32 bitwiseMask;
 
-    bitwiseMask = 8 << (arg2 * 4);
+    bitwiseMask = 8 << (screenId * 4);
     if (bitwiseMask == (player->unk_002 & bitwiseMask)) {
         for (i = 0; i < 10; i++) {
             if (player->unk_258[i].unk_012 == 7) {
-                func_800658A0(player, arg1, i, arg2);
+                func_800658A0(player, playerIndex, i, screenId);
             }
         }
     }
@@ -6781,24 +6781,25 @@ void func_8006E058(void) {
     }
 }
 
-void func_8006E420(Player* player, s8 arg1, s8 arg2) {
+void func_8006E420(Player* player, s8 playerIndex, s8 arg2) {
+    // arg2 is always 0
     s16 temp_s0;
 
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-            func_8006D194(player, arg1, arg2);
+            func_8006D194(player, playerIndex, arg2);
         }
 
         for (temp_s0 = 0; temp_s0 < 10; ++temp_s0) {
-            func_8006CEC0(player, temp_s0, arg1, arg2);
+            func_8006CEC0(player, temp_s0, playerIndex, arg2);
             if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) || (gGamestate == ENDING)) {
-                func_8006C9B8(player, temp_s0, arg1, arg2);
+                func_8006C9B8(player, temp_s0, playerIndex, arg2);
             }
-            func_8006C6AC(player, temp_s0, arg1, arg2);
+            func_8006C6AC(player, temp_s0, playerIndex, arg2);
         }
 
         if (gModeSelection == BATTLE) {
-            func_8006B9CC(player, arg1);
+            func_8006B9CC(player, playerIndex);
         }
     }
 }
@@ -6816,42 +6817,42 @@ void render_kart_particle_on_screen_one(Player* player, s8 playerId, s8 screenId
     }
 }
 
-void render_kart_particle_on_screen_two(Player* player, s8 arg1, s8 arg2) {
+void render_kart_particle_on_screen_two(Player* player, s8 playerIndex, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-            if (arg1 == arg2) {
-                func_8006D474(player, arg1, arg2);
+            if (playerIndex == screenId) {
+                func_8006D474(player, playerIndex, screenId);
             }
         } else {
-            func_8006D474(player, arg1, arg2);
+            func_8006D474(player, playerIndex, screenId);
         }
-        func_8006DC54(player, arg1, arg2);
+        func_8006DC54(player, playerIndex, screenId);
     }
 }
 
-void render_kart_particle_on_screen_three(Player* player, s8 arg1, s8 arg2) {
+void render_kart_particle_on_screen_three(Player* player, s8 playerIndex, s8 screenId) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-            if (arg1 == arg2) {
-                func_8006D474(player, arg1, arg2);
+            if (playerIndex == screenId) {
+                func_8006D474(player, playerIndex, screenId);
             }
         } else {
-            func_8006D474(player, arg1, arg2);
+            func_8006D474(player, playerIndex, screenId);
         }
-        func_8006DC54(player, arg1, arg2);
+        func_8006DC54(player, playerIndex, screenId);
     }
 }
 
-void render_kart_particle_on_screen_four(Player* player, s8 arg1, s8 arg2) {
+void render_kart_particle_on_screen_four(Player* player, s8 playerIndex, s8 screenId) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-            if (arg1 == arg2) {
-                func_8006D474(player, arg1, arg2);
+            if (playerIndex == screenId) {
+                func_8006D474(player, playerIndex, screenId);
             }
         } else {
-            func_8006D474(player, arg1, arg2);
+            func_8006D474(player, playerIndex, screenId);
         }
-        func_8006DC54(player, arg1, arg2);
+        func_8006DC54(player, playerIndex, screenId);
     }
 }
 
