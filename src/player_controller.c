@@ -2631,7 +2631,7 @@ void control_cpu_movement(Player* player, UNUSED Camera* camera, s8 screenId, s8
     UNUSED Vec3f spE8 = { 0.0f, 0.0f, 0.0f };
     Vec3f spDC = { 0.0f, 0.0f, 0.0f };
     Vec3f spD0 = { 0.0f, 0.0f, 0.0f };
-    f32 nexX;
+    f32 nextX;
     UNUSED s32 pad;
     f32 nextZ;
     UNUSED s32 pad2[15];
@@ -2666,7 +2666,7 @@ void control_cpu_movement(Player* player, UNUSED Camera* camera, s8 screenId, s8
     player->oldPos[0] = player->pos[0];
     player->oldPos[1] = nextY;
     player->oldPos[2] = player->pos[2];
-    nexX = player->pos[0] + player->velocity[0];
+    nextX = player->pos[0] + player->velocity[0];
     nextZ = player->pos[2] + player->velocity[2];
     player->unk_0C0 = 0;
     player->kartHopJerk = 0;
@@ -2682,7 +2682,7 @@ void control_cpu_movement(Player* player, UNUSED Camera* camera, s8 screenId, s8
     toSqrt = (newVelocity[0] * newVelocity[0]) + (newVelocity[2] * newVelocity[2]);
     player->previousSpeed = player->speed;
     player->speed = sqrtf(toSqrt);
-    player->pos[0] = nexX;
+    player->pos[0] = nextX;
     player->pos[2] = nextZ;
     player->pos[1] = nextY;
     player->unk_064[0] = 0;
