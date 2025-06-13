@@ -23,7 +23,7 @@ s32 D_8018D900[8];
 s16 D_8018D920[8];
 s32 gPlayerStarEffectStartTime[8];
 s32 gPlayerBooEffectStartTime[8];
-s32 D_8018D970[8];
+s32 gPlayerOtherScreensAlpha[8]; // Used for the alpha of the other screens in split-screen mode
 s32 D_8018D990[8];
 
 UNUSED void func_unnamed(void) {
@@ -1422,36 +1422,38 @@ void func_8008F86C(Player* player, s8 playerIndex) {
     func_800CAACC(playerIndex);
 }
 
-void apply_boo_effect(Player* arg0, s8 playerIndex) {
+void apply_boo_effect(Player* player, s8 playerIndex) {
     s32 time_elapsed;
     time_elapsed = ((s32) gCourseTimer) - gPlayerBooEffectStartTime[playerIndex];
-    if (time_elapsed < 7) {
-        arg0->unk_0C6 -= 2;
+    if (time_elapsed < BOO_EFFECT_DURATION) {
+        player->alpha -= 2;
 
-        if (arg0->unk_0C6 < 0x61) {
-            arg0->unk_0C6 = 0x60;
+        if (player->alpha <= ALPHA_BOO_EFFECT) {
+            player->alpha = ALPHA_BOO_EFFECT;
         }
-        D_8018D970[playerIndex] -= 2;
-        if (D_8018D970[playerIndex] <= 0) {
-            D_8018D970[playerIndex] = 0;
+        // Player becomes invisible to other players
+        gPlayerOtherScreensAlpha[playerIndex] -= 2;
+        if (gPlayerOtherScreensAlpha[playerIndex] <= 0) {
+            gPlayerOtherScreensAlpha[playerIndex] = 0;
         }
     } else {
-        arg0->unk_0C6 += 4;
-        if (arg0->unk_0C6 >= 0xF0) {
-            arg0->unk_0C6 = 0xFF;
-            D_8018D970[playerIndex] = 0xFF;
-            arg0->effects &= ~0x80000000;
-            if ((arg0->type & 0x4000) != 0) {
+        // Player returns to normal visibility
+        player->alpha += 4;
+        if (player->alpha >= 0xF0) {
+            player->alpha = ALPHA_MAX;
+            gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
+            player->effects &= ~0x80000000;
+            if ((player->type & 0x4000) != 0) {
                 func_800CB064(playerIndex);
             }
         }
 
-        D_8018D970[playerIndex] += 8;
-        if (D_8018D970[playerIndex] >= 0xF0) {
-            D_8018D970[playerIndex] = 0xFF;
-            arg0->unk_0C6 = 0xFF;
-            arg0->effects &= ~0x80000000;
-            if ((arg0->type & 0x4000) != 0) {
+        gPlayerOtherScreensAlpha[playerIndex] += 8;
+        if (gPlayerOtherScreensAlpha[playerIndex] >= 0xF0) {
+            gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
+            player->alpha = ALPHA_MAX;
+            player->effects &= ~0x80000000;
+            if ((player->type & 0x4000) != 0) {
                 func_800CB064(playerIndex);
             }
         }
@@ -1476,32 +1478,32 @@ void apply_boo_sound_effect(Player* player, s8 playerIndex) {
     player->effects |= BOO_EFFECT;
     player->soundEffects &= ~BOO_SOUND_EFFECT;
     gPlayerBooEffectStartTime[playerIndex] = gCourseTimer;
-    D_8018D970[playerIndex] = 0xFF;
+    gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
 
     if ((player->type & PLAYER_HUMAN) != 0) {
         func_800CAFC0(playerIndex);
     }
 }
 
-void func_8008FB30(Player* arg0, s8 arg1) {
-    arg0->unk_0C6 += 8;
-    if (arg0->unk_0C6 >= 0xF0) {
-        arg0->unk_0C6 = 0xFF;
-        D_8018D970[arg1] = 0xFF;
+void func_8008FB30(Player* player, s8 playerIndex) {
+    player->alpha += 8;
+    if (player->alpha >= 0xF0) {
+        player->alpha = ALPHA_MAX;
+        gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
 
-        arg0->effects &= ~0x80000000;
-        if ((arg0->type & 0x4000) != 0) {
-            func_800CB064(arg1);
+        player->effects &= ~0x80000000;
+        if ((player->type & 0x4000) != 0) {
+            func_800CB064(playerIndex);
         }
     }
 
-    D_8018D970[arg1] += 0x10;
-    if (D_8018D970[arg1] >= 0xE0) {
-        D_8018D970[arg1] = 0xFF;
-        arg0->unk_0C6 = 0xFF;
-        arg0->effects &= ~0x80000000;
-        if ((arg0->type & 0x4000) != 0) {
-            func_800CB064(arg1);
+    gPlayerOtherScreensAlpha[playerIndex] += 0x10;
+    if (gPlayerOtherScreensAlpha[playerIndex] >= 0xE0) {
+        gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
+        player->alpha = ALPHA_MAX;
+        player->effects &= ~0x80000000;
+        if ((player->type & 0x4000) != 0) {
+            func_800CB064(playerIndex);
         }
     }
 }
@@ -1517,9 +1519,9 @@ void func_8008FC1C(Player* player) {
 }
 
 void func_8008FC64(Player* player, s8 arg1) {
-    player->unk_0C6 -= 4;
-    if (player->unk_0C6 < 5) {
-        player->unk_0C6 = 0;
+    player->alpha -= 4;
+    if (player->alpha < 5) {
+        player->alpha = ALPHA_MIN;
         player->soundEffects &= 0xFBFFFFFF;
         player->soundEffects |= 0x08000000;
         player->type |= PLAYER_UNKNOWN_0x40;
@@ -1529,14 +1531,14 @@ void func_8008FC64(Player* player, s8 arg1) {
     }
 }
 
-void func_8008FCDC(Player* player, s8 arg1) {
-    player->unk_0C6 += 2;
-    if (player->unk_0C6 >= 0xF0) {
-        player->unk_0C6 = 0xFF;
+void func_8008FCDC(Player* player, s8 playerIndex) {
+    player->alpha += 2;
+    if (player->alpha >= 0xF0) {
+        player->alpha = ALPHA_MAX;
         player->soundEffects &= ~0x08000000;
     }
 
-    func_80056A40(arg1, (u32) player->unk_0C6);
+    func_80056A40(playerIndex, (u32) player->alpha);
 }
 
 void func_8008FD4C(Player* player, UNUSED s8 arg1) {
@@ -1850,7 +1852,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                     if ((D_801652A0[playerId] + 40.0f) <= player->pos[1]) {
                         player->unk_222 = 1;
                         player->unk_0CA |= 4;
-                        player->unk_0C6 = 0x00FF;
+                        player->alpha = 0x00FF;
                     }
                 }
             } else if ((player->unk_0CA & 2) == 2) {
@@ -1859,7 +1861,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                 if ((player->unk_074 + 40.0f) <= player->pos[1]) {
                     player->unk_222 = 1;
                     player->unk_0CA |= 4;
-                    player->unk_0C6 = 0x00FF;
+                    player->alpha = 0x00FF;
                 }
             }
             if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
@@ -1872,17 +1874,17 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
             }
             if ((player->unk_0CA & 1) == 1) {
                 move_f32_towards(&player->pos[1], D_801652A0[playerId] + 40.0f, 0.02f);
-                player->unk_0C6 -= 8;
-                if (player->unk_0C6 < 9) {
-                    player->unk_0C6 = 0;
+                player->alpha -= 8;
+                if (player->alpha < 9) {
+                    player->alpha = 0;
                     player->unk_222 = 2;
                     player->unk_0CA &= ~0x0001;
                 }
             } else {
                 move_f32_towards(&player->pos[1], player->oldPos[1] + 40.0f, 0.02f);
-                player->unk_0C6 -= 8;
-                if (player->unk_0C6 < 9) {
-                    player->unk_0C6 = 0;
+                player->alpha -= 8;
+                if (player->alpha < 9) {
+                    player->alpha = 0;
                     player->unk_222 = 2;
                 }
             }
@@ -1908,9 +1910,9 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
             player->pos[2] = sp44[2];
             player->pos[2] = player->pos[2] + coss((playerId * 0x1C70) - player->rotation[1]) * -5.0f;
             player->pos[0] = player->pos[0] + sins((playerId * 0x1C70) - player->rotation[1]) * -5.0f;
-            player->unk_0C6 += 8;
-            if (player->unk_0C6 >= 0xF0) {
-                player->unk_0C6 = 0x00FF;
+            player->alpha += 8;
+            if (player->alpha >= 0xF0) {
+                player->alpha = 0x00FF;
                 player->unk_222 = 4;
                 player->unk_0CA &= ~0x0004;
                 player->unk_0C8 = 0;

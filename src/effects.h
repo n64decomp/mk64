@@ -127,7 +127,7 @@ extern s32 D_8018D900[];
 extern s16 D_8018D920[];
 extern s32 gPlayerStarEffectStartTime[];
 extern s32 gPlayerBooEffectStartTime[];
-extern s32 D_8018D970[];
+extern s32 gPlayerOtherScreensAlpha[];
 extern s32 D_8018D990[];
 
 /* This is where I'd put my static data, if I had any */
