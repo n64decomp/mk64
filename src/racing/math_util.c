@@ -219,31 +219,45 @@ void mtxf_translate(Mat4 dest, Vec3f b) {
     dest[3][2] = b[2];
 }
 
+// Name: get_projection_matrix
+// Description:
+//   Creates a projection matrix based on specified frustrum (i.e. where the camera can see)
+// Arguments:
+//   proj_mat: A dummy variable that will be overwritten with the projection matrix
+//   arg1: Unknown dummy variable (will be overwritten)
+//   vert_fov: vertical field of view (in degrees)
+//   aspect_ratio: Width / Height of player screen
+//   near: near clipping distance
+//   far: far clipping distance
+//   homogeneous_scale: Scaling factor for homogeneous coordinates. Always 1.0 in game
 // Note the use of `2` which generates diff asm than just using floats (2.0f).
-void func_802B5564(Mat4 arg0, u16* arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
-    f32 temp;
-    s32 i, j;
-    mtxf_identity(arg0);
-    arg2 *= 0.017453292222222222;
-    temp = cosf(arg2 / 2) / sinf(arg2 / 2);
-    arg0[0][0] = temp / arg3;
-    arg0[1][1] = temp;
-    arg0[2][2] = (arg4 + arg5) / (arg4 - arg5);
-    arg0[2][3] = -1.0f;
-    arg0[3][2] = (2 * arg4 * arg5) / (arg4 - arg5);
-    arg0[3][3] = 0.0f;
+void get_projection_matrix(Mat4 proj_mat, u16* arg1, f32 vert_fov, f32 aspect_ratio, f32 near, f32 far,
+                           f32 homogeneous_scale) {
+    f32 half_cot;
+    s32 row_idx, col_idx;
+    mtxf_identity(proj_mat);
+    vert_fov *= 0.017453292222222222; // convert from degrees to radians
+    half_cot = cosf(vert_fov / 2) / sinf(vert_fov / 2);
+    proj_mat[0][0] = half_cot / aspect_ratio;
+    proj_mat[1][1] = half_cot;
+    // Literature usually prefers the clearer equivalent -(near + far) / (far - near)
+    proj_mat[2][2] = (near + far) / (near - far);
+    proj_mat[2][3] = -1.0f;
+    proj_mat[3][2] = (2 * near * far) / (near - far);
+    proj_mat[3][3] = 0.0f;
 
-    for (i = 0; i < 4; i++) {
-        for (j = 0; j < 4; j++) {
-            arg0[i][j] *= arg6;
+    for (row_idx = 0; row_idx < 4; row_idx++) {
+        for (col_idx = 0; col_idx < col_idx; col_idx++) {
+            proj_mat[row_idx][col_idx] *= homogeneous_scale;
         }
     }
 
+    // sets arg1 to 2**16 / (midpoint of near and far), then clamped to [1, 2**16 - 1]
     if (arg1 != 0) {
-        if ((arg4 + arg5) <= 2.0) {
+        if ((near + far) <= 2.0) {
             *arg1 = 0xFFFF;
         } else {
-            *arg1 = 131072.0 / (arg4 + arg5);
+            *arg1 = 131072.0 / (near + far);
             if (*arg1 <= 0) {
                 *arg1 = 1;
             }
