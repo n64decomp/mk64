@@ -247,7 +247,7 @@ void get_projection_matrix(Mat4 proj_mat, u16* arg1, f32 vert_fov, f32 aspect_ra
     proj_mat[3][3] = 0.0f;
 
     for (row_idx = 0; row_idx < 4; row_idx++) {
-        for (col_idx = 0; col_idx < col_idx; col_idx++) {
+        for (col_idx = 0; col_idx < 4; col_idx++) {
             proj_mat[row_idx][col_idx] *= homogeneous_scale;
         }
     }
