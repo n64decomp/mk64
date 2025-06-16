@@ -2812,36 +2812,36 @@ void func_8005D6C0(Player* player) {
     }
 }
 
-void set_particle_position_and_rotation(Player* player, Particle* arg1, f32 x, f32 y, f32 z, s8 surfaceType, s8 arg6) {
-    arg1->pos[2] = z;
-    arg1->pos[0] = x;
-    arg1->pos[1] = y;
-    arg1->rotation = -player->rotation[1];
-    arg1->unk_014 = surfaceType;
-    arg1->unk_010 = arg6;
+void set_particle_position_and_rotation(Player* player, Particle* particle, f32 x, f32 y, f32 z, s8 surfaceType, s8 arg6) {
+    particle->pos[2] = z;
+    particle->pos[0] = x;
+    particle->pos[1] = y;
+    particle->rotation = -player->rotation[1];
+    particle->unk_014 = surfaceType;
+    particle->unk_010 = arg6;
 }
 
-s32 init_new_particle_player(Particle* arg0, s8 arg1, f32 scale) {
-    arg0->IsAlive = 1;
-    arg0->type = arg1;
-    arg0->timer = 0;
-    arg0->scale = scale;
+s32 init_new_particle_player(Particle* particle, s8 arg1, f32 scale) {
+    particle->IsAlive = 1;
+    particle->type = arg1;
+    particle->timer = 0;
+    particle->scale = scale;
 }
 
-s32 set_particle_colour(Particle* arg0, s32 arg1, s16 arg2) {
-    arg0->red = (u8) (arg1 >> 16);
-    arg0->green = (u8) (arg1 >> 8);
-    arg0->blue = (u8) arg1;
-    arg0->alpha = arg2;
+s32 set_particle_colour(Particle* particle, s32 arg1, s16 arg2) {
+    particle->red = (u8) (arg1 >> 16);
+    particle->green = (u8) (arg1 >> 8);
+    particle->blue = (u8) arg1;
+    particle->alpha = arg2;
 }
 
-s32 set_particle_colour_randomly_varried(Particle* arg0, s32 arg1, s16 arg2) {
+s32 set_particle_colour_randomly_varried(Particle* particle, s32 arg1, s16 arg2) {
     s32 temp_v0;
     temp_v0 = random_int(0x30);
-    arg0->red = (u8) ((u8) (arg1 >> 0x10) - temp_v0);
-    arg0->green = (u8) ((u8) (arg1 >> 8) - temp_v0);
-    arg0->blue = (u8) ((u8) arg1 - temp_v0);
-    arg0->alpha = arg2;
+    particle->red = (u8) ((u8) (arg1 >> 0x10) - temp_v0);
+    particle->green = (u8) ((u8) (arg1 >> 8) - temp_v0);
+    particle->blue = (u8) ((u8) arg1 - temp_v0);
+    particle->alpha = arg2;
 }
 
 void set_drift_particles(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
@@ -2893,10 +2893,10 @@ void check_drift_particles_setup_valid(Player* player, s16 arg1, s32 arg2, s8 ar
 UNUSED void func_8005DAD0(void) {
 }
 
-void func_8005DAD8(Particle* arg0, s16 arg1, s16 arg2, s16 arg3) {
-    arg0->red = arg1;
-    arg0->alpha = arg3;
-    arg0->unk_040 = arg2;
+void func_8005DAD8(Particle* particle, s16 arg1, s16 arg2, s16 arg3) {
+    particle->red = arg1;
+    particle->alpha = arg3;
+    particle->unk_040 = arg2;
 }
 
 void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
@@ -4030,14 +4030,14 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     }
 }
 
-void func_80062484(Player* player, Particle* arg1, s32 arg2) {
-    arg1->IsAlive = 1;
-    arg1->pos[1] = player->unk_074 + 1.0f;
-    arg1->pos[2] = player->pos[2];
-    arg1->pos[0] = player->pos[0];
-    arg1->rotation = (arg2 * 0x1998) - player->rotation[1];
-    arg1->type = 4;
-    arg1->timer = 0;
+void func_80062484(Player* player, Particle* particle, s32 arg2) {
+    particle->IsAlive = 1;
+    particle->pos[1] = player->unk_074 + 1.0f;
+    particle->pos[2] = player->pos[2];
+    particle->pos[0] = player->pos[0];
+    particle->rotation = (arg2 * 0x1998) - player->rotation[1];
+    particle->type = 4;
+    particle->timer = 0;
 }
 
 void func_800624D8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
