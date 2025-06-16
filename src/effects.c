@@ -1465,9 +1465,9 @@ void apply_boo_sound_effect(Player* player, s8 playerIndex) {
         player->unk_044 |= 0x200;
 
         for (temp_v1 = 0; temp_v1 < 10; ++temp_v1) {
-            player->particles[temp_v1].active = 0;
-            player->particles[temp_v1].particle_timer = 0;
-            player->particles[temp_v1].particle_type = 0;
+            player->particles[temp_v1].IsAlive = 0;
+            player->particles[temp_v1].timer = 0;
+            player->particles[temp_v1].type = 0;
         }
     }
 
@@ -1546,9 +1546,9 @@ void func_8008FD4C(Player* player, UNUSED s8 arg1) {
     player->unk_044 |= 0x200;
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->particles[temp_v0].active = 0;
-        player->particles[temp_v0].particle_timer = 0;
-        player->particles[temp_v0].particle_type = 0;
+        player->particles[temp_v0].IsAlive = 0;
+        player->particles[temp_v0].timer = 0;
+        player->particles[temp_v0].type = 0;
     }
 }
 
@@ -1556,9 +1556,9 @@ void func_8008FDA8(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
     player->unk_044 |= 0x200;
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->particles[temp_v0].active = 0;
-        player->particles[temp_v0].particle_timer = 0;
-        player->particles[temp_v0].particle_type = 0;
+        player->particles[temp_v0].IsAlive = 0;
+        player->particles[temp_v0].timer = 0;
+        player->particles[temp_v0].type = 0;
     }
 }
 
@@ -2023,30 +2023,30 @@ void func_800911B4(Player* player, s8 arg1) {
     player->unk_078 = 0;
     D_8018D920[arg1] = 0;
 
-    player->particles[31].particle_type = 0;
-    player->particles[31].particle_timer = 0;
-    player->particles[31].active = 0;
-    player->particles[30].particle_type = 0;
-    player->particles[30].particle_timer = 0;
-    player->particles[30].active = 0;
+    player->particles[31].type = 0;
+    player->particles[31].timer = 0;
+    player->particles[31].IsAlive = 0;
+    player->particles[30].type = 0;
+    player->particles[30].timer = 0;
+    player->particles[30].IsAlive = 0;
 
     // clang-format off
     temp_v0 = 2; do {
         // clang-format on
-        player->particles[31 + temp_v0].active = 0;
-        player->particles[31 + temp_v0].particle_timer = 0;
-        player->particles[31 + temp_v0].particle_type = 0;
-        player->particles[32 + temp_v0].active = 0;
-        player->particles[32 + temp_v0].particle_timer = 0;
-        player->particles[32 + temp_v0].particle_type = 0;
-        player->particles[33 + temp_v0].active = 0;
-        player->particles[33 + temp_v0].particle_timer = 0;
-        player->particles[33 + temp_v0].particle_type = 0;
+        player->particles[31 + temp_v0].IsAlive = 0;
+        player->particles[31 + temp_v0].timer = 0;
+        player->particles[31 + temp_v0].type = 0;
+        player->particles[32 + temp_v0].IsAlive = 0;
+        player->particles[32 + temp_v0].timer = 0;
+        player->particles[32 + temp_v0].type = 0;
+        player->particles[33 + temp_v0].IsAlive = 0;
+        player->particles[33 + temp_v0].timer = 0;
+        player->particles[33 + temp_v0].type = 0;
 
         temp_v0 += 4;
-        player->particles[26 + temp_v0].active = 0;
-        player->particles[26 + temp_v0].particle_timer = 0;
-        player->particles[26 + temp_v0].particle_type = 0;
+        player->particles[26 + temp_v0].IsAlive = 0;
+        player->particles[26 + temp_v0].timer = 0;
+        player->particles[26 + temp_v0].type = 0;
     } while (temp_v0 < 10);
 }
 

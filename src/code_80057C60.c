@@ -2788,31 +2788,31 @@ void func_8005D6C0(Player* player) {
     s32 temp_v0;
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->particles[temp_v0].active = 0;
-        player->particles[temp_v0].particle_timer = 0;
-        player->particles[temp_v0].particle_type = 0;
+        player->particles[temp_v0].IsAlive = 0;
+        player->particles[temp_v0].timer = 0;
+        player->particles[temp_v0].type = 0;
     }
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->particles[30 + temp_v0].active = 0;
-        player->particles[30 + temp_v0].particle_timer = 0;
-        player->particles[30 + temp_v0].particle_type = 0;
+        player->particles[30 + temp_v0].IsAlive = 0;
+        player->particles[30 + temp_v0].timer = 0;
+        player->particles[30 + temp_v0].type = 0;
     }
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->particles[10 + temp_v0].active = 0;
-        player->particles[10 + temp_v0].particle_timer = 0;
-        player->particles[10 + temp_v0].particle_type = 0;
+        player->particles[10 + temp_v0].IsAlive = 0;
+        player->particles[10 + temp_v0].timer = 0;
+        player->particles[10 + temp_v0].type = 0;
     }
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->particles[20 + temp_v0].active = 0;
-        player->particles[20 + temp_v0].particle_timer = 0;
-        player->particles[20 + temp_v0].particle_type = 0;
+        player->particles[20 + temp_v0].IsAlive = 0;
+        player->particles[20 + temp_v0].timer = 0;
+        player->particles[20 + temp_v0].type = 0;
     }
 }
 
-void set_tyre_particle_position_and_rotation(Player* player, Particle* arg1, f32 x, f32 y, f32 z, s8 surfaceType, s8 arg6) {
+void set_particle_position_and_rotation(Player* player, Particle* arg1, f32 x, f32 y, f32 z, s8 surfaceType, s8 arg6) {
     arg1->pos[2] = z;
     arg1->pos[0] = x;
     arg1->pos[1] = y;
@@ -2821,21 +2821,21 @@ void set_tyre_particle_position_and_rotation(Player* player, Particle* arg1, f32
     arg1->unk_010 = arg6;
 }
 
-s32 set_tyre_particle_active(Particle* arg0, s8 arg1, f32 scale) {
-    arg0->active = 1;
-    arg0->particle_type = arg1;
-    arg0->particle_timer = 0;
+s32 init_new_particle_player(Particle* arg0, s8 arg1, f32 scale) {
+    arg0->IsAlive = 1;
+    arg0->type = arg1;
+    arg0->timer = 0;
     arg0->scale = scale;
 }
 
-s32 set_tyre_particle_colour(Particle* arg0, s32 arg1, s16 arg2) {
+s32 set_particle_colour(Particle* arg0, s32 arg1, s16 arg2) {
     arg0->red = (u8) (arg1 >> 16);
     arg0->green = (u8) (arg1 >> 8);
     arg0->blue = (u8) arg1;
     arg0->alpha = arg2;
 }
 
-s32 set_tyre_particle_colour_randomly_varried(Particle* arg0, s32 arg1, s16 arg2) {
+s32 set_particle_colour_randomly_varried(Particle* arg0, s32 arg1, s16 arg2) {
     s32 temp_v0;
     temp_v0 = random_int(0x30);
     arg0->red = (u8) ((u8) (arg1 >> 0x10) - temp_v0);
@@ -2844,32 +2844,32 @@ s32 set_tyre_particle_colour_randomly_varried(Particle* arg0, s32 arg1, s16 arg2
     arg0->alpha = arg2;
 }
 
-void set_tyre_drift_particles(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
+void set_drift_particles(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 temp_lo;
 
     if (player->unk_0C0 >= 0) {
-        set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], player->tyres[BACK_LEFT].pos[0],
+        set_particle_position_and_rotation(player, &player->particles[10 + arg1], player->tyres[BACK_LEFT].pos[0],
                       player->tyres[BACK_LEFT].baseHeight + 2.0f, player->tyres[BACK_LEFT].pos[2],
                       player->tyres[BACK_LEFT].surfaceType, 1);
     } else {
-        set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], player->tyres[BACK_RIGHT].pos[0],
+        set_particle_position_and_rotation(player, &player->particles[10 + arg1], player->tyres[BACK_RIGHT].pos[0],
                       player->tyres[BACK_RIGHT].baseHeight + 2.0f, player->tyres[BACK_RIGHT].pos[2],
                       player->tyres[BACK_RIGHT].surfaceType, 0);
     }
 
     temp_lo = player->unk_0C0 / 182;
     if ((temp_lo >= 7) || (temp_lo < -6)) {
-        set_tyre_particle_active(&player->particles[10 + arg1], 1, 0.35f);
+        init_new_particle_player(&player->particles[10 + arg1], 1, 0.35f);
         if (player->driftState == 0) {
-            set_tyre_particle_colour(&player->particles[10 + arg1], 0xFFFFFF, 0x70);
+            set_particle_colour(&player->particles[10 + arg1], 0xFFFFFF, 0x70);
         }
 
         if (player->driftState == 1) {
-            set_tyre_particle_colour(&player->particles[10 + arg1], 0xFFFF00, 0x70);
+            set_particle_colour(&player->particles[10 + arg1], 0xFFFF00, 0x70);
         }
 
         if (player->driftState >= 2) {
-            set_tyre_particle_colour(&player->particles[10 + arg1], 0xFF9600, 0x70);
+            set_particle_colour(&player->particles[10 + arg1], 0xFF9600, 0x70);
         }
 
         if (player->driftState >= 2) {
@@ -2882,11 +2882,11 @@ void set_tyre_drift_particles(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED 
     }
 }
 
-void check_tyre_drift_particles_setup_valid(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
-    if ((arg1 == 0) && ((player->particles[10 + arg2].particle_timer >= 3) || (player->particles[10 + arg2].active == 0))) {
-        set_tyre_drift_particles(player, arg1, arg2, arg3, arg4);
-    } else if (player->particles[10 + arg2].particle_timer >= 3) {
-        set_tyre_drift_particles(player, arg1, arg2, arg3, arg4);
+void check_drift_particles_setup_valid(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
+    if ((arg1 == 0) && ((player->particles[10 + arg2].timer >= 3) || (player->particles[10 + arg2].IsAlive == 0))) {
+        set_drift_particles(player, arg1, arg2, arg3, arg4);
+    } else if (player->particles[10 + arg2].timer >= 3) {
+        set_drift_particles(player, arg1, arg2, arg3, arg4);
     }
 }
 
@@ -2928,11 +2928,11 @@ void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UN
     switch (surfaceType) {
         case DIRT:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+                    set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                     if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                         func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                     }
@@ -2953,10 +2953,10 @@ void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UN
                     }
                     player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                     func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                 }
@@ -2980,21 +2980,21 @@ void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UN
             break;
         case GRASS:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+                    set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->particles[10 + arg1], 3, 1.0f);
-                    set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+                    init_new_particle_player(&player->particles[10 + arg1], 3, 1.0f);
+                    set_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
                     player->particles[10 + arg1].red -= arg1 * 8;
                     player->particles[10 + arg1].green -= arg1 * 8;
                     player->particles[10 + arg1].blue -= arg1 * 8;
                 }
-            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 3, 1.0f);
-                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+                init_new_particle_player(&player->particles[10 + arg1], 3, 1.0f);
+                set_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
                 player->particles[10 + arg1].red -= arg1 * 8;
                 player->particles[10 + arg1].green -= arg1 * 8;
                 player->particles[10 + arg1].blue -= arg1 * 8;
@@ -3003,73 +3003,73 @@ void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UN
             break;
         case SAND_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+                    set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
                     player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case SAND:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+                    set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
                     player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case WET_SAND:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+                    set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
                     player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case DIRT_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+                    set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
                     player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
-                set_tyre_particle_colour_randomly_varried(&player->particles[10 + arg1], 0x00FFA54F, 0x00AF);
+                init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
+                set_particle_colour_randomly_varried(&player->particles[10 + arg1], 0x00FFA54F, 0x00AF);
                 func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
@@ -3077,18 +3077,18 @@ void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UN
         case SNOW:
         case SNOW_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
                 if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+                    set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
                     player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+            } else if ((player->particles[10 + arg2].timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
@@ -3097,23 +3097,23 @@ void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UN
         case STONE:
         case BRIDGE:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
                 if (((((player->speed / 18.0f) * 216.0f) >= 30.0f) &&
                      ((((player->unk_0C0 / 182) > 0x14) || ((player->unk_0C0 / 182) < (-0x14))))) ||
                     ((player->previousSpeed - player->speed) >= 0.04)) {
-                    set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+                    set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                                   (s8) var_t3);
-                    set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                    init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
                     player->particles[10 + arg1].green = random_int(0x0010U);
                 }
-            } else if ((player->particles[10 + arg2].particle_timer > 0) &&
+            } else if ((player->particles[10 + arg2].timer > 0) &&
                        (((((player->speed / 18.0f) * 216.0f) >= 30.0f) &&
                          (((player->unk_0C0 / 182) >= 0x15) || ((player->unk_0C0 / 182) < -0x14))) ||
                         ((player->previousSpeed - player->speed) >= 0.04))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 2, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 2, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
@@ -3154,16 +3154,16 @@ void func_8005EA94(Player* player, s16 arg1, s32 arg2, s8 arg3, UNUSED s8 arg4) 
     }
     if (1) {}
     if (var_t0 == 0) {
-        if ((arg1 == 0) && ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
+        if ((arg1 == 0) && ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
             if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f2, var_f12, var_f14, var_t0, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 9, 0.8f);
-                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00AF);
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f2, var_f12, var_f14, var_t0, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 9, 0.8f);
+                set_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00AF);
             }
-        } else if ((player->particles[10 + arg2].particle_timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
-            set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f2, var_f12, var_f14, var_t0, var_t1);
-            set_tyre_particle_active(&player->particles[10 + arg1], 9, 0.8f);
-            set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00AF);
+        } else if ((player->particles[10 + arg2].timer > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
+            set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f2, var_f12, var_f14, var_t0, var_t1);
+            init_new_particle_player(&player->particles[10 + arg1], 9, 0.8f);
+            set_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00AF);
         }
     }
 }
@@ -3196,9 +3196,9 @@ void func_8005ED48(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     switch (surfaceType) {
         case DIRT:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                     func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                 }
@@ -3218,9 +3218,9 @@ void func_8005ED48(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
                     func_8005DAD8(&player->particles[10 + arg1], 11, 0, 0x0080);
                 }
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                     func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                 }
@@ -3244,19 +3244,19 @@ void func_8005ED48(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             break;
         case GRASS:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.1f);
-                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.1f);
+                set_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
                 player->particles[10 + arg1].red -= arg1 * 8;
                 player->particles[10 + arg1].green -= arg1 * 8;
                 player->particles[10 + arg1].blue -= arg1 * 8;
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.1f);
-                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.1f);
+                set_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
                 player->particles[10 + arg1].red -= arg1 * 8;
                 player->particles[10 + arg1].green -= arg1 * 8;
                 player->particles[10 + arg1].blue -= arg1 * 8;
@@ -3265,64 +3265,64 @@ void func_8005ED48(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             break;
         case SAND_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case SAND:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case WET_SAND:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case DIRT_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
@@ -3330,16 +3330,16 @@ void func_8005ED48(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case SNOW:
         case SNOW_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
@@ -3348,16 +3348,16 @@ void func_8005ED48(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case STONE:
         case BRIDGE:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType,
                               (s8) var_t3);
-                set_tyre_particle_active(&player->particles[10 + arg1], 5, 0.46f);
+                init_new_particle_player(&player->particles[10 + arg1], 5, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
@@ -3390,9 +3390,9 @@ void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     switch (surfaceType) {
         case DIRT:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                     func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                 }
@@ -3412,9 +3412,9 @@ void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
                     func_8005DAD8(&player->particles[10 + arg1], 0x000B, 0, 0x0080);
                 }
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                     func_8005DAD8(&player->particles[10 + arg1], 1, 0, 0x0080);
                 }
@@ -3438,17 +3438,17 @@ void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             break;
         case GRASS:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.1f);
-                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.1f);
+                set_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
                 player->particles[10 + arg1].red -= arg1 * 8;
                 player->particles[10 + arg1].green -= arg1 * 8;
                 player->particles[10 + arg1].blue -= arg1 * 8;
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.1f);
-                set_tyre_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.1f);
+                set_particle_colour(&player->particles[10 + arg1], 0x00FFFFFF, 0x00FF);
                 player->particles[10 + arg1].red -= arg1 * 8;
                 player->particles[10 + arg1].green -= arg1 * 8;
                 player->particles[10 + arg1].blue -= arg1 * 8;
@@ -3457,56 +3457,56 @@ void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             break;
         case SAND_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 2, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case SAND:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 3, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case WET_SAND:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 4, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
             break;
         case DIRT_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 5, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
@@ -3514,14 +3514,14 @@ void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case SNOW:
         case SNOW_OFFROAD:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 6, 1, 0x00A8);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
@@ -3530,14 +3530,14 @@ void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case STONE:
         case BRIDGE:
             if ((arg1 == 0) &&
-                ((player->particles[10 + arg2].particle_timer > 0) || (player->particles[10 + arg2].active == 0))) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+                ((player->particles[10 + arg2].timer > 0) || (player->particles[10 + arg2].IsAlive == 0))) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
                 player->particles[10 + arg1].green = random_int(0x0010U);
-            } else if (player->particles[10 + arg2].particle_timer > 0) {
-                set_tyre_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
-                set_tyre_particle_active(&player->particles[10 + arg1], 4, 0.46f);
+            } else if (player->particles[10 + arg2].timer > 0) {
+                set_particle_position_and_rotation(player, &player->particles[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                init_new_particle_player(&player->particles[10 + arg1], 4, 0.46f);
                 func_8005DAD8(&player->particles[10 + arg1], 0, 0, 0x0080);
                 player->particles[10 + arg1].green = random_int(0x0010U);
             }
@@ -3566,37 +3566,37 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     }
     temp_v0 = random_int(var_v0);
     if ((temp_v0 == 1) || (temp_v0 == 2) || (temp_v0 == 3)) {
-        if ((arg1 == 0) && ((player->particles[arg2].particle_timer > 0) || (player->particles[arg2].active == 0))) {
+        if ((arg1 == 0) && ((player->particles[arg2].timer > 0) || (player->particles[arg2].IsAlive == 0))) {
             sp4C = player->pos[1] - 2.5;
             sp48 = player->pos[2];
             sp50 = player->pos[0];
-            set_tyre_particle_position_and_rotation(player, &player->particles[arg1], sp50, sp4C, sp48, 0, 0);
-            set_tyre_particle_active(&player->particles[arg1], 1, 0.5f);
-        } else if (player->particles[arg2].particle_timer > 0) {
+            set_particle_position_and_rotation(player, &player->particles[arg1], sp50, sp4C, sp48, 0, 0);
+            init_new_particle_player(&player->particles[arg1], 1, 0.5f);
+        } else if (player->particles[arg2].timer > 0) {
             sp4C = player->pos[1] - 2.5;
             sp48 = player->pos[2];
             sp50 = player->pos[0];
-            set_tyre_particle_position_and_rotation(player, &player->particles[arg1], sp50, sp4C, sp48, 0, 0);
-            set_tyre_particle_active(&player->particles[arg1], 1, 0.5f);
+            set_particle_position_and_rotation(player, &player->particles[arg1], sp50, sp4C, sp48, 0, 0);
+            init_new_particle_player(&player->particles[arg1], 1, 0.5f);
         }
     }
     player->particles[arg1].unk_024 = 0.0f;
     if ((player->unk_044 & 0x20) == 0x20) {
         player->particles[arg1].unk_040 = 0;
         if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
-            set_tyre_particle_colour(&player->particles[arg1], 0x00FFFF00, 0x0080);
+            set_particle_colour(&player->particles[arg1], 0x00FFFF00, 0x0080);
             player->particles[arg1].red = 1;
         } else {
-            set_tyre_particle_colour(&player->particles[arg1], 0x00FFFFFF, 0x0070);
+            set_particle_colour(&player->particles[arg1], 0x00FFFFFF, 0x0070);
             player->particles[arg1].red = 0;
         }
     } else {
         player->particles[arg1].unk_040 = 1;
         if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
-            set_tyre_particle_colour(&player->particles[arg1], 0x00FFFF00, 0x0080);
+            set_particle_colour(&player->particles[arg1], 0x00FFFF00, 0x0080);
             player->particles[arg1].red = 1;
         } else {
-            set_tyre_particle_colour(&player->particles[arg1], 0x00FFFFFF, 0x0070);
+            set_particle_colour(&player->particles[arg1], 0x00FFFFFF, 0x0070);
             player->particles[arg1].red = 0;
         }
     }
@@ -3606,7 +3606,7 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     } else {
         var_f0 = -((player->unk_098 / 5000.0f) + 0.1);
     }
-    func_80062B18(&sp50, &sp4C, &sp48, 0.0f, 4.5f, (player->particles[arg1].particle_timer * var_f0) + -5.5, -thing2,
+    func_80062B18(&sp50, &sp4C, &sp48, 0.0f, 4.5f, (player->particles[arg1].timer * var_f0) + -5.5, -thing2,
                   -player->unk_206 * 2);
     player->particles[arg1].pos[0] = player->pos[0] + sp50;
     sp4C = sp4C + (player->pos[1] - player->boundingBoxSize);
@@ -3630,15 +3630,15 @@ void func_800608E0(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
         var_f0 = 2.5f;
         sp4C = (f32) ((f64) (D_801652A0[arg3] - player->pos[1]) + 0.1);
     }
-    set_tyre_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-    set_tyre_particle_active(&player->particles[arg1], 3, var_f0);
+    set_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+    init_new_particle_player(&player->particles[arg1], 3, var_f0);
     if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
-        set_tyre_particle_colour(&player->particles[arg1], 0, 0x00AF);
+        set_particle_colour(&player->particles[arg1], 0, 0x00AF);
     } else {
-        set_tyre_particle_colour(&player->particles[arg1], 0x00FFFFFF, 0x00CF);
+        set_particle_colour(&player->particles[arg1], 0x00FFFFFF, 0x00CF);
     }
     func_80062B18(&sp50, &sp4C, &sp48, 0.0f, sp4C,
-                  ((-player->particles[arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 10.0f) + -4.0f,
+                  ((-player->particles[arg1].timer * (player->speed / 18.0f) * 216.0f) / 10.0f) + -4.0f,
                   -player->particles[arg1].rotation, -player->unk_206 * 2);
     player->particles[arg1].pos[0] = player->pos[0] + sp50;
     player->particles[arg1].pos[2] = player->pos[2] + sp48;
@@ -3647,9 +3647,9 @@ void func_800608E0(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
 
 void func_80060B14(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     if ((gCurrentCourseId != COURSE_SKYSCRAPER) && (gCurrentCourseId != COURSE_RAINBOW_ROAD)) {
-        if ((arg1 == 0) && ((player->particles[arg2].particle_timer > 0) || (player->particles[arg2].active == 0))) {
+        if ((arg1 == 0) && ((player->particles[arg2].timer > 0) || (player->particles[arg2].IsAlive == 0))) {
             func_800608E0(player, arg1, arg2, arg3, arg4);
-        } else if (player->particles[arg2].particle_timer > 0) {
+        } else if (player->particles[arg2].timer > 0) {
             func_800608E0(player, arg1, arg2, arg3, arg4);
         }
     }
@@ -3675,19 +3675,19 @@ void func_80060BCC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     if (player != gPlayerOne) {
         return;
     }
-    if ((arg1 == 0) && ((player->particles[arg2 + 10].particle_timer > 0) || (player->particles[arg2 + 10].active == 0))) {
-        set_tyre_particle_position_and_rotation(player, &player->particles[arg1 + 10], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-        set_tyre_particle_active(&player->particles[arg1 + 10], 0x0B, 0.4f);
-        set_tyre_particle_colour(&player->particles[arg1 + 10], 0x00FFFFFF, 0x00FF);
+    if ((arg1 == 0) && ((player->particles[arg2 + 10].timer > 0) || (player->particles[arg2 + 10].IsAlive == 0))) {
+        set_particle_position_and_rotation(player, &player->particles[arg1 + 10], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+        init_new_particle_player(&player->particles[arg1 + 10], 0x0B, 0.4f);
+        set_particle_colour(&player->particles[arg1 + 10], 0x00FFFFFF, 0x00FF);
         player->particles[arg1 + 10].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -1.8);
         player->particles[arg1 + 10].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -1.8);
         player->particles[arg1 + 10].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
         player->particles[arg1 + 10].unk_018 = sp44 + 1.0f;
         player->particles[arg1 + 10].scale = (sp48 + 2.0f) / 10.0f;
-    } else if (player->particles[arg2 + 10].particle_timer > 0) {
-        set_tyre_particle_position_and_rotation(player, &player->particles[arg1 + 10], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-        set_tyre_particle_active(&player->particles[arg1 + 10], 0x0B, 0.4f);
-        set_tyre_particle_colour(&player->particles[arg1 + 10], 0x00FFFFFF, 0x00FF);
+    } else if (player->particles[arg2 + 10].timer > 0) {
+        set_particle_position_and_rotation(player, &player->particles[arg1 + 10], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+        init_new_particle_player(&player->particles[arg1 + 10], 0x0B, 0.4f);
+        set_particle_colour(&player->particles[arg1 + 10], 0x00FFFFFF, 0x00FF);
         player->particles[arg1 + 10].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -1.8);
         player->particles[arg1 + 10].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -1.8);
         player->particles[arg1 + 10].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
@@ -3697,13 +3697,13 @@ void func_80060BCC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
 }
 
 void func_80060F50(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8 arg4) {
-    set_tyre_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
-    set_tyre_particle_active(&player->particles[arg1], 5, 4.0f);
+    set_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
+    init_new_particle_player(&player->particles[arg1], 5, 4.0f);
 
     if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
-        set_tyre_particle_colour(&player->particles[arg1], 0xFF0000, 0xFF);
+        set_particle_colour(&player->particles[arg1], 0xFF0000, 0xFF);
     } else {
-        set_tyre_particle_colour(&player->particles[arg1], 0xFFFFFF, 0xFF);
+        set_particle_colour(&player->particles[arg1], 0xFFFFFF, 0xFF);
     }
 
     player->particles[arg1].pos[2] = player->pos[2] + (coss(player->particles[arg1].rotation) * -5.8);
@@ -3714,9 +3714,9 @@ void func_80060F50(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
 
 void func_80061094(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     if (arg1 == 0) {
-        set_tyre_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
-        set_tyre_particle_active(&player->particles[arg1], 6, 3.8f);
-        set_tyre_particle_colour(&player->particles[arg1], 0xFFFFFF, 0xFF);
+        set_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
+        init_new_particle_player(&player->particles[arg1], 6, 3.8f);
+        set_particle_colour(&player->particles[arg1], 0xFFFFFF, 0xFF);
         player->particles[arg1].red = 0;
         player->particles[arg1].green = 0;
         player->particles[arg1].blue = 0;
@@ -3724,9 +3724,9 @@ void func_80061094(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
 }
 
 void func_80061130(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
-    set_tyre_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
-    set_tyre_particle_active(&player->particles[arg1], 7, 0.6f);
-    set_tyre_particle_colour(&player->particles[arg1], 0xFFFFFF, 0xD0);
+    set_particle_position_and_rotation(player, &player->particles[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
+    init_new_particle_player(&player->particles[arg1], 7, 0.6f);
+    set_particle_colour(&player->particles[arg1], 0xFFFFFF, 0xD0);
 
     player->particles[arg1].pos[2] = player->pos[2] + (coss(player->particles[arg1].rotation) * 6.0f);
     player->particles[arg1].pos[0] = player->pos[0] + (sins(player->particles[arg1].rotation) * 6.0f);
@@ -3736,9 +3736,9 @@ void func_80061130(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
 }
 
 void func_80061224(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
-    if ((arg1 == 0) && ((player->particles[arg2].particle_timer > 0) || (player->particles[arg1].active == 0))) {
+    if ((arg1 == 0) && ((player->particles[arg2].timer > 0) || (player->particles[arg1].IsAlive == 0))) {
         func_80061130(player, arg1, arg2, arg3, arg4);
-    } else if (player->particles[arg2].particle_timer >= 2) {
+    } else if (player->particles[arg2].timer >= 2) {
         func_80061130(player, arg1, arg2, arg3, arg4);
         if (arg1 == 9) {
             player->unk_044 &= ~0x0200;
@@ -3750,13 +3750,13 @@ void func_800612F8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     s32 var_s2;
 
     for (var_s2 = 0; var_s2 < 10; var_s2++) {
-        player->particles[0x1E + var_s2].active = 1;
+        player->particles[0x1E + var_s2].IsAlive = 1;
         player->particles[0x1E + var_s2].unk_028 = player->pos[1] + 5.0f;
         player->particles[0x1E + var_s2].rotation = (0x1C70 * var_s2) - player->rotation[1];
         player->particles[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;
         player->particles[0x1E + var_s2].green = 0;
-        player->particles[0x1E + var_s2].particle_type = 1;
-        player->particles[0x1E + var_s2].particle_timer = 0;
+        player->particles[0x1E + var_s2].type = 1;
+        player->particles[0x1E + var_s2].timer = 0;
         player->particles[0x1E + var_s2].alpha = 0x00FF;
         player->particles[0x1E + var_s2].pos[2] = player->pos[2];
         player->particles[0x1E + var_s2].pos[0] = player->pos[0];
@@ -3768,15 +3768,15 @@ void func_80061430(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     s32 var_s2;
 
     for (var_s2 = 0; var_s2 < 7; var_s2++) {
-        player->particles[0x1E + var_s2].active = 1;
+        player->particles[0x1E + var_s2].IsAlive = 1;
         player->particles[0x1E + var_s2].unk_028 = player->pos[1] - 4.0f;
         player->particles[0x1E + var_s2].rotation = (0x1C70 * var_s2) - player->rotation[1];
         // ???
         player->particles[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.9;
         player->particles[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;
         player->particles[0x1E + var_s2].green = 0;
-        player->particles[0x1E + var_s2].particle_type = 9;
-        player->particles[0x1E + var_s2].particle_timer = 0;
+        player->particles[0x1E + var_s2].type = 9;
+        player->particles[0x1E + var_s2].timer = 0;
         player->particles[0x1E + var_s2].alpha = 0x00FF;
         player->particles[0x1E + var_s2].pos[2] = player->pos[2];
         player->particles[0x1E + var_s2].pos[0] = player->pos[0];
@@ -3792,7 +3792,7 @@ void func_800615AC(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
     f32 sp28[10] = { -182.0f, 182.0f, 364.0f, -364.0f, 546.0f, -546.0f, 728.0f, -728.0f, 910.0f, -910.0f };
 
     if (random_int(3U) == 2.0f) {
-        player->particles[0x1E + arg1].active = 1;
+        player->particles[0x1E + arg1].IsAlive = 1;
         player->particles[0x1E + arg1].pos[0] = player->pos[0];
         player->particles[0x1E + arg1].pos[2] = player->pos[2];
         player->particles[0x1E + arg1].rotation = -player->rotation[1] + sp28[arg1];
@@ -3802,8 +3802,8 @@ void func_800615AC(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
         player->particles[0x1E + arg1].unk_014 = temp_f0;
         player->particles[0x1E + arg1].pos[1] = player->pos[1] + temp_f0;
         player->particles[0x1E + arg1].scale = 0.15f;
-        player->particles[0x1E + arg1].particle_type = 5;
-        player->particles[0x1E + arg1].particle_timer = 0;
+        player->particles[0x1E + arg1].type = 5;
+        player->particles[0x1E + arg1].timer = 0;
         player->particles[0x1E + arg1].alpha = 0x00FF;
         player->particles[0x1E + arg1].red = 0;
     }
@@ -3821,16 +3821,16 @@ void func_80061754(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3, U
     temp_s1 = random_int(0x0060U);
     sp44 = random_int(6U);
     sp48 = random_int(2U);
-    set_tyre_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-    set_tyre_particle_active(&player->particles[0x1E + arg1], 6, 1.0f);
+    set_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+    init_new_particle_player(&player->particles[0x1E + arg1], 6, 1.0f);
     if ((player->effects & HIT_BY_ITEM_EFFECT) || ((player->effects) & UNKNOWN_EFFECT_0x1000000) ||
         ((player->effects) & 0x400) || ((player->effects) & BOO_EFFECT)) {
-        set_tyre_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x00A0);
+        set_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x00A0);
         player->particles[0x1E + arg1].red -= temp_s1;
         player->particles[0x1E + arg1].green -= temp_s1;
         player->particles[0x1E + arg1].blue -= temp_s1;
     } else {
-        set_tyre_particle_colour(&player->particles[0x1E + arg1], 0, 0x00A0);
+        set_particle_colour(&player->particles[0x1E + arg1], 0, 0x00A0);
         player->particles[0x1E + arg1].red += temp_s1;
         player->particles[0x1E + arg1].green += temp_s1;
         player->particles[0x1E + arg1].blue += temp_s1;
@@ -3843,9 +3843,9 @@ void func_80061754(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3, U
 }
 
 void func_8006199C(Player* player, s16 arg1, s32 arg2, s8 playerIndex, s8 arg4) {
-    if ((arg1 == 0) && ((player->particles[0x1E + arg2].particle_timer > 0) || (player->particles[0x1E + arg2].active == 0))) {
+    if ((arg1 == 0) && ((player->particles[0x1E + arg2].timer > 0) || (player->particles[0x1E + arg2].IsAlive == 0))) {
         func_80061754(player, arg1, arg2, (s32) playerIndex, arg4);
-    } else if (player->particles[0x1E + arg2].particle_timer > 0) {
+    } else if (player->particles[0x1E + arg2].timer > 0) {
         func_80061754(player, arg1, arg2, (s32) playerIndex, arg4);
     }
 }
@@ -3861,18 +3861,18 @@ void func_80061A34(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     sp4C = random_int(6U);
     random_int(6U);
     sp48 = (f32) random_int(3U);
-    if ((arg1 == 0) && ((player->particles[0x1E + arg2].particle_timer > 0) || (player->particles[0x1E + arg2].active == 0))) {
-        set_tyre_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-        set_tyre_particle_active(&player->particles[0x1E + arg1], 7, 1.0f);
-        set_tyre_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x00FF);
+    if ((arg1 == 0) && ((player->particles[0x1E + arg2].timer > 0) || (player->particles[0x1E + arg2].IsAlive == 0))) {
+        set_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+        init_new_particle_player(&player->particles[0x1E + arg1], 7, 1.0f);
+        set_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x00FF);
         player->particles[0x1E + arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -2.0);
         player->particles[0x1E + arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -2.0);
         player->particles[0x1E + arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
         player->particles[0x1E + arg1].scale = (sp48 + 2.0f) / 10.0f;
-    } else if (player->particles[0x1E + arg2].particle_timer > 0) {
-        set_tyre_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
-        set_tyre_particle_active(&player->particles[0x1E + arg1], 7, 1.0f);
-        set_tyre_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x00FF);
+    } else if (player->particles[0x1E + arg2].timer > 0) {
+        set_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
+        init_new_particle_player(&player->particles[0x1E + arg1], 7, 1.0f);
+        set_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x00FF);
         player->particles[0x1E + arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -2.0);
         player->particles[0x1E + arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -2.0);
         player->particles[0x1E + arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + (f32) sp4C + 2.0f;
@@ -3888,7 +3888,7 @@ void func_80061D4C(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
     f32 sp20[10] = { -182.0f, 182.0f, 364.0f, -364.0f, 546.0f, -546.0f, 728.0f, -728.0f, 910.0f, -910.0f };
 
     if (random_int(3U) == 2.0f) {
-        player->particles[0x1E + arg1].active = 1;
+        player->particles[0x1E + arg1].IsAlive = 1;
         player->particles[0x1E + arg1].pos[0] = player->pos[0];
         player->particles[0x1E + arg1].pos[1] = player->pos[1] + 2.0f;
         player->particles[0x1E + arg1].pos[2] = player->pos[2];
@@ -3897,8 +3897,8 @@ void func_80061D4C(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
         player->particles[0x1E + arg1].unk_014 = random_int(4U);
         player->particles[0x1E + arg1].unk_014 -= test;
         player->particles[0x1E + arg1].scale = 0.4f;
-        player->particles[0x1E + arg1].particle_type = 2;
-        player->particles[0x1E + arg1].particle_timer = 0;
+        player->particles[0x1E + arg1].type = 2;
+        player->particles[0x1E + arg1].timer = 0;
         player->particles[0x1E + arg1].alpha = 0x00FF;
     }
 }
@@ -3925,10 +3925,10 @@ void func_80061EF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     }
     if (var_t0 == 0) {
         if ((arg1 == 0) &&
-            ((player->particles[0x1E + arg2].particle_timer > 0) || (player->particles[0x1E + arg2].active == 0))) {
-            set_tyre_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, var_f2, 0.0f, (s8) var_t0, (s8) var_t1);
-            set_tyre_particle_active(&player->particles[0x1E + arg1], 3, 0.5f);
-            set_tyre_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x0060);
+            ((player->particles[0x1E + arg2].timer > 0) || (player->particles[0x1E + arg2].IsAlive == 0))) {
+            set_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, var_f2, 0.0f, (s8) var_t0, (s8) var_t1);
+            init_new_particle_player(&player->particles[0x1E + arg1], 3, 0.5f);
+            set_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x0060);
             player->particles[0x1E + arg1].rotation = 0;
             if (player->particles[0x1E + arg1].unk_010 == 1) {
                 player->particles[0x1E + arg1].rotation += 0x888;
@@ -3941,10 +3941,10 @@ void func_80061EF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             player->particles[0x1E + arg1].pos[0] =
                 player->pos[0] +
                 (sins(player->particles[0x1E + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
-        } else if (player->particles[0x1E + arg2].particle_timer > 0) {
-            set_tyre_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, var_f2, 0.0f, (s8) var_t0, (s8) var_t1);
-            set_tyre_particle_active(&player->particles[0x1E + arg1], 3, 0.5f);
-            set_tyre_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x0060);
+        } else if (player->particles[0x1E + arg2].timer > 0) {
+            set_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, var_f2, 0.0f, (s8) var_t0, (s8) var_t1);
+            init_new_particle_player(&player->particles[0x1E + arg1], 3, 0.5f);
+            set_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x0060);
             player->particles[0x1E + arg1].rotation = 0;
             if (player->particles[0x1E + arg1].unk_010 == 1) {
                 player->particles[0x1E + arg1].rotation += 0x888;
@@ -3986,10 +3986,10 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     }
 
     if (phi_t0 == 0) {
-        if ((arg1 == 0) && ((player->particles[30 + arg2].particle_timer > 0) || (player->particles[30 + arg2].active == 0))) {
-            set_tyre_particle_position_and_rotation(player, &player->particles[30 + arg1], 0.0f, phi_f2, 0.0f, phi_t0, phi_t1);
-            set_tyre_particle_active(&player->particles[30 + arg1], 8, 1.0f);
-            set_tyre_particle_colour(&player->particles[30 + arg1], 0xFFFF20, 0xFF);
+        if ((arg1 == 0) && ((player->particles[30 + arg2].timer > 0) || (player->particles[30 + arg2].IsAlive == 0))) {
+            set_particle_position_and_rotation(player, &player->particles[30 + arg1], 0.0f, phi_f2, 0.0f, phi_t0, phi_t1);
+            init_new_particle_player(&player->particles[30 + arg1], 8, 1.0f);
+            set_particle_colour(&player->particles[30 + arg1], 0xFFFF20, 0xFF);
 
             player->particles[30 + arg1].rotation = 0;
             if (player->particles[30 + arg1].unk_010 == 1) {
@@ -4008,10 +4008,10 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         }
 
         new_var2 = player;
-        if (new_var2->particles[30 + arg2].particle_timer > 0) {
-            set_tyre_particle_position_and_rotation(new_var2, &new_var2->particles[30 + arg1], 0.0f, phi_f2, 0.0f, phi_t0, phi_t1);
-            set_tyre_particle_active(&new_var2->particles[30 + arg1], 8, 1.0f);
-            set_tyre_particle_colour(&new_var2->particles[30 + arg1], 0xFFFF20, 0xFF);
+        if (new_var2->particles[30 + arg2].timer > 0) {
+            set_particle_position_and_rotation(new_var2, &new_var2->particles[30 + arg1], 0.0f, phi_f2, 0.0f, phi_t0, phi_t1);
+            init_new_particle_player(&new_var2->particles[30 + arg1], 8, 1.0f);
+            set_particle_colour(&new_var2->particles[30 + arg1], 0xFFFF20, 0xFF);
             new_var2->particles[30 + arg1].rotation = 0;
             if (new_var2->particles[30 + arg1].unk_010 == 1) {
                 new_var2->particles[30 + arg1].rotation += 2184;
@@ -4031,13 +4031,13 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
 }
 
 void func_80062484(Player* player, Particle* arg1, s32 arg2) {
-    arg1->active = 1;
+    arg1->IsAlive = 1;
     arg1->pos[1] = player->unk_074 + 1.0f;
     arg1->pos[2] = player->pos[2];
     arg1->pos[0] = player->pos[0];
     arg1->rotation = (arg2 * 0x1998) - player->rotation[1];
-    arg1->particle_type = 4;
-    arg1->particle_timer = 0;
+    arg1->type = 4;
+    arg1->timer = 0;
 }
 
 void func_800624D8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
@@ -4131,43 +4131,43 @@ void func_800624D8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
 }
 
 void func_800628C0(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->particles[20 + arg3].active = 1;
+    player->particles[20 + arg3].IsAlive = 1;
     player->particles[20 + arg3].rotation = -player->rotation[1];
-    player->particles[20 + arg3].particle_type = 2;
-    player->particles[20 + arg3].particle_timer = 0;
+    player->particles[20 + arg3].type = 2;
+    player->particles[20 + arg3].timer = 0;
     player->particles[20 + arg3].scale = 0.2f;
 }
 
 void func_80062914(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->particles[20 + arg3].active = 1;
+    player->particles[20 + arg3].IsAlive = 1;
     player->particles[20 + arg3].rotation = -player->rotation[1];
-    player->particles[20 + arg3].particle_type = 4;
-    player->particles[20 + arg3].particle_timer = 0;
+    player->particles[20 + arg3].type = 4;
+    player->particles[20 + arg3].timer = 0;
     player->particles[20 + arg3].scale = 1.0f;
 }
 
 void func_80062968(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->particles[20 + arg3].active = 1;
+    player->particles[20 + arg3].IsAlive = 1;
     player->particles[20 + arg3].rotation = -player->rotation[1];
-    player->particles[20 + arg3].particle_type = 5;
-    player->particles[20 + arg3].particle_timer = 0;
+    player->particles[20 + arg3].type = 5;
+    player->particles[20 + arg3].timer = 0;
     player->particles[20 + arg3].scale = 0.2f;
 }
 
 void func_800629BC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->particles[20 + arg3].active = 1;
+    player->particles[20 + arg3].IsAlive = 1;
     player->particles[20 + arg3].rotation = -player->rotation[1];
-    player->particles[20 + arg3].particle_type = 6;
-    player->particles[20 + arg3].particle_timer = 0;
+    player->particles[20 + arg3].type = 6;
+    player->particles[20 + arg3].timer = 0;
     player->particles[20 + arg3].scale = 0.2f;
     player->particles[20 + arg3].pos[1] = 0.0f;
 }
 
 void func_80062A18(Player* player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->particles[20 + arg3].active = 1;
-    player->particles[20 + arg3].particle_type = 3;
+    player->particles[20 + arg3].IsAlive = 1;
+    player->particles[20 + arg3].type = 3;
     player->particles[20 + arg1 /* arg1 instead of arg3 */].scale = 0.2f;
-    player->particles[20 + arg3].particle_timer = 1;
+    player->particles[20 + arg3].timer = 1;
     player->particles[20 + arg3].rotation = 0;
     player->unk_0B6 &= ~0x0080;
     player->particles[20 + arg3].pos[2] = player->pos[2];
@@ -4176,10 +4176,10 @@ void func_80062A18(Player* player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
 }
 
 void func_80062AA8(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    player->particles[20 + arg3].active = 1;
-    player->particles[20 + arg3].particle_type = 5;
+    player->particles[20 + arg3].IsAlive = 1;
+    player->particles[20 + arg3].type = 5;
     player->particles[20 + arg3].scale = 0.1f;
-    player->particles[20 + arg3].particle_timer = 0;
+    player->particles[20 + arg3].timer = 0;
     player->particles[20 + arg3].pos[1] = (player->pos[1] + player->boundingBoxSize) - 2.5;
 }
 
@@ -4227,17 +4227,17 @@ void func_80062C74(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     f32 sp38;
     s16 thing;
 
-    player->particles[arg1].particle_timer += 1;
-    if (player->particles[arg1].particle_timer == 0x000C) {
-        player->particles[arg1].active = 0;
-        player->particles[arg1].particle_timer = 0;
-        player->particles[arg1].particle_type = 0;
+    player->particles[arg1].timer += 1;
+    if (player->particles[arg1].timer == 0x000C) {
+        player->particles[arg1].IsAlive = 0;
+        player->particles[arg1].timer = 0;
+        player->particles[arg1].type = 0;
     }
     player->particles[arg1].unk_018 = 2.0f;
     if (player->particles[arg1].unk_040 == 0) {
         player->particles[arg1].scale = player->particles[arg1].scale + 0.07;
         player->particles[arg1].unk_024 = player->particles[arg1].unk_024 + 0.3;
-        if (player->particles[arg1].particle_timer >= 3) {
+        if (player->particles[arg1].timer >= 3) {
             player->particles[arg1].alpha -= 3;
         }
         if (player->particles[arg1].alpha <= 0) {
@@ -4246,7 +4246,7 @@ void func_80062C74(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     } else {
         player->particles[arg1].scale = player->particles[arg1].scale + 0.1;
         player->particles[arg1].unk_024 = player->particles[arg1].unk_024 + 0.3;
-        if (player->particles[arg1].particle_timer >= 3) {
+        if (player->particles[arg1].timer >= 3) {
             player->particles[arg1].alpha -= 2;
         }
         if (player->particles[arg1].alpha <= 0) {
@@ -4259,14 +4259,14 @@ void func_80062C74(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     } else {
         var_f6 = -((player->unk_098 / 6000.0f) + 0.1);
     }
-    if (((player->effects & BOOST_EFFECT) == BOOST_EFFECT) && (player->particles[arg1].particle_timer >= 6)) {
+    if (((player->effects & BOOST_EFFECT) == BOOST_EFFECT) && (player->particles[arg1].timer >= 6)) {
         player->particles[arg1].scale = player->particles[arg1].scale + 0.06;
     }
     player->particles[arg1].unk_010++;
     if (player->particles[arg1].unk_010 >= 3) {
         player->particles[arg1].unk_010 = 0;
     }
-    func_80062B18(&sp40, &sp38, &sp3C, 0.0f, sp48[player->characterId], (player->particles[arg1].particle_timer * var_f6) + -5.5,
+    func_80062B18(&sp40, &sp38, &sp3C, 0.0f, sp48[player->characterId], (player->particles[arg1].timer * var_f6) + -5.5,
                   -thing, -player->unk_206 * 2);
     player->particles[arg1].pos[0] = player->pos[0] + sp40;
     sp38 = (player->pos[1] - player->boundingBoxSize) + sp38;
@@ -4278,63 +4278,63 @@ void func_80062F98(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     f32 temp_f0;
 
     temp_f0 = player->particles[10 + arg1].unk_018 / 10.0f;
-    ++player->particles[10 + arg1].particle_timer;
+    ++player->particles[10 + arg1].timer;
     player->particles[10 + arg1].pos[1] += temp_f0;
     if ((player->unk_0CA & 1) == 1) {
         player->particles[10 + arg1].pos[1] += (temp_f0 + 0.3);
-        if ((player->particles[10 + arg1].particle_timer == 0x10) ||
+        if ((player->particles[10 + arg1].timer == 0x10) ||
             ((D_801652A0[arg2] - player->particles[10 + arg1].pos[1]) < 3.0f)) {
-            player->particles[10 + arg1].active = 0;
-            player->particles[10 + arg1].particle_timer = 0;
-            player->particles[10 + arg1].particle_type = 0;
+            player->particles[10 + arg1].IsAlive = 0;
+            player->particles[10 + arg1].timer = 0;
+            player->particles[10 + arg1].type = 0;
         }
-    } else if ((player->particles[10 + arg1].particle_timer == 0xA) ||
+    } else if ((player->particles[10 + arg1].timer == 0xA) ||
                ((D_801652A0[arg2] - player->particles[10 + arg1].pos[1]) < 3.0f)) {
-        player->particles[10 + arg1].active = 0;
-        player->particles[10 + arg1].particle_timer = 0;
-        player->particles[10 + arg1].particle_type = 0;
+        player->particles[10 + arg1].IsAlive = 0;
+        player->particles[10 + arg1].timer = 0;
+        player->particles[10 + arg1].type = 0;
     }
 }
 
 void set_oob_splash_particle_position(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
-    ++player->particles[arg1].particle_timer;
+    ++player->particles[arg1].timer;
     player->particles[arg1].pos[2] = player->pos[2] + coss(player->particles[arg1].rotation) * -5.8;
     player->particles[arg1].pos[0] = player->pos[0] + sins(player->particles[arg1].rotation) * -5.8;
     player->particles[arg1].pos[1] = D_801652A0[arg2];
-    if (player->particles[arg1].particle_timer == 15) {
-        player->particles[arg1].active = 0;
-        player->particles[arg1].particle_timer = 0;
-        player->particles[arg1].particle_type = 0;
+    if (player->particles[arg1].timer == 15) {
+        player->particles[arg1].IsAlive = 0;
+        player->particles[arg1].timer = 0;
+        player->particles[arg1].type = 0;
     }
 }
 
 void func_800631A8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    ++player->particles[arg1].particle_timer;
-    if ((s32) player->particles[arg1].particle_timer < 9) {
-        if ((player->particles[arg1].particle_timer & 1) != 0) {
+    ++player->particles[arg1].timer;
+    if ((s32) player->particles[arg1].timer < 9) {
+        if ((player->particles[arg1].timer & 1) != 0) {
             player->particles[arg1].red = 8;
         } else {
             player->particles[arg1].red = 0;
         }
-    } else if (((player->particles[arg1].particle_timer & 1) != 0) ||
-               ((player->particles[arg1].particle_timer >= 9) && (player->particles[arg1].particle_timer < 12))) {
+    } else if (((player->particles[arg1].timer & 1) != 0) ||
+               ((player->particles[arg1].timer >= 9) && (player->particles[arg1].timer < 12))) {
         player->particles[arg1].red = 0xFF;
-    } else if ((player->particles[arg1].particle_timer & 2) != 0) {
+    } else if ((player->particles[arg1].timer & 2) != 0) {
         player->particles[arg1].red = 8;
     } else {
         player->particles[arg1].red = 0;
     }
     player->particles[arg1].green = 0;
     player->particles[arg1].blue = 0;
-    if ((s32) player->particles[arg1].particle_timer >= 0x19) {
-        player->particles[arg1].active = 0;
-        player->particles[arg1].particle_timer = 0;
-        player->particles[arg1].particle_type = 0;
+    if ((s32) player->particles[arg1].timer >= 0x19) {
+        player->particles[arg1].IsAlive = 0;
+        player->particles[arg1].timer = 0;
+        player->particles[arg1].type = 0;
     }
 }
 
 void func_80063268(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    if (player->particles[arg1].particle_timer >= 0x1E) {
+    if (player->particles[arg1].timer >= 0x1E) {
         player->particles[arg1].unk_040 += 0x1FFE;
     } else {
         player->particles[arg1].unk_040 += 0x1554;
@@ -4346,7 +4346,7 @@ void func_80063268(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     player->particles[arg1].pos[0] =
         player->pos[0] + (sins((player->particles[arg1].rotation + player->particles[arg1].unk_040)) * 5.5);
     player->particles[arg1].pos[1] = ((player->pos[1] - 5.0f) + player->particles[arg1].unk_024);
-    ++player->particles[arg1].particle_timer;
+    ++player->particles[arg1].timer;
     player->particles[arg1].scale += 0.05;
     player->particles[arg1].alpha -= 5;
 
@@ -4354,10 +4354,10 @@ void func_80063268(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->particles[arg1].alpha = 0;
     }
 
-    if ((s32) player->particles[arg1].particle_timer >= 0x28) {
-        player->particles[arg1].active = 0;
-        player->particles[arg1].particle_timer = 0;
-        player->particles[arg1].particle_type = 0;
+    if ((s32) player->particles[arg1].timer >= 0x28) {
+        player->particles[arg1].IsAlive = 0;
+        player->particles[arg1].timer = 0;
+        player->particles[arg1].type = 0;
     }
 }
 
@@ -4365,35 +4365,35 @@ void func_80063408(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (player->particles[10 + arg1].unk_010 == 1) {
         player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_LEFT].pos[2] +
-            (player->particles[10 + arg1].particle_timer * -7) * coss(player->particles[10 + arg1].rotation);
+            (player->particles[10 + arg1].timer * -7) * coss(player->particles[10 + arg1].rotation);
         player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_LEFT].pos[0] +
-            (player->particles[10 + arg1].particle_timer * -7) * sins(player->particles[10 + arg1].rotation);
+            (player->particles[10 + arg1].timer * -7) * sins(player->particles[10 + arg1].rotation);
     } else {
         player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            (player->particles[10 + arg1].particle_timer * -7) * coss(player->particles[10 + arg1].rotation);
+            (player->particles[10 + arg1].timer * -7) * coss(player->particles[10 + arg1].rotation);
         player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            (player->particles[10 + arg1].particle_timer * -7) * sins(player->particles[10 + arg1].rotation);
+            (player->particles[10 + arg1].timer * -7) * sins(player->particles[10 + arg1].rotation);
     }
 
-    ++player->particles[10 + arg1].particle_timer;
+    ++player->particles[10 + arg1].timer;
     player->particles[10 + arg1].pos[1] += 1.0f;
 
     if (((player->effects & 0x80) != 0) || ((player->effects & 0x40) != 0)) {
-        player->particles[10 + arg1].active = 0;
-        player->particles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].IsAlive = 0;
+        player->particles[10 + arg1].timer = 0;
     }
 
-    if (player->particles[10 + arg1].particle_timer == 8) {
-        player->particles[10 + arg1].particle_timer = 0;
-        player->particles[10 + arg1].active = 0;
-        player->particles[10 + arg1].particle_type = 0;
+    if (player->particles[10 + arg1].timer == 8) {
+        player->particles[10 + arg1].timer = 0;
+        player->particles[10 + arg1].IsAlive = 0;
+        player->particles[10 + arg1].type = 0;
     }
 
     player->particles[10 + arg1].scale += 0.08;
-    if (player->particles[10 + arg1].particle_timer >= 4) {
+    if (player->particles[10 + arg1].timer >= 4) {
         player->particles[10 + arg1].alpha -= 16;
     }
 
@@ -4410,60 +4410,60 @@ void func_800635D4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (player->particles[10 + arg1].unk_010 == 1) {
         if ((player->effects & LIGHTNING_EFFECT)) {
             func_80062B18(&sp44, &sp40, &sp3C, -2.0f, 0.0f,
-                          (-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16,
+                          (-player->particles[10 + arg1].timer * (player->speed / 18.0f) * 216.0f) / 16,
                           -player->particles[10 + arg1].rotation, 2 * -player->unk_206);
             player->particles[10 + arg1].pos[0] = player->tyres[BACK_LEFT].pos[0] + sp44;
             player->particles[10 + arg1].pos[2] = player->tyres[BACK_LEFT].pos[2] + sp3C;
         } else {
             player->particles[10 + arg1].pos[2] =
                 player->tyres[BACK_LEFT].pos[2] +
-                ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
+                ((-player->particles[10 + arg1].timer * (player->speed / 18.0f) * 216.0f) / 16) *
                     coss(player->particles[10 + arg1].rotation);
             player->particles[10 + arg1].pos[0] =
                 player->tyres[BACK_LEFT].pos[0] +
-                ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
+                ((-player->particles[10 + arg1].timer * (player->speed / 18.0f) * 216.0f) / 16) *
                     sins(player->particles[10 + arg1].rotation);
         }
     } else if ((player->effects & LIGHTNING_EFFECT)) {
         func_80062B18(&sp44, &sp40, &sp3C, 2.0f, 0.0f,
-                      (-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16,
+                      (-player->particles[10 + arg1].timer * (player->speed / 18.0f) * 216.0f) / 16,
                       -player->particles[10 + arg1].rotation, 2 * -player->unk_206);
         player->particles[10 + arg1].pos[0] = player->tyres[BACK_RIGHT].pos[0] + sp44;
         player->particles[10 + arg1].pos[2] = player->tyres[BACK_RIGHT].pos[2] + sp3C;
     } else {
         player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
+            ((-player->particles[10 + arg1].timer * (player->speed / 18.0f) * 216.0f) / 16) *
                 coss(player->particles[10 + arg1].rotation);
         player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 16) *
+            ((-player->particles[10 + arg1].timer * (player->speed / 18.0f) * 216.0f) / 16) *
                 sins(player->particles[10 + arg1].rotation);
     }
 
-    ++player->particles[10 + arg1].particle_timer;
+    ++player->particles[10 + arg1].timer;
     player->particles[10 + arg1].pos[1] += 0.2;
     if (((player->effects & 0x80) != 0) || ((player->effects & 0x40) != 0)) {
-        player->particles[10 + arg1].active = 0;
-        player->particles[10 + arg1].particle_timer = 0;
+        player->particles[10 + arg1].IsAlive = 0;
+        player->particles[10 + arg1].timer = 0;
     }
 
-    if (player->particles[10 + arg1].particle_timer == 8) {
-        player->particles[10 + arg1].active = 0;
-        player->particles[10 + arg1].particle_timer = 0;
-        player->particles[10 + arg1].particle_type = 0;
+    if (player->particles[10 + arg1].timer == 8) {
+        player->particles[10 + arg1].IsAlive = 0;
+        player->particles[10 + arg1].timer = 0;
+        player->particles[10 + arg1].type = 0;
     }
 
     player->particles[10 + arg1].scale += 0.1;
     if (player->particles[10 + arg1].unk_040 == 0) {
-        if (player->particles[10 + arg1].particle_timer >= 4) {
+        if (player->particles[10 + arg1].timer >= 4) {
             player->particles[10 + arg1].alpha -= 12;
         }
         if (player->particles[10 + arg1].alpha <= 0) {
             player->particles[10 + arg1].alpha = 0;
         }
     } else {
-        if (player->particles[10 + arg1].particle_timer >= 4) {
+        if (player->particles[10 + arg1].timer >= 4) {
             player->particles[10 + arg1].alpha -= 16;
         }
         if (player->particles[10 + arg1].alpha <= 0) {
@@ -4476,36 +4476,36 @@ void func_800639DC(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (player->particles[10 + arg1].unk_010 == 1) {
         player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_LEFT].pos[2] +
-            (-1.8f * player->particles[10 + arg1].particle_timer) * coss(player->particles[10 + arg1].rotation);
+            (-1.8f * player->particles[10 + arg1].timer) * coss(player->particles[10 + arg1].rotation);
         player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_LEFT].pos[0] +
-            (-1.8f * player->particles[10 + arg1].particle_timer) * sins(player->particles[10 + arg1].rotation);
+            (-1.8f * player->particles[10 + arg1].timer) * sins(player->particles[10 + arg1].rotation);
     } else {
         player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            (-1.8f * player->particles[10 + arg1].particle_timer) * coss(player->particles[10 + arg1].rotation);
+            (-1.8f * player->particles[10 + arg1].timer) * coss(player->particles[10 + arg1].rotation);
         player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            (-1.8f * player->particles[10 + arg1].particle_timer) * sins(player->particles[10 + arg1].rotation);
+            (-1.8f * player->particles[10 + arg1].timer) * sins(player->particles[10 + arg1].rotation);
     }
-    ++player->particles[10 + arg1].particle_timer;
+    ++player->particles[10 + arg1].timer;
     player->particles[10 + arg1].pos[1] += 0.3;
-    if (player->particles[10 + arg1].particle_timer == 8) {
-        player->particles[10 + arg1].active = 0;
-        player->particles[10 + arg1].particle_timer = 0;
-        player->particles[10 + arg1].particle_type = 0;
+    if (player->particles[10 + arg1].timer == 8) {
+        player->particles[10 + arg1].IsAlive = 0;
+        player->particles[10 + arg1].timer = 0;
+        player->particles[10 + arg1].type = 0;
     }
 
     player->particles[10 + arg1].scale += 0.15;
     if (player->particles[10 + arg1].unk_040 == 0) {
-        if ((s32) player->particles[10 + arg1].particle_timer >= 4) {
+        if ((s32) player->particles[10 + arg1].timer >= 4) {
             --player->particles[10 + arg1].alpha;
         }
         if ((s32) player->particles[10 + arg1].alpha <= 0) {
             player->particles[10 + arg1].alpha = 0;
         }
     } else {
-        if ((s32) player->particles[10 + arg1].particle_timer >= 4) {
+        if ((s32) player->particles[10 + arg1].timer >= 4) {
             player->particles[10 + arg1].alpha -= 16;
         }
         if ((s32) player->particles[10 + arg1].alpha <= 0) {
@@ -4519,25 +4519,25 @@ void func_80063BD4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (player->particles[10 + arg1].unk_010 == 1) {
         player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_LEFT].pos[2] +
-            (-2 * player->particles[10 + arg1].particle_timer * coss(player->particles[10 + arg1].rotation));
+            (-2 * player->particles[10 + arg1].timer * coss(player->particles[10 + arg1].rotation));
         player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_LEFT].pos[0] +
-            (-2 * player->particles[10 + arg1].particle_timer * sins(player->particles[10 + arg1].rotation));
+            (-2 * player->particles[10 + arg1].timer * sins(player->particles[10 + arg1].rotation));
     } else {
         player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            (-2 * player->particles[10 + arg1].particle_timer * coss(player->particles[10 + arg1].rotation));
+            (-2 * player->particles[10 + arg1].timer * coss(player->particles[10 + arg1].rotation));
         player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            (-2 * player->particles[10 + arg1].particle_timer * sins(player->particles[10 + arg1].rotation));
+            (-2 * player->particles[10 + arg1].timer * sins(player->particles[10 + arg1].rotation));
     }
 
-    ++player->particles[10 + arg1].particle_timer;
+    ++player->particles[10 + arg1].timer;
     player->particles[10 + arg1].pos[1] += 0.2;
-    if (player->particles[10 + arg1].particle_timer == 8) {
-        player->particles[10 + arg1].active = 0;
-        player->particles[10 + arg1].particle_timer = 0;
-        player->particles[10 + arg1].particle_type = 0;
+    if (player->particles[10 + arg1].timer == 8) {
+        player->particles[10 + arg1].IsAlive = 0;
+        player->particles[10 + arg1].timer = 0;
+        player->particles[10 + arg1].type = 0;
     }
 
     player->particles[10 + arg1].unk_018 = 2.0f;
@@ -4548,32 +4548,32 @@ void func_80063D58(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (player->particles[10 + arg1].unk_010 == 1) {
         player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_LEFT].pos[2] +
-            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
+            ((-player->particles[10 + arg1].timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
                 coss(player->particles[10 + arg1].rotation);
         player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_LEFT].pos[0] +
-            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
+            ((-player->particles[10 + arg1].timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
                 sins(player->particles[10 + arg1].rotation);
     } else {
         player->particles[10 + arg1].pos[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
+            ((-player->particles[10 + arg1].timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
                 coss(player->particles[10 + arg1].rotation);
         player->particles[10 + arg1].pos[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            ((-player->particles[10 + arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
+            ((-player->particles[10 + arg1].timer * (player->speed / 18.0f) * 216.0f) / 20.0f) *
                 sins(player->particles[10 + arg1].rotation);
     }
 
-    ++player->particles[10 + arg1].particle_timer;
-    if (player->particles[10 + arg1].particle_timer == 8) {
-        player->particles[10 + arg1].particle_timer = 0;
-        player->particles[10 + arg1].active = 0;
-        player->particles[10 + arg1].particle_type = 0;
+    ++player->particles[10 + arg1].timer;
+    if (player->particles[10 + arg1].timer == 8) {
+        player->particles[10 + arg1].timer = 0;
+        player->particles[10 + arg1].IsAlive = 0;
+        player->particles[10 + arg1].type = 0;
     }
 
     player->particles[10 + arg1].scale += 0.2;
-    if (player->particles[10 + arg1].particle_timer >= 4) {
+    if (player->particles[10 + arg1].timer >= 4) {
         player->particles[10 + arg1].alpha -= 18;
         player->particles[10 + arg1].pos[1] -= 0.1;
     } else {
@@ -4592,21 +4592,21 @@ void func_80063FBC(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
 
     if (player->particles[10 + arg1].unk_010 == 1) {
         func_80062B18(&sp3C, &sp34, &sp38, 3.0f, 0.0f,
-                      -5.5 - (player->particles[10 + arg1].particle_timer * (((player->speed / 18.0f) * 216.0f) / 15.0f)),
+                      -5.5 - (player->particles[10 + arg1].timer * (((player->speed / 18.0f) * 216.0f) / 15.0f)),
                       -player->particles[10 + arg1].rotation, 0);
     } else {
         func_80062B18(&sp3C, &sp34, &sp38, -3.0f, 0.0f,
-                      -5.5 - (player->particles[10 + arg1].particle_timer * (((player->speed / 18.0f) * 216.0f) / 15.0f)),
+                      -5.5 - (player->particles[10 + arg1].timer * (((player->speed / 18.0f) * 216.0f) / 15.0f)),
                       -player->particles[10 + arg1].rotation, 0);
     }
     player->particles[10 + arg1].pos[0] = player->pos[0] + sp3C;
     player->particles[10 + arg1].pos[2] = player->pos[2] + sp38;
     player->particles[10 + arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp34;
-    player->particles[10 + arg1].particle_timer++;
-    if (player->particles[10 + arg1].particle_timer == 6) {
-        player->particles[10 + arg1].active = 0;
-        player->particles[10 + arg1].particle_timer = 0;
-        player->particles[10 + arg1].particle_type = 0;
+    player->particles[10 + arg1].timer++;
+    if (player->particles[10 + arg1].timer == 6) {
+        player->particles[10 + arg1].IsAlive = 0;
+        player->particles[10 + arg1].timer = 0;
+        player->particles[10 + arg1].type = 0;
     }
 }
 
@@ -4621,16 +4621,16 @@ void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     }
 
     func_80062B18(&sp44, &sp40, &sp3C, 0.0f, sp40,
-                  -4.0f + ((-player->particles[arg1].particle_timer * (player->speed / 18.0f) * 216.0f) / 10.0f),
+                  -4.0f + ((-player->particles[arg1].timer * (player->speed / 18.0f) * 216.0f) / 10.0f),
                   -player->particles[arg1].rotation, 2 * -player->unk_206);
     player->particles[arg1].pos[0] = player->pos[0] + sp44;
     player->particles[arg1].pos[2] = player->pos[2] + sp3C;
     player->particles[arg1].pos[1] = player->pos[1] + sp40;
-    ++player->particles[arg1].particle_timer;
-    if ((player->particles[arg1].particle_timer == 12) || (D_801652A0[arg2] <= (player->pos[1] - player->boundingBoxSize))) {
-        player->particles[arg1].active = 0;
-        player->particles[arg1].particle_timer = 0;
-        player->particles[arg1].particle_type = 0;
+    ++player->particles[arg1].timer;
+    if ((player->particles[arg1].timer == 12) || (D_801652A0[arg2] <= (player->pos[1] - player->boundingBoxSize))) {
+        player->particles[arg1].IsAlive = 0;
+        player->particles[arg1].timer = 0;
+        player->particles[arg1].type = 0;
     }
     player->particles[arg1].unk_018 = 2.0f;
     player->particles[arg1].scale -= 0.35;
@@ -4646,16 +4646,16 @@ void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
 
 void func_800643A8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     player->particles[10 + arg1].pos[2] =
-        player->pos[2] + (-1.2 * player->particles[10 + arg1].particle_timer * coss(player->particles[10 + arg1].rotation));
+        player->pos[2] + (-1.2 * player->particles[10 + arg1].timer * coss(player->particles[10 + arg1].rotation));
     player->particles[10 + arg1].pos[0] =
-        player->pos[0] + (-1.2 * player->particles[10 + arg1].particle_timer * sins(player->particles[10 + arg1].rotation));
+        player->pos[0] + (-1.2 * player->particles[10 + arg1].timer * sins(player->particles[10 + arg1].rotation));
     player->particles[10 + arg1].pos[1] = player->particles[10 + arg1].pos[1] + 0.5;
 
-    ++player->particles[10 + arg1].particle_timer;
-    if (player->particles[10 + arg1].particle_timer == 10) {
-        player->particles[10 + arg1].active = 0;
-        player->particles[10 + arg1].particle_timer = 0;
-        player->particles[10 + arg1].particle_type = 0;
+    ++player->particles[10 + arg1].timer;
+    if (player->particles[10 + arg1].timer == 10) {
+        player->particles[10 + arg1].IsAlive = 0;
+        player->particles[10 + arg1].timer = 0;
+        player->particles[10 + arg1].type = 0;
     }
 
     player->particles[10 + arg1].scale += 0.2;
@@ -4671,24 +4671,24 @@ void func_800644E8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     s32 thing;
     UNUSED s32 stackPadding1;
 
-    if (player->particles[30 + arg1].particle_timer >= 9) {
-        player->particles[30 + arg1].particle_timer = 9;
+    if (player->particles[30 + arg1].timer >= 9) {
+        player->particles[30 + arg1].timer = 9;
     }
     thing2 = player->particles[30 + arg1].unk_024;
-    thing = player->particles[30 + arg1].particle_timer;
+    thing = player->particles[30 + arg1].timer;
     player->particles[30 + arg1].pos[2] =
         player->pos[2] + (coss(player->particles[30 + arg1].rotation) * (-0.7 * thing));
     player->particles[30 + arg1].pos[0] =
         player->pos[0] + (sins(player->particles[30 + arg1].rotation) * (-0.7 * thing));
-    player->particles[30 + arg1].particle_timer++;
+    player->particles[30 + arg1].timer++;
     player->particles[30 + arg1].pos[1] =
         player->particles[30 + arg1].unk_028 + (f32) ((thing * thing2) - (0.2 * (thing * thing)));
-    if (player->particles[30 + arg1].particle_timer == 0x000A) {
-        player->particles[30 + arg1].particle_timer = 0;
-        player->particles[30 + arg1].active = 0;
-        player->particles[30 + arg1].particle_type = 0;
+    if (player->particles[30 + arg1].timer == 0x000A) {
+        player->particles[30 + arg1].timer = 0;
+        player->particles[30 + arg1].IsAlive = 0;
+        player->particles[30 + arg1].type = 0;
     }
-    if (player->particles[30 + arg1].particle_timer >= 7) {
+    if (player->particles[30 + arg1].timer >= 7) {
         player->particles[30 + arg1].alpha -= 0x60;
         if (player->particles[30 + arg1].alpha <= 0) {
             player->particles[30 + arg1].alpha = 0;
@@ -4702,21 +4702,21 @@ void func_80064664(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     s32 temp_v1;
     UNUSED s32 stackPadding1;
 
-    temp_v1 = player->particles[30 + arg1].particle_timer;
+    temp_v1 = player->particles[30 + arg1].timer;
     temp_f4 = player->particles[30 + arg1].unk_024;
     player->particles[30 + arg1].pos[2] =
         player->pos[2] + (coss(player->particles[30 + arg1].rotation) * (-0.6 * temp_v1));
     player->particles[30 + arg1].pos[0] =
         player->pos[0] + (sins(player->particles[30 + arg1].rotation) * (-0.6 * temp_v1));
-    player->particles[30 + arg1].particle_timer++;
+    player->particles[30 + arg1].timer++;
     player->particles[30 + arg1].pos[1] =
         player->particles[30 + arg1].unk_028 + (f32) ((temp_v1 * temp_f4) - (0.1 * (temp_v1 * temp_v1)));
-    if (player->particles[30 + arg1].particle_timer == 0x0019) {
-        player->particles[30 + arg1].particle_timer = 0;
-        player->particles[30 + arg1].active = 0;
-        player->particles[30 + arg1].particle_type = 0;
+    if (player->particles[30 + arg1].timer == 0x0019) {
+        player->particles[30 + arg1].timer = 0;
+        player->particles[30 + arg1].IsAlive = 0;
+        player->particles[30 + arg1].type = 0;
     }
-    if (player->particles[30 + arg1].particle_timer >= 7) {
+    if (player->particles[30 + arg1].timer >= 7) {
         player->particles[30 + arg1].alpha -= 0x6;
         if (player->particles[30 + arg1].alpha <= 0) {
             player->particles[30 + arg1].alpha = 0;
@@ -4726,17 +4726,17 @@ void func_80064664(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_800647C8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
-    ++player->particles[30 + arg1].particle_timer;
+    ++player->particles[30 + arg1].timer;
     player->particles[30 + arg1].pos[2] =
-        player->pos[2] + ((-0.8 * (player->particles[30 + arg1].particle_timer)) * coss(player->particles[30 + arg1].rotation));
+        player->pos[2] + ((-0.8 * (player->particles[30 + arg1].timer)) * coss(player->particles[30 + arg1].rotation));
     player->particles[30 + arg1].pos[0] =
-        player->pos[0] + ((-0.8 * (player->particles[30 + arg1].particle_timer)) * sins(player->particles[30 + arg1].rotation));
+        player->pos[0] + ((-0.8 * (player->particles[30 + arg1].timer)) * sins(player->particles[30 + arg1].rotation));
     player->particles[30 + arg1].pos[1] = (player->unk_074 + 2.0f);
 
-    if (player->particles[30 + arg1].particle_timer == 14) {
-        player->particles[30 + arg1].active = 0;
-        player->particles[30 + arg1].particle_timer = 0;
-        player->particles[30 + arg1].particle_type = 0;
+    if (player->particles[30 + arg1].timer == 14) {
+        player->particles[30 + arg1].IsAlive = 0;
+        player->particles[30 + arg1].timer = 0;
+        player->particles[30 + arg1].type = 0;
     }
 
     player->particles[30 + arg1].alpha -= 12;
@@ -4746,7 +4746,7 @@ void func_800647C8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 }
 
 void func_800648E4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    ++player->particles[30 + arg1].particle_timer;
+    ++player->particles[30 + arg1].timer;
     player->particles[30 + arg1].scale -= 0.06;
     player->particles[30 + arg1].pos[1] += 0.1;
     player->particles[30 + arg1].alpha -= 12;
@@ -4755,21 +4755,21 @@ void func_800648E4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->particles[30 + arg1].alpha = 0;
     }
 
-    if (player->particles[30 + arg1].particle_timer == 10) {
-        player->particles[30 + arg1].active = 0;
-        player->particles[30 + arg1].particle_timer = 0;
-        player->particles[30 + arg1].particle_type = 0;
+    if (player->particles[30 + arg1].timer == 10) {
+        player->particles[30 + arg1].IsAlive = 0;
+        player->particles[30 + arg1].timer = 0;
+        player->particles[30 + arg1].type = 0;
     }
 }
 
 void func_80064988(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    ++player->particles[30 + arg1].particle_timer;
+    ++player->particles[30 + arg1].timer;
     player->particles[30 + arg1].pos[1] -= 0.3;
 
-    if (player->particles[30 + arg1].particle_timer == 10) {
-        player->particles[30 + arg1].active = 0;
-        player->particles[30 + arg1].particle_timer = 0;
-        player->particles[30 + arg1].particle_type = 0;
+    if (player->particles[30 + arg1].timer == 10) {
+        player->particles[30 + arg1].IsAlive = 0;
+        player->particles[30 + arg1].timer = 0;
+        player->particles[30 + arg1].type = 0;
     }
 }
 
@@ -4778,20 +4778,20 @@ void func_800649F4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     temp = player->particles[30 + arg1].unk_018;
 
     player->particles[30 + arg1].pos[2] =
-        player->unk_21C + (((-temp) * player->particles[30 + arg1].particle_timer) * coss(player->particles[30 + arg1].rotation));
+        player->unk_21C + (((-temp) * player->particles[30 + arg1].timer) * coss(player->particles[30 + arg1].rotation));
     player->particles[30 + arg1].pos[0] =
-        player->unk_218 + (((-temp) * player->particles[30 + arg1].particle_timer) * sins(player->particles[30 + arg1].rotation));
+        player->unk_218 + (((-temp) * player->particles[30 + arg1].timer) * sins(player->particles[30 + arg1].rotation));
     player->particles[30 + arg1].pos[1] = player->pos[1] + player->particles[30 + arg1].unk_014;
     player->particles[30 + arg1].scale += 0.04;
 
-    ++player->particles[30 + arg1].particle_timer;
-    if (player->particles[30 + arg1].particle_timer == 12) {
-        player->particles[30 + arg1].particle_timer = 0;
-        player->particles[30 + arg1].active = 0;
-        player->particles[30 + arg1].particle_type = 0;
+    ++player->particles[30 + arg1].timer;
+    if (player->particles[30 + arg1].timer == 12) {
+        player->particles[30 + arg1].timer = 0;
+        player->particles[30 + arg1].IsAlive = 0;
+        player->particles[30 + arg1].type = 0;
     }
 
-    if (player->particles[30 + arg1].particle_timer >= 9) {
+    if (player->particles[30 + arg1].timer >= 9) {
         player->particles[30 + arg1].alpha -= 0x10;
         if (player->particles[30 + arg1].alpha <= 0) {
             player->particles[30 + arg1].alpha = 0;
@@ -4804,20 +4804,20 @@ void func_80064B30(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     temp = player->particles[30 + arg1].unk_018 * 1.2;
 
     player->particles[30 + arg1].pos[2] =
-        (player->pos[2] + (-temp * player->particles[30 + arg1].particle_timer) * (coss(player->particles[30 + arg1].rotation)));
+        (player->pos[2] + (-temp * player->particles[30 + arg1].timer) * (coss(player->particles[30 + arg1].rotation)));
     player->particles[30 + arg1].pos[0] =
-        (player->pos[0] + (-temp * player->particles[30 + arg1].particle_timer) * (sins(player->particles[30 + arg1].rotation)));
+        (player->pos[0] + (-temp * player->particles[30 + arg1].timer) * (sins(player->particles[30 + arg1].rotation)));
     player->particles[30 + arg1].pos[1] += 0.1;
 
-    ++player->particles[30 + arg1].particle_timer;
-    if (player->particles[30 + arg1].particle_timer == 10) {
-        player->particles[30 + arg1].particle_timer = 0;
-        player->particles[30 + arg1].active = 0;
-        player->particles[30 + arg1].particle_type = 0;
+    ++player->particles[30 + arg1].timer;
+    if (player->particles[30 + arg1].timer == 10) {
+        player->particles[30 + arg1].timer = 0;
+        player->particles[30 + arg1].IsAlive = 0;
+        player->particles[30 + arg1].type = 0;
     }
 
     player->particles[30 + arg1].red += 1820;
-    if (player->particles[30 + arg1].particle_timer >= 6) {
+    if (player->particles[30 + arg1].timer >= 6) {
         player->particles[30 + arg1].alpha -= 16;
         if (player->particles[30 + arg1].alpha <= 0) {
             player->particles[30 + arg1].alpha = 0;
@@ -4839,14 +4839,14 @@ void func_80064C74(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->pos[0] + (sins(player->particles[30 + arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
     player->particles[30 + arg1].pos[1] = player->pos[1] - 1.0f;
     player->particles[30 + arg1].scale += 0.4;
-    ++player->particles[30 + arg1].particle_timer;
+    ++player->particles[30 + arg1].timer;
 
-    if (player->particles[30 + arg1].particle_timer == 10) {
-        player->particles[30 + arg1].particle_timer = 0;
-        player->particles[30 + arg1].active = 0;
-        player->particles[30 + arg1].particle_type = 0;
+    if (player->particles[30 + arg1].timer == 10) {
+        player->particles[30 + arg1].timer = 0;
+        player->particles[30 + arg1].IsAlive = 0;
+        player->particles[30 + arg1].type = 0;
     }
-    if (player->particles[30 + arg1].particle_timer >= 5) {
+    if (player->particles[30 + arg1].timer >= 5) {
         player->particles[30 + arg1].alpha -= 20;
         if (player->particles[30 + arg1].alpha <= 0) {
             player->particles[30 + arg1].alpha = 0;
@@ -4857,13 +4857,13 @@ void func_80064C74(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 void func_80064DEC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 
     player->particles[20 + arg3].pos[1] = player->pos[1];
-    ++player->particles[20 + arg3].particle_timer;
+    ++player->particles[20 + arg3].timer;
 
-    if (player->particles[20 + arg3].particle_timer == 9) {
+    if (player->particles[20 + arg3].timer == 9) {
         player->unk_0B6 &= ~0x0040;
-        player->particles[20 + arg3].active = 0;
-        player->particles[20 + arg3].particle_timer = 0;
-        player->particles[20 + arg3].particle_type = 0;
+        player->particles[20 + arg3].IsAlive = 0;
+        player->particles[20 + arg3].timer = 0;
+        player->particles[20 + arg3].type = 0;
     }
 
     player->particles[20 + arg3].scale += 0.8;
@@ -4873,8 +4873,8 @@ void func_80064DEC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 }
 
 void func_80064EA4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    ++player->particles[20 + arg3].particle_timer;
-    if (player->particles[20 + arg3].particle_timer < 4) {
+    ++player->particles[20 + arg3].timer;
+    if (player->particles[20 + arg3].timer < 4) {
         player->particles[20 + arg3].scale += 1.2;
         if (player->particles[20 + arg3].scale >= 3.5) {
             player->particles[20 + arg3].scale = 3.5f;
@@ -4883,30 +4883,30 @@ void func_80064EA4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
         player->particles[20 + arg3].scale -= 1.8;
         if (player->particles[20 + arg3].scale <= 0.0f) {
             player->unk_0B6 &= ~0x1000;
-            player->particles[20 + arg3].active = 0;
-            player->particles[20 + arg3].particle_timer = 0;
-            player->particles[20 + arg3].particle_type = 0;
+            player->particles[20 + arg3].IsAlive = 0;
+            player->particles[20 + arg3].timer = 0;
+            player->particles[20 + arg3].type = 0;
         }
     }
 }
 
 void func_80064F88(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    ++player->particles[20 + arg3].particle_timer;
+    ++player->particles[20 + arg3].timer;
     player->particles[20 + arg3].scale += 0.15;
 
     if (1.2 <= player->particles[20 + arg3].scale) {
         player->particles[20 + arg3].scale = 1.2f;
     }
-    if (player->particles[20 + arg3].particle_timer >= 12) {
+    if (player->particles[20 + arg3].timer >= 12) {
         player->unk_0B6 &= ~0x0800;
-        player->particles[20 + arg3].active = 0;
-        player->particles[20 + arg3].particle_timer = 0;
-        player->particles[20 + arg3].particle_type = 0;
+        player->particles[20 + arg3].IsAlive = 0;
+        player->particles[20 + arg3].timer = 0;
+        player->particles[20 + arg3].type = 0;
     }
 }
 
 void func_80065030(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    ++player->particles[20 + arg3].particle_timer;
+    ++player->particles[20 + arg3].timer;
 
     player->particles[20 + arg3].pos[1] += 0.8;
     player->particles[20 + arg3].scale += 0.4;
@@ -4914,11 +4914,11 @@ void func_80065030(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
         player->particles[20 + arg3].scale = 1.5f;
     }
 
-    if (player->particles[20 + arg3].particle_timer >= 12) {
+    if (player->particles[20 + arg3].timer >= 12) {
         player->unk_0B6 &= ~0x0100;
-        player->particles[20 + arg3].active = 0;
-        player->particles[20 + arg3].particle_timer = 0;
-        player->particles[20 + arg3].particle_type = 0;
+        player->particles[20 + arg3].IsAlive = 0;
+        player->particles[20 + arg3].timer = 0;
+        player->particles[20 + arg3].type = 0;
     }
 }
 
@@ -4933,9 +4933,9 @@ void func_800650FC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 
     if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40)) {
-        player->particles[20 + arg3].active = 0;
-        player->particles[20 + arg3].particle_timer = 0;
-        player->particles[20 + arg3].particle_type = 0;
+        player->particles[20 + arg3].IsAlive = 0;
+        player->particles[20 + arg3].timer = 0;
+        player->particles[20 + arg3].type = 0;
     }
 
     player->particles[20 + arg3].scale += 0.08;
@@ -4945,8 +4945,8 @@ void func_800650FC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 }
 
 void func_800651F4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    ++player->particles[20 + arg3].particle_timer;
-    if (player->particles[20 + arg3].particle_timer < 8) {
+    ++player->particles[20 + arg3].timer;
+    if (player->particles[20 + arg3].timer < 8) {
         player->particles[20 + arg3].scale += 0.2;
         if (1.2 <= player->particles[20 + arg3].scale) {
             player->particles[20 + arg3].scale = 1.2f;
@@ -4955,9 +4955,9 @@ void func_800651F4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
         player->particles[20 + arg3].scale -= 0.4;
         if (player->particles[20 + arg3].scale <= 0.0f) {
             player->unk_0B6 &= ~0x0020;
-            player->particles[20 + arg3].active = 0;
-            player->particles[20 + arg3].particle_timer = 0;
-            player->particles[20 + arg3].particle_type = 0;
+            player->particles[20 + arg3].IsAlive = 0;
+            player->particles[20 + arg3].timer = 0;
+            player->particles[20 + arg3].type = 0;
         }
     }
 }
@@ -4985,7 +4985,7 @@ void func_8006538C(Player* player, s8 playerIndex, s16 arg2, s8 arg3) {
     s16 envGreen;
     s16 envBlue;
 
-    if (player->particles[arg2].active == 1) {
+    if (player->particles[arg2].IsAlive == 1) {
         spB4[0] = player->particles[arg2].pos[0];
         spB4[1] = player->particles[arg2].pos[1];
         spB4[2] = player->particles[arg2].pos[2];
@@ -5036,7 +5036,7 @@ void func_800658A0(Player* player, UNUSED s8 playerIndex, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->particles[arg2].active == 1) {
+    if (player->particles[arg2].IsAlive == 1) {
         red = player->particles[arg2].red;
         green = player->particles[arg2].green;
         blue = player->particles[arg2].blue;
@@ -5070,7 +5070,7 @@ void func_80065AB0(Player* player, UNUSED s8 playerIndex, s16 arg2, s8 arg3) {
     s16 envGreen;
     s16 envBlue;
     s32 sp8C[] = { 0x00ffffff, 0x00ffff00, 0x00ff9600 };
-    if (player->particles[10 + arg2].active == 1) {
+    if (player->particles[10 + arg2].IsAlive == 1) {
         if (player->unk_204 >= 0x32) {
             var_s0 = 1;
         } else {
@@ -5121,7 +5121,7 @@ void func_80065F0C(Player* player, UNUSED s8 playerIndex, s16 arg2, s8 arg3) {
     s16 envRed;
     s16 envGreen;
     s16 envBlue;
-    if ((player->particles[10 + arg2].active == 1) && (player->particles[10 + arg2].particle_timer != 0)) {
+    if ((player->particles[10 + arg2].IsAlive == 1) && (player->particles[10 + arg2].timer != 0)) {
         spDC[0] = player->particles[10 + arg2].pos[0];
         spDC[1] = player->particles[10 + arg2].pos[1];
         spDC[2] = player->particles[10 + arg2].pos[2];
@@ -5173,7 +5173,7 @@ void func_800664E0(Player* player, UNUSED s8 playerIndex, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->particles[10 + arg2].active == 1) {
+    if (player->particles[10 + arg2].IsAlive == 1) {
         red = player->particles[10 + arg2].red;
         green = player->particles[10 + arg2].green;
         blue = player->particles[10 + arg2].blue;
@@ -5204,7 +5204,7 @@ void func_80066714(Player* player, UNUSED s32 arg1, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->particles[10 + arg2].active == 1) {
+    if (player->particles[10 + arg2].IsAlive == 1) {
         red = player->particles[10 + arg2].red;
         green = player->particles[10 + arg2].green;
         blue = player->particles[10 + arg2].blue;
@@ -5237,7 +5237,7 @@ void func_80066998(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->particles[arg2].active == 1) {
+    if (player->particles[arg2].IsAlive == 1) {
         red = player->particles[arg2].red;
         green = player->particles[arg2].green;
         blue = player->particles[arg2].blue;
@@ -5264,7 +5264,7 @@ void func_80066BAC(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3s spD4;
     UNUSED s32 stackPadding;
 
-    if ((player->particles[arg2].active == 1) && (player->particles[arg2].red != 0x00FF)) {
+    if ((player->particles[arg2].IsAlive == 1) && (player->particles[arg2].red != 0x00FF)) {
 
         if (player->collision.surfaceDistance[2] >= 300.0f) {
             spDC[1] = player->pos[1] + 5.0f;
@@ -5322,7 +5322,7 @@ void func_80067280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->particles[30 + arg2].active == 1) {
+    if (player->particles[30 + arg2].IsAlive == 1) {
         red = player->particles[30 + arg2].red;
         green = player->particles[30 + arg2].green;
         blue = player->particles[30 + arg2].blue;
@@ -5355,12 +5355,12 @@ void func_80067280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-void render_boost_spark_particles(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void render_player_boost_spark_particles(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp8C;
     Vec3s sp84;
     UNUSED s32 stackPadding[4];
 
-    if (player->particles[30 + arg2].active == 1) {
+    if (player->particles[30 + arg2].IsAlive == 1) {
         sp8C[0] = player->particles[30 + arg2].pos[0];
         sp8C[1] = player->particles[30 + arg2].pos[1];
         sp8C[2] = player->particles[30 + arg2].pos[2];
@@ -5387,12 +5387,12 @@ void render_boost_spark_particles(Player* player, UNUSED s8 arg1, s16 arg2, s8 a
     }
 }
 
-void render_whirrr_onomatopoeia(Player* player, UNUSED s8 arg1, f32 arg2, UNUSED s8 arg3, s8 arg4) {
+void render_player_onomatopoeia_whrrrr(Player* player, UNUSED s8 arg1, f32 arg2, UNUSED s8 arg3, s8 arg4) {
     Vec3f sp9C;
     Vec3s sp94;
     UNUSED s32 stackPadding[2];
 
-    if (player->particles[20 + arg4].active == 1) {
+    if (player->particles[20 + arg4].IsAlive == 1) {
         sp9C[0] = player->particles[20 + arg4].pos[0];
         sp9C[1] = player->particles[20 + arg4].pos[1];
         sp9C[2] = player->particles[20 + arg4].pos[2];
@@ -5418,7 +5418,7 @@ void render_whirrr_onomatopoeia(Player* player, UNUSED s8 arg1, f32 arg2, UNUSED
     }
 }
 
-void render_speech_bubble(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, s32 arg5) {
+void render_player_speech_bubble(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, s32 arg5) {
     Vec3f sp7C;
     Vec3s sp74;
     f32 sp54[8] = { 0.0f, -1.2f, 0.1f, 1.2f, -1.7f, -0.8f, -0.2f, -1.9f };
@@ -5428,7 +5428,7 @@ void render_speech_bubble(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg
     s16 blue = ((arg5 >> 0x00) & 0xFF) & 0xFF;
     // ????????????????????????????????????????
 
-    if (player->particles[20 + arg3].active == 1) {
+    if (player->particles[20 + arg3].IsAlive == 1) {
         sp74[0] = 0;
         sp74[1] = player->unk_048[arg1];
         sp74[2] = 0;
@@ -5456,7 +5456,7 @@ void render_music_note(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, 
     s16 blue = ((arg5 >> 0x00) & 0xFF) & 0xFF;
     // ????????????????????????????????????????
 
-    if (player->particles[20 + arg3].active == 1) {
+    if (player->particles[20 + arg3].IsAlive == 1) {
         sp74[0] = 0;
         sp74[1] = player->unk_048[arg1];
         sp74[2] = 0;
@@ -5479,7 +5479,7 @@ void func_80068310(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 
     Vec3f sp9C;
     Vec3s sp94;
 
-    if (player->particles[20 + arg4].active == 1) {
+    if (player->particles[20 + arg4].IsAlive == 1) {
         sp9C[1] = player->particles[20 + arg4].pos[1];
         sp9C[2] = player->pos[2] + (coss(player->unk_048[arg3]) * -10.0f);
         sp9C[0] = player->pos[0] + (sins(player->unk_048[arg3]) * -10.0f);
@@ -5509,7 +5509,7 @@ void func_80068724(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 
     Vec3f sp84;
     Vec3s sp7C;
 
-    if (player->particles[20 + arg4].active == 1) {
+    if (player->particles[20 + arg4].IsAlive == 1) {
         sp84[1] = player->pos[1] - 3.0f;
         sp84[2] = player->pos[2] + (coss(player->unk_048[arg3]) * -10.0f);
         sp84[0] = player->pos[0] + (sins(player->unk_048[arg3]) * -10.0f);
@@ -5534,14 +5534,14 @@ void func_80068724(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 
     }
 }
 
-void render_boing_onomatopoeia(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 arg4) {
+void render_player_onomatopoeia_boing(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 arg4) {
     Vec3f sp64;
     Vec3s sp5C;
 
-    if ((player->particles[20 + arg4].active == 1) && (player->animFrameSelector[arg3] < 0xD)) {
+    if ((player->particles[20 + arg4].IsAlive == 1) && (player->animFrameSelector[arg3] < 0xD)) {
         sp64[1] = player->pos[1] - 3.0f;
-        sp64[2] = player->pos[2] + ((-2.5 * player->particles[20 + arg4].particle_timer) * coss(player->unk_048[arg3]));
-        sp64[0] = player->pos[0] + ((-2.5 * player->particles[20 + arg4].particle_timer) * sins(player->unk_048[arg3]));
+        sp64[2] = player->pos[2] + ((-2.5 * player->particles[20 + arg4].timer) * coss(player->unk_048[arg3]));
+        sp64[0] = player->pos[0] + ((-2.5 * player->particles[20 + arg4].timer) * sins(player->unk_048[arg3]));
         sp5C[0] = 0;
         sp5C[1] = player->unk_048[arg3];
         sp5C[2] = 0;
@@ -5559,11 +5559,11 @@ void render_boing_onomatopoeia(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, 
     }
 }
 
-void render_pomp_onomatopoeia(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 arg4) {
+void render_player_onomatopoeia_pomp(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 arg4) {
     Vec3f sp9C;
     Vec3s sp94;
 
-    if ((player->particles[20 + arg4].active == 1) && ((s32) player->animFrameSelector[arg3] < 0xD)) {
+    if ((player->particles[20 + arg4].IsAlive == 1) && ((s32) player->animFrameSelector[arg3] < 0xD)) {
         sp9C[1] = (player->pos[1] - 3.0f) + player->particles[20 + arg4].pos[1];
         sp9C[2] = player->pos[2] + (coss(player->unk_048[arg3]) * -10.0f);
         sp9C[0] = player->pos[0] + (sins(player->unk_048[arg3]) * -10.0f);
@@ -5592,7 +5592,7 @@ void render_actor_bonk_particles(Player* player, UNUSED s8 arg1, s16 arg2, s8 ar
     Vec3f sp5C;
     Vec3s sp54;
     s16 alpha;
-    if (player->particles[30 + arg2].active == 1) {
+    if (player->particles[30 + arg2].IsAlive == 1) {
         alpha = player->particles[30 + arg2].alpha;
         sp5C[0] = player->particles[30 + arg2].pos[0];
         sp5C[1] = player->particles[30 + arg2].pos[1];
@@ -5626,7 +5626,7 @@ void func_80069444(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 envGreen;
     s16 envBlue;
     u16 test;
-    if (player->particles[30 + arg2].active == 1) {
+    if (player->particles[30 + arg2].IsAlive == 1) {
         primRed = (D_800E47DC[player->particles[30 + arg2].red] >> 0x10) & 0xFF;
         primGreen = (D_800E47DC[player->particles[30 + arg2].red] >> 8) & 0xFF;
         primBlue = D_800E47DC[player->particles[30 + arg2].red] & 0xFF;
@@ -5662,7 +5662,7 @@ void render_wall_bonk_star_particles(Player* player, UNUSED s8 arg1, s16 arg2, s
     Vec3f sp5C;
     Vec3s sp54;
     s16 alpha;
-    if (player->particles[30 + arg2].active == 1) {
+    if (player->particles[30 + arg2].IsAlive == 1) {
         alpha = player->particles[30 + arg2].alpha;
         sp5C[0] = player->particles[30 + arg2].pos[0];
         sp5C[1] = player->particles[30 + arg2].pos[1];
@@ -5688,7 +5688,7 @@ void func_80069938(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp5C;
     Vec3s sp54;
     s16 alpha;
-    if (player->particles[30 + arg2].active == 1) {
+    if (player->particles[30 + arg2].IsAlive == 1) {
         alpha = player->particles[30 + arg2].alpha;
         sp5C[0] = player->particles[30 + arg2].pos[0];
         sp5C[1] = player->particles[30 + arg2].pos[1];
@@ -5718,7 +5718,7 @@ void func_80069BA8(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 blue;
     s16 alpha;
 
-    if (player->particles[30 + arg2].active == 1) {
+    if (player->particles[30 + arg2].IsAlive == 1) {
         red = player->particles[30 + arg2].red;
         green = player->particles[30 + arg2].green;
         blue = player->particles[30 + arg2].blue;
@@ -5745,7 +5745,7 @@ void func_80069DB8(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3s sp54;
     UNUSED s32 stackPadding[2];
 
-    if (player->particles[30 + arg2].active == 1) {
+    if (player->particles[30 + arg2].IsAlive == 1) {
         sp5C[0] = player->particles[30 + arg2].pos[0];
         sp5C[1] = player->particles[30 + arg2].pos[1];
         sp5C[2] = player->particles[30 + arg2].pos[2];
@@ -5770,7 +5770,7 @@ void func_8006A01C(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp54;
     Vec3s sp4C;
 
-    if (player->particles[arg2].active == 1) {
+    if (player->particles[arg2].IsAlive == 1) {
         sp54[0] = player->particles[10 + arg2].pos[0];
         sp54[1] = player->particles[10 + arg2].pos[1];
         sp54[2] = player->particles[10 + arg2].pos[2];
@@ -5799,7 +5799,7 @@ void func_8006A280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 green;
     s16 blue;
 
-    if (player->particles[arg2].active == 1) {
+    if (player->particles[arg2].IsAlive == 1) {
         red = player->particles[arg2].red;
         green = player->particles[arg2].green;
         blue = player->particles[arg2].blue;
@@ -5812,7 +5812,7 @@ void func_8006A280(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         func_800652D4(sp5C, sp54, player->particles[arg2].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
-        gDPLoadTextureBlock_4b(gDisplayListHead++, *D_800E47A0[player->particles[arg2].particle_timer], G_IM_FMT_I, 64, 64, 0,
+        gDPLoadTextureBlock_4b(gDisplayListHead++, *D_800E47A0[player->particles[arg2].timer], G_IM_FMT_I, 64, 64, 0,
                                G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK,
                                G_TX_NOLOD, G_TX_NOLOD);
         func_8004B414(red, green, blue, 0x000000FF);
@@ -6229,8 +6229,8 @@ void func_8006C6AC(Player* player, s16 arg1, s8 arg2, s8 arg3) {
     if (sp28 < 0) {
         sp28 = 9;
     }
-    if (player->particles[10 + arg1].active == 1) {
-        switch (player->particles[10 + arg1].particle_type) {
+    if (player->particles[10 + arg1].IsAlive == 1) {
+        switch (player->particles[10 + arg1].type) {
             case 1:
                 func_80063408(player, arg1, arg2_copy, arg3);
                 break;
@@ -6261,7 +6261,7 @@ void func_8006C6AC(Player* player, s16 arg1, s8 arg2, s8 arg3) {
         } else if (!(player->effects & 8) && !(player->effects & 2)) {
             if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) &&
                 ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
-                check_tyre_drift_particles_setup_valid(player, arg1, sp28, arg2_copy, arg3);
+                check_drift_particles_setup_valid(player, arg1, sp28, arg2_copy, arg3);
             } else if (((f64) (D_801652A0[arg2_copy] - player->tyres[BACK_RIGHT].baseHeight) >= 3.5) ||
                        ((f64) (D_801652A0[arg2_copy] - player->tyres[BACK_LEFT].baseHeight) >= 3.5)) {
                 func_8005EA94(player, arg1, sp28, arg2_copy, arg3);
@@ -6284,8 +6284,8 @@ void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
     if (sp28 < 0) {
         sp28 = 9;
     }
-    if (player->particles[30 + arg1].active == 1) {
-        switch (player->particles[30 + arg1].particle_type) {
+    if (player->particles[30 + arg1].IsAlive == 1) {
+        switch (player->particles[30 + arg1].type) {
             case 1:
                 func_800644E8(player, arg1, playerIndex, arg3);
                 break;
@@ -6388,8 +6388,8 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
         sp20 = 9;
     }
     //Spawn particles when oob
-    if (arg0->particles[arg1].active == 1) {
-        switch (arg0->particles[arg1].particle_type) {
+    if (arg0->particles[arg1].IsAlive == 1) {
+        switch (arg0->particles[arg1].type) {
             case 1:
                 func_80062C74(arg0, arg1, arg2, arg3);
                 break;
@@ -6448,9 +6448,9 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
     }
 }
 
-void func_8006D194(Player* player, s8 arg1, s8 arg2) {
-    if (player->particles[0x14].active == 1) {
-        switch (player->particles[0x14].particle_type) {
+void func_8006D194(Player* player, s8 playerIndex, s8 arg2) {
+    if (player->particles[0x14].IsAlive == 1) {
+        switch (player->particles[0x14].type) {
             case 2:
                 func_80064DEC(player, playerIndex, arg2, 0);
                 break;
@@ -6484,8 +6484,8 @@ void func_8006D194(Player* player, s8 arg1, s8 arg2) {
             func_800629BC(player, playerIndex, arg2, 0);
         }
     }
-    if (player->particles[0x15].active == 1) {
-        if (player->particles[0x15].particle_type == 5) {
+    if (player->particles[0x15].IsAlive == 1) {
+        if (player->particles[0x15].type == 5) {
             func_800651F4(player, playerIndex, arg2, 1);
         }
     } else if ((player->unk_0B6 & 0x20) == 0x20) {
@@ -6497,7 +6497,7 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
     s16 var_s2;
     if ((player->unk_002 & (8 << (screenId * 4))) == (8 << (screenId * 4))) {
         for (var_s2 = 0; var_s2 < 10; var_s2++) {
-            switch (player->particles[var_s2].particle_type) {
+            switch (player->particles[var_s2].type) {
                 case 1:
                     if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                         if (screenId == playerId) {
@@ -6517,7 +6517,7 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
                     }
                     break;
             }
-            switch (player->particles[var_s2 + 30].particle_type) {
+            switch (player->particles[var_s2 + 30].type) {
                 case 1:
                 case 9:
                     if (gActiveScreenMode == SCREEN_MODE_1P) {
@@ -6570,13 +6570,13 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
                     break;
                 case 8:
                     if (gActiveScreenMode == SCREEN_MODE_1P) {
-                        render_boost_spark_particles(player, playerId, var_s2, screenId);
+                        render_player_boost_spark_particles(player, playerId, var_s2, screenId);
                     } else if (screenId == playerId) {
-                        render_boost_spark_particles(player, playerId, var_s2, screenId);
+                        render_player_boost_spark_particles(player, playerId, var_s2, screenId);
                     }
                     break;
             }
-            switch (player->particles[var_s2 + 10].particle_type) {
+            switch (player->particles[var_s2 + 10].type) {
                 case 1:
                     if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                         if (screenId == playerId) {
@@ -6631,7 +6631,7 @@ void func_8006DC54(Player* player, s8 playerIndex, s8 screenId) {
     bitwiseMask = 8 << (screenId * 4);
     if (bitwiseMask == (player->unk_002 & bitwiseMask)) {
         for (i = 0; i < 10; i++) {
-            if (player->particles[i].particle_type == 7) {
+            if (player->particles[i].type == 7) {
                 func_800658A0(player, playerIndex, i, screenId);
             }
         }
@@ -6645,7 +6645,7 @@ void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
     temp_v0 = 8 << (arg2 * 4);
     if (temp_v0 == (arg0->unk_002 & temp_v0)) {
         for (temp_s0 = 0; temp_s0 < 10; ++temp_s0) {
-            temp_v0 = arg0->particles[temp_s0].particle_type;
+            temp_v0 = arg0->particles[temp_s0].type;
             if (temp_v0 != 3) {
                 if (temp_v0 == 5) {
                     func_8006A280(arg0, arg1, temp_s0, arg2);
@@ -6660,25 +6660,25 @@ void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
         }
 
         if (((arg0->type & 0x4000) == 0x4000) && (arg2 == arg1)) {
-            switch (arg0->particles[20].particle_type) {
+            switch (arg0->particles[20].type) {
                 case 2:
                     func_80068310(arg0, arg1, arg0->particles[20].scale, arg2, 0);
                     break;
                 case 3:
-                    render_whirrr_onomatopoeia(arg0, arg1, arg0->particles[20].scale, arg2, 0);
+                    render_player_onomatopoeia_whrrrr(arg0, arg1, arg0->particles[20].scale, arg2, 0);
                     break;
                 case 4:
                     func_80068724(arg0, arg1, arg0->particles[20].scale, arg2, 0);
                     break;
                 case 5:
-                    render_boing_onomatopoeia(arg0, arg1, arg0->particles[20].scale, arg2, 0);
+                    render_player_onomatopoeia_boing(arg0, arg1, arg0->particles[20].scale, arg2, 0);
                     break;
                 case 6:
-                    render_pomp_onomatopoeia(arg0, arg1, arg0->particles[20].scale, arg2, 0);
+                    render_player_onomatopoeia_pomp(arg0, arg1, arg0->particles[20].scale, arg2, 0);
                     break;
             }
-            if (arg0->particles[21].particle_type == 5) {
-                render_speech_bubble(arg0, arg2, D_8018D480, 1, 1.6f, 0xFFFFFF);
+            if (arg0->particles[21].type == 5) {
+                render_player_speech_bubble(arg0, arg2, D_8018D480, 1, 1.6f, 0xFFFFFF);
                 render_music_note(arg0, arg2, D_8018D484, 1, 1.6f, 0xFF);
             }
         }

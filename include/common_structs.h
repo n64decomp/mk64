@@ -148,11 +148,11 @@ typedef struct {
     /* 0x00 */ Vec3f pos;
     /* 0x0C */ f32 scale;
     /* 0x10 */ u16 unk_010;
-    /* 0x12 */ u16 particle_type;
+    /* 0x12 */ u16 type;
     /* 0x14 */ f32 unk_014;
     /* 0x18 */ f32 unk_018;
-    /* 0x1C */ s16 active;
-    /* 0x1E */ s16 particle_timer;
+    /* 0x1C */ s16 IsAlive;
+    /* 0x1E */ s16 timer;
     /* 0x20 */ s16 rotation;
     /* 0x22 */ s16 unk_022;
     /* 0x24 */ f32 unk_024;

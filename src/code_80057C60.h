@@ -117,12 +117,12 @@ void func_8005D1F4(s32);
 
 void func_8005D290(void);
 void func_8005D6C0(Player*);
-void set_tyre_particle_position_and_rotation(Player*, Particle*, f32, f32, f32, s8, s8);
-s32 set_tyre_particle_active(Particle*, s8, f32);
-s32 set_tyre_particle_colour(Particle*, s32, s16);
-s32 set_tyre_particle_colour_randomly_varried(Particle*, s32, s16);
-void set_tyre_drift_particles(Player*, s16, s32, s8, s8);
-void check_tyre_drift_particles_setup_valid(Player*, s16, s32, s8, s8);
+void set_particle_position_and_rotation(Player*, Particle*, f32, f32, f32, s8, s8);
+s32 init_new_particle_player(Particle*, s8, f32);
+s32 set_particle_colour(Particle*, s32, s16);
+s32 set_particle_colour_randomly_varried(Particle*, s32, s16);
+void set_drift_particles(Player*, s16, s32, s8, s8);
+void check_drift_particles_setup_valid(Player*, s16, s32, s8, s8);
 void func_8005DAD0(void);
 void func_8005DAD8(Particle*, s16, s16, s16);
 void setup_tyre_particles(Player*, s16, s32, s8, s8);
@@ -200,15 +200,15 @@ void func_80066998(Player*, s8, s16, s8);
 void func_80066BAC(Player*, s8, s16, s8);
 
 void func_80067280(Player*, s8, s16, s8);
-void render_boost_spark_particles(Player*, s8, s16, s8);
-void render_whirrr_onomatopoeia(Player*, s8, f32, s8, s8);
-void render_speech_bubble(Player*, s8, u8*, s8, f32, s32);
+void render_player_boost_spark_particles(Player*, s8, s16, s8);
+void render_player_onomatopoeia_whrrrr(Player*, s8, f32, s8, s8);
+void render_player_speech_bubble(Player*, s8, u8*, s8, f32, s32);
 
 void render_music_note(Player*, s8, u8*, s8, f32, s32);
 void func_80068310(Player*, s8, f32, s8, s8);
 void func_80068724(Player*, s8, f32, s8, s8);
-void render_boing_onomatopoeia(Player*, s8, f32, s8, s8);
-void render_pomp_onomatopoeia(Player*, s8, f32, s8, s8);
+void render_player_onomatopoeia_boing(Player*, s8, f32, s8, s8);
+void render_player_onomatopoeia_pomp(Player*, s8, f32, s8, s8);
 
 void render_actor_bonk_particles(Player*, s8, s16, s8);
 void func_80069444(Player*, s8, s16, s8);
