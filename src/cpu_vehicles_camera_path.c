@@ -971,7 +971,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
 
     D_80163128[playerId] = -1;
     D_80163150[playerId] = -1;
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         return 1;
     }
     if (arg1 < 0) {
@@ -1053,7 +1053,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
             var_v0++;
         }
     }
-    
+
     var_a0_4 = 0;
     for (i = 0; i < gPlayerCount; i++) {
         if (gGPCurrentRaceRankByPlayerId[i] < arg2) {
@@ -1064,7 +1064,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
     // FAKE
     var_t1 = (arg2 - (var_v0 & 0xFFFF)) - var_a0_4;
     arg2 -= var_v0;
-    
+
     if ((var_v0 > 0) || (var_a0_4 > 0)) {
         var_t1++;
     }
@@ -1269,7 +1269,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
         if ((var_v1 != 0) && (playerZ <= gPathStartZ)) {
             if (gPathStartZ < previousPlayerZ) {
                 gLapCountByPlayerId[playerId]++;
-                if ((gModeSelection == 0) && (gLapCountByPlayerId[playerId] == 5)) {
+                if ((gModeSelection == GRAND_PRIX) && (gLapCountByPlayerId[playerId] == 5)) {
                     if (gGPCurrentRaceRankByPlayerIdDup[playerId] == 7) {
                         // clang-format off
                         for (var_v0 = 0; var_v0 < NUM_PLAYERS; var_v0++) { gLapCountByPlayerId[var_v0]--; } // has to be one line to match
@@ -1299,7 +1299,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
     }
     if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_CPU)) {
         detect_wrong_player_direction(playerId, player);
-        if ((gModeSelection == 0) && (gPlayerCount == 2) && (playerId == 0)) {
+        if ((gModeSelection == GRAND_PRIX) && (gPlayerCount == 2) && (playerId == 0)) {
             if (gGPCurrentRaceRankByPlayerIdDup[PLAYER_ONE] < gGPCurrentRaceRankByPlayerIdDup[PLAYER_TWO]) {
                 gBestRankedHumanPlayer = PLAYER_ONE;
             } else {
@@ -1824,7 +1824,7 @@ void func_8000B140(s32 playerId) {
         }
     }
     j = 0;
-    i = 0; 
+    i = 0;
     while (i < 8) {
         if (i != playerId) {
             player = &gPlayers[i];
@@ -1844,7 +1844,7 @@ void func_8000B140(s32 playerId) {
                         sp74[j] = temp_f2 - temp_f0_2;
                         j++;
                     }
-        
+
                 }
             }
         }
@@ -1863,9 +1863,9 @@ void func_8000B140(s32 playerId) {
     for (i = 0; i < j; i++) {
         temp_f2 = gTrackPositionFactor[sp9C[i]];
         if ((temp_f2 > (-1.0f)) && (temp_f2 < 1.0f)) {
-            
+
             temp_f12 = temp_ft2 = ((0.2f * (20.0f / (spB0[i] + 20.0f))) * ((sp74[i]) + 10.0f))  / 20.0f;
-            
+
             if ((var_f18 == 1.0f) && (var_f20 == (-1.0f))) {
                 var_f18 = temp_f2 - temp_f12;
                 var_f20 = temp_f2 + temp_f12;
@@ -2904,7 +2904,7 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
     camera->pos[0] = sp98;
     camera->pos[2] = sp90;
     camera->pos[1] = sp94 + 10.0;
-    
+
     D_801645F8[cameraId] = sp98;
     D_80164618[cameraId] = sp94;
     D_80164638[cameraId] = sp90;
@@ -3507,20 +3507,20 @@ void func_80019B50(s32 cameraIndex, u16 arg1) {
     D_801646C0[cameraIndex] = (s16) var_v0;
 }
 
-void func_80019C50(s32 arg0) {
-    switch (D_80164678[arg0]) {
+void func_80019C50(s32 playerIndex) {
+    switch (D_80164678[playerIndex]) {
         case 0:
-            if (D_80164608[arg0] == 1) {
-                D_80164678[arg0] = 1;
-                func_800C9060(arg0, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x4F));
-                D_80164670[arg0] = D_80164678[arg0];
+            if (D_80164608[playerIndex] == 1) {
+                D_80164678[playerIndex] = 1;
+                func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x4F));
+                D_80164670[playerIndex] = D_80164678[playerIndex];
             }
             break;
         case 1:
-            if (D_80164608[arg0] == 1) {
-                D_80164678[arg0] = 0;
-                func_800C9060(arg0, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x50));
-                D_80164670[arg0] = D_80164678[arg0];
+            if (D_80164608[playerIndex] == 1) {
+                D_80164678[playerIndex] = 0;
+                func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x50));
+                D_80164670[playerIndex] = D_80164678[playerIndex];
             }
             break;
     }
@@ -3879,7 +3879,7 @@ void cpu_use_item_strategy(s32 playerId) {
     CpuItemStrategyData* cpuStrategy = &cpu_ItemStrategy[playerId];
     TrackPathPoint* pathPoint;
     bool isValidBanana1;
-    bool isValidBanana2; 
+    bool isValidBanana2;
 
 // Only used in this function
 #define BANANA_ACTOR(actor) ((struct BananaActor*)(actor))
