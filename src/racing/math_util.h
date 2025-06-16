@@ -32,7 +32,7 @@ void mtxf_identity(Mat4);
 void add_translate_mat4_vec3f(Mat4, Mat4, Vec3f);
 void add_translate_mat4_vec3f_lite(Mat4, Mat4, Vec3f);
 void mtxf_translate(Mat4, Vec3f);
-void func_802B5564(Mat4, u16*, f32, f32, f32, f32, f32);
+void get_projection_matrix(Mat4, u16*, f32, f32, f32, f32, f32);
 void func_802B5794(Mat4, Vec3f, Vec3f);
 void mtxf_rotate_x(Mat4, s16);
 void mtxf_rotate_y(Mat4, s16);
