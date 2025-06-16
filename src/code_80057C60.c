@@ -5593,6 +5593,7 @@ void render_actor_bonk_particles(Player* player, UNUSED s8 arg1, s16 arg2, s8 ar
     Vec3f sp5C;
     Vec3s sp54;
     s16 alpha;
+
     if (player->particles[30 + arg2].IsAlive == 1) {
         alpha = player->particles[30 + arg2].alpha;
         sp5C[0] = player->particles[30 + arg2].pos[0];
@@ -5690,7 +5691,7 @@ void func_80069938(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp5C;
     Vec3s sp54;
     s16 alpha;
-    
+
     if (player->particles[30 + arg2].IsAlive == 1) {
         alpha = player->particles[30 + arg2].alpha;
         sp5C[0] = player->particles[30 + arg2].pos[0];
