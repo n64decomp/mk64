@@ -2836,11 +2836,12 @@ s32 set_particle_colour(Particle* particle, s32 arg1, s16 arg2) {
 }
 
 s32 set_particle_colour_randomly_varried(Particle* particle, s32 arg1, s16 arg2) {
-    s32 temp_v0;
-    temp_v0 = random_int(0x30);
-    particle->red = (u8) ((u8) (arg1 >> 0x10) - temp_v0);
-    particle->green = (u8) ((u8) (arg1 >> 8) - temp_v0);
-    particle->blue = (u8) ((u8) arg1 - temp_v0);
+    s32 color_variance;
+    color_variance = random_int(0x30);
+
+    particle->red = (u8) ((u8) (arg1 >> 0x10) - color_variance);
+    particle->green = (u8) ((u8) (arg1 >> 8) - color_variance);
+    particle->blue = (u8) ((u8) arg1 - color_variance);
     particle->alpha = arg2;
 }
 
@@ -5662,6 +5663,7 @@ void render_wall_bonk_star_particles(Player* player, UNUSED s8 arg1, s16 arg2, s
     Vec3f sp5C;
     Vec3s sp54;
     s16 alpha;
+
     if (player->particles[30 + arg2].IsAlive == 1) {
         alpha = player->particles[30 + arg2].alpha;
         sp5C[0] = player->particles[30 + arg2].pos[0];
@@ -5688,6 +5690,7 @@ void func_80069938(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp5C;
     Vec3s sp54;
     s16 alpha;
+    
     if (player->particles[30 + arg2].IsAlive == 1) {
         alpha = player->particles[30 + arg2].alpha;
         sp5C[0] = player->particles[30 + arg2].pos[0];
