@@ -2648,7 +2648,7 @@ void control_cpu_movement(Player* player, UNUSED Camera* camera, s8 screenId, s8
     player->unk_044 |= 0x10;
     nextY = gPlayerPathY[playerId];
     player->unk_204 = 0;
-    player->effects &= UNKNOWN_EFFECT_0x10;
+    player->effects &= ~UNKNOWN_EFFECT_0x10;
     func_8002B830(player, playerId, screenId);
     apply_effect(player, playerId, screenId);
     sp84 = 0 * player->unk_064[0] + spDC[0];
