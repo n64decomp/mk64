@@ -157,7 +157,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_044 = 0;
     player->unk_046 = 0;
     player->soundEffects = 0;
-    player->unk_0C6 = 0xFF;
+    player->alpha = ALPHA_MAX;
 
     player->unk_206 = 0;
     player->slopeAccel = 0;
@@ -195,7 +195,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_204 = 0;
     player->nearestPathPointId = 0;
     player->unk_228 = 0;
-    player->unk_22A = 0;
+    player->driftState = 0;
     player->unk_234 = 0;
     player->unk_236 = 0;
     player->unk_238 = 0;
@@ -279,9 +279,9 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     D_801652E0[playerIndex] = 0;
     D_801652C0[playerIndex] = 0;
     D_80165020[playerIndex] = 0;
-    D_80165070[playerIndex][0] = 0.0f;
-    D_80165070[playerIndex][1] = 0.0f;
-    D_80165070[playerIndex][2] = 0.0f;
+    gPlayerLastVelocity[playerIndex][0] = 0.0f;
+    gPlayerLastVelocity[playerIndex][1] = 0.0f;
+    gPlayerLastVelocity[playerIndex][2] = 0.0f;
     gPlayerCurrentSpeed[playerIndex] = 0.0f;
     D_801652A0[playerIndex] = 0.0f;
     gPlayerIsThrottleActive[playerIndex] = 0;
