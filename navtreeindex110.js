@@ -1,5 +1,9 @@
 var NAVTREEINDEX110 =
 {
+"sptask_8h.html#a61eba4cea23be6c2e28bc14be5c12ec0":[8,0,2,2,25,50],
+"sptask_8h.html#a684ed4b9aa577c8311912059180b5c71":[8,0,2,2,25,26],
+"sptask_8h.html#a69a3838e1d42f14d67b1684ca310e3e7":[8,0,2,2,25,13],
+"sptask_8h.html#a6d7465ed09e5b962f7a1a4c182cf8bde":[8,0,2,2,25,11],
 "sptask_8h.html#a78f9e8179a433fde01c6ebc28206842b":[8,0,2,2,25,20],
 "sptask_8h.html#a802503028044e87b753020cadea0a9d0":[8,0,2,2,25,35],
 "sptask_8h.html#a80567313dcd2e80b41013cdc68780188":[8,0,2,2,25,21],
@@ -245,9 +249,5 @@ var NAVTREEINDEX110 =
 "string_8h.html":[8,0,2,1,5],
 "string_8h.html#a008e171a518fe0e0352f31b245e03875":[8,0,2,1,5,2],
 "string_8h.html#a988b4defe51a1815ef3b9ddab10e7a89":[8,0,2,1,5,1],
-"string_8h.html#ad7f1ae1bbb49dece44bda378982a704d":[8,0,2,1,5,0],
-"string_8h_source.html":[8,0,2,1,5],
-"structALADPCMBook.html":[7,0,27],
-"structALADPCMBook.html#a2298d51ac6d5273fb4bd62506352eb60":[7,0,27,2],
-"structALADPCMBook.html#a3282990d6e143b6799db1e2183ae033b":[7,0,27,0]
+"string_8h.html#ad7f1ae1bbb49dece44bda378982a704d":[8,0,2,1,5,0]
 };

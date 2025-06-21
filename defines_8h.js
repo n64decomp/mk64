@@ -1,11 +1,15 @@
 var defines_8h =
 [
+    [ "ALPHA_BOO_EFFECT", "defines_8h.html#a2871d7a02126585577a298308febbf93", null ],
+    [ "ALPHA_MAX", "defines_8h.html#ad89cd130c64cf199461b25ce74f5d6c7", null ],
+    [ "ALPHA_MIN", "defines_8h.html#ae09b82e8938239b2cc7d928387482ada", null ],
     [ "BAD", "defines_8h.html#afd3fc9004925132db4faf607ebbf9db7", null ],
     [ "BALLOON_STATUS_DEPARTING", "defines_8h.html#ad31b4d2ac1d04dd56aed3d8279f38c2e", null ],
     [ "BALLOON_STATUS_GONE", "defines_8h.html#ad574d9a573ce2fc251ee086705ee66d4", null ],
     [ "BALLOON_STATUS_PRESENT", "defines_8h.html#a38f7344d934b9b8fba8cb892bbd69d69", null ],
     [ "BATTLE", "defines_8h.html#a3f48cce4d2125604131fc7878460f44a", null ],
     [ "BOO_EFFECT", "defines_8h.html#a097e621533b6b47ca98facc0a937437c", null ],
+    [ "BOO_EFFECT_DURATION", "defines_8h.html#af29e5e7ed94bacd716a7bd4437bc625b", null ],
     [ "BOO_SOUND_EFFECT", "defines_8h.html#a3dac4f01a0671a836f2b17cc2ef2d0e7", null ],
     [ "BOOST_EFFECT", "defines_8h.html#a0a6d61b5ffca45b285a90df934373af4", null ],
     [ "BOOST_RAMP_ASPHALT_EFFECT", "defines_8h.html#a121f2d36faaecc8c1e2486617b49595f", null ],

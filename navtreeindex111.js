@@ -1,5 +1,9 @@
 var NAVTREEINDEX111 =
 {
+"string_8h_source.html":[8,0,2,1,5],
+"structALADPCMBook.html":[7,0,27],
+"structALADPCMBook.html#a2298d51ac6d5273fb4bd62506352eb60":[7,0,27,2],
+"structALADPCMBook.html#a3282990d6e143b6799db1e2183ae033b":[7,0,27,0],
 "structALADPCMBook.html#ac6e9ffd437fcb2f2df6aa56ed809e211":[7,0,27,1],
 "structALADPCMWaveInfo.html":[7,0,29],
 "structALADPCMWaveInfo.html#aa35ad149cde994dfe5b5ca00cf6a63c4":[7,0,29,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX111 =
 "structBananaBunchParent.html#ae1c190eae7f8f237b5a37aa109a3e7b5":[7,0,54,6],
 "structBananaBunchParent.html#afb695515f0750a61ead8bda3c38cd033":[7,0,54,5],
 "structBombKart.html":[7,0,55],
-"structBombKart.html#a14d30e3c4ae3ed2c94852f2b46c326a9":[7,0,55,11],
-"structBombKart.html#a1bde5eef376c38628b3785a370e65c1e":[7,0,55,2],
-"structBombKart.html#a1cab59b9c101bcceff7bc98bcd31bb1d":[7,0,55,9],
-"structBombKart.html#a1da7ddadf32086a684c96bc8fa43c88d":[7,0,55,10],
-"structBombKart.html#a40c0c7cf5b53b34a36d9c068534eb3fb":[7,0,55,12]
+"structBombKart.html#a14d30e3c4ae3ed2c94852f2b46c326a9":[7,0,55,11]
 };

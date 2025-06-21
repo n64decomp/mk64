@@ -20,7 +20,7 @@ var searchData=
   ['adsrvolscale_17',['adsrVolScale',['../structNotePlaybackState.html#a9417db8e706b9a178da3867f842755af',1,'NotePlaybackState::adsrVolScale'],['../structNote.html#ae9b2aea09e7d0b2725fec75b043ea859',1,'Note::adsrVolScale']]],
   ['aifrequency_18',['aiFrequency',['../structAudioBufferParametersEU.html#a675f5849a446429e68e7c03f89be6841',1,'AudioBufferParametersEU']]],
   ['allcoursetimetrialrecords_19',['allCourseTimeTrialRecords',['../structSaveData.html#af99eee38007ec1e42d9fb466faf8ac5b',1,'SaveData']]],
-  ['alpha_20',['alpha',['../structRGBA5551.html#a8e4b93a16be5353df9973a8672ef6d28',1,'RGBA5551::alpha'],['../structRGBA16.html#a23265999b7bfedc1640e44c331d67f06',1,'RGBA16::alpha']]],
+  ['alpha_20',['alpha',['../structRGBA5551.html#a8e4b93a16be5353df9973a8672ef6d28',1,'RGBA5551::alpha'],['../structPlayer.html#a4d813308c6853653bfb00af2ab8773eb',1,'Player::alpha'],['../structRGBA16.html#a23265999b7bfedc1640e44c331d67f06',1,'RGBA16::alpha']]],
   ['alsolapcount_21',['alsoLapCount',['../structhud__player.html#a3bf6c6d74d60d7cf19c5aa483a8edde5',1,'hud_player']]],
   ['always_5fset_5fto_5fsomething_5fbut_5fnever_5fused_22',['always_set_to_something_but_never_used',['../structAnimation.html#af85d7839b1a8ea8eaac068a8c82cd955',1,'Animation']]],
   ['always_5fzero_5fnever_5fused_23',['always_zero_never_used',['../structArmature.html#adc041ba73fa0fd905b3eef12fa03ae4b',1,'Armature::always_zero_never_used'],['../structAnimation.html#af94fdd03186279b9531f67158159b722',1,'Animation::always_zero_never_used']]],

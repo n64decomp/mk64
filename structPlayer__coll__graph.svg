@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 1137;
+var viewWidth = 1134;
 var viewHeight = 415;
 var sectionId = 'dynsection-0';
 </script>
@@ -58,8 +58,8 @@ var sectionId = 'dynsection-0';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title=" ">
-<polygon fill="#999999" stroke="#666666" points="440.57,-19 393.57,-19 393.57,0 440.57,0 440.57,-19"/>
-<text text-anchor="middle" x="417.07" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Player</text>
+<polygon fill="#999999" stroke="#666666" points="437.45,-19 390.45,-19 390.45,0 437.45,0 437.45,-19"/>
+<text text-anchor="middle" x="413.95" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Player</text>
 </a>
 </g>
 </g>
@@ -67,8 +67,8 @@ var sectionId = 'dynsection-0';
 <g id="Node000002" class="node">
 <title>Node2</title>
 <g id="a_Node000002"><a xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="255.57,-407 226.57,-407 226.57,-388 255.57,-388 255.57,-407"/>
-<text text-anchor="middle" x="241.07" y="-395" font-family="Helvetica,sans-Serif" font-size="10.00">int</text>
+<polygon fill="white" stroke="#666666" points="252.45,-407 223.45,-407 223.45,-388 252.45,-388 252.45,-407"/>
+<text text-anchor="middle" x="237.95" y="-395" font-family="Helvetica,sans-Serif" font-size="10.00">int</text>
 </a>
 </g>
 </g>
@@ -76,28 +76,28 @@ var sectionId = 'dynsection-0';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node2&#45;&gt;Node1</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M216.97,-387.21C168.88,-367.18 62.03,-314.84 20.07,-231 -3.99,-182.91 -8.62,-155.48 20.07,-110 60.28,-46.28 100.6,-57.58 173.07,-37 251.57,-14.71 349.16,-10.94 393.36,-10.45"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="215.72,-390.47 226.3,-390.99 218.35,-383.99 215.72,-390.47"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M213.86,-386.98C166.26,-366.68 61.18,-314.07 19.95,-231 -3.96,-182.83 -8.57,-155.59 19.95,-110 59.26,-47.14 98.7,-57.53 169.95,-37 248.36,-14.41 345.99,-10.79 390.22,-10.4"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="212.79,-390.32 223.36,-390.93 215.47,-383.86 212.79,-390.32"/>
 </a>
 </g>
-<text text-anchor="middle" x="69.57" y="-223" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> animFrameSelector</text>
-<text text-anchor="middle" x="69.57" y="-212" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">animGroupSelector</text>
-<text text-anchor="middle" x="69.57" y="-201" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">boostTimer</text>
-<text text-anchor="middle" x="69.57" y="-190" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">characterId</text>
-<text text-anchor="middle" x="69.57" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">currentItemCopy</text>
-<text text-anchor="middle" x="69.57" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">currentRank</text>
-<text text-anchor="middle" x="69.57" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">effects</text>
-<text text-anchor="middle" x="69.57" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">lapCount</text>
-<text text-anchor="middle" x="69.57" y="-135" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">nearestPathPointId</text>
-<text text-anchor="middle" x="69.57" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">slopeAccel</text>
-<text text-anchor="middle" x="69.57" y="-113" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">...</text>
+<text text-anchor="middle" x="67.95" y="-223" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> alpha</text>
+<text text-anchor="middle" x="67.95" y="-212" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">animFrameSelector</text>
+<text text-anchor="middle" x="67.95" y="-201" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">animGroupSelector</text>
+<text text-anchor="middle" x="67.95" y="-190" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">boostTimer</text>
+<text text-anchor="middle" x="67.95" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">characterId</text>
+<text text-anchor="middle" x="67.95" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">currentItemCopy</text>
+<text text-anchor="middle" x="67.95" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">currentRank</text>
+<text text-anchor="middle" x="67.95" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">effects</text>
+<text text-anchor="middle" x="67.95" y="-135" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">lapCount</text>
+<text text-anchor="middle" x="67.95" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">nearestPathPointId</text>
+<text text-anchor="middle" x="67.95" y="-113" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">...</text>
 </g>
 <!-- Node11 -->
 <g id="Node000011" class="node">
 <title>Node11</title>
 <g id="a_Node000011"><a xlink:href="structUnkPlayerStruct258.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="297.57,-180 184.57,-180 184.57,-161 297.57,-161 297.57,-180"/>
-<text text-anchor="middle" x="241.07" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">UnkPlayerStruct258</text>
+<polygon fill="white" stroke="#666666" points="294.45,-180 181.45,-180 181.45,-161 294.45,-161 294.45,-180"/>
+<text text-anchor="middle" x="237.95" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">UnkPlayerStruct258</text>
 </a>
 </g>
 </g>
@@ -105,28 +105,28 @@ var sectionId = 'dynsection-0';
 <g id="edge15_Node000011_Node000002" class="edge">
 <title>Node2&#45;&gt;Node11</title>
 <g id="a_edge15_Node000011_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M241.07,-377.85C241.07,-331.59 241.07,-212.92 241.07,-180.05"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="237.57,-377.95 241.07,-387.95 244.57,-377.95 237.57,-377.95"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M237.95,-377.85C237.95,-331.59 237.95,-212.92 237.95,-180.05"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="234.45,-377.95 237.95,-387.95 241.45,-377.95 234.45,-377.95"/>
 </a>
 </g>
-<text text-anchor="middle" x="263.57" y="-362" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_010</text>
-<text text-anchor="middle" x="263.57" y="-351" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_012</text>
-<text text-anchor="middle" x="263.57" y="-340" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_01C</text>
-<text text-anchor="middle" x="263.57" y="-329" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_01E</text>
-<text text-anchor="middle" x="263.57" y="-318" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_020</text>
-<text text-anchor="middle" x="263.57" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_022</text>
-<text text-anchor="middle" x="263.57" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_02C</text>
-<text text-anchor="middle" x="263.57" y="-285" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_02E</text>
-<text text-anchor="middle" x="263.57" y="-274" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_030</text>
-<text text-anchor="middle" x="263.57" y="-263" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_032</text>
-<text text-anchor="middle" x="263.57" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">...</text>
+<text text-anchor="middle" x="260.45" y="-362" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_010</text>
+<text text-anchor="middle" x="260.45" y="-351" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_012</text>
+<text text-anchor="middle" x="260.45" y="-340" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_01C</text>
+<text text-anchor="middle" x="260.45" y="-329" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_01E</text>
+<text text-anchor="middle" x="260.45" y="-318" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_020</text>
+<text text-anchor="middle" x="260.45" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_022</text>
+<text text-anchor="middle" x="260.45" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_02C</text>
+<text text-anchor="middle" x="260.45" y="-285" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_02E</text>
+<text text-anchor="middle" x="260.45" y="-274" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_030</text>
+<text text-anchor="middle" x="260.45" y="-263" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_032</text>
+<text text-anchor="middle" x="260.45" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">...</text>
 </g>
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
 <g id="a_Node000012"><a xlink:href="structUnkPlayerInner.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="518.07,-180 426.07,-180 426.07,-161 518.07,-161 518.07,-180"/>
-<text text-anchor="middle" x="472.07" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">UnkPlayerInner</text>
+<polygon fill="white" stroke="#666666" points="514.95,-180 422.95,-180 422.95,-161 514.95,-161 514.95,-180"/>
+<text text-anchor="middle" x="468.95" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">UnkPlayerInner</text>
 </a>
 </g>
 </g>
@@ -134,24 +134,24 @@ var sectionId = 'dynsection-0';
 <g id="edge17_Node000012_Node000002" class="edge">
 <title>Node2&#45;&gt;Node12</title>
 <g id="a_edge17_Node000012_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M265.03,-386.95C273.65,-382.69 282.98,-377.02 290.07,-370 333.76,-326.75 309.21,-287.57 357.07,-249 378.75,-231.53 393.46,-245.74 417.07,-231 438.79,-217.44 457.43,-193.09 466.39,-180.14"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="263.42,-383.84 255.77,-391.16 266.32,-390.21 263.42,-383.84"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M261.91,-386.95C270.52,-382.69 279.86,-377.02 286.95,-370 330.63,-326.75 306.08,-287.57 353.95,-249 375.63,-231.53 390.33,-245.74 413.95,-231 435.67,-217.44 454.3,-193.09 463.26,-180.14"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="260.29,-383.84 252.64,-391.16 263.19,-390.21 260.29,-383.84"/>
 </a>
 </g>
-<text text-anchor="middle" x="372.57" y="-340" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk0</text>
-<text text-anchor="middle" x="372.57" y="-329" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk18</text>
-<text text-anchor="middle" x="372.57" y="-318" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk1A</text>
-<text text-anchor="middle" x="372.57" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk1C</text>
-<text text-anchor="middle" x="372.57" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk1E</text>
-<text text-anchor="middle" x="372.57" y="-285" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk2</text>
-<text text-anchor="middle" x="372.57" y="-274" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk20</text>
+<text text-anchor="middle" x="369.45" y="-340" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk0</text>
+<text text-anchor="middle" x="369.45" y="-329" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk18</text>
+<text text-anchor="middle" x="369.45" y="-318" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk1A</text>
+<text text-anchor="middle" x="369.45" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk1C</text>
+<text text-anchor="middle" x="369.45" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk1E</text>
+<text text-anchor="middle" x="369.45" y="-285" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk2</text>
+<text text-anchor="middle" x="369.45" y="-274" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk20</text>
 </g>
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
 <g id="a_Node000003"><a xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="166.07,-180 128.07,-180 128.07,-161 166.07,-161 166.07,-180"/>
-<text text-anchor="middle" x="147.07" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">char</text>
+<polygon fill="white" stroke="#666666" points="162.95,-180 124.95,-180 124.95,-161 162.95,-161 162.95,-180"/>
+<text text-anchor="middle" x="143.95" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">char</text>
 </a>
 </g>
 </g>
@@ -159,20 +159,20 @@ var sectionId = 'dynsection-0';
 <g id="edge2_Node000001_Node000003" class="edge">
 <title>Node3&#45;&gt;Node1</title>
 <g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M151.62,-150.79C159.95,-120.96 180.75,-63.31 222.07,-37 250.1,-19.16 348.1,-13.13 393.57,-11.26"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="148.16,-150.18 149.02,-160.74 154.93,-151.95 148.16,-150.18"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M148.49,-150.79C156.83,-120.96 177.62,-63.31 218.95,-37 246.98,-19.16 344.98,-13.13 390.45,-11.26"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="145.03,-150.18 145.89,-160.74 151.81,-151.95 145.03,-150.18"/>
 </a>
 </g>
-<text text-anchor="middle" x="245.07" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_00A</text>
-<text text-anchor="middle" x="245.07" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_032</text>
-<text text-anchor="middle" x="245.07" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_10E</text>
+<text text-anchor="middle" x="241.95" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_00A</text>
+<text text-anchor="middle" x="241.95" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_032</text>
+<text text-anchor="middle" x="241.95" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_10E</text>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
 <g id="a_Node000004"><a xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="573.07,-407 535.07,-407 535.07,-388 573.07,-388 573.07,-407"/>
-<text text-anchor="middle" x="554.07" y="-395" font-family="Helvetica,sans-Serif" font-size="10.00">float</text>
+<polygon fill="white" stroke="#666666" points="569.95,-407 531.95,-407 531.95,-388 569.95,-388 569.95,-407"/>
+<text text-anchor="middle" x="550.95" y="-395" font-family="Helvetica,sans-Serif" font-size="10.00">float</text>
 </a>
 </g>
 </g>
@@ -180,28 +180,28 @@ var sectionId = 'dynsection-0';
 <g id="edge3_Node000001_Node000004" class="edge">
 <title>Node4&#45;&gt;Node1</title>
 <g id="a_edge3_Node000001_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M554.13,-377.63C553.88,-331.35 550.83,-208.75 527.07,-110 518.91,-76.06 523.51,-60.91 498.07,-37 482.44,-22.31 458.53,-15.76 440.74,-12.84"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="550.63,-377.92 554.15,-387.92 557.63,-377.91 550.63,-377.92"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M551.01,-377.63C550.76,-331.35 547.7,-208.75 523.95,-110 515.78,-76.06 520.39,-60.91 494.95,-37 479.32,-22.31 455.41,-15.76 437.61,-12.84"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="547.51,-377.92 551.02,-387.92 554.51,-377.91 547.51,-377.92"/>
 </a>
 </g>
-<text text-anchor="middle" x="596.07" y="-223" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> boostPower</text>
-<text text-anchor="middle" x="596.07" y="-212" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">boundingBoxSize</text>
-<text text-anchor="middle" x="596.07" y="-201" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">currentSpeed</text>
-<text text-anchor="middle" x="596.07" y="-190" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartFriction</text>
-<text text-anchor="middle" x="596.07" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartGravity</text>
-<text text-anchor="middle" x="596.07" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartHopAcceleration</text>
-<text text-anchor="middle" x="596.07" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartHopJerk</text>
-<text text-anchor="middle" x="596.07" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartHopVelocity</text>
-<text text-anchor="middle" x="596.07" y="-135" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">oldPos</text>
-<text text-anchor="middle" x="596.07" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">orientationMatrix</text>
-<text text-anchor="middle" x="596.07" y="-113" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">...</text>
+<text text-anchor="middle" x="592.95" y="-223" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> boostPower</text>
+<text text-anchor="middle" x="592.95" y="-212" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">boundingBoxSize</text>
+<text text-anchor="middle" x="592.95" y="-201" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">currentSpeed</text>
+<text text-anchor="middle" x="592.95" y="-190" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartFriction</text>
+<text text-anchor="middle" x="592.95" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartGravity</text>
+<text text-anchor="middle" x="592.95" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartHopAcceleration</text>
+<text text-anchor="middle" x="592.95" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartHopJerk</text>
+<text text-anchor="middle" x="592.95" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartHopVelocity</text>
+<text text-anchor="middle" x="592.95" y="-135" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">oldPos</text>
+<text text-anchor="middle" x="592.95" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">orientationMatrix</text>
+<text text-anchor="middle" x="592.95" y="-113" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">...</text>
 </g>
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
 <g id="a_Node000006"><a xlink:href="structCollision.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="731.57,-180 672.57,-180 672.57,-161 731.57,-161 731.57,-180"/>
-<text text-anchor="middle" x="702.07" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">Collision</text>
+<polygon fill="white" stroke="#666666" points="728.45,-180 669.45,-180 669.45,-161 728.45,-161 728.45,-180"/>
+<text text-anchor="middle" x="698.95" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">Collision</text>
 </a>
 </g>
 </g>
@@ -209,22 +209,22 @@ var sectionId = 'dynsection-0';
 <g id="edge7_Node000006_Node000004" class="edge">
 <title>Node4&#45;&gt;Node6</title>
 <g id="a_edge7_Node000006_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M562.15,-378.43C563.23,-375.64 564.25,-372.77 565.07,-370 580.76,-317.56 550.62,-288.92 588.07,-249 610.05,-225.57 631.43,-248.95 658.07,-231 677.47,-217.94 691.52,-193.37 698.03,-180.27"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="558.85,-377.26 558.2,-387.83 565.3,-379.97 558.85,-377.26"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M559.02,-378.43C560.1,-375.64 561.12,-372.77 561.95,-370 577.64,-317.56 547.5,-288.92 584.95,-249 606.93,-225.57 628.31,-248.95 654.95,-231 674.34,-217.94 688.4,-193.37 694.91,-180.27"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="555.72,-377.26 555.08,-387.83 562.18,-379.97 555.72,-377.26"/>
 </a>
 </g>
-<text text-anchor="middle" x="632.07" y="-329" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> orientationVector</text>
-<text text-anchor="middle" x="632.07" y="-318" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">surfaceDistance</text>
-<text text-anchor="middle" x="632.07" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk48</text>
-<text text-anchor="middle" x="632.07" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk54</text>
-<text text-anchor="middle" x="632.07" y="-285" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk6C</text>
+<text text-anchor="middle" x="628.95" y="-329" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> orientationVector</text>
+<text text-anchor="middle" x="628.95" y="-318" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">surfaceDistance</text>
+<text text-anchor="middle" x="628.95" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk48</text>
+<text text-anchor="middle" x="628.95" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk54</text>
+<text text-anchor="middle" x="628.95" y="-285" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk6C</text>
 </g>
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
 <g id="a_Node000008"><a xlink:href="structKartTyre.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="901.57,-180 844.57,-180 844.57,-161 901.57,-161 901.57,-180"/>
-<text text-anchor="middle" x="873.07" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">KartTyre</text>
+<polygon fill="white" stroke="#666666" points="898.45,-180 841.45,-180 841.45,-161 898.45,-161 898.45,-180"/>
+<text text-anchor="middle" x="869.95" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">KartTyre</text>
 </a>
 </g>
 </g>
@@ -232,48 +232,48 @@ var sectionId = 'dynsection-0';
 <g id="edge9_Node000008_Node000004" class="edge">
 <title>Node4&#45;&gt;Node8</title>
 <g id="a_edge9_Node000008_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M583.49,-393.9C615.46,-390.44 663.65,-383.17 676.07,-370 713.43,-330.4 660.98,-291.44 695.07,-249 708.82,-231.88 720.84,-239.51 741.07,-231 782.09,-213.75 829.49,-191.91 854.84,-180.07"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="582.94,-390.44 573.35,-394.93 583.65,-397.4 582.94,-390.44"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M580.37,-393.9C612.33,-390.44 660.52,-383.17 672.95,-370 710.31,-330.4 657.86,-291.44 691.95,-249 705.7,-231.88 717.71,-239.51 737.95,-231 778.96,-213.75 826.36,-191.91 851.71,-180.07"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="579.82,-390.44 570.22,-394.93 580.52,-397.4 579.82,-390.44"/>
 </a>
 </g>
-<text text-anchor="middle" x="724.57" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> baseHeight</text>
-<text text-anchor="middle" x="724.57" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">pos</text>
+<text text-anchor="middle" x="721.45" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> baseHeight</text>
+<text text-anchor="middle" x="721.45" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">pos</text>
 </g>
 <!-- Node4&#45;&gt;Node11 -->
 <g id="edge14_Node000011_Node000004" class="edge">
 <title>Node4&#45;&gt;Node11</title>
 <g id="a_edge14_Node000011_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M524.86,-394.23C490.37,-390.97 435.82,-383.75 421.07,-370 380.31,-331.98 428.42,-287.47 388.07,-249 361.38,-223.55 339.85,-247.9 307.07,-231 282.12,-218.13 259.29,-193.49 248.18,-180.31"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="524.59,-397.72 534.86,-395.12 525.21,-390.75 524.59,-397.72"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M521.74,-394.23C487.24,-390.97 432.69,-383.75 417.95,-370 377.19,-331.98 425.29,-287.47 384.95,-249 358.26,-223.55 336.72,-247.9 303.95,-231 278.99,-218.13 256.16,-193.49 245.05,-180.31"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="521.46,-397.72 531.73,-395.12 522.08,-390.75 521.46,-397.72"/>
 </a>
 </g>
-<text text-anchor="middle" x="443.57" y="-334.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_000</text>
-<text text-anchor="middle" x="443.57" y="-323.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_00C</text>
-<text text-anchor="middle" x="443.57" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_014</text>
-<text text-anchor="middle" x="443.57" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_018</text>
-<text text-anchor="middle" x="443.57" y="-290.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_024</text>
-<text text-anchor="middle" x="443.57" y="-279.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_028</text>
+<text text-anchor="middle" x="440.45" y="-334.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_000</text>
+<text text-anchor="middle" x="440.45" y="-323.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_00C</text>
+<text text-anchor="middle" x="440.45" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_014</text>
+<text text-anchor="middle" x="440.45" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_018</text>
+<text text-anchor="middle" x="440.45" y="-290.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_024</text>
+<text text-anchor="middle" x="440.45" y="-279.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_028</text>
 </g>
 <!-- Node4&#45;&gt;Node12 -->
 <g id="edge18_Node000012_Node000004" class="edge">
 <title>Node4&#45;&gt;Node12</title>
 <g id="a_edge18_Node000012_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M525.61,-386.14C518.21,-382.16 510.96,-376.87 506.07,-370 462.32,-308.45 468.2,-209.45 471.1,-180.02"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="524.35,-389.42 534.89,-390.5 527.33,-383.08 524.35,-389.42"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M522.48,-386.14C515.09,-382.16 507.83,-376.87 502.95,-370 459.19,-308.45 465.07,-209.45 467.97,-180.02"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="521.22,-389.42 531.76,-390.5 524.2,-383.08 521.22,-389.42"/>
 </a>
 </g>
-<text text-anchor="middle" x="523.07" y="-329" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk10</text>
-<text text-anchor="middle" x="523.07" y="-318" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk14</text>
-<text text-anchor="middle" x="523.07" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk4</text>
-<text text-anchor="middle" x="523.07" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk8</text>
-<text text-anchor="middle" x="523.07" y="-285" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unkC</text>
+<text text-anchor="middle" x="519.95" y="-329" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk10</text>
+<text text-anchor="middle" x="519.95" y="-318" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk14</text>
+<text text-anchor="middle" x="519.95" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk4</text>
+<text text-anchor="middle" x="519.95" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk8</text>
+<text text-anchor="middle" x="519.95" y="-285" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unkC</text>
 </g>
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
 <g id="a_Node000005"><a xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="408.07,-180 316.07,-180 316.07,-161 408.07,-161 408.07,-180"/>
-<text text-anchor="middle" x="362.07" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">signed short int</text>
+<polygon fill="white" stroke="#666666" points="404.95,-180 312.95,-180 312.95,-161 404.95,-161 404.95,-180"/>
+<text text-anchor="middle" x="358.95" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00">signed short int</text>
 </a>
 </g>
 </g>
@@ -281,32 +281,32 @@ var sectionId = 'dynsection-0';
 <g id="edge4_Node000001_Node000005" class="edge">
 <title>Node5&#45;&gt;Node1</title>
 <g id="a_edge4_Node000001_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M361.38,-150.73C361.21,-123.74 364.07,-73.23 385.07,-37 389.27,-29.76 396.24,-23.64 402.6,-19.11"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="357.88,-150.83 361.59,-160.75 364.88,-150.68 357.88,-150.83"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M358.25,-150.73C358.08,-123.74 360.94,-73.23 381.95,-37 386.15,-29.76 393.11,-23.64 399.47,-19.11"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="354.75,-150.83 358.46,-160.75 361.75,-150.68 354.75,-150.83"/>
 </a>
 </g>
-<text text-anchor="middle" x="406.57" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> rotation</text>
-<text text-anchor="middle" x="406.57" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_048</text>
-<text text-anchor="middle" x="406.57" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_050</text>
-<text text-anchor="middle" x="406.57" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0CC</text>
-<text text-anchor="middle" x="406.57" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0D4</text>
+<text text-anchor="middle" x="403.45" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> rotation</text>
+<text text-anchor="middle" x="403.45" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_048</text>
+<text text-anchor="middle" x="403.45" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_050</text>
+<text text-anchor="middle" x="403.45" y="-51" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0CC</text>
+<text text-anchor="middle" x="403.45" y="-40" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0D4</text>
 </g>
 <!-- Node6&#45;&gt;Node1 -->
 <g id="edge5_Node000001_Node000006" class="edge">
 <title>Node6&#45;&gt;Node1</title>
 <g id="a_edge5_Node000001_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M691.06,-152.52C670.81,-122.96 624.49,-62.71 568.07,-37 525.93,-17.79 471.32,-12.45 440.66,-11"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="688.24,-154.59 696.71,-160.96 694.06,-150.7 688.24,-154.59"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M687.94,-152.52C667.68,-122.96 621.36,-62.71 564.95,-37 522.81,-17.79 468.19,-12.45 437.53,-11"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="685.11,-154.59 693.58,-160.96 690.93,-150.7 685.11,-154.59"/>
 </a>
 </g>
-<text text-anchor="middle" x="663.07" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> collision</text>
+<text text-anchor="middle" x="659.95" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> collision</text>
 </g>
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
 <g id="a_Node000007"><a xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="878.07,-407 774.07,-407 774.07,-388 878.07,-388 878.07,-407"/>
-<text text-anchor="middle" x="826.07" y="-395" font-family="Helvetica,sans-Serif" font-size="10.00">unsigned short int</text>
+<polygon fill="white" stroke="#666666" points="874.95,-407 770.95,-407 770.95,-388 874.95,-388 874.95,-407"/>
+<text text-anchor="middle" x="822.95" y="-395" font-family="Helvetica,sans-Serif" font-size="10.00">unsigned short int</text>
 </a>
 </g>
 </g>
@@ -314,43 +314,43 @@ var sectionId = 'dynsection-0';
 <g id="edge6_Node000006_Node000007" class="edge">
 <title>Node7&#45;&gt;Node6</title>
 <g id="a_edge6_Node000006_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M791.33,-383.03C785.84,-379.53 780.78,-375.23 777.07,-370 745.65,-325.55 778.81,-299.33 758.07,-249 746.57,-221.07 723.12,-193.68 710.52,-180.18"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="789.69,-386.13 800.14,-387.89 793.07,-380 789.69,-386.13"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M788.2,-383.03C782.72,-379.53 777.65,-375.23 773.95,-370 742.52,-325.55 775.68,-299.33 754.95,-249 743.44,-221.07 719.99,-193.68 707.4,-180.18"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="786.57,-386.13 797.01,-387.89 789.94,-380 786.57,-386.13"/>
 </a>
 </g>
-<text text-anchor="middle" x="812.07" y="-334.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> meshIndexYX</text>
-<text text-anchor="middle" x="812.07" y="-323.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">meshIndexZX</text>
-<text text-anchor="middle" x="812.07" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">meshIndexZY</text>
-<text text-anchor="middle" x="812.07" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk30</text>
-<text text-anchor="middle" x="812.07" y="-290.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk32</text>
-<text text-anchor="middle" x="812.07" y="-279.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk34</text>
+<text text-anchor="middle" x="808.95" y="-334.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> meshIndexYX</text>
+<text text-anchor="middle" x="808.95" y="-323.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">meshIndexZX</text>
+<text text-anchor="middle" x="808.95" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">meshIndexZY</text>
+<text text-anchor="middle" x="808.95" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk30</text>
+<text text-anchor="middle" x="808.95" y="-290.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk32</text>
+<text text-anchor="middle" x="808.95" y="-279.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk34</text>
 </g>
 <!-- Node7&#45;&gt;Node8 -->
 <g id="edge11_Node000008_Node000007" class="edge">
 <title>Node7&#45;&gt;Node8</title>
 <g id="a_edge11_Node000008_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M844.1,-380.58C846.84,-377.34 849.33,-373.77 851.07,-370 867.09,-335.39 871.83,-213.67 872.84,-180.12"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="841.5,-378.23 837.05,-387.84 846.52,-383.11 841.5,-378.23"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M840.97,-380.58C843.71,-377.34 846.21,-373.77 847.95,-370 863.96,-335.39 868.7,-213.67 869.72,-180.12"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="838.38,-378.23 833.92,-387.84 843.4,-383.11 838.38,-378.23"/>
 </a>
 </g>
-<text text-anchor="middle" x="917.57" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> collisionMeshIndex</text>
+<text text-anchor="middle" x="914.45" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> collisionMeshIndex</text>
 </g>
 <!-- Node8&#45;&gt;Node1 -->
 <g id="edge8_Node000001_Node000008" class="edge">
 <title>Node8&#45;&gt;Node1</title>
 <g id="a_edge8_Node000001_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M857.14,-153.36C827.25,-124.25 759.44,-63.53 689.07,-37 643.79,-19.92 497.96,-13.24 440.58,-11.22"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="854.96,-156.13 864.53,-160.68 859.88,-151.16 854.96,-156.13"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M854.01,-153.36C824.13,-124.25 756.31,-63.53 685.95,-37 640.67,-19.92 494.83,-13.24 437.45,-11.22"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="851.83,-156.13 861.4,-160.68 856.76,-151.16 851.83,-156.13"/>
 </a>
 </g>
-<text text-anchor="middle" x="799.07" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> tyres</text>
+<text text-anchor="middle" x="795.95" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> tyres</text>
 </g>
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
 <g id="a_Node000009"><a xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1035.57,-407 950.57,-407 950.57,-388 1035.57,-388 1035.57,-407"/>
-<text text-anchor="middle" x="993.07" y="-395" font-family="Helvetica,sans-Serif" font-size="10.00">unsigned char</text>
+<polygon fill="white" stroke="#666666" points="1032.45,-407 947.45,-407 947.45,-388 1032.45,-388 1032.45,-407"/>
+<text text-anchor="middle" x="989.95" y="-395" font-family="Helvetica,sans-Serif" font-size="10.00">unsigned char</text>
 </a>
 </g>
 </g>
@@ -358,19 +358,19 @@ var sectionId = 'dynsection-0';
 <g id="edge10_Node000008_Node000009" class="edge">
 <title>Node9&#45;&gt;Node8</title>
 <g id="a_edge10_Node000008_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M994.33,-377.67C995.41,-348.16 993.96,-290.16 970.07,-249 951.15,-216.37 912.77,-192.14 890.38,-180.07"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="990.82,-377.64 993.81,-387.81 997.81,-378 990.82,-377.64"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M991.2,-377.67C992.28,-348.16 990.83,-290.16 966.95,-249 948.02,-216.37 909.64,-192.14 887.25,-180.07"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="987.7,-377.64 990.68,-387.81 994.69,-378 987.7,-377.64"/>
 </a>
 </g>
-<text text-anchor="middle" x="1027.07" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> surfaceFlags</text>
-<text text-anchor="middle" x="1027.07" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">surfaceType</text>
+<text text-anchor="middle" x="1023.95" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> surfaceFlags</text>
+<text text-anchor="middle" x="1023.95" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">surfaceType</text>
 </g>
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
 <g id="a_Node000010"><a xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1118.57,-407 1053.57,-407 1053.57,-388 1118.57,-388 1118.57,-407"/>
-<text text-anchor="middle" x="1086.07" y="-395" font-family="Helvetica,sans-Serif" font-size="10.00">signed int</text>
+<polygon fill="white" stroke="#666666" points="1115.45,-407 1050.45,-407 1050.45,-388 1115.45,-388 1115.45,-407"/>
+<text text-anchor="middle" x="1082.95" y="-395" font-family="Helvetica,sans-Serif" font-size="10.00">signed int</text>
 </a>
 </g>
 </g>
@@ -378,31 +378,31 @@ var sectionId = 'dynsection-0';
 <g id="edge12_Node000008_Node000010" class="edge">
 <title>Node10&#45;&gt;Node8</title>
 <g id="a_edge12_Node000008_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M1088.75,-377.6C1091.99,-347.12 1093.75,-286.71 1064.07,-249 1023.8,-197.82 944.25,-180.24 901.63,-174.35"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="1085.26,-377.36 1087.51,-387.71 1092.21,-378.22 1085.26,-377.36"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M1085.63,-377.6C1088.86,-347.12 1090.62,-286.71 1060.95,-249 1020.67,-197.82 941.13,-180.24 898.5,-174.35"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="1082.13,-377.36 1084.38,-387.71 1089.08,-378.22 1082.13,-377.36"/>
 </a>
 </g>
-<text text-anchor="middle" x="1109.57" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_14</text>
+<text text-anchor="middle" x="1106.45" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_14</text>
 </g>
 <!-- Node11&#45;&gt;Node1 -->
 <g id="edge13_Node000001_Node000011" class="edge">
 <title>Node11&#45;&gt;Node1</title>
 <g id="a_edge13_Node000001_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M246.47,-151.21C255.93,-122.42 278.27,-66.78 317.07,-37 339.3,-19.94 371.57,-13.83 393.39,-11.66"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="243.11,-150.23 243.47,-160.81 249.8,-152.31 243.11,-150.23"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M243.35,-151.21C252.81,-122.42 275.15,-66.78 313.95,-37 336.18,-19.94 368.45,-13.83 390.27,-11.66"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="239.99,-150.23 240.35,-160.81 246.67,-152.31 239.99,-150.23"/>
 </a>
 </g>
-<text text-anchor="middle" x="339.57" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_258</text>
+<text text-anchor="middle" x="336.45" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_258</text>
 </g>
 <!-- Node12&#45;&gt;Node1 -->
 <g id="edge16_Node000001_Node000012" class="edge">
 <title>Node12&#45;&gt;Node1</title>
 <g id="a_edge16_Node000001_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M466.35,-150.84C458.33,-125.06 443.05,-77.16 428.07,-37 425.85,-31.03 423.1,-24.4 420.9,-19.27"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="463.11,-152.22 469.41,-160.74 469.8,-150.15 463.11,-152.22"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M463.22,-150.84C455.21,-125.06 439.93,-77.16 424.95,-37 422.72,-31.03 419.97,-24.4 417.78,-19.27"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="459.99,-152.22 466.28,-160.74 466.67,-150.15 459.99,-152.22"/>
 </a>
 </g>
-<text text-anchor="middle" x="470.57" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_DB4</text>
+<text text-anchor="middle" x="467.45" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_DB4</text>
 </g>
 </g>
 </svg>

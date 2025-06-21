@@ -1,5 +1,6 @@
 var structPlayer =
 [
+    [ "alpha", "structPlayer.html#a4d813308c6853653bfb00af2ab8773eb", null ],
     [ "animFrameSelector", "structPlayer.html#a76429104e0e7c4f38172287ed0e7d251", null ],
     [ "animGroupSelector", "structPlayer.html#ad8c455f2915f1bcf36439bccd55b4e12", null ],
     [ "boostPower", "structPlayer.html#a55b038e34d2198b3408dfda6a5ed9962", null ],
@@ -69,7 +70,6 @@ var structPlayer =
     [ "unk_0B8", "structPlayer.html#ae6a6a95dad1e873b856df7114b789215", null ],
     [ "unk_0C0", "structPlayer.html#a0dae7ee727c1fd1f3d07b2b7231e85cf", null ],
     [ "unk_0C2", "structPlayer.html#aa77a79a8862283a08c255f07962e6e60", null ],
-    [ "unk_0C6", "structPlayer.html#af0c1af524bbbc458a71da52501116cbd", null ],
     [ "unk_0C8", "structPlayer.html#ac74ff94dd2893c2e792da0eca94d8cb7", null ],
     [ "unk_0CA", "structPlayer.html#a3c8e527683244a47bb0a015ac477610c", null ],
     [ "unk_0CC", "structPlayer.html#a3da88564e0d8688dde2aaea3708c491f", null ],

@@ -549,7 +549,7 @@ var searchData=
   ['contramread_2ec_546',['contramread.c',['../contramread_8c.html',1,'']]],
   ['contramwrite_2ec_547',['contramwrite.c',['../contramwrite_8c.html',1,'']]],
   ['control_20flow_548',['Overall Control Flow',['../controlflow.html#overall-control-flow',1,'']]],
-  ['control_5fcpu_5fmovement_549',['control_cpu_movement',['../player__controller_8c.html#a8e6865020b9110bd4dc3353cb7ef0a00',1,'control_cpu_movement(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId):&#160;player_controller.c'],['../player__controller_8h.html#a2ef880d5e041dfaf33557670a675e3e4',1,'control_cpu_movement(Player *, Camera *, s8, s8):&#160;player_controller.h']]],
+  ['control_5fcpu_5fmovement_549',['control_cpu_movement',['../player__controller_8c.html#a5bb23c788b1a40f8ed2a56ccbd4d5aea',1,'control_cpu_movement(Player *player, UNUSED Camera *camera, s8 screenId, s8 playerId):&#160;player_controller.c'],['../player__controller_8h.html#a2ef880d5e041dfaf33557670a675e3e4',1,'control_cpu_movement(Player *, Camera *, s8, s8):&#160;player_controller.h']]],
   ['controlflow_2emd_550',['controlflow.md',['../controlflow_8md.html',1,'']]],
   ['controller_551',['Controller',['../structController.html',1,'']]],
   ['controller_2eh_552',['controller.h',['../controller_8h.html',1,'']]],
