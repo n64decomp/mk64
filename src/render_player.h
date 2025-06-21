@@ -278,7 +278,7 @@ extern u8* gKartWario189Wheel0[];
 extern u8* gKartWario189Wheel0[];
 
 extern s16 D_80165020[40];
-extern Vec3f D_80165070[8];
+extern Vec3f gPlayerLastVelocity[8];
 extern s16 gLastAnimFrameSelector[4][8];
 extern s16 gLastAnimGroupSelector[4][8];
 extern s16 D_80165150[4][8];
