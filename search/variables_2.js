@@ -39,7 +39,7 @@ var searchData=
   ['block_36',['block',['../unionuObjTxtr.html#a1411342ffe1d3afab3b49893920c71c3',1,'uObjTxtr::block'],['../struct____OSTranxInfo.html#a6032ab7810360478d88bffaf6c6a4f30',1,'__OSTranxInfo::block']]],
   ['block_5ffort_5ftextures_37',['block_fort_textures',['../all__course__offsets_8h.html#a965cea76fd251a71eb955c8c8191250c',1,'block_fort_textures:&#160;course_offsets.c'],['../block__fort_2course__offsets_8c.html#abb217b645e20fd1fe7145faff9606faf',1,'block_fort_textures:&#160;course_offsets.c'],['../courseTable_8h.html#aa6c72bb4c8c453ba21a0f1c3c563bd0d',1,'block_fort_textures:&#160;course_offsets.c']]],
   ['blocknum_38',['blockNum',['../struct____OSTranxInfo.html#aadf7e5885b9c41f0d2c972211746e5cc',1,'__OSTranxInfo']]],
-  ['blue_39',['blue',['../structRGBA5551.html#a9bf78153ebe70ec31632082c59c89eab',1,'RGBA5551::blue'],['../structRGBA16.html#a2732f22bd8fb457c86798d162fa8bbdb',1,'RGBA16::blue']]],
+  ['blue_39',['blue',['../structRGBA5551.html#a9bf78153ebe70ec31632082c59c89eab',1,'RGBA5551::blue'],['../structParticle.html#aadb97a6c850f5a4f6506d521afbd03fc',1,'Particle::blue'],['../structRGBA16.html#a2732f22bd8fb457c86798d162fa8bbdb',1,'RGBA16::blue']]],
   ['bmctlshadow_40',['bmCtlShadow',['../struct____OSTranxInfo.html#a422489ac6305fe7e4426ba0ebdf0c9e3',1,'__OSTranxInfo']]],
   ['boatrot_41',['boatRot',['../structPaddleWheelBoat.html#a13855281c1459077beb9a4e7f8478a37',1,'PaddleWheelBoat']]],
   ['bombpos_42',['bombPos',['../structBombKart.html#abff650a8965656c8ff1879ddca0cc35a',1,'BombKart']]],

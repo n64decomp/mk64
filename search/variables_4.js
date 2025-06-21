@@ -8675,12 +8675,13 @@ var searchData=
   ['double_5fdeck_5ftextures_8672',['double_deck_textures',['../all__course__offsets_8h.html#a2f23fe7dd3edb6cb6d3854cfde76bd7e',1,'double_deck_textures:&#160;course_offsets.c'],['../courseTable_8h.html#a43e53c3da569e548f5b1984945a1763c',1,'double_deck_textures:&#160;course_offsets.c'],['../double__deck_2course__offsets_8c.html#aacf3d2be5a15318600bc428a3c10cdf2',1,'double_deck_textures:&#160;course_offsets.c']]],
   ['downsamplerate_8673',['downsampleRate',['../structReverbSettingsEU.html#a1fa00252ed7fddbb38d9dc241ce45749',1,'ReverbSettingsEU::downsampleRate'],['../structSynthesisReverb.html#ab4cf4eefbf98776a131b84bf7bad71c4',1,'SynthesisReverb::downsampleRate']]],
   ['dramaddr_8674',['dramAddr',['../struct____OSBlockInfo.html#aa4171705f3d3633a9b23f38094531c05',1,'__OSBlockInfo::dramAddr'],['../structOSIoMesg.html#ad0797b3af59ea96f7675d0be10c26252',1,'OSIoMesg::dramAddr']]],
-  ['drums_8675',['drums',['../structAudioBank.html#a24a599791d5abf0ba92582f55d2e9149',1,'AudioBank::drums'],['../structCtlEntry.html#a1a231e06308eb84b0acf8757ba4e0cc0',1,'CtlEntry::drums']]],
-  ['dstaddr_8676',['dstAddr',['../structUnkEntry.html#aef0e777becde602f5c36c02e7146019f',1,'UnkEntry']]],
-  ['dummy_8677',['dummy',['../struct____OSContReadFormat.html#a4a0069791ce30d82145ae10c1edb936c',1,'__OSContReadFormat::dummy'],['../struct____OSContRequesFormat.html#ac985b2af423216dd556852044841e1df',1,'__OSContRequesFormat::dummy'],['../struct____OSContRamReadFormat.html#a75c88f8a5de1a5fc696b01053addee2a',1,'__OSContRamReadFormat::dummy']]],
-  ['dummy1_8678',['dummy1',['../struct____OSContRequesFormat.html#af67fa1b58e4d63b2d57338f7002de3ea',1,'__OSContRequesFormat']]],
-  ['duration_8679',['duration',['../structSequenceChannelLayer.html#a16047605637da65df5b360788dd80f53',1,'SequenceChannelLayer::duration'],['../structCutscene.html#adf71ab9b7e76c8a387d4934437caa7e2',1,'Cutscene::duration']]],
-  ['dx_8680',['dX',['../structMenuTexture.html#a50aaffcef2cdfba5469e2aea064b1bae',1,'MenuTexture']]],
-  ['dy_8681',['dY',['../structMenuTexture.html#a7672db2036937a0c928775cb102613ba',1,'MenuTexture']]],
-  ['dyntable_8682',['dynTable',['../structSequenceChannel.html#a2df4dd94b4ca99190ac1310b345a26e9',1,'SequenceChannel']]]
+  ['driftstate_8675',['driftState',['../structPlayer.html#ad8f9874cffe8666bc25078b0fdf648fd',1,'Player']]],
+  ['drums_8676',['drums',['../structAudioBank.html#a24a599791d5abf0ba92582f55d2e9149',1,'AudioBank::drums'],['../structCtlEntry.html#a1a231e06308eb84b0acf8757ba4e0cc0',1,'CtlEntry::drums']]],
+  ['dstaddr_8677',['dstAddr',['../structUnkEntry.html#aef0e777becde602f5c36c02e7146019f',1,'UnkEntry']]],
+  ['dummy_8678',['dummy',['../struct____OSContReadFormat.html#a4a0069791ce30d82145ae10c1edb936c',1,'__OSContReadFormat::dummy'],['../struct____OSContRequesFormat.html#ac985b2af423216dd556852044841e1df',1,'__OSContRequesFormat::dummy'],['../struct____OSContRamReadFormat.html#a75c88f8a5de1a5fc696b01053addee2a',1,'__OSContRamReadFormat::dummy']]],
+  ['dummy1_8679',['dummy1',['../struct____OSContRequesFormat.html#af67fa1b58e4d63b2d57338f7002de3ea',1,'__OSContRequesFormat']]],
+  ['duration_8680',['duration',['../structSequenceChannelLayer.html#a16047605637da65df5b360788dd80f53',1,'SequenceChannelLayer::duration'],['../structCutscene.html#adf71ab9b7e76c8a387d4934437caa7e2',1,'Cutscene::duration']]],
+  ['dx_8681',['dX',['../structMenuTexture.html#a50aaffcef2cdfba5469e2aea064b1bae',1,'MenuTexture']]],
+  ['dy_8682',['dY',['../structMenuTexture.html#a7672db2036937a0c928775cb102613ba',1,'MenuTexture']]],
+  ['dyntable_8683',['dynTable',['../structSequenceChannel.html#a2df4dd94b4ca99190ac1310b345a26e9',1,'SequenceChannel']]]
 ];

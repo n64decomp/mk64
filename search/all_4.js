@@ -89,7 +89,7 @@ var searchData=
   ['block_5ffort_5ftextures_86',['block_fort_textures',['../all__course__offsets_8h.html#a965cea76fd251a71eb955c8c8191250c',1,'block_fort_textures:&#160;course_offsets.c'],['../block__fort_2course__offsets_8c.html#abb217b645e20fd1fe7145faff9606faf',1,'block_fort_textures:&#160;course_offsets.c'],['../courseTable_8h.html#aa6c72bb4c8c453ba21a0f1c3c563bd0d',1,'block_fort_textures:&#160;course_offsets.c']]],
   ['blocknum_87',['blockNum',['../struct____OSTranxInfo.html#aadf7e5885b9c41f0d2c972211746e5cc',1,'__OSTranxInfo']]],
   ['blocksize_88',['BLOCKSIZE',['../os_8h.html#afcf795f5a96fd55561abe69f56224630',1,'os.h']]],
-  ['blue_89',['blue',['../structRGBA5551.html#a9bf78153ebe70ec31632082c59c89eab',1,'RGBA5551::blue'],['../structRGBA16.html#a2732f22bd8fb457c86798d162fa8bbdb',1,'RGBA16::blue']]],
+  ['blue_89',['blue',['../structRGBA5551.html#a9bf78153ebe70ec31632082c59c89eab',1,'RGBA5551::blue'],['../structParticle.html#aadb97a6c850f5a4f6506d521afbd03fc',1,'Particle::blue'],['../structRGBA16.html#a2732f22bd8fb457c86798d162fa8bbdb',1,'RGBA16::blue']]],
   ['blue_5fshell_5flock_5fon_90',['BLUE_SHELL_LOCK_ON',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495bacbbf8ec958ded92542c807a249ab5663',1,'actor_types.h']]],
   ['blue_5fshell_5ftarget_5feliminated_91',['BLUE_SHELL_TARGET_ELIMINATED',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495ba5bedeedba66ded3f9a8f54f73bc2e6fa',1,'actor_types.h']]],
   ['bmctlshadow_92',['bmCtlShadow',['../struct____OSTranxInfo.html#a422489ac6305fe7e4426ba0ebdf0c9e3',1,'__OSTranxInfo']]],

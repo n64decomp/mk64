@@ -12,7 +12,7 @@ var common__structs_8h =
     [ "UnkStruct_800DDB68", "structUnkStruct__800DDB68.html", "structUnkStruct__800DDB68" ],
     [ "StaffGhost", "structStaffGhost.html", "structStaffGhost" ],
     [ "Collision", "structCollision.html", "structCollision" ],
-    [ "UnkPlayerStruct258", "structUnkPlayerStruct258.html", "structUnkPlayerStruct258" ],
+    [ "Particle", "structParticle.html", "structParticle" ],
     [ "CourseVtx", "structCourseVtx.html", "structCourseVtx" ],
     [ "CollisionTriangle", "structCollisionTriangle.html", "structCollisionTriangle" ],
     [ "KartTyre", "structKartTyre.html", "structKartTyre" ],

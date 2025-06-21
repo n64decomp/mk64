@@ -222,7 +222,7 @@ var searchData=
   ['alloconlypool_219',['AllocOnlyPool',['../structAllocOnlyPool.html',1,'']]],
   ['almicrotime_220',['ALMicroTime',['../libaudio__internal_8h.html#a40fe119725e32477ef4c35810c1ca7f0',1,'libaudio_internal.h']]],
   ['alpan_221',['ALPan',['../libaudio__internal_8h.html#a9500907b32805536754daaa5098c8492',1,'libaudio_internal.h']]],
-  ['alpha_222',['alpha',['../structRGBA5551.html#a8e4b93a16be5353df9973a8672ef6d28',1,'RGBA5551::alpha'],['../structPlayer.html#a4d813308c6853653bfb00af2ab8773eb',1,'Player::alpha'],['../structRGBA16.html#a23265999b7bfedc1640e44c331d67f06',1,'RGBA16::alpha']]],
+  ['alpha_222',['alpha',['../structRGBA5551.html#a8e4b93a16be5353df9973a8672ef6d28',1,'RGBA5551::alpha'],['../structParticle.html#ab358c8483f011ef3c591e8189102731a',1,'Particle::alpha'],['../structPlayer.html#a4d813308c6853653bfb00af2ab8773eb',1,'Player::alpha'],['../structRGBA16.html#a23265999b7bfedc1640e44c331d67f06',1,'RGBA16::alpha']]],
   ['alpha_5fboo_5feffect_223',['ALPHA_BOO_EFFECT',['../defines_8h.html#a2871d7a02126585577a298308febbf93',1,'defines.h']]],
   ['alpha_5fcvg_5fsel_224',['ALPHA_CVG_SEL',['../gbi_8h.html#aa5a549fc53ceef2a65ddd3105f31acf1',1,'gbi.h']]],
   ['alpha_5fmax_225',['ALPHA_MAX',['../defines_8h.html#ad89cd130c64cf199461b25ce74f5d6c7',1,'defines.h']]],

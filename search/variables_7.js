@@ -3601,7 +3601,7 @@ var searchData=
   ['graceframecounter_3598',['gRaceFrameCounter',['../code__80057C60__var_8c.html#a1ab400633b3d05faceec6f04e07639a3',1,'code_80057C60_var.c']]],
   ['grandomseed16_3599',['gRandomSeed16',['../buffers_8h.html#a8eafbc86e2d3ad047f20f29099649228',1,'gRandomSeed16:&#160;random.c'],['../random_8c.html#a8eafbc86e2d3ad047f20f29099649228',1,'gRandomSeed16:&#160;random.c'],['../random_8h.html#a8eafbc86e2d3ad047f20f29099649228',1,'gRandomSeed16:&#160;random.c']]],
   ['grandprixpoints_3600',['grandPrixPoints',['../structSaveInfo.html#ab18934a34c84c3aea5bbee7c19bdc947',1,'SaveInfo']]],
-  ['green_3601',['green',['../structRGBA5551.html#a886e94fc0c29271f17deda549e7a156a',1,'RGBA5551::green'],['../structRGBA16.html#acca621d7e06e84ecdbc2349d5ac200b0',1,'RGBA16::green']]],
+  ['green_3601',['green',['../structRGBA5551.html#a886e94fc0c29271f17deda549e7a156a',1,'RGBA5551::green'],['../structParticle.html#abedb492ede60c6f64eca6f0c468cfef0',1,'Particle::green'],['../structRGBA16.html#acca621d7e06e84ecdbc2349d5ac200b0',1,'RGBA16::green']]],
   ['grefreshrate_3602',['gRefreshRate',['../data_8c.html#aa894d10bf91fcbb2809974d57965309e',1,'gRefreshRate:&#160;data.c'],['../data_8h.html#aa894d10bf91fcbb2809974d57965309e',1,'gRefreshRate:&#160;data.c'],['../heap_8h.html#aa894d10bf91fcbb2809974d57965309e',1,'gRefreshRate:&#160;data.c']]],
   ['grenderingframebufferbyplayer_3603',['gRenderingFramebufferByPlayer',['../render__player_8c.html#ac4877e90f3de98564acbe6737dd6b253',1,'render_player.c']]],
   ['groyalracewayclouds_3604',['gRoyalRacewayClouds',['../some__data_8c.html#a0982716a78d4c4ce85939570ebda0509',1,'gRoyalRacewayClouds:&#160;some_data.c'],['../some__data_8h.html#a0982716a78d4c4ce85939570ebda0509',1,'gRoyalRacewayClouds:&#160;some_data.c']]],
