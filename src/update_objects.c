@@ -3161,7 +3161,7 @@ void func_80079860(s32 playerId) {
 void func_8007993C(s32 objectIndex, Player* player) {
     if (player->unk_0CA & 4) {
         func_800722A4(objectIndex, 2);
-        gObjectList[objectIndex].primAlpha = player->unk_0C6;
+        gObjectList[objectIndex].primAlpha = player->alpha;
         return;
     }
     func_800722CC(objectIndex, 2);
