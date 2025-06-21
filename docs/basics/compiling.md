@@ -105,3 +105,18 @@ First-diff/diff commands for EU
 python3 first-diff.py --eu
 ./diff <function> -eu
 ```
+
+# Handling Changes
+Certain changes may result in unexpected behavior (frequently related to physics) due to not factoring in ROM shifting. Getting expected results in these cases may require making a clean rebuild with certain flags. e.g.
+
+```bash
+make clean
+make -j NON_MATCHING=1
+```
+Some flag options which enable shiftability are:
+
+* `AVOID_UB=1`
+* `NON_MATCHING=1` Also disables warning about non-matching ROM
+* `DEBUG=1` Also enables the debug menu
+
+If you make additional changes, running `make clean` may be necessary, even if returning to the original code.
