@@ -172,9 +172,9 @@ s16 func_802B3FD0(Player* owner, struct ShellActor* shell) {
         if (gPlayerBalloonCount[playerIndex] < 0) {
             continue;
         }
-        // func_802B51E8 is not quite a 3D distance function, it doubles (rather than squares) the Z difference of the
+        // dist_squared_bugged is not quite a 3D distance function, it doubles (rather than squares) the Z difference of the
         // positions
-        playerToShellDistance = func_802B51E8(player->pos, shell->pos);
+        playerToShellDistance = dist_squared_bugged(player->pos, shell->pos);
         if (playerToShellDistance < smallestDistance) {
             smallestDistance = playerToShellDistance;
             playerId = player - gPlayerOne;
@@ -323,7 +323,7 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                 somePosVel[0] = 0.0f;
                 somePosVel[1] = 0.0f;
                 somePosVel[2] = height;
-                func_802B64C4(somePosVel, (s16) (player->rotation[1] + player->unk_0C0));
+                vec3f_rotate_y(somePosVel, (s16) (player->rotation[1] + player->unk_0C0));
                 shell->velocity[0] = somePosVel[0];
                 shell->velocity[1] = somePosVel[1];
                 shell->velocity[2] = somePosVel[2];

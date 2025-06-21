@@ -193,7 +193,7 @@ void func_802B0788(s16 rawStickY, struct BananaBunchParent* banana_bunch, Player
         var_f12 = (player->speed * 0.75f) + 4.5f + var_f0;
     }
     vec3f_set(velocity, 0.0f, var_f0, var_f12);
-    func_802B64C4(velocity, player->rotation[1] + player->unk_0C0);
+    vec3f_rotate_y(velocity, player->rotation[1] + player->unk_0C0);
     banana->velocity[0] = velocity[0];
     banana->velocity[1] = velocity[1];
     banana->velocity[2] = velocity[2];
@@ -431,7 +431,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
-                        func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
+                        vec3f_rotate_y(someVelocity, player->rotation[1] + player->unk_0C0);
                         shell->velocity[0] = someVelocity[0];
                         shell->velocity[1] = someVelocity[1];
                         shell->velocity[2] = someVelocity[2];
@@ -457,7 +457,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
-                        func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
+                        vec3f_rotate_y(someVelocity, player->rotation[1] + player->unk_0C0);
                         shell->velocity[0] = someVelocity[0];
                         shell->velocity[1] = someVelocity[1];
                         shell->velocity[2] = someVelocity[2];
@@ -483,7 +483,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
-                        func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
+                        vec3f_rotate_y(someVelocity, player->rotation[1] + player->unk_0C0);
                         shell->velocity[0] = someVelocity[0];
                         shell->velocity[1] = someVelocity[1];
                         shell->velocity[2] = someVelocity[2];

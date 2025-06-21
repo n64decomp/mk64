@@ -728,9 +728,9 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
     temp_f0 = player->unk_230 - player->unk_23C;
     if ((player->effects & 8) != 8) {
         if ((player->effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) {
-            player->unk_0CC[screenId] = (s16) ((s32) (((f64) func_802B7C40(temp_f0 / temp_f2)) * 1.6));
+            player->unk_0CC[screenId] = (s16) ((s32) (((f64) atan1s(temp_f0 / temp_f2)) * 1.6));
         } else {
-            player->unk_0CC[screenId] = func_802B7C40(temp_f0 / temp_f2) * 2;
+            player->unk_0CC[screenId] = atan1s(temp_f0 / temp_f2) * 2;
         }
     }
     if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
@@ -738,14 +738,14 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
     }
     if ((player->effects & 8) != 8) {
         temp_f0 = player->unk_1F8 - player->unk_1FC;
-        player->unk_0D4[screenId] = (((func_802B7C40(temp_f0 / temp_f2)) * 0.9));
+        player->unk_0D4[screenId] = (((atan1s(temp_f0 / temp_f2)) * 0.9));
     } else {
         if (((player->animFrameSelector[screenId]) >= 0) && ((player->animFrameSelector[screenId]) < 0x101)) {
             var_f0 = player->oldPos[1] - player->pos[1];
         } else {
             var_f0 = player->pos[1] - player->oldPos[1];
         }
-        player->unk_0D4[screenId] = (s16) ((s32) (((f64) func_802B7C40(var_f0 / temp_f2)) * 0.5));
+        player->unk_0D4[screenId] = (s16) ((s32) (((f64) atan1s(var_f0 / temp_f2)) * 0.5));
     }
     if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
         player->unk_0D4[screenId] = (s16) ((s32) player->unk_D9C);
@@ -930,16 +930,16 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     }
     temp_f2_3 = ((gCharacterSize[player->characterId] * 18.0f) + 1.0f) * player->size;
     temp_f0_2 = player->unk_23C - player->unk_230;
-    player->unk_206 = -func_802B7C40(temp_f0_2 / temp_f2_3);
+    player->unk_206 = -atan1s(temp_f0_2 / temp_f2_3);
     if (((player->unk_0CA & 2) == 2) || (player->effects & 8)) {
         player->unk_206 = 0;
     }
     if ((player->effects & 8) != 8) {
         temp_f0_2 = player->unk_1F8 - player->unk_1FC;
-        move_s16_towards(&player->slopeAccel, func_802B7C40(temp_f0_2 / temp_f2_3), 0.5f);
+        move_s16_towards(&player->slopeAccel, atan1s(temp_f0_2 / temp_f2_3), 0.5f);
     } else {
         temp_f0_2 = player->oldPos[1] - arg2;
-        temp_v0 = func_802B7C40(temp_f0_2 / temp_f2_3);
+        temp_v0 = atan1s(temp_f0_2 / temp_f2_3);
         if (temp_f0_2 >= 0.0f) {
             temp_v0 /= 4;
         } else {
@@ -1017,13 +1017,13 @@ void func_8002A194(Player* player, f32 arg1, f32 arg2, f32 arg3) {
     player->tyres[FRONT_LEFT].surfaceType = player->surfaceType;
     var_f20 = (gCharacterSize[player->characterId] * 18) + 1;
     temp_f0 = (player->unk_23C - player->unk_230);
-    player->unk_206 = -func_802B7C40(temp_f0 / var_f20);
+    player->unk_206 = -atan1s(temp_f0 / var_f20);
     if ((player->effects & 8) != 8) {
         temp_f0 = (player->unk_1F8 - player->unk_1FC);
-        move_s16_towards(&player->slopeAccel, func_802B7C40(temp_f0 / var_f20), 0.5f);
+        move_s16_towards(&player->slopeAccel, atan1s(temp_f0 / var_f20), 0.5f);
     } else {
         temp_f0 = player->oldPos[1] - arg2;
-        temp_v0 = func_802B7C40(temp_f0 / var_f20);
+        temp_v0 = atan1s(temp_f0 / var_f20);
         if (temp_f0 >= 0.0f) {
             var_a1 = temp_v0 * 2;
         } else {
