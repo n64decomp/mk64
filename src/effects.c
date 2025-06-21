@@ -257,7 +257,8 @@ void func_8008C6D0(Player* player, s8 playerIndex) {
 
 void func_8008C73C(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
-    if (((player->effects & UNKNOWN_EFFECT_0x80) != UNKNOWN_EFFECT_0x80) && ((player->effects & UNKNOWN_EFFECT_0x40) != UNKNOWN_EFFECT_0x40)) {
+    if (((player->effects & UNKNOWN_EFFECT_0x80) != UNKNOWN_EFFECT_0x80) &&
+        ((player->effects & UNKNOWN_EFFECT_0x40) != UNKNOWN_EFFECT_0x40)) {
         player->effects &= ~UNKNOWN_EFFECT_0x10;
 
         if ((player->unk_0C0 / 182) >= 0) {
@@ -982,7 +983,8 @@ void func_8008E4A4(Player* player, s8 playerIndex) {
                 if (gModeSelection == BATTLE) {
                     pop_player_balloon(player, playerIndex);
                 }
-                if ((gIsPlayerTripleAButtonCombo[playerIndex] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+                if ((gIsPlayerTripleAButtonCombo[playerIndex] == true) &&
+                    ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                     player->currentSpeed += 100.0f;
                 }
 
@@ -1089,7 +1091,8 @@ void apply_hit_by_item_effect(Player* player, s8 playerIndex) {
                 D_80165190[2][playerIndex] = 1;
                 D_80165190[3][playerIndex] = 1;
                 player->unk_042 = 0;
-                if ((gIsPlayerTripleAButtonCombo[playerIndex] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+                if ((gIsPlayerTripleAButtonCombo[playerIndex] == true) &&
+                    ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                     player->currentSpeed += 100.0f;
                 }
 

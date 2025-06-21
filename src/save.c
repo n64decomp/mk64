@@ -330,10 +330,10 @@ s32 func_800B5218(void) {
     fastestLapIndex = 0;
     character = *gCharacterSelections;
     for (checkLapIndex = 1; checkLapIndex != 3; checkLapIndex++) {
-        if ((s32)playerHUD->lapDurations[checkLapIndex] < (s32)playerHUD->lapDurations[fastestLapIndex]) {
+        if ((s32) playerHUD->lapDurations[checkLapIndex] < (s32) playerHUD->lapDurations[fastestLapIndex]) {
             lapBitmask = 1 << checkLapIndex;
             fastestLapIndex = checkLapIndex;
-        } else if ((s32)playerHUD->lapDurations[fastestLapIndex] == (s32)playerHUD->lapDurations[checkLapIndex]) {
+        } else if ((s32) playerHUD->lapDurations[fastestLapIndex] == (s32) playerHUD->lapDurations[checkLapIndex]) {
             lapBitmask |= 1 << checkLapIndex;
         }
     }
@@ -471,7 +471,7 @@ void func_800B559C(s32 arg0) {
  * But only unknown bytes 7 and 8 ever get set, so why the extra 3, and why in chunks of 17?
  **/
 u8 func_800B578C(s32 arg0) {
-    u8* times = (u8*)&gSaveData.onlyBestTimeTrialRecords[arg0];
+    u8* times = (u8*) &gSaveData.onlyBestTimeTrialRecords[arg0];
     s32 checksum = 0;
     s32 i;
     s32 j;
@@ -952,14 +952,14 @@ u8 func_800B6828(s32 arg0) {
 
 u8 func_800B68F4(s32 arg0) {
     struct_8018EE10_entry* var_v0 = gSomeDLBuffer;
-    u8 *addr = (u8*)(var_v0 + arg0);
+    u8* addr = (u8*) (var_v0 + arg0);
     s32 i = 0;
     u32 checksum = 0;
-    
-    for (i = 0; i < (s32)offsetof(struct_8018EE10_entry, pad_43); i++) {
+
+    for (i = 0; i < (s32) offsetof(struct_8018EE10_entry, pad_43); i++) {
         checksum += (addr[i] * (arg0 + 1)) + i;
     }
-    
+
     return checksum;
 }
 
