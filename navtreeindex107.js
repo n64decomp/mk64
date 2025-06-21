@@ -1,5 +1,6 @@
 var NAVTREEINDEX107 =
 {
+"sherbet__land_2course__displaylists_8inc_8c.html#a49ccfcdc7e2d92f433777a2d4771c45f":[8,0,0,15,2,93],
 "sherbet__land_2course__displaylists_8inc_8c.html#a4ad770a7e0c13568483ba74964e561ef":[8,0,0,15,2,7],
 "sherbet__land_2course__displaylists_8inc_8c.html#a4ca432d9b40255ce1f9da66a1fca2ec9":[8,0,0,15,2,45],
 "sherbet__land_2course__displaylists_8inc_8c.html#a4d3a5ae26aa4b1ac74a6f3bea59ac587":[8,0,0,15,2,17],
@@ -248,6 +249,5 @@ var NAVTREEINDEX107 =
 "skybox__and__splitscreen_8c.html#a530f75435172f605331e514c70b3a1bd":[8,0,3,8,14,24],
 "skybox__and__splitscreen_8c.html#a5bf59001832476e3a668963b8a7e7b13":[8,0,3,8,14,7],
 "skybox__and__splitscreen_8c.html#a6135e98ec3076399696ca04f441529f4":[8,0,3,8,14,17],
-"skybox__and__splitscreen_8c.html#a67bde07a20019a64500eba855d93ff4a":[8,0,3,8,14,15],
-"skybox__and__splitscreen_8c.html#a700235c57a47903d8f5b421eb2b8c071":[8,0,3,8,14,47]
+"skybox__and__splitscreen_8c.html#a67bde07a20019a64500eba855d93ff4a":[8,0,3,8,14,15]
 };

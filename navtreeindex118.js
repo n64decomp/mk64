@@ -1,5 +1,6 @@
 var NAVTREEINDEX118 =
 {
+"struct____OSBlockInfo.html#aa4171705f3d3633a9b23f38094531c05":[7,0,0,3],
 "struct____OSBlockInfo.html#ad2d64c4968eb061b0749f676fd303a36":[7,0,0,0],
 "struct____OSBlockInfo.html#afca49491ffc3d4102f10aab42a9648e1":[7,0,0,2],
 "struct____OSContEepromFormat.html":[7,0,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX118 =
 "structlldiv__t.html":[7,0,98],
 "structlldiv__t.html#a32d4596a917aa9b496c8a49178a0e3c6":[7,0,98,1],
 "structlldiv__t.html#ae4d4bccdf22f41e052073f5790c5ec37":[7,0,98,0],
-"structprintf__struct.html":[7,0,141],
-"structprintf__struct.html#a08bc3d30bee256739a79e8954b52a291":[7,0,141,14]
+"structprintf__struct.html":[7,0,141]
 };

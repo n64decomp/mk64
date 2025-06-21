@@ -1,5 +1,6 @@
 var NAVTREEINDEX117 =
 {
+"structTripleShellParent.html#a9f53226334d467678c1b06c8dcc9a271":[7,0,204,0],
 "structTripleShellParent.html#ab112cfcae0d742c9c6ffdf56f90cf932":[7,0,204,10],
 "structTripleShellParent.html#ae15f5957e569bd7f57fb0fc1bc0a2934":[7,0,204,4],
 "structTripleShellParent.html#ae371e7e3307dedbe4c82944317371979":[7,0,204,9],
@@ -248,6 +249,5 @@ var NAVTREEINDEX117 =
 "structYoshiValleyEgg.html#afa5af4be9c951961bc44cff55f16574a":[7,0,250,5],
 "struct____OSBlockInfo.html":[7,0,0],
 "struct____OSBlockInfo.html#a23c8d5d75464bd380dbcb4dcd09ee2d9":[7,0,0,1],
-"struct____OSBlockInfo.html#a70ae85d5ece1fbc3665a07c270c852ed":[7,0,0,4],
-"struct____OSBlockInfo.html#aa4171705f3d3633a9b23f38094531c05":[7,0,0,3]
+"struct____OSBlockInfo.html#a70ae85d5ece1fbc3665a07c270c852ed":[7,0,0,4]
 };

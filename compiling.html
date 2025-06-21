@@ -124,6 +124,7 @@ $(function(){initNavTree('compiling.html',''); initResizable(true); });
 <li class="level1"><a href="#docker">Docker</a></li>
 <li class="level1"><a href="#building-us">Building US</a></li>
 <li class="level1"><a href="#building-eu">Building EU</a></li>
+<li class="level1"><a href="#handling-changes">Handling Changes</a></li>
 </ul>
 </div>
 <div class="textblock"><h1><a class="anchor" id="build-instructions"></a>
@@ -187,7 +188,13 @@ Building EU</h1>
 </div><!-- fragment --><p> or </p><div class="fragment"><div class="line">make -j VERSION=eu.v11</div>
 </div><!-- fragment --><p>First-diff/diff commands for EU </p><div class="fragment"><div class="line">python3 first-diff.py --eu</div>
 <div class="line">./diff &lt;function&gt; -eu</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --><h1><a class="anchor" id="handling-changes"></a>
+Handling Changes</h1>
+<p>Certain changes may result in unexpected behaviour (frequently related to physics) due to the games obnoxious linker setup. This is resolved by compiling with the AVOID_UB flag.</p>
+<p>This will require a rebuild, run </p><div class="fragment"><div class="line">make clean</div>
+</div><!-- fragment --><p>Then compile like so <code> make -j AVOID_UB=1 or make -j DEBUG=1 // Enables debug mode and avoid_ub </code></p>
+<p>Recompiling <code>.inc.c</code> files requires saving the root <code>.c</code> file for makefile to recognize that the file requires a rebuild. This is because at compile time a <code>inc.c</code> file is essentially copy/pasted into its associated <code>.c</code> file. Therefore makefile does not recognize changes to <code>.inc.c</code> files, only <code>.c</code> files. This may be resolved in the following ways: 1) Search for <code>#include "my_file.inc.c</code> to find the root file and then save it with ctrl+s. 2) <code>make clean</code> and rebuild 3) <code>make my_file.c</code> 4) Find help in the Discord </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

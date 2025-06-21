@@ -1,5 +1,6 @@
 var NAVTREEINDEX112 =
 {
+"structBombKart.html#a14d30e3c4ae3ed2c94852f2b46c326a9":[7,0,55,11],
 "structBombKart.html#a1bde5eef376c38628b3785a370e65c1e":[7,0,55,2],
 "structBombKart.html#a1cab59b9c101bcceff7bc98bcd31bb1d":[7,0,55,9],
 "structBombKart.html#a1da7ddadf32086a684c96bc8fa43c88d":[7,0,55,10],
@@ -248,6 +249,5 @@ var NAVTREEINDEX112 =
 "structFallingRock.html#aaf8234241e92e7c55ad1a574d5e2fafc":[7,0,84,10],
 "structFallingRock.html#ad5d8e6c753785be4c17e80f1778813f9":[7,0,84,5],
 "structFallingRock.html#ae0a78cba9faef18d6ac212c5982d1065":[7,0,84,1],
-"structFirework.html":[7,0,85],
-"structFirework.html#a1cbb7f2b612146c27cb394c724994c1a":[7,0,85,0]
+"structFirework.html":[7,0,85]
 };

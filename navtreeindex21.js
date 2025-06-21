@@ -123,6 +123,7 @@ var NAVTREEINDEX21 =
 "compiling.html#building-eu":[1,0,6],
 "compiling.html#building-us":[1,0,5],
 "compiling.html#docker":[1,0,4],
+"compiling.html#handling-changes":[1,0,7],
 "compiling.html#linux":[1,0,1],
 "compiling.html#macos":[1,0,3],
 "compiling.html#windows":[1,0,2],
@@ -160,7 +161,7 @@ var NAVTREEINDEX21 =
 "controlflow.html#engine":[1,2,4,6],
 "controlflow.html#math":[1,2,4,7],
 "controlflow.html#menus":[1,2,4,0],
-"controlflow.html#objects":[1,2,4,3],
+"controlflow.html#objects-1":[1,2,4,3],
 "controlflow.html#overall-control-flow":[1,2,2],
 "controlflow.html#paradigm":[1,2,0],
 "controlflow.html#players":[1,2,4,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX21 =
 "courseTable_8h.html#a0800363261ae42cd5c28627d7677d62b":[8,0,0,25,8],
 "courseTable_8h.html#a08ad312dc48e5a4fe1e8fad2204814a2":[8,0,0,25,69],
 "courseTable_8h.html#a08e5664de1b4edfd1027674ff9bfb9a3":[8,0,0,25,78],
-"courseTable_8h.html#a091e2369d2a8ff2b740d988c46e45c1e":[8,0,0,25,115],
-"courseTable_8h.html#a0a6a4dca1e5c43d833728b8566e3be34":[8,0,0,25,24]
+"courseTable_8h.html#a091e2369d2a8ff2b740d988c46e45c1e":[8,0,0,25,115]
 };

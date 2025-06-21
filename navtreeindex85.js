@@ -1,5 +1,6 @@
 var NAVTREEINDEX85 =
 {
+"moo__moo__farm_2course__offsets_8c.html#ae1d9448e13938dc722f7b4baffab62dd":[8,0,0,12,4,0],
 "moo__moo__farm_2course__offsets_8c.html#aeadeb35414ff109cb8693911e3f2194b":[8,0,0,12,4,15],
 "moo__moo__farm_2course__offsets_8c.html#af2adc5c4e18552af1ae3bf3c1fa7fd18":[8,0,0,12,4,12],
 "moo__moo__farm_2course__offsets_8c.html#afe4fbe8cd1d58805fc55a58b6dc15727":[8,0,0,12,4,23],
@@ -77,7 +78,7 @@ var NAVTREEINDEX85 =
 "new__func_8h.html#ac8095e2ec1adbd7e74e655c578968a36":[8,0,3,7,55,0],
 "new__func_8h_source.html":[8,0,3,7,55],
 "objects.html":[0,1],
-"objects.html#objects-1":[0,1,0],
+"objects.html#objects":[0,1,0],
 "objects_8h.html":[8,0,2,16],
 "objects_8h.html#a015cc1fa03690348fb398b9be74ecc15":[8,0,2,16,34],
 "objects_8h.html#a02bd29e49d2089bb6bd1bfe33e360584":[8,0,2,16,86],
@@ -248,6 +249,5 @@ var NAVTREEINDEX85 =
 "osEepromLongRead_8c.html#a6765ae238051e57f0d3ac6567a8e0db9":[8,0,3,7,68,5],
 "osEepromLongRead_8c.html#a9d2c6b666a1a317e841b46a6eee01123":[8,0,3,7,68,2],
 "osEepromLongRead_8c.html#ab58627f83d7b5069c7d442eb1c05f014":[8,0,3,7,68,3],
-"osEepromLongRead_8c.html#abcb609bd10840081d17bce1000620d8e":[8,0,3,7,68,0],
-"osEepromLongWrite_8c.html":[8,0,3,7,69]
+"osEepromLongRead_8c.html#abcb609bd10840081d17bce1000620d8e":[8,0,3,7,68,0]
 };
