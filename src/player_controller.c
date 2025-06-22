@@ -1540,6 +1540,7 @@ void func_8002B9CC(Player* player, s8 playerIndex, UNUSED s32 arg2) {
     } else {
         temp_f0 = gPlayerLastVelocity[playerIndex][0] - player->velocity[0];
         temp_f2 = gPlayerLastVelocity[playerIndex][1] - player->velocity[1];
+        temp_f14 = gPlayerLastVelocity[playerIndex][2] - player->velocity[2];
         if (sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f14 * temp_f14)) >= 4.2) {
             player->unk_08C /= 4;
             player->currentSpeed /= 4;
@@ -1896,7 +1897,7 @@ void func_8002C954(Player* player, s8 playerId, Vec3f velocity) {
         xdist = gPlayerLastVelocity[playerId][0] - velocity[0];
         var_f14 = gPlayerLastVelocity[playerId][1] - velocity[1];
         ydist = var_f14; // okay
-        zdist = D_80165070[playerId][2] - arg2[2];
+        zdist = gPlayerLastVelocity[playerId][2] - velocity[2];
         var_f14 = sqrtf((xdist * xdist) + (ydist * ydist) + (zdist * zdist)) / 3;
         if (var_f14 >= 1.0) {
             var_f14 = 1.0f;
@@ -2063,8 +2064,11 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     f32 temp_f2_2;
     UNUSED s32 pad[8];
     f32 gravityX;
+    f32 gravityY;
+    f32 gravityZ;
+    f32 surfaceDistance;
     UNUSED s32 pad2;
-    Vec3f sp98;
+    Vec3f newVelocity;
     Vec3f sp8C;
     UNUSED s32 pad3[3];
     s32 sp7C = 0;
@@ -2094,6 +2098,8 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     if ((player->tyres[BACK_LEFT].surfaceType == ASPHALT) && (player->tyres[BACK_RIGHT].surfaceType == ASPHALT)) {
         gravityX = (-1 * (player->unk_064[0] + sp16C[0])) +
                ((-player->collision.orientationVector[0] * player->kartGravity) * 0.925);
+        gravityY = (-player->collision.orientationVector[1] * player->kartGravity);
+        gravityZ = (-1 * (player->unk_064[2] + sp16C[2])) +
                ((-player->collision.orientationVector[2] * player->kartGravity) * 0.925);
     } else {
         temp3 = (((player->speed / 18.0f) * 216.0f) / 10.0f);
@@ -2102,11 +2108,11 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
         }
         gravityX = -1 * (player->unk_064[0] + sp16C[0]) +
                ((-player->collision.orientationVector[0] * player->kartGravity) * sp104[temp3]);
+        gravityY = (-player->collision.orientationVector[1] * player->kartGravity);
+        gravityZ = -1 * (player->unk_064[2] + sp16C[2]) +
                ((-player->collision.orientationVector[2] * player->kartGravity) * sp104[temp3]);
     }
     if (((player->effects & 8) != 8) && ((player->effects & 0x20) == 0x20)) {
-        spB4 = 0 * (player->unk_064[0] + sp16C[0]);
-        spB0 = -1 * player->kartGravity / 4;
         gravityX = 0 * (player->unk_064[0] + sp16C[0]);
         gravityY = -1 * player->kartGravity / 4;
         gravityZ = 0 * (player->unk_064[2] + sp16C[2]);
