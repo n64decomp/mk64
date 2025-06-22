@@ -56,7 +56,7 @@ u16 atan2s(f32, f32);
 f32 atan2f(f32, f32);
 s16 atan1s(f32);
 s16 asin1s(f32);
-f32 calculate_vector_angle_xy(f32);
+f32 acos1f(f32);
 u16 random_u16(void);
 u16 random_int(u16);
 s16 angle_from_coords(f32, f32, f32, f32);
@@ -66,7 +66,7 @@ f32 coss(u16);
 s32 is_visible_between_angle(u16, u16, u16);
 f32 is_within_render_distance(Vec3f, Vec3f, u16, f32, f32, f32);
 
-extern s32 D_802B91C0[];
+extern s32 D_802B91C0[]; // Unused
 extern Vec3f D_802B91C8;
 
 #endif // MATH_UTIL_H
