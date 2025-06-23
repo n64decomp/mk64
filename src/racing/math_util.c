@@ -71,10 +71,10 @@ s32 render_set_position(Mat4 mtx, s32 mode) {
 }
 
 /*
-* @brief Finds the squared distance between two points, but contains a bug when handling the z-axis
+* @brief      Finds the squared distance between two points, but contains a bug when handling the z-axis
 * @param from A point in 3D space
-* @param to A point in 3D space
-* @return Roughly the squared distance between from and to. (x**2 + y**2 + 2*z) instead of (x**2 + y**2 + z**2)
+* @param to   A point in 3D space
+* @return     Roughly the squared distance between from and to. (x**2 + y**2 + 2*z) instead of (x**2 + y**2 + z**2)
 */
 f32 dist_squared_bugged(Vec3f from, Vec3f to) {
     f32 deltaY;
@@ -89,10 +89,10 @@ f32 dist_squared_bugged(Vec3f from, Vec3f to) {
 }
 
 /*
-* @brief Finds the angle within the XZ-plane between two points (while ignoring any difference in Y)
+* @brief           Finds the angle within the XZ-plane between two points (while ignoring any difference in Y)
 * @param pointFrom A point in 3D space
-* @param pointTo A point in 3D space
-* @return Angle (N64-units) in XZ-plane between pointFrom and pointTo
+* @param pointTo   A point in 3D space
+* @return          Angle (N64-units) in XZ-plane between pointFrom and pointTo
 */
 s32 get_xz_angle_between_points(Vec3f pointFrom, Vec3f pointTo) {
     f32 deltaX;
@@ -114,8 +114,8 @@ UNUSED u32 func_802B5258(Vec3f arg0, Vec3s arg1) {
 }
 
 /*
-* @brief sets a vector to the given coordinates
-* @param dest The vector to be overriden
+* @brief        sets a vector to the given coordinates
+* @param dest   The vector to be overriden
 * @param coordX The X coordinate of the desired vector
 * @param coordY The Y coordinate of the desired vector
 * @param coordZ The Z coordinate of the desired vector
@@ -127,8 +127,8 @@ void vec3f_set(Vec3f dest, f32 coordX, f32 coordY, f32 coordZ) {
 }
 
 /*
-* @brief sets a vector to the given coordinates
-* @param dest The vector to be overriden
+* @brief        sets a vector to the given coordinates
+* @param dest   The vector to be overriden
 * @param coordX The X coordinate of the desired vector
 * @param coordY The Y coordinate of the desired vector
 * @param coordZ The Z coordinate of the desired vector
@@ -152,10 +152,10 @@ void vec3s_set(Vec3s dest, s16 coordX, s16 coordY, s16 coordZ) {
 #endif
 
 /*
-* @brief copies the coordinates of a vector to another vector
+* @brief      Copies the coordinates of a vector to another vector
 * @param dest The vector to be overriden
-* @param src The vector to be copied
-* @return local address of destination vector
+* @param src  The vector to be copied
+* @return     local address of destination vector
 */
 void* vec3f_copy_return(Vec3f dest, Vec3f src) {
     dest[0] = src[0];
@@ -166,9 +166,9 @@ void* vec3f_copy_return(Vec3f dest, Vec3f src) {
 }
 
 /*
-* @brief copies the coordinates of a vector to another vector
+* @brief      copies the coordinates of a vector to another vector
 * @param dest The vector to be overriden
-* @param src The vector to be copied
+* @param src  The vector to be copied
 */
 void vec3s_copy(Vec3s dest, Vec3s src) {
     dest[0] = src[0];
@@ -184,8 +184,8 @@ UNUSED void* vec3f_set_return(Vec3f dest, f32 x, f32 y, f32 z) {
 }
 
 /*
-* @brief copies the values of a matrix to another matrix
-* @param src The matrix to be copied
+* @brief      copies the values of a matrix to another matrix
+* @param src  The matrix to be copied
 * @param dest The matrix to be overriden
 */
 void mtxf_copy(Mat4 src, Mat4 dest) {
@@ -200,10 +200,10 @@ void mtxf_copy(Mat4 src, Mat4 dest) {
 }
 
 /*
-* @brief copies the first n values of a matrix to another matrix
+* @brief      copies the first n values of a matrix to another matrix
 * @param dest The matrix to be overriden
-* @param src The matrix to be copied
-* @param n The number of values to be copied
+* @param src  The matrix to be copied
+* @param n    The number of values to be copied
 */
 void mtxf_copy_n_element(s32* dest, s32* src, s32 n) {
     while (n-- > 0) {
@@ -212,7 +212,7 @@ void mtxf_copy_n_element(s32* dest, s32* src, s32 n) {
 }
 
 /* 
-* @brief Transform a matrix to an identity matrix
+* @brief        Transform a matrix to an identity matrix
 * @param Matrix The matrix to be changed to an identity matrix
 */
 void mtxf_identity(Mat4 mtx) {
@@ -227,9 +227,9 @@ void mtxf_identity(Mat4 mtx) {
 }
 
 /*
-* @brief Add a translation vector to a matrix
-* @param scr The matrix to be copied
-* @param dest The matrix to be overriden with the result
+* @brief          Add a translation vector to a matrix
+* @param scr      The matrix to be copied
+* @param dest     The matrix to be overriden with the result
 * @param vecTrans The translation vector to be added
 */
 void add_translate_mat4_vec3f(Mat4 src, Mat4 dest, Vec3f vecTrans) {
@@ -266,8 +266,8 @@ UNUSED void add_translate_mat4_vec3f_lite(Mat4 mat, Mat4 dest, Vec3f pos) {
 }
 
 /*
-* @brief Creates a translation matrix
-* @param dest The matrix to be overriden with the translation matrix
+* @brief          Creates a translation matrix
+* @param dest     The matrix to be overriden with the translation matrix
 * @param vecTrans The translation vector to be added
 */
 void mtxf_translate(Mat4 dest, Vec3f vecTrans) {
@@ -282,13 +282,13 @@ void mtxf_translate(Mat4 dest, Vec3f vecTrans) {
      */
 }
 /*
- * @brief Creates a projection matrix based on specified frustrum (i.e. where the camera can see)
- * @param projMtx A dummy variable that will be overwritten with the projection matrix
- * @param arg1 Unknown dummy variable (will be overwritten)
- * @param vertFov vertical field of view (in degrees)
- * @param aspectRatio Width / Height of player screen
- * @param near near clipping distance
- * @param far far clipping distance
+ * @brief                  Creates a projection matrix based on specified frustrum (i.e. where the camera can see)
+ * @param projMtx          A dummy variable that will be overwritten with the projection matrix
+ * @param arg1             Unknown dummy variable (will be overwritten)
+ * @param vertFov          vertical field of view (in degrees)
+ * @param aspectRatio      Width / Height of player screen
+ * @param near             near clipping distance
+ * @param far              far clipping distance
  * @param homogeneousScale Scaling factor for homogeneous coordinates. Always 1.0 in game
  * Note the use of `2` which generates diff asm than just using floats (2.0f).
  */
@@ -328,10 +328,10 @@ void mtxf_projection(Mat4 projMtx, u16* arg1, f32 vertFov, f32 aspectRatio, f32 
 
 // Appears to only be for the skybox. mtxf_lookat from sm64 with some modifications.
 /**
- * @brief Create a lookat matrix (convert to coordinates relative to camera)
- * @param mtx Dummy matrix overwritten with lookat matrix
+ * @brief      Create a lookat matrix (convert to coordinates relative to camera)
+ * @param mtx  Dummy matrix overwritten with lookat matrix
  * @param from Where the camera is looking from
- * @param to Where the camera is looking to
+ * @param to   Where the camera is looking to
  */
 void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to) {
     // register from sm64 but not required for matching.
@@ -408,8 +408,8 @@ void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to) {
 
 
 /*
- * @brief Create a rotation matrix for rotating about the X axis
- * @param mtx Dummy matrix overwritten with x-axis rotation matrix
+ * @brief       Create a rotation matrix for rotating about the X axis
+ * @param mtx   Dummy matrix overwritten with x-axis rotation matrix
  * @param angle Angle to rotate by (in N64 units)
  */
 void mtxf_rotate_x(Mat4 mtx, s16 angle) {
@@ -431,8 +431,8 @@ void mtxf_rotate_x(Mat4 mtx, s16 angle) {
 }
 
 /*
- * @brief Create a rotation matrix for rotating about the Y axis
- * @param mtx Dummy matrix overwritten with Y axis rotation matrix
+ * @brief       Create a rotation matrix for rotating about the Y axis
+ * @param mtx   Dummy matrix overwritten with Y axis rotation matrix
  * @param angle Angle to rotate by (in N64 units)
  */
 void mtxf_rotate_y(Mat4 mtx, s16 angle) {
@@ -454,8 +454,8 @@ void mtxf_rotate_y(Mat4 mtx, s16 angle) {
 }
 
 /*
- * @brief Create a rotation matrix for rotating about the Z axis
- * @param mtx Dummy matrix overwritten with Z axis rotation matrix
+ * @brief       Create a rotation matrix for rotating about the Z axis
+ * @param mtx   Dummy matrix overwritten with Z axis rotation matrix
  * @param angle Angle to rotate by (in N64 units)
  */
 void mtxf_s16_rotate_z(Mat4 mtx, s16 angle) {
@@ -566,8 +566,8 @@ void set_course_lighting(Lights1* lightAddr, s16 rotateAngleY, s16 rotateAngleX,
 }
 
 /*
- * @brief Scale a matrix by a given coefficient
- * @param mtx Matrix to scale
+ * @brief      Scale a matrix by a given coefficient
+ * @param mtx  Matrix to scale
  * @param coef Coefficient to use when scaling
  */
 void mtxf_scale(Mat4 mtx, f32 coef) {
@@ -583,9 +583,9 @@ void mtxf_scale(Mat4 mtx, f32 coef) {
 }
 
 /*
- * @brief Matrix for rotating about Z, X, Y axes (in order) then translating
- * @param dest Matrix to output
- * @param vecTrans vector to use for translation
+ * @brief             Matrix for rotating about Z, X, Y axes (in order) then translating
+ * @param dest        Matrix to output
+ * @param vecTrans    vector to use for translation
  * @param orientation vector of 3 rotation angles (Rz, Rx, Ry)
  */
 void mtxf_rotation_zxy_translate(Mat4 dest, Vec3f vecTrans, Vec3s orientation) {
@@ -702,7 +702,7 @@ UNUSED void func_802B6374(Vec3f arg0) {
 }
 
 /*
- * @brief Given matrix M and vector v, calculates Mv
+ * @brief     Given matrix M and vector v, calculates Mv
  * @param vec Vector to transform
  * @param mtx Matrix to use in transformation
  */
@@ -721,7 +721,7 @@ void mtxf_transform_vec3f_mat3(Vec3f vec, Mat3 mtx) {
 }
 
 /*
- * @brief Given matrix M and vector v, calculates Mv
+ * @brief     Given matrix M and vector v, calculates Mv
  * @param vec Vector to transform
  * @param mtx Matrix to use in transformation
  */
@@ -875,12 +875,12 @@ UNUSED void func_802B68F8(Mat3 matrix, f32 arg1, f32 arg2, f32 arg3) {
 }
 
 /*
- * @brief rotates a given vector about a given axis by amount specified
- * @param destMatrix Overriden with the resulting matrix
+ * @brief               Rotates a given vector about a given axis by amount specified
+ * @param destMatrix    Overriden with the resulting matrix
  * @param rotationAngle Angle to rotate (in N64 units)
- * @param axisX The X component of the axis to rotate around
- * @param axisY The Y component of the axis to rotate around
- * @param axisZ The Z component of the axis to rotate around
+ * @param axisX         The X component of the axis to rotate around
+ * @param axisY         The Y component of the axis to rotate around
+ * @param axisZ         The Z component of the axis to rotate around
  */
  // Standard algorithm, but unintuitive. "Rotation matrix from axis and angle" brings up info online
 void calculate_rotation_matrix(Mat3 destMatrix, s16 rotationAngle, f32 axisX, f32 axisY, f32 axisZ) {
@@ -988,9 +988,9 @@ UNUSED void func_802B6D58(Mat4 arg0, Vec3f arg1, Vec3f arg2) {
 }
 
 /**
- * @brief Multiply two 4x4 matrices
- * @param dest Result of multiplication is saved here
- * @param mtxLeft Left matrix in product
+ * @brief          Multiply two 4x4 matrices
+ * @param dest     Result of multiplication is saved here
+ * @param mtxLeft  Left matrix in product
  * @param mtxRight Right matrix to product
  */
 void mtxf_multiplication(Mat4 dest, Mat4 mtxLeft, Mat4 mtxRight) {
@@ -1065,10 +1065,10 @@ void mtxf_to_mtx(Mtx* dest, Mat4 src) {
  * Note that this is only called by atan2s, guaranteeing that y <= x
  *   If y > x, it will cause out of bounds issues
  *
- * @brief Finds the arctan angle (in N64 units) given x, y coordinates
+ * @brief   Finds the arctan angle (in N64 units) given x, y coordinates
  * @param y y coordinate
  * @param x x coordinate
- * @return arctan(y/x) (in N64 units)
+ * @return  arctan(y/x) (in N64 units)
  */
 u16 atan2_lookup(f32 y, f32 x) {
     u16 ret;
@@ -1096,10 +1096,10 @@ u16 atan2_lookup(f32 y, f32 x) {
  * the xz-plane, this is commonly called with (z, x) to get a yaw angle.
  * sm64 but x, y swapped and returns u16.
 
- * @brief Finds the arctan angle (in N64 units) given x, y coordinates
+ * @brief   Finds the arctan angle (in N64 units) given x, y coordinates
  * @param y y coordinate
  * @param x x coordinate
- * @return arctan(y/x) (in N64 units)
+ * @return  arctan(y/x) (in N64 units)
  */
 u16 atan2s(f32 y, f32 x) {
     u16 ret;
@@ -1194,9 +1194,9 @@ UNUSED void func_802B7C18(f32 arg0) {
     atan2f(arg0, 1.0f);
 }
 /*
- * @brief Finds the arctan angle (in N64 units) given the tangent
+ * @brief     Finds the arctan angle (in N64 units) given the tangent
  * @param tan Tangent of an angle
- * @return arctan(tan) (in N64 units)
+ * @return    arctan(tan) (in N64 units)
  */
 s16 atan1s(f32 tan) {
     return atan2s(tan, 1.0f);
@@ -1207,9 +1207,9 @@ UNUSED void func_802B7C6C(f32 arg0) {
 }
 
 /*
- * @brief Finds the arcsin (in N64 units) of a value (assuming positive cosine)
+ * @brief       Finds the arcsin (in N64 units) of a value (assuming positive cosine)
  * @param value Value to find the arcsin of
- * @return arcsin(value)
+ * @return      arcsin(value)
  */
 s16 asin1s(f32 value) {
     return atan2s(value, sqrtf(1.0 - (value * value)));
@@ -1222,9 +1222,9 @@ s16 asin1s(f32 value) {
 }
 
 /*
- * @brief Finds the arccos angle (in N64 units) of a value (assuming positive sine)
+ * @brief       Finds the arccos angle (in N64 units) of a value (assuming positive sine)
  * @param value Value to find the arccos of
- * @return arccos(value)
+ * @return      arccos(value)
  */
 f32 acos1f(f32 value) {
     return atan2f(sqrtf(1.0 - (value * value)), value);
@@ -1273,22 +1273,22 @@ u16 random_int(u16 arg0) {
 }
 
 /*
- * @brief Find the angle (in N64 units) between two points given their coords
+ * @brief       Find the angle (in N64 units) between two points given their coords
  * @param fromY The y coordinate of the point the angle is measured from
  * @param fromX The x coordinate of the point the angle is measured from
- * @param toY The y coordinate of the point the angle is measured to
- * @param toX The x coordinate of the point the angle is measured to
- * @return The angle (in N64 units) of the line from the from-point, to the to-point
+ * @param toY   The y coordinate of the point the angle is measured to
+ * @param toX   The x coordinate of the point the angle is measured to
+ * @return      The angle (in N64 units) of the line from the from-point, to the to-point
  */
 s16 angle_from_coords(f32 fromY, f32 fromX, f32 toY, f32 toX) {
     return atan2s(toY - fromY, toX - fromX);
 }
 
 /*
- * @brief Find the planar angles (in N64 units) between two points given their positions
- * @param from The coordinates of the point the angle is measured from
- * @param to The coordinate of the point the angle is measured to
- * @param Overwritten with the angles between the two points in the coordinate planes (yz, xz, xy)
+ * @brief           Find the planar angles (in N64 units) between two points given their positions
+ * @param from      The coordinates of the point the angle is measured from
+ * @param to        The coordinate of the point the angle is measured to
+ * @param rotAngles Overwritten with the angles between the two points in the coordinate planes (yz, xz, xy)
  */
 void planar_angles(Vec3f from, Vec3f to, Vec3s rotAngles) {
     f32 fromX = from[0];
@@ -1305,29 +1305,29 @@ void planar_angles(Vec3f from, Vec3f to, Vec3s rotAngles) {
 }
 
 /*
- * @brief Get the sine of an angle
- * @param angle angle (in N64 units)
- * @return sin(angle)
+ * @brief       Get the sine of an angle
+ * @param angle Angle (in N64 units)
+ * @return      sin(angle)
  */
 f32 sins(u16 angle) {
     return gSineTable[angle >> 4];
 }
 
 /*
- * @brief Get the cosine of an angle
+ * @brief       Get the cosine of an angle
  * @param angle angle (in N64 units)
- * @return sin(angle)
+ * @return      sin(angle)
  */
 f32 coss(u16 angle) {
     return gCosineTable[angle >> 4];
 }
 
 /*
- * @brief checks if angle is between 2 specified angles
- * @param angleCCW The counter-clockwise angle
- * @param angleCW The clockwise angle
+ * @brief              Checks if angle is between 2 specified angles
+ * @param angleCCW     The counter-clockwise angle
+ * @param angleCW      The clockwise angle
  * @param angleToCheck The angle to check is between the other angles
- * @return 1 if angleToCheck is between the other angles, 0 otherwise
+ * @return             1 if angleToCheck is between the other angles, 0 otherwise
  */
 s32 is_between_angle(u16 angleCCW, u16 angleCW, u16 angleToCheck) {
     if (angleCW < angleCCW) {
