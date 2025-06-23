@@ -561,7 +561,7 @@ s32 init_triple_shell(TripleShellParent* parent, Player* player, s16 shellType, 
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = player->boundingBoxSize - 4.0f;
-    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(startingPos, player->orientationMatrix);
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
@@ -610,7 +610,7 @@ s32 use_green_shell_item(Player* player) {
     startingPos[2] = player->boundingBoxSize - 4.0f;
 
     // rotate to match player orientation
-    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(startingPos, player->orientationMatrix);
 
     // move to player position
     startingPos[0] += player->pos[0];
@@ -650,7 +650,7 @@ s32 use_red_shell_item(Player* player) {
     startingPos[2] = player->boundingBoxSize - 4.0f;
 
     // rotate to match player orientation
-    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(startingPos, player->orientationMatrix);
 
     // move to player position
     startingPos[0] += player->pos[0];
@@ -699,7 +699,7 @@ void func_802B2914(struct BananaBunchParent* banana_bunch, Player* player, s16 b
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = -(player->boundingBoxSize + 4.0f);
-    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(startingPos, player->orientationMatrix);
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
@@ -779,7 +779,7 @@ s32 use_fake_itembox_item(Player* player) {
     startingPos[2] = -(player->boundingBoxSize + 4.0f);
 
     // rotate to match player orientation
-    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(startingPos, player->orientationMatrix);
 
     // move to player position
     startingPos[0] += player->pos[0];
@@ -827,7 +827,7 @@ s32 use_banana_item(Player* player) {
     startingPos[2] = -(player->boundingBoxSize + 4.0f);
 
     // apply the player's orientation to the banana
-    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(startingPos, player->orientationMatrix);
 
     // add the player's position to the banana's position
     startingPos[0] += player->pos[0];

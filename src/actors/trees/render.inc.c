@@ -19,7 +19,7 @@ void render_actor_tree_mario_raceway(Camera* camera, Mat4 arg1, struct Actor* ar
         return;
     }
 
-    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
+    temp_f0 = render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
                                         16000000.0f);
 
     if (temp_f0 < 0.0f) {
@@ -55,7 +55,7 @@ void render_actor_tree_yoshi_valley(Camera* camera, Mat4 arg1, struct Actor* arg
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) {
         return;
@@ -90,7 +90,7 @@ void render_actor_tree_royal_raceway(Camera* camera, Mat4 arg1, struct Actor* ar
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) {
         return;
@@ -125,7 +125,7 @@ void render_actor_tree_moo_moo_farm(Camera* camera, Mat4 arg1, struct Actor* arg
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 6250000.0f);
+        render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 6250000.0f);
 
     if (temp_f0 < 0.0f) {
         return;
@@ -154,7 +154,7 @@ void func_80299864(Camera* camera, Mat4 arg1, struct Actor* arg2) {
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) {
         return;
@@ -193,7 +193,7 @@ void render_actor_tree_bowser_castle(Camera* camera, Mat4 arg1, struct Actor* ar
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) {
         return;
@@ -228,7 +228,7 @@ void render_actor_bush_bowser_castle(Camera* camera, Mat4 arg1, struct Actor* ar
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 640000.0f);
+        render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 640000.0f);
 
     if (temp_f0 < 0.0f) {
         return;
@@ -263,7 +263,7 @@ void render_actor_tree_frappe_snowland(Camera* camera, Mat4 arg1, struct Actor* 
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) {
         return;
@@ -297,7 +297,7 @@ void render_actor_tree_cactus1_kalimari_desert(Camera* camera, Mat4 arg1, struct
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) {
         return;
@@ -331,7 +331,7 @@ void render_actor_tree_cactus2_kalimari_desert(Camera* camera, Mat4 arg1, struct
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) {
         return;
@@ -365,7 +365,7 @@ void render_actor_tree_cactus3_kalimari_desert(Camera* camera, Mat4 arg1, struct
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) {
         return;

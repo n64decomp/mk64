@@ -874,7 +874,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     sp8C[0] = var_f12 - 3.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = var_f12 - 2.0f;
-    mtxf_translate_vec3f_mat3(sp8C, sp5C);
+    mtxf_transform_vec3f_mat3(sp8C, sp5C);
     sp80[0] = player->tyres[FRONT_LEFT].pos[0];
     sp80[1] = player->tyres[FRONT_LEFT].pos[1];
     sp80[2] = player->tyres[FRONT_LEFT].pos[2];
@@ -885,7 +885,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     sp8C[0] = (-var_f12) + 3.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = var_f12 - 2.0f;
-    mtxf_translate_vec3f_mat3(sp8C, sp5C);
+    mtxf_transform_vec3f_mat3(sp8C, sp5C);
     sp80[0] = player->tyres[FRONT_RIGHT].pos[0];
     sp80[1] = player->tyres[FRONT_RIGHT].pos[1];
     sp80[2] = player->tyres[FRONT_RIGHT].pos[2];
@@ -896,7 +896,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     sp8C[0] = var_f12 - 2.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = (-var_f12) + 4.0f;
-    mtxf_translate_vec3f_mat3(sp8C, sp5C);
+    mtxf_transform_vec3f_mat3(sp8C, sp5C);
     sp80[0] = player->tyres[BACK_LEFT].pos[0];
     sp80[1] = player->tyres[BACK_LEFT].pos[1];
     sp80[2] = player->tyres[BACK_LEFT].pos[2];
@@ -907,7 +907,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     sp8C[0] = (-var_f12) + 2.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = (-var_f12) + 4.0f;
-    mtxf_translate_vec3f_mat3(sp8C, sp5C);
+    mtxf_transform_vec3f_mat3(sp8C, sp5C);
     sp80[0] = player->tyres[BACK_RIGHT].pos[0];
     sp80[1] = player->tyres[BACK_RIGHT].pos[1];
     sp80[2] = player->tyres[BACK_RIGHT].pos[2];
@@ -1548,7 +1548,7 @@ void func_8002B9CC(Player* player, s8 playerIndex, UNUSED s32 arg2) {
                 func_8008C73C(player, playerIndex);
             }
         }
-        temp = (-(s16) get_angle_between_points(player->pos, &player->oldPos[0]));
+        temp = (-(s16) get_xz_angle_between_points(player->pos, &player->oldPos[0]));
         temp2 = (player->rotation[1] - player->unk_0C0);
         temp = temp - temp2;
         player->unk_234 = temp / 182;
@@ -1582,15 +1582,15 @@ void func_8002BB9C(Player* player, f32* arg1, f32* arg2, UNUSED s8 arg3, UNUSED 
     sp58[1] = 0;
     sp58[2] = *arg2;
 
-    mtxf_translate_vec3f_mat3(sp58, sp64);
+    mtxf_transform_vec3f_mat3(sp58, sp64);
 
     sp4C[0] = player->oldPos[0];
     sp4C[1] = 0;
     sp4C[2] = player->oldPos[2];
 
-    mtxf_translate_vec3f_mat3(sp4C, sp64);
+    mtxf_transform_vec3f_mat3(sp4C, sp64);
 
-    var_v0 = -(s16) get_angle_between_points(sp58, sp4C);
+    var_v0 = -(s16) get_xz_angle_between_points(sp58, sp4C);
     t0 = player->rotation[1];
     var_v0 = 0x10000 + (t0 - var_v0);
     var_v0 /= 182;
@@ -2005,7 +2005,7 @@ void func_8002D028(Player* player, s8 playerIndex) {
     sp4C[1] = 0;
     sp4C[2] = D_80165230[D_80165270[playerIndex]];
 
-    temp = -(s16) get_angle_between_points(player->pos, sp4C);
+    temp = -(s16) get_xz_angle_between_points(player->pos, sp4C);
     temp2 = player->rotation[1];
     temp = (temp - temp2);
 
@@ -2136,12 +2136,12 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
         sp178[2] = 0.0f;
     }
     sp178[1] = 0.0f;
-    mtxf_translate_vec3f_mat3(sp178, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(sp178, player->orientationMatrix);
     gravityX += sp178[0];
     gravityZ += sp178[2];
     func_8002C7E4(player, playerId, screenId);
     sp184[2] = func_80030150(player, playerId);
-    mtxf_translate_vec3f_mat3(sp184, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(sp184, player->orientationMatrix);
     newVelocity[0] = player->velocity[0];
     newVelocity[1] = player->velocity[1];
     newVelocity[2] = player->velocity[2];
@@ -2436,9 +2436,9 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     }
     spEC[2] = func_80030150(player, playerId);
     if (sp46 == 1) {
-        mtxf_translate_vec3f_mat3(spEC, player->unk_150);
+        mtxf_transform_vec3f_mat3(spEC, player->unk_150);
     } else {
-        mtxf_translate_vec3f_mat3(spEC, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(spEC, player->orientationMatrix);
     }
     newVelocity[0] = player->velocity[0];
     newVelocity[1] = player->velocity[1];
@@ -2657,7 +2657,7 @@ void control_cpu_movement(Player* player, UNUSED Camera* camera, s8 screenId, s8
     player->unk_256 = 0;
     player->effects &= ~0x8000;
     spF4[2] = func_80030150(player, playerId);
-    mtxf_translate_vec3f_mat3(spF4, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(spF4, player->orientationMatrix);
     newVelocity[0] = player->velocity[0];
     newVelocity[1] = 0;
     newVelocity[2] = player->velocity[2];
@@ -2731,7 +2731,7 @@ void func_8002F730(Player* player, UNUSED Camera* camera, UNUSED s8 screenId, s8
     sp7C = player->unk_064[2] * 0;
     spF4[2] = func_80030150(player, playerId);
 
-    mtxf_translate_vec3f_mat3(spF4, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(spF4, player->orientationMatrix);
 
     newVelocity[0] = player->velocity[0];
     newVelocity[1] = player->velocity[1];
@@ -4239,7 +4239,7 @@ void func_80036DB4(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
         if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) && ((player->effects & 2) != 2)) {
             var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 10.0f);
@@ -4280,7 +4280,7 @@ void func_80036DB4(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = (player->unk_090 + var_f18) * player->speed;
         arg1[1] = 0.0f;
         arg1[2] = player->speed * sp20;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4297,7 +4297,7 @@ void func_800371F4(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
         if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) && ((player->effects & 2) != 2)) {
             var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 50.0f);
@@ -4341,7 +4341,7 @@ void func_800371F4(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = -(player->unk_090 + var_f18) * player->speed;
         arg1[1] = 0.0f;
         arg1[2] = player->speed * sp20;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4356,7 +4356,7 @@ void func_80037614(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
         if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) && ((player->effects & 2) != 2)) {
             var_f2 = ((-(player->speed / 18.0f) * 216.0f) * 2) + -80.0f;
@@ -4368,7 +4368,7 @@ void func_80037614(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = (var_f2 + 28.0f) * player->speed;
         arg1[1] = 0.0f;
         arg1[2] = var_f12 * player->speed;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4383,7 +4383,7 @@ void func_8003777C(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
         if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) && ((player->effects & 2) != 2)) {
             var_f2 = ((-(player->speed / 18.0f) * 216.0f) * 2) + -80.0f;
@@ -4395,7 +4395,7 @@ void func_8003777C(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = -(var_f2 + 28.0f) * player->speed;
         arg1[1] = 0.0f;
         arg1[2] = var_f12 * player->speed;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4410,7 +4410,7 @@ void func_800378E8(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
         if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
             var_f2 = player->unk_208 + (-(player->speed / 18.0f) * 216.0f * 5.0f) + (-player->unk_20C * 10.0f);
@@ -4422,7 +4422,7 @@ void func_800378E8(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = (player->unk_090 + var_f2) * player->speed;
         arg1[1] = 0.0f;
         arg1[2] = player->speed * var_f12;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4437,7 +4437,7 @@ void func_80037A4C(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
         if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
             var_f2 = player->unk_208 + (-(player->speed / 18.0f) * 216.0f * 5.0f) + (-player->unk_20C * 50.0f);
@@ -4449,7 +4449,7 @@ void func_80037A4C(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = -(player->unk_090 + var_f2) * player->speed;
         arg1[1] = 0.0f;
         arg1[2] = player->speed * var_f12;
-        mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+        mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4839,11 +4839,11 @@ void func_80038C6C(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     sp108[2] = 0;
     sp108[1] = 0;
     sp108[0] = 0;
-    mtxf_translate_vec3f_mat3(sp108, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(sp108, player->orientationMatrix);
     spA4 += sp108[0];
     sp9C += sp108[2];
     sp114[2] = player->unk_08C;
-    mtxf_translate_vec3f_mat3(sp114, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(sp114, player->orientationMatrix);
 
     newVelocity[0] = player->velocity[0];
     newVelocity[1] = player->velocity[1];

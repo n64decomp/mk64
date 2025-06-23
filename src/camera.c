@@ -234,7 +234,7 @@ void func_8001CA78(UNUSED Player* player, Camera* camera, Vec3f arg2, f32* arg3,
     arg2[1] = camera->lookAt[1];
     arg2[2] = camera->lookAt[2];
     calculate_orientation_matrix(sp74, 0, 1, 0, -0x00008000);
-    mtxf_translate_vec3f_mat3(sp5C, sp74);
+    mtxf_transform_vec3f_mat3(sp5C, sp74);
     if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
         var_f14 = sp5C[0];
     } else {
@@ -245,7 +245,7 @@ void func_8001CA78(UNUSED Player* player, Camera* camera, Vec3f arg2, f32* arg3,
     arg2[0] += (var_f14 - camera->lookAt[0]) * 1;
     arg2[1] += (temp_f18 - camera->lookAt[1]) * 1;
     arg2[2] += (temp_f16 - camera->lookAt[2]) * 1;
-    mtxf_translate_vec3f_mat3(sp68, sp74);
+    mtxf_transform_vec3f_mat3(sp68, sp74);
     if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
         var_f14 = sp68[0];
     } else {
@@ -366,7 +366,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         sp84[2] /= 3.0f;
     }
     calculate_orientation_matrix(sp9C, 0, 1, 0, arg7);
-    mtxf_translate_vec3f_mat3(sp84, sp9C);
+    mtxf_transform_vec3f_mat3(sp84, sp9C);
 
     x = player->pos[0] + sp84[0];
     z = player->pos[2] + sp84[2];
@@ -380,7 +380,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     } else {
         arg2[1] += ((y - camera->lookAt[1]) * 0.5);
     }
-    mtxf_translate_vec3f_mat3(sp90, sp9C);
+    mtxf_transform_vec3f_mat3(sp90, sp9C);
     x = player->pos[0] + sp90[0];
     z = player->pos[2] + sp90[2];
     if ((player->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000) {
@@ -434,14 +434,14 @@ void func_8001D53C(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     arg2[1] = camera->lookAt[1];
     arg2[2] = camera->lookAt[2];
     calculate_orientation_matrix(sp74, 0.0f, 1.0f, 0.0f, arg6);
-    mtxf_translate_vec3f_mat3(sp5C, sp74);
+    mtxf_transform_vec3f_mat3(sp5C, sp74);
     stackPadding0 = player->pos[0] + sp5C[0];
     stackPadding2 = player->pos[2] + sp5C[2];
     stackPadding1 = player->pos[1] + sp5C[1];
     arg2[0] += (stackPadding0 - camera->lookAt[0]) * 1;
     arg2[2] += (stackPadding2 - camera->lookAt[2]) * 1;
     arg2[1] += (stackPadding1 - camera->lookAt[1]) * 1;
-    mtxf_translate_vec3f_mat3(sp68, sp74);
+    mtxf_transform_vec3f_mat3(sp68, sp74);
     stackPadding0 = player->pos[0] + sp68[0];
     stackPadding2 = player->pos[2] + sp68[2];
     stackPadding1 = sp68[1] + (player->unk_074 + 1.5);
@@ -477,7 +477,7 @@ void func_8001D794(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     arg2[2] = camera->lookAt[2];
 
     calculate_orientation_matrix(sp6C, 0, 1, 0, arg6);
-    mtxf_translate_vec3f_mat3(sp54, sp6C);
+    mtxf_transform_vec3f_mat3(sp54, sp6C);
 
     test1 = player->pos[0] + sp54[0];
     test3 = player->pos[2] + sp54[2];
@@ -486,7 +486,7 @@ void func_8001D794(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     arg2[1] += (test2 - camera->lookAt[1]) * 1;
     arg2[2] += (test3 - camera->lookAt[2]) * 1;
 
-    mtxf_translate_vec3f_mat3(sp60, sp6C);
+    mtxf_transform_vec3f_mat3(sp60, sp6C);
 
     test1 = player->pos[0] + sp60[0];
     test3 = player->pos[2] + sp60[2];
@@ -586,7 +586,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         sp84[2] /= 3.0f;
     }
     calculate_orientation_matrix(sp9C, 0, 1, 0, arg7);
-    mtxf_translate_vec3f_mat3(sp84, sp9C);
+    mtxf_transform_vec3f_mat3(sp84, sp9C);
 
     x = player->pos[0] + sp84[0];
     z = player->pos[2] + sp84[2];
@@ -600,7 +600,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     } else {
         arg2[1] += ((y - camera->lookAt[1]) * 0.5);
     }
-    mtxf_translate_vec3f_mat3(sp90, sp9C);
+    mtxf_transform_vec3f_mat3(sp90, sp9C);
     x = player->pos[0] + sp90[0];
     z = player->pos[2] + sp90[2];
     if ((player->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000) {

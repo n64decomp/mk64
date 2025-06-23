@@ -499,7 +499,7 @@ void render_skybox(Vtx* skybox, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2
     homogScale = ((lookAndProjMtx[0][3] * horizonPoint[0]) + (lookAndProjMtx[1][3] * horizonPoint[1]) +
                   (lookAndProjMtx[2][3] * horizonPoint[2])) +
                  lookAndProjMtx[3][3];
-    mtxf_translate_vec3f_mat4(horizonPoint, lookAndProjMtx);
+    mtxf_transform_vec3f_mat4(horizonPoint, lookAndProjMtx);
 
     homogFactor = (1.0 / homogScale);
 

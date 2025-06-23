@@ -14,7 +14,7 @@ void render_actor_tanker_truck(Camera* camera, struct Actor* arg1) {
     UNUSED s32 pad[6];
     Mat4 spC8;
     UNUSED s32 pad2[32];
-    f32 temp_f0 = is_within_render_distance(camera->pos, arg1->pos, camera->rot[1], 2500.0f,
+    f32 temp_f0 = render_distance_squared(camera->pos, arg1->pos, camera->rot[1], 2500.0f,
                                             gCameraZoom[camera - camera1], 9000000.0f);
 
     if (!(temp_f0 < 0.0f)) {
@@ -22,7 +22,7 @@ void render_actor_tanker_truck(Camera* camera, struct Actor* arg1) {
         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-        mtxf_pos_rotation_xyz(spC8, arg1->pos, arg1->rot);
+        mtxf_rotation_zxy_translate(spC8, arg1->pos, arg1->rot);
         if (render_set_position(spC8, 0) != 0) {
 
             if (gActiveScreenMode == SCREEN_MODE_1P) {

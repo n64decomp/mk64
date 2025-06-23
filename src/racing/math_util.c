@@ -28,7 +28,7 @@ UNUSED s32 func_802B4F60(UNUSED s32 arg0, Vec3f arg1, UNUSED s32 arg2, UNUSED f3
     sp2C = ((sp30[0][3] * sp28) + (sp30[1][3] * sp2C) + (sp30[2][3] * sp1C[2])) + sp30[3][3];
     // double wut?
     if (sp28 && sp28) {};
-    mtxf_translate_vec3f_mat4(sp1C, sp30);
+    mtxf_transform_vec3f_mat4(sp1C, sp30);
     if (0.0f >= sp2C) {
         return 0;
     } else {
@@ -88,14 +88,13 @@ f32 dist_squared_bugged(Vec3f from, Vec3f to) {
     return (deltaX * deltaX) + (deltaY * deltaY) + deltaZ + deltaZ;
 }
 
-// TODO: Rename get_xz_angle_between_points or something similar
 /*
 * @brief Finds the angle within the XZ-plane between two points (while ignoring any difference in Y)
 * @param pointFrom A point in 3D space
 * @param pointTo A point in 3D space
 * @return Angle (N64-units) in XZ-plane between pointFrom and pointTo
 */
-s32 get_angle_between_points(Vec3f pointFrom, Vec3f pointTo) {
+s32 get_xz_angle_between_points(Vec3f pointFrom, Vec3f pointTo) {
     f32 deltaX;
     f32 deltaZ;
     deltaX = pointTo[0] - pointFrom[0];
@@ -104,7 +103,7 @@ s32 get_angle_between_points(Vec3f pointFrom, Vec3f pointTo) {
     return atan2s(deltaX, deltaZ);
 }
 
-// copy of get_angle_between_points
+// copy of get_xz_angle_between_points
 UNUSED u32 func_802B5258(Vec3f arg0, Vec3s arg1) {
     f32 temp_v1;
     f32 temp_v2;
@@ -583,14 +582,13 @@ void mtxf_scale(Mat4 mtx, f32 coef) {
     mtx[2][2] *= coef;
 }
 
-// TODO: rename
 /*
  * @brief Matrix for rotating about Z, X, Y axes (in order) then translating
  * @param dest Matrix to output
  * @param vecTrans vector to use for translation
- * @param orientation vector of 3 rotation angles (Rx, Ry, Rz)
+ * @param orientation vector of 3 rotation angles (Rz, Rx, Ry)
  */
-void mtxf_pos_rotation_xyz(Mat4 dest, Vec3f vecTrans, Vec3s orientation) {
+void mtxf_rotation_zxy_translate(Mat4 dest, Vec3f vecTrans, Vec3s orientation) {
     f32 sinX;
     f32 cosX;
     f32 sinY;
@@ -703,14 +701,12 @@ UNUSED void func_802B6374(Vec3f arg0) {
     arg0[2] /= temp_f0;
 }
 
-// transform a vector with a matrix
-// TODO: rename transform because it is not a translation
 /*
  * @brief Given matrix M and vector v, calculates Mv
  * @param vec Vector to transform
  * @param mtx Matrix to use in transformation
  */
-void mtxf_translate_vec3f_mat3(Vec3f vec, Mat3 mtx) {
+void mtxf_transform_vec3f_mat3(Vec3f vec, Mat3 mtx) {
     f32 newX;
     f32 newY;
     f32 newZ;
@@ -724,13 +720,12 @@ void mtxf_translate_vec3f_mat3(Vec3f vec, Mat3 mtx) {
     vec[2] = newZ;
 }
 
-// TODO: rename transform because it is not a translation
 /*
  * @brief Given matrix M and vector v, calculates Mv
  * @param vec Vector to transform
  * @param mtx Matrix to use in transformation
  */
-void mtxf_translate_vec3f_mat4(Vec3f vec, Mat4 mat) {
+void mtxf_transform_vec3f_mat4(Vec3f vec, Mat4 mat) {
     f32 newX;
     f32 newY;
     f32 newZ;
@@ -1327,25 +1322,30 @@ f32 coss(u16 angle) {
     return gCosineTable[angle >> 4];
 }
 
-// TODO: rename is_between_angle
-s32 is_visible_between_angle(u16 fovHigher, u16 fovLower, u16 angleToCheck) {
-    if (fovLower < fovHigher) {
-        if (fovLower >= angleToCheck) {
+/*
+ * @brief checks if angle is between 2 specified angles
+ * @param angleCCW The counter-clockwise angle
+ * @param angleCW The clockwise angle
+ * @param angleToCheck The angle to check is between the other angles
+ * @return 1 if angleToCheck is between the other angles, 0 otherwise
+ */
+s32 is_between_angle(u16 angleCCW, u16 angleCW, u16 angleToCheck) {
+    if (angleCW < angleCCW) {
+        if (angleCW >= angleToCheck) {
             return 0;
         }
-        if (angleToCheck >= fovHigher) {
+        if (angleToCheck >= angleCCW) {
             return 0;
         }
     } else {
-        // fov straddles 0 angle
-        if ((fovLower >= angleToCheck) && (angleToCheck >= fovHigher)) {
+        // angle straddles 0 angle
+        if ((angleCW >= angleToCheck) && (angleToCheck >= angleCCW)) {
             return 0;
         }
     }
     return 1;
 }
 
-//TODO Better name
 /*
  * @brief Determines whether an object is within the render distance of a camera.
  *
@@ -1353,13 +1353,13 @@ s32 is_visible_between_angle(u16 fovHigher, u16 fovLower, u16 angleToCheck) {
  * @param objectPos              The position of the object in 3D space.
  * @param orientationY           The orientation angle of the object around the Y-axis.
  * @param preloadDistanceSquared Consider an object within this distance of viweable area as renderable
- * @param fovDegrees            The field of view (FOV) of the camera (degrees).
+ * @param fovDegrees             The field of view (FOV) of the camera (degrees).
  * @param maxDistanceSquared     The maximum render distance.
  * @return                       The distance between the camera and the object if it's within render distance of the
  *                               camera's vision, or -1.0f if it exceeds the render distance.
  */
 
-f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 preloadDistanceSquared, f32 fovDegrees,
+f32 render_distance_squared(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 preloadDistanceSquared, f32 fovDegrees,
                               f32 maxDistanceSquared) {
     u16 angleObject;
     UNUSED u16 pad;
@@ -1394,18 +1394,18 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
         return -1.0f;
     }
 
-    angleObject = get_angle_between_points(cameraPos, objectPos);
+    angleObject = get_xz_angle_between_points(cameraPos, objectPos);
     minusFovAngle = (orientationY - fovUnits);
     plusFovAngle = (orientationY + fovUnits);
 
     if (preloadDistanceSquared == 0.0f) {
-        if (is_visible_between_angle((orientationY + fovUnits), (orientationY - fovUnits), angleObject) == 1) {
+        if (is_between_angle((orientationY + fovUnits), (orientationY - fovUnits), angleObject) == 1) {
             return distanceSquared;
         }
         return -1.0f;
     }
 
-    if (is_visible_between_angle((u16) plusFovAngle, (u16) minusFovAngle, angleObject) == 1) {
+    if (is_between_angle((u16) plusFovAngle, (u16) minusFovAngle, angleObject) == 1) {
         return distanceSquared;
     }
 
@@ -1414,12 +1414,12 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
     preloadAngle = asin1s(preloadDistanceSquared / distanceSquared);
     adjustedAngle = angleObject + preloadAngle;
 
-    if (is_visible_between_angle(plusFovAngle, minusFovAngle, adjustedAngle) == 1) {
+    if (is_between_angle(plusFovAngle, minusFovAngle, adjustedAngle) == 1) {
         return distanceSquared;
     }
 
     adjustedAngle = angleObject - preloadAngle;
-    if (is_visible_between_angle(plusFovAngle, minusFovAngle, adjustedAngle) == 1) {
+    if (is_between_angle(plusFovAngle, minusFovAngle, adjustedAngle) == 1) {
         return distanceSquared;
     }
     return -1.0f;

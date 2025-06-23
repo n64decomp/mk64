@@ -250,7 +250,7 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
             somePosVel[0] = 0.0f;
             somePosVel[1] = player->boundingBoxSize;
             somePosVel[2] = -(player->boundingBoxSize + shell->boundingBoxSize + 2.0f);
-            mtxf_translate_vec3f_mat3(somePosVel, player->orientationMatrix);
+            mtxf_transform_vec3f_mat3(somePosVel, player->orientationMatrix);
             shell->pos[0] = player->pos[0] + somePosVel[0];
             pad7 = player->pos[1] - somePosVel[1];
             shell->pos[2] = player->pos[2] + somePosVel[2];
@@ -331,7 +331,7 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                 somePosVel[0] = sins(shell->rotAngle) * 8.0f;
                 somePosVel[1] = shell->boundingBoxSize - player->boundingBoxSize;
                 somePosVel[2] = coss(shell->rotAngle) * 8.0f;
-                mtxf_translate_vec3f_mat3(somePosVel, player->orientationMatrix);
+                mtxf_transform_vec3f_mat3(somePosVel, player->orientationMatrix);
                 shell->pos[0] = player->pos[0] + somePosVel[0];
                 shell->pos[1] = player->pos[1] + somePosVel[1];
                 shell->pos[2] = player->pos[2] + somePosVel[2];
@@ -437,7 +437,7 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                 somePosVel[0] = sins(shell->rotAngle) * 8.0f;
                 somePosVel[1] = shell->boundingBoxSize - player->boundingBoxSize;
                 somePosVel[2] = coss(shell->rotAngle) * 8.0f;
-                mtxf_translate_vec3f_mat3(somePosVel, player->orientationMatrix);
+                mtxf_transform_vec3f_mat3(somePosVel, player->orientationMatrix);
                 origPos[0] = shell->pos[0];
                 origPos[1] = shell->pos[1];
                 origPos[2] = shell->pos[2];
