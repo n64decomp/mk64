@@ -27,7 +27,7 @@ void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
     f32 someMultiplier;
 
     temp_f0 = render_distance_squared(camera->pos, item_box->pos, camera->rot[1], 0.0f, gCameraZoom[camera - camera1],
-                                        4000000.0f);
+                                      4000000.0f);
     if (!(temp_f0 < 0.0f) && !(600000.0f < temp_f0)) {
         if ((item_box->state == 2) && (temp_f0 < 100000.0f)) {
             someRot[0] = 0;

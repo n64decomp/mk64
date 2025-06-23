@@ -14,7 +14,7 @@ void render_actor_railroad_crossing(Camera* arg0, struct RailroadCrossing* rr_cr
     UNUSED Vec3s sp80 = { 0, 0, 0 };
     Mat4 sp40;
     f32 unk = render_distance_squared(arg0->pos, rr_crossing->pos, arg0->rot[1], 0.0f, gCameraZoom[arg0 - camera1],
-                                        4000000.0f);
+                                      4000000.0f);
 
     if (!(unk < 0.0f)) {
         mtxf_rotation_zxy_translate(sp40, rr_crossing->pos, rr_crossing->rot);

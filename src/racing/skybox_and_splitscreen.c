@@ -463,15 +463,15 @@ void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32
 }
 
 /**
- * @brief Sets skybox horizon. Some coordinate transformations which can affect game physics and display of player sprite
+ * @brief Sets skybox horizon. Some coordinate transformations which can affect game physics and display of player
+ * sprite
  * @param skybox player skybox
  * @param arg1 something camera related
  * @param arg2 unused
  * @param arg3 unused
  * @parma arg4 unused
  */
-void render_skybox(Vtx* skybox, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3,
-                                 UNUSED f32* arg4) {
+void render_skybox(Vtx* skybox, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32* arg4) {
     Camera* camera = arg1->camera;
     s16 horizonRow;
     f32 homogFactor;

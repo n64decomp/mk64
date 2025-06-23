@@ -21,7 +21,7 @@ void render_actor_falling_rock(Camera* camera, struct FallingRock* rock) {
     }
 
     height = render_distance_squared(camera->pos, rock->pos, camera->rot[1], 400.0f, gCameraZoom[camera - camera1],
-                                       4000000.0f);
+                                     4000000.0f);
 
     if (height < 0.0f) {
         return;

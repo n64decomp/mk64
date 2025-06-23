@@ -19,8 +19,8 @@ void render_actor_tree_mario_raceway(Camera* camera, Mat4 arg1, struct Actor* ar
         return;
     }
 
-    temp_f0 = render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
-                                        16000000.0f);
+    temp_f0 =
+        render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 16000000.0f);
 
     if (temp_f0 < 0.0f) {
         return;

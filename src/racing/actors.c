@@ -489,8 +489,8 @@ void render_cows(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
         sp88[0] = var_s1->pos[0] * gCourseDirection;
         sp88[1] = var_s1->pos[1];
         sp88[2] = var_s1->pos[2];
-        temp_f0 = render_distance_squared(camera->pos, sp88, camera->rot[1], 0.0f, gCameraZoom[camera - camera1],
-                                            4000000.0f);
+        temp_f0 =
+            render_distance_squared(camera->pos, sp88, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], 4000000.0f);
         if (temp_f0 > 0.0f) {
             if (temp_f0 < D_8015F704) {
                 D_8015F704 = temp_f0;
@@ -755,8 +755,8 @@ UNUSED void func_8029ABD4(f32* pos, s16 state) {
 }
 
 void func_8029AC18(Camera* camera, Mat4 arg1, struct Actor* arg2) {
-    if (render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
-                                  4000000.0f) < 0) {
+    if (render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f) <
+        0) {
         return;
     }
 

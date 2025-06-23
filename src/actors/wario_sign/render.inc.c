@@ -12,8 +12,7 @@
  */
 void render_actor_wario_sign(Camera* arg0, struct Actor* arg1) {
     Mat4 sp38;
-    f32 unk =
-        render_distance_squared(arg0->pos, arg1->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 16000000.0f);
+    f32 unk = render_distance_squared(arg0->pos, arg1->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 16000000.0f);
 
     if (!(unk < 0.0f)) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);

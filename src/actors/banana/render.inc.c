@@ -15,8 +15,8 @@ void render_actor_banana(Camera* camera, UNUSED Mat4 arg1, struct BananaActor* b
     Vec3s sp7C;
     Mat4 sp3C;
 
-    f32 temp = render_distance_squared(camera->pos, banana->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
-                                         490000.0f);
+    f32 temp =
+        render_distance_squared(camera->pos, banana->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 490000.0f);
     if (temp < 0.0f) {
         actor_not_rendered(camera, (struct Actor*) banana);
         return;

@@ -71,11 +71,11 @@ s32 render_set_position(Mat4 mtx, s32 mode) {
 }
 
 /*
-* @brief      Finds the squared distance between two points, but contains a bug when handling the z-axis
-* @param from A point in 3D space
-* @param to   A point in 3D space
-* @return     Roughly the squared distance between from and to. (x**2 + y**2 + 2*z) instead of (x**2 + y**2 + z**2)
-*/
+ * @brief      Finds the squared distance between two points, but contains a bug when handling the z-axis
+ * @param from A point in 3D space
+ * @param to   A point in 3D space
+ * @return     Roughly the squared distance between from and to. (x**2 + y**2 + 2*z) instead of (x**2 + y**2 + z**2)
+ */
 f32 dist_squared_bugged(Vec3f from, Vec3f to) {
     f32 deltaY;
     f32 deltaZ;
@@ -89,11 +89,11 @@ f32 dist_squared_bugged(Vec3f from, Vec3f to) {
 }
 
 /*
-* @brief           Finds the angle within the XZ-plane between two points (while ignoring any difference in Y)
-* @param pointFrom A point in 3D space
-* @param pointTo   A point in 3D space
-* @return          Angle (N64-units) in XZ-plane between pointFrom and pointTo
-*/
+ * @brief           Finds the angle within the XZ-plane between two points (while ignoring any difference in Y)
+ * @param pointFrom A point in 3D space
+ * @param pointTo   A point in 3D space
+ * @return          Angle (N64-units) in XZ-plane between pointFrom and pointTo
+ */
 s32 get_xz_angle_between_points(Vec3f pointFrom, Vec3f pointTo) {
     f32 deltaX;
     f32 deltaZ;
@@ -114,12 +114,12 @@ UNUSED u32 func_802B5258(Vec3f arg0, Vec3s arg1) {
 }
 
 /*
-* @brief        sets a vector to the given coordinates
-* @param dest   The vector to be overriden
-* @param coordX The X coordinate of the desired vector
-* @param coordY The Y coordinate of the desired vector
-* @param coordZ The Z coordinate of the desired vector
-*/
+ * @brief        sets a vector to the given coordinates
+ * @param dest   The vector to be overriden
+ * @param coordX The X coordinate of the desired vector
+ * @param coordY The Y coordinate of the desired vector
+ * @param coordZ The Z coordinate of the desired vector
+ */
 void vec3f_set(Vec3f dest, f32 coordX, f32 coordY, f32 coordZ) {
     dest[0] = coordX;
     dest[1] = coordY;
@@ -127,12 +127,12 @@ void vec3f_set(Vec3f dest, f32 coordX, f32 coordY, f32 coordZ) {
 }
 
 /*
-* @brief        sets a vector to the given coordinates
-* @param dest   The vector to be overriden
-* @param coordX The X coordinate of the desired vector
-* @param coordY The Y coordinate of the desired vector
-* @param coordZ The Z coordinate of the desired vector
-*/
+ * @brief        sets a vector to the given coordinates
+ * @param dest   The vector to be overriden
+ * @param coordX The X coordinate of the desired vector
+ * @param coordY The Y coordinate of the desired vector
+ * @param coordZ The Z coordinate of the desired vector
+ */
 void vec3s_set(Vec3s dest, s16 coordX, s16 coordY, s16 coordZ) {
     dest[0] = coordX;
     dest[1] = coordY;
@@ -152,11 +152,11 @@ void vec3s_set(Vec3s dest, s16 coordX, s16 coordY, s16 coordZ) {
 #endif
 
 /*
-* @brief      Copies the coordinates of a vector to another vector
-* @param dest The vector to be overriden
-* @param src  The vector to be copied
-* @return     local address of destination vector
-*/
+ * @brief      Copies the coordinates of a vector to another vector
+ * @param dest The vector to be overriden
+ * @param src  The vector to be copied
+ * @return     local address of destination vector
+ */
 void* vec3f_copy_return(Vec3f dest, Vec3f src) {
     dest[0] = src[0];
     dest[1] = src[1];
@@ -166,10 +166,10 @@ void* vec3f_copy_return(Vec3f dest, Vec3f src) {
 }
 
 /*
-* @brief      copies the coordinates of a vector to another vector
-* @param dest The vector to be overriden
-* @param src  The vector to be copied
-*/
+ * @brief      copies the coordinates of a vector to another vector
+ * @param dest The vector to be overriden
+ * @param src  The vector to be copied
+ */
 void vec3s_copy(Vec3s dest, Vec3s src) {
     dest[0] = src[0];
     dest[1] = src[1];
@@ -184,10 +184,10 @@ UNUSED void* vec3f_set_return(Vec3f dest, f32 x, f32 y, f32 z) {
 }
 
 /*
-* @brief      copies the values of a matrix to another matrix
-* @param src  The matrix to be copied
-* @param dest The matrix to be overriden
-*/
+ * @brief      copies the values of a matrix to another matrix
+ * @param src  The matrix to be copied
+ * @param dest The matrix to be overriden
+ */
 void mtxf_copy(Mat4 src, Mat4 dest) {
     s32 row;
     s32 column;
@@ -200,21 +200,21 @@ void mtxf_copy(Mat4 src, Mat4 dest) {
 }
 
 /*
-* @brief      copies the first n values of a matrix to another matrix
-* @param dest The matrix to be overriden
-* @param src  The matrix to be copied
-* @param n    The number of values to be copied
-*/
+ * @brief      copies the first n values of a matrix to another matrix
+ * @param dest The matrix to be overriden
+ * @param src  The matrix to be copied
+ * @param n    The number of values to be copied
+ */
 void mtxf_copy_n_element(s32* dest, s32* src, s32 n) {
     while (n-- > 0) {
         *dest++ = *src++;
     }
 }
 
-/* 
-* @brief        Transform a matrix to an identity matrix
-* @param Matrix The matrix to be changed to an identity matrix
-*/
+/*
+ * @brief        Transform a matrix to an identity matrix
+ * @param Matrix The matrix to be changed to an identity matrix
+ */
 void mtxf_identity(Mat4 mtx) {
     register s32 row;
     register s32 col;
@@ -227,11 +227,11 @@ void mtxf_identity(Mat4 mtx) {
 }
 
 /*
-* @brief          Add a translation vector to a matrix
-* @param scr      The matrix to be copied
-* @param dest     The matrix to be overriden with the result
-* @param vecTrans The translation vector to be added
-*/
+ * @brief          Add a translation vector to a matrix
+ * @param scr      The matrix to be copied
+ * @param dest     The matrix to be overriden with the result
+ * @param vecTrans The translation vector to be added
+ */
 void add_translate_mat4_vec3f(Mat4 src, Mat4 dest, Vec3f vecTrans) {
     dest[3][0] = src[3][0] + vecTrans[0];
     dest[3][1] = src[3][1] + vecTrans[1];
@@ -266,10 +266,10 @@ UNUSED void add_translate_mat4_vec3f_lite(Mat4 mat, Mat4 dest, Vec3f pos) {
 }
 
 /*
-* @brief          Creates a translation matrix
-* @param dest     The matrix to be overriden with the translation matrix
-* @param vecTrans The translation vector to be added
-*/
+ * @brief          Creates a translation matrix
+ * @param dest     The matrix to be overriden with the translation matrix
+ * @param vecTrans The translation vector to be added
+ */
 void mtxf_translate(Mat4 dest, Vec3f vecTrans) {
     mtxf_identity(dest);
     dest[3][0] = vecTrans[0];
@@ -292,8 +292,7 @@ void mtxf_translate(Mat4 dest, Vec3f vecTrans) {
  * @param homogeneousScale Scaling factor for homogeneous coordinates. Always 1.0 in game
  * Note the use of `2` which generates diff asm than just using floats (2.0f).
  */
-void mtxf_projection(Mat4 projMtx, u16* arg1, f32 vertFov, f32 aspectRatio, f32 near, f32 far,
-                           f32 homogeneousScale) {
+void mtxf_projection(Mat4 projMtx, u16* arg1, f32 vertFov, f32 aspectRatio, f32 near, f32 far, f32 homogeneousScale) {
     f32 halfCot;
     s32 rowIdx, colIdx;
     mtxf_identity(projMtx);
@@ -406,7 +405,6 @@ void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to) {
     mtx[3][3] = 1.0f;
 }
 
-
 /*
  * @brief       Create a rotation matrix for rotating about the X axis
  * @param mtx   Dummy matrix overwritten with x-axis rotation matrix
@@ -509,7 +507,7 @@ UNUSED void func_802B5B14(Vec3f b, Vec3s rotate) {
     b[2] = copy[0] * mtx[2][0] + copy[1] * mtx[2][1] + copy[1] * mtx[2][2];
 }
 
-    // rotates (0, 0, -1) about the x and y axis, in that order
+// rotates (0, 0, -1) about the x and y axis, in that order
 void vec_unit_z_rotX_rotY(s16 rotY, s16 rotX, Vec3f arg2) {
     f32 sinX = sins(rotX);
     f32 cosX = coss(rotX);
@@ -520,7 +518,6 @@ void vec_unit_z_rotX_rotY(s16 rotY, s16 rotX, Vec3f arg2) {
     arg2[1] = sinX;
     arg2[2] = -(cosX * cosY);
     // (0, 0, -1) -> (0, sinX, -cosX) -> (cosX * sinY, sinX, -(cosX * cosY))
-
 }
 
 UNUSED void func_802B5D30(s16 arg0, s16 arg1, s32 arg2) {
@@ -602,7 +599,7 @@ void mtxf_rotation_zxy_translate(Mat4 dest, Vec3f vecTrans, Vec3s orientation) {
     cosY = coss(orientation[1]);
     sinZ = sins(orientation[2]);
     cosZ = coss(orientation[2]);
-    dest[0][0] =  (cosY * cosZ) + ((sinX * sinY) * sinZ);
+    dest[0][0] = (cosY * cosZ) + ((sinX * sinY) * sinZ);
     dest[1][0] = (-cosY * sinZ) + ((sinX * sinY) * cosZ);
     dest[2][0] = cosX * sinY;
     dest[3][0] = vecTrans[0];
@@ -611,7 +608,7 @@ void mtxf_rotation_zxy_translate(Mat4 dest, Vec3f vecTrans, Vec3s orientation) {
     dest[2][1] = -sinX;
     dest[3][1] = vecTrans[1];
     dest[0][2] = (-sinY * cosZ) + ((sinX * cosY) * sinZ);
-    dest[1][2] =  (sinY * sinZ) + ((sinX * cosY) * cosZ);
+    dest[1][2] = (sinY * sinZ) + ((sinX * cosY) * cosZ);
     dest[2][2] = cosX * cosY;
     dest[3][2] = vecTrans[2];
     dest[0][3] = 0.0f;
@@ -619,7 +616,7 @@ void mtxf_rotation_zxy_translate(Mat4 dest, Vec3f vecTrans, Vec3s orientation) {
     dest[2][3] = 0.0f;
     dest[3][3] = 1.0f;
 }
-//Product of Z, X and Y rotation matrices and a translation matrix
+// Product of Z, X and Y rotation matrices and a translation matrix
 /* | Cz  Sz   0   0||  1   0   0   0|| Cy   0 -Sy   0||  1   0   0   0|
    |-Sz  Cz   0   0||  0  Cx  Sx   0||  0   1   0   0||  0   1   0   0|
    |  0   0   1   0||  0 -Sx  Cx   0|| Sy   0  Cy   0||  0   0   1   0|
@@ -745,7 +742,7 @@ UNUSED void func_802B64B0(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2, UNU
 /*
  * @brief rotates a given vector about the Y axis by amount specified
  * @param vec Vector to rotate
- * @param angle 
+ * @param angle
  */
 void vec3f_rotate_y(Vec3f vec, s16 rotAngleY) {
     f32 sinAngleY = sins(rotAngleY);
@@ -760,13 +757,13 @@ void vec3f_rotate_y(Vec3f vec, s16 rotAngleY) {
     vec[2] = sinAngleY * vecX + (cosAngleY * vecZ);
 }
 // Standard Y-axis rotation matrix multiplication
-/* |Cy   0 -Sy||Vx|   
+/* |Cy   0 -Sy||Vx|
  * | 0   1   0||Vy| = |CyVx - SyVz, Vy, SyVx + CyVz|
  * |Sy   0  Cy||Vz|
  */
 
 /* If cosAxisY is 1, this is just rotating around the Y axis, like in mtxf_rotate_y. Otherwise,
-   it intends to rotate about any axis by composing with a rotation matrix for an XZ axis rotation. 
+   it intends to rotate about any axis by composing with a rotation matrix for an XZ axis rotation.
    However, if Y is not 1 or -1, angle calculations break. It looks like cosAxisY might always
    be 1, but that is not completely confirmed.
  */
@@ -822,14 +819,15 @@ void calculate_orientation_matrix(Mat3 dest, f32 axisZ, f32 cosAxisY, f32 axisX,
 
     } else {
         /* This looks like it is meant to convert from radians to degrees, but acos1f returns N64-units, not radians
-        suggesting this is never used because it would give wildly incorrect values. Not sure this ever actually gets 
+        suggesting this is never used because it would give wildly incorrect values. Not sure this ever actually gets
         called because cosAxisY is usually 1*/
         a = (f32) - (360.0 - ((f64) (acos1f(cosAxisY) * 180.0f) / M_PI));
         axisNormedX = -axisX / sqrtf((axisZ * axisZ) + (axisX * axisX));
         axisNormedZ = axisZ / sqrtf((axisZ * axisZ) + (axisX * axisX));
-        calculate_rotation_matrix(mtxRotXZ, a, axisNormedX, 0, axisNormedZ); // rotates around something in the x-z plane
+        calculate_rotation_matrix(mtxRotXZ, a, axisNormedX, 0,
+                                  axisNormedZ); // rotates around something in the x-z plane
     }
-    //mtxRotY * matrixRotXZ
+    // mtxRotY * matrixRotXZ
     dest[0][0] = (mtxRotY[0][0] * mtxRotXZ[0][0]) + (mtxRotY[0][1] * mtxRotXZ[1][0]) + (mtxRotY[0][2] * mtxRotXZ[2][0]);
     dest[1][0] = (mtxRotY[1][0] * mtxRotXZ[0][0]) + (mtxRotY[1][1] * mtxRotXZ[1][0]) + (mtxRotY[1][2] * mtxRotXZ[2][0]);
     dest[2][0] = (mtxRotY[2][0] * mtxRotXZ[0][0]) + (mtxRotY[2][1] * mtxRotXZ[1][0]) + (mtxRotY[2][2] * mtxRotXZ[2][0]);
@@ -882,7 +880,7 @@ UNUSED void func_802B68F8(Mat3 matrix, f32 arg1, f32 arg2, f32 arg3) {
  * @param axisY         The Y component of the axis to rotate around
  * @param axisZ         The Z component of the axis to rotate around
  */
- // Standard algorithm, but unintuitive. "Rotation matrix from axis and angle" brings up info online
+// Standard algorithm, but unintuitive. "Rotation matrix from axis and angle" brings up info online
 void calculate_rotation_matrix(Mat3 destMatrix, s16 rotationAngle, f32 axisX, f32 axisY, f32 axisZ) {
     f32 sinValue;
     f32 cosValue;
@@ -995,38 +993,38 @@ UNUSED void func_802B6D58(Mat4 arg0, Vec3f arg1, Vec3f arg2) {
  */
 void mtxf_multiplication(Mat4 dest, Mat4 mtxLeft, Mat4 mtxRight) {
     Mat4 product;
-    product[0][0] =
-        (mtxLeft[0][0] * mtxRight[0][0]) + (mtxLeft[0][1] * mtxRight[1][0]) + (mtxLeft[0][2] * mtxRight[2][0]) + (mtxLeft[0][3] * mtxRight[3][0]);
-    product[0][1] =
-        (mtxLeft[0][0] * mtxRight[0][1]) + (mtxLeft[0][1] * mtxRight[1][1]) + (mtxLeft[0][2] * mtxRight[2][1]) + (mtxLeft[0][3] * mtxRight[3][1]);
-    product[0][2] =
-        (mtxLeft[0][0] * mtxRight[0][2]) + (mtxLeft[0][1] * mtxRight[1][2]) + (mtxLeft[0][2] * mtxRight[2][2]) + (mtxLeft[0][3] * mtxRight[3][2]);
-    product[0][3] =
-        (mtxLeft[0][0] * mtxRight[0][3]) + (mtxLeft[0][1] * mtxRight[1][3]) + (mtxLeft[0][2] * mtxRight[2][3]) + (mtxLeft[0][3] * mtxRight[3][3]);
-    product[1][0] =
-        (mtxLeft[1][0] * mtxRight[0][0]) + (mtxLeft[1][1] * mtxRight[1][0]) + (mtxLeft[1][2] * mtxRight[2][0]) + (mtxLeft[1][3] * mtxRight[3][0]);
-    product[1][1] =
-        (mtxLeft[1][0] * mtxRight[0][1]) + (mtxLeft[1][1] * mtxRight[1][1]) + (mtxLeft[1][2] * mtxRight[2][1]) + (mtxLeft[1][3] * mtxRight[3][1]);
-    product[1][2] =
-        (mtxLeft[1][0] * mtxRight[0][2]) + (mtxLeft[1][1] * mtxRight[1][2]) + (mtxLeft[1][2] * mtxRight[2][2]) + (mtxLeft[1][3] * mtxRight[3][2]);
-    product[1][3] =
-        (mtxLeft[1][0] * mtxRight[0][3]) + (mtxLeft[1][1] * mtxRight[1][3]) + (mtxLeft[1][2] * mtxRight[2][3]) + (mtxLeft[1][3] * mtxRight[3][3]);
-    product[2][0] =
-        (mtxLeft[2][0] * mtxRight[0][0]) + (mtxLeft[2][1] * mtxRight[1][0]) + (mtxLeft[2][2] * mtxRight[2][0]) + (mtxLeft[2][3] * mtxRight[3][0]);
-    product[2][1] =
-        (mtxLeft[2][0] * mtxRight[0][1]) + (mtxLeft[2][1] * mtxRight[1][1]) + (mtxLeft[2][2] * mtxRight[2][1]) + (mtxLeft[2][3] * mtxRight[3][1]);
-    product[2][2] =
-        (mtxLeft[2][0] * mtxRight[0][2]) + (mtxLeft[2][1] * mtxRight[1][2]) + (mtxLeft[2][2] * mtxRight[2][2]) + (mtxLeft[2][3] * mtxRight[3][2]);
-    product[2][3] =
-        (mtxLeft[2][0] * mtxRight[0][3]) + (mtxLeft[2][1] * mtxRight[1][3]) + (mtxLeft[2][2] * mtxRight[2][3]) + (mtxLeft[2][3] * mtxRight[3][3]);
-    product[3][0] =
-        (mtxLeft[3][0] * mtxRight[0][0]) + (mtxLeft[3][1] * mtxRight[1][0]) + (mtxLeft[3][2] * mtxRight[2][0]) + (mtxLeft[3][3] * mtxRight[3][0]);
-    product[3][1] =
-        (mtxLeft[3][0] * mtxRight[0][1]) + (mtxLeft[3][1] * mtxRight[1][1]) + (mtxLeft[3][2] * mtxRight[2][1]) + (mtxLeft[3][3] * mtxRight[3][1]);
-    product[3][2] =
-        (mtxLeft[3][0] * mtxRight[0][2]) + (mtxLeft[3][1] * mtxRight[1][2]) + (mtxLeft[3][2] * mtxRight[2][2]) + (mtxLeft[3][3] * mtxRight[3][2]);
-    product[3][3] =
-        (mtxLeft[3][0] * mtxRight[0][3]) + (mtxLeft[3][1] * mtxRight[1][3]) + (mtxLeft[3][2] * mtxRight[2][3]) + (mtxLeft[3][3] * mtxRight[3][3]);
+    product[0][0] = (mtxLeft[0][0] * mtxRight[0][0]) + (mtxLeft[0][1] * mtxRight[1][0]) +
+                    (mtxLeft[0][2] * mtxRight[2][0]) + (mtxLeft[0][3] * mtxRight[3][0]);
+    product[0][1] = (mtxLeft[0][0] * mtxRight[0][1]) + (mtxLeft[0][1] * mtxRight[1][1]) +
+                    (mtxLeft[0][2] * mtxRight[2][1]) + (mtxLeft[0][3] * mtxRight[3][1]);
+    product[0][2] = (mtxLeft[0][0] * mtxRight[0][2]) + (mtxLeft[0][1] * mtxRight[1][2]) +
+                    (mtxLeft[0][2] * mtxRight[2][2]) + (mtxLeft[0][3] * mtxRight[3][2]);
+    product[0][3] = (mtxLeft[0][0] * mtxRight[0][3]) + (mtxLeft[0][1] * mtxRight[1][3]) +
+                    (mtxLeft[0][2] * mtxRight[2][3]) + (mtxLeft[0][3] * mtxRight[3][3]);
+    product[1][0] = (mtxLeft[1][0] * mtxRight[0][0]) + (mtxLeft[1][1] * mtxRight[1][0]) +
+                    (mtxLeft[1][2] * mtxRight[2][0]) + (mtxLeft[1][3] * mtxRight[3][0]);
+    product[1][1] = (mtxLeft[1][0] * mtxRight[0][1]) + (mtxLeft[1][1] * mtxRight[1][1]) +
+                    (mtxLeft[1][2] * mtxRight[2][1]) + (mtxLeft[1][3] * mtxRight[3][1]);
+    product[1][2] = (mtxLeft[1][0] * mtxRight[0][2]) + (mtxLeft[1][1] * mtxRight[1][2]) +
+                    (mtxLeft[1][2] * mtxRight[2][2]) + (mtxLeft[1][3] * mtxRight[3][2]);
+    product[1][3] = (mtxLeft[1][0] * mtxRight[0][3]) + (mtxLeft[1][1] * mtxRight[1][3]) +
+                    (mtxLeft[1][2] * mtxRight[2][3]) + (mtxLeft[1][3] * mtxRight[3][3]);
+    product[2][0] = (mtxLeft[2][0] * mtxRight[0][0]) + (mtxLeft[2][1] * mtxRight[1][0]) +
+                    (mtxLeft[2][2] * mtxRight[2][0]) + (mtxLeft[2][3] * mtxRight[3][0]);
+    product[2][1] = (mtxLeft[2][0] * mtxRight[0][1]) + (mtxLeft[2][1] * mtxRight[1][1]) +
+                    (mtxLeft[2][2] * mtxRight[2][1]) + (mtxLeft[2][3] * mtxRight[3][1]);
+    product[2][2] = (mtxLeft[2][0] * mtxRight[0][2]) + (mtxLeft[2][1] * mtxRight[1][2]) +
+                    (mtxLeft[2][2] * mtxRight[2][2]) + (mtxLeft[2][3] * mtxRight[3][2]);
+    product[2][3] = (mtxLeft[2][0] * mtxRight[0][3]) + (mtxLeft[2][1] * mtxRight[1][3]) +
+                    (mtxLeft[2][2] * mtxRight[2][3]) + (mtxLeft[2][3] * mtxRight[3][3]);
+    product[3][0] = (mtxLeft[3][0] * mtxRight[0][0]) + (mtxLeft[3][1] * mtxRight[1][0]) +
+                    (mtxLeft[3][2] * mtxRight[2][0]) + (mtxLeft[3][3] * mtxRight[3][0]);
+    product[3][1] = (mtxLeft[3][0] * mtxRight[0][1]) + (mtxLeft[3][1] * mtxRight[1][1]) +
+                    (mtxLeft[3][2] * mtxRight[2][1]) + (mtxLeft[3][3] * mtxRight[3][1]);
+    product[3][2] = (mtxLeft[3][0] * mtxRight[0][2]) + (mtxLeft[3][1] * mtxRight[1][2]) +
+                    (mtxLeft[3][2] * mtxRight[2][2]) + (mtxLeft[3][3] * mtxRight[3][2]);
+    product[3][3] = (mtxLeft[3][0] * mtxRight[0][3]) + (mtxLeft[3][1] * mtxRight[1][3]) +
+                    (mtxLeft[3][2] * mtxRight[2][3]) + (mtxLeft[3][3] * mtxRight[3][3]);
     mtxf_copy_n_element((s32*) dest, (s32*) product, 16);
 }
 
@@ -1214,10 +1212,10 @@ UNUSED void func_802B7C6C(f32 arg0) {
 s16 asin1s(f32 value) {
     return atan2s(value, sqrtf(1.0 - (value * value)));
     /* if value = sin(Angle), we have
-    = asin(sin(Angle) / sqrt(1 - sin**2(Angle))) 
-    = atan(sin(Angle) / sqrt(cos**2(Angle))) 
-    = atan(sin(Angle) / cos(Angle)) 
-    = atan(tan(Angle)) 
+    = asin(sin(Angle) / sqrt(1 - sin**2(Angle)))
+    = atan(sin(Angle) / sqrt(cos**2(Angle)))
+    = atan(sin(Angle) / cos(Angle))
+    = atan(tan(Angle))
     = Angle */
 }
 
@@ -1359,8 +1357,8 @@ s32 is_between_angle(u16 angleCCW, u16 angleCW, u16 angleToCheck) {
  *                               camera's vision, or -1.0f if it exceeds the render distance.
  */
 
-f32 render_distance_squared(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 preloadDistanceSquared, f32 fovDegrees,
-                              f32 maxDistanceSquared) {
+f32 render_distance_squared(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 preloadDistanceSquared,
+                            f32 fovDegrees, f32 maxDistanceSquared) {
     u16 angleObject;
     UNUSED u16 pad;
     u16 preloadAngle;
@@ -1371,7 +1369,7 @@ f32 render_distance_squared(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, 
     s32 minusFovAngle;
     u16 adjustedAngle;
     UNUSED s32 pad2[3];
-    u16 fovUnits = ((u16) fovDegrees * 182); //degrees to angle units (182 * 360 ~= 2**16)
+    u16 fovUnits = ((u16) fovDegrees * 182); // degrees to angle units (182 * 360 ~= 2**16)
 
     distanceXSquared = objectPos[0] - cameraPos[0];
     distanceXSquared = distanceXSquared * distanceXSquared;
@@ -1409,7 +1407,7 @@ f32 render_distance_squared(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, 
         return distanceSquared;
     }
 
-    /* This is bugged. This gives asin((sin(theta)**2) instead of asin(sin(theta)) = theta. 
+    /* This is bugged. This gives asin((sin(theta)**2) instead of asin(sin(theta)) = theta.
     Probably unnoticed because it only deals with objects not on screen*/
     preloadAngle = asin1s(preloadDistanceSquared / distanceSquared);
     adjustedAngle = angleObject + preloadAngle;
