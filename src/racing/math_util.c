@@ -1278,7 +1278,7 @@ u16 random_int(u16 arg0) {
  * @param toX   The x coordinate of the point the angle is measured to
  * @return      The angle (in N64 units) of the line from the from-point, to the to-point
  */
-s16 angle_from_coords(f32 fromY, f32 fromX, f32 toY, f32 toX) {
+s16 get_angle_between_coords(f32 fromY, f32 fromX, f32 toY, f32 toX) {
     return atan2s(toY - fromY, toX - fromX);
 }
 
@@ -1297,9 +1297,9 @@ void planar_angles(Vec3f from, Vec3f to, Vec3s rotAngles) {
     f32 toY = to[1];
     f32 toZ = to[2];
 
-    rotAngles[1] = angle_from_coords(fromZ, fromX, toZ, toX);
-    rotAngles[0] = angle_from_coords(fromY, fromZ, toY, toZ);
-    rotAngles[2] = angle_from_coords(fromX, fromY, toX, toY);
+    rotAngles[1] = get_angle_between_coords(fromZ, fromX, toZ, toX);
+    rotAngles[0] = get_angle_between_coords(fromY, fromZ, toY, toZ);
+    rotAngles[2] = get_angle_between_coords(fromX, fromY, toX, toY);
 }
 
 /*
