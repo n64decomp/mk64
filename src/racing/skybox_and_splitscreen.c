@@ -23,7 +23,7 @@ Vp D_802B8880[] = {
     { { { 640, 480, 511, 0 }, { 640, 480, 511, 0 } } },
 };
 
-Vtx skyboxP1[] = {
+static Vtx sSkyboxP1[] = {
     { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
     { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
@@ -34,7 +34,7 @@ Vtx skyboxP1[] = {
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-Vtx skyboxP2[] = {
+static Vtx sSkyboxP2[] = {
     { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
     { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
@@ -45,7 +45,7 @@ Vtx skyboxP2[] = {
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-Vtx skyboxP3[] = {
+static Vtx sSkyboxP3[] = {
     { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
     { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
@@ -56,7 +56,7 @@ Vtx skyboxP3[] = {
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-Vtx skyboxP4[] = {
+static Vtx sSkyboxP4[] = {
     { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
     { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
@@ -633,9 +633,9 @@ void func_802A5004(void) {
 
     func_802A39E0(D_800DC5F0);
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) skyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        render_skybox((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(2);
-        func_802A487C((Vtx*) skyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(2);
     }
 }
@@ -650,9 +650,9 @@ void func_802A50EC(void) {
 
     func_802A39E0(D_800DC5EC);
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) skyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80057FC4(1);
-        func_802A487C((Vtx*) skyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80093A30(1);
     }
 }
@@ -667,9 +667,9 @@ void func_802A51D4(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) skyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80057FC4(3);
-        func_802A487C((Vtx*) skyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80093A30(3);
     }
 }
@@ -684,9 +684,9 @@ void func_802A52BC(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) skyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        render_skybox((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(4);
-        func_802A487C((Vtx*) skyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(4);
     }
 }
@@ -703,11 +703,11 @@ void func_802A53A4(void) {
     init_z_buffer();
     select_framebuffer();
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) skyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         if (gGamestate != CREDITS_SEQUENCE) {
             func_80057FC4(0);
         }
-        func_802A487C((Vtx*) skyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80093A30(0);
     }
 }
@@ -722,9 +722,9 @@ void func_802A54A8(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) skyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80057FC4(8);
-        func_802A487C((Vtx*) skyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80093A30(8);
     }
 }
@@ -739,9 +739,9 @@ void func_802A5590(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) skyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        render_skybox((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(9);
-        func_802A487C((Vtx*) skyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(9);
     }
 }
@@ -756,9 +756,9 @@ void func_802A5678(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) skyboxP3, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
+        render_skybox((Vtx*) sSkyboxP3, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
         func_80057FC4(10);
-        func_802A487C((Vtx*) skyboxP3, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
+        func_802A487C((Vtx*) sSkyboxP3, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
         func_80093A30(10);
     }
 }
@@ -792,9 +792,9 @@ void func_802A5760(void) {
         func_802A39E0(D_800DC5F8);
 
         if (D_800DC5B4 != 0) {
-            render_skybox(skyboxP4, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
+            render_skybox(sSkyboxP4, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
             func_80057FC4(11);
-            func_802A487C(skyboxP4, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
+            func_802A487C(sSkyboxP4, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
             func_80093A30(11);
         }
     }
