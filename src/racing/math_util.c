@@ -770,9 +770,11 @@ void vec3f_rotate_y(Vec3f vec, s16 rotAngleY) {
  * |Sy   0  Cy||Vz|
  */
 
- //TODO: Document
-/* produces a rotation matrix by specifying the y-component of the rotation axis,
-   then an xz-rotation axis and the overall rotation angle */
+/* If cosAxisY is 1, this is just rotating around the Y axis, like in mtxf_rotate_y. Otherwise,
+   it intends to rotate about any axis by composing with a rotation matrix for an XZ axis rotation. 
+   However, if Y is not 1 or -1, angle calculations break. It looks like cosAxisY might always
+   be 1, but that is not completely confirmed.
+ */
 void calculate_orientation_matrix(Mat3 dest, f32 axisZ, f32 cosAxisY, f32 axisX, s16 rotationAngle) {
     Mat3 mtxRotY;
     Mat3 mtxRotXZ;
@@ -824,12 +826,15 @@ void calculate_orientation_matrix(Mat3 dest, f32 axisZ, f32 cosAxisY, f32 axisX,
         mtxRotXZ[1][1] = -1;
 
     } else {
-        a = (f32) - (360.0 - ((f64) (acos1f(cosAxisY) * 180.0f) / M_PI)); // converting to degrees
+        /* This looks like it is meant to convert from radians to degrees, but acos1f returns N64-units, not radians
+        suggesting this is never used because it would give wildly incorrect values. Not sure this ever actually gets 
+        called because cosAxisY is usually 1*/
+        a = (f32) - (360.0 - ((f64) (acos1f(cosAxisY) * 180.0f) / M_PI));
         axisNormedX = -axisX / sqrtf((axisZ * axisZ) + (axisX * axisX));
         axisNormedZ = axisZ / sqrtf((axisZ * axisZ) + (axisX * axisX));
         calculate_rotation_matrix(mtxRotXZ, a, axisNormedX, 0, axisNormedZ); // rotates around something in the x-z plane
     }
-    //mtxRotY * matrix
+    //mtxRotY * matrixRotXZ
     dest[0][0] = (mtxRotY[0][0] * mtxRotXZ[0][0]) + (mtxRotY[0][1] * mtxRotXZ[1][0]) + (mtxRotY[0][2] * mtxRotXZ[2][0]);
     dest[1][0] = (mtxRotY[1][0] * mtxRotXZ[0][0]) + (mtxRotY[1][1] * mtxRotXZ[1][0]) + (mtxRotY[1][2] * mtxRotXZ[2][0]);
     dest[2][0] = (mtxRotY[2][0] * mtxRotXZ[0][0]) + (mtxRotY[2][1] * mtxRotXZ[1][0]) + (mtxRotY[2][2] * mtxRotXZ[2][0]);
