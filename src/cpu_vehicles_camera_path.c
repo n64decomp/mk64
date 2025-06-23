@@ -1565,7 +1565,7 @@ void update_player(s32 playerId) {
                     return;
                 }
                 if ((D_801630E8[playerId] == 1) || (D_801630E8[playerId] == -1)) {
-                    player->effects |= UNKNOWN_EFFECT_0x10;
+                    player->effects |= DRIFTING_EFFECT;
                 }
                 if (D_801630E8[playerId] != 0) {
                     sPlayerAngle[playerId] = -get_angle_between_points(player->oldPos, player->pos);
@@ -1772,7 +1772,7 @@ void func_8000B140(s32 playerId) {
     Player* player;
     player = &gPlayers[playerId];
 
-    if (player->effects & UNKNOWN_EFFECT_0x10) {
+    if (player->effects & DRIFTING_EFFECT) {
         return;
     }
 
