@@ -1509,6 +1509,7 @@ void course_generate_collision_mesh(void) {
                 nullify_displaylist((uintptr_t) 0x070003C8);
             }
             parse_course_displaylists((uintptr_t) &d_course_choco_mountain_addr);
+            // D_8015F590 is only used here, so this seems meaningless
             vec_unit_z_rotX_rotY(0x238E, 0x31C7, D_8015F590);
             func_80295C6C();
             D_8015F8E4 = -80.0f;

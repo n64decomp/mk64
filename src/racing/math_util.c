@@ -70,24 +70,36 @@ s32 render_set_position(Mat4 mtx, s32 mode) {
     return 1;
 }
 
-// returns (x**2 + y**2 + 2*z)
-f32 dist_squared_bugged(Vec3f vec0, Vec3f vec1) {
+/*
+* @brief Finds the squared distance between two points, but contains a bug when handling the z-axis
+* @param from A point in 3D space
+* @param to A point in 3D space
+* @return Roughly the squared distance between from and to. (x**2 + y**2 + 2*z) instead of (x**2 + y**2 + z**2)
+*/
+f32 dist_squared_bugged(Vec3f from, Vec3f to) {
     f32 deltaY;
     f32 deltaZ;
     f32 deltaX;
 
-    deltaX = vec1[0] - vec0[0];
-    deltaY = vec1[1] - vec0[1];
-    deltaZ = vec1[2] - vec0[2];
+    deltaX = to[0] - from[0];
+    deltaY = to[1] - from[1];
+    deltaZ = to[2] - from[2];
     // If the last plus was a multiplication symbol, we'd have a correct dist_squared formula
     return (deltaX * deltaX) + (deltaY * deltaY) + deltaZ + deltaZ;
 }
 
-s32 get_angle_between_points(Vec3f vec0, Vec3f vec1) {
+// TODO: Rename get_xz_angle_between_points or something similar
+/*
+* @brief Finds the angle within the XZ-plane between two points (while ignoring any difference in Y)
+* @param pointFrom A point in 3D space
+* @param pointTo A point in 3D space
+* @return Angle (N64-units) in XZ-plane between pointFrom and pointTo
+*/
+s32 get_angle_between_points(Vec3f pointFrom, Vec3f pointTo) {
     f32 deltaX;
     f32 deltaZ;
-    deltaX = vec1[0] - vec0[0];
-    deltaZ = vec1[2] - vec0[2];
+    deltaX = pointTo[0] - pointFrom[0];
+    deltaZ = pointTo[2] - pointFrom[2];
 
     return atan2s(deltaX, deltaZ);
 }
@@ -102,16 +114,30 @@ UNUSED u32 func_802B5258(Vec3f arg0, Vec3s arg1) {
     return atan2s(temp_v1, temp_v2);
 }
 
-void vec3f_set(Vec3f vec, f32 valX, f32 valY, f32 valZ) {
-    vec[0] = valX;
-    vec[1] = valY;
-    vec[2] = valZ;
+/*
+* @brief sets a vector to the given coordinates
+* @param dest The vector to be overriden
+* @param coordX The X coordinate of the desired vector
+* @param coordY The Y coordinate of the desired vector
+* @param coordZ The Z coordinate of the desired vector
+*/
+void vec3f_set(Vec3f dest, f32 coordX, f32 coordY, f32 coordZ) {
+    dest[0] = coordX;
+    dest[1] = coordY;
+    dest[2] = coordZ;
 }
 
-void vec3s_set(Vec3s vec, s16 valX, s16 valY, s16 valZ) {
-    vec[0] = valX;
-    vec[1] = valY;
-    vec[2] = valZ;
+/*
+* @brief sets a vector to the given coordinates
+* @param dest The vector to be overriden
+* @param coordX The X coordinate of the desired vector
+* @param coordY The Y coordinate of the desired vector
+* @param coordZ The Z coordinate of the desired vector
+*/
+void vec3s_set(Vec3s dest, s16 coordX, s16 coordY, s16 coordZ) {
+    dest[0] = coordX;
+    dest[1] = coordY;
+    dest[2] = coordZ;
 }
 
 // These functions have bogus return values.
@@ -126,6 +152,12 @@ void vec3s_set(Vec3s vec, s16 valX, s16 valY, s16 valZ) {
 #endif
 #endif
 
+/*
+* @brief copies the coordinates of a vector to another vector
+* @param dest The vector to be overriden
+* @param src The vector to be copied
+* @return local address of destination vector
+*/
 void* vec3f_copy_return(Vec3f dest, Vec3f src) {
     dest[0] = src[0];
     dest[1] = src[1];
@@ -134,6 +166,11 @@ void* vec3f_copy_return(Vec3f dest, Vec3f src) {
     return &dest;
 }
 
+/*
+* @brief copies the coordinates of a vector to another vector
+* @param dest The vector to be overriden
+* @param src The vector to be copied
+*/
 void vec3s_copy(Vec3s dest, Vec3s src) {
     dest[0] = src[0];
     dest[1] = src[1];
@@ -147,26 +184,38 @@ UNUSED void* vec3f_set_return(Vec3f dest, f32 x, f32 y, f32 z) {
     return &dest;
 }
 
-// Copy mat1 to mat2
-void mtxf_copy(Mat4 mat1, Mat4 mat2) {
+/*
+* @brief copies the values of a matrix to another matrix
+* @param src The matrix to be copied
+* @param dest The matrix to be overriden
+*/
+void mtxf_copy(Mat4 src, Mat4 dest) {
     s32 row;
     s32 column;
 
     for (row = 0; row < 4; row++) {
         for (column = 0; column < 4; column++) {
-            mat2[row][column] = mat1[row][column];
+            dest[row][column] = src[row][column];
         }
     }
 }
 
-// mtxf_copy
+/*
+* @brief copies the first n values of a matrix to another matrix
+* @param dest The matrix to be overriden
+* @param src The matrix to be copied
+* @param n The number of values to be copied
+*/
 void mtxf_copy_n_element(s32* dest, s32* src, s32 n) {
     while (n-- > 0) {
         *dest++ = *src++;
     }
 }
 
-// Transform a matrix to a matrix identity
+/* 
+* @brief Transform a matrix to an identity matrix
+* @param Matrix The matrix to be changed to an identity matrix
+*/
 void mtxf_identity(Mat4 mtx) {
     register s32 row;
     register s32 col;
@@ -178,31 +227,35 @@ void mtxf_identity(Mat4 mtx) {
     }
 }
 
-// Add a translation vector to a matrix, mat is the matrix to add, dest is the destination matrix, pos is the
-// translation vector
-void add_translate_mat4_vec3f(Mat4 mat, Mat4 dest, Vec3f pos) {
-    dest[3][0] = mat[3][0] + pos[0];
-    dest[3][1] = mat[3][1] + pos[1];
-    dest[3][2] = mat[3][2] + pos[2];
-    dest[3][3] = mat[3][3];
-    dest[0][0] = mat[0][0];
-    dest[0][1] = mat[0][1];
-    dest[0][2] = mat[0][2];
-    dest[0][3] = mat[0][3];
-    dest[1][0] = mat[1][0];
-    dest[1][1] = mat[1][1];
-    dest[1][2] = mat[1][2];
-    dest[1][3] = mat[1][3];
-    dest[2][0] = mat[2][0];
-    dest[2][1] = mat[2][1];
-    dest[2][2] = mat[2][2];
-    dest[2][3] = mat[2][3];
+/*
+* @brief Add a translation vector to a matrix
+* @param scr The matrix to be copied
+* @param dest The matrix to be overriden with the result
+* @param vecTrans The translation vector to be added
+*/
+void add_translate_mat4_vec3f(Mat4 src, Mat4 dest, Vec3f vecTrans) {
+    dest[3][0] = src[3][0] + vecTrans[0];
+    dest[3][1] = src[3][1] + vecTrans[1];
+    dest[3][2] = src[3][2] + vecTrans[2];
+    dest[3][3] = src[3][3];
+    dest[0][0] = src[0][0];
+    dest[0][1] = src[0][1];
+    dest[0][2] = src[0][2];
+    dest[0][3] = src[0][3];
+    dest[1][0] = src[1][0];
+    dest[1][1] = src[1][1];
+    dest[1][2] = src[1][2];
+    dest[1][3] = src[1][3];
+    dest[2][0] = src[2][0];
+    dest[2][1] = src[2][1];
+    dest[2][2] = src[2][2];
+    dest[2][3] = src[2][3];
 
     /*
-     * mat(0,0)        mat(0,1)        mat(0,2)        mat(0,3)
-     * mat(1,0)        mat(1,1)        mat(1,2)        mat(1,3)
-     * mat(2,0)        mat(2,1)        mat(2,2)        mat(2,3)
-     * mat(3,0)+pos(0) mat(3,1)+pos(1) mat(3,2)+pos(2) mat(3,3)
+     * src(0,0)             src(0,1)             src(0,2)             src(0,3)
+     * src(1,0)             src(1,1)             src(1,2)             src(1,3)
+     * src(2,0)             src(2,1)             src(2,2)             src(2,3)
+     * src(3,0)+vecTrans(0) src(3,1)+vecTrans(1) src(3,2)+vecTrans(2) src(3,3)
      */
 }
 
@@ -213,22 +266,25 @@ UNUSED void add_translate_mat4_vec3f_lite(Mat4 mat, Mat4 dest, Vec3f pos) {
     dest[3][2] = mat[3][2] + pos[2];
 }
 
-// create a translation matrix
+/*
+* @brief Creates a translation matrix
+* @param dest The matrix to be overriden with the translation matrix
+* @param vecTrans The translation vector to be added
+*/
 void mtxf_translate(Mat4 dest, Vec3f vecTrans) {
     mtxf_identity(dest);
     dest[3][0] = vecTrans[0];
     dest[3][1] = vecTrans[1];
     dest[3][2] = vecTrans[2];
-        /*
-     *          1          0          0 0
-     *          0          1          0 0
-     *          0          0          1 0
-     * vecTrans[0] vecTrans[1] vecTrans[2] 1
+    /*           1           0           0           0
+     *           0           1           0           0
+     *           0           0           1           0
+     * vecTrans[0] vecTrans[1] vecTrans[2]           1
      */
 }
 /*
  * @brief Creates a projection matrix based on specified frustrum (i.e. where the camera can see)
- * @param projMat A dummy variable that will be overwritten with the projection matrix
+ * @param projMtx A dummy variable that will be overwritten with the projection matrix
  * @param arg1 Unknown dummy variable (will be overwritten)
  * @param vertFov vertical field of view (in degrees)
  * @param aspectRatio Width / Height of player screen
@@ -237,24 +293,24 @@ void mtxf_translate(Mat4 dest, Vec3f vecTrans) {
  * @param homogeneousScale Scaling factor for homogeneous coordinates. Always 1.0 in game
  * Note the use of `2` which generates diff asm than just using floats (2.0f).
  */
-void mtxf_projection(Mat4 projMat, u16* arg1, f32 vertFov, f32 aspectRatio, f32 near, f32 far,
+void mtxf_projection(Mat4 projMtx, u16* arg1, f32 vertFov, f32 aspectRatio, f32 near, f32 far,
                            f32 homogeneousScale) {
     f32 halfCot;
     s32 rowIdx, colIdx;
-    mtxf_identity(projMat);
+    mtxf_identity(projMtx);
     vertFov *= 0.017453292222222222; // convert from degrees to radians
     halfCot = cosf(vertFov / 2) / sinf(vertFov / 2);
-    projMat[0][0] = halfCot / aspectRatio;
-    projMat[1][1] = halfCot;
+    projMtx[0][0] = halfCot / aspectRatio;
+    projMtx[1][1] = halfCot;
     // Literature usually prefers the clearer equivalent -(near + far) / (far - near)
-    projMat[2][2] = (near + far) / (near - far);
-    projMat[2][3] = -1.0f;
-    projMat[3][2] = (2 * near * far) / (near - far);
-    projMat[3][3] = 0.0f;
+    projMtx[2][2] = (near + far) / (near - far);
+    projMtx[2][3] = -1.0f;
+    projMtx[3][2] = (2 * near * far) / (near - far);
+    projMtx[3][3] = 0.0f;
 
     for (rowIdx = 0; rowIdx < 4; rowIdx++) {
         for (colIdx = 0; colIdx < 4; colIdx++) {
-            projMat[rowIdx][colIdx] *= homogeneousScale;
+            projMtx[rowIdx][colIdx] *= homogeneousScale;
         }
     }
 
@@ -274,9 +330,9 @@ void mtxf_projection(Mat4 projMat, u16* arg1, f32 vertFov, f32 aspectRatio, f32 
 // Appears to only be for the skybox. mtxf_lookat from sm64 with some modifications.
 /**
  * @brief Create a lookat matrix (convert to coordinates relative to camera)
- * @param mtx dummy matrix overwritten with lookat matrix
- * @param from where the camera is looking from
- * @param to where the camera is looking to
+ * @param mtx Dummy matrix overwritten with lookat matrix
+ * @param from Where the camera is looking from
+ * @param to Where the camera is looking to
  */
 void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to) {
     // register from sm64 but not required for matching.
@@ -303,6 +359,7 @@ void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to) {
     forwardY = to[1] - from[1];
     forwardZ = to[2] - from[2];
 
+    // normalize forward vector
     invLength = -1.0 / sqrtf(forwardX * forwardX + forwardY * forwardY + forwardZ * forwardZ);
     forwardX *= invLength;
     forwardY *= invLength;
@@ -350,60 +407,73 @@ void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to) {
     mtx[3][3] = 1.0f;
 }
 
-// create a rotation matrix around the x axis
-void mtxf_rotate_x(Mat4 mat, s16 angle) {
-    f32 sinTheta = sins(angle);
-    f32 cosTheta = coss(angle);
 
-    mtxf_identity(mat);
-    mat[1][1] = cosTheta;
-    mat[1][2] = sinTheta;
-    mat[2][1] = -sinTheta;
-    mat[2][2] = cosTheta;
+/*
+ * @brief Create a rotation matrix for rotating about the X axis
+ * @param mtx Dummy matrix overwritten with x-axis rotation matrix
+ * @param angle Angle to rotate by (in N64 units)
+ */
+void mtxf_rotate_x(Mat4 mtx, s16 angle) {
+    f32 sinAngle = sins(angle);
+    f32 cosAngle = coss(angle);
+
+    mtxf_identity(mtx);
+    mtx[1][1] = cosAngle;
+    mtx[1][2] = sinAngle;
+    mtx[2][1] = -sinAngle;
+    mtx[2][2] = cosAngle;
 
     /*
-     * 1,          0,         0, 0,
-     * 0,  cosTheta, sinTheta, 0,
-     * 0, -sinTheta, cosTheta, 0,
-     * 0,          0,         0, 1
+     * 1,         0,        0, 0,
+     * 0,  cosAngle, sinAngle, 0,
+     * 0, -sinAngle, cosAngle, 0,
+     * 0,         0,        0, 1
      */
 }
 
-// create a rotation matrix around the y axis
-void mtxf_rotate_y(Mat4 mat, s16 angle) {
-    f32 sinTheta = sins(angle);
-    f32 cosTheta = coss(angle);
+/*
+ * @brief Create a rotation matrix for rotating about the Y axis
+ * @param mtx Dummy matrix overwritten with Y axis rotation matrix
+ * @param angle Angle to rotate by (in N64 units)
+ */
+void mtxf_rotate_y(Mat4 mtx, s16 angle) {
+    f32 sinAngle = sins(angle);
+    f32 cosAngle = coss(angle);
 
-    mtxf_identity(mat);
-    mat[0][0] = cosTheta;
-    mat[0][2] = -sinTheta;
-    mat[2][0] = sinTheta;
-    mat[2][2] = cosTheta;
+    mtxf_identity(mtx);
+    mtx[0][0] = cosAngle;
+    mtx[0][2] = -sinAngle;
+    mtx[2][0] = sinAngle;
+    mtx[2][2] = cosAngle;
 
     /*
-     * cosTheta, 0, -sinTheta, 0,
-     *         0, 1,          0, 0,
-     * sinTheta, 0,  cosTheta, 0,
-     *         0, 0,          0, 1
+     * cosAngle, 0, -sinAngle, 0,
+     *        0, 1,         0, 0,
+     * sinAngle, 0,  cosAngle, 0,
+     *        0, 0,         0, 1
      */
 }
 
-// create a rotation matrix around the z axis
-void mtxf_s16_rotate_z(Mat4 mat, s16 angle) {
-    f32 sinTheta = sins(angle);
-    f32 cosTheta = coss(angle);
+/*
+ * @brief Create a rotation matrix for rotating about the Z axis
+ * @param mtx Dummy matrix overwritten with Z axis rotation matrix
+ * @param angle Angle to rotate by (in N64 units)
+ */
+void mtxf_s16_rotate_z(Mat4 mtx, s16 angle) {
+    f32 sinAngle = sins(angle);
+    f32 cosAngle = coss(angle);
 
-    mtxf_identity(mat);
-    mat[0][0] = cosTheta;
-    mat[0][1] = sinTheta;
-    mat[1][0] = -sinTheta;
-    mat[1][1] = cosTheta;
+    mtxf_identity(mtx);
+    mtx[0][0] = cosAngle;
+    mtx[0][1] = sinAngle;
+    mtx[1][0] = -sinAngle;
+    mtx[1][1] = cosAngle;
 
     /*
-     *  cosTheta, sinTheta, 0, 0,
-     * -sinTheta, cosTheta, 0, 0,
-     *          0,         0, 1, 0,
-     *          0,         0, 0, 1
+     *  cosAngle, sinAngle, 0, 0,
+     * -sinAngle, cosAngle, 0, 0,
+     *         0,        0, 1, 0,
+     *         0,        0, 0, 1
      */
 }
 
@@ -458,36 +528,37 @@ UNUSED void func_802B5D30(s16 arg0, s16 arg1, s32 arg2) {
     set_course_lighting((Lights1*) 0x9000000, arg0, arg1, arg2);
 }
 
-/**
+/*
  * @brief Set the course lighting object
- * Uses a directional light
+ * Uses a directional light, rotates by Y, then X
  *
  * @param lightAddr
- * @param arg1
- * @param arg2
+ * @param rotateAngleY
+ * @param rotateAngleX
  * @param lightCount Always 1 in practice
  */
 void set_course_lighting(Lights1* lightAddr, s16 rotateAngleY, s16 rotateAngleX, s32 lightCount) {
     u32 segment = SEGMENT_NUMBER2(lightAddr);
     u32 offset = SEGMENT_OFFSET(lightAddr);
     UNUSED s32 pad;
-    f32 sinThetaX;
-    f32 cosThetaX;
-    f32 sinThetaY;
+    f32 sinAngleX;
+    f32 cosAngleX;
+    f32 sinAngleY;
     UNUSED s32 pad2[2];
-    f32 cosThetaY;
+    f32 cosAngleY;
     s32 lightIdx;
     s8 lightAngle[3];
     Lights1* lights;
 
     lights = (Lights1*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    sinThetaX = sins(rotateAngleX);
-    cosThetaX = coss(rotateAngleX);
-    sinThetaY = sins(rotateAngleY);
-    cosThetaY = coss(rotateAngleY);
-    lightAngle[0] = cosThetaX * sinThetaY * 120.0f;
-    lightAngle[1] = 120.0f * sinThetaX;
-    lightAngle[2] = cosThetaX * cosThetaY * -120.0f;
+    sinAngleX = sins(rotateAngleX);
+    cosAngleX = coss(rotateAngleX);
+    sinAngleY = sins(rotateAngleY);
+    cosAngleY = coss(rotateAngleY);
+    // take (0, 0, 1), rotate by Y, then X
+    lightAngle[0] = cosAngleX * sinAngleY * 120.0f;
+    lightAngle[1] = 120.0f * sinAngleX;
+    lightAngle[2] = cosAngleX * cosAngleY * -120.0f;
     for (lightIdx = 0; lightIdx < lightCount; lightIdx++, lights++) {
         lights->l[0].l.dir[0] = lightAngle[0];
         lights->l[0].l.dir[1] = lightAngle[1];
@@ -495,22 +566,31 @@ void set_course_lighting(Lights1* lightAddr, s16 rotateAngleY, s16 rotateAngleX,
     }
 }
 
-// multiply a matrix with a number
-void mtxf_scale(Mat4 mat, f32 coef) {
-    mat[0][0] *= coef;
-    mat[1][0] *= coef;
-    mat[2][0] *= coef;
-    mat[0][1] *= coef;
-    mat[1][1] *= coef;
-    mat[2][1] *= coef;
-    mat[0][2] *= coef;
-    mat[1][2] *= coef;
-    mat[2][2] *= coef;
+/*
+ * @brief Scale a matrix by a given coefficient
+ * @param mtx Matrix to scale
+ * @param coef Coefficient to use when scaling
+ */
+void mtxf_scale(Mat4 mtx, f32 coef) {
+    mtx[0][0] *= coef;
+    mtx[1][0] *= coef;
+    mtx[2][0] *= coef;
+    mtx[0][1] *= coef;
+    mtx[1][1] *= coef;
+    mtx[2][1] *= coef;
+    mtx[0][2] *= coef;
+    mtx[1][2] *= coef;
+    mtx[2][2] *= coef;
 }
 
 // TODO: rename
-// Rotates 3 axes in z, x, y order. 
-void mtxf_pos_rotation_xyz(Mat4 out, Vec3f pos, Vec3s orientation) {
+/*
+ * @brief Matrix for rotating about Z, X, Y axes (in order) then translating
+ * @param dest Matrix to output
+ * @param vecTrans vector to use for translation
+ * @param orientation vector of 3 rotation angles (Rx, Ry, Rz)
+ */
+void mtxf_pos_rotation_xyz(Mat4 dest, Vec3f vecTrans, Vec3s orientation) {
     f32 sinX;
     f32 cosX;
     f32 sinY;
@@ -524,32 +604,32 @@ void mtxf_pos_rotation_xyz(Mat4 out, Vec3f pos, Vec3s orientation) {
     cosY = coss(orientation[1]);
     sinZ = sins(orientation[2]);
     cosZ = coss(orientation[2]);
-    out[0][0] =  (cosY * cosZ) + ((sinX * sinY) * sinZ);
-    out[1][0] = (-cosY * sinZ) + ((sinX * sinY) * cosZ);
-    out[2][0] = cosX * sinY;
-    out[3][0] = pos[0];
-    out[0][1] = cosX * sinZ;
-    out[1][1] = cosX * cosZ;
-    out[2][1] = -sinX;
-    out[3][1] = pos[1];
-    out[0][2] = (-sinY * cosZ) + ((sinX * cosY) * sinZ);
-    out[1][2] =  (sinY * sinZ) + ((sinX * cosY) * cosZ);
-    out[2][2] = cosX * cosY;
-    out[3][2] = pos[2];
-    out[0][3] = 0.0f;
-    out[1][3] = 0.0f;
-    out[2][3] = 0.0f;
-    out[3][3] = 1.0f;
+    dest[0][0] =  (cosY * cosZ) + ((sinX * sinY) * sinZ);
+    dest[1][0] = (-cosY * sinZ) + ((sinX * sinY) * cosZ);
+    dest[2][0] = cosX * sinY;
+    dest[3][0] = vecTrans[0];
+    dest[0][1] = cosX * sinZ;
+    dest[1][1] = cosX * cosZ;
+    dest[2][1] = -sinX;
+    dest[3][1] = vecTrans[1];
+    dest[0][2] = (-sinY * cosZ) + ((sinX * cosY) * sinZ);
+    dest[1][2] =  (sinY * sinZ) + ((sinX * cosY) * cosZ);
+    dest[2][2] = cosX * cosY;
+    dest[3][2] = vecTrans[2];
+    dest[0][3] = 0.0f;
+    dest[1][3] = 0.0f;
+    dest[2][3] = 0.0f;
+    dest[3][3] = 1.0f;
 }
 //Product of Z, X and Y rotation matrices and a translation matrix
 /* | Cz  Sz   0   0||  1   0   0   0|| Cy   0 -Sy   0||  1   0   0   0|
    |-Sz  Cz   0   0||  0  Cx  Sx   0||  0   1   0   0||  0   1   0   0|
    |  0   0   1   0||  0 -Sx  Cx   0|| Sy   0  Cy   0||  0   0   1   0|
-   |  0   0   0   1||  0   0   0   1||  0   0   0   1|| P0  P1  P2   1|*/
+   |  0   0   0   1||  0   0   0   1||  0   0   0   1|| V0  V1  V2   1|*/
 /* | CyCz + SxSySz         CxSz -SyCz + SxCySz              0|
   =|-CySz + SxSyCz         CxCz  SySz + SxCyCz              0|
    |          CxSy          -Sx           CxCy              0|
-   |            P0           P1             P2              1|*/
+   |            V0           V1             V2              1|*/
 UNUSED void func_802B60B4(Mat4 arg0, Vec3s arg1, Vec3s arg2) {
     f32 sine1;
     f32 cosine1;
@@ -623,24 +703,33 @@ UNUSED void func_802B6374(Vec3f arg0) {
     arg0[2] /= temp_f0;
 }
 
-// translate the vector with a matrix
+// transform a vector with a matrix
 // TODO: rename transform because it is not a translation
-void mtxf_translate_vec3f_mat3(Vec3f vec, Mat3 mat) {
+/*
+ * @brief Given matrix M and vector v, calculates Mv
+ * @param vec Vector to transform
+ * @param mtx Matrix to use in transformation
+ */
+void mtxf_translate_vec3f_mat3(Vec3f vec, Mat3 mtx) {
     f32 newX;
     f32 newY;
     f32 newZ;
 
-    newX = (mat[0][0] * vec[0]) + (mat[0][1] * vec[1]) + (mat[0][2] * vec[2]);
-    newY = (mat[1][0] * vec[0]) + (mat[1][1] * vec[1]) + (mat[1][2] * vec[2]);
-    newZ = (mat[2][0] * vec[0]) + (mat[2][1] * vec[1]) + (mat[2][2] * vec[2]);
+    newX = (mtx[0][0] * vec[0]) + (mtx[0][1] * vec[1]) + (mtx[0][2] * vec[2]);
+    newY = (mtx[1][0] * vec[0]) + (mtx[1][1] * vec[1]) + (mtx[1][2] * vec[2]);
+    newZ = (mtx[2][0] * vec[0]) + (mtx[2][1] * vec[1]) + (mtx[2][2] * vec[2]);
 
     vec[0] = newX;
     vec[1] = newY;
     vec[2] = newZ;
 }
 
-// translate the vector with a matrix (with a matrix 4x4)
 // TODO: rename transform because it is not a translation
+/*
+ * @brief Given matrix M and vector v, calculates Mv
+ * @param vec Vector to transform
+ * @param mtx Matrix to use in transformation
+ */
 void mtxf_translate_vec3f_mat4(Vec3f vec, Mat4 mat) {
     f32 newX;
     f32 newY;
@@ -658,19 +747,30 @@ void mtxf_translate_vec3f_mat4(Vec3f vec, Mat4 mat) {
 UNUSED void func_802B64B0(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
 }
 
-void vec3f_rotate_y(Vec3f vector, s16 rotationAngle) {
-    f32 sinAngle = sins(rotationAngle);
-    f32 cosAngle = coss(rotationAngle);
+/*
+ * @brief rotates a given vector about the Y axis by amount specified
+ * @param vec Vector to rotate
+ * @param angle 
+ */
+void vec3f_rotate_y(Vec3f vec, s16 rotAngleY) {
+    f32 sinAngleY = sins(rotAngleY);
+    f32 cosAngleY = coss(rotAngleY);
 
-    f32 vecX = vector[0];
-    f32 vecY = vector[1];
-    f32 vecZ = vector[2];
+    f32 vecX = vec[0];
+    f32 vecY = vec[1];
+    f32 vecZ = vec[2];
 
-    vector[0] = cosAngle * vecX - (sinAngle * vecZ);
-    vector[1] = vecY;
-    vector[2] = sinAngle * vecX + (cosAngle * vecZ);
+    vec[0] = cosAngleY * vecX - (sinAngleY * vecZ);
+    vec[1] = vecY;
+    vec[2] = sinAngleY * vecX + (cosAngleY * vecZ);
 }
+// Standard Y-axis rotation matrix multiplication
+/* |Cy   0 -Sy||Vx|   
+ * | 0   1   0||Vy| = |CyVx - SyVz, Vy, SyVx + CyVz|
+ * |Sy   0  Cy||Vz|
+ */
 
+ //TODO: Document
 /* produces a rotation matrix by specifying the y-component of the rotation axis,
    then an xz-rotation axis and the overall rotation angle */
 void calculate_orientation_matrix(Mat3 dest, f32 axisZ, f32 cosAxisY, f32 axisX, s16 rotationAngle) {
@@ -774,7 +874,15 @@ UNUSED void func_802B68F8(Mat3 matrix, f32 arg1, f32 arg2, f32 arg3) {
     }
 }
 
-// rotation about an axis (axisX, axisY, axisZ)
+/*
+ * @brief rotates a given vector about a given axis by amount specified
+ * @param destMatrix Overriden with the resulting matrix
+ * @param rotationAngle Angle to rotate (in N64 units)
+ * @param axisX The X component of the axis to rotate around
+ * @param axisY The Y component of the axis to rotate around
+ * @param axisZ The Z component of the axis to rotate around
+ */
+ // Standard algorithm, but unintuitive. "Rotation matrix from axis and angle" brings up info online
 void calculate_rotation_matrix(Mat3 destMatrix, s16 rotationAngle, f32 axisX, f32 axisY, f32 axisZ) {
     f32 sinValue;
     f32 cosValue;
@@ -879,40 +987,46 @@ UNUSED void func_802B6D58(Mat4 arg0, Vec3f arg1, Vec3f arg2) {
     arg0[3][3] = 1.0f;
 }
 
-void mtxf_multiplication(Mat4 dest, Mat4 mat1, Mat4 mat2) {
+/**
+ * @brief Multiply two 4x4 matrices
+ * @param dest Result of multiplication is saved here
+ * @param mtxLeft Left matrix in product
+ * @param mtxRight Right matrix to product
+ */
+void mtxf_multiplication(Mat4 dest, Mat4 mtxLeft, Mat4 mtxRight) {
     Mat4 product;
     product[0][0] =
-        (mat1[0][0] * mat2[0][0]) + (mat1[0][1] * mat2[1][0]) + (mat1[0][2] * mat2[2][0]) + (mat1[0][3] * mat2[3][0]);
+        (mtxLeft[0][0] * mtxRight[0][0]) + (mtxLeft[0][1] * mtxRight[1][0]) + (mtxLeft[0][2] * mtxRight[2][0]) + (mtxLeft[0][3] * mtxRight[3][0]);
     product[0][1] =
-        (mat1[0][0] * mat2[0][1]) + (mat1[0][1] * mat2[1][1]) + (mat1[0][2] * mat2[2][1]) + (mat1[0][3] * mat2[3][1]);
+        (mtxLeft[0][0] * mtxRight[0][1]) + (mtxLeft[0][1] * mtxRight[1][1]) + (mtxLeft[0][2] * mtxRight[2][1]) + (mtxLeft[0][3] * mtxRight[3][1]);
     product[0][2] =
-        (mat1[0][0] * mat2[0][2]) + (mat1[0][1] * mat2[1][2]) + (mat1[0][2] * mat2[2][2]) + (mat1[0][3] * mat2[3][2]);
+        (mtxLeft[0][0] * mtxRight[0][2]) + (mtxLeft[0][1] * mtxRight[1][2]) + (mtxLeft[0][2] * mtxRight[2][2]) + (mtxLeft[0][3] * mtxRight[3][2]);
     product[0][3] =
-        (mat1[0][0] * mat2[0][3]) + (mat1[0][1] * mat2[1][3]) + (mat1[0][2] * mat2[2][3]) + (mat1[0][3] * mat2[3][3]);
+        (mtxLeft[0][0] * mtxRight[0][3]) + (mtxLeft[0][1] * mtxRight[1][3]) + (mtxLeft[0][2] * mtxRight[2][3]) + (mtxLeft[0][3] * mtxRight[3][3]);
     product[1][0] =
-        (mat1[1][0] * mat2[0][0]) + (mat1[1][1] * mat2[1][0]) + (mat1[1][2] * mat2[2][0]) + (mat1[1][3] * mat2[3][0]);
+        (mtxLeft[1][0] * mtxRight[0][0]) + (mtxLeft[1][1] * mtxRight[1][0]) + (mtxLeft[1][2] * mtxRight[2][0]) + (mtxLeft[1][3] * mtxRight[3][0]);
     product[1][1] =
-        (mat1[1][0] * mat2[0][1]) + (mat1[1][1] * mat2[1][1]) + (mat1[1][2] * mat2[2][1]) + (mat1[1][3] * mat2[3][1]);
+        (mtxLeft[1][0] * mtxRight[0][1]) + (mtxLeft[1][1] * mtxRight[1][1]) + (mtxLeft[1][2] * mtxRight[2][1]) + (mtxLeft[1][3] * mtxRight[3][1]);
     product[1][2] =
-        (mat1[1][0] * mat2[0][2]) + (mat1[1][1] * mat2[1][2]) + (mat1[1][2] * mat2[2][2]) + (mat1[1][3] * mat2[3][2]);
+        (mtxLeft[1][0] * mtxRight[0][2]) + (mtxLeft[1][1] * mtxRight[1][2]) + (mtxLeft[1][2] * mtxRight[2][2]) + (mtxLeft[1][3] * mtxRight[3][2]);
     product[1][3] =
-        (mat1[1][0] * mat2[0][3]) + (mat1[1][1] * mat2[1][3]) + (mat1[1][2] * mat2[2][3]) + (mat1[1][3] * mat2[3][3]);
+        (mtxLeft[1][0] * mtxRight[0][3]) + (mtxLeft[1][1] * mtxRight[1][3]) + (mtxLeft[1][2] * mtxRight[2][3]) + (mtxLeft[1][3] * mtxRight[3][3]);
     product[2][0] =
-        (mat1[2][0] * mat2[0][0]) + (mat1[2][1] * mat2[1][0]) + (mat1[2][2] * mat2[2][0]) + (mat1[2][3] * mat2[3][0]);
+        (mtxLeft[2][0] * mtxRight[0][0]) + (mtxLeft[2][1] * mtxRight[1][0]) + (mtxLeft[2][2] * mtxRight[2][0]) + (mtxLeft[2][3] * mtxRight[3][0]);
     product[2][1] =
-        (mat1[2][0] * mat2[0][1]) + (mat1[2][1] * mat2[1][1]) + (mat1[2][2] * mat2[2][1]) + (mat1[2][3] * mat2[3][1]);
+        (mtxLeft[2][0] * mtxRight[0][1]) + (mtxLeft[2][1] * mtxRight[1][1]) + (mtxLeft[2][2] * mtxRight[2][1]) + (mtxLeft[2][3] * mtxRight[3][1]);
     product[2][2] =
-        (mat1[2][0] * mat2[0][2]) + (mat1[2][1] * mat2[1][2]) + (mat1[2][2] * mat2[2][2]) + (mat1[2][3] * mat2[3][2]);
+        (mtxLeft[2][0] * mtxRight[0][2]) + (mtxLeft[2][1] * mtxRight[1][2]) + (mtxLeft[2][2] * mtxRight[2][2]) + (mtxLeft[2][3] * mtxRight[3][2]);
     product[2][3] =
-        (mat1[2][0] * mat2[0][3]) + (mat1[2][1] * mat2[1][3]) + (mat1[2][2] * mat2[2][3]) + (mat1[2][3] * mat2[3][3]);
+        (mtxLeft[2][0] * mtxRight[0][3]) + (mtxLeft[2][1] * mtxRight[1][3]) + (mtxLeft[2][2] * mtxRight[2][3]) + (mtxLeft[2][3] * mtxRight[3][3]);
     product[3][0] =
-        (mat1[3][0] * mat2[0][0]) + (mat1[3][1] * mat2[1][0]) + (mat1[3][2] * mat2[2][0]) + (mat1[3][3] * mat2[3][0]);
+        (mtxLeft[3][0] * mtxRight[0][0]) + (mtxLeft[3][1] * mtxRight[1][0]) + (mtxLeft[3][2] * mtxRight[2][0]) + (mtxLeft[3][3] * mtxRight[3][0]);
     product[3][1] =
-        (mat1[3][0] * mat2[0][1]) + (mat1[3][1] * mat2[1][1]) + (mat1[3][2] * mat2[2][1]) + (mat1[3][3] * mat2[3][1]);
+        (mtxLeft[3][0] * mtxRight[0][1]) + (mtxLeft[3][1] * mtxRight[1][1]) + (mtxLeft[3][2] * mtxRight[2][1]) + (mtxLeft[3][3] * mtxRight[3][1]);
     product[3][2] =
-        (mat1[3][0] * mat2[0][2]) + (mat1[3][1] * mat2[1][2]) + (mat1[3][2] * mat2[2][2]) + (mat1[3][3] * mat2[3][2]);
+        (mtxLeft[3][0] * mtxRight[0][2]) + (mtxLeft[3][1] * mtxRight[1][2]) + (mtxLeft[3][2] * mtxRight[2][2]) + (mtxLeft[3][3] * mtxRight[3][2]);
     product[3][3] =
-        (mat1[3][0] * mat2[0][3]) + (mat1[3][1] * mat2[1][3]) + (mat1[3][2] * mat2[2][3]) + (mat1[3][3] * mat2[3][3]);
+        (mtxLeft[3][0] * mtxRight[0][3]) + (mtxLeft[3][1] * mtxRight[1][3]) + (mtxLeft[3][2] * mtxRight[2][3]) + (mtxLeft[3][3] * mtxRight[3][3]);
     mtxf_copy_n_element((s32*) dest, (s32*) product, 16);
 }
 
@@ -945,17 +1059,23 @@ void mtxf_to_mtx(Mtx* dest, Mat4 src) {
 #endif
 }
 
-/**
- * Comment from sm64 unverified. mk64 verison is modified
- *
+/*
  * Helper function for atan2s. Does a look up of the arctangent of y/x assuming
  * the resulting angle is in range [0, 0x2000] (1/8 of a circle).
+ * Note that this is only called by atan2s, guaranteeing that y <= x
+ *   If y > x, it will cause out of bounds issues
+ *
+ * @brief Finds the arctan angle (in N64 units) given x, y coordinates
+ * @param y y coordinate
+ * @param x x coordinate
+ * @return arctan(y/x) (in N64 units)
  */
-
 u16 atan2_lookup(f32 y, f32 x) {
     u16 ret;
 
     if (x == 0) {
+        /* In a vacuum this would be incorrect. But, it works with how atan2s
+           is implemented, which is the only place this function is called*/
         ret = gArctanTable[0];
     } else {
         if (1000000.0f < y / x) {
@@ -971,10 +1091,15 @@ u16 atan2_lookup(f32 y, f32 x) {
     return ret;
 }
 
-/**
+/*
  * Compute the angle from (0, 0) to (x, y) as a u16. Given that terrain is in
  * the xz-plane, this is commonly called with (z, x) to get a yaw angle.
  * sm64 but x, y swapped and returns u16.
+
+ * @brief Finds the arctan angle (in N64 units) given x, y coordinates
+ * @param y y coordinate
+ * @param x x coordinate
+ * @return arctan(y/x) (in N64 units)
  */
 u16 atan2s(f32 y, f32 x) {
     u16 ret;
@@ -1013,6 +1138,7 @@ u16 atan2s(f32 y, f32 x) {
     return ret;
 }
 
+// @brief see atan2s
 f32 atan2f(f32 y, f32 x) {
     return atan2s(y, x);
 }
@@ -1067,31 +1193,47 @@ UNUSED u16 func_802B7B50(f32 arg0, f32 arg1) {
 UNUSED void func_802B7C18(f32 arg0) {
     atan2f(arg0, 1.0f);
 }
-
-s16 atan1s(f32 arg0) {
-    return atan2s(arg0, 1.0f);
+/*
+ * @brief Finds the arctan angle (in N64 units) given the tangent
+ * @param tan Tangent of an angle
+ * @return arctan(tan) (in N64 units)
+ */
+s16 atan1s(f32 tan) {
+    return atan2s(tan, 1.0f);
 }
 
 UNUSED void func_802B7C6C(f32 arg0) {
     atan2f(arg0, sqrtf(1.0 - (arg0 * arg0)));
 }
 
-s16 asin1s(f32 sinTheta) {
-    return atan2s(sinTheta, sqrtf(1.0 - (sinTheta * sinTheta)));
-    /* atan(sin(theta) / sqrt(1 - sin**2(theta))) 
-    = atan(sin(theta) / sqrt(cos**2(theta))) 
-    = atan(sin(theta) / cos(theta)) 
-    = atan(tan(theta)) 
-    = theta */
+/*
+ * @brief Finds the arcsin (in N64 units) of a value (assuming positive cosine)
+ * @param value Value to find the arcsin of
+ * @return arcsin(value)
+ */
+s16 asin1s(f32 value) {
+    return atan2s(value, sqrtf(1.0 - (value * value)));
+    /* if value = sin(Angle), we have
+    = asin(sin(Angle) / sqrt(1 - sin**2(Angle))) 
+    = atan(sin(Angle) / sqrt(cos**2(Angle))) 
+    = atan(sin(Angle) / cos(Angle)) 
+    = atan(tan(Angle)) 
+    = Angle */
 }
 
-f32 acos1f(f32 cosTheta) {
-    return atan2f(sqrtf(1.0 - (cosTheta * cosTheta)), cosTheta);
-    /* atan(sqrt(1 - cos**2(theta)) / cos(theta))
-    = atan(sqrt(sin**2(theta)) / cos(theta))
-    = atan(sin(theta) / cos(theta))
-    = atan(tan(theta))
-    = theta */
+/*
+ * @brief Finds the arccos angle (in N64 units) of a value (assuming positive sine)
+ * @param value Value to find the arccos of
+ * @return arccos(value)
+ */
+f32 acos1f(f32 value) {
+    return atan2f(sqrtf(1.0 - (value * value)), value);
+    /* if value = cos(Angle), we have
+    = atan(sqrt(1 - cos**2(Angle)) / cos(Angle))
+    = atan(sqrt(sin**2(Angle)) / cos(Angle))
+    = atan(sin(Angle) / cos(Angle))
+    = atan(tan(Angle))
+    = Angle */
 }
 
 UNUSED s16 func_802B7D28(f32 arg0) {
@@ -1130,10 +1272,24 @@ u16 random_int(u16 arg0) {
     return arg0 * (((f32) random_u16()) / 65535.0);
 }
 
-s16 angle_from_coords(f32 vec0y, f32 vec0x, f32 vec1y, f32 vec1x) {
-    return atan2s(vec1y - vec0y, vec1x - vec0x);
+/*
+ * @brief Find the angle (in N64 units) between two points given their coords
+ * @param fromY The y coordinate of the point the angle is measured from
+ * @param fromX The x coordinate of the point the angle is measured from
+ * @param toY The y coordinate of the point the angle is measured to
+ * @param toX The x coordinate of the point the angle is measured to
+ * @return The angle (in N64 units) of the line from the from-point, to the to-point
+ */
+s16 angle_from_coords(f32 fromY, f32 fromX, f32 toY, f32 toX) {
+    return atan2s(toY - fromY, toX - fromX);
 }
 
+/*
+ * @brief Find the planar angles (in N64 units) between two points given their positions
+ * @param from The coordinates of the point the angle is measured from
+ * @param to The coordinate of the point the angle is measured to
+ * @param Overwritten with the angles between the two points in the coordinate planes (yz, xz, xy)
+ */
 void planar_angles(Vec3f from, Vec3f to, Vec3s rotAngles) {
     f32 fromX = from[0];
     f32 fromY = from[1];
@@ -1148,12 +1304,22 @@ void planar_angles(Vec3f from, Vec3f to, Vec3s rotAngles) {
     rotAngles[2] = angle_from_coords(fromX, fromY, toX, toY);
 }
 
-f32 sins(u16 arg0) {
-    return gSineTable[arg0 >> 4];
+/*
+ * @brief Get the sine of an angle
+ * @param angle angle (in N64 units)
+ * @return sin(angle)
+ */
+f32 sins(u16 angle) {
+    return gSineTable[angle >> 4];
 }
 
-f32 coss(u16 arg0) {
-    return gCosineTable[arg0 >> 4];
+/*
+ * @brief Get the cosine of an angle
+ * @param angle angle (in N64 units)
+ * @return sin(angle)
+ */
+f32 coss(u16 angle) {
+    return gCosineTable[angle >> 4];
 }
 
 // TODO: rename is_between_angle
@@ -1174,8 +1340,9 @@ s32 is_visible_between_angle(u16 fovHigher, u16 fovLower, u16 angleToCheck) {
     return 1;
 }
 
-/**
- * Determines whether an object is within the render distance of a camera.
+//TODO Better name
+/*
+ * @brief Determines whether an object is within the render distance of a camera.
  *
  * @param cameraPos              The position of the camera in 3D space.
  * @param objectPos              The position of the object in 3D space.
