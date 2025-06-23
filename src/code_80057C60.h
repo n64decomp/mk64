@@ -120,7 +120,7 @@ void func_8005D1F4(s32);
 void func_8005D290(void);
 void reset_player_particle_pool(Player*);
 void set_particle_position_and_rotation(Player*, Particle*, f32, f32, f32, s8, s8);
-s32 init_new_particle_player(Particle*, s8, f32);
+s32 init_particle_player(Particle*, s8, f32);
 s32 set_particle_colour(Particle*, s32, s16);
 s32 set_particle_colour_randomly_varried(Particle*, s32, s16);
 void set_drift_particles(Player*, s16, s32, s8, s8);
