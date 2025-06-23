@@ -72,24 +72,24 @@ s32 render_set_position(Mat4 mtx, s32 mode) {
 
 // returns (x**2 + y**2 + 2*z)
 f32 dist_squared_bugged(Vec3f vec0, Vec3f vec1) {
-    f32 delta_y;
-    f32 delta_z;
-    f32 delta_x;
+    f32 deltaY;
+    f32 deltaZ;
+    f32 deltaX;
 
-    delta_x = vec1[0] - vec0[0];
-    delta_y = vec1[1] - vec0[1];
-    delta_z = vec1[2] - vec0[2];
+    deltaX = vec1[0] - vec0[0];
+    deltaY = vec1[1] - vec0[1];
+    deltaZ = vec1[2] - vec0[2];
     // If the last plus was a multiplication symbol, we'd have a correct dist_squared formula
-    return (delta_x * delta_x) + (delta_y * delta_y) + delta_z + delta_z;
+    return (deltaX * deltaX) + (deltaY * deltaY) + deltaZ + deltaZ;
 }
 
 s32 get_angle_between_points(Vec3f vec0, Vec3f vec1) {
-    f32 delta_x;
-    f32 delta_z;
-    delta_x = vec1[0] - vec0[0];
-    delta_z = vec1[2] - vec0[2];
+    f32 deltaX;
+    f32 deltaZ;
+    deltaX = vec1[0] - vec0[0];
+    deltaZ = vec1[2] - vec0[2];
 
-    return atan2s(delta_x, delta_z);
+    return atan2s(deltaX, deltaZ);
 }
 
 // copy of get_angle_between_points
@@ -214,16 +214,16 @@ UNUSED void add_translate_mat4_vec3f_lite(Mat4 mat, Mat4 dest, Vec3f pos) {
 }
 
 // create a translation matrix
-void mtxf_translate(Mat4 dest, Vec3f v_trans) {
+void mtxf_translate(Mat4 dest, Vec3f vecTrans) {
     mtxf_identity(dest);
-    dest[3][0] = v_trans[0];
-    dest[3][1] = v_trans[1];
-    dest[3][2] = v_trans[2];
+    dest[3][0] = vecTrans[0];
+    dest[3][1] = vecTrans[1];
+    dest[3][2] = vecTrans[2];
         /*
      *          1          0          0 0
      *          0          1          0 0
      *          0          0          1 0
-     * v_trans[0] v_trans[1] v_trans[2] 1
+     * vecTrans[0] vecTrans[1] vecTrans[2] 1
      */
 }
 /*
@@ -239,22 +239,22 @@ void mtxf_translate(Mat4 dest, Vec3f v_trans) {
  */
 void mtxf_projection(Mat4 projMat, u16* arg1, f32 vertFov, f32 aspectRatio, f32 near, f32 far,
                            f32 homogeneousScale) {
-    f32 half_cot;
-    s32 row_idx, col_idx;
+    f32 halfCot;
+    s32 rowIdx, colIdx;
     mtxf_identity(projMat);
     vertFov *= 0.017453292222222222; // convert from degrees to radians
-    half_cot = cosf(vertFov / 2) / sinf(vertFov / 2);
-    projMat[0][0] = half_cot / aspectRatio;
-    projMat[1][1] = half_cot;
+    halfCot = cosf(vertFov / 2) / sinf(vertFov / 2);
+    projMat[0][0] = halfCot / aspectRatio;
+    projMat[1][1] = halfCot;
     // Literature usually prefers the clearer equivalent -(near + far) / (far - near)
     projMat[2][2] = (near + far) / (near - far);
     projMat[2][3] = -1.0f;
     projMat[3][2] = (2 * near * far) / (near - far);
     projMat[3][3] = 0.0f;
 
-    for (row_idx = 0; row_idx < 4; row_idx++) {
-        for (col_idx = 0; col_idx < 4; col_idx++) {
-            projMat[row_idx][col_idx] *= homogeneousScale;
+    for (rowIdx = 0; rowIdx < 4; rowIdx++) {
+        for (colIdx = 0; colIdx < 4; colIdx++) {
+            projMat[rowIdx][colIdx] *= homogeneousScale;
         }
     }
 
@@ -352,56 +352,56 @@ void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to) {
 
 // create a rotation matrix around the x axis
 void mtxf_rotate_x(Mat4 mat, s16 angle) {
-    f32 sin_theta = sins(angle);
-    f32 cos_theta = coss(angle);
+    f32 sinTheta = sins(angle);
+    f32 cosTheta = coss(angle);
 
     mtxf_identity(mat);
-    mat[1][1] = cos_theta;
-    mat[1][2] = sin_theta;
-    mat[2][1] = -sin_theta;
-    mat[2][2] = cos_theta;
+    mat[1][1] = cosTheta;
+    mat[1][2] = sinTheta;
+    mat[2][1] = -sinTheta;
+    mat[2][2] = cosTheta;
 
     /*
      * 1,          0,         0, 0,
-     * 0,  cos_theta, sin_theta, 0,
-     * 0, -sin_theta, cos_theta, 0,
+     * 0,  cosTheta, sinTheta, 0,
+     * 0, -sinTheta, cosTheta, 0,
      * 0,          0,         0, 1
      */
 }
 
 // create a rotation matrix around the y axis
 void mtxf_rotate_y(Mat4 mat, s16 angle) {
-    f32 sin_theta = sins(angle);
-    f32 cos_theta = coss(angle);
+    f32 sinTheta = sins(angle);
+    f32 cosTheta = coss(angle);
 
     mtxf_identity(mat);
-    mat[0][0] = cos_theta;
-    mat[0][2] = -sin_theta;
-    mat[2][0] = sin_theta;
-    mat[2][2] = cos_theta;
+    mat[0][0] = cosTheta;
+    mat[0][2] = -sinTheta;
+    mat[2][0] = sinTheta;
+    mat[2][2] = cosTheta;
 
     /*
-     * cos_theta, 0, -sin_theta, 0,
+     * cosTheta, 0, -sinTheta, 0,
      *         0, 1,          0, 0,
-     * sin_theta, 0,  cos_theta, 0,
+     * sinTheta, 0,  cosTheta, 0,
      *         0, 0,          0, 1
      */
 }
 
 // create a rotation matrix around the z axis
 void mtxf_s16_rotate_z(Mat4 mat, s16 angle) {
-    f32 sin_theta = sins(angle);
-    f32 cos_theta = coss(angle);
+    f32 sinTheta = sins(angle);
+    f32 cosTheta = coss(angle);
 
     mtxf_identity(mat);
-    mat[0][0] = cos_theta;
-    mat[0][1] = sin_theta;
-    mat[1][0] = -sin_theta;
-    mat[1][1] = cos_theta;
+    mat[0][0] = cosTheta;
+    mat[0][1] = sinTheta;
+    mat[1][0] = -sinTheta;
+    mat[1][1] = cosTheta;
 
     /*
-     *  cos_theta, sin_theta, 0, 0,
-     * -sin_theta, cos_theta, 0, 0,
+     *  cosTheta, sinTheta, 0, 0,
+     * -sinTheta, cosTheta, 0, 0,
      *          0,         0, 1, 0,
      *          0,         0, 0, 1
      */
@@ -465,9 +465,9 @@ UNUSED void func_802B5D30(s16 arg0, s16 arg1, s32 arg2) {
  * @param lightAddr
  * @param arg1
  * @param arg2
- * @param light_count Always 1 in practice
+ * @param lightCount Always 1 in practice
  */
-void set_course_lighting(Lights1* lightAddr, s16 rotateAngleY, s16 rotateAngleX, s32 light_count) {
+void set_course_lighting(Lights1* lightAddr, s16 rotateAngleY, s16 rotateAngleX, s32 lightCount) {
     u32 segment = SEGMENT_NUMBER2(lightAddr);
     u32 offset = SEGMENT_OFFSET(lightAddr);
     UNUSED s32 pad;
@@ -488,7 +488,7 @@ void set_course_lighting(Lights1* lightAddr, s16 rotateAngleY, s16 rotateAngleX,
     lightAngle[0] = cosThetaX * sinThetaY * 120.0f;
     lightAngle[1] = 120.0f * sinThetaX;
     lightAngle[2] = cosThetaX * cosThetaY * -120.0f;
-    for (lightIdx = 0; lightIdx < light_count; lightIdx++, lights++) {
+    for (lightIdx = 0; lightIdx < lightCount; lightIdx++, lights++) {
         lights->l[0].l.dir[0] = lightAngle[0];
         lights->l[0].l.dir[1] = lightAngle[1];
         lights->l[0].l.dir[2] = lightAngle[2];
@@ -626,33 +626,33 @@ UNUSED void func_802B6374(Vec3f arg0) {
 // translate the vector with a matrix
 // TODO: rename transform because it is not a translation
 void mtxf_translate_vec3f_mat3(Vec3f vec, Mat3 mat) {
-    f32 new_x;
-    f32 new_y;
-    f32 new_z;
+    f32 newX;
+    f32 newY;
+    f32 newZ;
 
-    new_x = (mat[0][0] * vec[0]) + (mat[0][1] * vec[1]) + (mat[0][2] * vec[2]);
-    new_y = (mat[1][0] * vec[0]) + (mat[1][1] * vec[1]) + (mat[1][2] * vec[2]);
-    new_z = (mat[2][0] * vec[0]) + (mat[2][1] * vec[1]) + (mat[2][2] * vec[2]);
+    newX = (mat[0][0] * vec[0]) + (mat[0][1] * vec[1]) + (mat[0][2] * vec[2]);
+    newY = (mat[1][0] * vec[0]) + (mat[1][1] * vec[1]) + (mat[1][2] * vec[2]);
+    newZ = (mat[2][0] * vec[0]) + (mat[2][1] * vec[1]) + (mat[2][2] * vec[2]);
 
-    vec[0] = new_x;
-    vec[1] = new_y;
-    vec[2] = new_z;
+    vec[0] = newX;
+    vec[1] = newY;
+    vec[2] = newZ;
 }
 
 // translate the vector with a matrix (with a matrix 4x4)
 // TODO: rename transform because it is not a translation
 void mtxf_translate_vec3f_mat4(Vec3f vec, Mat4 mat) {
-    f32 new_x;
-    f32 new_y;
-    f32 new_z;
+    f32 newX;
+    f32 newY;
+    f32 newZ;
 
-    new_x = (mat[0][0] * vec[0]) + (mat[0][1] * vec[1]) + (mat[0][2] * vec[2]);
-    new_y = (mat[1][0] * vec[0]) + (mat[1][1] * vec[1]) + (mat[1][2] * vec[2]);
-    new_z = (mat[2][0] * vec[0]) + (mat[2][1] * vec[1]) + (mat[2][2] * vec[2]);
+    newX = (mat[0][0] * vec[0]) + (mat[0][1] * vec[1]) + (mat[0][2] * vec[2]);
+    newY = (mat[1][0] * vec[0]) + (mat[1][1] * vec[1]) + (mat[1][2] * vec[2]);
+    newZ = (mat[2][0] * vec[0]) + (mat[2][1] * vec[1]) + (mat[2][2] * vec[2]);
 
-    vec[0] = new_x;
-    vec[1] = new_y;
-    vec[2] = new_z;
+    vec[0] = newX;
+    vec[1] = newY;
+    vec[2] = newZ;
 }
 
 UNUSED void func_802B64B0(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
@@ -674,8 +674,8 @@ void vec3f_rotate_y(Vec3f vector, s16 rotationAngle) {
 /* produces a rotation matrix by specifying the y-component of the rotation axis,
    then an xz-rotation axis and the overall rotation angle */
 void calculate_orientation_matrix(Mat3 dest, f32 axisZ, f32 cosAxisY, f32 axisX, s16 rotationAngle) {
-    Mat3 mtx_rot_y;
-    Mat3 mtx_rot_xz;
+    Mat3 mtxRotY;
+    Mat3 mtxRotXZ;
     s32 row, col;
     f32 a;
     f32 axisNormedX;
@@ -687,17 +687,17 @@ void calculate_orientation_matrix(Mat3 dest, f32 axisZ, f32 cosAxisY, f32 axisX,
 
     sinValue = sins(rotationAngle);
     cosValue = coss(rotationAngle);
-    mtx_rot_y[0][0] = cosValue;
-    mtx_rot_y[2][1] = 0;
-    mtx_rot_y[1][2] = 0;
+    mtxRotY[0][0] = cosValue;
+    mtxRotY[2][1] = 0;
+    mtxRotY[1][2] = 0;
 
-    mtx_rot_y[1][1] = 1;
-    mtx_rot_y[2][0] = sinValue;
-    mtx_rot_y[0][2] = -sinValue;
+    mtxRotY[1][1] = 1;
+    mtxRotY[2][0] = sinValue;
+    mtxRotY[0][2] = -sinValue;
 
-    mtx_rot_y[2][2] = cosValue;
-    mtx_rot_y[1][0] = 0;
-    mtx_rot_y[0][1] = 0;
+    mtxRotY[2][2] = cosValue;
+    mtxRotY[1][0] = 0;
+    mtxRotY[0][1] = 0;
 
     /* Standard rotation matrix
       [cos, 0, -sin]
@@ -709,7 +709,7 @@ void calculate_orientation_matrix(Mat3 dest, f32 axisZ, f32 cosAxisY, f32 axisX,
 
         for (row = 0; row < 3; row++) {
             for (col = 0; col < 3; col++) {
-                mtx_rot_xz[row][col] = (row == col) ? 1.0f : 0.0f;
+                mtxRotXZ[row][col] = (row == col) ? 1.0f : 0.0f;
             }
         }
 
@@ -717,30 +717,30 @@ void calculate_orientation_matrix(Mat3 dest, f32 axisZ, f32 cosAxisY, f32 axisX,
 
         for (row = 0; row < 3; row++) {
             for (col = 0; col < 3; col++) {
-                mtx_rot_xz[row][col] = (row == col) ? 1.0f : 0.0f;
+                mtxRotXZ[row][col] = (row == col) ? 1.0f : 0.0f;
             }
         }
 
-        mtx_rot_xz[1][1] = -1;
+        mtxRotXZ[1][1] = -1;
 
     } else {
         a = (f32) - (360.0 - ((f64) (acos1f(cosAxisY) * 180.0f) / M_PI)); // converting to degrees
         axisNormedX = -axisX / sqrtf((axisZ * axisZ) + (axisX * axisX));
         axisNormedZ = axisZ / sqrtf((axisZ * axisZ) + (axisX * axisX));
-        calculate_rotation_matrix(mtx_rot_xz, a, axisNormedX, 0, axisNormedZ); // rotates around something in the x-z plane
+        calculate_rotation_matrix(mtxRotXZ, a, axisNormedX, 0, axisNormedZ); // rotates around something in the x-z plane
     }
-    //mtx_rot_y * matrix
-    dest[0][0] = (mtx_rot_y[0][0] * mtx_rot_xz[0][0]) + (mtx_rot_y[0][1] * mtx_rot_xz[1][0]) + (mtx_rot_y[0][2] * mtx_rot_xz[2][0]);
-    dest[1][0] = (mtx_rot_y[1][0] * mtx_rot_xz[0][0]) + (mtx_rot_y[1][1] * mtx_rot_xz[1][0]) + (mtx_rot_y[1][2] * mtx_rot_xz[2][0]);
-    dest[2][0] = (mtx_rot_y[2][0] * mtx_rot_xz[0][0]) + (mtx_rot_y[2][1] * mtx_rot_xz[1][0]) + (mtx_rot_y[2][2] * mtx_rot_xz[2][0]);
+    //mtxRotY * matrix
+    dest[0][0] = (mtxRotY[0][0] * mtxRotXZ[0][0]) + (mtxRotY[0][1] * mtxRotXZ[1][0]) + (mtxRotY[0][2] * mtxRotXZ[2][0]);
+    dest[1][0] = (mtxRotY[1][0] * mtxRotXZ[0][0]) + (mtxRotY[1][1] * mtxRotXZ[1][0]) + (mtxRotY[1][2] * mtxRotXZ[2][0]);
+    dest[2][0] = (mtxRotY[2][0] * mtxRotXZ[0][0]) + (mtxRotY[2][1] * mtxRotXZ[1][0]) + (mtxRotY[2][2] * mtxRotXZ[2][0]);
 
-    dest[0][1] = (mtx_rot_y[0][0] * mtx_rot_xz[0][1]) + (mtx_rot_y[0][1] * mtx_rot_xz[1][1]) + (mtx_rot_y[0][2] * mtx_rot_xz[2][1]);
-    dest[1][1] = (mtx_rot_y[1][0] * mtx_rot_xz[0][1]) + (mtx_rot_y[1][1] * mtx_rot_xz[1][1]) + (mtx_rot_y[1][2] * mtx_rot_xz[2][1]);
-    dest[2][1] = (mtx_rot_y[2][0] * mtx_rot_xz[0][1]) + (mtx_rot_y[2][1] * mtx_rot_xz[1][1]) + (mtx_rot_y[2][2] * mtx_rot_xz[2][1]);
+    dest[0][1] = (mtxRotY[0][0] * mtxRotXZ[0][1]) + (mtxRotY[0][1] * mtxRotXZ[1][1]) + (mtxRotY[0][2] * mtxRotXZ[2][1]);
+    dest[1][1] = (mtxRotY[1][0] * mtxRotXZ[0][1]) + (mtxRotY[1][1] * mtxRotXZ[1][1]) + (mtxRotY[1][2] * mtxRotXZ[2][1]);
+    dest[2][1] = (mtxRotY[2][0] * mtxRotXZ[0][1]) + (mtxRotY[2][1] * mtxRotXZ[1][1]) + (mtxRotY[2][2] * mtxRotXZ[2][1]);
 
-    dest[0][2] = (mtx_rot_y[0][0] * mtx_rot_xz[0][2]) + (mtx_rot_y[0][1] * mtx_rot_xz[1][2]) + (mtx_rot_y[0][2] * mtx_rot_xz[2][2]);
-    dest[1][2] = (mtx_rot_y[1][0] * mtx_rot_xz[0][2]) + (mtx_rot_y[1][1] * mtx_rot_xz[1][2]) + (mtx_rot_y[1][2] * mtx_rot_xz[2][2]);
-    dest[2][2] = (mtx_rot_y[2][0] * mtx_rot_xz[0][2]) + (mtx_rot_y[2][1] * mtx_rot_xz[1][2]) + (mtx_rot_y[2][2] * mtx_rot_xz[2][2]);
+    dest[0][2] = (mtxRotY[0][0] * mtxRotXZ[0][2]) + (mtxRotY[0][1] * mtxRotXZ[1][2]) + (mtxRotY[0][2] * mtxRotXZ[2][2]);
+    dest[1][2] = (mtxRotY[1][0] * mtxRotXZ[0][2]) + (mtxRotY[1][1] * mtxRotXZ[1][2]) + (mtxRotY[1][2] * mtxRotXZ[2][2]);
+    dest[2][2] = (mtxRotY[2][0] * mtxRotXZ[0][2]) + (mtxRotY[2][1] * mtxRotXZ[1][2]) + (mtxRotY[2][2] * mtxRotXZ[2][2]);
 }
 
 // include in calculate_orientation_matrix
@@ -779,9 +779,9 @@ void calculate_rotation_matrix(Mat3 destMatrix, s16 rotationAngle, f32 axisX, f3
     f32 sinValue;
     f32 cosValue;
     f32 temp;
-    f32 value_zx;
-    f32 value_yz;
-    f32 value_xy;
+    f32 valueZX;
+    f32 valueYZ;
+    f32 valueXY;
     UNUSED s32 pad[2];
 
     sinValue = sins((u16) rotationAngle);
@@ -789,24 +789,24 @@ void calculate_rotation_matrix(Mat3 destMatrix, s16 rotationAngle, f32 axisX, f3
 
     temp = 1.0f - cosValue;
 
-    value_zx = (axisZ * axisX) * temp;
-    value_yz = (axisY * axisZ) * temp;
-    value_xy = (axisX * axisY) * temp;
+    valueZX = (axisZ * axisX) * temp;
+    valueYZ = (axisY * axisZ) * temp;
+    valueXY = (axisX * axisY) * temp;
 
     temp = axisX * axisX;
     destMatrix[0][0] = ((1.0f - temp) * cosValue) + temp;
-    destMatrix[2][1] = value_yz - (axisX * sinValue);
-    destMatrix[1][2] = value_yz + (axisX * sinValue);
+    destMatrix[2][1] = valueYZ - (axisX * sinValue);
+    destMatrix[1][2] = valueYZ + (axisX * sinValue);
 
     temp = axisY * axisY;
     destMatrix[1][1] = (((1.0f - temp) * cosValue) + temp);
-    destMatrix[2][0] = value_zx + (axisY * sinValue);
-    destMatrix[0][2] = value_zx - (axisY * sinValue);
+    destMatrix[2][0] = valueZX + (axisY * sinValue);
+    destMatrix[0][2] = valueZX - (axisY * sinValue);
 
     temp = axisZ * axisZ;
     destMatrix[2][2] = (((1.0f - temp) * cosValue) + temp);
-    destMatrix[1][0] = value_xy - (axisZ * sinValue);
-    destMatrix[0][1] = value_xy + (axisZ * sinValue);
+    destMatrix[1][0] = valueXY - (axisZ * sinValue);
+    destMatrix[0][1] = valueXY + (axisZ * sinValue);
 }
 
 UNUSED void func_802B6BC0(Mat4 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4) {
@@ -1076,8 +1076,8 @@ UNUSED void func_802B7C6C(f32 arg0) {
     atan2f(arg0, sqrtf(1.0 - (arg0 * arg0)));
 }
 
-s16 asin1s(f32 sin_theta) {
-    return atan2s(sin_theta, sqrtf(1.0 - (sin_theta * sin_theta)));
+s16 asin1s(f32 sinTheta) {
+    return atan2s(sinTheta, sqrtf(1.0 - (sinTheta * sinTheta)));
     /* atan(sin(theta) / sqrt(1 - sin**2(theta))) 
     = atan(sin(theta) / sqrt(cos**2(theta))) 
     = atan(sin(theta) / cos(theta)) 
@@ -1085,8 +1085,8 @@ s16 asin1s(f32 sin_theta) {
     = theta */
 }
 
-f32 acos1f(f32 cos_theta) {
-    return atan2f(sqrtf(1.0 - (cos_theta * cos_theta)), cos_theta);
+f32 acos1f(f32 cosTheta) {
+    return atan2f(sqrtf(1.0 - (cosTheta * cosTheta)), cosTheta);
     /* atan(sqrt(1 - cos**2(theta)) / cos(theta))
     = atan(sqrt(sin**2(theta)) / cos(theta))
     = atan(sin(theta) / cos(theta))
@@ -1134,7 +1134,7 @@ s16 angle_from_coords(f32 vec0y, f32 vec0x, f32 vec1y, f32 vec1x) {
     return atan2s(vec1y - vec0y, vec1x - vec0x);
 }
 
-void planar_angles(Vec3f from, Vec3f to, Vec3s rot_angles) {
+void planar_angles(Vec3f from, Vec3f to, Vec3s rotAngles) {
     f32 fromX = from[0];
     f32 fromY = from[1];
     f32 fromZ = from[2];
@@ -1143,9 +1143,9 @@ void planar_angles(Vec3f from, Vec3f to, Vec3s rot_angles) {
     f32 toY = to[1];
     f32 toZ = to[2];
 
-    rot_angles[1] = angle_from_coords(fromZ, fromX, toZ, toX);
-    rot_angles[0] = angle_from_coords(fromY, fromZ, toY, toZ);
-    rot_angles[2] = angle_from_coords(fromX, fromY, toX, toY);
+    rotAngles[1] = angle_from_coords(fromZ, fromX, toZ, toX);
+    rotAngles[0] = angle_from_coords(fromY, fromZ, toY, toZ);
+    rotAngles[2] = angle_from_coords(fromX, fromY, toX, toY);
 }
 
 f32 sins(u16 arg0) {
@@ -1157,17 +1157,17 @@ f32 coss(u16 arg0) {
 }
 
 // TODO: rename is_between_angle
-s32 is_visible_between_angle(u16 fov_higher, u16 fov_lower, u16 angle_to_check) {
-    if (fov_lower < fov_higher) {
-        if (fov_lower >= angle_to_check) {
+s32 is_visible_between_angle(u16 fovHigher, u16 fovLower, u16 angleToCheck) {
+    if (fovLower < fovHigher) {
+        if (fovLower >= angleToCheck) {
             return 0;
         }
-        if (angle_to_check >= fov_higher) {
+        if (angleToCheck >= fovHigher) {
             return 0;
         }
     } else {
         // fov straddles 0 angle
-        if ((fov_lower >= angle_to_check) && (angle_to_check >= fov_higher)) {
+        if ((fovLower >= angleToCheck) && (angleToCheck >= fovHigher)) {
             return 0;
         }
     }
@@ -1181,13 +1181,13 @@ s32 is_visible_between_angle(u16 fov_higher, u16 fov_lower, u16 angle_to_check) 
  * @param objectPos              The position of the object in 3D space.
  * @param orientationY           The orientation angle of the object around the Y-axis.
  * @param preloadDistanceSquared Consider an object within this distance of viweable area as renderable
- * @param fov_degrees            The field of view (FOV) of the camera (degrees).
+ * @param fovDegrees            The field of view (FOV) of the camera (degrees).
  * @param maxDistanceSquared     The maximum render distance.
  * @return                       The distance between the camera and the object if it's within render distance of the
  *                               camera's vision, or -1.0f if it exceeds the render distance.
  */
 
-f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 preloadDistanceSquared, f32 fov_degrees,
+f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 preloadDistanceSquared, f32 fovDegrees,
                               f32 maxDistanceSquared) {
     u16 angleObject;
     UNUSED u16 pad;
@@ -1195,11 +1195,11 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
     f32 distanceXSquared;
     f32 distanceSquared;
     f32 distanceZSquared;
-    s32 plus_fov_angle;
-    s32 minus_fov_angle;
+    s32 plusFovAngle;
+    s32 minusFovAngle;
     u16 adjustedAngle;
     UNUSED s32 pad2[3];
-    u16 fov_units = ((u16) fov_degrees * 182); //degrees to angle units (182 * 360 ~= 2**16)
+    u16 fovUnits = ((u16) fovDegrees * 182); //degrees to angle units (182 * 360 ~= 2**16)
 
     distanceXSquared = objectPos[0] - cameraPos[0];
     distanceXSquared = distanceXSquared * distanceXSquared;
@@ -1223,17 +1223,17 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
     }
 
     angleObject = get_angle_between_points(cameraPos, objectPos);
-    minus_fov_angle = (orientationY - fov_units);
-    plus_fov_angle = (orientationY + fov_units);
+    minusFovAngle = (orientationY - fovUnits);
+    plusFovAngle = (orientationY + fovUnits);
 
     if (preloadDistanceSquared == 0.0f) {
-        if (is_visible_between_angle((orientationY + fov_units), (orientationY - fov_units), angleObject) == 1) {
+        if (is_visible_between_angle((orientationY + fovUnits), (orientationY - fovUnits), angleObject) == 1) {
             return distanceSquared;
         }
         return -1.0f;
     }
 
-    if (is_visible_between_angle((u16) plus_fov_angle, (u16) minus_fov_angle, angleObject) == 1) {
+    if (is_visible_between_angle((u16) plusFovAngle, (u16) minusFovAngle, angleObject) == 1) {
         return distanceSquared;
     }
 
@@ -1242,12 +1242,12 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
     preloadAngle = asin1s(preloadDistanceSquared / distanceSquared);
     adjustedAngle = angleObject + preloadAngle;
 
-    if (is_visible_between_angle(plus_fov_angle, minus_fov_angle, adjustedAngle) == 1) {
+    if (is_visible_between_angle(plusFovAngle, minusFovAngle, adjustedAngle) == 1) {
         return distanceSquared;
     }
 
     adjustedAngle = angleObject - preloadAngle;
-    if (is_visible_between_angle(plus_fov_angle, minus_fov_angle, adjustedAngle) == 1) {
+    if (is_visible_between_angle(plusFovAngle, minusFovAngle, adjustedAngle) == 1) {
         return distanceSquared;
     }
     return -1.0f;
@@ -1283,7 +1283,7 @@ UNUSED void func_802B8414(uintptr_t addr, Mat4 arg1, s16 arg2, s16 arg3, s32 arg
     }
 }
 
-void func_802B8614(Player* arg0) {
+UNUSED void func_802B8614(Player* arg0) {
     UNUSED f64 pad[4];
     f64 corner1PosX = arg0->tyres[FRONT_RIGHT].pos[0];
     f64 corner1PosY = arg0->tyres[FRONT_RIGHT].baseHeight;
