@@ -58,7 +58,7 @@ void update_actor_banana(struct BananaActor* banana) {
                 }
                 if ((controller->buttonDepressed & Z_TRIG) != 0) {
                     controller->buttonDepressed &= ~Z_TRIG;
-                    banana->state = 1;
+                    banana->state = DROPPED_BANANA;
                     banana->unk_04 = 0x00B4;
                     player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
                     func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
@@ -66,10 +66,10 @@ void update_actor_banana(struct BananaActor* banana) {
                     if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
                         pad3 = pad3 - ((f32) 30);
                         pad3 = (pad3 / 20.0f) + 0.5f;
-                        if (player->unk_094 < 2.0f) {
+                        if (player->speed < 2.0f) {
                             temp_f0 = 4.0f;
                         } else {
-                            temp_f0 = (player->unk_094 * 0.75f) + 3.5f + pad3;
+                            temp_f0 = (player->speed * 0.75f) + 3.5f + pad3;
                         }
                         vec3f_set(someVelocity, 0, pad3, temp_f0);
                         func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);

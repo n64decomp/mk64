@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 
 extern Gfx d_course_moo_moo_farm_dl_0[];
@@ -104,8 +104,8 @@ extern Gfx d_course_moo_moo_farm_dl_E1D8[];
 extern Gfx d_course_moo_moo_farm_dl_E4B0[];
 extern Gfx d_course_moo_moo_farm_dl_E708[];
 extern Gfx d_course_moo_moo_farm_dl_EA18[];
-extern TrackWaypoint d_course_moo_moo_farm_unknown_waypoints[];
-extern TrackWaypoint d_course_moo_moo_farm_track_waypoints[];
+extern TrackPathPoint d_course_moo_moo_farm_unknown_path[];
+extern TrackPathPoint d_course_moo_moo_farm_track_path[];
 extern u8 d_course_moo_moo_farm_mole_tlut[];
 extern u8 d_course_moo_moo_farm_mole_frames[][2048];
 extern u8 d_course_moo_moo_farm_mole_dirt[];

@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 
 extern Gfx d_course_kalimari_desert_dl_0[];
@@ -87,9 +87,9 @@ extern Gfx d_course_kalimari_desert_dl_65B0[];
 extern Gfx d_course_kalimari_desert_dl_66F0[];
 extern Gfx d_course_kalimari_desert_dl_6838[];
 extern Gfx d_course_kalimari_desert_dl_6940[];
-extern TrackWaypoint d_course_kalimari_desert_unknown_waypoints[];
-extern TrackWaypoint d_course_kalimari_desert_train_waypoints[];
-extern TrackWaypoint d_course_kalimari_desert_track_waypoints[];
+extern TrackPathPoint d_course_kalimari_desert_unknown_path[];
+extern TrackPathPoint d_course_kalimari_desert_train_path[];
+extern TrackPathPoint d_course_kalimari_desert_track_path[];
 extern u8 d_course_kalimari_desert_tree_tlut[];
 extern Vtx d_course_kalimari_desert_cactus_model1[];
 extern Vtx d_course_kalimari_desert_cactus_model2[];

@@ -27,7 +27,7 @@ typedef struct {
     /* 0x08 */ s32 subState; // This is used but I can't tell what for
     /* 0x0C */ s32 column;
     /* 0x10 */ s32 row;
-    /* 0x14 */ u8 priority;   // priority/depth/z-level. Higher values are drawn on top of lower values
+    /* 0x14 */ s8 priority;   // priority/depth/z-level. Higher values are drawn on top of lower values
                               // If equal, later entries in gMenuItems are on top
     /* 0x15 */ bool8 visible; // active? If 1 its displayed, if 0 its not
     // These seem to be generic space available for use by the struct, no 1 purpose for any given member
@@ -330,11 +330,11 @@ enum TEXT_MENU_ID { CONTINUE_GAME, RETRY, COURSE_CHANGE, DRIVER_CHANGE, QUIT_TEX
 /* Function Prototypes */
 
 f64 exponent_by_squaring(f64, s32);
-f64 func_800917B0(f64, f64);
-f64 func_8009186C(f64);
-f64 func_8009195C(f64);
-f64 func_80091A6C(f64, s32);
-f64 func_80091AC0(f64, s32*);
+f64 menu_pow(f64, f64);
+f64 menu_ln(f64);
+f64 menu_exponential(f64);
+f64 menu_pow2(f64, s32);
+f64 normalize_to_unit_interval(f64, s32*);
 void swap_values(s32*, s32*);
 s32 func_80091D74(void);
 void func_80091EE4(void);
@@ -397,7 +397,7 @@ Gfx* func_800959F8(Gfx*, Vtx*);
 Gfx* func_80095BD0(Gfx*, u8*, f32, f32, u32, u32, f32, f32);
 Gfx* func_80095E10(Gfx*, s8, s32, s32, s32, s32, s32, s32, s32, s32, u8*, u32, u32);
 Gfx* func_800963F0(Gfx*, s8, s32, s32, f32, f32, s32, s32, s32, s32, s32, s32, u8*, u32, u32);
-Gfx* func_80096CD8(Gfx*, s32, s32, u32, u32);
+Gfx* func_80096CD8(Gfx* displayListHead, s32 xPos, s32 yPos, u32 width, u32 height);
 Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8,
                    s32 arg9, u16* argA, u32 argB, u32 argC, s32 argD);
 Gfx* func_80097A14(Gfx*, s8, s32, s32, s32, s32, s32, s32, u8*, u32, u32);
@@ -638,7 +638,7 @@ void func_800AF740(MenuItem*);
 
 // This really, really shouldn't be in this header file, but I don't know where else to put it
 void rmonPrintf(const char*, ...);
-void tkmk00decode(u8*, u8*, u8*, s32);
+void tkmk00decode(u32*, u8*, u16*, s32);
 
 /* File specific defines */
 
@@ -654,10 +654,10 @@ void tkmk00decode(u8*, u8*, u8*, s32);
 /* This is where I'd put my static data, if I had any */
 
 extern s32 D_800DDB24;
-extern s16 D_80164478[];
+extern s16 gGetPlayerByCharacterId[];
 
 extern u16* gMenuTextureBuffer;
-extern u8* gMenuCompressedBuffer;
+extern u32* gMenuCompressedBuffer;
 extern u8* sTKMK00_LowResBuffer;
 extern u8* sGPPointsCopy;
 extern void* gSomeDLBuffer;

@@ -1424,11 +1424,11 @@ glabel gGrassParticle
 .incbin "textures/standalone/gGrassParticle.rgba16.mio0"
 
 .balign 4, 0x00
-glabel gTexture69B960
+glabel gTextureMusicNote
 .incbin "textures/standalone/texture_69B960.i8.mio0"
 
 .balign 4, 0x00
-glabel gTexture69BA28
+glabel gTextureSpeechBubble
 .incbin "textures/standalone/texture_69BA28.i8.mio0"
 
 .balign 4, 0x00
@@ -1452,7 +1452,7 @@ glabel gTexture69C1E8
 .incbin "textures/standalone/texture_69C1E8.ia16.mio0"
 
 .balign 4, 0x00
-glabel gTexture69C354
+glabel gTextureSmokePuff
 .incbin "textures/standalone/texture_69C354.ia8.mio0"
 
 .balign 4, 0x00

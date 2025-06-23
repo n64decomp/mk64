@@ -85,7 +85,7 @@ extern u16 gPlayerMagentaEffect[];
 extern u16 gPlayerYellowEffect[];
 extern s32 D_80164B80[];
 
-extern s32 D_8018D930[];
+extern s32 gPlayerStarEffectStartTime[];
 
 extern Gfx common_square_plain_render[];
 extern Gfx D_0D008D58[];
@@ -278,7 +278,7 @@ extern u8* gKartWario189Wheel0[];
 extern u8* gKartWario189Wheel0[];
 
 extern s16 D_80165020[40];
-extern Vec3f D_80165070[8];
+extern Vec3f gPlayerLastVelocity[8];
 extern s16 gLastAnimFrameSelector[4][8];
 extern s16 gLastAnimGroupSelector[4][8];
 extern s16 D_80165150[4][8];

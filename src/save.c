@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
+#include "stddef.h"
 
 #include "save.h"
 
@@ -118,7 +119,7 @@ u8 checksum_time_trial_records(s32 courseIdx) {
 
 u8 compute_save_data_checksum_1(void) {
     u8* grandPrixPoints = (u8*) &gSaveData.main.saveInfo.grandPrixPoints;
-    s32 i;
+    u32 i;
     s32 crc = 0;
 
     for (i = 0; i < sizeof(SaveInfo); i++) {
@@ -313,19 +314,12 @@ s32 func_800B5020(u32 time, s32 charId) {
     return i;
 }
 
-#ifdef NON_MATCHING
-/**
- * This one is some stack weirdness. If you remove the padding a ton of
- * stack locations are wrong. Adding more padding doesn't help matters
- * and no amount of reordering of the function variables fixes it either.
- **/
 s32 func_800B5218(void) {
     u8* recordPointer;
-    s32 prevLapTime;
+    UNUSED s32 pad;
     s32 fastestLapIndex;
     s32 recordIndex;
-    UNUSED s32 padding;
-    s32 thisLapTime;
+    UNUSED s32 pad2[2];
     s32 checkLapIndex;
     s32 character;
     s32 lapBitmask;
@@ -336,12 +330,10 @@ s32 func_800B5218(void) {
     fastestLapIndex = 0;
     character = *gCharacterSelections;
     for (checkLapIndex = 1; checkLapIndex != 3; checkLapIndex++) {
-        prevLapTime = playerHUD->lapDurations[checkLapIndex];
-        thisLapTime = playerHUD->lapDurations[fastestLapIndex];
-        if (prevLapTime < thisLapTime) {
+        if ((s32)playerHUD->lapDurations[checkLapIndex] < (s32)playerHUD->lapDurations[fastestLapIndex]) {
             lapBitmask = 1 << checkLapIndex;
             fastestLapIndex = checkLapIndex;
-        } else if (thisLapTime == prevLapTime) {
+        } else if ((s32)playerHUD->lapDurations[fastestLapIndex] == (s32)playerHUD->lapDurations[checkLapIndex]) {
             lapBitmask |= 1 << checkLapIndex;
         }
     }
@@ -355,9 +347,6 @@ s32 func_800B5218(void) {
         return 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/save/func_800B5218.s")
-#endif
 
 void func_800B536C(s32 arg0) {
     u8* points;
@@ -472,7 +461,6 @@ void func_800B559C(s32 arg0) {
                       bestRecord->bestThreelaps[0], 0x38);
 }
 
-#ifdef NON_MATCHING
 /**
  * This one is weird. Its some type of checksum calculator, seemingly for the
  * best time trial records. But the number of bytes it operates over is
@@ -482,26 +470,19 @@ void func_800B559C(s32 arg0) {
  *
  * But only unknown bytes 7 and 8 ever get set, so why the extra 3, and why in chunks of 17?
  **/
-s32 func_800B578C(s32 arg0) {
-    u8* var_a2;
-    s32 var_a0;
-    s32 var_v0;
-    s32 var_v1;
-    var_a2 = &gSaveData.onlyBestTimeTrialRecords[arg0].bestThreelaps[0][0];
-    var_v1 = 0;
-    for (var_v0 = 0; var_v0 < 3;) {
-        ++var_v0;
-        for (var_a0 = 0; var_a0 != 0x11; var_a0++) {
-            if (var_a0) {}
-            var_v1 += (((*var_a2++) + 1) * var_v0) + var_a0;
+u8 func_800B578C(s32 arg0) {
+    u8* times = (u8*)&gSaveData.onlyBestTimeTrialRecords[arg0];
+    s32 checksum = 0;
+    s32 i;
+    s32 j;
+
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 0x11; j++) {
+            checksum += (times[i * 0x11 + j] + 1) * (i + 1) + j;
         }
-        var_a2 += 0x11;
     }
-    return (var_v1 % 256) & 0xFF;
+    return (checksum % 256);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/save/func_800B578C.s")
-#endif
 
 s32 func_800B5888(s32 arg0) {
     s32 tmp = gSaveData.onlyBestTimeTrialRecords[arg0].unknownBytes[6] + 90;
@@ -538,7 +519,7 @@ void update_save_data_backup(void) {
 
 u8 compute_save_data_checksum_backup_1(void) {
     u8* backupGrandPrixPoints = gSaveData.backup.saveInfo.grandPrixPoints;
-    s32 i;
+    u32 i;
     s32 crc = 0;
 
     for (i = 0; i < sizeof(SaveInfo); i++) {
@@ -771,7 +752,7 @@ s32 func_800B6178(s32 arg0) {
         default:
             return -1;
     }
-    if (gGamestate == 4) {
+    if (gGamestate == RACING) {
         func_800051C4();
     }
     temp_s3 = &D_8018EE10[arg0];
@@ -787,7 +768,7 @@ s32 func_800B6178(s32 arg0) {
                                     0x00003C00, (u8*) D_800DC714);
         if (var_v0 == 0) {
             temp_s3->ghostDataSaved = 1;
-            if (gGamestate == 4) {
+            if (gGamestate == RACING) {
                 temp_s3->courseIndex = (gCupSelection * 4) + gCourseIndexInCup;
             }
             temp_s3->unk_00 = D_80162DFC;
@@ -969,24 +950,21 @@ u8 func_800B6828(s32 arg0) {
     return checksum;
 }
 
-#ifdef NON_MATCHING
 u8 func_800B68F4(s32 arg0) {
-    s32 multiplier = arg0 + 1;
-    u32 checksum;
-    s32 i;
-    checksum = 0;
-    for (i = 0; i < 0x43; i++) {
-        u8* addr = &((u8*) gSomeDLBuffer)[arg0];
-        checksum += addr[i] * multiplier + i;
+    struct_8018EE10_entry* var_v0 = gSomeDLBuffer;
+    u8 *addr = (u8*)(var_v0 + arg0);
+    s32 i = 0;
+    u32 checksum = 0;
+    
+    for (i = 0; i < (s32)offsetof(struct_8018EE10_entry, pad_43); i++) {
+        checksum += (addr[i] * (arg0 + 1)) + i;
     }
+    
     return checksum;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/save/func_800B68F4.s")
-#endif
 
 s32 func_800B69BC(s32 arg0) {
-    s32 i;
+    u32 i;
     struct_8018EE10_entry* plz = &D_8018EE10[arg0];
 
     plz->ghostDataSaved = false;

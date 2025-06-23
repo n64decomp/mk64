@@ -5,7 +5,6 @@ import json
 import csv
 import os
 import re
-from pybadges import badge
 
 # Script arguments.
 parser = argparse.ArgumentParser(description="Computes current progress throughout the whole project.")
@@ -342,16 +341,6 @@ def get_string_from_table(idx, table):
     else:
         return "Number out of range"
 
-# Finds the closest divisible of a number to get a result without decimals.
-def find_closest_divisible(number, divisor):
-    closest_smaller = number - (number % divisor)
-    closest_larger = closest_smaller + divisor
-
-    if abs(number - closest_smaller) < abs(number - closest_larger):
-        return closest_smaller
-    else:
-        return closest_larger
-
 # Centers a text around a specified filled character and how long it should be.
 def center_text(text, total_width, fill_character=" "):
     empty_spaces = total_width - len(text)
@@ -477,15 +466,17 @@ elif args.format == 'nonmatchingFuncs':
     print(str(TotalNonMatchingFunctions))
 # Shows decompilation progress output in a fancy way.
 elif args.format == 'text':
-    outputLength = 67 # Horizontal length of the text in the terminal output
-    # "Magic" number is 48, which is 3 laps * 4 courses * 3 cups
-    bytesPerTotalLaps = total_code_size // 47 # Total size // (Magic number - 1)
-    srcDivNear = find_closest_divisible(total, 49) # Correct division by diving closest divisible with (Magic number + 1)
-    lapTotalCounts = int(srcDivNear / bytesPerTotalLaps) # Game progress count, sets where are we in a simulated game, can be between 0 - 47
-    curLapProgress = int(((srcDivNear % bytesPerTotalLaps) * (outputLength - 1)) / (bytesPerTotalLaps)) # Progress of a lap depending of the output length
-    curLapCount = int((lapTotalCounts % 3) + 1) # Lap count, can be between 1 - 3 (3 laps total)
-    curCourseCount = int(lapTotalCounts / 3) # Course count, can be between 0 - 15 (16 courses total)
-    curCupCount = int((lapTotalCounts / 12) % 12) # Cup count, can be between 0 - 3 (4 cups total)
+    outputLength = 67  # Horizontal length of the text in the terminal output
+    total_progress_units = 47  # 3 laps × 16 courses - 1 (0-47)
+    bytes_per_unit = total_code_size / total_progress_units  # Use float division for precision
+    # Current progress in units (0-47)
+    progress_units = min(int(total / bytes_per_unit + 0.5), total_progress_units)  # Round to nearest unit
+    # Calculate visual progress within current lap (for the progress bar)
+    lap_progress = int(((total % bytes_per_unit) * (outputLength - 1)) / bytes_per_unit)
+    # Calculate race position (1-3 laps, 0-15 courses, 0-3 cups)
+    cur_lap = (progress_units // 16) + 1 # 1-3 (0-15=Lap1, 16-31=Lap2, 32-47=Lap3)
+    cur_course = progress_units % 16     # 0-15 (all courses)
+    cur_cup = cur_course // 4            # 0-3 (4 courses per cup)
 
     # Print current decompilation progress.
     print(str(center_text((str(" Non Matching progress mode ") if args.nonmatching else str("")), outputLength, "=")))
@@ -499,11 +490,11 @@ elif args.format == 'text':
 
     # Simlautes an All Cups race, prints how much the player has been progressing.
     if TotalGlobalAsmFunctions > 0:
-        print(str(center_text(check_table_cond(0, curCupCount, mkCups) + " - " + check_table_cond(1, curCupCount, mkCups), outputLength)))
-        print(str(center_text(check_table_cond(2, curCupCount, mkCups) + " - " + check_table_cond(3, curCupCount, mkCups), outputLength)))
+        print(str(center_text(check_table_cond(0, cur_cup, mkCups) + " - " + check_table_cond(1, cur_cup, mkCups), outputLength)))
+        print(str(center_text(check_table_cond(2, cur_cup, mkCups) + " - " + check_table_cond(3, cur_cup, mkCups), outputLength)))
         print(str(center_text(" Lap Progress Bar and Race Status ", outputLength, "-")))
-        print(str(move_character_from_bar(curLapProgress, outputLength, "O", "-")))
-        print(str(center_text("We are in " + str(get_string_from_table(curCupCount, mkCups)) + " racing at " +  str(get_string_from_table(curCourseCount, mkCourses)) + " (Lap " + str(curLapCount) + "/3)", outputLength)))
+        print(str(move_character_from_bar(lap_progress, outputLength, "O", "-")))
+        print(str(center_text("We are in " + str(get_string_from_table(cur_cup, mkCups)) + " racing at " +  str(get_string_from_table(cur_course, mkCourses)) + " (Lap " + str(cur_lap) + "/3)", outputLength)))
     else:
         print(str(center_text("Mushroom Cup (V) - Flower Cup (V)", outputLength)))
         print(str(center_text("Star Cup (V) - Special Cup (V)", outputLength)))
@@ -526,6 +517,7 @@ elif args.format == 'verbose':
     print(str(libultra) + "/" + str(libultra_size) + " bytes " + adjective + " in libultra " + str(libultraPct) + "%\n")
 
 elif args.format == 'badge':
+    from pybadges import badge
     adjective = "decompiled" if args.nonmatching else "matched"
 
     badge_size_left = badge(left_text="Size left", right_text=str(remaining_size), right_color="blue")

@@ -2,7 +2,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 
@@ -2680,7 +2680,7 @@ Gfx d_course_choco_mountain_dl_43C8[] = {
     gsSPEndDisplayList(),
 };
 
-TrackWaypoint d_course_choco_mountain_unknown_waypoints[] = {
+TrackPathPoint d_course_choco_mountain_unknown_path[] = {
     { -7, 0, -699, 0 },    { -6, 0, -712, 0 },    { 8, 0, -903, 0 },     { 26, 0, -1074, 0 },   { 46, 0, -1140, 0 },
     { 80, 0, -1185, 0 },   { 134, 0, -1225, 0 },  { 343, 0, -1316, 0 },  { 408, 0, -1334, 0 },  { 462, 0, -1329, 0 },
     { 534, 0, -1295, 0 },  { 566, 0, -1269, 0 },  { 633, 0, -1202, 0 },  { 671, 0, -1170, 0 },  { 726, 0, -1144, 0 },
@@ -2705,7 +2705,7 @@ TrackWaypoint d_course_choco_mountain_unknown_waypoints[] = {
     { 0, 0, 63, 0 },       { 6, 0, -132, 0 },     { 5, 0, -378, 0 },     { -5, 0, -630, 0 },    { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_choco_mountain_track_waypoints[] = {
+TrackPathPoint d_course_choco_mountain_track_path[] = {
     { -6, 40, -705, 1 },    { -5, 39, -725, 1 },    { -3, 37, -745, 1 },
     { -2, 34, -765, 1 },    { 0, 32, -785, 1 },     { 0, 30, -805, 1 },
     { 2, 27, -825, 1 },     { 3, 25, -845, 2 },     { 5, 23, -865, 2 },

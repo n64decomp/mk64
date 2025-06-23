@@ -32,29 +32,38 @@ $(eval $(call validate-option,COMPILER,ido gcc))
 # Run make clean first
 DEBUG ?= 0
 
+# Avoid undefined behavior. Enables shiftability when making changes
+AVOID_UB ?= 0
+
 # Compile with GCC
 GCC ?= 0
 
 # VERSION - selects the version of the game to build
-#   us - builds the 1997 North American version
-#   eu - builds the 1997 1.1 PAL version
+#  us     - builds the 1997 North American version
+#  eu.v10 - builds the 1997 1.0 PAL version
+#  eu.v11 - builds the 1997 1.1 PAL version
 VERSION ?= us
-$(eval $(call validate-option,VERSION,us eu-1.0 eu-final))
+$(eval $(call validate-option,VERSION,us eu.v10 eu.v11))
 
 ifeq      ($(VERSION),us)
   DEFINES += VERSION_US=1
   GRUCODE   ?= f3dex_old
-else ifeq ($(VERSION),eu-1.0)
-  DEFINES += VERSION_EU=1 VERSION_EU_1_0=1
+else ifeq ($(VERSION),eu.v10)
+  DEFINES += VERSION_EU=1 VERSION_EU_V10=1
   GRUCODE   ?= f3dex_old
-else ifeq ($(VERSION),eu-final)
-  DEFINES += VERSION_EU=1 VERSION_EU_1_1=1
+else ifeq ($(VERSION),eu.v11)
+  DEFINES += VERSION_EU=1 VERSION_EU_V11=1
   GRUCODE   ?= f3dex_old
 endif
 
 ifeq ($(DEBUG),1)
   DEFINES += DEBUG=1
+  DEFINES += AVOID_UB=1
   COMPARE ?= 0
+endif
+
+ifeq ($(AVOID_UB),1)
+  DEFINES += AVOID_UB=1
 endif
 
 TARGET := mk64.$(VERSION)
@@ -244,7 +253,7 @@ include $(MAKEFILE_SPLIT)
 # These are files that need to be encoded into EUC-JP in order for the ROM to match
 # We filter them out from the regular C_FILES since we don't need nor want the
 # UTF-8 versions getting compiled
-EUC_JP_FILES := src/ending/credits.c src/code_80005FD0.c src/menu_items.c
+EUC_JP_FILES := src/ending/credits.c src/cpu_vehicles_camera_path.c src/menu_items.c
 C_FILES := $(filter-out %.inc.c,$(filter-out $(EUC_JP_FILES),$(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))))
 S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s))
 # Include source files in courses/course_name/files.c but exclude .inc.c files.
@@ -349,7 +358,7 @@ CC_CHECK ?= gcc
 CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(DEF_INC_CFLAGS)
 
 # C compiler options
-HIDE_WARNINGS := -woff 838,649
+HIDE_WARNINGS := -woff 838,649,807
 CFLAGS = -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS)
 ifeq ($(COMPILER),gcc)
   CFLAGS += -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra

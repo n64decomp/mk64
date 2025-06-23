@@ -311,7 +311,7 @@ void func_800CA984(u8);
 void func_800CAACC(u8);
 void func_800CAB4C(u8);
 void func_800CAC08(void);
-void func_800CAC60(s32);
+void func_800CAC60(u8);
 void func_800CAD40(s32);
 void func_800CAEC4(u8, f32);
 void func_800CAFC0(u8);
@@ -416,7 +416,7 @@ extern u16 D_800EA1C4;
 // a sound source, its usage makes it look like a 0'd Vec3f for general usage
 extern Vec3f D_800EA1C8; // = {0.0f, 0.0f, 0.0f}
 extern f32 D_800EA1D4;
-extern u8 D_800EA1DC; // = 0;
+extern s8 D_800EA1DC; // = 0;
 extern u8 D_800EA1E4;
 extern u8 D_800EA1E8;
 extern u8 D_800EA1EC;

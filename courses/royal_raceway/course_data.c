@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 
@@ -4902,7 +4902,7 @@ Gfx d_course_royal_raceway_dl_B508[] = {
 };
 
 // 0xB5B8
-TrackWaypoint d_course_royal_raceway_unknown_waypoints[] = {
+TrackPathPoint d_course_royal_raceway_unknown_path[] = {
     { -63, 0, -321, 0 },    { -61, 0, -341, 0 },    { -60, 0, -591, 0 },    { -64, 0, -1334, 0 },
     { -64, 0, -1761, 0 },   { -80, 0, -1851, 0 },   { -155, 0, -1949, 0 },  { -339, 0, -2075, 0 },
     { -694, 0, -2315, 0 },  { -874, 0, -2417, 0 },  { -998, 0, -2434, 0 },  { -1134, 0, -2399, 0 },
@@ -4925,7 +4925,7 @@ TrackWaypoint d_course_royal_raceway_unknown_waypoints[] = {
     { -62, 0, -296, 0 },    { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_royal_raceway_track_waypoints[] = {
+TrackPathPoint d_course_royal_raceway_track_path[] = {
     { -62, 0, -331, 1 },       { -61, 0, -350, 2 },       { -61, 0, -371, 2 },
     { -60, 0, -391, 2 },       { -60, 0, -411, 2 },       { -60, 0, -431, 2 },
     { -60, 0, -451, 2 },       { -60, 0, -471, 2 },       { -60, 0, -491, 2 },

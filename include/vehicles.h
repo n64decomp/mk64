@@ -40,7 +40,7 @@ typedef struct {
     /* 0x02 */ s16 compilerPadding;
     /* 0x04 */ Vec3f position;
     /* 0x10 */ Vec3f velocity;
-    /* 0x1C */ u16 waypointIndex;
+    /* 0x1C */ u16 pathPointIndex;
     /* 0x1E */ s16 actorIndex;
     /* 0x20 */ s32 unused; // Not read or written. Could be padding?
 } TrainCarStuff;           // size = 0x24;
@@ -56,19 +56,19 @@ typedef struct {
 } TrainStuff;                // size = 0x10C
 
 typedef struct {
-    /* 0x00 */ s16 isActive;      // The paddle wheel boat only shows up if the number of players is < 3
-    /* 0x02 */                    // s16 compilerPadding;
-    /* 0x04 */ Vec3f position;    //
-    /* 0x10 */ Vec3f velocity;    //
-    /* 0x1C */ u16 waypointIndex; //
-    /* 0x1E */ s16 actorIndex;    //
-    /* 0x20 */ f32 speed;         //
-    /* 0x24 */ s16 rotY;          // Only Y rotation is tracked in this struct
-    /* 0x26 */                    // s16 compilerPadding2;
-                                  /**
-                                   * Bit field that tracks whether a given human player is within a certain distance of the boat
-                                   * Probably audio related
-                                   **/
+    /* 0x00 */ s16 isActive;       // The paddle wheel boat only shows up if the number of players is < 3
+    /* 0x02 */                     // s16 compilerPadding;
+    /* 0x04 */ Vec3f position;     //
+    /* 0x10 */ Vec3f velocity;     //
+    /* 0x1C */ u16 pathPointIndex; //
+    /* 0x1E */ s16 actorIndex;     //
+    /* 0x20 */ f32 speed;          //
+    /* 0x24 */ s16 rotY;           // Only Y rotation is tracked in this struct
+    /* 0x26 */                     // s16 compilerPadding2;
+                                   /**
+                                    * Bit field that tracks whether a given human player is within a certain distance of the boat
+                                    * Probably audio related
+                                    **/
     /* 0x28 */ s32 someFlags;
 } PaddleBoatStuff; // size = 0x2C
 
@@ -77,7 +77,7 @@ typedef struct {
     /* 0x02 */             // s16 compilerPadding;
     /* 0x04 */ Vec3f position;
     /* 0x10 */ Vec3f velocity;
-    /* 0x1C */ u16 waypointIndex;
+    /* 0x1C */ u16 pathPointIndex;
     /* 0x1E */ s16 actorIndex;
     /* 0x20 */ f32 speed;                   //
     /* 0x24 */ f32 someMultiplierTheSequel; //

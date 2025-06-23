@@ -7,9 +7,9 @@ course:
   cup: SPECIAL_CUP
   cup_index: 1
   course_length: 772m
-  kart_ai_behaviour_ptr: D_0D0090B8
-  kart_ai_maximum_separation: 35.0f
-  kart_ai_minimum_separation: 0.0f
+  cpu_behaviour_ptr: D_0D0090B8
+  cpu_maximum_separation: 35.0f
+  cpu_minimum_separation: 0.0f
   D_800DCBB4: D_800DCAF4
   cpu_steering_sensitivity: 53
   bomb_kart_spawns: # 7 bomb kart spawn locations
@@ -23,16 +23,28 @@ course:
   path_sizes: [0x02B2, 0x02A8, 0x02B2, 0x0320, 0x0001, 0x0000, 0x0000, 0x0000]
 
   # unk common_textures data
-  D_0D009418: [4.1666665f, 5.5833334f, 6.1666665f, 6.75f]
-  D_0D009568: [3.75f, 4.5833334f, 4.5833334f, 4.5833334f]
+  cpu_CurveTargetSpeed: [4.1666665f, 5.5833334f, 6.1666665f, 6.75f]
+  cpu_NormalTargetSpeed: [3.75f, 4.5833334f, 4.5833334f, 4.5833334f]
   D_0D0096B8: [3.3333332f, 3.3333332f, 3.3333332f, 3.3333332f]
-  D_0D009808: [2.9166667f, 3.75f, 3.75f, 3.75f]
+  cpu_OffTrackTargetSpeed: [2.9166667f, 3.75f, 3.75f, 3.75f]
 
-  # Course waypoints
-  path_table: [d_course_yoshi_valley_track_waypoints, "d_course_yoshi_valley_track_waypoints_2",   "d_course_yoshi_valley_track_waypoints_3", "d_course_yoshi_valley_track_waypoints_4"]
+  # Course path
+  path_table:
+    [
+      d_course_yoshi_valley_track_path,
+      "d_course_yoshi_valley_track_path_2",
+      "d_course_yoshi_valley_track_path_3",
+      "d_course_yoshi_valley_track_path_4",
+    ]
 
   # Unused except in podium ceremony
-  path_table_unknown: [d_course_yoshi_valley_unknown_waypoints, d_course_yoshi_valley_unknown_waypoints_2,   d_course_yoshi_valley_unknown_waypoints_3, d_course_yoshi_valley_unknown_waypoints_4]
+  path_table_unknown:
+    [
+      d_course_yoshi_valley_unknown_path,
+      d_course_yoshi_valley_unknown_path_2,
+      d_course_yoshi_valley_unknown_path_3,
+      d_course_yoshi_valley_unknown_path_4,
+    ]
 
   sky_colors: [113, 70, 255, 255, 184, 99]
   sky_colors2: [95, 40, 15, 0, 0, 0]

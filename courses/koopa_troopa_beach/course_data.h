@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include "animation.h"
 
@@ -306,10 +306,10 @@ extern Gfx d_course_koopa_troopa_beach_dl_AB88[];
 extern Gfx d_course_koopa_troopa_beach_dl_AC10[];
 extern Gfx d_course_koopa_troopa_beach_dl_AC68[];
 extern Gfx d_course_koopa_troopa_beach_dl_AD40[];
-extern TrackWaypoint d_course_koopa_troopa_beach_unknown_waypoints[];
-extern TrackWaypoint d_course_koopa_troopa_beach_unknown_waypoints1[];
-extern TrackWaypoint d_course_koopa_troopa_beach_track_waypoints[];
-extern TrackWaypoint d_course_koopa_troopa_beach_track_waypoints_2[];
+extern TrackPathPoint d_course_koopa_troopa_beach_unknown_path[];
+extern TrackPathPoint d_course_koopa_troopa_beach_unknown_path1[];
+extern TrackPathPoint d_course_koopa_troopa_beach_track_path[];
+extern TrackPathPoint d_course_koopa_troopa_beach_track_path_2[];
 extern u8 d_course_koopa_troopa_beach_crab_tlut[];
 extern u8 d_course_koopa_troopa_beach_crab_frames[][4096];
 extern u32 d_course_koopa_troopa_beach_unk_data1[];

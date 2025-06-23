@@ -79,6 +79,8 @@ void rsp_set_matrix_transformation_inverted_x_y_orientation(Vec3f, Vec3su, f32);
 void rsp_set_matrix_transl_rot_scale(Vec3f, Vec3f, f32);
 void rsp_set_matrix_gObjectList(s32);
 
+#define DEGREES_CONVERSION_FACTOR 182
+
 /* This is where I'd put my static data, if I had any */
 extern s8 D_801658FE;
 

@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 
 extern Gfx d_course_banshee_boardwalk_dl_0[];
@@ -112,8 +112,8 @@ extern Gfx d_course_banshee_boardwalk_dl_42D0[];
 extern Gfx d_course_banshee_boardwalk_dl_43A8[];
 extern Gfx d_course_banshee_boardwalk_dl_4428[];
 extern Gfx d_course_banshee_boardwalk_dl_4480[];
-extern TrackWaypoint d_course_banshee_boardwalk_unknown_waypoints[];
-extern TrackWaypoint d_course_banshee_boardwalk_track_waypoints[];
+extern TrackPathPoint d_course_banshee_boardwalk_unknown_path[];
+extern TrackPathPoint d_course_banshee_boardwalk_track_path[];
 extern u8 d_course_banshee_boardwalk_boo_tlut[];
 extern Vtx d_course_banshee_boardwalk_cheep_cheep1[];
 extern Vtx d_course_banshee_boardwalk_cheep_cheep2[];

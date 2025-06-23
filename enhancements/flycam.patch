@@ -158,9 +158,9 @@ index 0000000..5569838
 +        // Don't use `bool = !bool` here as the game code can swap these on you.
 +        // Which will confuse the code. This forces it to always be correct
 +        if (isFlycam) {
-+            player->type |= PLAYER_KART_AI;
++            player->type |= PLAYER_CPU;
 +        } else {
-+            player->type &= PLAYER_KART_AI;
++            player->type &= PLAYER_CPU;
 +        }
 +
 +        gIsHUDVisible = !isFlycam;

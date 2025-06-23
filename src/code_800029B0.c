@@ -4,7 +4,7 @@
 
 #include "code_800029B0.h"
 #include "memory.h"
-#include "waypoints.h"
+#include "path.h"
 #include "actors.h"
 #include "actor_types.h"
 #include "math_util.h"
@@ -24,7 +24,7 @@
 #include "menus.h"
 #include "data/other_textures.h"
 
-extern s32 D_802BA038;
+extern s32 gDemoTimer;
 extern s16 D_802BA048;
 #if !ENABLE_CUSTOM_COURSE_ENGINE
 s16 gCurrentCourseId = 0;
@@ -208,7 +208,7 @@ void setup_race(void) {
     gNumSpawnedShells = 0;
     D_800DC5B8 = 0;
     D_80152308 = 0;
-    D_802BA038 = -1;
+    gDemoTimer = -1;
     D_802BA048 = 0;
     func_802A74BC();
     set_perspective_and_aspect_ratio();
@@ -216,15 +216,14 @@ void setup_race(void) {
     init_actors_and_load_textures();
 
     if (gModeSelection != BATTLE) {
-        D_8015F8D0[1] = (f32) (D_80164490->posY - 15);
-        ;
-        D_8015F8D0[2] = D_80164490->posZ;
+        D_8015F8D0[1] = (f32) (gCurrentTrackPath->posY - 15);
+        D_8015F8D0[2] = gCurrentTrackPath->posZ;
         if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
-            D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 138.0f : D_80164490->posX - 138.0f;
+            D_8015F8D0[0] = (gIsMirrorMode != 0) ? gCurrentTrackPath->posX + 138.0f : gCurrentTrackPath->posX - 138.0f;
         } else if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-            D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 12.0f : D_80164490->posX - 12.0f;
+            D_8015F8D0[0] = (gIsMirrorMode != 0) ? gCurrentTrackPath->posX + 12.0f : gCurrentTrackPath->posX - 12.0f;
         } else {
-            D_8015F8D0[0] = D_80164490->posX;
+            D_8015F8D0[0] = gCurrentTrackPath->posX;
         }
     }
     if (!gDemoMode) {

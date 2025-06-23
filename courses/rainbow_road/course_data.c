@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <animation.h>
 #include <mk64.h>
@@ -813,7 +813,7 @@ Gfx d_course_rainbow_road_dl_1948[] = {
     gsSPEndDisplayList(),
 };
 
-TrackWaypoint d_course_rainbow_road_unknown_waypoints[] = {
+TrackPathPoint d_course_rainbow_road_unknown_path[] = {
     { 6, 0, 3, 0 },         { 6, 0, -25, 0 },       { 0, 0, -514, 0 },      { 1, 0, -1537, 0 },
     { -3, 0, -2579, 0 },    { -3, 0, -3696, 0 },    { 1, 0, -4448, 0 },     { 30, 0, -4782, 0 },
     { 113, 0, -5064, 0 },   { 331, 0, -5290, 0 },   { 610, 0, -5390, 0 },   { 915, 0, -5345, 0 },
@@ -842,7 +842,7 @@ TrackWaypoint d_course_rainbow_road_unknown_waypoints[] = {
     { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_rainbow_road_track_waypoints[] = {
+TrackPathPoint d_course_rainbow_road_track_path[] = {
     { 6, 1510, -11, 1 },       { 5, 1509, -31, 2 },       { 5, 1509, -51, 2 },
     { 5, 1508, -71, 2 },       { 5, 1507, -91, 2 },       { 4, 1506, -111, 2 },
     { 4, 1505, -131, 2 },      { 4, 1504, -151, 2 },      { 4, 1504, -171, 2 },
@@ -1487,28 +1487,38 @@ u8 d_course_rainbow_road_neon_boo_tlut_list[][512] = {
     },
 };
 
-u8 d_course_rainbow_road_static_tluts[][512] = {
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonPeach.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonLuigi.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonDonkeyKong.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonYoshi.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonBowser.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonWario.inc.c"
-    },
-    {
-#include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonToad.inc.c"
-    },
+u16 d_course_rainbow_road_static_tluts[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonPeach.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_luigi[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonLuigi.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_dk[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonDonkeyKong.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_yoshi[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonYoshi.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_bowser[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonBowser.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_wario[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonWario.rgba16.inc.c"
+};
+
+/* @warning array oob func_80086074 */
+u16 d_tlut_rainbow_road_neon_toad[] = {
+#include "assets/code/rainbow_road_tluts/gTLUTRainbowRoadNeonToad.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_mushroom[] = {

@@ -119,15 +119,15 @@ void func_8005D1F4(s32);
 
 void func_8005D290(void);
 void reset_player_particle_pool(Player*);
-void func_8005D794(Player*, UnkPlayerStruct258*, f32, f32, f32, s8, s8);
-s32 init_new_particle_player(UnkPlayerStruct258*, s8, f32);
-s32 set_particle_color(UnkPlayerStruct258*, s32, s16);
-s32 func_8005D82C(UnkPlayerStruct258*, s32, s16);
-void func_8005D898(Player*, s16, s32, s8, s8);
-void func_8005DA30(Player*, s16, s32, s8, s8);
+void set_particle_position_and_rotation(Player*, Particle*, f32, f32, f32, s8, s8);
+s32 init_new_particle_player(Particle*, s8, f32);
+s32 set_particle_colour(Particle*, s32, s16);
+s32 set_particle_colour_randomly_varried(Particle*, s32, s16);
+void set_drift_particles(Player*, s16, s32, s8, s8);
+void check_drift_particles_setup_valid(Player*, s16, s32, s8, s8);
 void func_8005DAD0(void);
-void func_8005DAD8(UnkPlayerStruct258*, s16, s16, s16);
-void func_8005DAF4(Player*, s16, s32, s8, s8);
+void func_8005DAD8(Particle*, s16, s16, s16);
+void setup_tyre_particles(Player*, s16, s32, s8, s8);
 void func_8005EA94(Player*, s16, s32, s8, s8);
 void func_8005ED48(Player*, s16, s32, s8, s8);
 
@@ -152,7 +152,7 @@ void func_80061D4C(Player*, s16, s32, s8, s8);
 void func_80061EF4(Player*, s16, s32, s8, s8);
 
 void func_800621BC(Player*, s16, s32, s8, s8);
-void func_80062484(Player*, UnkPlayerStruct258*, s32);
+void func_80062484(Player*, Particle*, s32);
 void func_800624D8(Player*, s32, s32, s8, s8);
 void func_800628C0(Player*, s8, s8, s8);
 void func_80062914(Player*, s8, s8, s8);
@@ -164,7 +164,7 @@ void func_80062B18(f32*, f32*, f32*, f32, f32, f32, u16, u16);
 void func_80062C74(Player*, s16, s32, s32);
 void func_80062F98(Player*, s16, s8, s8);
 
-void func_800630C0(Player*, s16, s8, s8);
+void set_oob_splash_particle_position(Player*, s16, s8, s8);
 void func_800631A8(Player*, s16, s8, s8);
 void func_80063268(Player*, s16, s8, s8);
 void func_80063408(Player*, s16, s8, s8);
@@ -202,35 +202,35 @@ void func_80066998(Player*, s8, s16, s8);
 void func_80066BAC(Player*, s8, s16, s8);
 
 void func_80067280(Player*, s8, s16, s8);
-void func_80067604(Player*, s8, s16, s8);
+void render_player_boost_spark_particles(Player*, s8, s16, s8);
 void render_player_onomatopoeia_whrrrr(Player*, s8, f32, s8, s8);
-void func_80067D3C(Player*, s8, u8*, s8, f32, s32);
+void render_player_speech_bubble(Player*, s8, u8*, s8, f32, s32);
 
-void func_8006801C(Player*, s8, u8*, s8, f32, s32);
+void render_music_note(Player*, s8, u8*, s8, f32, s32);
 void render_player_onomatopoeia_crash(Player*, s8, f32, s8, s8);
 void func_80068724(Player*, s8, f32, s8, s8);
-void func_80068AA4(Player*, s8, f32, s8, s8);
-void render_player_onomatopoeia_poomp(Player*, s8, f32, s8, s8);
+void render_player_onomatopoeia_boing(Player*, s8, f32, s8, s8);
+void render_player_onomatopoeia_pomp(Player*, s8, f32, s8, s8);
 
-void func_800691B8(Player*, s8, s16, s8);
+void render_actor_bonk_particles(Player*, s8, s16, s8);
 void func_80069444(Player*, s8, s16, s8);
-void func_800696CC(Player*, s8, s16, s8, f32);
+void render_wall_bonk_star_particles(Player*, s8, s16, s8, f32);
 void func_80069938(Player*, s8, s16, s8);
 void func_80069BA8(Player*, s8, s16, s8);
 void func_80069DB8(Player*, s8, s16, s8);
 
 void func_8006A01C(Player*, s8, s16, s8);
 void func_8006A280(Player*, s8, s16, s8);
-void func_8006A50C(Player*, f32, f32, s8, s8, s16);
+void init_balloon(Player*, f32, f32, s8, s8, s16);
 void update_player_one_balloon_position(Player*, f32, f32, s8, s8);
 void render_battle_balloon(Player*, s8, s16, s8);
 
-void func_8006B7E4(Player*, s8);
-void func_8006B87C(Player*, s8);
-void func_8006B8B4(Player*, s8);
-void func_8006B974(s32, s8, s8);
+void init_all_player_balloons(Player*, s8);
+void clear_all_player_balloons(Player*, s8);
+void pop_player_balloon(Player*, s8);
+void set_player_balloon_to_gone(s32, s8, s8);
 void update_player_balloons_position(Player*, s8);
-void render_player_balloons(Player*, s8, s8);
+void render_remaining_battle_balloons(Player*, s8, s8);
 void render_balloon(Vec3f, f32, s16, s16);
 
 void func_8006C0C8(Vec3f, f32, s32, s16);
@@ -456,10 +456,10 @@ extern s16 D_8018CFC0;
 extern s16 D_8018CFC8;
 extern s16 D_8018CFD0;
 extern s16 D_8018CFD8;
-extern s8 D_8018CFAC[];
-extern s8 D_8018CFB4[];
-extern s8 D_8018CFBC[];
-extern s8 D_8018CFC4[];
+extern u8 D_8018CFAC[];
+extern u8 D_8018CFB4[];
+extern u8 D_8018CFBC[];
+extern u8 D_8018CFC4[];
 extern s16 D_8018CFE0;
 extern f32 D_8018CFE4;
 extern s16 D_8018CFE8;
@@ -629,9 +629,9 @@ extern u8* D_8018D4BC;
 extern u8* D_8018D4C0;
 extern u8* gTextureLoadedLightningBolt0;
 extern u8* gTextureLoadedLightningBolt1;
-extern Vec3f D_8018D4D0[];
-extern Vec3f D_8018D530[];
-extern Vec3f D_8018D590[];
+extern Vec3f gPlayerBalloonPosX[];
+extern Vec3f gPlayerBalloonPosY[];
+extern Vec3f gPlayerBalloonPosZ[];
 extern u16 gPlayerBalloonStatus[8][3];
 extern Vec3s D_8018D620[];
 extern Vec3f D_8018D650[];
@@ -644,10 +644,10 @@ extern Vec3s D_8018D7D0[];
 
 extern Vec3s D_8018D800[];
 extern Vec3s D_8018D830[];
-extern Vec3s D_8018D860[];
+extern Vec3s gPlayerBalloonRotation[]; // Sprite rotation for each player balloon
 extern Vec3s D_8018D890[];
 extern s16 gPlayerBalloonCount[]; // D_8018D8C0
-extern Vec3s D_8018D8D0[];
+extern Vec3s gPlayerBalloonDepartingTimer[];
 
 /** @endcond */
 

@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 #include <animation.h>
@@ -6474,7 +6474,7 @@ Gfx d_course_koopa_troopa_beach_dl_AD40[] = {
 };
 
 // 0xADE0 path
-TrackWaypoint d_course_koopa_troopa_beach_unknown_waypoints[] = {
+TrackPathPoint d_course_koopa_troopa_beach_unknown_path[] = {
     { -34, 0, 103, 0 },     { -34, 0, 60, 0 },      { -38, 0, -184, 0 },   { -30, 0, -304, 0 },   { 36, 0, -422, 0 },
     { 137, 0, -566, 0 },    { 147, 0, -645, 0 },    { 103, 0, -761, 0 },   { -12, 0, -837, 0 },   { -139, 0, -1031, 0 },
     { -230, 0, -1258, 0 },  { -343, 0, -1414, 0 },  { -465, 0, -1429, 0 }, { -629, 0, -1397, 0 }, { -853, 0, -1326, 0 },
@@ -6490,7 +6490,7 @@ TrackWaypoint d_course_koopa_troopa_beach_unknown_waypoints[] = {
     { -32, 0, 136, 0 },     { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_koopa_troopa_beach_unknown_waypoints1[] = {
+TrackPathPoint d_course_koopa_troopa_beach_unknown_path1[] = {
     { -27, 0, 101, 7 },     { -31, 0, 76, 7 },     { -27, 0, -187, 7 },    { -24, 0, -305, 7 },
     { 26, 0, -415, 7 },     { 119, 0, -564, 7 },   { 133, 0, -646, 7 },    { 94, 0, -742, 7 },
     { 8, 0, -853, 7 },      { -150, 0, -934, 7 },  { -310, 0, -919, 7 },   { -471, 0, -887, 7 },
@@ -6508,7 +6508,7 @@ TrackWaypoint d_course_koopa_troopa_beach_unknown_waypoints1[] = {
     { -24, 0, 409, 7 },     { -28, 0, 128, 7 },    { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_koopa_troopa_beach_track_waypoints[] = {
+TrackPathPoint d_course_koopa_troopa_beach_track_path[] = {
     { -34, 1, 81, 1 },        { -34, 1, 61, 1 },        { -34, 1, 41, 1 },
     { -34, 1, 21, 2 },        { -34, 1, 1, 2 },         { -35, 1, -18, 2 },
     { -35, 1, -38, 2 },       { -35, 1, -58, 2 },       { -36, 1, -78, 2 },
@@ -6714,7 +6714,7 @@ TrackWaypoint d_course_koopa_troopa_beach_track_waypoints[] = {
     { -33, 1, 121, 1 },       { -33, 1, 101, 1 },       { -32768, -32768, -32768, 0 },
 };
 
-TrackWaypoint d_course_koopa_troopa_beach_track_waypoints_2[] = {
+TrackPathPoint d_course_koopa_troopa_beach_track_path_2[] = {
     { -29, 1, 88, 1 },
     { -29, 1, 68, 1 },
     { -29, 1, 48, 1 },

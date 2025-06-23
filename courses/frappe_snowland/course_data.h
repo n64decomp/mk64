@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 
 extern Gfx d_course_frappe_snowland_dl_0[];
@@ -75,8 +75,8 @@ extern Gfx d_course_frappe_snowland_dl_3198[];
 extern Gfx d_course_frappe_snowland_dl_3270[];
 extern Gfx d_course_frappe_snowland_dl_3328[];
 extern Gfx d_course_frappe_snowland_dl_33E0[];
-extern TrackWaypoint d_course_frappe_snowland_unknown_waypoints[];
-extern TrackWaypoint d_course_frappe_snowland_track_waypoints[];
+extern TrackPathPoint d_course_frappe_snowland_unknown_path[];
+extern TrackPathPoint d_course_frappe_snowland_track_path[];
 extern u8 d_course_frappe_snowland_snowman_tlut[];
 extern u8 d_course_frappe_snowland_snowman_head[];
 extern u8 d_course_frappe_snowland_snowman_body[];

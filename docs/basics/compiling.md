@@ -88,16 +88,16 @@ make -j
 Building EU requires US to be built first. See above.
 
 mk64 decomp supports two EU versions
-* EU 1.0 `eu-1.0`
-* EU 1.1 `eu-final`
+* EU 1.0 `eu.v10`
+* EU 1.1 `eu.v11`
 
 Build using
 ```bash
-make -j VERSION=eu-1.0
+make -j VERSION=eu.v10
 ```
 or
 ```bash
-make -j VERSION=eu-final
+make -j VERSION=eu.v11
 ```
 
 First-diff/diff commands for EU
@@ -105,3 +105,25 @@ First-diff/diff commands for EU
 python3 first-diff.py --eu
 ./diff <function> -eu
 ```
+
+# Handling Changes
+Certain changes may result in unexpected behaviour (frequently related to physics) due to the games obnoxious linker setup. This is resolved by compiling with the AVOID_UB flag.
+
+This will require a rebuild, run
+```bash
+make clean
+```
+
+Then compile like so
+``
+make -j AVOID_UB=1
+or
+make -j DEBUG=1 // Enables debug mode and avoid_ub
+``
+
+Recompiling `.inc.c` files requires saving the root `.c` file for makefile to recognize that the file requires a rebuild. This is because at compile time a `inc.c` file is essentially copy/pasted into its associated `.c` file. Therefore makefile does not recognize changes to `.inc.c` files, only `.c` files. This may be resolved in the following ways:
+1) Search for `#include "my_file.inc.c` to find the root file and then save it with ctrl+s.
+2) `make clean` and rebuild
+3) `make my_file.c`
+4) Find help in the Discord
+

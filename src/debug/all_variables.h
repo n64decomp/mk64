@@ -12,7 +12,7 @@
 #include <ceremony_and_credits.h>
 #include <code_800029B0.h>
 #include <animation.h>
-#include <code_80005FD0.h>
+#include <cpu_vehicles_camera_path.h>
 #include <render_player.h>
 #include <player_controller.h>
 #include <code_8003DC40.h>
@@ -65,7 +65,7 @@
 #include "buffers/trig_tables.h"
 #include <ultra64.h>
 #include <vehicles.h>
-#include <waypoints.h>
+#include <path.h>
 
 #include <courses/all_course_data.h>
 #include <courses/all_course_packed.h>

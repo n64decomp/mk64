@@ -27,7 +27,7 @@ void func_8028F8BC(void);
 void func_8028F914(void);
 void func_8028F970(void);
 void func_8028FBD4(void);
-void func_8028FC34(void);
+void end_demo_update(void);
 void func_8028FCBC(void);
 void func_80290314(void);
 void func_80290338(void);

@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 
@@ -1659,7 +1659,7 @@ Gfx d_course_toads_turnpike_dl_3AD8[] = {
 };
 
 // 0x3B80
-TrackWaypoint d_course_toads_turnpike_unknown_waypoints[] = {
+TrackPathPoint d_course_toads_turnpike_unknown_path[] = {
     { 100, 0, 26, 0 },      { 100, 0, 7, 0 },       { 102, 0, -299, 0 },    { 88, 0, -601, 0 },
     { 76, 0, -897, 0 },     { 78, 0, -1946, 0 },    { 64, 0, -2260, 0 },    { 5, 0, -2490, 0 },
     { -116, 0, -2706, 0 },  { -279, 0, -2886, 0 },  { -481, 0, -3017, 0 },  { -706, 0, -3099, 0 },
@@ -1676,7 +1676,7 @@ TrackWaypoint d_course_toads_turnpike_unknown_waypoints[] = {
     { 98, 0, 50, 0 },       { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_toads_turnpike_track_waypoints[] = {
+TrackPathPoint d_course_toads_turnpike_track_path[] = {
     { 100, 0, 16, 1 },
     { 100, 0, -3, 1 },
     { 100, 0, -23, 1 },

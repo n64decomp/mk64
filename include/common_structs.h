@@ -27,10 +27,10 @@ typedef enum { A = 0x80, B = 0x40, Z = 0x20, R = 0x10 } GhostController;
 /***  types.h  ***/
 
 typedef struct {
-    /* 0x0 */ s16 waypointStart;
-    /* 0x2 */ s16 waypointEnd;
+    /* 0x0 */ s16 pathPointStart;
+    /* 0x2 */ s16 pathPointEnd;
     /* 0x4 */ s32 type;
-} KartAIBehaviour; // size = 0x8
+} CPUBehaviour; // size = 0x8
 
 enum SpTaskState {
     SPTASK_STATE_NOT_STARTED,
@@ -153,7 +153,7 @@ typedef struct {
     /* 0x18 */ f32 unk_018;
     /* 0x1C */ s16 isAlive;
     /* 0x1E */ s16 timer;
-    /* 0x20 */ s16 unk_020;
+    /* 0x20 */ s16 rotation;
     /* 0x22 */ s16 unk_022;
     /* 0x24 */ f32 unk_024;
     /* 0x28 */ f32 unk_028;
@@ -171,7 +171,7 @@ typedef struct {
     /* 0x42 */ s16 unk_042;
     /* 0x44 */ s16 unk_044;
     /* 0x46 */ s16 unk_046;
-} UnkPlayerStruct258; // size = 0x48
+} Particle; // size = 0x48
 
 // This struct is almost identical to the GBI Vtx_t type,
 // except that its missing the "flag" member.
@@ -281,7 +281,7 @@ typedef struct {
     /* 0x0088 */ f32 unk_088;
     /* 0x008C */ f32 unk_08C;
     /* 0x0090 */ f32 unk_090;
-    /* 0x0094 */ f32 unk_094;
+    /* 0x0094 */ f32 speed;
     /* 0x0098 */ f32 unk_098;
     /* 0x009C */ f32 currentSpeed;
     /* 0x00A0 */ f32 unk_0A0;
@@ -299,7 +299,7 @@ typedef struct {
     /* 0x00C0 */ s16 unk_0C0;
     /* 0x00C2 */ s16 unk_0C2;
     /* 0x00C4 */ s16 slopeAccel;
-    /* 0x00C6 */ s16 unk_0C6;
+    /* 0x00C6 */ s16 alpha;
     /* 0x00C8 */ s16 unk_0C8;
     /* 0x00CA */ s16 unk_0CA;
     /* 0x00CC */ Vec4s unk_0CC;
@@ -336,27 +336,27 @@ typedef struct {
     /* 0x0214 */ f32 topSpeed;
     /* 0x0218 */ f32 unk_218;
     /* 0x021C */ f32 unk_21C;
-    /* 0x0220 */ s16 nearestWaypointId; // ??
+    /* 0x0220 */ s16 nearestPathPointId; // ??
     /* 0x0222 */ s16 unk_222;
     /* 0x0224 */ f32 size;
     /* 0x0228 */ s16 unk_228;
-    /* 0x022A */ s16 unk_22A;
-    /* 0x022C */ f32 unk_22C;
+    /* 0x022A */ s16 driftState;
+    /* 0x022C */ f32 previousSpeed;
     /* 0x0230 */ f32 unk_230;
     /* 0x0234 */ s16 unk_234;
     /* 0x0236 */ s16 unk_236;
     /* 0x0238 */ s16 unk_238;
     /* 0x023A */ s16 unk_23A;
     /* 0x023C */ f32 unk_23C;
-    /* 0x0240 */ s32 unk_240;
+    /* 0x0240 */ s32 tyreSpeed;
     /* 0x0244 */ u16 animFrameSelector[4]; // [0] Active texture group
     /* 0x024C */ u16 animGroupSelector[4];
     /* 0x0254 */ u16 characterId;
     /* 0x0256 */ u16 unk_256;
-    /* 0x0258 */ UnkPlayerStruct258 playerPacticlePool0[10];
-    /* 0x0258 */ UnkPlayerStruct258 playerPacticlePool1[10];
-    /* 0x0258 */ UnkPlayerStruct258 playerPacticlePool2[10];
-    /* 0x0258 */ UnkPlayerStruct258 playerPacticlePool3[10];
+    /* 0x0258 */ Particle particlePool0[10];
+    /* 0x0258 */ Particle particlePool1[10];
+    /* 0x0258 */ Particle particlePool2[10];
+    /* 0x0258 */ Particle particlePool3[10];
     /* 0x0D98 */ s16 unk_D98;
     /* 0x0D9A */ s16 unk_D9A;
     /* 0x0D9C */ f32 unk_D9C;

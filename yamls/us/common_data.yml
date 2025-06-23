@@ -13,7 +13,7 @@
   tables:
     common_grand_prix_human_item_curve:
       range: [0x8150, 0x840C]
-    common_grand_prix_kart_ai_item_curve:
+    common_grand_prix_cpu_item_curve:
       range:  [0x8470, 0x872C]
     common_versus_2_player_item_curve:
       range: [0x8790, 0x87F4]
@@ -47,9 +47,6 @@
       mode: APPEND
     common_texture_particle_smoke:
       range: [0x2BC58, 0x2C858]
-      mode: APPEND
-    common_texture_minimap_kart_character:
-      range: [0x2CCD8, 0x2D058]
       mode: APPEND
 common_tlut_finish_line_banner:
   symbol: common_tlut_finish_line_banner
@@ -883,36 +880,36 @@ common_grand_prix_human_item_curve8:
   symbol: common_grand_prix_human_item_curve8
   type: mk64:item_curve
   offset: 0x840C
-common_grand_prix_kart_ai_item_curve:
-  symbol: common_grand_prix_kart_ai_item_curve
+common_grand_prix_cpu_item_curve:
+  symbol: common_grand_prix_cpu_item_curve
   type: mk64:item_curve
   offset: 0x8470
-common_grand_prix_kart_ai_item_curve2:
-  symbol: common_grand_prix_kart_ai_item_curve2
+common_grand_prix_cpu_item_curve2:
+  symbol: common_grand_prix_cpu_item_curve2
   type: mk64:item_curve
   offset: 0x84D4
-common_grand_prix_kart_ai_item_curve3:
-  symbol: common_grand_prix_kart_ai_item_curve3
+common_grand_prix_cpu_item_curve3:
+  symbol: common_grand_prix_cpu_item_curve3
   type: mk64:item_curve
   offset: 0x8538
-common_grand_prix_kart_ai_item_curve4:
-  symbol: common_grand_prix_kart_ai_item_curve4
+common_grand_prix_cpu_item_curve4:
+  symbol: common_grand_prix_cpu_item_curve4
   type: mk64:item_curve
   offset: 0x859C
-common_grand_prix_kart_ai_item_curve5:
-  symbol: common_grand_prix_kart_ai_item_curve5
+common_grand_prix_cpu_item_curve5:
+  symbol: common_grand_prix_cpu_item_curve5
   type: mk64:item_curve
   offset: 0x8600
-common_grand_prix_kart_ai_item_curve6:
-  symbol: common_grand_prix_kart_ai_item_curve6
+common_grand_prix_cpu_item_curve6:
+  symbol: common_grand_prix_cpu_item_curve6
   type: mk64:item_curve
   offset: 0x8664
-common_grand_prix_kart_ai_item_curve7:
-  symbol: common_grand_prix_kart_ai_item_curve7
+common_grand_prix_cpu_item_curve7:
+  symbol: common_grand_prix_cpu_item_curve7
   type: mk64:item_curve
   offset: 0x86C8
-common_grand_prix_kart_ai_item_curve8:
-  symbol: common_grand_prix_kart_ai_item_curve8
+common_grand_prix_cpu_item_curve8:
+  symbol: common_grand_prix_cpu_item_curve8
   type: mk64:item_curve
   offset: 0x872C
 common_versus_2_player_item_curve:
@@ -1098,31 +1095,31 @@ D_0D0093C0:
   symbol: D_0D0093C0
   type: mk64:driving_behaviour
   offset: 0x93C0
-D_0D009418:
-  symbol: D_0D009418
+cpu_CurveTargetSpeed:
+  symbol: cpu_CurveTargetSpeed
   type: inc
   offset: 0x9418
   ctype: Vec4f
   offset: 0x9418
-  file_path: "assets/course_metadata/D_0D009418.inc.c"
-D_0D009568:
-  symbol: D_0D009568
+  file_path: "assets/course_metadata/cpu_CurveTargetSpeed.inc.c"
+cpu_NormalTargetSpeed:
+  symbol: cpu_NormalTargetSpeed
   type: inc
   offset: 0x9568
   ctype: Vec4f
-  file_path: "assets/course_metadata/D_0D009568.inc.c"
+  file_path: "assets/course_metadata/cpu_NormalTargetSpeed.inc.c"
 D_0D0096B8:
   symbol: D_0D0096B8
   type: inc
   offset: 0x96B8
   ctype: Vec4f
   file_path: "assets/course_metadata/D_0D0096B8.inc.c"
-D_0D009808:
-  symbol: D_0D009808
+cpu_OffTrackTargetSpeed:
+  symbol: cpu_OffTrackTargetSpeed
   type: inc
   offset: 0x9808
   ctype: Vec4f
-  file_path: "assets/course_metadata/D_0D009808.inc.c"
+  file_path: "assets/course_metadata/cpu_OffTrackTargetSpeed.inc.c"
 common_texture_speedometer:
   symbol: common_texture_speedometer
   type: texture
