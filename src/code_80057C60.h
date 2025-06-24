@@ -117,15 +117,15 @@ void func_8005D1F4(s32);
 
 void func_8005D290(void);
 void func_8005D6C0(Player*);
-void func_8005D794(Player*, UnkPlayerStruct258*, f32, f32, f32, s8, s8);
-s32 func_8005D7D8(UnkPlayerStruct258*, s8, f32);
-s32 func_8005D800(UnkPlayerStruct258*, s32, s16);
-s32 func_8005D82C(UnkPlayerStruct258*, s32, s16);
-void func_8005D898(Player*, s16, s32, s8, s8);
-void func_8005DA30(Player*, s16, s32, s8, s8);
+void set_particle_position_and_rotation(Player*, Particle*, f32, f32, f32, s8, s8);
+s32 init_new_particle_player(Particle*, s8, f32);
+s32 set_particle_colour(Particle*, s32, s16);
+s32 set_particle_colour_randomly_varried(Particle*, s32, s16);
+void set_drift_particles(Player*, s16, s32, s8, s8);
+void check_drift_particles_setup_valid(Player*, s16, s32, s8, s8);
 void func_8005DAD0(void);
-void func_8005DAD8(UnkPlayerStruct258*, s16, s16, s16);
-void func_8005DAF4(Player*, s16, s32, s8, s8);
+void func_8005DAD8(Particle*, s16, s16, s16);
+void setup_tyre_particles(Player*, s16, s32, s8, s8);
 void func_8005EA94(Player*, s16, s32, s8, s8);
 void func_8005ED48(Player*, s16, s32, s8, s8);
 
@@ -150,7 +150,7 @@ void func_80061D4C(Player*, s16, s32, s8, s8);
 void func_80061EF4(Player*, s16, s32, s8, s8);
 
 void func_800621BC(Player*, s16, s32, s8, s8);
-void func_80062484(Player*, UnkPlayerStruct258*, s32);
+void func_80062484(Player*, Particle*, s32);
 void func_800624D8(Player*, s32, s32, s8, s8);
 void func_800628C0(Player*, s8, s8, s8);
 void func_80062914(Player*, s8, s8, s8);
@@ -162,7 +162,7 @@ void func_80062B18(f32*, f32*, f32*, f32, f32, f32, u16, u16);
 void func_80062C74(Player*, s16, s32, s32);
 void func_80062F98(Player*, s16, s8, s8);
 
-void func_800630C0(Player*, s16, s8, s8);
+void set_oob_splash_particle_position(Player*, s16, s8, s8);
 void func_800631A8(Player*, s16, s8, s8);
 void func_80063268(Player*, s16, s8, s8);
 void func_80063408(Player*, s16, s8, s8);
@@ -200,19 +200,19 @@ void func_80066998(Player*, s8, s16, s8);
 void func_80066BAC(Player*, s8, s16, s8);
 
 void func_80067280(Player*, s8, s16, s8);
-void func_80067604(Player*, s8, s16, s8);
-void func_80067964(Player*, s8, f32, s8, s8);
-void func_80067D3C(Player*, s8, u8*, s8, f32, s32);
+void render_player_boost_spark_particles(Player*, s8, s16, s8);
+void render_player_onomatopoeia_whrrrr(Player*, s8, f32, s8, s8);
+void render_player_speech_bubble(Player*, s8, u8*, s8, f32, s32);
 
-void func_8006801C(Player*, s8, u8*, s8, f32, s32);
+void render_music_note(Player*, s8, u8*, s8, f32, s32);
 void func_80068310(Player*, s8, f32, s8, s8);
 void func_80068724(Player*, s8, f32, s8, s8);
-void func_80068AA4(Player*, s8, f32, s8, s8);
-void func_80068DA0(Player*, s8, f32, s8, s8);
+void render_player_onomatopoeia_boing(Player*, s8, f32, s8, s8);
+void render_player_onomatopoeia_pomp(Player*, s8, f32, s8, s8);
 
-void func_800691B8(Player*, s8, s16, s8);
+void render_actor_bonk_particles(Player*, s8, s16, s8);
 void func_80069444(Player*, s8, s16, s8);
-void func_800696CC(Player*, s8, s16, s8, f32);
+void render_wall_bonk_star_particles(Player*, s8, s16, s8, f32);
 void func_80069938(Player*, s8, s16, s8);
 void func_80069BA8(Player*, s8, s16, s8);
 void func_80069DB8(Player*, s8, s16, s8);

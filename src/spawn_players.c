@@ -195,7 +195,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_204 = 0;
     player->nearestPathPointId = 0;
     player->unk_228 = 0;
-    player->unk_22A = 0;
+    player->driftState = 0;
     player->unk_234 = 0;
     player->unk_236 = 0;
     player->unk_238 = 0;
