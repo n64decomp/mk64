@@ -206,7 +206,7 @@ void func_80072180(void) {
     if (gModeSelection == TIME_TRIALS) {
         if (((gPlayerOne->type & PLAYER_EXISTS) != 0) &&
             ((gPlayerOne->type & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_CPU)) == 0)) {
-            D_80162DF8 = 1;
+            gReplayCannotSave = 1;
         }
     }
 }

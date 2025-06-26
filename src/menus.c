@@ -1801,7 +1801,7 @@ void load_menu_states(s32 menuSelection) {
     gDebugGotoScene = DEBUG_GOTO_RACING;
     gGhostPlayerInit = 0;
     D_8016556E = 0;
-    D_80162DD4 = 1;
+    gPlayerGhostDisabled = 1;
     D_80162DD8 = 1;
     D_80162E00 = 0;
     D_80162DC8 = 1;

@@ -145,7 +145,7 @@ extern Gfx toads_turnpike_dl_9[];
 extern Gfx toads_turnpike_dl_10[];
 extern Gfx toads_turnpike_dl_11[];
 
-extern s32 D_80162DF8;
+extern s32 gReplayCannotSave;
 
 extern Gfx D_0D001750[];
 extern Gfx D_0D001780[];

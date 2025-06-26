@@ -22,41 +22,41 @@ extern s32 func_80040174(void*, s32, s32);
 u8* D_80162D80;
 s16 D_80162D84;
 s16 D_80162D86;
-u16 D_80162D88;
+static u16 sButtonsPrevPlayerGhost;
 
-u32 D_80162D8C;
-s16 D_80162D90;
-u32* D_80162D94;
+static u32 sPlayerGhostFramesRemaining;
+static s16 sPlayerGhostDataIdx;
+static u32* sPlayerGhostData;
 
-u16 D_80162D98;
-u32 D_80162D9C;
-s16 D_80162DA0;
-u32* D_80162DA4;
+static u16 sButtonsPrevCourseGhost;
+static u32 sCourseGhostFramesRemaining;
+static s16 sCourseGhostDataIndex;
+static u32* sCourseGhostData;
 
-u16 D_80162DA8;
-s32 D_80162DAC;
-s16 D_80162DB0;
-u32* D_80162DB4;
+static u16 sButtonsPrevReplay;
+static s32 sReplayFramesRemaining;
+static s16 sReplayDataIdx;
+static u32* replayData;
 
-s16 D_80162DB8;
-u32* D_80162DBC;
+static s16 sPlayerInputIdx;
+static u32* sPlayerInputs;
 
 u16 D_80162DC0;
 u32 D_80162DC4;
 s32 D_80162DC8;
 s32 D_80162DCC;
 s32 D_80162DD0;
-u16 D_80162DD4;
-u16 D_80162DD6;
+u16 gPlayerGhostDisabled;
+u16 gCourseGhostDisabled;
 u16 D_80162DD8;
 s32 D_80162DDC;
 s32 D_80162DE0; // ghost kart id?
 s32 D_80162DE4;
 s32 D_80162DE8;
-s32 D_80162DEC;
-s32 D_80162DF0;
-s32 D_80162DF4;
-s32 D_80162DF8;
+UNUSED s32 UNUSED_VAR2;
+s32 gPauseTriggered;
+UNUSED s32 UNUSED_VAR1;
+s32 gReplayCannotSave;
 s32 D_80162DFC;
 
 s32 D_80162E00;
@@ -71,84 +71,84 @@ extern StaffGhost* d_royal_raceway_staff_ghost;
 extern StaffGhost* d_luigi_raceway_staff_ghost;
 
 void func_80004EF0(void) {
-    D_80162DA4 = (u32*) &D_802BFB80.arraySize8[0][2][3];
-    osInvalDCache(&D_80162DA4[0], 0x4000);
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(D_80162DC4)], D_80162DA4,
+    sCourseGhostData = (u32*) &D_802BFB80.arraySize8[0][2][3];
+    osInvalDCache(&sCourseGhostData[0], 0x4000);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(D_80162DC4)], sCourseGhostData,
                  0x4000, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    D_80162D9C = (*D_80162DA4 & 0xFF0000);
-    D_80162DA0 = 0;
+    sCourseGhostFramesRemaining = (*sCourseGhostData & 0xFF0000);
+    sCourseGhostDataIndex = 0;
 }
 
 void func_80004FB0(void) {
-    D_80162DB4 = (u32*) &D_802BFB80.arraySize8[0][D_80162DD0][3];
-    D_80162DAC = *D_80162DB4 & 0xFF0000;
-    D_80162DB0 = 0;
+    replayData = (u32*) &D_802BFB80.arraySize8[0][D_80162DD0][3];
+    sReplayFramesRemaining = *replayData & 0xFF0000;
+    sReplayDataIdx = 0;
 }
 
 void func_80004FF8(void) {
-    D_80162D94 = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
-    D_80162D8C = (s32) *D_80162D94 & 0xFF0000;
-    D_80162D90 = 0;
+    sPlayerGhostData = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
+    sPlayerGhostFramesRemaining = (s32) *sPlayerGhostData & 0xFF0000;
+    sPlayerGhostDataIdx = 0;
 }
 /**
- * Activates staff ghost if time trial lap time is lower enough
+ * Activates staff ghost if time trial lap time is low enough
  *
  */
 #ifdef VERSION_EU
-#define BLAH 10700
-#define BLAH2 19300
-#define BLAH3 13300
+#define GHOST_UNLOCK_MARIO 10700
+#define GHOST_UNLOCK_ROYAL 19300
+#define GHOST_UNLOCK_LUIGI 13300
 #else
-#define BLAH 9000
-#define BLAH2 16000
-#define BLAH3 11200
+#define GHOST_UNLOCK_MARIO 9000
+#define GHOST_UNLOCK_ROYAL 16000
+#define GHOST_UNLOCK_LUIGI 11200
 
 #endif
 
 void set_staff_ghost(void) {
-    u32 temp_v0; // Appears to be player total lap time.
+    u32 bestTime; // Appears to be best player 3lap time.
 #if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            temp_v0 = func_800B4E24(0) & 0xfffff;
-            if (temp_v0 <= BLAH) {
-                D_80162DD6 = 0;
-                D_80162DF4 = 0;
+            bestTime = func_800B4E24(0) & 0xfffff;
+            if (bestTime <= GHOST_UNLOCK_MARIO) {
+                gCourseGhostDisabled = 0;
+                UNUSED_VAR1 = 0;
             } else {
-                D_80162DD6 = 1;
-                D_80162DF4 = 1;
+                gCourseGhostDisabled = 1;
+                UNUSED_VAR1 = 1;
             }
             D_80162DC4 = (u32) &d_mario_raceway_staff_ghost;
             D_80162DE4 = 0;
             break;
         case COURSE_ROYAL_RACEWAY:
-            temp_v0 = func_800B4E24(0) & 0xfffff;
-            if (temp_v0 <= BLAH2) {
-                D_80162DD6 = 0;
-                D_80162DF4 = 0;
+            bestTime = func_800B4E24(0) & 0xfffff;
+            if (bestTime <= GHOST_UNLOCK_ROYAL) {
+                gCourseGhostDisabled = 0;
+                UNUSED_VAR1 = 0;
             } else {
-                D_80162DD6 = 1;
-                D_80162DF4 = 1;
+                gCourseGhostDisabled = 1;
+                UNUSED_VAR1 = 1;
             }
             D_80162DC4 = (u32) &d_royal_raceway_staff_ghost;
             D_80162DE4 = 6;
             break;
         case COURSE_LUIGI_RACEWAY:
-            temp_v0 = func_800B4E24(0) & 0xfffff;
-            if (temp_v0 <= BLAH3) {
-                D_80162DD6 = 0;
-                D_80162DF4 = 0;
+            bestTime = func_800B4E24(0) & 0xfffff;
+            if (bestTime <= GHOST_UNLOCK_LUIGI) {
+                gCourseGhostDisabled = 0;
+                UNUSED_VAR1 = 0;
             } else {
-                D_80162DD6 = 1;
-                D_80162DF4 = 1;
+                gCourseGhostDisabled = 1;
+                UNUSED_VAR1 = 1;
             }
             D_80162DC4 = (u32) &d_luigi_raceway_staff_ghost;
             D_80162DE4 = 1;
             break;
         default:
-            D_80162DD6 = 1;
-            D_80162DF4 = 1;
+            gCourseGhostDisabled = 1;
+            UNUSED_VAR1 = 1;
     }
 #else
 
@@ -167,10 +167,10 @@ s32 func_800051C4(void) {
 }
 
 void func_8000522C(void) {
-    D_80162D94 = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
-    mio0decode((u8*) D_800DC714, (u8*) D_80162D94);
-    D_80162D8C = (s32) (*D_80162D94 & 0xFF0000);
-    D_80162D90 = 0;
+    sPlayerGhostData = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
+    mio0decode((u8*) D_800DC714, (u8*) sPlayerGhostData);
+    sPlayerGhostFramesRemaining = (s32) (*sPlayerGhostData & 0xFF0000);
+    sPlayerGhostDataIdx = 0;
     D_80162E00 = 1;
 }
 
@@ -184,7 +184,7 @@ void func_800052A4(void) {
         D_80162DC8 = 1;
         D_80162DCC = 0;
     }
-    temp_v0 = D_80162DB8;
+    temp_v0 = sPlayerInputIdx;
     D_80162D80 = (void*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
     D_80162D84 = temp_v0;
     D_80162D86 = temp_v0;
@@ -197,13 +197,13 @@ void func_80005310(void) {
         set_staff_ghost();
 
         if (D_80162DC0 != gCurrentCourseId) {
-            D_80162DD4 = 1;
+            gPlayerGhostDisabled = 1;
         }
 
         D_80162DC0 = (u16) gCurrentCourseId;
-        D_80162DF0 = 0;
-        D_80162DEC = 0;
-        D_80162DF8 = 0;
+        gPauseTriggered = 0;
+        UNUSED_VAR2 = 0;
+        gReplayCannotSave = 0;
 
         if (gModeSelection == TIME_TRIALS && gActiveScreenMode == SCREEN_MODE_1P) {
 
@@ -212,21 +212,21 @@ void func_80005310(void) {
                 if (D_80162DD8 == 0) {
                     func_80004FF8();
                 }
-                if (D_80162DD6 == 0) {
+                if (gCourseGhostDisabled == 0) {
                     func_80004EF0();
                 }
             } else {
 
                 D_80162DD8 = 1U;
-                D_80162DBC = (u32*) &D_802BFB80.arraySize8[0][D_80162DCC][3];
-                D_80162DBC[0] = -1;
-                D_80162DB8 = 0;
+                sPlayerInputs = (u32*) &D_802BFB80.arraySize8[0][D_80162DCC][3];
+                sPlayerInputs[0] = -1;
+                sPlayerInputIdx = 0;
                 D_80162DDC = 0;
                 func_80091EE4();
-                if (D_80162DD4 == 0) {
+                if (gPlayerGhostDisabled == 0) {
                     func_80004FF8();
                 }
-                if (D_80162DD6 == 0) {
+                if (gCourseGhostDisabled == 0) {
                     func_80004EF0();
                 }
             }
@@ -234,239 +234,253 @@ void func_80005310(void) {
     }
 }
 
-void func_8000546C(void) {
-    u32 temp_a0;
-    u32 temp_a1;
+void process_replay_inputs(void) {
+    u32 inputs;
+    u32 stickBytes;
     UNUSED u16 unk;
-    u16 temp_v1;
-    s16 phi_v1;
-    s16 phi_v0 = 0;
+    u16 buttons_temp;
+    s16 stickVal;
+    s16 buttons = 0;
 
-    if (D_80162DB0 >= 0x1000) {
+    if (sReplayDataIdx >= 0x1000) {
         gPlayerOne->type = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
         return;
     }
 
-    temp_a0 = D_80162DB4[D_80162DB0];
-    temp_a1 = temp_a0 & 0xFF;
+    inputs = replayData[sReplayDataIdx];
+    stickBytes = inputs & 0xFF;
 
-    if (temp_a1 < 0x80U) {
-        phi_v1 = (s16) (temp_a1 & 0xFF);
+    if (stickBytes < 0x80U) {
+        stickVal = (s16) (stickBytes & 0xFF);
     } else {
-        phi_v1 = (s16) (temp_a1 | (~0xFF));
+        stickVal = (s16) (stickBytes | (~0xFF));
     }
 
-    temp_a1 = (u32) (temp_a0 & 0xFF00) >> 8;
-    gControllerEight->rawStickX = phi_v1;
+    stickBytes = (u32) (inputs & 0xFF00) >> 8;
+    gControllerEight->rawStickX = stickVal;
 
-    if (temp_a1 < 0x80U) {
-        phi_v1 = (s16) (temp_a1 & 0xFF);
+    if (stickBytes < 0x80U) {
+        stickVal = (s16) (stickBytes & 0xFF);
     } else {
-        phi_v1 = (s16) (temp_a1 | (~0xFF));
+        stickVal = (s16) (stickBytes | (~0xFF));
     }
-    gControllerEight->rawStickY = phi_v1;
-    if (temp_a0 & 0x80000000) {
-        phi_v0 |= A_BUTTON;
+    gControllerEight->rawStickY = stickVal;
+    if (inputs & 1 << 31) {
+        buttons |= A_BUTTON;
     }
-    if (temp_a0 & 0x40000000) {
-        phi_v0 |= B_BUTTON;
+    if (inputs & 1 << 30) {
+        buttons |= B_BUTTON;
     }
-    if (temp_a0 & 0x20000000) {
-        phi_v0 |= Z_TRIG;
+    if (inputs & 1 << 29) {
+        buttons |= Z_TRIG;
     }
-    if (temp_a0 & 0x10000000) {
-        phi_v0 |= R_TRIG;
+    if (inputs & 1 << 28) {
+        buttons |= R_TRIG;
     }
-    temp_v1 = gControllerEight->buttonPressed & 0x1F0F;
-    gControllerEight->buttonPressed = (phi_v0 & (phi_v0 ^ D_80162DA8)) | temp_v1;
-    temp_v1 = gControllerEight->buttonDepressed & 0x1F0F;
-    gControllerEight->buttonDepressed = (D_80162DA8 & (phi_v0 ^ D_80162DA8)) | temp_v1;
-    D_80162DA8 = phi_v0;
-    gControllerEight->button = phi_v0;
+    buttons_temp = gControllerEight->buttonPressed & 0x1F0F;
+    gControllerEight->buttonPressed = (buttons & (buttons ^ sButtonsPrevReplay)) | buttons_temp;
+    buttons_temp = gControllerEight->buttonDepressed & 0x1F0F;
+    gControllerEight->buttonDepressed = (sButtonsPrevReplay & (buttons ^ sButtonsPrevReplay)) | buttons_temp;
+    sButtonsPrevReplay = buttons;
+    gControllerEight->button = buttons;
 
-    if (D_80162DAC == 0) {
-        D_80162DB0++;
-        D_80162DAC = (s32) (D_80162DB4[D_80162DB0] & 0xFF0000);
+    if (sReplayFramesRemaining == 0) {
+        sReplayDataIdx++;
+        sReplayFramesRemaining = (s32) (replayData[sReplayDataIdx] & 0xFF0000);
     } else {
-        D_80162DAC += 0xFFFF0000;
+        sReplayFramesRemaining -= 0x10000;
     }
 }
 
-void func_8000561C(void) {
-    u32 temp_a0;
-    u32 temp_v0;
+void process_course_ghost_inputs(void) {
+    u32 inputs;
+    u32 stickBytes;
     UNUSED u16 unk;
-    u16 temp_v1;
-    s16 phi_v1;
-    s16 phi_a2 = 0;
-
-    if (D_80162DA0 >= 0x1000) {
+    u16 buttonsTemp;
+    s16 stickVal;
+    s16 buttons = 0;
+    if (sCourseGhostDataIndex >= 0x1000) {
         func_80005AE8(gPlayerThree);
         return;
     }
-    temp_a0 = D_80162DA4[D_80162DA0];
-    temp_v0 = temp_a0 & 0xFF;
-    if (temp_v0 < 0x80U) {
-        phi_v1 = (s16) (temp_v0 & 0xFF);
+    
+    inputs = sCourseGhostData[sCourseGhostDataIndex];
+    stickBytes = inputs & 0xFF;
+    // converting signed 8-bit values to signed 16-bit values
+    if (stickBytes < 0x80U) {
+        stickVal = (s16) (stickBytes & 0xFF);
+    }
+    else {
+        stickVal = (s16) (stickBytes | (~0xFF));
+    }
+    stickBytes = (u32) (inputs & 0xFF00) >> 8;
+    gControllerSeven->rawStickX = stickVal;
+
+    if (stickBytes < 0x80U) {
+        stickVal = (s16) (stickBytes & 0xFF);
     } else {
-        phi_v1 = (s16) (temp_v0 | (~0xFF));
+        stickVal = (s16) (stickBytes | (~0xFF));
     }
+    gControllerSeven->rawStickY = stickVal;
 
-    temp_v0 = (u32) (temp_a0 & 0xFF00) >> 8;
-    gControllerSeven->rawStickX = phi_v1;
-
-    if (temp_v0 < 0x80U) {
-        phi_v1 = (s16) (temp_v0 & 0xFF);
+    if (inputs & 1 << 31) {
+        buttons = A_BUTTON;
+    }
+    if (inputs & 1 << 30) {
+        buttons |= B_BUTTON;
+    }
+    if (inputs & 1 << 29) {
+        buttons |= Z_TRIG;
+    }
+    if (inputs & 1 << 28) {
+        buttons |= R_TRIG;
+    }
+    // Blanks the A, B, Z, R and L buttons
+    buttonsTemp = gControllerSeven->buttonPressed & 0x1F0F;
+    gControllerSeven->buttonPressed = (buttons & (buttons ^ sButtonsPrevCourseGhost)) | buttonsTemp;
+    buttonsTemp = gControllerSeven->buttonDepressed & 0x1F0F;
+    gControllerSeven->buttonDepressed = (sButtonsPrevCourseGhost & (buttons ^ sButtonsPrevCourseGhost)) | buttonsTemp;
+    sButtonsPrevCourseGhost = buttons;
+    gControllerSeven->button = buttons;
+    if (sCourseGhostFramesRemaining == 0) {
+        sCourseGhostDataIndex++;
+        sCourseGhostFramesRemaining = (s32) (sCourseGhostData[sCourseGhostDataIndex] & 0xFF0000);
     } else {
-        phi_v1 = (s16) (temp_v0 | (~0xFF));
-    }
-    gControllerSeven->rawStickY = phi_v1;
-
-    if (temp_a0 & 0x80000000) {
-        phi_a2 = A_BUTTON;
-    }
-    if (temp_a0 & 0x40000000) {
-        phi_a2 |= B_BUTTON;
-    }
-    if (temp_a0 & 0x20000000) {
-        phi_a2 |= Z_TRIG;
-    }
-    if (temp_a0 & 0x10000000) {
-        phi_a2 |= R_TRIG;
-    }
-
-    temp_v1 = gControllerSeven->buttonPressed & 0x1F0F;
-    gControllerSeven->buttonPressed = (phi_a2 & (phi_a2 ^ D_80162D98)) | temp_v1;
-    temp_v1 = gControllerSeven->buttonDepressed & 0x1F0F;
-    gControllerSeven->buttonDepressed = (D_80162D98 & (phi_a2 ^ D_80162D98)) | temp_v1;
-    D_80162D98 = phi_a2;
-    gControllerSeven->button = phi_a2;
-    if (D_80162D9C == 0) {
-        D_80162DA0++;
-        D_80162D9C = (s32) (D_80162DA4[D_80162DA0] & 0xFF0000);
-    } else {
-        D_80162D9C += (s32) 0xFFFF0000;
+        sCourseGhostFramesRemaining -= (s32) 0x10000;
     }
 }
 
-void func_800057DC(void) {
-    u32 temp_a0;
-    u32 temp_v0;
+// bits 1-8: Stick X
+// bits 9-16: Stick Y
+// bits 17-24: counter
+// bits 25-28: Unused? 
+// bit 29: R
+// bit 30: Z
+// bit 31: B
+// bit 32: A
+void process_player_ghost_inputs(void) {
+    u32 inputs;
+    u32 stickBytes;
     UNUSED u16 unk;
-    u16 temp_v1;
-    s16 phi_v1;
-    s16 phi_a2 = 0;
+    u16 buttons_temp;
+    s16 stickVal;
+    s16 buttons = 0;
 
-    if (D_80162D90 >= 0x1000) {
+    if (sPlayerGhostDataIdx >= 0x1000) {
         func_80005AE8(gPlayerTwo);
         return;
     }
-    temp_a0 = D_80162D94[D_80162D90];
-    temp_v0 = temp_a0 & 0xFF;
-    if (temp_v0 < 0x80U) {
-        phi_v1 = (s16) (temp_v0 & 0xFF);
+    inputs = sPlayerGhostData[sPlayerGhostDataIdx];
+    stickBytes = inputs & 0xFF;
+    if (stickBytes < 0x80U) {
+        stickVal = (s16) (stickBytes & 0xFF);
     } else {
-        phi_v1 = (s16) (temp_v0 | ~0xFF);
+        stickVal = (s16) (stickBytes | ~0xFF);
     }
 
-    temp_v0 = (u32) (temp_a0 & 0xFF00) >> 8;
+    stickBytes = (u32) (inputs & 0xFF00) >> 8;
 
-    gControllerSix->rawStickX = phi_v1;
+    gControllerSix->rawStickX = stickVal;
 
-    if (temp_v0 < 0x80U) {
-        phi_v1 = (s16) (temp_v0 & 0xFF);
+    if (stickBytes < 0x80U) {
+        stickVal = (s16) (stickBytes & 0xFF);
     } else {
-        phi_v1 = (s16) (temp_v0 | (~0xFF));
+        stickVal = (s16) (stickBytes | (~0xFF));
     }
 
-    gControllerSix->rawStickY = phi_v1;
+    gControllerSix->rawStickY = stickVal;
 
-    if (temp_a0 & 0x80000000) {
-        phi_a2 |= A_BUTTON;
+    if (inputs & 1 << 31) {   //ABZ(start) (D-Up D-Dn D-L D-R) (xx LR) (C-up C-Dn C-L C-R)
+        buttons = A_BUTTON;
     }
-    if (temp_a0 & 0x40000000) {
-        phi_a2 |= B_BUTTON;
+    if (inputs & 1 << 30) {
+        buttons |= B_BUTTON;
     }
-    if (temp_a0 & 0x20000000) {
-        phi_a2 |= Z_TRIG;
+    if (inputs & 1 << 29) {
+        buttons |= Z_TRIG;
     }
-    if (temp_a0 & 0x10000000) {
-        phi_a2 |= R_TRIG;
+    /* This is strange. My assumption is that they remapped the R-Trigger at some point after creating the ghosts.
+    Instead of re-recording the ghosts, I guess they just fixed it here */
+    if (inputs & 1 << 28) {
+        buttons |= R_TRIG;
     }
-    temp_v1 = gControllerSix->buttonPressed & 0x1F0F;
-    gControllerSix->buttonPressed = (phi_a2 & (phi_a2 ^ D_80162D88)) | temp_v1;
+    buttons_temp = gControllerSix->buttonPressed & 0x1F0F;
+    gControllerSix->buttonPressed = (buttons & (buttons ^ sButtonsPrevPlayerGhost)) | buttons_temp;
 
-    temp_v1 = gControllerSix->buttonDepressed & 0x1F0F;
-    gControllerSix->buttonDepressed = (D_80162D88 & (phi_a2 ^ D_80162D88)) | temp_v1;
-    D_80162D88 = phi_a2;
-    gControllerSix->button = phi_a2;
+    buttons_temp = gControllerSix->buttonDepressed & 0x1F0F;
+    gControllerSix->buttonDepressed = (sButtonsPrevPlayerGhost & (buttons ^ sButtonsPrevPlayerGhost)) | buttons_temp;
+    sButtonsPrevPlayerGhost = buttons;
+    gControllerSix->button = buttons;
 
-    if (D_80162D8C == 0) {
-        D_80162D90++;
-        D_80162D8C = (s32) (D_80162D94[D_80162D90] & 0xFF0000);
+    if (sPlayerGhostFramesRemaining == 0) {
+        sPlayerGhostDataIdx++;
+        sPlayerGhostFramesRemaining = (s32) (sPlayerGhostData[sPlayerGhostDataIdx] & 0xFF0000);
     } else {
-        D_80162D8C += (s32) 0xFFFF0000;
+        sPlayerGhostFramesRemaining -= (s32) 0x10000;
     }
 }
 
-void func_8000599C(void) {
-    s16 temp_a2;
-    u32 phi_a3;
-    u32 temp_v1;
-    u32 temp_v2;
-    u32 temp_v0;
-    u32 temp_t0;
-    u32 temp_a0_2;
-
-    if (((D_80162DB8 >= 0x1000) || ((gPlayerOne->unk_0CA & 2) != 0)) || ((gPlayerOne->unk_0CA & 8) != 0)) {
-        D_80162DF8 = 1;
+void save_player_inputs(void) {
+    s16 buttons;
+    u32 inputs;
+    u32 stickX;
+    u32 stickY;
+    u32 inputCounter;
+    u32 prevInputsWCounter;
+    u32 prevInputs;
+    /* Input file is too long or picked up by lakitu or Out of bounds
+    Not sure if there is any way to be considered out of bounds without lakitu getting called */
+    if (((sPlayerInputIdx >= 0x1000) || ((gPlayerOne->unk_0CA & 2) != 0)) || ((gPlayerOne->unk_0CA & 8) != 0)) {
+        gReplayCannotSave = 1;
         return;
     }
 
-    temp_v1 = gControllerOne->rawStickX;
-    temp_v1 &= 0xFF;
-    temp_v2 = gControllerOne->rawStickY;
-    temp_v2 = (temp_v2 & 0xFF) << 8;
-    temp_a2 = gControllerOne->button;
-    phi_a3 = 0;
-    if (temp_a2 & 0x8000) {
-        phi_a3 |= 0x80000000;
+    stickX = gControllerOne->rawStickX;
+    stickX &= 0xFF;
+    stickY = gControllerOne->rawStickY;
+    stickY = (stickY & 0xFF) << 8;
+    buttons = gControllerOne->button;
+    inputs = 0;
+    if (buttons & A_BUTTON) {
+        inputs |= 1 << 31;
     }
-    if (temp_a2 & 0x4000) {
-        phi_a3 |= 0x40000000;
+    if (buttons & B_BUTTON) {
+        inputs |= 1 << 30;
     }
-    if (temp_a2 & 0x2000) {
-        phi_a3 |= 0x20000000;
+    if (buttons & Z_TRIG) {
+        inputs |= 1 << 29;
     }
-    if (temp_a2 & 0x0010) {
-        phi_a3 |= 0x10000000;
+    if (buttons & R_TRIG) {
+        inputs |= 1 << 28;
     }
-    phi_a3 |= temp_v1;
-    phi_a3 |= temp_v2;
-    temp_t0 = D_80162DBC[D_80162DB8];
-    temp_a0_2 = temp_t0 & 0xFF00FFFF;
+    inputs |= stickX;
+    inputs |= stickY;
+    prevInputsWCounter = sPlayerInputs[sPlayerInputIdx];
+    /* The 5th and 6th bytes from the right are counters. Instead of saving the same inputs over and over,
+    it says "these inputs were played for __ frames" */
+    prevInputs = prevInputsWCounter & 0xFF00FFFF;
+    // first frame of inputs
+    if ((*sPlayerInputs) == 0xFFFFFFFF) {
 
-    if ((*D_80162DBC) == 0xFFFFFFFF) {
+        sPlayerInputs[sPlayerInputIdx] = inputs;
 
-        D_80162DBC[D_80162DB8] = phi_a3;
+    } else if (prevInputs == inputs) {
 
-    } else if (temp_a0_2 == phi_a3) {
+        inputCounter = prevInputsWCounter & 0xFF0000;
 
-        temp_v0 = temp_t0 & 0xFF0000;
+        if (inputCounter == 0xFF0000) {
 
-        if (temp_v0 == 0xFF0000) {
-
-            D_80162DB8++;
-            D_80162DBC[D_80162DB8] = phi_a3;
+            sPlayerInputIdx++;
+            sPlayerInputs[sPlayerInputIdx] = inputs;
 
         } else {
-
-            temp_t0 += 0x10000;
-            D_80162DBC[D_80162DB8] = temp_t0;
+            // increment counter by 1
+            prevInputsWCounter += 0x10000;
+            sPlayerInputs[sPlayerInputIdx] = prevInputsWCounter;
         }
     } else {
-        D_80162DB8++;
-        D_80162DBC[D_80162DB8] = phi_a3;
+        sPlayerInputIdx++;
+        sPlayerInputs[sPlayerInputIdx] = inputs;
     }
 }
 
@@ -479,11 +493,11 @@ void func_80005AE8(Player* ply) {
 
 void func_80005B18(void) {
     if (gModeSelection == TIME_TRIALS) {
-        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (D_80162DF8 != 1)) {
-            if (D_80162DD4 == 1) {
+        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gReplayCannotSave != 1)) {
+            if (gPlayerGhostDisabled == 1) {
                 D_80162DD0 = D_80162DCC;
                 func_800052A4();
-                D_80162DD4 = 0;
+                gPlayerGhostDisabled = 0;
                 D_80162DDC = 1;
                 D_80162DE0 = gPlayerOne->characterId;
                 D_80162DE8 = gPlayerOne->characterId;
@@ -507,13 +521,14 @@ void func_80005B18(void) {
                 D_80162DD0 = D_80162DCC;
                 D_80162DE8 = gPlayerOne->characterId;
                 D_80162DD8 = 0;
-                D_80162DD4 = 0;
+                gPlayerGhostDisabled = 0;
                 D_80162DDC = 1;
                 func_80005AE8(gPlayerTwo);
                 func_80005AE8(gPlayerThree);
             }
-        } else {
-            if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (D_80162DF8 == 1)) {
+        } 
+        else {
+            if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gReplayCannotSave == 1)) {
                 D_80162D80 = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
                 D_80162D84 = D_80162D86;
                 D_80162DDC = 1;
@@ -521,20 +536,21 @@ void func_80005B18(void) {
             if ((gPlayerOne->type & 0x800) == 0x800) {
                 func_80005AE8(gPlayerTwo);
                 func_80005AE8(gPlayerThree);
-            } else {
-                D_80162DEC += 1;
-                if (D_80162DEC >= 0x65) {
-                    D_80162DEC = 0x00000064;
+            }
+            else {
+                UNUSED_VAR2 += 1;
+                if (UNUSED_VAR2 >= 101) {
+                    UNUSED_VAR2 = 100;
                 }
                 if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == SCREEN_MODE_1P)) {
-                    if ((D_80162DD4 == 0) && (gLapCountByPlayerId[1] != 3)) {
-                        func_800057DC();
+                    if ((gPlayerGhostDisabled == 0) && (gLapCountByPlayerId[1] != 3)) {
+                        process_player_ghost_inputs();
                     }
-                    if ((D_80162DD6 == 0) && (gLapCountByPlayerId[2] != 3)) {
-                        func_8000561C();
+                    if ((gCourseGhostDisabled == 0) && (gLapCountByPlayerId[2] != 3)) {
+                        process_course_ghost_inputs();
                     }
-                    if (!(gPlayerOne->type & 0x800)) {
-                        func_8000599C();
+                    if (!(gPlayerOne->type & PLAYER_CINEMATIC_MODE)) {
+                        save_player_inputs();
                     }
                 }
             }
@@ -545,13 +561,13 @@ void func_80005B18(void) {
 void func_80005E6C(void) {
     if ((gModeSelection == TIME_TRIALS) && (gModeSelection == TIME_TRIALS) && (gActiveScreenMode == SCREEN_MODE_1P)) {
         if ((D_80162DD8 == 0) && (gLapCountByPlayerId[1] != 3)) {
-            func_800057DC(); // 3
+            process_player_ghost_inputs(); // 3
         }
-        if ((D_80162DD6 == 0) && (gLapCountByPlayerId[2] != 3)) {
-            func_8000561C(); // 2
+        if ((gCourseGhostDisabled == 0) && (gLapCountByPlayerId[2] != 3)) {
+            process_course_ghost_inputs(); // 2
         }
         if ((gPlayerOne->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
-            func_8000546C(); // 1
+            process_replay_inputs(); // 1
             return;
         }
         func_80005AE8(gPlayerTwo);
@@ -564,9 +580,10 @@ void staff_ghosts_loop(void) {
         func_80005E6C();
         return;
     }
-    if (!D_80162DF0) {
+    if (!gPauseTriggered) {
         func_80005B18();
         return;
     }
-    D_80162DF8 = 1;
+    // This only gets triggered when the game is paused.
+    gReplayCannotSave = 1;
 }

@@ -13,9 +13,9 @@ s32 func_800051C4(void);
 void func_8000522C(void);
 void func_800052A4(void);
 void func_80005310(void);
-void func_8000546C(void);
-void func_8000561C(void);
-void func_800057DC(void);
+void process_replay_inputs(void);
+void process_course_ghost_inputs(void);
+void process_player_ghost_inputs(void);
 void func_8000599C(void);
 void func_80005AE8(Player*);
 void func_80005E6C(void);
@@ -28,14 +28,14 @@ extern s32 func_80040174(void*, s32, s32);
 
 extern s32 D_80162DC8;
 extern s32 D_80162DCC;
-extern u16 D_80162DD4;
-extern u16 D_80162DD6;
+extern u16 gPlayerGhostDisabled;
+extern u16 gCourseGhostDisabled;
 extern u16 D_80162DD8;
 extern s32 D_80162E00;
 extern s32 D_80162DE0;
 extern s32 D_80162DE4;
 extern s32 D_80162DE8;
-extern s32 D_80162DF0;
-extern s32 D_80162DF8;
+extern s32 gPauseTriggered;
+extern s32 gReplayCannotSave;
 
 #endif /* STAFF_GHOSTS_H */
