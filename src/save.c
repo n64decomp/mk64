@@ -8,7 +8,7 @@
 #include "menu_items.h"
 #include "menus.h"
 #include "save_data.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "code_80057C60.h"
 
 /*** macros ***/

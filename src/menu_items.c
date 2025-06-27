@@ -21,7 +21,7 @@
 #include "memory.h"
 #include "audio/external.h"
 #include "render_objects.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include <assets/common_data.h>
 #include "textures.h"
 #include "math_util.h"

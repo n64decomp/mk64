@@ -15,7 +15,7 @@
 #include "menu_items.h"
 #include "code_800AF9B0.h"
 #include "save.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "save_data.h"
 #include <sounds.h>
 #include "spawn_players.h"

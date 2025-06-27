@@ -10,7 +10,7 @@
 #include "code_800029B0.h"
 #include "buffers.h"
 #include "save.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "code_8006E9C0.h"
 #include "menu_items.h"
 #include "code_80057C60.h"
@@ -589,7 +589,7 @@ void func_80005E6C(void) {
     }
 }
 
-void staff_ghosts_loop(void) {
+void replays_loop(void) {
     if (D_8015F890 == 1) {
         func_80005E6C();
         return;

@@ -19,7 +19,7 @@ void process_player_ghost_replay(void);
 void func_8000599C(void);
 void func_80005AE8(Player*);
 void func_80005E6C(void);
-void staff_ghosts_loop(void);
+void replays_loop(void);
 
 // mi0decode
 
