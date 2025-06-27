@@ -76,19 +76,19 @@ void func_80004EF0(void) {
     osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(D_80162DC4)], sCourseGhostReplay,
                  0x4000, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    sCourseGhostFramesRemaining = (*sCourseGhostReplay & 0xFF0000);
+    sCourseGhostFramesRemaining = (*sCourseGhostReplay & REPLAY_FRAME_COUNTER);
     sCourseGhostReplayIdx = 0;
 }
 
 void func_80004FB0(void) {
     sPostTTReplay = (u32*) &D_802BFB80.arraySize8[0][D_80162DD0][3];
-    sPostTTFramesRemaining = *sPostTTReplay & 0xFF0000;
+    sPostTTFramesRemaining = *sPostTTReplay & REPLAY_FRAME_COUNTER;
     sPostTTReplayIdx = 0;
 }
 
 void func_80004FF8(void) {
     sPlayerGhostReplay = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
-    sPlayerGhostFramesRemaining = (s32) *sPlayerGhostReplay & 0xFF0000;
+    sPlayerGhostFramesRemaining = (s32) *sPlayerGhostReplay & REPLAY_FRAME_COUNTER;
     sPlayerGhostReplayIdx = 0;
 }
 /**
@@ -169,7 +169,7 @@ s32 func_800051C4(void) {
 void func_8000522C(void) {
     sPlayerGhostReplay = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
     mio0decode((u8*) D_800DC714, (u8*) sPlayerGhostReplay);
-    sPlayerGhostFramesRemaining = (s32) (*sPlayerGhostReplay & 0xFF0000);
+    sPlayerGhostFramesRemaining = (s32) (*sPlayerGhostReplay & REPLAY_FRAME_COUNTER);
     sPlayerGhostReplayIdx = 0;
     D_80162E00 = 1;
 }
@@ -268,15 +268,16 @@ void process_post_TT_replay(void) {
     }
 
     inputs = sPostTTReplay[sPostTTReplayIdx];
-    stickBytes = inputs & 0xFF;
+    stickBytes = inputs & REPLAY_STICK_X;
 
+    // twos complement trick, converting singned 8-bit value to signed 16 bit
     if (stickBytes < 0x80U) {
         stickVal = (s16) (stickBytes & 0xFF);
     } else {
         stickVal = (s16) (stickBytes | (~0xFF));
     }
 
-    stickBytes = (u32) (inputs & 0xFF00) >> 8;
+    stickBytes = (u32) (inputs & REPLAY_STICK_Y) >> 8;
     gControllerEight->rawStickX = stickVal;
 
     if (stickBytes < 0x80U) {
@@ -306,9 +307,9 @@ void process_post_TT_replay(void) {
 
     if (sPostTTFramesRemaining == 0) {
         sPostTTReplayIdx++;
-        sPostTTFramesRemaining = (s32) (sPostTTReplay[sPostTTReplayIdx] & 0xFF0000);
+        sPostTTFramesRemaining = (s32) (sPostTTReplay[sPostTTReplayIdx] & REPLAY_FRAME_COUNTER);
     } else {
-        sPostTTFramesRemaining -= 0x10000;
+        sPostTTFramesRemaining -= REPLAY_FRAME_INCREMENT;
     }
 }
 
@@ -326,7 +327,7 @@ void process_course_ghost_replay(void) {
     }
     
     inputs = sCourseGhostReplay[sCourseGhostReplayIdx];
-    stickBytes = inputs & 0xFF;
+    stickBytes = inputs & REPLAY_STICK_X;
     // converting signed 8-bit values to signed 16-bit values
     if (stickBytes < 0x80U) {
         stickVal = (s16) (stickBytes & 0xFF);
@@ -334,7 +335,7 @@ void process_course_ghost_replay(void) {
     else {
         stickVal = (s16) (stickBytes | (~0xFF));
     }
-    stickBytes = (u32) (inputs & 0xFF00) >> 8;
+    stickBytes = (u32) (inputs & REPLAY_STICK_Y) >> 8;
     gControllerSeven->rawStickX = stickVal;
 
     if (stickBytes < 0x80U) {
@@ -365,9 +366,9 @@ void process_course_ghost_replay(void) {
     gControllerSeven->button = buttons;
     if (sCourseGhostFramesRemaining == 0) {
         sCourseGhostReplayIdx++;
-        sCourseGhostFramesRemaining = (s32) (sCourseGhostReplay[sCourseGhostReplayIdx] & 0xFF0000);
+        sCourseGhostFramesRemaining = (s32) (sCourseGhostReplay[sCourseGhostReplayIdx] & REPLAY_FRAME_COUNTER);
     } else {
-        sCourseGhostFramesRemaining -= (s32) 0x10000;
+        sCourseGhostFramesRemaining -= (s32) REPLAY_FRAME_INCREMENT;
     }
 }
 
@@ -385,14 +386,14 @@ void process_player_ghost_replay(void) {
         return;
     }
     inputs = sPlayerGhostReplay[sPlayerGhostReplayIdx];
-    stickBytes = inputs & 0xFF;
+    stickBytes = inputs & REPLAY_STICK_X;
     if (stickBytes < 0x80U) {
         stickVal = (s16) (stickBytes & 0xFF);
     } else {
         stickVal = (s16) (stickBytes | ~0xFF);
     }
 
-    stickBytes = (u32) (inputs & 0xFF00) >> 8;
+    stickBytes = (u32) (inputs & REPLAY_STICK_Y) >> 8;
 
     gControllerSix->rawStickX = stickVal;
 
@@ -426,9 +427,9 @@ void process_player_ghost_replay(void) {
 
     if (sPlayerGhostFramesRemaining == 0) {
         sPlayerGhostReplayIdx++;
-        sPlayerGhostFramesRemaining = (s32) (sPlayerGhostReplay[sPlayerGhostReplayIdx] & 0xFF0000);
+        sPlayerGhostFramesRemaining = (s32) (sPlayerGhostReplay[sPlayerGhostReplayIdx] & REPLAY_FRAME_COUNTER);
     } else {
-        sPlayerGhostFramesRemaining -= (s32) 0x10000;
+        sPlayerGhostFramesRemaining -= (s32) REPLAY_FRAME_INCREMENT;
     }
 }
 
@@ -471,24 +472,24 @@ void save_player_replay(void) {
     prevInputsWCounter = sPlayerInputs[sPlayerInputIdx];
     /* The 5th and 6th bytes from the right are counters. Instead of saving the same inputs over and over,
     it says "these inputs were played for __ frames" */
-    prevInputs = prevInputsWCounter & 0xFF00FFFF;
+    prevInputs = prevInputsWCounter & REPLAY_NOT_FRAME_COUNTER;
     // first frame of inputs
-    if ((*sPlayerInputs) == 0xFFFFFFFF) {
+    if ((*sPlayerInputs) == -1) {
 
         sPlayerInputs[sPlayerInputIdx] = inputs;
 
     } else if (prevInputs == inputs) {
 
-        inputCounter = prevInputsWCounter & 0xFF0000;
+        inputCounter = prevInputsWCounter & REPLAY_FRAME_COUNTER;
 
-        if (inputCounter == 0xFF0000) {
+        if (inputCounter == REPLAY_FRAME_COUNTER) {
 
             sPlayerInputIdx++;
             sPlayerInputs[sPlayerInputIdx] = inputs;
 
         } else {
             // increment counter by 1
-            prevInputsWCounter += 0x10000;
+            prevInputsWCounter += REPLAY_FRAME_INCREMENT;
             sPlayerInputs[sPlayerInputIdx] = prevInputsWCounter;
         }
     } else {

@@ -59,6 +59,12 @@
 #define REPLAY_Z_TRIG    (1 << 29) // 0x20000000
 #define REPLAY_R_TRIG    (1 << 28) // 0x10000000
 
+#define REPLAY_FRAME_COUNTER 0xFF0000
+#define REPLAY_NOT_FRAME_COUNTER (0xFFFFFFFF & ~REPLAY_FRAME_COUNTER)
+#define REPLAY_STICK_Y 0xFF00
+#define REPLAY_STICK_X 0xFF
+#define REPLAY_FRAME_INCREMENT 0x10000
+
 /**
  * @brief Jump to demo mode from the debug menu using L and A
  */
