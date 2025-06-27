@@ -1,3 +1,11 @@
+/* File handles 3 types of time trial replays:
+ * 1. Post time trial replays, which a player can watch after a time trial
+ * 2. Player ghosts, which were driven by a player and can be raced against
+ * 3. Staff ghosts, which can be unlocked on the raceway tracks with a fast enough time
+ * All 3 use the same system for storing / replaying the inputs to reproduce a time trial
+ * See process_post_TT_replay for additional technical details
+ */
+
 #include <ultra64.h>
 #include <macros.h>
 #include <common_structs.h>
@@ -73,8 +81,8 @@ extern StaffGhost* d_luigi_raceway_staff_ghost;
 void func_80004EF0(void) {
     sCourseGhostReplay = (u32*) &D_802BFB80.arraySize8[0][2][3];
     osInvalDCache(&sCourseGhostReplay[0], 0x4000);
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(D_80162DC4)], sCourseGhostReplay,
-                 0x4000, &gDmaMesgQueue);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(D_80162DC4)],
+                 sCourseGhostReplay, 0x4000, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     sCourseGhostFramesRemaining = (*sCourseGhostReplay & REPLAY_FRAME_COUNTER);
     sCourseGhostReplayIdx = 0;
@@ -240,9 +248,9 @@ void func_80005310(void) {
  * coordinates were added */
 #define REPLAY_MASK (ALL_BUTTONS ^ (A_BUTTON | B_BUTTON | Z_TRIG | R_TRIG | L_TRIG))
 
-/* Inputs for replays (including player and course ghosts) are saved in a s32[] where 
+/* Inputs for replays (including player and course ghosts) are saved in a s32[] where
    each entry is a combination of the inputs and  how long those inputs were held for.
-   In essence it's "These buttons were pressed and the joystick was in this position. 
+   In essence it's "These buttons were pressed and the joystick was in this position.
    This was the case for X frames".
 
    bits 1-8: Stick X
@@ -325,14 +333,13 @@ void process_course_ghost_replay(void) {
         func_80005AE8(gPlayerThree);
         return;
     }
-    
+
     inputs = sCourseGhostReplay[sCourseGhostReplayIdx];
     stickBytes = inputs & REPLAY_STICK_X;
     // converting signed 8-bit values to signed 16-bit values
     if (stickBytes < 0x80U) {
         stickVal = (s16) (stickBytes & 0xFF);
-    }
-    else {
+    } else {
         stickVal = (s16) (stickBytes | (~0xFF));
     }
     stickBytes = (u32) (inputs & REPLAY_STICK_Y) >> 8;
@@ -540,8 +547,7 @@ void func_80005B18(void) {
                 func_80005AE8(gPlayerTwo);
                 func_80005AE8(gPlayerThree);
             }
-        } 
-        else {
+        } else {
             if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gPostTTReplayCannotSave == 1)) {
                 D_80162D80 = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
                 D_80162D84 = D_80162D86;
@@ -550,8 +556,7 @@ void func_80005B18(void) {
             if ((gPlayerOne->type & 0x800) == 0x800) {
                 func_80005AE8(gPlayerTwo);
                 func_80005AE8(gPlayerThree);
-            }
-            else {
+            } else {
                 sUnusedReplayCounter += 1;
                 if (sUnusedReplayCounter > 100) {
                     sUnusedReplayCounter = 100;
