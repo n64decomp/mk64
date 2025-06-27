@@ -472,7 +472,7 @@ void save_player_replay(void) {
     prevInputsWCounter = sPlayerInputs[sPlayerInputIdx];
     /* The 5th and 6th bytes from the right are counters. Instead of saving the same inputs over and over,
     it says "these inputs were played for __ frames" */
-    prevInputs = prevInputsWCounter & REPLAY_NOT_FRAME_COUNTER;
+    prevInputs = prevInputsWCounter & REPLAY_CLEAR_FRAME_COUNTER;
     // first frame of inputs
     if ((*sPlayerInputs) == -1) {
 
