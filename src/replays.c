@@ -1,4 +1,6 @@
-/* File handles 3 types of time trial replays:
+/*
+ * @file Replays
+ * Handles 3 types of time trial replays:
  * 1. Post time trial replays, which a player can watch after a time trial
  * 2. Player ghosts, which were driven by a player and can be raced against
  * 3. Staff ghosts, which can be unlocked on the raceway tracks with a fast enough time
