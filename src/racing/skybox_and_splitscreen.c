@@ -23,7 +23,7 @@ Vp D_802B8880[] = {
     { { { 640, 480, 511, 0 }, { 640, 480, 511, 0 } } },
 };
 
-Vtx D_802B8890[] = {
+static Vtx sSkyboxP1[] = {
     { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
     { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
@@ -34,7 +34,7 @@ Vtx D_802B8890[] = {
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-Vtx D_802B8910[] = {
+static Vtx sSkyboxP2[] = {
     { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
     { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
@@ -45,7 +45,7 @@ Vtx D_802B8910[] = {
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-Vtx D_802B8990[] = {
+static Vtx sSkyboxP3[] = {
     { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
     { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
@@ -56,7 +56,7 @@ Vtx D_802B8990[] = {
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-Vtx D_802B8A10[] = {
+static Vtx sSkyboxP4[] = {
     { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
     { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
@@ -443,6 +443,7 @@ void course_set_skybox_colours(Vtx* skybox) {
 #endif
 }
 
+// Almost identical to end of render_skybox
 void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3,
                    UNUSED f32* arg4) {
 
@@ -461,46 +462,62 @@ void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32
     }
 }
 
-void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32* arg4) {
+/**
+ * @brief Sets skybox horizon. Some coordinate transformations which can affect game physics and display of player
+ * sprite
+ * @param skybox player skybox
+ * @param arg1 something camera related
+ * @param arg2 unused
+ * @param arg3 unused
+ * @parma arg4 unused
+ */
+void render_skybox(Vtx* skybox, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32* arg4) {
     Camera* camera = arg1->camera;
-    s16 temp_t5;
-    f32 temp_f0;
+    s16 horizonRow;
+    f32 homogFactor;
     UNUSED s32 pad[2];
     UNUSED u16 pad2;
     u16 sp128;
-    Mat4 matrix1;
-    Mat4 matrix2;
-    Mat4 matrix3;
-    Vec3f sp5C;
-    f32 sp58;
+    Mat4 projMtx;
+    Mat4 lookAtMtx;
+    Mat4 lookAndProjMtx;
+    Vec3f horizonPoint;
+    f32 homogScale;
 
-    course_set_skybox_colours(vtx);
-    sp5C[0] = 0.0f;
-    sp5C[1] = 0.0f;
-    sp5C[2] = 30000.0f;
-    get_projection_matrix(matrix1, &sp128, camera->unk_B4, gScreenAspect, gCourseNearPersp, gCourseFarPersp, 1.0f);
-    func_802B5794(matrix2, camera->pos, camera->lookAt);
-    mtxf_multiplication(matrix3, matrix1, matrix2);
+    course_set_skybox_colours(skybox);
 
-    sp58 = ((matrix3[0][3] * sp5C[0]) + (matrix3[1][3] * sp5C[1]) + (matrix3[2][3] * sp5C[2])) + matrix3[3][3];
+    // horizonPoint is an apparently arbitrary point on the horizon (technically, where y = 0). Used for skybox horizon
+    horizonPoint[0] = 0.0f;
+    horizonPoint[1] = 0.0f;
+    horizonPoint[2] = 30000.0f;
+    mtxf_projection(projMtx, &sp128, camera->unk_B4, gScreenAspect, gCourseNearPersp, gCourseFarPersp, 1.0f);
+    mtxf_lookat(lookAtMtx, camera->pos, camera->lookAt);
+    mtxf_multiplication(lookAndProjMtx, projMtx, lookAtMtx);
 
-    mtxf_translate_vec3f_mat4(sp5C, matrix3);
+    /* math would have been simpler if horizonPoint had an additional homogenous coordinate set to 1. Recreated here in
+    extra steps */
+    homogScale = ((lookAndProjMtx[0][3] * horizonPoint[0]) + (lookAndProjMtx[1][3] * horizonPoint[1]) +
+                  (lookAndProjMtx[2][3] * horizonPoint[2])) +
+                 lookAndProjMtx[3][3];
+    mtxf_transform_vec3f_mat4(horizonPoint, lookAndProjMtx);
 
-    temp_f0 = (1.0 / sp58);
+    homogFactor = (1.0 / homogScale);
 
-    sp5C[0] *= temp_f0;
-    sp5C[1] *= temp_f0;
+    horizonPoint[0] *= homogFactor;
+    horizonPoint[1] *= homogFactor;
 
-    sp5C[0] *= 160.0f;
-    sp5C[1] *= 120.0f;
+    horizonPoint[0] *= 160.0f; // SCREEN_WIDTH / 2
+    horizonPoint[1] *= 120.0f; // SCREEN_HEIGHT / 2
 
-    temp_t5 = 120 - (s16) sp5C[1];
-    arg1->cameraHeight = temp_t5;
-    vtx[1].v.ob[1] = temp_t5;
-    vtx[2].v.ob[1] = temp_t5;
-    vtx[4].v.ob[1] = temp_t5;
-    vtx[7].v.ob[1] = temp_t5;
+    horizonRow = 120 - (s16) horizonPoint[1];
+    arg1->cameraHeight = horizonRow;
 
+    skybox[1].v.ob[1] = horizonRow;
+    skybox[2].v.ob[1] = horizonRow;
+    skybox[4].v.ob[1] = horizonRow;
+    skybox[7].v.ob[1] = horizonRow;
+
+    // this section reders the skybox. Unclear if it does anything else
     init_rdp();
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER | G_LIGHTING);
@@ -509,10 +526,10 @@ void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, U
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxScreen),
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPVertex(gDisplayListHead++, &vtx[0], 4, 0);
+    gSPVertex(gDisplayListHead++, &skybox[0], 4, 0);
     gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
     if (gCurrentCourseId == COURSE_RAINBOW_ROAD) {
-        gSPVertex(gDisplayListHead++, &vtx[4], 4, 0);
+        gSPVertex(gDisplayListHead++, &skybox[4], 4, 0);
         gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
     }
 }
@@ -604,7 +621,7 @@ void func_802A4EF4(void) {
             break;
     }
 }
-
+// player 2 vertical
 void func_802A5004(void) {
 
     init_rdp();
@@ -616,13 +633,13 @@ void func_802A5004(void) {
 
     func_802A39E0(D_800DC5F0);
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        render_skybox((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(2);
-        func_802A487C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(2);
     }
 }
-
+// player 1 vertical
 void func_802A50EC(void) {
 
     init_rdp();
@@ -633,13 +650,13 @@ void func_802A50EC(void) {
 
     func_802A39E0(D_800DC5EC);
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80057FC4(1);
-        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80093A30(1);
     }
 }
-
+// player 1 horizontal
 void func_802A51D4(void) {
 
     init_rdp();
@@ -650,13 +667,13 @@ void func_802A51D4(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80057FC4(3);
-        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80093A30(3);
     }
 }
-
+// player 2 horizontal
 void func_802A52BC(void) {
 
     init_rdp();
@@ -667,13 +684,13 @@ void func_802A52BC(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        render_skybox((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(4);
-        func_802A487C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(4);
     }
 }
-
+// player 1 solo
 void func_802A53A4(void) {
 
     move_segment_table_to_dmem();
@@ -686,15 +703,15 @@ void func_802A53A4(void) {
     init_z_buffer();
     select_framebuffer();
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         if (gGamestate != CREDITS_SEQUENCE) {
             func_80057FC4(0);
         }
-        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80093A30(0);
     }
 }
-
+// player 1 3p 4p
 void func_802A54A8(void) {
 
     init_rdp();
@@ -705,13 +722,13 @@ void func_802A54A8(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80057FC4(8);
-        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80093A30(8);
     }
 }
-
+// player 2 3p 4p
 void func_802A5590(void) {
 
     init_rdp();
@@ -722,13 +739,13 @@ void func_802A5590(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        render_skybox((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(9);
-        func_802A487C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(9);
     }
 }
-
+// player 3 3p4p
 void func_802A5678(void) {
 
     init_rdp();
@@ -739,13 +756,14 @@ void func_802A5678(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
+        render_skybox((Vtx*) sSkyboxP3, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
         func_80057FC4(10);
-        func_802A487C((Vtx*) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
+        func_802A487C((Vtx*) sSkyboxP3, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
         func_80093A30(10);
     }
 }
 
+// player 4 3p 4p
 void func_802A5760(void) {
 
     init_rdp();
@@ -774,9 +792,9 @@ void func_802A5760(void) {
         func_802A39E0(D_800DC5F8);
 
         if (D_800DC5B4 != 0) {
-            func_802A4A0C(D_802B8A10, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
+            render_skybox(sSkyboxP4, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
             func_80057FC4(11);
-            func_802A487C(D_802B8A10, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
+            func_802A487C(sSkyboxP4, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
             func_80093A30(11);
         }
     }

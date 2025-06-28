@@ -6588,7 +6588,7 @@ void func_8008275C(s32 objectIndex) {
             gObjectList[objectIndex].offset[2] *= 2.0;
             object_calculate_new_pos_offset(objectIndex);
             gObjectList[objectIndex].direction_angle[1] =
-                get_angle_between_points(gObjectList[objectIndex].unk_01C, gObjectList[objectIndex].pos);
+                get_xz_angle_between_points(gObjectList[objectIndex].unk_01C, gObjectList[objectIndex].pos);
             break;
     }
     func_800873F4(objectIndex);
@@ -7691,7 +7691,7 @@ void update_chain_chomps(void) {
             func_800859C8(objectIndex, var_s4);
             vec3f_copy(object->unk_01C, object->offset);
             func_8000D940(object->offset, &object->unk_084[8], object->unk_034, object->surfaceHeight, 0);
-            object->direction_angle[1] = get_angle_between_points(object->unk_01C, object->offset);
+            object->direction_angle[1] = get_xz_angle_between_points(object->unk_01C, object->offset);
             object_calculate_new_pos_offset(objectIndex);
             func_80089CBC(objectIndex, 30.0f);
         }
