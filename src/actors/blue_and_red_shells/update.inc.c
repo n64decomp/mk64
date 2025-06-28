@@ -172,8 +172,8 @@ s16 func_802B3FD0(Player* owner, struct ShellActor* shell) {
         if (gPlayerBalloonCount[playerIndex] < 0) {
             continue;
         }
-        // dist_squared_bugged is not quite a 3D distance function, it doubles (rather than squares) the Z difference of the
-        // positions
+        // dist_squared_bugged is not quite a 3D distance function, it doubles (rather than squares) the Z difference of
+        // the positions
         playerToShellDistance = dist_squared_bugged(player->pos, shell->pos);
         if (playerToShellDistance < smallestDistance) {
             smallestDistance = playerToShellDistance;
