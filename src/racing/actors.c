@@ -424,7 +424,7 @@ void func_8029794C(Vec3f pos, Vec3s rot, f32 scale) {
     Mat4 sp20;
     pos[1] += 2.0f;
 
-    mtxf_rotation_zxy_translate(sp20, pos, rot);
+    mtxf_rotate_zxy_translate(sp20, pos, rot);
     mtxf_scale(sp20, scale);
     if (render_set_position(sp20, 0) != 0) {
         gSPDisplayList(gDisplayListHead++, D_0D007B20);
@@ -490,7 +490,7 @@ void render_cows(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
         sp88[1] = var_s1->pos[1];
         sp88[2] = var_s1->pos[2];
         temp_f0 =
-            render_distance_squared(camera->pos, sp88, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], 4000000.0f);
+            distance_if_visible(camera->pos, sp88, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], 4000000.0f);
         if (temp_f0 > 0.0f) {
             if (temp_f0 < D_8015F704) {
                 D_8015F704 = temp_f0;
@@ -631,7 +631,7 @@ void render_palm_trees(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
         spD4[1] = var_s1->pos[1];
         spD4[2] = var_s1->pos[2];
 
-        if (render_distance_squared(camera->pos, spD4, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], var_f22) <
+        if (distance_if_visible(camera->pos, spD4, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], var_f22) <
             0.0f) {
             var_s1++;
             continue;
@@ -640,7 +640,7 @@ void render_palm_trees(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
         test &= 0xF;
         test = (s16) test;
         if (test == 6) {
-            mtxf_rotation_zxy_translate(sp90, spD4, sp88);
+            mtxf_rotate_zxy_translate(sp90, spD4, sp88);
             if (!(gMatrixObjectCount < MTX_OBJECT_POOL_SIZE)) {
                 break;
             }
@@ -692,7 +692,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     uintptr_t phi_t3;
 
     f32 temp_f0 =
-        render_distance_squared(camera->pos, shell->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 490000.0f);
+        distance_if_visible(camera->pos, shell->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 490000.0f);
     s32 maxObjectsReached;
     if (temp_f0 < 0.0f) {
         actor_not_rendered(camera, (struct Actor*) shell);
@@ -755,7 +755,7 @@ UNUSED void func_8029ABD4(f32* pos, s16 state) {
 }
 
 void func_8029AC18(Camera* camera, Mat4 arg1, struct Actor* arg2) {
-    if (render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f) <
+    if (distance_if_visible(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f) <
         0) {
         return;
     }

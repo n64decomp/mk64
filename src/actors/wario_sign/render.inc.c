@@ -12,13 +12,13 @@
  */
 void render_actor_wario_sign(Camera* arg0, struct Actor* arg1) {
     Mat4 sp38;
-    f32 unk = render_distance_squared(arg0->pos, arg1->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 16000000.0f);
+    f32 unk = distance_if_visible(arg0->pos, arg1->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 16000000.0f);
 
     if (!(unk < 0.0f)) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-        mtxf_rotation_zxy_translate(sp38, arg1->pos, arg1->rot);
+        mtxf_rotate_zxy_translate(sp38, arg1->pos, arg1->rot);
         if (render_set_position(sp38, 0) != 0) {
 
             gSPDisplayList(gDisplayListHead++, d_course_wario_stadium_dl_sign);

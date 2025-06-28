@@ -227,15 +227,15 @@ void mtxf_identity(Mat4 mtx) {
 }
 
 /*
- * @brief          Add a translation vector to a matrix
- * @param scr      The matrix to be copied
- * @param dest     The matrix to be overriden with the result
- * @param vecTrans The translation vector to be added
+ * @brief           Add a translation vector to a matrix
+ * @param scr       The matrix to be copied
+ * @param dest      The matrix to be overriden with the result
+ * @param translate The translation vector to be added
  */
-void add_translate_mat4_vec3f(Mat4 src, Mat4 dest, Vec3f vecTrans) {
-    dest[3][0] = src[3][0] + vecTrans[0];
-    dest[3][1] = src[3][1] + vecTrans[1];
-    dest[3][2] = src[3][2] + vecTrans[2];
+void add_translate_mat4_vec3f(Mat4 src, Mat4 dest, Vec3f translate) {
+    dest[3][0] = src[3][0] + translate[0];
+    dest[3][1] = src[3][1] + translate[1];
+    dest[3][2] = src[3][2] + translate[2];
     dest[3][3] = src[3][3];
     dest[0][0] = src[0][0];
     dest[0][1] = src[0][1];
@@ -251,10 +251,10 @@ void add_translate_mat4_vec3f(Mat4 src, Mat4 dest, Vec3f vecTrans) {
     dest[2][3] = src[2][3];
 
     /*
-     * src(0,0)             src(0,1)             src(0,2)             src(0,3)
-     * src(1,0)             src(1,1)             src(1,2)             src(1,3)
-     * src(2,0)             src(2,1)             src(2,2)             src(2,3)
-     * src(3,0)+vecTrans(0) src(3,1)+vecTrans(1) src(3,2)+vecTrans(2) src(3,3)
+     * src(0,0)              src(0,1)              src(0,2)              src(0,3)
+     * src(1,0)              src(1,1)              src(1,2)              src(1,3)
+     * src(2,0)              src(2,1)              src(2,2)              src(2,3)
+     * src(3,0)+translate(0) src(3,1)+translate(1) src(3,2)+translate(2) src(3,3)
      */
 }
 
@@ -266,19 +266,19 @@ UNUSED void add_translate_mat4_vec3f_lite(Mat4 mat, Mat4 dest, Vec3f pos) {
 }
 
 /*
- * @brief          Creates a translation matrix
- * @param dest     The matrix to be overriden with the translation matrix
- * @param vecTrans The translation vector to be added
+ * @brief           Creates a translation matrix
+ * @param dest      The matrix to be overriden with the translation matrix
+ * @param translate The translation vector to be added
  */
-void mtxf_translate(Mat4 dest, Vec3f vecTrans) {
+void mtxf_translate(Mat4 dest, Vec3f translate) {
     mtxf_identity(dest);
-    dest[3][0] = vecTrans[0];
-    dest[3][1] = vecTrans[1];
-    dest[3][2] = vecTrans[2];
-    /*           1           0           0           0
-     *           0           1           0           0
-     *           0           0           1           0
-     * vecTrans[0] vecTrans[1] vecTrans[2]           1
+    dest[3][0] = translate[0];
+    dest[3][1] = translate[1];
+    dest[3][2] = translate[2];
+    /*            1            0            0           0
+     *            0            1            0           0
+     *            0            0            1           0
+     * translate[0] translate[1] translate[2]           1
      */
 }
 /*
@@ -582,10 +582,10 @@ void mtxf_scale(Mat4 mtx, f32 coef) {
 /*
  * @brief             Matrix for rotating about Z, X, Y axes (in order) then translating
  * @param dest        Matrix to output
- * @param vecTrans    vector to use for translation
- * @param orientation vector of 3 rotation angles (Rz, Rx, Ry)
+ * @param translate   Vector to use for translation
+ * @param orientation Vector of 3 rotation angles (Rz, Rx, Ry)
  */
-void mtxf_rotation_zxy_translate(Mat4 dest, Vec3f vecTrans, Vec3s orientation) {
+void mtxf_rotate_zxy_translate(Mat4 dest, Vec3f translate, Vec3s orientation) {
     f32 sinX;
     f32 cosX;
     f32 sinY;
@@ -602,15 +602,15 @@ void mtxf_rotation_zxy_translate(Mat4 dest, Vec3f vecTrans, Vec3s orientation) {
     dest[0][0] = (cosY * cosZ) + ((sinX * sinY) * sinZ);
     dest[1][0] = (-cosY * sinZ) + ((sinX * sinY) * cosZ);
     dest[2][0] = cosX * sinY;
-    dest[3][0] = vecTrans[0];
+    dest[3][0] = translate[0];
     dest[0][1] = cosX * sinZ;
     dest[1][1] = cosX * cosZ;
     dest[2][1] = -sinX;
-    dest[3][1] = vecTrans[1];
+    dest[3][1] = translate[1];
     dest[0][2] = (-sinY * cosZ) + ((sinX * cosY) * sinZ);
     dest[1][2] = (sinY * sinZ) + ((sinX * cosY) * cosZ);
     dest[2][2] = cosX * cosY;
-    dest[3][2] = vecTrans[2];
+    dest[3][2] = translate[2];
     dest[0][3] = 0.0f;
     dest[1][3] = 0.0f;
     dest[2][3] = 0.0f;
@@ -1345,7 +1345,8 @@ s32 is_between_angle(u16 angleCCW, u16 angleCW, u16 angleToCheck) {
 }
 
 /*
- * @brief Determines whether an object is within the render distance of a camera.
+ * @brief Finds the xz-distance squared between a point and the camera, if the point is visible (or near visible) to
+ *   the camera
  *
  * @param cameraPos              The position of the camera in 3D space.
  * @param objectPos              The position of the object in 3D space.
@@ -1353,11 +1354,11 @@ s32 is_between_angle(u16 angleCCW, u16 angleCW, u16 angleToCheck) {
  * @param preloadDistanceSquared Consider an object within this distance of viweable area as renderable
  * @param fovDegrees             The field of view (FOV) of the camera (degrees).
  * @param maxDistanceSquared     The maximum render distance.
- * @return                       The distance between the camera and the object if it's within render distance of the
- *                               camera's vision, or -1.0f if it exceeds the render distance.
+ * @return                       The xz-distance squared between the camera and the object if it's within render distance
+                                 of the camera's vision, or -1.0f if it exceeds the render distance.
  */
 
-f32 render_distance_squared(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 preloadDistanceSquared,
+f32 distance_if_visible(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 preloadDistanceSquared,
                             f32 fovDegrees, f32 maxDistanceSquared) {
     u16 angleObject;
     UNUSED u16 pad;

@@ -29,7 +29,7 @@ void render_actor_paddle_boat(Camera* arg0, struct PaddleWheelBoat* boat, UNUSED
     }
 
     temp =
-        render_distance_squared(arg0->pos, boat->pos, arg0->rot[1], 90000.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
+        distance_if_visible(arg0->pos, boat->pos, arg0->rot[1], 90000.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
 
     if (temp < 0.0f) {
         return;
@@ -38,7 +38,7 @@ void render_actor_paddle_boat(Camera* arg0, struct PaddleWheelBoat* boat, UNUSED
     gSPSetLights1(gDisplayListHead++, D_800DC610[1]);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_LIGHTING | G_SHADING_SMOOTH);
 
-    mtxf_rotation_zxy_translate(spE0, boat->pos, boat->boatRot);
+    mtxf_rotate_zxy_translate(spE0, boat->pos, boat->boatRot);
     if (render_set_position(spE0, 1) != 0) {
 
         // Render the boat

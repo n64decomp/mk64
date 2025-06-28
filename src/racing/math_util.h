@@ -41,7 +41,7 @@ void func_802B5CAC(s16, s16, Vec3f);       // Unused
 void func_802B5D30(s16, s16, s32);         // Unused
 void set_course_lighting(Lights1*, s16, s16, s32);
 void mtxf_scale(Mat4, f32);
-void mtxf_rotation_zxy_translate(Mat4, Vec3f, Vec3s);
+void mtxf_rotate_zxy_translate(Mat4, Vec3f, Vec3s);
 void mtxf_transform_vec3f_mat3(Vec3f, Mat3);
 void mtxf_transform_vec3f_mat4(Vec3f, Mat4);
 void vec3f_rotate_y(Vec3f, s16);
@@ -64,7 +64,7 @@ void planar_angles(Vec3f, Vec3f, Vec3s);
 f32 sins(u16);
 f32 coss(u16);
 s32 is_between_angle(u16, u16, u16);
-f32 render_distance_squared(Vec3f, Vec3f, u16, f32, f32, f32);
+f32 distance_if_visible(Vec3f, Vec3f, u16, f32, f32, f32);
 
 extern s32 D_802B91C0[]; // Unused
 extern Vec3f D_802B91C8;

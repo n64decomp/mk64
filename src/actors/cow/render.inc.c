@@ -13,7 +13,7 @@
  * @param arg2
  */
 void render_actor_cow(Camera* camera, Mat4 arg1, struct Actor* arg2) {
-    if (render_distance_squared(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
+    if (distance_if_visible(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
                                   4000000.0f) < 0) {
         return;
     }

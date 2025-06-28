@@ -20,7 +20,7 @@ void render_actor_yoshi_egg(Camera* arg0, Mat4 arg1, struct YoshiValleyEgg* egg,
     f32 temp_f0;
 
     if (gGamestate != CREDITS_SEQUENCE) {
-        temp_f0 = render_distance_squared(arg0->pos, egg->pos, arg0->rot[1], 200.0f, gCameraZoom[arg0 - camera1],
+        temp_f0 = distance_if_visible(arg0->pos, egg->pos, arg0->rot[1], 200.0f, gCameraZoom[arg0 - camera1],
                                           16000000.0f);
         if (temp_f0 < 0.0f) {
             return;
@@ -42,7 +42,7 @@ void render_actor_yoshi_egg(Camera* arg0, Mat4 arg1, struct YoshiValleyEgg* egg,
         sp5C[0] = 0;
         sp5C[1] = egg->eggRot;
         sp5C[2] = 0;
-        mtxf_rotation_zxy_translate(sp60, egg->pos, sp5C);
+        mtxf_rotate_zxy_translate(sp60, egg->pos, sp5C);
         if (render_set_position(sp60, 0) == 0) {
             return;
         }

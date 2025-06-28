@@ -19,7 +19,7 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     Mat4 spE0;
     Mat4 spA0;
 
-    f32 distance = render_distance_squared(camera->pos, actor->pos, camera->rot[1], 2500.0f,
+    f32 distance = distance_if_visible(camera->pos, actor->pos, camera->rot[1], 2500.0f,
                                            gCameraZoom[camera - camera1], 9000000.0f);
 
     if (distance < 0.0f) {
@@ -28,7 +28,7 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    mtxf_rotation_zxy_translate(sp120, actor->pos, actor->rot);
+    mtxf_rotate_zxy_translate(sp120, actor->pos, actor->rot);
     maxObjectsReached = render_set_position(sp120, 0) == 0;
     if (maxObjectsReached) {
         return;
@@ -166,7 +166,7 @@ void render_actor_train_tender(Camera* camera, struct TrainCar* actor) {
     Mat4 spE0;
     Mat4 spA0;
 
-    f32 temp_f0 = render_distance_squared(camera->pos, actor->pos, camera->rot[1], 625.0f,
+    f32 temp_f0 = distance_if_visible(camera->pos, actor->pos, camera->rot[1], 625.0f,
                                           gCameraZoom[camera - camera1], 9000000.0f);
 
     if (temp_f0 < 0.0f) {
@@ -175,7 +175,7 @@ void render_actor_train_tender(Camera* camera, struct TrainCar* actor) {
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    mtxf_rotation_zxy_translate(sp120, actor->pos, actor->rot);
+    mtxf_rotate_zxy_translate(sp120, actor->pos, actor->rot);
     if (render_set_position(sp120, 0) == 0) {
         return;
     }
@@ -251,7 +251,7 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
     Mat4 spE0;
     Mat4 spA0;
 
-    f32 temp_f0 = render_distance_squared(camera->pos, actor->pos, camera->rot[1], 2025.0f,
+    f32 temp_f0 = distance_if_visible(camera->pos, actor->pos, camera->rot[1], 2025.0f,
                                           gCameraZoom[camera - camera1], 9000000.0f);
 
     if (temp_f0 < 0.0f) {
@@ -260,7 +260,7 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    mtxf_rotation_zxy_translate(sp120, actor->pos, actor->rot);
+    mtxf_rotate_zxy_translate(sp120, actor->pos, actor->rot);
 
     if (render_set_position(sp120, 0) == 0) {
         return;

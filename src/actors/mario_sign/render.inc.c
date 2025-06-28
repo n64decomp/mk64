@@ -19,11 +19,11 @@ void render_actor_mario_sign(Camera* arg0, UNUSED Mat4 arg1, struct Actor* arg2)
         return;
     }
 
-    unk = render_distance_squared(arg0->pos, arg2->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 16000000.0f);
+    unk = distance_if_visible(arg0->pos, arg2->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 16000000.0f);
     if (!(unk < 0.0f)) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-        mtxf_rotation_zxy_translate(sp40, arg2->pos, arg2->rot);
+        mtxf_rotate_zxy_translate(sp40, arg2->pos, arg2->rot);
         if (render_set_position(sp40, 0) != 0) {
             gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_sign);
         }
