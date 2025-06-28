@@ -51,7 +51,7 @@ static u32* sPostTTReplay;
 static s16 sPlayerInputIdx;
 static u32* sPlayerInputs;
 
-u16 D_80162DC0;
+static u16 sPrevCourseId;
 u32 D_80162DC4;
 s32 D_80162DC8;
 s32 D_80162DCC;
@@ -80,7 +80,7 @@ extern StaffGhost* d_mario_raceway_staff_ghost;
 extern StaffGhost* d_royal_raceway_staff_ghost;
 extern StaffGhost* d_luigi_raceway_staff_ghost;
 
-void func_80004EF0(void) {
+void load_course_ghost(void) {
     sCourseGhostReplay = (u32*) &D_802BFB80.arraySize8[0][2][3];
     osInvalDCache(&sCourseGhostReplay[0], 0x4000);
     osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(D_80162DC4)],
@@ -90,13 +90,13 @@ void func_80004EF0(void) {
     sCourseGhostReplayIdx = 0;
 }
 
-void func_80004FB0(void) {
+void load_post_tt_replay(void) {
     sPostTTReplay = (u32*) &D_802BFB80.arraySize8[0][D_80162DD0][3];
     sPostTTFramesRemaining = *sPostTTReplay & REPLAY_FRAME_COUNTER;
     sPostTTReplayIdx = 0;
 }
 
-void func_80004FF8(void) {
+void load_player_ghost(void) {
     sPlayerGhostReplay = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
     sPlayerGhostFramesRemaining = (s32) *sPlayerGhostReplay & REPLAY_FRAME_COUNTER;
     sPlayerGhostReplayIdx = 0;
@@ -206,11 +206,11 @@ void func_80005310(void) {
 
         set_staff_ghost();
 
-        if (D_80162DC0 != gCurrentCourseId) {
+        if (sPrevCourseId != gCurrentCourseId) {
             bPlayerGhostDisabled = 1;
         }
 
-        D_80162DC0 = (u16) gCurrentCourseId;
+        sPrevCourseId = (u16) gCurrentCourseId;
         gPauseTriggered = 0;
         sUnusedReplayCounter = 0;
         gPostTTReplayCannotSave = 0;
@@ -218,12 +218,12 @@ void func_80005310(void) {
         if (gModeSelection == TIME_TRIALS && gActiveScreenMode == SCREEN_MODE_1P) {
 
             if (D_8015F890 == 1) {
-                func_80004FB0();
+                load_post_tt_replay();
                 if (D_80162DD8 == 0) {
-                    func_80004FF8();
+                    load_player_ghost();
                 }
                 if (bCourseGhostDisabled == 0) {
-                    func_80004EF0();
+                    load_course_ghost();
                 }
             } else {
 
@@ -234,10 +234,10 @@ void func_80005310(void) {
                 D_80162DDC = 0;
                 func_80091EE4();
                 if (bPlayerGhostDisabled == 0) {
-                    func_80004FF8();
+                    load_player_ghost();
                 }
                 if (bCourseGhostDisabled == 0) {
-                    func_80004EF0();
+                    load_course_ghost();
                 }
             }
         }

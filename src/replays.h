@@ -5,9 +5,9 @@
 #include <common_structs.h>
 
 void func_80005B18(void);
-void func_80004EF0(void);
-void func_80004FB0(void);
-void func_80004FF8(void);
+void load_course_ghost(void);
+void load_post_tt_replay(void);
+void load_player_ghost(void);
 void set_staff_ghost(void);
 s32 func_800051C4(void);
 void func_8000522C(void);
