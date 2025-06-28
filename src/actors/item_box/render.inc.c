@@ -26,8 +26,8 @@ void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
     f32 temp_f2_2;
     f32 someMultiplier;
 
-    temp_f0 = is_within_render_distance(camera->pos, item_box->pos, camera->rot[1], 0.0f, gCameraZoom[camera - camera1],
-                                        4000000.0f);
+    temp_f0 = distance_if_visible(camera->pos, item_box->pos, camera->rot[1], 0.0f, gCameraZoom[camera - camera1],
+                                      4000000.0f);
     if (!(temp_f0 < 0.0f) && !(600000.0f < temp_f0)) {
         if ((item_box->state == 2) && (temp_f0 < 100000.0f)) {
             someRot[0] = 0;
@@ -36,7 +36,7 @@ void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
             someVec2[0] = item_box->pos[0];
             someVec2[1] = item_box->resetDistance + 2.0f;
             someVec2[2] = item_box->pos[2];
-            mtxf_pos_rotation_xyz(someMatrix1, someVec2, someRot);
+            mtxf_rotate_zxy_translate(someMatrix1, someVec2, someRot);
 
             if (!render_set_position(someMatrix1, 0)) {
                 return;
@@ -45,7 +45,7 @@ void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
             gSPDisplayList(gDisplayListHead++, D_0D002EE8);
             someRot[1] = item_box->rot[1] * 2;
             someVec2[1] = item_box->pos[1];
-            mtxf_pos_rotation_xyz(someMatrix1, someVec2, someRot);
+            mtxf_rotate_zxy_translate(someMatrix1, someVec2, someRot);
 
             if (!render_set_position(someMatrix1, 0)) {
                 return;
@@ -54,7 +54,7 @@ void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
             gSPDisplayList(gDisplayListHead++, itemBoxQuestionMarkModel);
         }
         if (item_box->state == 5) {
-            mtxf_pos_rotation_xyz(someMatrix1, item_box->pos, item_box->rot);
+            mtxf_rotate_zxy_translate(someMatrix1, item_box->pos, item_box->rot);
 
             if (!render_set_position(someMatrix1, 0)) {
                 return;
@@ -63,7 +63,7 @@ void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
             gSPDisplayList(gDisplayListHead++, itemBoxQuestionMarkModel);
         }
         if (item_box->state != 3) {
-            mtxf_pos_rotation_xyz(someMatrix1, item_box->pos, item_box->rot);
+            mtxf_rotate_zxy_translate(someMatrix1, item_box->pos, item_box->rot);
 
             if (!render_set_position(someMatrix1, 0)) {
                 return;
@@ -90,7 +90,7 @@ void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetBlendMask(gDisplayListHead++, 0xFF);
             thing = item_box->someTimer;
-            mtxf_pos_rotation_xyz(someMatrix1, item_box->pos, item_box->rot);
+            mtxf_rotate_zxy_translate(someMatrix1, item_box->pos, item_box->rot);
             if (thing < 10.0f) {
                 someMultiplier = 1.0f;
             } else {
