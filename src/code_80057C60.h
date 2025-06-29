@@ -17,6 +17,8 @@
 #define RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE PLAYER_THREE + SCREEN_MODE_3P_4P_SPLITSCREEN + 5
 #define RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR PLAYER_FOUR + SCREEN_MODE_3P_4P_SPLITSCREEN + 5
 
+#define RGB32(r, g, b) ((r << 16) | (g << 8) | (b))
+
 typedef struct {
     char unk_00[0x4];
     Vec3f unk_04;
@@ -116,9 +118,9 @@ void func_8005D18C(void);
 void func_8005D1F4(s32);
 
 void func_8005D290(void);
-void func_8005D6C0(Player*);
+void reset_player_particle_pool(Player*);
 void set_particle_position_and_rotation(Player*, Particle*, f32, f32, f32, s8, s8);
-s32 init_new_particle_player(Particle*, s8, f32);
+s32 init_particle_player(Particle*, s8, f32);
 s32 set_particle_colour(Particle*, s32, s16);
 s32 set_particle_colour_randomly_varried(Particle*, s32, s16);
 void set_drift_particles(Player*, s16, s32, s8, s8);
@@ -192,8 +194,8 @@ void func_800651F4(Player*, s8, s8, s8);
 void func_800652D4(Vec3f, Vec3s, f32);
 void func_8006538C(Player*, s8, s16, s8);
 void func_800658A0(Player*, s8, s16, s8);
-void func_80065AB0(Player*, s8, s16, s8);
-void func_80065F0C(Player*, s8, s16, s8);
+void render_player_drift_particles(Player*, s8, s16, s8);
+void render_player_ground_particles(Player*, s8, s16, s8);
 
 void func_800664E0(Player*, s8, s16, s8);
 void func_80066998(Player*, s8, s16, s8);
@@ -205,7 +207,7 @@ void render_player_onomatopoeia_whrrrr(Player*, s8, f32, s8, s8);
 void render_player_speech_bubble(Player*, s8, u8*, s8, f32, s32);
 
 void render_music_note(Player*, s8, u8*, s8, f32, s32);
-void func_80068310(Player*, s8, f32, s8, s8);
+void render_player_onomatopoeia_crash(Player*, s8, f32, s8, s8);
 void func_80068724(Player*, s8, f32, s8, s8);
 void render_player_onomatopoeia_boing(Player*, s8, f32, s8, s8);
 void render_player_onomatopoeia_pomp(Player*, s8, f32, s8, s8);
@@ -220,14 +222,14 @@ void func_80069DB8(Player*, s8, s16, s8);
 void func_8006A01C(Player*, s8, s16, s8);
 void func_8006A280(Player*, s8, s16, s8);
 void init_balloon(Player*, f32, f32, s8, s8, s16);
-void func_8006A7C0(Player*, f32, f32, s8, s8);
+void update_player_one_balloon_position(Player*, f32, f32, s8, s8);
 void render_battle_balloon(Player*, s8, s16, s8);
 
 void init_all_player_balloons(Player*, s8);
 void clear_all_player_balloons(Player*, s8);
 void pop_player_balloon(Player*, s8);
 void set_player_balloon_to_gone(s32, s8, s8);
-void func_8006B9CC(Player*, s8);
+void update_player_balloons_position(Player*, s8);
 void render_remaining_battle_balloons(Player*, s8, s8);
 void render_balloon(Vec3f, f32, s16, s16);
 
@@ -606,27 +608,27 @@ extern u8* D_8018D464;
 extern u8* D_8018D468;
 extern u8* D_8018D46C;
 extern u8* D_8018D470;
-extern u8* D_8018D474;
+extern u8* gLoadedTextureKartShadow;
 extern u8* D_8018D478;
 extern u8* D_8018D480;
 extern u8* D_8018D484;
 extern u8* D_8018D488;
 extern u8* D_8018D48C;
 extern u8* D_8018D490;
-extern u8* D_8018D494;
-extern u8* D_8018D498;
+extern u8* gLoadedGroundDust;
+extern u8* gLoadedGrassParticle;
 extern u8* D_8018D49C;
 extern u8* D_8018D4A0;
-extern u8* D_8018D4A4;
-extern u8* D_8018D4A8;
-extern u8* D_8018D4AC;
-extern u8* D_8018D4B0;
-extern u8* D_8018D4B4;
-extern u8* D_8018D4B8;
+extern u8* gTextureLoadedOnomatopoeiaPoomp1;
+extern u8* gTextureLoadedOnomatopoeiaPoomp2;
+extern u8* gTextureLoadedOnomatopoeiaWhrrrr1;
+extern u8* gTextureLoadedOnomatopoeiaWhrrrr2;
+extern u8* gTextureLoadedOnomatopoeiaCrash1;
+extern u8* gTextureLoadedOnomatopoeiaCrash2;
 extern u8* D_8018D4BC;
 extern u8* D_8018D4C0;
-extern u8* D_8018D4C4;
-extern u8* D_8018D4C8;
+extern u8* gTextureLoadedLightningBolt0;
+extern u8* gTextureLoadedLightningBolt1;
 extern Vec3f gPlayerBalloonPosX[];
 extern Vec3f gPlayerBalloonPosY[];
 extern Vec3f gPlayerBalloonPosZ[];

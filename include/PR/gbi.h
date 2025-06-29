@@ -1983,10 +1983,7 @@ typedef union {
         _g->words.w0 = _SHIFTL(G_TRI1, 24, 8) | __gsSP1Triangle_w1f(v0, v1, v2, flag); \
         _g->words.w1 = 0;                                                              \
     }
-#define gsSP1Triangle(v0, v1, v2, flag)                                       \
-    {                                                                         \
-        { _SHIFTL(G_TRI1, 24, 8) | __gsSP1Triangle_w1f(v0, v1, v2, flag), 0 } \
-    }
+#define gsSP1Triangle(v0, v1, v2, flag) { { _SHIFTL(G_TRI1, 24, 8) | __gsSP1Triangle_w1f(v0, v1, v2, flag), 0 } }
 
 /***
  ***  Line
@@ -1998,10 +1995,7 @@ typedef union {
         _g->words.w0 = _SHIFTL(G_LINE3D, 24, 8) | __gsSPLine3D_w1f(v0, v1, 0, flag); \
         _g->words.w1 = 0;                                                            \
     }
-#define gsSPLine3D(v0, v1, flag)                                            \
-    {                                                                       \
-        { _SHIFTL(G_LINE3D, 24, 8) | __gsSPLine3D_w1f(v0, v1, 0, flag), 0 } \
-    }
+#define gsSPLine3D(v0, v1, flag) { { _SHIFTL(G_LINE3D, 24, 8) | __gsSPLine3D_w1f(v0, v1, 0, flag), 0 } }
 
 /***
  ***  LineW
@@ -2019,10 +2013,7 @@ typedef union {
         _g->words.w0 = _SHIFTL(G_LINE3D, 24, 8) | __gsSPLine3D_w1f(v0, v1, wd, flag); \
         _g->words.w1 = 0;                                                             \
     }
-#define gsSPLineW3D(v0, v1, wd, flag)                                        \
-    {                                                                        \
-        { _SHIFTL(G_LINE3D, 24, 8) | __gsSPLine3D_w1f(v0, v1, wd, flag), 0 } \
-    }
+#define gsSPLineW3D(v0, v1, wd, flag) { { _SHIFTL(G_LINE3D, 24, 8) | __gsSPLine3D_w1f(v0, v1, wd, flag), 0 } }
 
 /***
  ***  1 Quadrangle
@@ -2102,14 +2093,12 @@ typedef union {
 /***
  ***  1 Quadrangle
  ***/
-#define gSP1Quadrangle(v0, v1, v2, v3, flag)                     \
-    {                                                            \
-        {                                                        \
-            Gfx* _g = (Gfx*) (pkt);                              \
-                                                                 \
-            _g->words.w0 = _SHIFTL(G_QUAD, 24, 8);               \
-            _g->words.w1 = __gsSP1Quadrangle_w1(v0, v1, v2, v3); \
-        }                                                        \
+#define gSP1Quadrangle(v0, v1, v2, v3, flag)             \
+    { { Gfx* _g = (Gfx*) (pkt);                          \
+                                                         \
+    _g->words.w0 = _SHIFTL(G_QUAD, 24, 8);               \
+    _g->words.w1 = __gsSP1Quadrangle_w1(v0, v1, v2, v3); \
+    }                                                    \
     }
 
 #define gsSP1Quadrangle(v0, v1, v2, v3, flag)                            \
@@ -2613,8 +2602,7 @@ typedef union {
 #define gsSPLookAtY(l) gsDma1p(G_MOVEMEM, l, sizeof(Light), G_MV_LOOKATY)
 #endif /* F3DEX_GBI_2 */
 
-#define gSPLookAt(pkt, la) \
-    { gSPLookAtX(pkt, la) gSPLookAtY(pkt, (char*) (la) + 16) }
+#define gSPLookAt(pkt, la) { gSPLookAtX(pkt, la) gSPLookAtY(pkt, (char*) (la) + 16) }
 #define gsSPLookAt(la) gsSPLookAtX(la), gsSPLookAtY((char*) (la) + 16)
 
 #define gDPSetHilite1Tile(pkt, tile, hilite, width, height)                   \
@@ -2767,10 +2755,7 @@ typedef union {
         _g->words.w1 = 0;                       \
     }
 
-#define gsSPEndDisplayList()           \
-    {                                  \
-        { _SHIFTL(G_ENDDL, 24, 8), 0 } \
-    }
+#define gsSPEndDisplayList() { { _SHIFTL(G_ENDDL, 24, 8), 0 } }
 
 #ifdef F3DEX_GBI_2
 /*
@@ -3994,10 +3979,7 @@ typedef union {
         _g->words.w1 = 0;                   \
     }
 
-#define gsDPNoParam(cmd)           \
-    {                              \
-        { _SHIFTL(cmd, 24, 8), 0 } \
-    }
+#define gsDPNoParam(cmd) { { _SHIFTL(cmd, 24, 8), 0 } }
 
 #define gDPParam(pkt, cmd, param)           \
     {                                       \
