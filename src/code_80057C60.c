@@ -6263,7 +6263,7 @@ void func_8006C6AC(Player* player, s16 arg1, s8 arg2, s8 arg3) {
         if (player->unk_0DE & 1) {
             func_80060BCC(player, arg1, sp28, arg2_copy, arg3);
         } else if (!(player->effects & 8) && !(player->effects & 2)) {
-            if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) &&
+            if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) &&
                 ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                 check_drift_particles_setup_valid(player, arg1, sp28, arg2_copy, arg3);
             } else if (((f64) (D_801652A0[arg2_copy] - player->tyres[BACK_RIGHT].baseHeight) >= 3.5) ||

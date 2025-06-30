@@ -147,7 +147,7 @@ void func_8000DF8C(s32 bombKartId) {
 
                 for (var_a0 = 0; var_a0 < gPlayerCount; var_a0++) {
                     var_v0 = &gPlayers[var_a0];
-                    if (!(var_v0->effects & 0x80000000)) {
+                    if (!(var_v0->effects & BOO_EFFECT)) {
                         temp_f0 = var_f22 - var_v0->pos[0];
                         temp_f2 = var_f20 - var_v0->pos[1];
                         temp_f12 = var_f24 - var_v0->pos[2];

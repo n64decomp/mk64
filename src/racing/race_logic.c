@@ -1211,13 +1211,13 @@ void func_802909F0(void) {
     for (i = 0; i < 7; i++) {
         ply = &gPlayers[i];
 
-        if ((ply->type & PLAYER_EXISTS) && (!(ply->effects & 0x80000000)) &&
+        if ((ply->type & PLAYER_EXISTS) && (!(ply->effects & BOO_EFFECT)) &&
             (!(ply->type & PLAYER_INVISIBLE_OR_BOMB)) && (!(ply->effects & 0x4000000))) {
 
             for (k = i + 1; k < NUM_PLAYERS; k++) {
                 ply2 = &gPlayers[k];
 
-                if ((ply2->type & PLAYER_EXISTS) && (!(ply2->effects & 0x80000000)) &&
+                if ((ply2->type & PLAYER_EXISTS) && (!(ply2->effects & BOO_EFFECT)) &&
                     (!(ply2->type & PLAYER_INVISIBLE_OR_BOMB)) && (!(ply2->effects & 0x4000000))) {
 
                     func_802903D8(ply, ply2);

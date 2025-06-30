@@ -704,21 +704,21 @@ void func_8001E45C(Camera* camera, Player* player, s8 arg2) {
     UNUSED s16 pad6;
     s16 temp;
 
-    if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+    if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         var_a3 = 100;
         if (player->unk_078 == 0) {
             camera->unk_B0 = 0;
         } else {
             if (player->unk_078 < 0) {
                 var_a3 = 0xA5 - (player->unk_078 / 2);
-                if ((player->effects & 0x20000000) == 0x20000000) {
+                if ((player->effects & UNKNOWN_EFFECT_0x20000000) == UNKNOWN_EFFECT_0x20000000) {
                     move_s16_towards(&camera->unk_B0, -0x0B60, 0.1f);
                 } else {
                     move_s16_towards(&camera->unk_B0, -0x0888, 0.1f);
                 }
             } else {
                 var_a3 = (player->unk_078 / 2) + 0xA5;
-                if ((player->effects & 0x20000000) == 0x20000000) {
+                if ((player->effects & UNKNOWN_EFFECT_0x20000000) == UNKNOWN_EFFECT_0x20000000) {
                     move_s16_towards(&camera->unk_B0, 0x0B60, 0.1f);
                 } else {
                     move_s16_towards(&camera->unk_B0, 0x0888, 0.1f);
@@ -748,7 +748,7 @@ void func_8001E45C(Camera* camera, Player* player, s8 arg2) {
     }
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
         ((player->effects & 0x4000) == 0x4000) || ((player->effects & 0x80000) == 0x80000) ||
-        ((player->effects & 0x800000) == 0x800000) || (((player->effects & 0x20) == 0x20) && (player->unk_078 != 0)) ||
+        ((player->effects & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) || (((player->effects & 0x20) == 0x20) && (player->unk_078 != 0)) ||
         (player->collision.surfaceDistance[0] <= 0.0f) || (player->collision.surfaceDistance[1] <= 0.0f) ||
         ((player->effects & 0x20000) == 0x20000)) {
         func_8001CCEC(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
@@ -826,7 +826,7 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
     UNUSED s16 pad6;
     s16 temp;
 
-    if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+    if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         var_a3 = 100;
         if (player->unk_078 == 0) {
             camera->unk_B0 = 0;
@@ -834,14 +834,14 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
             if (player->unk_078 < 0) {
                 var_a3 = 0xA5 - (player->unk_078 / 2);
 
-                if ((player->effects & 0x20000000) == 0x20000000) {
+                if ((player->effects & UNKNOWN_EFFECT_0x20000000) == UNKNOWN_EFFECT_0x20000000) {
                     move_s16_towards(&camera->unk_B0, -0x0B60, 0.1f);
                 } else {
                     move_s16_towards(&camera->unk_B0, -0x0888, 0.1f);
                 }
             } else {
                 var_a3 = (player->unk_078 / 2) + 0xA5;
-                if ((player->effects & 0x20000000) == 0x20000000) {
+                if ((player->effects & UNKNOWN_EFFECT_0x20000000) == UNKNOWN_EFFECT_0x20000000) {
                     move_s16_towards(&camera->unk_B0, 0x0B60, 0.1f);
                 } else {
                     move_s16_towards(&camera->unk_B0, 0x0888, 0.1f);
@@ -871,7 +871,7 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
     }
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
         ((player->effects & 0x4000) == 0x4000) || ((player->effects & 0x80000) == 0x80000) ||
-        ((player->effects & 0x800000) == 0x800000) || (((player->effects & 0x20) == 0x20) && (player->unk_078 != 0)) ||
+        ((player->effects & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) || (((player->effects & 0x20) == 0x20) && (player->unk_078 != 0)) ||
         (player->collision.surfaceDistance[0] <= 0.0f) || (player->collision.surfaceDistance[1] <= 0.0f) ||
         ((player->effects & 0x20000) == 0x20000)) {
         func_8001D944(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);

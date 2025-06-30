@@ -1481,7 +1481,7 @@ void update_player(s32 playerId) {
                         break;
                 }
                 D_801631E0[playerId] = false;
-                if ((player->effects & UNKNOWN_EFFECT_0x1000) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
+                if ((player->effects & LOST_RACE_EFFECT) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
                     D_801631E0[playerId] = true;
                 }
                 if ((D_801646CC == 1) || (player->type & PLAYER_CINEMATIC_MODE) ||
@@ -1565,7 +1565,7 @@ void update_player(s32 playerId) {
                     return;
                 }
                 if ((D_801630E8[playerId] == 1) || (D_801630E8[playerId] == -1)) {
-                    player->effects |= UNKNOWN_EFFECT_0x10;
+                    player->effects |= DRIFTING_EFFECT;
                 }
                 if (D_801630E8[playerId] != 0) {
                     sPlayerAngle[playerId] = -get_xz_angle_between_points(player->oldPos, player->pos);
@@ -1739,7 +1739,7 @@ void update_player(s32 playerId) {
                     cpu_TargetSpeed[playerId] = 3.3333333f;
                 }
                 gCurrentCpuTargetSpeed = cpu_TargetSpeed[playerId];
-                player->effects &= ~UNKNOWN_EFFECT_0x200000;
+                player->effects &= ~CPU_FAST_EFFECT;
                 gPreviousCpuTargetSpeed[playerId] = gCurrentCpuTargetSpeed;
                 check_ai_crossing_distance(playerId);
                 regulate_cpu_speed(playerId, gCurrentCpuTargetSpeed, player);
@@ -1772,7 +1772,7 @@ void func_8000B140(s32 playerId) {
     Player* player;
     player = &gPlayers[playerId];
 
-    if (player->effects & UNKNOWN_EFFECT_0x10) {
+    if (player->effects & DRIFTING_EFFECT) {
         return;
     }
 

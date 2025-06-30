@@ -6386,7 +6386,7 @@ void func_80081D34(s32 objectIndex) {
     player = gPlayerOne;
     var_s4 = camera1;
     for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++, var_s4++) {
-        if ((is_obj_flag_status_active(objectIndex, 0x00000200) != 0) && !(player->effects & 0x80000000) &&
+        if ((is_obj_flag_status_active(objectIndex, 0x00000200) != 0) && !(player->effects & BOO_EFFECT) &&
             (has_collided_with_player(objectIndex, player) != 0)) {
             if ((player->type & PLAYER_EXISTS) && !(player->type & 0x100)) {
                 var_s5 = 1;
