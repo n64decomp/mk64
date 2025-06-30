@@ -998,7 +998,7 @@ void func_80022BC4(Player* player, UNUSED s8 playerIndex) {
         temp_f0 *= 0.8;
         temp_v0 = 0;
         if (temp_f0 <= 0.1) {
-            player->effects &= 0xF7FFFFFF;
+            player->effects &= ~UNKNOWN_EFFECT_0x8000000;
             temp_f0 = 0.0f;
         }
     }

@@ -361,7 +361,7 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define UNKNOWN_EFFECT_0x20000000 0x20000000 //
 #define LIGHTNING_EFFECT          0x40000000 // being hit by lightning
 #define BOO_EFFECT                0x80000000 // being a boo
-
+#define ALL_EFFECTS               0xFFFFFFFF
 
 /**
  * @brief durations of effects

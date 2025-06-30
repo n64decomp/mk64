@@ -5983,7 +5983,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
         if (!(temp_s0->soundEffects & 0x100)) {
             temp_f0 = func_80088F54(objectIndex, temp_s0);
-            if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) &&
+            if ((temp_f0 <= 9.0) && !(temp_s0->effects & HIT_EFFECT) &&
                 (has_collided_horizontally_with_player(objectIndex, temp_s0) != 0)) {
                 if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & 0x100)) {
                     if (!(temp_s0->effects & STAR_EFFECT)) {

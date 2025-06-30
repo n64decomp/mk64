@@ -2077,7 +2077,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             }
             break;
         case ACTOR_BANANA:
-            if (player->effects & (BOO_EFFECT | 0x8C0)) {
+            if (player->effects & (BOO_EFFECT | UNKNOWN_EFFECT_0x800 | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) {
                 break;
             }
             if (player->soundEffects & 1) {
@@ -2106,7 +2106,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             destroy_destructable_actor(actor);
             break;
         case ACTOR_GREEN_SHELL:
-            if (player->effects & 0x80000400) {
+            if (player->effects & (BOO_EFFECT | UNKNOWN_EFFECT_0x400)) {
                 break;
             }
             if (player->soundEffects & 4) {

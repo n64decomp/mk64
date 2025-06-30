@@ -4440,7 +4440,7 @@ void cpu_use_item_strategy(s32 playerId) {
     if (cpuStrategy->timer < 10000) {
         cpuStrategy->timer += 1;
     }
-    if (player->effects & (BOO_EFFECT | BOOST_EFFECT | STAR_EFFECT)) { // 0x80002200
+    if (player->effects & (BOO_EFFECT | BOOST_EFFECT | STAR_EFFECT)) {
         cpuStrategy->timer = 0;
     }
 }

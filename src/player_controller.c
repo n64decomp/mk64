@@ -1659,13 +1659,13 @@ void func_8002BF4C(Player* player, s8 playerIndex) {
 
     if (((player->speed / 18.0f) * 216.0f) < 50.0f) {
         player->unk_0E2 = 0;
-        player->effects &= 0xFFDFFFFF;
+        player->effects &= ~CPU_FAST_EFFECT;
         return;
     }
     if ((player->effects & CPU_FAST_EFFECT) == CPU_FAST_EFFECT) {
         player->unk_0E2 -= 1;
         if (player->unk_0E2 <= 0) {
-            player->effects &= 0xFFDFFFFF;
+            player->effects &= ~CPU_FAST_EFFECT;
         }
     } else {
         for (i = 0; i < NUM_PLAYERS; i++) {
@@ -2868,7 +2868,7 @@ void func_8002FE84(Player* player, f32 arg1) {
     }
 
     // Huh?
-    if (((player->effects & 0xFFFFFFFF) & UNKNOWN_EFFECT_0x8) == UNKNOWN_EFFECT_0x8) {
+    if (((player->effects & ALL_EFFECTS) & UNKNOWN_EFFECT_0x8) == UNKNOWN_EFFECT_0x8) {
         player->unk_098 = ((player->currentSpeed * player->currentSpeed) / 25.0f) * 1.1;
         return;
     }
@@ -3032,8 +3032,7 @@ f32 func_80030150(Player* player, s8 playerIndex) {
         ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT)) {
         return (1.0f - player->unk_104) * var_f2;
     }
-    // Have to `and` the 0x2000 here to force the compiler to reload the immediate
-    if (((player->effects & BOOST_EFFECT) == (BOOST_EFFECT & 0xFFFFFFFF)) ||
+    if (((player->effects & BOOST_EFFECT) == BOOST_EFFECT) ||
         ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) ||
         ((player->effects & BOOST_RAMP_WOOD_EFFECT) == BOOST_RAMP_WOOD_EFFECT)) {
         func_8002FE84(player, player->boostPower + player->unk_08C);
@@ -4033,7 +4032,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
     if (player->unk_10C != 0) {
         func_8002BD58(player);
     }
-    player->effects &= 0xDFFFFFFF;
+    player->effects &= ~UNKNOWN_EFFECT_0x20000000;
     if (((s32) player->tyres[BACK_RIGHT].surfaceType) > 0xE) {
         var_f12 = var_f12;
     } else {

@@ -1442,7 +1442,7 @@ void func_8005A14C(s32 playerId) {
     objectIndex = D_8018CE10[playerId].objectIndex;
     lapCount = gLapCountByPlayerId[playerId];
     if (player->type & PLAYER_EXISTS) {
-        if (player->effects & 0x204C0) {
+        if (player->effects & (UNKNOWN_EFFECT_0x20000 | UNKNOWN_EFFECT_0x400 | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) {
             gObjectList[objectIndex].direction_angle[2] += 0x1000;
         } else {
             if (gObjectList[objectIndex].direction_angle[2] != 0) {
@@ -1459,7 +1459,7 @@ void func_8005A14C(s32 playerId) {
         } else {
             u16_step_down_towards(&gObjectList[objectIndex].direction_angle[0], 0, 0x00000100);
         }
-        if (player->effects & 0x03000000) {
+        if (player->effects & (HIT_BY_ITEM_EFFECT | UNKNOWN_EFFECT_0x1000000)) {
             func_80087D24(objectIndex, 6.0f, 1.5f, 0.0f);
         } else {
             f32_step_towards(&gObjectList[objectIndex].offset[1], 0.0f, 1.0f);
@@ -6428,7 +6428,7 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
         }
         switch (gActiveScreenMode) {
             case SCREEN_MODE_1P:
-                if (((arg0->effects & 0x04000000) != 0x04000000) && ((arg0->effects & UNKNOWN_EFFECT_0x400) != UNKNOWN_EFFECT_0x400) &&
+                if (((arg0->effects & HIT_EFFECT) != HIT_EFFECT) && ((arg0->effects & UNKNOWN_EFFECT_0x400) != UNKNOWN_EFFECT_0x400) &&
                     ((arg0->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000)) {
                     if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100)) {
                         func_80060504(arg0, arg1, sp20, arg2, arg3);
@@ -6440,7 +6440,7 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                if (((arg0->type & 0x4000) != 0) && ((arg0->effects & 0x04000000) != 0x04000000) &&
+                if (((arg0->type & 0x4000) != 0) && ((arg0->effects & HIT_EFFECT) != HIT_EFFECT) &&
                     ((arg0->effects & UNKNOWN_EFFECT_0x400) != UNKNOWN_EFFECT_0x400) &&
                     ((arg0->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000)) {
                     if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100)) {

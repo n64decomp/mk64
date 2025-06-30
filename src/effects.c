@@ -607,7 +607,7 @@ void func_8008D760(Player* player) {
     player->unk_07C = 0;
     player->unk_0C0 = 0;
     player->rotation[1] = player->unk_0AE;
-    player->effects &= 0xFFF7FFFF;
+    player->effects &= ~UNKNOWN_EFFECT_0x80000;
     player->kartGravity = gKartGravityTable[player->characterId];
     player->type &= 0xFF7F;
 }
@@ -661,7 +661,7 @@ void func_8008D97C(Player* player) {
     player->unk_07C = 0;
     player->unk_0C0 = 0;
     player->rotation[1] = player->unk_0AE;
-    player->effects &= 0xFF7FFFFF;
+    player->effects &= ~UNKNOWN_EFFECT_0x800000;
     player->kartGravity = gKartGravityTable[player->characterId];
 }
 
@@ -695,7 +695,7 @@ void apply_hit_sound_effect(Player* player, s8 playerIndex) {
         player->unk_238 = 0;
         player->unk_DB4.unk10 = 4.5f;
         D_8018D990[playerIndex] = 0;
-        player->effects &= ~0x08000010;
+        player->effects &= ~(UNKNOWN_EFFECT_0x8000000 | DRIFTING_EFFECT);
         D_80165190[0][playerIndex] = 1;
         D_80165190[1][playerIndex] = 1;
         D_80165190[2][playerIndex] = 1;
@@ -831,7 +831,7 @@ void apply_hit_rotating_sound_effect(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
 
     player->soundEffects &= ~HIT_ROTATING_SOUND_EFFECT;
-    player->effects |= 0x40020000;
+    player->effects |= (LIGHTNING_EFFECT | UNKNOWN_EFFECT_0x20000);
     player->effects &= ~DRIFTING_EFFECT;
     player->unk_08C *= 0.6;
     player->unk_0B0 = 0;
@@ -942,7 +942,7 @@ void func_8008E4A4(Player* player, s8 playerIndex) {
     player->currentSpeed = 0.0f;
     player->velocity[0] = 0.0f;
     player->velocity[2] = 0.0f;
-    player->effects &= ~0xC0;
+    player->effects &= ~(BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT);
 
     if ((player->effects & UNKNOWN_EFFECT_0x8) != UNKNOWN_EFFECT_0x8) {
         ++player->unk_0E0;
@@ -1053,7 +1053,7 @@ void apply_hit_by_item_effect(Player* player, s8 playerIndex) {
     player->unk_042 += 0xAAA;
     player->unk_08C /= 2;
     player->currentSpeed = 0.0f;
-    player->effects &= ~0xC0;
+    player->effects &= ~(BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT);
 
     if ((player->effects & UNKNOWN_EFFECT_0x8) != UNKNOWN_EFFECT_0x8) {
         ++player->unk_0E0;
