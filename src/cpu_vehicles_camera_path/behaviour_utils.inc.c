@@ -47,7 +47,7 @@ void cpu_behaviour_start(s32 playerId, Player* player) {
                 break;
             case BEHAVIOUR_HOP:
                 kart_hop(player);
-                player->effects &= ~0x10;
+                player->effects &= ~DRIFTING_EFFECT;
                 D_801630E8[playerId] = 0;
                 break;
             case BEHAVIOUR_DRIVE_CENTER:
@@ -95,7 +95,7 @@ void cpu_behaviour_end(s32 playerIndex, Player* player) {
     if (nearestPathPoint >= pathPointEnd) {
         switch (behaviourType) {
             case BEHAVIOUR_1:
-                player->effects &= ~0x10;
+                player->effects &= ~DRIFTING_EFFECT;
                 D_801630E8[playerIndex] = 0;
                 cpu_BehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
                 break;

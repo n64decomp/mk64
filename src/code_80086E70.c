@@ -1043,7 +1043,7 @@ f32 func_8008933C(Player* player, s32 objectIndex, f32 arg2, f32 arg3) {
     if (temp_v1->unk_18[6] == 0) {
         object = &gObjectList[objectIndex];
         player->unk_046 |= 2;
-        player->effects |= 0x8000;
+        player->effects |= UNKNOWN_EFFECT_0x8000;
         temp_v1->unk_18[6] = 4;
         something = (player->pos[0] - object->pos[0]) * object->velocity[0];
         if (something >= 0.0f) {

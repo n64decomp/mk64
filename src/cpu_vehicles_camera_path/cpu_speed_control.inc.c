@@ -133,7 +133,7 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
     s32 var_a1;
 
     speed = player->speed;
-    if (!(player->effects & 0x80) && !(player->effects & 0x40) && !(player->effects & 0x20000) &&
+    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) && !(player->effects & UNKNOWN_EFFECT_0x20000) &&
         !(player->soundEffects & 0x400000) && !(player->soundEffects & 0x01000000) && !(player->soundEffects & 2) &&
         !(player->soundEffects & 4)) {
         if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {

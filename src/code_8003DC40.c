@@ -296,7 +296,7 @@ void func_8003F734(Player* player, Vec3f arg1, Vec3f arg2, f32* arg3, f32* arg4,
         *arg5 += arg1[1] * player->collision.surfaceDistance[0] * 0.1;
         *arg6 += arg1[2] * player->collision.surfaceDistance[0] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1, 0);
-        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & 8) == 0)) {
+        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & UNKNOWN_EFFECT_0x8) == 0)) {
             arg2[1] *= -1e-05;
         }
     } else {
@@ -309,11 +309,11 @@ void func_8003F734(Player* player, Vec3f arg1, Vec3f arg2, f32* arg3, f32* arg4,
         }
         *arg6 += arg1[2] * player->collision.surfaceDistance[0] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1.2f, 0);
-        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & 8) == 0)) {
+        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & UNKNOWN_EFFECT_0x8) == 0)) {
             arg2[1] *= -1e-05;
         }
     }
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFTING_EFFECT;
     temp_f12 = player->collision.surfaceDistance[0] * arg1[0];
     temp_f14 = player->collision.surfaceDistance[0] * arg1[2];
     if (((temp_f12 >= 0) && (temp_f14 >= 0)) || ((temp_f12 < 0) && (temp_f14 >= 0))) {
@@ -350,7 +350,7 @@ void func_8003FBAC(Player* player, Vec3f arg1, Vec3f arg2, f32* arg3, f32* arg4,
         *arg5 += arg1[1] * player->collision.surfaceDistance[1] * 0.1;
         *arg6 += arg1[2] * player->collision.surfaceDistance[1] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1, 0);
-        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & 8) == 0)) {
+        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & UNKNOWN_EFFECT_0x8) == 0)) {
             arg2[1] *= -1e-05;
         }
     } else {
@@ -363,11 +363,11 @@ void func_8003FBAC(Player* player, Vec3f arg1, Vec3f arg2, f32* arg3, f32* arg4,
         }
         *arg6 += arg1[2] * player->collision.surfaceDistance[1] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1.2f, 0);
-        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & 8) == 0)) {
+        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & UNKNOWN_EFFECT_0x8) == 0)) {
             arg2[1] *= -1e-05;
         }
     }
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFTING_EFFECT;
     temp_f12 = player->collision.surfaceDistance[1] * arg1[0];
     temp_f14 = player->collision.surfaceDistance[1] * arg1[2];
     if (((temp_f12 >= 0) && (temp_f14 >= 0)) || ((temp_f12 >= 0) && (temp_f14 < 0))) {

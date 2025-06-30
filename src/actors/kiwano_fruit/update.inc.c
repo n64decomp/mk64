@@ -51,7 +51,7 @@ void update_actor_kiwano_fruit(struct KiwanoFruit* fruit) {
                 if ((player->effects & STAR_EFFECT) != 0) {
                     func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x52));
                 } else {
-                    player->effects |= 0x8000;
+                    player->effects |= UNKNOWN_EFFECT_0x8000;
                     player->pos[0] -= temp_f2 * 4.0f;
                     player->pos[2] -= temp_f14 * 4.0f;
                     player->velocity[0] -= temp_f2 * 0.7f;

@@ -1239,7 +1239,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
         s16 var_t0 = 0;
         if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
             D_801634EC = 0;
-            if (player->effects & 0x200) {
+            if (player->effects & STAR_EFFECT) {
                 D_801634EC = 1;
             }
             if (gIsMirrorMode != 0) {
@@ -1353,7 +1353,7 @@ void update_vehicles(void) {
 
 void play_cpu_sound_effect(s32 arg0, Player* player) {
     if (D_80163398[arg0] >= 0xB) {
-        if ((player->effects & 0x80) || (player->effects & 0x40) || (player->effects & 0x20000)) {
+        if ((player->effects & BANANA_SPINOUT_EFFECT) || (player->effects & DRIVING_SPINOUT_EFFECT) || (player->effects & UNKNOWN_EFFECT_0x20000)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0A));
             D_80163398[arg0] = 0;
         }
@@ -1521,7 +1521,7 @@ void update_player(s32 playerId) {
                 }
                 if (D_801631E0[playerId] == true) {
                     D_801630E8[playerId] = 0;
-                    player->effects &= ~0x10;
+                    player->effects &= ~DRIFTING_EFFECT;
                     if ((playerId & 1) != (gIncrementUpdatePlayer & 1)) {
                         apply_cpu_turn(player, 0);
                         regulate_cpu_speed(playerId, gPreviousCpuTargetSpeed[playerId], player);
@@ -1543,7 +1543,7 @@ void update_player(s32 playerId) {
                     determine_ideal_cpu_position_offset(playerId, gCurrentNearestPathPoint);
                     distX = gOffsetPosition[0] - player->pos[0];
                     minAngle = gOffsetPosition[2] - player->pos[2];
-                    if (!(player->effects & 0x80) && !(player->effects & 0x40) && !(player->effects & 0x800)) {
+                    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) && !(player->effects & UNKNOWN_EFFECT_0x800)) {
                         if (((distX * distX) + (minAngle * minAngle)) > 6400.0f) {
                             if (gPlayerPathIndex == 0) {
                                 func_8000B140(playerId);
@@ -1597,13 +1597,13 @@ void update_player(s32 playerId) {
                         case -1:
                             if (steeringSensitivity > 5) {
                                 D_801630E8[playerId] = 0;
-                                player->effects &= ~0x10;
+                                player->effects &= ~DRIFTING_EFFECT;
                             }
                             break;
                         case 1:
                             if (steeringSensitivity < -5) {
                                 D_801630E8[playerId] = 0;
-                                player->effects &= ~0x10;
+                                player->effects &= ~DRIFTING_EFFECT;
                             }
                             break;
                         default:
@@ -1700,9 +1700,9 @@ void update_player(s32 playerId) {
                 if ((cpu_BehaviourState[playerId] == CPU_BEHAVIOUR_STATE_RUNNING) &&
                     ((gTrackPositionFactor[playerId] > 0.9f) || (gTrackPositionFactor[playerId] < -0.9f))) {
                     D_801630E8[playerId] = 0;
-                    player->effects &= ~0x10;
+                    player->effects &= ~DRIFTING_EFFECT;
                 }
-                if (player->effects & 2) {
+                if (player->effects & UNKNOWN_EFFECT_0x2) {
                     switch (D_801630E8[playerId]) {
                         case 1:
                             newAngle = 0x0035;
@@ -2422,7 +2422,7 @@ void func_80015390(Camera* camera, UNUSED Player* player, UNUSED s32 arg2) {
     } else {
         var_a2 = 0xA0 + (temp_s1->unk_078 / 16);
     }
-    if (!((temp_s1->effects & 0x80) || (temp_s1->effects & 0x40))) {
+    if (!((temp_s1->effects & BANANA_SPINOUT_EFFECT) || (temp_s1->effects & DRIVING_SPINOUT_EFFECT))) {
         adjust_angle(&camera->unk_2C, temp_s1->rotation[1], var_a2);
     }
     func_8001D794(temp_s1, camera, sp64, &sp84, &sp80, &sp7C, camera->unk_2C);

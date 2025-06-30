@@ -329,7 +329,9 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  * for effects
  */
 #define BRAKING_EFFECT                   0x1 // pressing brake
+#define UNKNOWN_EFFECT_0x2               0x2 //
 #define BOOST_RAMP_WOOD_EFFECT           0x4 // being boosted by a ramp
+#define UNKNOWN_EFFECT_0x8               0x8 //
 #define UNKNOWN_EFFECT_0xC               0xC //
 #define DRIFTING_EFFECT                 0x10 // drifting
 #define UNKNOWN_EFFECT_0x20             0x20 //
@@ -337,9 +339,16 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define BANANA_SPINOUT_EFFECT           0x80 // spinout (from hitting a banana or another driver)
 #define MINI_TURBO_EFFECT              0x100 // mini-turbo
 #define STAR_EFFECT                    0x200 // being a star
+#define UNKNOWN_EFFECT_0x400           0x400 //
+#define UNKNOWN_EFFECT_0x800           0x800 //
 #define LOST_RACE_EFFECT              0x1000 // lost race
 #define BOOST_EFFECT                  0x2000 // being boosted by trigger a mushroom
+#define UNKNOWN_EFFECT_0x4000         0x4000 //
+#define UNKNOWN_EFFECT_0x8000         0x8000 //
 #define TERRAIN_TUMBLE_EFFECT        0x10000 // tumbling after hitting steep terrain
+#define UNKNOWN_EFFECT_0x20000       0x20000 //
+#define UNKNOWN_EFFECT_0x40000       0x40000 //
+#define UNKNOWN_EFFECT_0x80000       0x80000 //
 #define BOOST_RAMP_ASPHALT_EFFECT   0x100000 // being boosted by a boost pad
 #define CPU_FAST_EFFECT             0x200000 // CPU Rubberbanding flag?
 #define REVERSE_EFFECT              0x400000 // being in reverse of the course

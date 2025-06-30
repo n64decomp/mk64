@@ -3152,7 +3152,7 @@ void func_80079860(s32 playerId) {
     player = &gPlayerOne[playerId];
     if ((func_80072354(objectIndex, 1) != 0) &&
         (((func_802ABDF4(player->collision.meshIndexZX) != 0) && (player->collision.surfaceDistance[2] <= 3.0f)) ||
-         (player->unk_0CA & 1) || ((player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & 8)))) {
+         (player->unk_0CA & 1) || ((player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & UNKNOWN_EFFECT_0x8)))) {
         func_80090778(player);
         func_800797AC(playerId);
     }
@@ -3476,7 +3476,7 @@ void update_object_lakitu_reverse(s32 objectIndex, s32 playerId) {
     }
     switch (gObjectList[objectIndex].unk_0D6) { /* switch 1; irregular */
         case 1:                                 /* switch 1 */
-            if ((gObjectList[objectIndex].state >= 3) && (!(sp2C->effects & 0x400000))) {
+            if ((gObjectList[objectIndex].state >= 3) && (!(sp2C->effects & REVERSE_EFFECT))) {
                 func_80086F10(objectIndex, 6, &D_800E69F4);
                 gObjectList[objectIndex].unk_0D6 = 2;
                 gObjectList[objectIndex].unk_04C = 0x00000050;
@@ -3536,7 +3536,7 @@ void func_8007A88C(s32 playerId) {
     objectIndex = gIndexLakituList[playerId];
     player = &gPlayerOne[playerId];
 
-    if ((gObjectList[objectIndex].state == 0) && (player->effects & 0x400000)) {
+    if ((gObjectList[objectIndex].state == 0) && (player->effects & REVERSE_EFFECT)) {
         func_800790E4(playerId);
     }
 }
@@ -5986,7 +5986,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
             if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) &&
                 (has_collided_horizontally_with_player(objectIndex, temp_s0) != 0)) {
                 if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & 0x100)) {
-                    if (!(temp_s0->effects & 0x200)) {
+                    if (!(temp_s0->effects & STAR_EFFECT)) {
                         func_80089474(objectIndex, playerId, 1.4f, 1.1f, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x4C));
                     } else if (func_80072354(objectIndex, 0x00000040) != 0) {
                         if (temp_s0->type & 0x1000) {
@@ -6394,7 +6394,7 @@ void func_80081D34(s32 objectIndex) {
                 if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
                 }
-                if (player->effects & 0x200) {
+                if (player->effects & STAR_EFFECT) {
                     func_800C9060(playerIndex, 0x1900A046U);
                 } else {
                     player->soundEffects |= 2;

@@ -1552,7 +1552,7 @@ bool query_and_resolve_collision_player_actor(Player* player, Vec3f pos, f32 min
         player->pos[0] += (xVelocity / temp_f0_4) * minDist;
         player->pos[2] += (zVelocity / temp_f0_4) * minDist;
     } else {
-        player->effects |= 0x8000;
+        player->effects |= UNKNOWN_EFFECT_0x8000;
         xDist /= sqrtDist;
         zDist /= sqrtDist;
         temp_f0_5 = sqrtf((xVelocity * xVelocity) + (zVelocity * zVelocity));
@@ -1729,7 +1729,7 @@ bool collision_tree(Player* player, struct Actor* actor) {
         }
     }
     if (!(player->effects & STAR_EFFECT)) {
-        player->effects |= 0x8000;
+        player->effects |= UNKNOWN_EFFECT_0x8000;
     }
     actorPos[0] = actor->pos[0];
     actorPos[1] = actor->pos[1];
@@ -2281,12 +2281,12 @@ void evaluate_collision_for_players_and_actors(void) {
     for (i = 0; i < NUM_PLAYERS; i++) {
         phi_s1 = &gPlayers[i];
 
-        if (((phi_s1->type & PLAYER_EXISTS) != 0) && ((phi_s1->effects & 0x4000000) == 0)) {
+        if (((phi_s1->type & PLAYER_EXISTS) != 0) && ((phi_s1->effects & HIT_EFFECT) == 0)) {
             func_802977E4(phi_s1);
             for (j = 0; j < ACTOR_LIST_SIZE; j++) {
                 temp_a1 = &gActorList[j];
 
-                if ((phi_s1->effects & 0x4000000) == 0) {
+                if ((phi_s1->effects & HIT_EFFECT) == 0) {
                     // temp_v0 = temp_a1->unk2;
                     if (((temp_a1->flags & 0x8000) != 0) && ((temp_a1->flags & 0x4000) != 0)) {
                         evaluate_collision_between_player_actor(phi_s1, temp_a1);
