@@ -20,6 +20,8 @@ It supports and builds the following versions:
 ## Quick Start
 
 ```
+git submodule update --init --recursive
+OR
 git clone https://github.com/n64decomp/mk64 --recurse-submodules
 ```
 Extract assets
