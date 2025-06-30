@@ -35,7 +35,7 @@
 #include "render_player.h"
 #include "render_courses.h"
 #include "actors.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include <debug.h>
 #include "crash_screen.h"
 #include "buffers/gfx_output_buffer.h"
@@ -595,7 +595,7 @@ void race_logic_loop(void) {
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
             gTickSpeed = 2;
-            staff_ghosts_loop();
+            replays_loop();
             if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {
@@ -603,7 +603,7 @@ void race_logic_loop(void) {
                     }
                     func_802909F0();
                     evaluate_collision_for_players_and_actors();
-                    func_800382DC();
+                    handle_a_press_for_all_players_during_race();
                     func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80028F70();
                     func_8028F474();
@@ -665,7 +665,7 @@ void race_logic_loop(void) {
                     }
                     func_802909F0();
                     evaluate_collision_for_players_and_actors();
-                    func_800382DC();
+                    handle_a_press_for_all_players_during_race();
                     func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80029060();
                     func_8001EE98(gPlayerTwoCopy, camera2, 1);
@@ -711,7 +711,7 @@ void race_logic_loop(void) {
                     }
                     func_802909F0();
                     evaluate_collision_for_players_and_actors();
-                    func_800382DC();
+                    handle_a_press_for_all_players_during_race();
                     func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80029060();
                     func_8001EE98(gPlayerTwoCopy, camera2, 1);
@@ -779,7 +779,7 @@ void race_logic_loop(void) {
                     }
                     func_802909F0();
                     evaluate_collision_for_players_and_actors();
-                    func_800382DC();
+                    handle_a_press_for_all_players_during_race();
                     func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80029158();
                     func_8001EE98(gPlayerTwo, camera2, 1);

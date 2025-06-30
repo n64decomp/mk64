@@ -45,6 +45,25 @@
 
 #define HOLD_ALL_DPAD_AND_C_BUTTONS \
     (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
+#define ALL_BUTTONS                                                                                                   \
+    (A_BUTTON | B_BUTTON | L_TRIG | R_TRIG | Z_TRIG | START_BUTTON | U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | \
+     L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
+/**
+ * Replay controller buttons
+ * Used for time trial replays (including staff and player ghosts)
+ * Each entry is converted to a u32 value
+ * This allows access to the button struct member
+ */
+#define REPLAY_A_BUTTON (1 << 31) // 0x80000000
+#define REPLAY_B_BUTTON (1 << 30) // 0x40000000
+#define REPLAY_Z_TRIG (1 << 29)   // 0x20000000
+#define REPLAY_R_TRIG (1 << 28)   // 0x10000000
+
+#define REPLAY_FRAME_COUNTER 0xFF0000
+#define REPLAY_CLEAR_FRAME_COUNTER (0xFFFFFFFF & ~REPLAY_FRAME_COUNTER)
+#define REPLAY_STICK_Y 0xFF00
+#define REPLAY_STICK_X 0xFF
+#define REPLAY_FRAME_INCREMENT 0x10000
 
 /**
  * @brief Jump to demo mode from the debug menu using L and A
@@ -349,6 +368,20 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define UNKNOWN_EFFECT_0x10000000 0x10000000 //
 #define LIGHTNING_EFFECT 0x40000000          // being hit by lightning
 #define BOO_EFFECT 0x80000000                // being a boo
+
+
+/**
+ * @brief durations of effects
+ */
+#define STAR_EFFECT_DURATION 0xA
+#define BOO_EFFECT_DURATION 0x7
+
+/**
+ * @brief alpha relates values
+ */
+#define ALPHA_MAX 0xFF
+#define ALPHA_MIN 0x0
+#define ALPHA_BOO_EFFECT 0x60
 
 /**
  * @brief shell state

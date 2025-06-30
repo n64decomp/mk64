@@ -85,14 +85,14 @@ extern u16 gPlayerMagentaEffect[];
 extern u16 gPlayerYellowEffect[];
 extern s32 D_80164B80[];
 
-extern s32 D_8018D930[];
+extern s32 gPlayerStarEffectStartTime[];
 
 extern Gfx common_square_plain_render[];
 extern Gfx D_0D008D58[];
 
 extern s32 gPlayersToRenderCount;
 extern void* D_800DDB5C[];
-extern Vtx* D_800DDBB4[];
+extern Vtx* gPlayerVtx[];
 extern f32 gCharacterSize[];
 extern s32 D_800DDE74[];
 extern Vtx D_800E51D0[];
@@ -102,14 +102,14 @@ extern f64 D_800ED688;
 extern f32 D_800ED6A8;
 
 // There are actually found in data_0DD0A0_2_0.s
-extern Vtx D_800E49C0[];
-extern Vtx D_800E4AC0[];
-extern Vtx D_800E4BC0[];
-extern Vtx D_800E4CC0[];
-extern Vtx D_800E4DC0[];
-extern Vtx D_800E4EC0[];
-extern Vtx D_800E4FD0[];
-extern Vtx D_800E50D0[];
+extern Vtx gPlayerOneVtx[];
+extern Vtx gPlayerTwoVtx[];
+extern Vtx gPlayerThreeVtx[];
+extern Vtx gPlayerFourVtx[];
+extern Vtx gPlayerFiveVtx[];
+extern Vtx gPlayerSixVtx[];
+extern Vtx gPlayerSevenVtx[];
+extern Vtx gPlayerEightVtx[];
 
 extern u8** gKartMarioWheels0[];
 extern u8** gKartMarioWheels1[];
@@ -278,7 +278,7 @@ extern u8* gKartWario189Wheel0[];
 extern u8* gKartWario189Wheel0[];
 
 extern s16 D_80165020[40];
-extern Vec3f D_80165070[8];
+extern Vec3f gPlayerLastVelocity[8];
 extern s16 gLastAnimFrameSelector[4][8];
 extern s16 gLastAnimGroupSelector[4][8];
 extern s16 D_80165150[4][8];

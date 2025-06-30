@@ -24,8 +24,8 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
     f32 temp_f2_2;
     f32 someMultiplier;
 
-    if (is_within_render_distance(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, gCameraZoom[camera - camera1],
-                                  1000000.0f) < 0) {
+    if (distance_if_visible(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, gCameraZoom[camera - camera1],
+                                1000000.0f) < 0) {
         actor_not_rendered(camera, (struct Actor*) fakeItemBox);
         return;
     }
@@ -42,7 +42,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
     someRot[0] = 0;
     someRot[1] = fakeItemBox->rot[1];
     someRot[2] = 0;
-    mtxf_pos_rotation_xyz(someMatrix2, fakeItemBox->pos, someRot);
+    mtxf_rotate_zxy_translate(someMatrix2, fakeItemBox->pos, someRot);
     mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
     if (fakeItemBox->state != 2) {
 
@@ -51,7 +51,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         }
 
         gSPDisplayList(gDisplayListHead++, common_model_fake_itembox);
-        mtxf_pos_rotation_xyz(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
+        mtxf_rotate_zxy_translate(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
         mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
 
         if (!render_set_position(someMatrix2, 0)) {
@@ -78,7 +78,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
         gDPSetBlendMask(gDisplayListHead++, 0xFF);
         thing = fakeItemBox->someTimer;
-        mtxf_pos_rotation_xyz(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
+        mtxf_rotate_zxy_translate(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
         if (thing < 10.0f) {
             someMultiplier = 1.0f;
         } else {

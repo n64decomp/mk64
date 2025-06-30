@@ -15,7 +15,7 @@
 #include "code_80057C60.h"
 #include "collision.h"
 #include "render_courses.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "cpu_vehicles_camera_path.h"
 #include "render_player.h"
 #include "podium_ceremony_actors.h"
@@ -30,7 +30,7 @@ f32 D_80165210[8];
 f32 D_80165230[8];
 UNUSED f32 D_80165250[8];
 s16 D_80165270[8];
-f32 D_80165280[8];
+f32 gPlayerCurrentSpeed[8];
 f32 D_801652A0[8];
 s32 D_801652C0[8];
 s32 D_801652E0[8];
@@ -157,7 +157,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_044 = 0;
     player->unk_046 = 0;
     player->soundEffects = 0;
-    player->unk_0C6 = 0xFF;
+    player->alpha = ALPHA_MAX;
 
     player->unk_206 = 0;
     player->slopeAccel = 0;
@@ -195,7 +195,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_204 = 0;
     player->nearestPathPointId = 0;
     player->unk_228 = 0;
-    player->unk_22A = 0;
+    player->driftState = 0;
     player->unk_234 = 0;
     player->unk_236 = 0;
     player->unk_238 = 0;
@@ -279,10 +279,10 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     D_801652E0[playerIndex] = 0;
     D_801652C0[playerIndex] = 0;
     D_80165020[playerIndex] = 0;
-    D_80165070[playerIndex][0] = 0.0f;
-    D_80165070[playerIndex][1] = 0.0f;
-    D_80165070[playerIndex][2] = 0.0f;
-    D_80165280[playerIndex] = 0.0f;
+    gPlayerLastVelocity[playerIndex][0] = 0.0f;
+    gPlayerLastVelocity[playerIndex][1] = 0.0f;
+    gPlayerLastVelocity[playerIndex][2] = 0.0f;
+    gPlayerCurrentSpeed[playerIndex] = 0.0f;
     D_801652A0[playerIndex] = 0.0f;
     gPlayerIsThrottleActive[playerIndex] = 0;
     D_80165400[playerIndex] = 0;
@@ -356,9 +356,9 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     D_8018CE10[playerIndex].unk_04[2] = 0.0f;
     func_80295BF8(playerIndex);
     func_8005D6C0(player);
-    func_8006B87C(player, playerIndex);
+    clear_all_player_balloons(player, playerIndex);
     if (gModeSelection == BATTLE) {
-        func_8006B7E4(player, playerIndex);
+        init_all_player_balloons(player, playerIndex);
     }
     calculate_orientation_matrix(player->unk_150, player->unk_058, player->unk_05C, player->unk_060,
                                  player->rotation[1]);
@@ -570,14 +570,14 @@ void spawn_players_versus_one_player(f32* arg0, f32* arg1, f32 arg2) {
     } else if (D_8015F890 != 1) {
         spawn_player(gPlayerOneCopy, 0, arg0[0], arg1[0], arg2, 32768.0f, gCharacterSelections[0],
                      PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
-        if (D_80162DD4 == 0) {
+        if (bPlayerGhostDisabled == 0) {
             spawn_player(gPlayerTwo, 1, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE0,
                          PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
             spawn_player(gPlayerTwo, 1, arg0[0], arg1[0], arg2, 32768.0f, gCharacterSelections[0],
                          PLAYER_START_SEQUENCE | PLAYER_CPU);
         }
-        if (D_80162DD6 == 0) {
+        if (bCourseGhostDisabled == 0) {
             spawn_player(gPlayerThree, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4,
                          PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
@@ -594,7 +594,7 @@ void spawn_players_versus_one_player(f32* arg0, f32* arg1, f32 arg2) {
             spawn_player(gPlayerTwo, 1, arg0[0], arg1[0], arg2, 32768.0f, gCharacterSelections[0],
                          PLAYER_START_SEQUENCE | PLAYER_CPU);
         }
-        if (D_80162DD6 == 0) {
+        if (bCourseGhostDisabled == 0) {
             spawn_player(gPlayerThree, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4,
                          PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
