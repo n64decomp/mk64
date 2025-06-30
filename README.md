@@ -26,7 +26,7 @@ git clone https://github.com/n64decomp/mk64 --recurse-submodules
 ```
 Extract assets
 ```
-make tools -j
+make -C tools -j
 make assets -j
 make -j
 ```
