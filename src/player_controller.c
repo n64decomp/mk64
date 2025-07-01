@@ -576,7 +576,7 @@ void func_80028C44(Player* player, Camera* camera, s8 playerId, s8 screenId) {
             func_8002D268(player, camera, screenId, playerId);
         }
     } else {
-        player->effects &= -9;
+        player->effects &= ~MIDAIR_EFFECT;
     }
 }
 
@@ -2129,8 +2129,8 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     } else {
         player->unk_044 &= 0xFFF7;
     }
-    if (((player->unk_08C <= 0.0f) && ((temp_v0_3 = player->effects, (temp_v0_3 & 1) == 1))) &&
-        ((temp_v0_3 & 0x20) != 0x20)) {
+    if (((player->unk_08C <= 0.0f) && ((temp_v0_3 = player->effects, (temp_v0_3 & BRAKING_EFFECT) == BRAKING_EFFECT))) &&
+        ((temp_v0_3 & AB_SPIN_EFFECT) != AB_SPIN_EFFECT)) {
         sp178[2] = temp_f2_2 * 4500.0f;
     } else {
         sp178[2] = 0.0f;

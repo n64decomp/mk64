@@ -1187,8 +1187,8 @@ u8* gKartPalettes[] = {
  **/
 void load_kart_texture(Player* player, s8 playerId, s8 screenId, s8 screenId2, s8 index) {
     s32 temp = player->effects;
-    if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) ||
-        ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0)) {
+    if (((temp & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) || ((temp & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) || ((temp & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
+        ((temp & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) || ((temp & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT) || ((player->unk_044 & 0x800) != 0)) {
         if (player->animFrameSelector[screenId] != 0) {
             osInvalDCache(&gEncodedKartTexture[index][screenId2][playerId], D_800DDEB0[player->characterId]);
 
@@ -1212,8 +1212,8 @@ void load_kart_texture(Player* player, s8 playerId, s8 screenId, s8 screenId2, s
 
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         }
-    } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) ||
-               ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000)) {
+    } else if (((temp & HIT_BY_GREEN_SHELL_EFFECT) == HIT_BY_GREEN_SHELL_EFFECT) || ((temp & EXPLOSION_CRASH_EFFECT) == EXPLOSION_CRASH_EFFECT) ||
+               ((temp & HIT_BY_STAR_EFFECT) == HIT_BY_STAR_EFFECT) || ((temp & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
         osInvalDCache(&gEncodedKartTexture[index][screenId2][playerId], 0x780U);
         // player->unk_0A8 >> 8 converts an 8.8 fixed-point animation frame to a whole number.
         osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ,
@@ -1238,8 +1238,8 @@ void load_kart_texture(Player* player, s8 playerId, s8 screenId, s8 screenId2, s
 void load_kart_texture_non_blocking(Player* player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
     s32 temp = player->effects;
 
-    if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) ||
-        ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0)) {
+    if (((temp & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) || ((temp & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) || ((temp & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
+        ((temp & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) || ((temp & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT) || ((player->unk_044 & 0x800) != 0)) {
         if (player->animFrameSelector[arg2] != 0) {
             osInvalDCache(&gEncodedKartTexture[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
 
@@ -1257,8 +1257,8 @@ void load_kart_texture_non_blocking(Player* player, s8 arg1, s8 arg2, s8 arg3, s
                                                [player->animFrameSelector[arg2]])],
                          &gEncodedKartTexture[arg4][arg3][arg1], D_800DDEB0[player->characterId], &gDmaMesgQueue);
         }
-    } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) ||
-               ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000)) {
+    } else if (((temp & HIT_BY_GREEN_SHELL_EFFECT) == HIT_BY_GREEN_SHELL_EFFECT) || ((temp & EXPLOSION_CRASH_EFFECT) == EXPLOSION_CRASH_EFFECT) ||
+               ((temp & HIT_BY_STAR_EFFECT) == HIT_BY_STAR_EFFECT) || ((temp & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
         osInvalDCache(&gEncodedKartTexture[arg4][arg3][arg1], 0x780);
         // player->unk_0A8 >> 8 converts an 8.8 fixed-point animation frame to a whole number.
         osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ,
