@@ -1360,7 +1360,7 @@ void play_cpu_sound_effect(s32 arg0, Player* player) {
     }
     if (D_801633B0[arg0] >= 0xB) {
         if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) ||
-            (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & HIT_EFFECT)) {
+            (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & SQUISH_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0B));
             D_801633B0[arg0] = 0;
         }
@@ -4440,7 +4440,7 @@ void cpu_use_item_strategy(s32 playerId) {
     if (cpuStrategy->timer < 10000) {
         cpuStrategy->timer += 1;
     }
-    if (player->effects & (BOO_EFFECT | BOOST_EFFECT | STAR_EFFECT)) {
+    if (player->effects & (BOO_EFFECT | MUSHROOM_EFFECT | STAR_EFFECT)) {
         cpuStrategy->timer = 0;
     }
 }

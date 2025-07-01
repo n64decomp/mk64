@@ -73,8 +73,8 @@ void func_8003E048(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
         player_decelerate_alternative(player, 4.0f);
         player->unk_DAC = 0.5f;
-        if ((player->effects & BOOST_EFFECT) != 0) {
-            remove_boost_effect(player);
+        if ((player->effects & MUSHROOM_EFFECT) != 0) {
+            remove_mushroom_effect(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }
@@ -102,8 +102,8 @@ void func_8003E37C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
             player_decelerate_alternative(player, 5.0f);
         }
         player->unk_DAC = 0.5f;
-        if ((player->effects & BOOST_EFFECT) != 0) {
-            remove_boost_effect(player);
+        if ((player->effects & MUSHROOM_EFFECT) != 0) {
+            remove_mushroom_effect(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }

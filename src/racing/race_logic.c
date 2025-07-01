@@ -1150,10 +1150,10 @@ void func_802903D8(Player* playerOne, Player* playerTwo) {
     }
     if (playerOne->effects & STAR_EFFECT) {
         if (!(playerTwo->effects & STAR_EFFECT)) {
-            playerTwo->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
+            playerTwo->soundEffects |= HIT_BY_STAR_SOUND_EFFECT;
         }
     } else if (playerTwo->effects & STAR_EFFECT) {
-        playerOne->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
+        playerOne->soundEffects |= HIT_BY_STAR_SOUND_EFFECT;
     } else {
         playerOne->effects |= ENEMY_BONK_EFFECT;
         playerTwo->effects |= ENEMY_BONK_EFFECT;
@@ -1212,13 +1212,13 @@ void func_802909F0(void) {
         ply = &gPlayers[i];
 
         if ((ply->type & PLAYER_EXISTS) && (!(ply->effects & BOO_EFFECT)) &&
-            (!(ply->type & PLAYER_INVISIBLE_OR_BOMB)) && (!(ply->effects & HIT_EFFECT))) {
+            (!(ply->type & PLAYER_INVISIBLE_OR_BOMB)) && (!(ply->effects & SQUISH_EFFECT))) {
 
             for (k = i + 1; k < NUM_PLAYERS; k++) {
                 ply2 = &gPlayers[k];
 
                 if ((ply2->type & PLAYER_EXISTS) && (!(ply2->effects & BOO_EFFECT)) &&
-                    (!(ply2->type & PLAYER_INVISIBLE_OR_BOMB)) && (!(ply2->effects & HIT_EFFECT))) {
+                    (!(ply2->type & PLAYER_INVISIBLE_OR_BOMB)) && (!(ply2->effects & SQUISH_EFFECT))) {
 
                     func_802903D8(ply, ply2);
                 }

@@ -1027,7 +1027,7 @@ void func_8001F394(Player* player, f32* arg1) {
         if (player->soundEffects & HOLD_BANANA_SOUND_EFFECT) {
             D_80164A08[playerIndex] = 1;
         }
-        if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
+        if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
             D_80164A08[playerIndex] = 2;
         }
         if ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) {
@@ -1055,7 +1055,7 @@ void func_8001F394(Player* player, f32* arg1) {
             }
             break;
         case 2:
-            if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
+            if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
                 if (player->boostTimer != 0) {
                     move_f32_towards(&D_80164498[playerIndex], 8.0f, 0.2f);
                 }

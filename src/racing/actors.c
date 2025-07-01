@@ -2281,12 +2281,12 @@ void evaluate_collision_for_players_and_actors(void) {
     for (i = 0; i < NUM_PLAYERS; i++) {
         phi_s1 = &gPlayers[i];
 
-        if (((phi_s1->type & PLAYER_EXISTS) != 0) && ((phi_s1->effects & HIT_EFFECT) == 0)) {
+        if (((phi_s1->type & PLAYER_EXISTS) != 0) && ((phi_s1->effects & SQUISH_EFFECT) == 0)) {
             func_802977E4(phi_s1);
             for (j = 0; j < ACTOR_LIST_SIZE; j++) {
                 temp_a1 = &gActorList[j];
 
-                if ((phi_s1->effects & HIT_EFFECT) == 0) {
+                if ((phi_s1->effects & SQUISH_EFFECT) == 0) {
                     // temp_v0 = temp_a1->unk2;
                     if (((temp_a1->flags & 0x8000) != 0) && ((temp_a1->flags & 0x4000) != 0)) {
                         evaluate_collision_between_player_actor(phi_s1, temp_a1);

@@ -1454,7 +1454,7 @@ void func_8005A14C(s32 playerId) {
         } else {
             f32_step_towards(&gObjectList[objectIndex].sizeScaling, 0.6f, 0.02f);
         }
-        if (player->effects & HIT_EFFECT) {
+        if (player->effects & SQUISH_EFFECT) {
             u16_step_up_towards(&gObjectList[objectIndex].direction_angle[0], 0x0C00U, 0x0100U);
         } else {
             u16_step_down_towards(&gObjectList[objectIndex].direction_angle[0], 0, 0x00000100);
@@ -3584,7 +3584,7 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     player->particles[arg1].unk_024 = 0.0f;
     if ((player->unk_044 & 0x20) == 0x20) {
         player->particles[arg1].unk_040 = 0;
-        if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
+        if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
             set_particle_colour(&player->particles[arg1], 0x00FFFF00, 0x0080);
             player->particles[arg1].red = 1;
         } else {
@@ -3593,7 +3593,7 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         }
     } else {
         player->particles[arg1].unk_040 = 1;
-        if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
+        if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
             set_particle_colour(&player->particles[arg1], 0x00FFFF00, 0x0080);
             player->particles[arg1].red = 1;
         } else {
@@ -4260,7 +4260,7 @@ void func_80062C74(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     } else {
         var_f6 = -((player->unk_098 / 6000.0f) + 0.1);
     }
-    if (((player->effects & BOOST_EFFECT) == BOOST_EFFECT) && (player->particles[arg1].timer >= 6)) {
+    if (((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) && (player->particles[arg1].timer >= 6)) {
         player->particles[arg1].scale = player->particles[arg1].scale + 0.06;
     }
     player->particles[arg1].unk_010++;
@@ -6367,7 +6367,7 @@ void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if ((player->effects & BOOST_EFFECT) && (player->type & PLAYER_HUMAN)) {
+        if ((player->effects & MUSHROOM_EFFECT) && (player->type & PLAYER_HUMAN)) {
             func_800621BC(player, arg1, sp28, playerIndex, arg3);
             return;
         }
@@ -6428,7 +6428,7 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
         }
         switch (gActiveScreenMode) {
             case SCREEN_MODE_1P:
-                if (((arg0->effects & HIT_EFFECT) != HIT_EFFECT) && ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
+                if (((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) && ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
                     ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
                     if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100)) {
                         func_80060504(arg0, arg1, sp20, arg2, arg3);
@@ -6440,7 +6440,7 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                if (((arg0->type & 0x4000) != 0) && ((arg0->effects & HIT_EFFECT) != HIT_EFFECT) &&
+                if (((arg0->type & 0x4000) != 0) && ((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) &&
                     ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
                     ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
                     if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100)) {

@@ -956,8 +956,8 @@ void func_80022A98(Player* player, s8 playerIndex) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         func_80026A48(player, playerIndex);
         func_800235AC(player, playerIndex);
-        if (((player->effects & HIT_EFFECT) == HIT_EFFECT) || ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT)) {
-            if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
+        if (((player->effects & SQUISH_EFFECT) == SQUISH_EFFECT) || ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT)) {
+            if ((player->effects & SQUISH_EFFECT) == SQUISH_EFFECT) {
                 func_80022B50(player, playerIndex);
             }
             if ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT) {
@@ -1271,7 +1271,7 @@ void func_800235AC(Player* player, s8 playerIndex) {
 }
 
 void func_80023BF0(Player* player, s8 playerId, s8 screenId, s8 arg3) {
-    if (((player->effects & HIT_EFFECT) == HIT_EFFECT) || ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT)) {
+    if (((player->effects & SQUISH_EFFECT) == SQUISH_EFFECT) || ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT)) {
         func_80022CA8(player, playerId, screenId, arg3);
     } else {
         func_80022E84(player, playerId, screenId, arg3);
@@ -1442,7 +1442,7 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 flipOffset) {
         }
         sp14C[1] = player->unk_048[arg2];
         sp14C[2] = player->unk_050[arg2];
-        if (((s32) player->effects & HIT_EFFECT) == HIT_EFFECT) {
+        if (((s32) player->effects & SQUISH_EFFECT) == SQUISH_EFFECT) {
             func_80062B18(&sp148, &sp144, &sp140, 0.0f, 8.0f, 0.0f, -player->unk_048[arg2], player->unk_050[arg2]);
             sp154[1] = (player->pos[1] - player->boundingBoxSize) + player->unk_108;
             sp154[0] = player->pos[0] + sp148;
