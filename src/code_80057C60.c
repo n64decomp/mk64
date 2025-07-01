@@ -1442,7 +1442,7 @@ void func_8005A14C(s32 playerId) {
     objectIndex = D_8018CE10[playerId].objectIndex;
     lapCount = gLapCountByPlayerId[playerId];
     if (player->type & PLAYER_EXISTS) {
-        if (player->effects & (UNKNOWN_EFFECT_0x20000 | UNKNOWN_EFFECT_0x400 | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) {
+        if (player->effects & (LIGHTNING_STRIKE_EFFECT | HIT_BY_GREEN_SHELL_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) {
             gObjectList[objectIndex].direction_angle[2] += 0x1000;
         } else {
             if (gObjectList[objectIndex].direction_angle[2] != 0) {
@@ -1459,7 +1459,7 @@ void func_8005A14C(s32 playerId) {
         } else {
             u16_step_down_towards(&gObjectList[objectIndex].direction_angle[0], 0, 0x00000100);
         }
-        if (player->effects & (HIT_BY_ITEM_EFFECT | UNKNOWN_EFFECT_0x1000000)) {
+        if (player->effects & (HIT_BY_STAR_EFFECT | EXPLOSION_CRASH_EFFECT)) {
             func_80087D24(objectIndex, 6.0f, 1.5f, 0.0f);
         } else {
             f32_step_towards(&gObjectList[objectIndex].offset[1], 0.0f, 1.0f);
@@ -3824,8 +3824,8 @@ void func_80061754(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3, U
     sp48 = random_int(2U);
     set_particle_position_and_rotation(player, &player->particles[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
     init_new_particle_player(&player->particles[0x1E + arg1], 6, 1.0f);
-    if ((player->effects & HIT_BY_ITEM_EFFECT) || ((player->effects) & UNKNOWN_EFFECT_0x1000000) ||
-        ((player->effects) & UNKNOWN_EFFECT_0x400) || ((player->effects) & BOO_EFFECT)) {
+    if ((player->effects & HIT_BY_STAR_EFFECT) || ((player->effects) & EXPLOSION_CRASH_EFFECT) ||
+        ((player->effects) & HIT_BY_GREEN_SHELL_EFFECT) || ((player->effects) & BOO_EFFECT)) {
         set_particle_colour(&player->particles[0x1E + arg1], 0x00FFFFFF, 0x00A0);
         player->particles[0x1E + arg1].red -= temp_s1;
         player->particles[0x1E + arg1].green -= temp_s1;
@@ -6262,7 +6262,7 @@ void func_8006C6AC(Player* player, s16 arg1, s8 arg2, s8 arg3) {
     } else {
         if (player->unk_0DE & 1) {
             func_80060BCC(player, arg1, sp28, arg2_copy, arg3);
-        } else if (!(player->effects & UNKNOWN_EFFECT_0x8) && !(player->effects & UNKNOWN_EFFECT_0x2)) {
+        } else if (!(player->effects & MIDAIR_EFFECT) && !(player->effects & HOP_EFFECT)) {
             if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) &&
                 ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                 check_drift_particles_setup_valid(player, arg1, sp28, arg2_copy, arg3);
@@ -6271,8 +6271,8 @@ void func_8006C6AC(Player* player, s16 arg1, s8 arg2, s8 arg3) {
                 func_8005EA94(player, arg1, sp28, arg2_copy, arg3);
             } else if (((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) || ((player->effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT)) {
                 func_8005F90C(player, arg1, sp28, arg2_copy, arg3);
-            } else if (((player->effects & UNKNOWN_EFFECT_0x4000) && !(player->type & PLAYER_START_SEQUENCE)) ||
-                       (player->effects & UNKNOWN_EFFECT_0x800) || (player->effects & UNKNOWN_EFFECT_0x20) || (player->unk_044 & 0x4000)) {
+            } else if (((player->effects & EARLY_START_SPINOUT_EFFECT) && !(player->type & PLAYER_START_SEQUENCE)) ||
+                       (player->effects & BANANA_NEAR_SPINOUT_EFFECT) || (player->effects & AB_SPIN_EFFECT) || (player->unk_044 & 0x4000)) {
                 func_8005ED48(player, arg1, sp28, arg2_copy, arg3);
             } else {
                 setup_tyre_particles(player, arg1, sp28, arg2_copy, arg3);
@@ -6336,9 +6336,9 @@ void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
             return;
         }
         if (((((player->unk_0CA & 0x1000) == 0x1000) ||
-              ((player->unk_0E0 < 2) && (player->effects & UNKNOWN_EFFECT_0x1000000))) ||
-             ((player->unk_0E0 < 2) && (player->effects & HIT_BY_ITEM_EFFECT))) ||
-            (player->effects & UNKNOWN_EFFECT_0x400)) {
+              ((player->unk_0E0 < 2) && (player->effects & EXPLOSION_CRASH_EFFECT))) ||
+             ((player->unk_0E0 < 2) && (player->effects & HIT_BY_STAR_EFFECT))) ||
+            (player->effects & HIT_BY_GREEN_SHELL_EFFECT)) {
             func_8006199C(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
@@ -6428,8 +6428,8 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
         }
         switch (gActiveScreenMode) {
             case SCREEN_MODE_1P:
-                if (((arg0->effects & HIT_EFFECT) != HIT_EFFECT) && ((arg0->effects & UNKNOWN_EFFECT_0x400) != UNKNOWN_EFFECT_0x400) &&
-                    ((arg0->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000)) {
+                if (((arg0->effects & HIT_EFFECT) != HIT_EFFECT) && ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
+                    ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
                     if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100)) {
                         func_80060504(arg0, arg1, sp20, arg2, arg3);
                     }
@@ -6441,8 +6441,8 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
                 if (((arg0->type & 0x4000) != 0) && ((arg0->effects & HIT_EFFECT) != HIT_EFFECT) &&
-                    ((arg0->effects & UNKNOWN_EFFECT_0x400) != UNKNOWN_EFFECT_0x400) &&
-                    ((arg0->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000)) {
+                    ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
+                    ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
                     if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100)) {
                         func_80060504(arg0, arg1, sp20, arg2, arg3);
                     }

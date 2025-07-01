@@ -1552,7 +1552,7 @@ bool query_and_resolve_collision_player_actor(Player* player, Vec3f pos, f32 min
         player->pos[0] += (xVelocity / temp_f0_4) * minDist;
         player->pos[2] += (zVelocity / temp_f0_4) * minDist;
     } else {
-        player->effects |= UNKNOWN_EFFECT_0x8000;
+        player->effects |= ENEMY_BONK_EFFECT;
         xDist /= sqrtDist;
         zDist /= sqrtDist;
         temp_f0_5 = sqrtf((xVelocity * xVelocity) + (zVelocity * zVelocity));
@@ -1729,7 +1729,7 @@ bool collision_tree(Player* player, struct Actor* actor) {
         }
     }
     if (!(player->effects & STAR_EFFECT)) {
-        player->effects |= UNKNOWN_EFFECT_0x8000;
+        player->effects |= ENEMY_BONK_EFFECT;
     }
     actorPos[0] = actor->pos[0];
     actorPos[1] = actor->pos[1];
@@ -2077,7 +2077,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             }
             break;
         case ACTOR_BANANA:
-            if (player->effects & (BOO_EFFECT | UNKNOWN_EFFECT_0x800 | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) {
+            if (player->effects & (BOO_EFFECT | BANANA_NEAR_SPINOUT_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) {
                 break;
             }
             if (player->soundEffects & 1) {
@@ -2106,7 +2106,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             destroy_destructable_actor(actor);
             break;
         case ACTOR_GREEN_SHELL:
-            if (player->effects & (BOO_EFFECT | UNKNOWN_EFFECT_0x400)) {
+            if (player->effects & (BOO_EFFECT | HIT_BY_GREEN_SHELL_EFFECT)) {
                 break;
             }
             if (player->soundEffects & 4) {
@@ -2148,7 +2148,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             break;
         case ACTOR_RED_SHELL:
             temp_v1 = actor->rot[2];
-            if (player->effects & UNKNOWN_EFFECT_0x1000000) {
+            if (player->effects & EXPLOSION_CRASH_EFFECT) {
                 break;
             }
             if (player->soundEffects & 2) {

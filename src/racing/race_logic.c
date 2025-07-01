@@ -1155,8 +1155,8 @@ void func_802903D8(Player* playerOne, Player* playerTwo) {
     } else if (playerTwo->effects & STAR_EFFECT) {
         playerOne->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
     } else {
-        playerOne->effects |= UNKNOWN_EFFECT_0x8000;
-        playerTwo->effects |= UNKNOWN_EFFECT_0x8000;
+        playerOne->effects |= ENEMY_BONK_EFFECT;
+        playerTwo->effects |= ENEMY_BONK_EFFECT;
     }
     temp_f0_2 = sqrtf((sp54[0] * sp54[0]) + (sp54[1] * sp54[1]) + (sp54[2] * sp54[2]));
     sp60[0] /= temp_f0;

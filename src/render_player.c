@@ -956,11 +956,11 @@ void func_80022A98(Player* player, s8 playerIndex) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         func_80026A48(player, playerIndex);
         func_800235AC(player, playerIndex);
-        if (((player->effects & HIT_EFFECT) == HIT_EFFECT) || ((player->effects & UNKNOWN_EFFECT_0x8000000) == UNKNOWN_EFFECT_0x8000000)) {
+        if (((player->effects & HIT_EFFECT) == HIT_EFFECT) || ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT)) {
             if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
                 func_80022B50(player, playerIndex);
             }
-            if ((player->effects & UNKNOWN_EFFECT_0x8000000) == UNKNOWN_EFFECT_0x8000000) {
+            if ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT) {
                 func_80022BC4(player, playerIndex);
             }
         } else {
@@ -998,7 +998,7 @@ void func_80022BC4(Player* player, UNUSED s8 playerIndex) {
         temp_f0 *= 0.8;
         temp_v0 = 0;
         if (temp_f0 <= 0.1) {
-            player->effects &= ~UNKNOWN_EFFECT_0x8000000;
+            player->effects &= ~POST_SQUISH_EFFECT;
             temp_f0 = 0.0f;
         }
     }
@@ -1271,7 +1271,7 @@ void func_800235AC(Player* player, s8 playerIndex) {
 }
 
 void func_80023BF0(Player* player, s8 playerId, s8 screenId, s8 arg3) {
-    if (((player->effects & HIT_EFFECT) == HIT_EFFECT) || ((player->effects & UNKNOWN_EFFECT_0x8000000) == UNKNOWN_EFFECT_0x8000000)) {
+    if (((player->effects & HIT_EFFECT) == HIT_EFFECT) || ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT)) {
         func_80022CA8(player, playerId, screenId, arg3);
     } else {
         func_80022E84(player, playerId, screenId, arg3);
@@ -1300,11 +1300,11 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
     spB0 = -coss(temp_t9 << 7) * 2;
     spAC = -sins(temp_t9 << 7) * 2;
 
-    if (((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) ||
-        ((player->effects & UNKNOWN_EFFECT_0x400) == UNKNOWN_EFFECT_0x400) || ((player->effects & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
-        ((player->effects & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) || ((player->effects & UNKNOWN_EFFECT_0x400) == UNKNOWN_EFFECT_0x400) ||
-        ((player->unk_0CA & 2) == 2) || ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) ||
-        ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT) || ((player->effects & UNKNOWN_EFFECT_0x8) == UNKNOWN_EFFECT_0x8)) {
+    if (((player->effects & EXPLOSION_CRASH_EFFECT) == EXPLOSION_CRASH_EFFECT) ||
+        ((player->effects & HIT_BY_GREEN_SHELL_EFFECT) == HIT_BY_GREEN_SHELL_EFFECT) || ((player->effects & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
+        ((player->effects & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) || ((player->effects & HIT_BY_GREEN_SHELL_EFFECT) == HIT_BY_GREEN_SHELL_EFFECT) ||
+        ((player->unk_0CA & 2) == 2) || ((player->effects & HIT_BY_STAR_EFFECT) == HIT_BY_STAR_EFFECT) ||
+        ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT) || ((player->effects & MIDAIR_EFFECT) == MIDAIR_EFFECT)) {
 
         var_f2 = (f32) (1.0 - ((f64) player->collision.surfaceDistance[2] * 0.02));
         if (var_f2 < 0.0f) {
@@ -1435,7 +1435,7 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 flipOffset) {
     } else {
         thing = (u16) (player->unk_048[arg2] + player->rotation[1] + player->unk_0C0);
         temp_v1 = player->unk_0CC[arg2] * sins(thing);
-        if ((player->effects & UNKNOWN_EFFECT_0x8) == UNKNOWN_EFFECT_0x8) {
+        if ((player->effects & MIDAIR_EFFECT) == MIDAIR_EFFECT) {
             sp14C[0] = cameras[arg2].rot[0] - 0x4000;
         } else {
             sp14C[0] = -temp_v1 * 0.8;
@@ -1747,7 +1747,7 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
 void func_80026A48(Player* player, s8 playerIndex) {
     f32 temp_f0;
 
-    if (((player->effects & UNKNOWN_EFFECT_0x4000) == UNKNOWN_EFFECT_0x4000) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
+    if (((player->effects & EARLY_START_SPINOUT_EFFECT) == EARLY_START_SPINOUT_EFFECT) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
         player->tyreSpeed += D_800DDE74[8];
         if (player->tyreSpeed >= 0x400) {
             player->tyreSpeed = 0;
@@ -1779,9 +1779,9 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     s16 temp_t2 = player->tyreSpeed;
     s16 temp_num = 0x40; // setting this as a variable gets rid of regalloc
 
-    if (((player->effects & UNKNOWN_EFFECT_0x4000) == UNKNOWN_EFFECT_0x4000) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
+    if (((player->effects & EARLY_START_SPINOUT_EFFECT) == EARLY_START_SPINOUT_EFFECT) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
         if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) && ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT) &&
-            ((player->effects & UNKNOWN_EFFECT_0x20000) != UNKNOWN_EFFECT_0x20000) && ((player->effects & UNKNOWN_EFFECT_0x80000) != UNKNOWN_EFFECT_0x80000) &&
+            ((player->effects & LIGHTNING_STRIKE_EFFECT) != LIGHTNING_STRIKE_EFFECT) && ((player->effects & UNKNOWN_EFFECT_0x80000) != UNKNOWN_EFFECT_0x80000) &&
             ((player->effects & UNKNOWN_EFFECT_0x800000) != UNKNOWN_EFFECT_0x800000) && ((player->unk_044 & 0x800) == 0)) {
 
             if (frameId <= 20) {
@@ -1811,7 +1811,7 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     } else {
         if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) && ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT) &&
             ((player->effects & UNKNOWN_EFFECT_0x80000) != UNKNOWN_EFFECT_0x80000) && ((player->effects & UNKNOWN_EFFECT_0x800000) != UNKNOWN_EFFECT_0x800000) &&
-            ((player->effects & UNKNOWN_EFFECT_0x20000) != UNKNOWN_EFFECT_0x20000) && ((player->unk_044 & 0x800) == 0)) {
+            ((player->effects & LIGHTNING_STRIKE_EFFECT) != LIGHTNING_STRIKE_EFFECT) && ((player->unk_044 & 0x800) == 0)) {
 
             if (frameId <= 20) {
                 load_player_data_non_blocking(player,

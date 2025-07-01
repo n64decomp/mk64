@@ -1353,13 +1353,13 @@ void update_vehicles(void) {
 
 void play_cpu_sound_effect(s32 arg0, Player* player) {
     if (D_80163398[arg0] >= 0xB) {
-        if ((player->effects & BANANA_SPINOUT_EFFECT) || (player->effects & DRIVING_SPINOUT_EFFECT) || (player->effects & UNKNOWN_EFFECT_0x20000)) {
+        if ((player->effects & BANANA_SPINOUT_EFFECT) || (player->effects & DRIVING_SPINOUT_EFFECT) || (player->effects & LIGHTNING_STRIKE_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0A));
             D_80163398[arg0] = 0;
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->soundEffects & REVERSE_EFFECT) || (player->soundEffects & 0x01000000) ||
+        if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) ||
             (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & HIT_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0B));
             D_801633B0[arg0] = 0;
@@ -1543,7 +1543,7 @@ void update_player(s32 playerId) {
                     determine_ideal_cpu_position_offset(playerId, gCurrentNearestPathPoint);
                     distX = gOffsetPosition[0] - player->pos[0];
                     minAngle = gOffsetPosition[2] - player->pos[2];
-                    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) && !(player->effects & UNKNOWN_EFFECT_0x800)) {
+                    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) && !(player->effects & BANANA_NEAR_SPINOUT_EFFECT)) {
                         if (((distX * distX) + (minAngle * minAngle)) > 6400.0f) {
                             if (gPlayerPathIndex == 0) {
                                 func_8000B140(playerId);
@@ -1702,7 +1702,7 @@ void update_player(s32 playerId) {
                     D_801630E8[playerId] = 0;
                     player->effects &= ~DRIFTING_EFFECT;
                 }
-                if (player->effects & UNKNOWN_EFFECT_0x2) {
+                if (player->effects & HOP_EFFECT) {
                     switch (D_801630E8[playerId]) {
                         case 1:
                             newAngle = 0x0035;
@@ -1715,7 +1715,7 @@ void update_player(s32 playerId) {
                                 (gPreviousAngleSteering[playerId] + ((angle * steeringSensitivity) / minAngle)) / 2;
                             break;
                     }
-                } else if (player->effects & (UNKNOWN_EFFECT_0x10000000 | UNKNOWN_EFFECT_0xC)) {
+                } else if (player->effects & (UNKNOWN_EFFECT_0x10000000 | MIDAIR_EFFECT | BOOST_RAMP_WOOD_EFFECT)) {
                     newAngle = 0;
                 } else {
                     newAngle = (gPreviousAngleSteering[playerId] + ((angle * steeringSensitivity) / minAngle)) / 2;
@@ -1724,7 +1724,7 @@ void update_player(s32 playerId) {
                 gPreviousAngleSteering[playerId] = newAngle;
                 if ((gIsPlayerInCurve[playerId] == true) || (D_801630E8[playerId] == 1) ||
                     (D_801630E8[playerId] == -1) ||
-                    (player->effects & (UNKNOWN_EFFECT_0x10000000 | UNKNOWN_EFFECT_0xC))) {
+                    (player->effects & (UNKNOWN_EFFECT_0x10000000 | MIDAIR_EFFECT | BOOST_RAMP_WOOD_EFFECT))) {
                     cpu_TargetSpeed[playerId] = GET_COURSE_cpu_CurveTargetSpeed(gCCSelection);
                 } else {
                     cpu_TargetSpeed[playerId] = GET_COURSE_cpu_NormalTargetSpeed(gCCSelection);
@@ -3708,7 +3708,7 @@ void func_8001A450(s32 playerId, s32 arg1, s32 arg2) {
     s16 pathPoint;
     s32 temp_v0;
 
-    if (!(gPlayers[playerId].effects & (UNKNOWN_EFFECT_0x10000000 | UNKNOWN_EFFECT_0xC))) {
+    if (!(gPlayers[playerId].effects & (UNKNOWN_EFFECT_0x10000000 | MIDAIR_EFFECT | BOOST_RAMP_WOOD_EFFECT))) {
         temp_v1 = D_80164680[arg1];
         pathPoint = gNearestPathPointByCameraId[arg1];
         temp_v0 = func_8001A310(pathPoint, (temp_v1 + 1) % 10);
@@ -4550,12 +4550,12 @@ void func_8001C14C(void) {
                         D_80163480 = 0;
                     }
                 } else if (D_8016347E == 0) {
-                    if (!(temp_s0->effects & UNKNOWN_EFFECT_0x1000000)) {
+                    if (!(temp_s0->effects & EXPLOSION_CRASH_EFFECT)) {
                         temp_s0->type |= 0x2000;
                     }
                     D_8016347E = 1;
                     D_80163484 = 0;
-                } else if (!(temp_s0->effects & UNKNOWN_EFFECT_0x1000000)) {
+                } else if (!(temp_s0->effects & EXPLOSION_CRASH_EFFECT)) {
                     temp_s0->type |= 0x2000;
                 }
             }
