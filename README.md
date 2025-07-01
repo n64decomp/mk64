@@ -21,9 +21,12 @@ It supports and builds the following versions:
 
 ```
 git submodule update --init --recursive
+OR
+git clone https://github.com/n64decomp/mk64 --recurse-submodules
 ```
 Extract assets
 ```
+make -C tools -j
 make assets -j
 make -j
 ```

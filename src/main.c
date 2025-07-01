@@ -35,7 +35,7 @@
 #include "render_player.h"
 #include "render_courses.h"
 #include "actors.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include <debug.h>
 #include "crash_screen.h"
 #include "buffers/gfx_output_buffer.h"
@@ -595,7 +595,7 @@ void race_logic_loop(void) {
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
             gTickSpeed = 2;
-            staff_ghosts_loop();
+            replays_loop();
             if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {

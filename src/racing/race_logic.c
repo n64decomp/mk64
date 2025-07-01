@@ -8,7 +8,7 @@
 
 #include "camera.h"
 #include "path.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "main.h"
 #include "code_800029B0.h"
 #include "code_80057C60.h"
@@ -813,7 +813,7 @@ void func_8028F970(void) {
             gIsGamePaused = (controller - gControllerOne) + 1;
             controller->buttonPressed = 0;
             func_800C9F90(1);
-            D_80162DF0 = 1;
+            gPauseTriggered = 1;
             if (gModeSelection == TIME_TRIALS) {
                 if (gPlayerOne->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
                     func_80005AE8(gPlayerOne);
@@ -945,7 +945,7 @@ void func_8028FCBC(void) {
                 D_800DC5B0 = 0;
                 D_800DC5B8 = 1;
                 func_80078F64();
-                if ((gModeSelection == TIME_TRIALS) && (D_80162DD6 == 0)) {
+                if ((gModeSelection == TIME_TRIALS) && (bCourseGhostDisabled == 0)) {
                     phi_v0_4 = 0x1;
                     for (i = 0; i < gCurrentCourseId; i++) {
                         phi_v0_4 <<= 1;
