@@ -1234,7 +1234,8 @@ s32 func_80089E18(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
         for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & (BOO_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) &&
+            if ((gObjectList[objectIndex].state != 0) &&
+                !(player->effects & (BOO_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) &&
                 (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (player->effects & STAR_EFFECT) {
                     var_s6 = 1;
@@ -1256,7 +1257,8 @@ s32 func_80089F24(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
         for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & (BOO_EFFECT | STAR_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT))) {
+            if ((gObjectList[objectIndex].state != 0) &&
+                !(player->effects & (BOO_EFFECT | STAR_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT))) {
                 if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) &&
                     (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                     var_s7 = 1;

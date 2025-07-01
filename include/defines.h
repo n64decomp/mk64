@@ -347,6 +347,7 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  * @brief effect of player's
  * for effects
  */
+// clang-format off
 #define BRAKING_EFFECT                   0x1 // pressing brake
 #define HOP_EFFECT                       0x2 // from when you hop to when you land
 #define BOOST_RAMP_WOOD_EFFECT           0x4 // being boosted by DKJP ramp
@@ -380,6 +381,7 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define LIGHTNING_EFFECT          0x40000000 // suffering the effects of lightning
 #define BOO_EFFECT                0x80000000 // being a boo
 #define ALL_EFFECTS               0xFFFFFFFF
+// clang-format on
 
 /**
  * @brief durations of effects

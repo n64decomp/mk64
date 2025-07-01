@@ -149,7 +149,8 @@ void clean_effect(Player* player, s8 playerIndex) {
         func_8008C6D0(player, playerIndex);
     }
 
-    if (((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) || (player->effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) {
+    if (((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
+        (player->effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) {
         func_8008C8C4(player, playerIndex);
     }
     if ((player->effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT) {
@@ -257,7 +258,8 @@ void func_8008C6D0(Player* player, s8 playerIndex) {
 
 void func_8008C73C(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
-    if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) && ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT)) {
+    if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) &&
+        ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT)) {
         player->effects &= ~DRIFTING_EFFECT;
 
         if ((player->unk_0C0 / 182) >= 0) {
@@ -863,7 +865,8 @@ void apply_hit_rotating_sound_effect(Player* player, s8 playerIndex) {
 
 void apply_lightning_effect(Player* player, s8 playerIndex) {
     s16 test;
-    if (((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT) && ((player->effects & SQUISH_EFFECT) != SQUISH_EFFECT)) {
+    if (((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT) &&
+        ((player->effects & SQUISH_EFFECT) != SQUISH_EFFECT)) {
         player->effects &= ~LIGHTNING_STRIKE_EFFECT;
         player->unk_0A8 = 0;
         player->unk_07C = 0;
@@ -982,7 +985,8 @@ void func_8008E4A4(Player* player, s8 playerIndex) {
                 if (gModeSelection == BATTLE) {
                     pop_player_balloon(player, playerIndex);
                 }
-                if ((gIsPlayerTripleAButtonCombo[playerIndex] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+                if ((gIsPlayerTripleAButtonCombo[playerIndex] == true) &&
+                    ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                     player->currentSpeed += 100.0f;
                 }
 
@@ -1089,7 +1093,8 @@ void apply_hit_by_star_effect(Player* player, s8 playerIndex) {
                 D_80165190[2][playerIndex] = 1;
                 D_80165190[3][playerIndex] = 1;
                 player->unk_042 = 0;
-                if ((gIsPlayerTripleAButtonCombo[playerIndex] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+                if ((gIsPlayerTripleAButtonCombo[playerIndex] == true) &&
+                    ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                     player->currentSpeed += 100.0f;
                 }
 
@@ -1972,10 +1977,11 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
     }
 }
 
-#define BLOCK_ITEM_USE_EFFECTS                                                                            \
-    LIGHTNING_EFFECT | UNKNOWN_EFFECT_0x10000000 | POST_SQUISH_EFFECT | SQUISH_EFFECT | HIT_BY_STAR_EFFECT | EXPLOSION_CRASH_EFFECT | UNKNOWN_EFFECT_0x800000 |     \
-        BOOST_RAMP_ASPHALT_EFFECT | LIGHTNING_STRIKE_EFFECT | TERRAIN_TUMBLE_EFFECT | EARLY_START_SPINOUT_EFFECT | BANANA_NEAR_SPINOUT_EFFECT | HIT_BY_GREEN_SHELL_EFFECT | STAR_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT | \
-        BOOST_RAMP_WOOD_EFFECT
+#define BLOCK_ITEM_USE_EFFECTS                                                                                        \
+    LIGHTNING_EFFECT | UNKNOWN_EFFECT_0x10000000 | POST_SQUISH_EFFECT | SQUISH_EFFECT | HIT_BY_STAR_EFFECT |          \
+        EXPLOSION_CRASH_EFFECT | UNKNOWN_EFFECT_0x800000 | BOOST_RAMP_ASPHALT_EFFECT | LIGHTNING_STRIKE_EFFECT |      \
+        TERRAIN_TUMBLE_EFFECT | EARLY_START_SPINOUT_EFFECT | BANANA_NEAR_SPINOUT_EFFECT | HIT_BY_GREEN_SHELL_EFFECT | \
+        STAR_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT | BOOST_RAMP_WOOD_EFFECT
 
 bool prevent_item_use(Player* player) {
     s32 phi_v0 = 0;

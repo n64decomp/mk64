@@ -2077,7 +2077,8 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             }
             break;
         case ACTOR_BANANA:
-            if (player->effects & (BOO_EFFECT | BANANA_NEAR_SPINOUT_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) {
+            if (player->effects &
+                (BOO_EFFECT | BANANA_NEAR_SPINOUT_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) {
                 break;
             }
             if (player->soundEffects & 1) {

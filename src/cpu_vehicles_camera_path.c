@@ -1353,14 +1353,15 @@ void update_vehicles(void) {
 
 void play_cpu_sound_effect(s32 arg0, Player* player) {
     if (D_80163398[arg0] >= 0xB) {
-        if ((player->effects & BANANA_SPINOUT_EFFECT) || (player->effects & DRIVING_SPINOUT_EFFECT) || (player->effects & LIGHTNING_STRIKE_EFFECT)) {
+        if ((player->effects & BANANA_SPINOUT_EFFECT) || (player->effects & DRIVING_SPINOUT_EFFECT) ||
+            (player->effects & LIGHTNING_STRIKE_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0A));
             D_80163398[arg0] = 0;
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) ||
-            (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & SQUISH_EFFECT)) {
+        if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) || (player->soundEffects & 2) ||
+            (player->soundEffects & 4) || (player->effects & SQUISH_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0B));
             D_801633B0[arg0] = 0;
         }
@@ -1543,7 +1544,8 @@ void update_player(s32 playerId) {
                     determine_ideal_cpu_position_offset(playerId, gCurrentNearestPathPoint);
                     distX = gOffsetPosition[0] - player->pos[0];
                     minAngle = gOffsetPosition[2] - player->pos[2];
-                    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) && !(player->effects & BANANA_NEAR_SPINOUT_EFFECT)) {
+                    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) &&
+                        !(player->effects & BANANA_NEAR_SPINOUT_EFFECT)) {
                         if (((distX * distX) + (minAngle * minAngle)) > 6400.0f) {
                             if (gPlayerPathIndex == 0) {
                                 func_8000B140(playerId);
