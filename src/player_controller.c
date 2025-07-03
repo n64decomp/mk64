@@ -1085,7 +1085,7 @@ void func_8002A5F4(Vec3f arg0, f32 arg1, Vec3f arg2, f32 arg3, f32 arg4) {
 
 void func_8002A704(Player* player, s8 playerIndex) {
     player->effects |= BOOST_EFFECT;
-    player->soundEffects &= ~0x02000000;
+    player->soundEffects &= ~START_BOOST_SOUND_EFFECT;
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_800C90F4(0U, (player->characterId * 0x10) + 0x29008001);
@@ -1351,25 +1351,28 @@ void func_8002B218(Player* player) {
 }
 
 void apply_sound_effect(Player* player, s8 playerId, UNUSED s8 screenId) {
-    if ((player->soundEffects & 2) == 2) {
+    /*if (playerId == 0){
+        print_timer(playerHUD[0].timerX, playerHUD[0].timerY, playerHUD[0].someTimer);
+    }*/
+    if ((player->soundEffects & HIT_RED_BLUE_MOLE_SOUND_EFFECT) == HIT_RED_BLUE_MOLE_SOUND_EFFECT) {
         apply_hit_by_item_sound_effect(player, playerId);
     }
-    if ((player->soundEffects & 4) == 4) {
+    if ((player->soundEffects & HIT_GREEN_SHELL_SOUND_EFFECT) == HIT_GREEN_SHELL_SOUND_EFFECT) {
         func_8008C528(player, playerId);
     }
-    if ((player->soundEffects & 1) == 1) {
+    if ((player->soundEffects & HIT_BANANA_SOUND_EFFECT) == HIT_BANANA_SOUND_EFFECT) {
         func_8008CDC0(player, playerId);
     }
     if ((player->soundEffects & BOOST_SOUND_EFFECT) == BOOST_SOUND_EFFECT) {
         apply_boost_sound_effect(player, playerId);
     }
-    if ((player->soundEffects & 0x02000000) == 0x02000000) {
+    if ((player->soundEffects & START_BOOST_SOUND_EFFECT) == START_BOOST_SOUND_EFFECT) {
         func_8002A704(player, playerId);
     }
-    if ((player->soundEffects & 0x1000) == 0x1000) {
+    if ((player->soundEffects & UNUSED_SOUND_EFFECT_0x1000) == UNUSED_SOUND_EFFECT_0x1000) {
         func_8008D570(player, playerId);
     }
-    if ((player->soundEffects & 0x20000) == 0x20000) {
+    if ((player->soundEffects & UNUSED_SOUND_EFFECT_0x20000) == UNUSED_SOUND_EFFECT_0x20000) {
         func_8008D7B0(player, playerId);
     }
     if ((player->soundEffects & HIT_SOUND_EFFECT) == HIT_SOUND_EFFECT) {
@@ -1378,7 +1381,7 @@ void apply_sound_effect(Player* player, s8 playerId, UNUSED s8 screenId) {
     if ((player->soundEffects & HIT_ROTATING_SOUND_EFFECT) == HIT_ROTATING_SOUND_EFFECT) {
         apply_hit_rotating_sound_effect(player, playerId);
     }
-    if ((player->soundEffects & 0x200000) == 0x200000) {
+    if ((player->soundEffects & SPINOUT_SOUND_EFFECT) == SPINOUT_SOUND_EFFECT) {
         func_8008C73C(player, playerId);
     }
     if ((player->soundEffects & REVERSE_SOUND_EFFECT) == REVERSE_SOUND_EFFECT) {
@@ -1399,10 +1402,10 @@ void apply_sound_effect(Player* player, s8 playerId, UNUSED s8 screenId) {
     if ((player->soundEffects & BOO_SOUND_EFFECT) == BOO_SOUND_EFFECT) {
         apply_boo_sound_effect(player, playerId);
     }
-    if (player->soundEffects & 0x80) {
+    if (player->soundEffects & DRIVING_SPINOUT_SOUND_EFFECT) {
         func_8008D0FC(player, playerId);
     }
-    if (player->soundEffects & 0x80000) {
+    if (player->soundEffects & HIT_PADDLE_BOAT_SOUND_EFFECT) {
         apply_reverse_sound_effect(player, playerId);
     }
 }
@@ -1980,10 +1983,10 @@ void apply_effect(Player* player, s8 playerIndex, s8 arg2) {
         player_decelerate_alternative(player, 10.0f);
     }
     if (D_800DC510 != 5) {
-        if (player->soundEffects & 0x04000000) {
+        if (player->soundEffects & LOSE_BATTLE_SOUND_EFFECT) {
             func_8008FC64(player, playerIndex);
         }
-        if (player->soundEffects & 0x08000000) {
+        if (player->soundEffects & UNKNOWN_SOUND_EFFECT_0x08000000) {
             func_8008FCDC(player, playerIndex);
         }
     }
@@ -3321,7 +3324,7 @@ void player_accelerate_alternative(Player* player) {
     player->unk_044 |= 0x20;
     if ((player->soundEffects * 8) < 0) {
         func_8008F104(player, player_index);
-        player->soundEffects &= 0xEFFFFFFF;
+        player->soundEffects &= ~START_SPINOUT_SOUND_EFFECT;
     }
 }
 
@@ -3345,7 +3348,7 @@ void player_decelerate_alternative(Player* player, f32 speed) {
     player->unk_044 &= 0xFFDF;
     if ((player->soundEffects * 8) < 0) {
         func_8008F104(player, player_index);
-        player->soundEffects &= 0xEFFFFFFF;
+        player->soundEffects &= ~START_SPINOUT_SOUND_EFFECT;
     }
 }
 
@@ -3585,11 +3588,11 @@ void player_accelerate_during_start_sequence(Player* player) {
             var_v0 = 8;
         }
         if ((time_delta < var_v0) && ((player->unk_044 & 0x20) != 0x20)) {
-            player->soundEffects |= 0x02000000;
+            player->soundEffects |= START_BOOST_SOUND_EFFECT;
         } else if ((player->topSpeed * 0.9f) <= player->currentSpeed) {
-            if ((player->soundEffects & 0x02000000) != 0x02000000) {
-                player->soundEffects |= 0x10000000;
-                player->soundEffects &= ~0x02000000;
+            if ((player->soundEffects & START_BOOST_SOUND_EFFECT) != START_BOOST_SOUND_EFFECT) {
+                player->soundEffects |= START_SPINOUT_SOUND_EFFECT;
+                player->soundEffects &= ~START_BOOST_SOUND_EFFECT;
             }
         }
     }
@@ -3609,9 +3612,9 @@ void player_decelerate_during_start_sequence(Player* player, f32 speedReduction)
         player->currentSpeed = player->topSpeed;
     }
     if ((f64) player->currentSpeed <= (player->topSpeed * 0.7)) {
-        player->soundEffects &= ~0x10000000;
+        player->soundEffects &= ~START_SPINOUT_SOUND_EFFECT;
     }
-    player->soundEffects &= ~0x02000000;
+    player->soundEffects &= ~START_BOOST_SOUND_EFFECT;
     player->unk_044 &= ~0x0020;
     player->unk_098 = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
@@ -3860,7 +3863,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
               (!(player->effects & 8))) &&
              (((player->speed / 18.0f) * 216.0f) >= 40.0f)) &&
             (player->unk_204 == 0)) {
-            player->soundEffects |= 0x80;
+            player->soundEffects |= DRIVING_SPINOUT_SOUND_EFFECT;
         }
     }
     if (((s32) player->tyres[BACK_RIGHT].surfaceType) < 0xF) {

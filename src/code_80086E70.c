@@ -1239,7 +1239,7 @@ s32 func_80089E18(s32 objectIndex) {
                 if (player->effects & STAR_EFFECT) {
                     var_s6 = 1;
                 } else {
-                    player->soundEffects |= 1;
+                    player->soundEffects |= HIT_BANANA_SOUND_EFFECT;
                 }
             }
         }
@@ -1263,7 +1263,7 @@ s32 func_80089F24(s32 objectIndex) {
                     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
-                    player->soundEffects |= 0x200000;
+                    player->soundEffects |= SPINOUT_SOUND_EFFECT;
                 }
             }
         }

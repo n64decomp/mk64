@@ -1359,8 +1359,8 @@ void play_cpu_sound_effect(s32 arg0, Player* player) {
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->soundEffects & REVERSE_EFFECT) || (player->soundEffects & 0x01000000) ||
-            (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & HIT_EFFECT)) {
+        if ((player->soundEffects & REVERSE_EFFECT) || (player->soundEffects & HIT_BY_ITEM_SOUND_EFFECT) ||
+            (player->soundEffects & HIT_RED_BLUE_MOLE_SOUND_EFFECT) || (player->soundEffects & HIT_GREEN_SHELL_SOUND_EFFECT) || (player->effects & HIT_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0B));
             D_801633B0[arg0] = 0;
         }
@@ -2216,7 +2216,7 @@ void init_players(void) {
 
             for (i = 0; i < NUM_PLAYERS; i++) {
                 if (D_80163330[i] == 1) {
-                    gPlayers[i].soundEffects |= 0x02000000;
+                    gPlayers[i].soundEffects |= START_BOOST_SOUND_EFFECT;
                 }
             }
         }

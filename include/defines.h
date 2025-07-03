@@ -332,16 +332,31 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  * @brief sound effect of player's
  * for soundEffect
  */
-#define HIT_SOUND_EFFECT 0x100                   // hitting an object
-#define BOOST_SOUND_EFFECT 0x200                 // being boosted by trigger a mushroom
+ /*
+*/
+#define HIT_BANANA_SOUND_EFFECT 0x1              // hits a banana
+#define HIT_RED_BLUE_MOLE_SOUND_EFFECT 0x2       // hit by a red shell, blue shell, or hit a mole
+#define HIT_GREEN_SHELL_SOUND_EFFECT 0x4         // hit by a green shell
+#define DRIVING_SPINOUT_SOUND_EFFECT 0x80        // spinning out from erratic driving
+#define HIT_SOUND_EFFECT 0x100                   // hitting an object (actually, stomped by thwomp)
+#define BOOST_SOUND_EFFECT 0x200                 // being boosted by trigger a mushroom //correct
 #define BOO_SOUND_EFFECT 0x800                   // being a boo
-#define STAR_SOUND_EFFECT 0x2000                 // being a star
-#define HIT_ROTATING_SOUND_EFFECT 0x4000         // hitting a rotating object
-#define BOOST_RAMP_WOOD_SOUND_EFFECT 0x8000      // being boosted by a ramp
-#define HOLD_BANANA_SOUND_EFFECT 0x40000         // holding a banana
-#define REVERSE_SOUND_EFFECT 0x400000            // being in the wrong direction
-#define BOOST_RAMP_ASPHALT_SOUND_EFFECT 0x800000 // being boosted by a boost pad
-#define HIT_BY_ITEM_SOUND_EFFECT 0x1000000       // being hit by an item
+#define UNUSED_SOUND_EFFECT_0x1000 0x1000
+#define STAR_SOUND_EFFECT 0x2000                 // Starting a star
+#define HIT_ROTATING_SOUND_EFFECT 0x4000         // hitting a rotating object (actually struck by lightning)
+#define BOOST_RAMP_WOOD_SOUND_EFFECT 0x8000      // being boosted by a ramp //confirmed
+#define UNUSED_SOUND_EFFECT_0x20000 0x20000
+#define HOLD_BANANA_SOUND_EFFECT 0x40000         // holding a banana (or a banana bunch or a fake item block)// confirmed but ongoing, so not really a sound effect
+#define HIT_PADDLE_BOAT_SOUND_EFFECT 0x80000     //hit paddle boat
+#define UNUSED_SOUND_EFFECT_0x10000 0x100000
+#define SPINOUT_SOUND_EFFECT 0x200000            // hit crab or spiny spinout or losing versus race
+#define REVERSE_SOUND_EFFECT 0x400000            // being in the wrong direction (actually hitting a fake item)
+#define BOOST_RAMP_ASPHALT_SOUND_EFFECT 0x800000 // being boosted by a boost pad // confirmed but not every time
+#define HIT_BY_ITEM_SOUND_EFFECT 0x1000000       // being hit by an item (actually a star)
+#define START_BOOST_SOUND_EFFECT 0x2000000       // Start boost sound effect
+#define LOSE_BATTLE_SOUND_EFFECT 0x4000000       // When losing battle mode
+#define UNKNOWN_SOUND_EFFECT_0x08000000 0x08000000 // Related to battle mode. Becoming a bomb?
+#define START_SPINOUT_SOUND_EFFECT 0x10000000    // Spinning out by holding gas at start of race
 
 /**
  * @brief effect of player's

@@ -134,7 +134,7 @@ UNUSED void func_unnamed33(void) {
 }
 
 void func_8008C310(Player* player) {
-    if ((player->soundEffects & 2) || (player->soundEffects & 4) || ((player->soundEffects << 9) < 0) ||
+    if ((player->soundEffects & HIT_RED_BLUE_MOLE_SOUND_EFFECT) || (player->soundEffects & HIT_GREEN_SHELL_SOUND_EFFECT) || ((player->soundEffects << 9) < 0) ||
         (player->soundEffects & HIT_BY_ITEM_SOUND_EFFECT)) {
         player->unk_0B6 = ((u16) player->unk_0B6 | 0x1000);
     }
@@ -216,7 +216,7 @@ void func_8008C528(Player* player, s8 playerIndex) {
     } else {
         play_cpu_sound_effect(playerIndex, player);
     }
-    player->soundEffects = (s32) (player->soundEffects & ~4);
+    player->soundEffects = (s32) (player->soundEffects & ~HIT_GREEN_SHELL_SOUND_EFFECT);
 }
 
 void func_8008C62C(Player* player, s8 playerIndex) {
@@ -372,7 +372,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
 void func_8008CDC0(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
 
-    player->soundEffects &= ~1;
+    player->soundEffects &= ~HIT_BANANA_SOUND_EFFECT;
     player->unk_0B4 = 0;
     player->unk_0B8 = 3.0f;
     player->unk_0AC = 1;
@@ -444,7 +444,7 @@ void func_8008D0E4(Player* player, UNUSED s8 playerIndex) {
 void func_8008D0FC(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
 
-    player->soundEffects &= ~0x80;
+    player->soundEffects &= ~DRIVING_SPINOUT_SOUND_EFFECT;
     player->unk_0B4 = 0;
     player->unk_0B8 = 2.0f;
     player->unk_0AC = 1;
@@ -559,7 +559,7 @@ void func_8008D570(Player* player, s8 playerIndex) {
     player->unk_0AE = player->rotation[1];
     player->effects |= 0x80000;
     player->effects &= ~0x10;
-    player->soundEffects &= ~0x1000;
+    player->soundEffects &= ~UNUSED_SOUND_EFFECT_0x1000;
     player->kartHopJerk = D_800E3730[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = (f32) D_800E3710[player->characterId];
@@ -618,7 +618,7 @@ void func_8008D7B0(Player* player, s8 playerIndex) {
     player->unk_0AE = player->rotation[1];
     player->effects |= 0x800000;
     player->effects &= ~0x10;
-    player->soundEffects &= ~0x20000;
+    player->soundEffects &= ~UNUSED_SOUND_EFFECT_0x20000;
     player->kartHopJerk = D_800E3770[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = D_800E3750[player->characterId];
@@ -704,7 +704,7 @@ void apply_hit_sound_effect(Player* player, s8 playerIndex) {
         player->unk_D9C = 0.0f;
         player->unk_DA0 = 65.0f;
 
-        if ((player->soundEffects & 0x100) != 0) {
+        if ((player->soundEffects & HIT_SOUND_EFFECT) != 0) {
             player->unk_046 |= 0x80;
         }
 
@@ -738,7 +738,7 @@ void apply_hit_effect(Player* player, s8 playerIndex) {
             }
 
             if ((player->unk_046 & 0x80) != 0) {
-                if ((player->soundEffects & 0x100) == 0) {
+                if ((player->soundEffects & HIT_SOUND_EFFECT) == 0) {
                     D_8018D990[playerIndex] = 1;
                     player->unk_238 = 0;
                     if ((player->type & PLAYER_HUMAN) != 0) {
@@ -1025,7 +1025,7 @@ void apply_reverse_sound_effect(Player* player, s8 playerIndex) {
         play_cpu_sound_effect(playerIndex, player);
     }
 
-    player->soundEffects &= ~(REVERSE_SOUND_EFFECT | 0x80000);
+    player->soundEffects &= ~(REVERSE_SOUND_EFFECT | HIT_PADDLE_BOAT_SOUND_EFFECT);
     player->unk_0B6 |= 0x40;
     gTimerBoostTripleACombo[playerIndex] = 0;
     gIsPlayerTripleAButtonCombo[playerIndex] = false;
@@ -1126,7 +1126,7 @@ void apply_hit_by_item_sound_effect(Player* player, s8 playerIndex) {
 
     player->effects |= HIT_BY_ITEM_EFFECT;
     player->unk_0B6 |= 0x40;
-    player->soundEffects &= ~0x01000002;
+    player->soundEffects &= ~(HIT_BY_ITEM_SOUND_EFFECT | HIT_RED_BLUE_MOLE_SOUND_EFFECT);
 
     gTimerBoostTripleACombo[playerIndex] = 0;
     gIsPlayerTripleAButtonCombo[playerIndex] = false;
@@ -1522,8 +1522,8 @@ void func_8008FC64(Player* player, s8 arg1) {
     player->alpha -= 4;
     if (player->alpha < 5) {
         player->alpha = ALPHA_MIN;
-        player->soundEffects &= 0xFBFFFFFF;
-        player->soundEffects |= 0x08000000;
+        player->soundEffects &= ~LOSE_BATTLE_SOUND_EFFECT;
+        player->soundEffects |= UNKNOWN_SOUND_EFFECT_0x08000000;
         player->type |= PLAYER_UNKNOWN_0x40;
 
         func_8008FDA8(player, arg1);
@@ -1535,7 +1535,7 @@ void func_8008FCDC(Player* player, s8 playerIndex) {
     player->alpha += 2;
     if (player->alpha >= 0xF0) {
         player->alpha = ALPHA_MAX;
-        player->soundEffects &= ~0x08000000;
+        player->soundEffects &= ~UNKNOWN_SOUND_EFFECT_0x08000000;
     }
 
     func_80056A40(playerIndex, (u32) player->alpha);
@@ -1544,7 +1544,7 @@ void func_8008FCDC(Player* player, s8 playerIndex) {
 void func_8008FD4C(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
 
-    player->soundEffects |= 0x04000000;
+    player->soundEffects |= LOSE_BATTLE_SOUND_EFFECT;
     player->unk_044 |= 0x200;
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
@@ -1571,7 +1571,7 @@ void func_8008FDF4(Player* player, s8 playerIndex) {
     player->kartHopJerk = D_800E37F0[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = D_800E37D0[player->characterId];
-    player->soundEffects &= ~0x00100000;
+    player->soundEffects &= ~UNUSED_SOUND_EFFECT_0x10000;
     player->effects |= UNKNOWN_EFFECT_0x10000000;
 }
 

@@ -139,7 +139,7 @@ void func_8000DF8C(s32 bombKartId) {
                     if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) + (temp_f12 * temp_f12)) < 25.0f) {
                         var_s1 = 0;
                         sp7E = 4;
-                        var_v0->soundEffects |= 0x400000;
+                        var_v0->soundEffects |= REVERSE_SOUND_EFFECT;
                         var_v0->type &= ~0x2000;
                     }
                 }
@@ -155,9 +155,9 @@ void func_8000DF8C(s32 bombKartId) {
                             sp7E = 4;
                             var_s1 = 0;
                             if (gCurrentCourseId == COURSE_FRAPPE_SNOWLAND) {
-                                var_v0->soundEffects |= 0x01000000;
+                                var_v0->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
                             } else {
-                                var_v0->soundEffects |= 0x400000;
+                                var_v0->soundEffects |= REVERSE_SOUND_EFFECT;
                             }
                         }
                     }

@@ -621,7 +621,7 @@ void handle_paddle_boats_interactions(Player* player) {
                                                      tempPaddleWheelBoat->velocity[0], tempPaddleWheelBoat->velocity[2],
                                                      200.0f, 60.0f, playerX, playerZ) == 1) &&
                             (y_diff < 60.0)) {
-                            player->soundEffects |= 0x80000;
+                            player->soundEffects |= HIT_PADDLE_BOAT_SOUND_EFFECT;
                         }
                     }
                 }

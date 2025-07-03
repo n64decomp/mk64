@@ -565,7 +565,7 @@ void func_8028EF28(void) {
                                 }
                                 D_800DC510 = 5;
                                 i = gPlayerPositionLUT[1];
-                                gPlayers[i].soundEffects |= 0x200000;
+                                gPlayers[i].soundEffects |= SPINOUT_SOUND_EFFECT;
                                 gPlayers[i].type |= PLAYER_CPU;
                                 func_800CA118((u8) i);
                                 break;
@@ -583,7 +583,7 @@ void func_8028EF28(void) {
                                     if (*(gNmiUnknown2 + i * 3 + 2) > 99) {
                                         *(gNmiUnknown2 + i * 3 + 2) = 99;
                                     }
-                                    gPlayers[i].soundEffects |= 0x200000;
+                                    gPlayers[i].soundEffects |= SPINOUT_SOUND_EFFECT;
                                     gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8) i);
                                 }
@@ -598,7 +598,7 @@ void func_8028EF28(void) {
                                 if (currentPosition == 2) {
                                     D_800DC510 = 5;
                                     i = gPlayerPositionLUT[3];
-                                    gPlayers[i].soundEffects |= 0x200000;
+                                    gPlayers[i].soundEffects |= SPINOUT_SOUND_EFFECT;
                                     gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8) i);
                                 }
