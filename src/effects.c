@@ -135,7 +135,7 @@ UNUSED void func_unnamed33(void) {
 
 void func_8008C310(Player* player) {
     if ((player->soundEffects & HIT_RED_BLUE_MOLE_SOUND_EFFECT) || (player->soundEffects & HIT_GREEN_SHELL_SOUND_EFFECT) || ((player->soundEffects << 9) < 0) ||
-        (player->soundEffects & HIT_BY_ITEM_SOUND_EFFECT)) {
+        (player->soundEffects & HIT_BY_STAR_SOUND_EFFECT)) {
         player->unk_0B6 = ((u16) player->unk_0B6 | 0x1000);
     }
 }
@@ -311,7 +311,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
     }
     if ((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) == PLAYER_CPU) && (!gDemoMode) &&
         ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
-        player->soundEffects = (s32) (player->soundEffects | REVERSE_SOUND_EFFECT);
+        player->soundEffects = (s32) (player->soundEffects | HIT_FAKE_ITEM_SOUND_EFFECT);
     }
 }
 
@@ -704,7 +704,7 @@ void apply_hit_sound_effect(Player* player, s8 playerIndex) {
         player->unk_D9C = 0.0f;
         player->unk_DA0 = 65.0f;
 
-        if ((player->soundEffects & HIT_SOUND_EFFECT) != 0) {
+        if ((player->soundEffects & THWOMP_STOMP_SOUND_EFFECT) != 0) {
             player->unk_046 |= 0x80;
         }
 
@@ -738,7 +738,7 @@ void apply_hit_effect(Player* player, s8 playerIndex) {
             }
 
             if ((player->unk_046 & 0x80) != 0) {
-                if ((player->soundEffects & HIT_SOUND_EFFECT) == 0) {
+                if ((player->soundEffects & THWOMP_STOMP_SOUND_EFFECT) == 0) {
                     D_8018D990[playerIndex] = 1;
                     player->unk_238 = 0;
                     if ((player->type & PLAYER_HUMAN) != 0) {
@@ -830,7 +830,7 @@ void apply_hit_effect(Player* player, s8 playerIndex) {
 void apply_hit_rotating_sound_effect(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
 
-    player->soundEffects &= ~HIT_ROTATING_SOUND_EFFECT;
+    player->soundEffects &= ~LIGHTNING_STRIKE_SOUND_EFFECT;
     player->effects |= 0x40020000;
     player->effects &= ~0x10;
     player->unk_08C *= 0.6;
@@ -1025,7 +1025,7 @@ void apply_reverse_sound_effect(Player* player, s8 playerIndex) {
         play_cpu_sound_effect(playerIndex, player);
     }
 
-    player->soundEffects &= ~(REVERSE_SOUND_EFFECT | HIT_PADDLE_BOAT_SOUND_EFFECT);
+    player->soundEffects &= ~(HIT_FAKE_ITEM_SOUND_EFFECT | HIT_PADDLE_BOAT_SOUND_EFFECT);
     player->unk_0B6 |= 0x40;
     gTimerBoostTripleACombo[playerIndex] = 0;
     gIsPlayerTripleAButtonCombo[playerIndex] = false;
@@ -1126,7 +1126,7 @@ void apply_hit_by_item_sound_effect(Player* player, s8 playerIndex) {
 
     player->effects |= HIT_BY_ITEM_EFFECT;
     player->unk_0B6 |= 0x40;
-    player->soundEffects &= ~(HIT_BY_ITEM_SOUND_EFFECT | HIT_RED_BLUE_MOLE_SOUND_EFFECT);
+    player->soundEffects &= ~(HIT_BY_STAR_SOUND_EFFECT | HIT_RED_BLUE_MOLE_SOUND_EFFECT);
 
     gTimerBoostTripleACombo[playerIndex] = 0;
     gIsPlayerTripleAButtonCombo[playerIndex] = false;

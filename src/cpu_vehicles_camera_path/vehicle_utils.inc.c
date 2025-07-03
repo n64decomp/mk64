@@ -372,14 +372,14 @@ void handle_trains_interactions(s32 playerId, Player* player) {
                     if ((z_dist > -100.0) && (z_dist < 100.0)) {
                         if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
                                                     trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                            player->soundEffects |= REVERSE_SOUND_EFFECT;
+                            player->soundEffects |= HIT_FAKE_ITEM_SOUND_EFFECT;
                         }
                         trainCar = &gTrainList[trainIndex].tender;
                         if (trainCar->isActive == 1) {
                             if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2],
                                                         trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f,
                                                         playerPosX, playerPosZ) == 1) {
-                                player->soundEffects |= REVERSE_SOUND_EFFECT;
+                                player->soundEffects |= HIT_FAKE_ITEM_SOUND_EFFECT;
                             }
                         }
                     }
@@ -395,7 +395,7 @@ void handle_trains_interactions(s32 playerId, Player* player) {
                                 if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2],
                                                             trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f,
                                                             playerPosX, playerPosZ) == 1) {
-                                    player->soundEffects |= REVERSE_SOUND_EFFECT;
+                                    player->soundEffects |= HIT_FAKE_ITEM_SOUND_EFFECT;
                                 }
                             }
                         }
@@ -805,7 +805,7 @@ void handle_vehicle_interactions(s32 playerId, Player* player, VehicleStuff* veh
                         if (is_collide_with_vehicle(vehicle->position[0], vehicle->position[2], vehicle->velocity[0],
                                                     vehicle->velocity[2], distanceX, distanceY, playerX,
                                                     playerZ) == (s32) 1) {
-                            player->soundEffects |= REVERSE_SOUND_EFFECT;
+                            player->soundEffects |= HIT_FAKE_ITEM_SOUND_EFFECT;
                         }
                     }
                 }

@@ -293,7 +293,7 @@ void update_actor_banana_bunch(struct BananaBunchParent* banana_bunch) {
             }
             if (someCount == 0) {
                 destroy_actor((struct Actor*) banana_bunch);
-                owner->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                owner->soundEffects &= ~DRAG_ITEM_SOUND_EFFECT;
             } else if ((owner->type & 0x4000) != 0) {
                 controller = &gControllers[banana_bunch->playerId];
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
@@ -525,7 +525,7 @@ s32 use_banana_bunch_item(Player* player) {
     bananaBunch = (struct BananaBunchParent*) &gActorList[actorIndex];
     bananaBunch->state = 0;
     bananaBunch->playerId = player - gPlayerOne;
-    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+    player->soundEffects |= DRAG_ITEM_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -803,7 +803,7 @@ s32 use_fake_itembox_item(Player* player) {
     itemBox = (struct FakeItemBox*) &gActorList[actorIndex];
     itemBox->playerId = (player - gPlayerOne);
     itemBox->state = HELD_FAKE_ITEM_BOX;
-    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+    player->soundEffects |= DRAG_ITEM_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -850,7 +850,7 @@ s32 use_banana_item(Player* player) {
     banana->playerId = playerId;
     banana->state = HELD_BANANA;
     banana->unk_04 = 0x0014;
-    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+    player->soundEffects |= DRAG_ITEM_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -872,7 +872,7 @@ void use_thunder_item(Player* player) {
     for (index = 0; index < NUM_PLAYERS; index++) {
         otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
-            otherPlayer->soundEffects |= HIT_ROTATING_SOUND_EFFECT;
+            otherPlayer->soundEffects |= LIGHTNING_STRIKE_SOUND_EFFECT;
         }
     }
 }

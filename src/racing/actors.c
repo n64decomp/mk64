@@ -1862,7 +1862,7 @@ void destroy_destructable_actor(struct Actor* actor) {
                     break;
                 case HELD_BANANA:
                     player = &gPlayers[banana->playerId];
-                    player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                    player->soundEffects &= ~DRAG_ITEM_SOUND_EFFECT;
                     /* fallthrough */
                 case BANANA_ON_GROUND:
                     banana->flags = -0x8000;
@@ -1957,7 +1957,7 @@ void destroy_destructable_actor(struct Actor* actor) {
             fakeItemBox = (struct FakeItemBox*) actor;
             player = &gPlayers[(s16) fakeItemBox->playerId];
             if (fakeItemBox->state == HELD_FAKE_ITEM_BOX) {
-                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                player->soundEffects &= ~DRAG_ITEM_SOUND_EFFECT;
             }
             fakeItemBox->state = DESTROYED_FAKE_ITEM_BOX;
             fakeItemBox->flags = -0x8000;
@@ -2220,7 +2220,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                 (query_collision_player_vs_actor_item(player, actor) != COLLISION)) {
                 break;
             }
-            player->soundEffects |= REVERSE_SOUND_EFFECT;
+            player->soundEffects |= HIT_FAKE_ITEM_SOUND_EFFECT;
             owner = &gPlayers[temp_v1];
             if (owner->type & 0x4000) {
                 if (actor->flags & 0xF) {
@@ -2235,7 +2235,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                     }
                 }
                 if (actor->state == 0) {
-                    owner->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                    owner->soundEffects &= ~DRAG_ITEM_SOUND_EFFECT;
                 }
             }
             actor->state = 2;

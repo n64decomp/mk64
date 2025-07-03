@@ -1375,19 +1375,19 @@ void apply_sound_effect(Player* player, s8 playerId, UNUSED s8 screenId) {
     if ((player->soundEffects & UNUSED_SOUND_EFFECT_0x20000) == UNUSED_SOUND_EFFECT_0x20000) {
         func_8008D7B0(player, playerId);
     }
-    if ((player->soundEffects & HIT_SOUND_EFFECT) == HIT_SOUND_EFFECT) {
+    if ((player->soundEffects & THWOMP_STOMP_SOUND_EFFECT) == THWOMP_STOMP_SOUND_EFFECT) {
         apply_hit_sound_effect(player, playerId);
     }
-    if ((player->soundEffects & HIT_ROTATING_SOUND_EFFECT) == HIT_ROTATING_SOUND_EFFECT) {
+    if ((player->soundEffects & LIGHTNING_STRIKE_SOUND_EFFECT) == LIGHTNING_STRIKE_SOUND_EFFECT) {
         apply_hit_rotating_sound_effect(player, playerId);
     }
     if ((player->soundEffects & SPINOUT_SOUND_EFFECT) == SPINOUT_SOUND_EFFECT) {
         func_8008C73C(player, playerId);
     }
-    if ((player->soundEffects & REVERSE_SOUND_EFFECT) == REVERSE_SOUND_EFFECT) {
+    if ((player->soundEffects & HIT_FAKE_ITEM_SOUND_EFFECT) == HIT_FAKE_ITEM_SOUND_EFFECT) {
         apply_reverse_sound_effect(player, playerId);
     }
-    if ((player->soundEffects & HIT_BY_ITEM_SOUND_EFFECT) == HIT_BY_ITEM_SOUND_EFFECT) {
+    if ((player->soundEffects & HIT_BY_STAR_SOUND_EFFECT) == HIT_BY_STAR_SOUND_EFFECT) {
         apply_hit_by_item_sound_effect(player, playerId);
     }
     if ((player->soundEffects & BOOST_RAMP_ASPHALT_SOUND_EFFECT) == BOOST_RAMP_ASPHALT_SOUND_EFFECT) {
@@ -1412,55 +1412,70 @@ void apply_sound_effect(Player* player, s8 playerId, UNUSED s8 screenId) {
 
 void func_8002B5C0(Player* player, UNUSED s8 playerId, UNUSED s8 screenId) {
     if (((player->unk_0CA & 8) != 0) || ((player->unk_0CA & 2) != 0)) {
-        player->soundEffects &= 0xFE1D0478;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(HIT_SOUND_EFFECTS | ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    // Green shell
     if ((player->effects & 0x400) == 0x400) {
-        player->soundEffects &= 0xFF5D457E;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    // Spinout (banana or driving)
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) {
-        player->soundEffects &= 0xFF5F457E;
+        player->soundEffects &= (ALL_SOUND_EFFECTS & ~(ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS)) | UNUSED_SOUND_EFFECT_0x20000;
     }
+    // Near spinout (banana)
     if ((player->effects & 0x800) == 0x800) {
-        player->soundEffects &= 0xFF5D457E;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
     if ((player->unk_044 & 0x4000) != 0) {
-        player->soundEffects &= 0xFF5D457E;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    //unclear
     if ((player->effects & 0x80000) == 0x80000) {
-        player->soundEffects &= 0xFE1D4478;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~((HIT_SOUND_EFFECTS ^ LIGHTNING_STRIKE_SOUND_EFFECT) | ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    //unclear
     if ((player->effects & 0x800000) == 0x800000) {
-        player->soundEffects &= 0xFE1D0478;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(HIT_SOUND_EFFECTS | ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    //squished
     if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
-        player->soundEffects &= 0xFE1D0578;
+        player->soundEffects &= (ALL_SOUND_EFFECTS & ~(HIT_SOUND_EFFECTS | ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS)) | THWOMP_STOMP_SOUND_EFFECT;
     }
+    //explosion crash
     if ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) {
-        player->soundEffects &= 0xFE1D4478;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~((HIT_SOUND_EFFECTS ^ LIGHTNING_STRIKE_SOUND_EFFECT) | ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    // hit by star or red shell
     if ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) {
-        player->soundEffects &= 0xFE1D4478;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~((HIT_SOUND_EFFECTS ^ LIGHTNING_STRIKE_SOUND_EFFECT) | ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    // boost asphalt
     if ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) {
-        player->soundEffects &= 0xFE1D0478;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(HIT_SOUND_EFFECTS | ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    // boost ramp
     if ((player->effects & BOOST_RAMP_WOOD_EFFECT) == BOOST_RAMP_WOOD_EFFECT) {
-        player->soundEffects &= 0xFE1D0478;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(HIT_SOUND_EFFECTS | ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    // Terrain tumble
     if ((player->effects & UNKNOWN_EFFECT_0x10000) == UNKNOWN_EFFECT_0x10000) {
-        player->soundEffects &= 0xFE1D0478;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(HIT_SOUND_EFFECTS | ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    // star
     if ((player->effects & STAR_EFFECT) == STAR_EFFECT) {
-        player->soundEffects &= 0xFE9D8478;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(HIT_SOUND_EFFECTS | BOOST_SOUND_EFFECT | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    // boo
     if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-        player->soundEffects &= 0xFE9D8678;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(HIT_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    // early start spinout
     if ((player->effects & 0x4000) == 0x4000) {
-        player->soundEffects &= 0xFF5D45FF;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(ANY_BOOST_SOUND_EFFECTS | SPINOUT_SOUND_EFFECT | STATE_TRANSITION_SOUND_EFFECTS);
     }
+    // CPU_FAST_EFFECTS
     if ((player->effects & 0x20000) == 0x20000) {
-        player->soundEffects &= 0xFE1D0478;
+        player->soundEffects &= ALL_SOUND_EFFECTS & ~(HIT_SOUND_EFFECTS | ANY_BOOST_SOUND_EFFECTS | RACING_SPINOUT_SOUND_EFFECTS | STATE_TRANSITION_SOUND_EFFECTS);
     }
 }
 

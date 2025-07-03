@@ -134,7 +134,7 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
 
     speed = player->speed;
     if (!(player->effects & 0x80) && !(player->effects & 0x40) && !(player->effects & 0x20000) &&
-        !(player->soundEffects & REVERSE_SOUND_EFFECT) && !(player->soundEffects & HIT_BY_ITEM_SOUND_EFFECT) && !(player->soundEffects & HIT_RED_BLUE_MOLE_SOUND_EFFECT) &&
+        !(player->soundEffects & HIT_FAKE_ITEM_SOUND_EFFECT) && !(player->soundEffects & HIT_BY_STAR_SOUND_EFFECT) && !(player->soundEffects & HIT_RED_BLUE_MOLE_SOUND_EFFECT) &&
         !(player->soundEffects & 4)) {
         if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
             func_80007FA4(playerId, player, speed);

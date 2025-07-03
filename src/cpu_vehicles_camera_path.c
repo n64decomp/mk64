@@ -1359,7 +1359,7 @@ void play_cpu_sound_effect(s32 arg0, Player* player) {
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->soundEffects & REVERSE_EFFECT) || (player->soundEffects & HIT_BY_ITEM_SOUND_EFFECT) ||
+        if ((player->soundEffects & HIT_FAKE_ITEM_SOUND_EFFECT) || (player->soundEffects & HIT_BY_STAR_SOUND_EFFECT) ||
             (player->soundEffects & HIT_RED_BLUE_MOLE_SOUND_EFFECT) || (player->soundEffects & HIT_GREEN_SHELL_SOUND_EFFECT) || (player->effects & HIT_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0B));
             D_801633B0[arg0] = 0;
@@ -3943,7 +3943,7 @@ void cpu_use_item_strategy(s32 playerId) {
             } else if (cpuStrategy->branch == CPU_STRATEGY_ITEM_BANANA) {
                 cpuStrategy->actorIndex = use_banana_item(player);
                 if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
-                    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+                    player->soundEffects |= DRAG_ITEM_SOUND_EFFECT;
                     cpuStrategy->branch = CPU_STRATEGY_HOLD_BANANA;
                     cpuStrategy->timer = 0;
                     cpuStrategy->numItemUse += 1;
@@ -3968,7 +3968,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
-                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                player->soundEffects &= ~DRAG_ITEM_SOUND_EFFECT;
             } else if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
                 cpuStrategy->branch = CPU_STRATEGY_DROP_BANANA;
             }
@@ -3997,7 +3997,7 @@ void cpu_use_item_strategy(s32 playerId) {
                         (BANANA_ACTOR(actor)->boundingBoxSize + 1.0f);
                 }
             }
-            player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+            player->soundEffects &= ~DRAG_ITEM_SOUND_EFFECT;
             cpuStrategy->timer = 0;
             cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             break;
@@ -4007,7 +4007,7 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
                 actor = &gActorList[cpuStrategy->actorIndex];
                 BANANA_ACTOR(actor)->state = BANANA_ON_GROUND;
-                player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+                player->soundEffects |= DRAG_ITEM_SOUND_EFFECT;
                 cpuStrategy->branch = CPU_STRATEGY_HOLD_THROW_BANANA;
                 cpuStrategy->timer = 0;
                 cpuStrategy->numItemUse += 1;
@@ -4040,7 +4040,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
                 cpuStrategy->timer = 0;
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
-                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                player->soundEffects &= ~DRAG_ITEM_SOUND_EFFECT;
             } else {
                 BANANA_ACTOR(actor)->velocity[1] -= 0.4;
                 BANANA_ACTOR(actor)->pos[0] += BANANA_ACTOR(actor)->velocity[0];
@@ -4073,7 +4073,7 @@ void cpu_use_item_strategy(s32 playerId) {
                     get_surface_height(BANANA_ACTOR(actor)->pos[0], BANANA_ACTOR(actor)->pos[1] + 30.0, BANANA_ACTOR(actor)->pos[2]) +
                     (BANANA_ACTOR(actor)->boundingBoxSize + 1.0f);
             }
-            player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+            player->soundEffects &= ~DRAG_ITEM_SOUND_EFFECT;
             cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             cpuStrategy->timer = 0;
             break;
