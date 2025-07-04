@@ -1359,7 +1359,7 @@ void play_cpu_sound_effect(s32 arg0, Player* player) {
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->soundEffects & HIT_FAKE_ITEM_SOUND_EFFECT) || (player->soundEffects & HIT_BY_STAR_SOUND_EFFECT) ||
+        if ((player->soundEffects & EXPLOSION_CRASH_SOUND_EFFECT) || (player->soundEffects & HIT_BY_STAR_SOUND_EFFECT) ||
             (player->soundEffects & HIT_RED_BLUE_MOLE_SOUND_EFFECT) || (player->soundEffects & HIT_GREEN_SHELL_SOUND_EFFECT) || (player->effects & HIT_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0B));
             D_801633B0[arg0] = 0;

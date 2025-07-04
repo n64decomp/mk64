@@ -1384,7 +1384,7 @@ void apply_sound_effect(Player* player, s8 playerId, UNUSED s8 screenId) {
     if ((player->soundEffects & SPINOUT_SOUND_EFFECT) == SPINOUT_SOUND_EFFECT) {
         func_8008C73C(player, playerId);
     }
-    if ((player->soundEffects & HIT_FAKE_ITEM_SOUND_EFFECT) == HIT_FAKE_ITEM_SOUND_EFFECT) {
+    if ((player->soundEffects & EXPLOSION_CRASH_SOUND_EFFECT) == EXPLOSION_CRASH_SOUND_EFFECT) {
         apply_reverse_sound_effect(player, playerId);
     }
     if ((player->soundEffects & HIT_BY_STAR_SOUND_EFFECT) == HIT_BY_STAR_SOUND_EFFECT) {

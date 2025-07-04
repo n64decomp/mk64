@@ -2220,7 +2220,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                 (query_collision_player_vs_actor_item(player, actor) != COLLISION)) {
                 break;
             }
-            player->soundEffects |= HIT_FAKE_ITEM_SOUND_EFFECT;
+            player->soundEffects |= EXPLOSION_CRASH_SOUND_EFFECT;
             owner = &gPlayers[temp_v1];
             if (owner->type & 0x4000) {
                 if (actor->flags & 0xF) {

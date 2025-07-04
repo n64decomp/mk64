@@ -311,7 +311,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
     }
     if ((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) == PLAYER_CPU) && (!gDemoMode) &&
         ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
-        player->soundEffects = (s32) (player->soundEffects | HIT_FAKE_ITEM_SOUND_EFFECT);
+        player->soundEffects = (s32) (player->soundEffects | EXPLOSION_CRASH_SOUND_EFFECT);
     }
 }
 
@@ -1025,7 +1025,7 @@ void apply_reverse_sound_effect(Player* player, s8 playerIndex) {
         play_cpu_sound_effect(playerIndex, player);
     }
 
-    player->soundEffects &= ~(HIT_FAKE_ITEM_SOUND_EFFECT | HIT_PADDLE_BOAT_SOUND_EFFECT);
+    player->soundEffects &= ~(EXPLOSION_CRASH_SOUND_EFFECT | HIT_PADDLE_BOAT_SOUND_EFFECT);
     player->unk_0B6 |= 0x40;
     gTimerBoostTripleACombo[playerIndex] = 0;
     gIsPlayerTripleAButtonCombo[playerIndex] = false;

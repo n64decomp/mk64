@@ -1138,12 +1138,12 @@ void func_802903D8(Player* playerOne, Player* playerTwo) {
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
             return;
         } else {
-            playerTwo->soundEffects |= HIT_FAKE_ITEM_SOUND_EFFECT;
+            playerTwo->soundEffects |= EXPLOSION_CRASH_SOUND_EFFECT;
             func_8008FC1C(playerOne);
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
         }
     } else if (playerTwo->type & PLAYER_UNKNOWN_0x40) {
-        playerOne->soundEffects |= HIT_FAKE_ITEM_SOUND_EFFECT;
+        playerOne->soundEffects |= EXPLOSION_CRASH_SOUND_EFFECT;
         func_8008FC1C(playerTwo);
         func_800C9060(playerOne - gPlayerOne, 0x19008001U);
         return;

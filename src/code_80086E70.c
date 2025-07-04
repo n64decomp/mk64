@@ -1185,7 +1185,7 @@ s32 func_80089B50(s32 objectIndex) {
                 (player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) &&
                 (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (!(player->effects & STAR_EFFECT)) {
-                    player->soundEffects |= HIT_FAKE_ITEM_SOUND_EFFECT;
+                    player->soundEffects |= EXPLOSION_CRASH_SOUND_EFFECT;
                     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
@@ -1212,7 +1212,7 @@ s32 func_80089CBC(s32 objectIndex, f32 arg1) {
                 if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) &&
                     (has_collided_with_player_and_within_height(objectIndex, player, arg1) != 0)) {
                     if (!(player->effects & STAR_EFFECT)) {
-                        player->soundEffects |= HIT_FAKE_ITEM_SOUND_EFFECT;
+                        player->soundEffects |= EXPLOSION_CRASH_SOUND_EFFECT;
                         if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                             func_80072180();
                         }
