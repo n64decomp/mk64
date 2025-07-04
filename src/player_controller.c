@@ -2001,7 +2001,7 @@ void apply_effect(Player* player, s8 playerIndex, s8 arg2) {
         if (player->soundEffects & LOSE_BATTLE_SOUND_EFFECT) {
             func_8008FC64(player, playerIndex);
         }
-        if (player->soundEffects & UNKNOWN_SOUND_EFFECT_0x08000000) {
+        if (player->soundEffects & BECOME_BOMB_SOUND_EFFECT) {
             func_8008FCDC(player, playerIndex);
         }
     }
@@ -3337,6 +3337,7 @@ void player_accelerate_alternative(Player* player) {
         player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
     }
     player->unk_044 |= 0x20;
+    // Hacky way to check for START_SPINOUT_SOUND_EFFECT
     if ((player->soundEffects * 8) < 0) {
         func_8008F104(player, player_index);
         player->soundEffects &= ~START_SPINOUT_SOUND_EFFECT;
@@ -3361,6 +3362,7 @@ void player_decelerate_alternative(Player* player, f32 speed) {
         player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
     }
     player->unk_044 &= 0xFFDF;
+    // Hacky way to check for START_SPINOUT_SOUND_EFFECT
     if ((player->soundEffects * 8) < 0) {
         func_8008F104(player, player_index);
         player->soundEffects &= ~START_SPINOUT_SOUND_EFFECT;

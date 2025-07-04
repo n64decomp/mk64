@@ -1523,7 +1523,7 @@ void func_8008FC64(Player* player, s8 arg1) {
     if (player->alpha < 5) {
         player->alpha = ALPHA_MIN;
         player->soundEffects &= ~LOSE_BATTLE_SOUND_EFFECT;
-        player->soundEffects |= UNKNOWN_SOUND_EFFECT_0x08000000;
+        player->soundEffects |= BECOME_BOMB_SOUND_EFFECT;
         player->type |= PLAYER_UNKNOWN_0x40;
 
         func_8008FDA8(player, arg1);
@@ -1535,7 +1535,7 @@ void func_8008FCDC(Player* player, s8 playerIndex) {
     player->alpha += 2;
     if (player->alpha >= 0xF0) {
         player->alpha = ALPHA_MAX;
-        player->soundEffects &= ~UNKNOWN_SOUND_EFFECT_0x08000000;
+        player->soundEffects &= ~BECOME_BOMB_SOUND_EFFECT;
     }
 
     func_80056A40(playerIndex, (u32) player->alpha);

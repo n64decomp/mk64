@@ -334,31 +334,31 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  */
  /*
 */
-#define HIT_BANANA_SOUND_EFFECT 0x1              // hits a banana
-#define HIT_RED_BLUE_MOLE_SOUND_EFFECT 0x2       // hit by a red shell, blue shell, or hit a mole
-#define HIT_GREEN_SHELL_SOUND_EFFECT 0x4         // hit by a green shell
-#define DRIVING_SPINOUT_SOUND_EFFECT 0x80        // spinning out from erratic driving
-#define THWOMP_STOMP_SOUND_EFFECT 0x100          // hitting an object (actually, stomped by thwomp)*
-#define BOOST_SOUND_EFFECT 0x200                 // being boosted by trigger a mushroom
-#define BOO_SOUND_EFFECT 0x800                   // being a boo
-#define UNUSED_SOUND_EFFECT_0x1000 0x1000
-#define STAR_SOUND_EFFECT 0x2000                 // Starting a star
-#define LIGHTNING_STRIKE_SOUND_EFFECT 0x4000     // hitting a rotating object (actually struck by lightning)
-#define BOOST_RAMP_WOOD_SOUND_EFFECT 0x8000      // being boosted by a ramp
-#define UNUSED_SOUND_EFFECT_0x20000 0x20000      //*
-#define DRAG_ITEM_SOUND_EFFECT 0x40000           //* holding a banana (or a banana bunch or a fake item block)// confirmed but ongoing, so not really a sound effect
-#define HIT_PADDLE_BOAT_SOUND_EFFECT 0x80000     //* hit paddle boat
-#define UNUSED_SOUND_EFFECT_0x10000 0x100000     //*
-#define SPINOUT_SOUND_EFFECT 0x200000            // hit crab or spiny spinout or losing versus race
-#define HIT_FAKE_ITEM_SOUND_EFFECT 0x400000      // actually hitting a fake item / bomb
+#define HIT_BANANA_SOUND_EFFECT              0x1 // hits a banana
+#define HIT_RED_BLUE_MOLE_SOUND_EFFECT       0x2 // hit by a red shell, blue shell, or hit a mole
+#define HIT_GREEN_SHELL_SOUND_EFFECT         0x4 // hit by a green shell
+#define DRIVING_SPINOUT_SOUND_EFFECT        0x80 // spinning out from erratic driving
+#define THWOMP_STOMP_SOUND_EFFECT          0x100 // hitting an object (actually, stomped by thwomp)*
+#define BOOST_SOUND_EFFECT                 0x200 // being boosted by trigger a mushroom
+#define BOO_SOUND_EFFECT                   0x800 // being a boo
+#define UNUSED_SOUND_EFFECT_0x1000        0x1000 // Unused
+#define STAR_SOUND_EFFECT                 0x2000 // Starting a star
+#define LIGHTNING_STRIKE_SOUND_EFFECT     0x4000 // hitting a rotating object (actually struck by lightning)
+#define BOOST_RAMP_WOOD_SOUND_EFFECT      0x8000 // being boosted by a ramp
+#define UNUSED_SOUND_EFFECT_0x20000      0x20000 //* Unused
+#define DRAG_ITEM_SOUND_EFFECT           0x40000 //* holding a banana (or a banana bunch or a fake item block)// confirmed but ongoing, so not really a sound effect
+#define HIT_PADDLE_BOAT_SOUND_EFFECT     0x80000 //* hit paddle boat
+#define UNUSED_SOUND_EFFECT_0x10000     0x100000 //* Unused
+#define SPINOUT_SOUND_EFFECT            0x200000 // hit crab or spiny spinout or losing versus race
+#define HIT_FAKE_ITEM_SOUND_EFFECT      0x400000 // actually hitting a fake item / bomb
 #define BOOST_RAMP_ASPHALT_SOUND_EFFECT 0x800000 // being boosted by a boost pad // confirmed but not every time
-#define HIT_BY_STAR_SOUND_EFFECT 0x1000000       // being hit by a star
-#define START_BOOST_SOUND_EFFECT 0x2000000       //* Start boost sound effect
-#define LOSE_BATTLE_SOUND_EFFECT 0x4000000       //* When losing battle mode
-#define UNKNOWN_SOUND_EFFECT_0x08000000 0x08000000 //* Related to battle mode. Becoming a bomb?
-#define START_SPINOUT_SOUND_EFFECT 0x10000000    //* Spinning out by holding gas at start of race
+#define HIT_BY_STAR_SOUND_EFFECT       0x1000000 // being hit by a star
+#define START_BOOST_SOUND_EFFECT       0x2000000 //* Start boost sound effect
+#define LOSE_BATTLE_SOUND_EFFECT       0x4000000 //* When losing battle mode
+#define BECOME_BOMB_SOUND_EFFECT       0x8000000 //* When becoming a bomb in battle mode
+#define START_SPINOUT_SOUND_EFFECT    0x10000000 //* Spinning out by holding gas at start of race
 
-#define ALL_SOUND_EFFECTS (0xFFFFFFFF )
+#define ALL_SOUND_EFFECTS (0xFFFFFFFF)
 #define RACING_SPINOUT_SOUND_EFFECTS (SPINOUT_SOUND_EFFECT | DRIVING_SPINOUT_SOUND_EFFECT | HIT_BANANA_SOUND_EFFECT) // 0x200081
 #define RAMP_BOOST_SOUND_EFFECTS (BOOST_RAMP_ASPHALT_SOUND_EFFECT | BOOST_RAMP_WOOD_SOUND_EFFECT) // 0x00808000
 #define ANY_BOOST_SOUND_EFFECTS (RAMP_BOOST_SOUND_EFFECTS | BOOST_SOUND_EFFECT) // 0x00808200

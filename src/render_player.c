@@ -1502,7 +1502,7 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 flipOffset) {
                              AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
                                  GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         }
-    } else if (((player->unk_0CA & 4) == 4) || (player->soundEffects & UNKNOWN_SOUND_EFFECT_0x08000000) ||
+    } else if (((player->unk_0CA & 4) == 4) || (player->soundEffects & BECOME_BOMB_SOUND_EFFECT) ||
                (player->soundEffects & LOSE_BATTLE_SOUND_EFFECT)) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
