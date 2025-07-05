@@ -372,14 +372,14 @@ void handle_trains_interactions(s32 playerId, Player* player) {
                     if ((z_dist > -100.0) && (z_dist < 100.0)) {
                         if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
                                                     trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                            player->soundEffects |= EXPLOSION_CRASH_SOUND_EFFECT;
+                            player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         }
                         trainCar = &gTrainList[trainIndex].tender;
                         if (trainCar->isActive == 1) {
                             if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2],
                                                         trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f,
                                                         playerPosX, playerPosZ) == 1) {
-                                player->soundEffects |= EXPLOSION_CRASH_SOUND_EFFECT;
+                                player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                             }
                         }
                     }
@@ -395,7 +395,7 @@ void handle_trains_interactions(s32 playerId, Player* player) {
                                 if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2],
                                                             trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f,
                                                             playerPosX, playerPosZ) == 1) {
-                                    player->soundEffects |= EXPLOSION_CRASH_SOUND_EFFECT;
+                                    player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                                 }
                             }
                         }
@@ -621,7 +621,7 @@ void handle_paddle_boats_interactions(Player* player) {
                                                      tempPaddleWheelBoat->velocity[0], tempPaddleWheelBoat->velocity[2],
                                                      200.0f, 60.0f, playerX, playerZ) == 1) &&
                             (y_diff < 60.0)) {
-                            player->soundEffects |= HIT_PADDLE_BOAT_SOUND_EFFECT;
+                            player->triggers |= HIT_PADDLE_BOAT_TRIGGER;
                         }
                     }
                 }
@@ -805,7 +805,7 @@ void handle_vehicle_interactions(s32 playerId, Player* player, VehicleStuff* veh
                         if (is_collide_with_vehicle(vehicle->position[0], vehicle->position[2], vehicle->velocity[0],
                                                     vehicle->velocity[2], distanceX, distanceY, playerX,
                                                     playerZ) == (s32) 1) {
-                            player->soundEffects |= EXPLOSION_CRASH_SOUND_EFFECT;
+                            player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         }
                     }
                 }

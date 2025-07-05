@@ -1024,7 +1024,7 @@ void func_8001F394(Player* player, f32* arg1) {
     }
 
     if (D_80164A08[playerIndex] == 0) {
-        if (player->soundEffects & DRAG_ITEM_SOUND_EFFECT) {
+        if (player->triggers & DRAG_ITEM_EFFECT) {
             D_80164A08[playerIndex] = 1;
         }
         if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
@@ -1033,7 +1033,7 @@ void func_8001F394(Player* player, f32* arg1) {
         if ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) {
             D_80164A08[playerIndex] = 3;
         }
-        if ((player->soundEffects & THWOMP_STOMP_SOUND_EFFECT) == THWOMP_STOMP_SOUND_EFFECT) {
+        if ((player->triggers & THWOMP_SQUISH_TRIGGER) == THWOMP_SQUISH_TRIGGER) {
             D_80164A08[playerIndex] = 4;
         }
         if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) {
@@ -1043,7 +1043,7 @@ void func_8001F394(Player* player, f32* arg1) {
     }
     switch (D_80164A08[playerIndex]) {
         case 1:
-            if (player->soundEffects & DRAG_ITEM_SOUND_EFFECT) {
+            if (player->triggers & DRAG_ITEM_EFFECT) {
                 move_f32_towards(&D_80164498[playerIndex], 20.0f, 0.2f);
             } else {
                 if (D_80164498[playerIndex] > 1.0f) {
@@ -1082,7 +1082,7 @@ void func_8001F394(Player* player, f32* arg1) {
             }
             break;
         case 4:
-            if ((player->soundEffects & THWOMP_STOMP_SOUND_EFFECT) == THWOMP_STOMP_SOUND_EFFECT) {
+            if ((player->triggers & THWOMP_SQUISH_TRIGGER) == THWOMP_SQUISH_TRIGGER) {
                 move_f32_towards(&D_80164498[playerIndex], 25.0f, 1.0f);
             } else {
                 if (D_80164498[playerIndex] > 1.0f) {
