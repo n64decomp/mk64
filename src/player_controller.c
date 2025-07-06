@@ -1501,7 +1501,7 @@ void func_8002B830(Player* player, s8 playerId, s8 screenId) {
     if (player->triggers != 0) {
         apply_triggers(player, playerId, screenId);
     }
-    if ((player->unk_044 & 0x400) != 0) {
+    if ((player->unk_044 & 0x400) != 0) { //can never be true
         func_800911B4(player, playerId);
     }
 }
@@ -2021,7 +2021,7 @@ void apply_effect(Player* player, s8 playerIndex, s8 arg2) {
             func_8008FCDC(player, playerIndex);
         }
     }
-    if (player->unk_044 & 0x800) {
+    if (player->unk_044 & 0x800) { // never true
         func_80091298(player, playerIndex);
     }
 }
@@ -2160,7 +2160,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     temp_f2_2 = ((player->oldPos[2] - player->pos[2]) * coss(player->rotation[1] + player->unk_0C0)) +
                 (-(player->oldPos[0] - player->pos[0]) * sins(player->rotation[1] + player->unk_0C0));
     if (temp_f2_2 > 0.1) {
-        player->unk_044 |= 8;
+        player->unk_044 |= UNK_044_MOVE_BACKWARDS;
     } else {
         player->unk_044 &= 0xFFF7;
     }
@@ -3367,7 +3367,7 @@ void player_accelerate_alternative(Player* player) {
     if (!((player->effects & MIDAIR_EFFECT)) || ((player->effects & LIGHTNING_EFFECT))) {
         player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
     }
-    player->unk_044 |= 0x20;
+    player->unk_044 |= UNK_044_PRESS_A;
     // Hacky way to check for START_SPINOUT_TRIGGER
     if ((player->triggers * 8) < 0) {
         func_8008F104(player, player_index);
@@ -3635,7 +3635,7 @@ void player_accelerate_during_start_sequence(Player* player) {
         } else {
             var_v0 = 8;
         }
-        if ((time_delta < var_v0) && ((player->unk_044 & 0x20) != 0x20)) {
+        if ((time_delta < var_v0) && ((player->unk_044 & UNK_044_PRESS_A) != UNK_044_PRESS_A)) {
             player->triggers |= START_BOOST_TRIGGER;
         } else if ((player->topSpeed * 0.9f) <= player->currentSpeed) {
             if ((player->triggers & START_BOOST_TRIGGER) != START_BOOST_TRIGGER) {
@@ -3644,7 +3644,7 @@ void player_accelerate_during_start_sequence(Player* player) {
             }
         }
     }
-    player->unk_044 |= 0x20;
+    player->unk_044 |= UNK_044_PRESS_A;
     player->unk_098 = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 
@@ -3663,7 +3663,7 @@ void player_decelerate_during_start_sequence(Player* player, f32 speedReduction)
         player->triggers &= ~START_SPINOUT_TRIGGER;
     }
     player->triggers &= ~START_BOOST_TRIGGER;
-    player->unk_044 &= ~0x0020;
+    player->unk_044 &= ~UNK_044_PRESS_A;
     player->unk_098 = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 
@@ -3752,7 +3752,7 @@ void player_accelerate_global(Player* player, s32 playerIndex) {
     if (((player->topSpeed * 0.9) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] <= (player->topSpeed * 1.0))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][9] * 2.8;
     }
-    player->unk_044 |= 0x20;
+    player->unk_044 |= UNK_044_PRESS_A;
     if (gPlayerCurrentSpeed[playerIndex] < 0.0f) {
         gPlayerCurrentSpeed[playerIndex] = 0.0f;
     }
@@ -3760,7 +3760,7 @@ void player_accelerate_global(Player* player, s32 playerIndex) {
 }
 
 void player_decelerate_global(Player* player, f32 speedReduction, s32 playerIndex) {
-    player->unk_044 &= ~0x20;
+    player->unk_044 &= ~UNK_044_PRESS_A;
     gPlayerCurrentSpeed[playerIndex] -= speedReduction;
     if (gPlayerCurrentSpeed[playerIndex] <= 0.0f) {
         gPlayerCurrentSpeed[playerIndex] = 0.0f;
@@ -3886,11 +3886,11 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         func_80036CB4(player);
     }
     if ((player->unk_0C0 / 182) < (-5)) {
-        player->unk_044 |= 4;
+        player->unk_044 |= UNK_044_LEFT_TURN;
         player->unk_044 &= 0xFFFD;
         D_801652C0[arg2]++;
     } else if ((player->unk_0C0 / 182) >= 6) {
-        player->unk_044 |= 2;
+        player->unk_044 |= UNK_044_RIGHT_TURN;
         player->unk_044 &= 0xFFFB;
         D_801652C0[arg2]++;
     } else {
@@ -3902,7 +3902,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
     }
     sp2E4 = player->unk_07C;
     temp_v0_3 = get_clamped_stickX_with_deadzone(controller);
-    if (((player->unk_044 & 1) == 1) || ((player->unk_044 & 8) == 8)) {
+    if (((player->unk_044 & UNK_044_BACK_UP) == UNK_044_BACK_UP) || ((player->unk_044 & UNK_044_MOVE_BACKWARDS) == UNK_044_MOVE_BACKWARDS)) {
         temp_v0_3 = -temp_v0_3;
     }
     player->unk_07C = (temp_v0_3 << 16) & 0xFFFF0000;
@@ -3934,7 +3934,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
             var_a0 = 0;
         }
         if (((player->speed / 18.0f) * 216.0f) >= 15.0f) {
-            if ((player->unk_044 & 2) == 2) {
+            if ((player->unk_044 & UNK_044_RIGHT_TURN) == UNK_044_RIGHT_TURN) {
                 if ((sp2D0 < 36) && (sp2D0 >= 0)) {
                     sp2C8 =
                         (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
@@ -3944,7 +3944,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
                     sp2C8 = (s32) (((f32) (var_a0 + 5)) * (1.0f + var_f2));
                     sp2CC = (s32) (((f32) (var_a0 + 9)) * (1.0f + var_f2));
                 }
-            } else if ((player->unk_044 & 4) == 4) {
+            } else if ((player->unk_044 & UNK_044_LEFT_TURN) == UNK_044_LEFT_TURN) {
                 if ((sp2D0 >= (-0x23)) && (sp2D0 <= 0)) {
                     sp2C8 =
                         (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
@@ -4624,12 +4624,12 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 playerIndex
             if (((get_clamped_stickY_with_deadzone(controller) < (-0x31)) && (((player->speed / 18.0f) * 216.0f) <= 5.0f)) &&
                 (controller->button & B_BUTTON)) {
                 player->currentSpeed = 140.0f;
-                player->unk_044 |= 1;
+                player->unk_044 |= UNK_044_BACK_UP;
                 player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
                 player->unk_20C = 0.0f;
             }
             if ((get_clamped_stickY_with_deadzone(controller) >= -0x1D) || (!(controller->button & B_BUTTON))) {
-                if ((player->unk_044 & 1) == 1) {
+                if ((player->unk_044 & UNK_044_BACK_UP) == UNK_044_BACK_UP) {
                     player->unk_044 &= 0xFFFE;
                     player->currentSpeed = 0.0f;
                 }
@@ -4863,7 +4863,7 @@ void func_80038BE4(Player* player, s16 arg1) {
     if (player->currentSpeed >= 250.0f) {
         player->currentSpeed = 250.0f;
     }
-    player->unk_044 |= 0x20;
+    player->unk_044 |= UNK_044_PRESS_A;
     player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 

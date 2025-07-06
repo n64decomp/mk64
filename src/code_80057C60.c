@@ -3561,7 +3561,7 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     s32 temp_v0;
     UNUSED s32 test;
 
-    if ((player->unk_044 & 0x20) == 0x20) {
+    if ((player->unk_044 & UNK_044_PRESS_A) == UNK_044_PRESS_A) {
         var_v0 = 5;
     } else {
         var_v0 = 0xE;
@@ -3583,7 +3583,7 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         }
     }
     player->particles[arg1].unk_024 = 0.0f;
-    if ((player->unk_044 & 0x20) == 0x20) {
+    if ((player->unk_044 & UNK_044_PRESS_A) == UNK_044_PRESS_A) {
         player->particles[arg1].unk_040 = 0;
         if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
             set_particle_colour(&player->particles[arg1], 0x00FFFF00, 0x0080);
@@ -6417,7 +6417,7 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
                 break;
         }
     } else {
-        if ((arg0->unk_044 & 0x200) && (arg0->type & 0x4000)) {
+        if ((arg0->unk_044 & UNK_044_BECOME_INVISIBLE) && (arg0->type & 0x4000)) {
             func_80061224(arg0, arg1, sp20, arg2, arg3);
             return;
         } else if (((arg0->effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) && (arg0->unk_0B0 < 0x32)) {

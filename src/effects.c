@@ -470,7 +470,7 @@ void func_8008D170(Player* player, s8 playerIndex) {
         var_v1 = 0;
         var_a3 = -var_a3;
         var_f0 *= 0.9;
-        if (((player->effects & BRAKING_EFFECT) == BRAKING_EFFECT) || !(player->unk_044 & 0x20)) {
+        if (((player->effects & BRAKING_EFFECT) == BRAKING_EFFECT) || !(player->unk_044 & UNK_044_PRESS_A)) {
             player->effects |= BANANA_SPINOUT_SAVE_EFFECT;
         }
         if (var_f0 <= 1.3) {
@@ -1468,9 +1468,9 @@ void apply_boo_effect(Player* player, s8 playerIndex) {
 
 void trigger_boo(Player* player, s8 playerIndex) {
     s16 temp_v1;
-
+    // become boo
     if ((player->type & PLAYER_HUMAN) != 0) {
-        player->unk_044 |= 0x200;
+        player->unk_044 |= UNK_044_BECOME_INVISIBLE;
 
         for (temp_v1 = 0; temp_v1 < 10; ++temp_v1) {
             player->particles[temp_v1].IsAlive = 0;
@@ -1551,7 +1551,7 @@ void func_8008FD4C(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
 
     player->triggers |= LOSE_BATTLE_EFFECT;
-    player->unk_044 |= 0x200;
+    player->unk_044 |= UNK_044_BECOME_INVISIBLE;
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
         player->particles[temp_v0].IsAlive = 0;
@@ -1559,10 +1559,10 @@ void func_8008FD4C(Player* player, UNUSED s8 arg1) {
         player->particles[temp_v0].type = 0;
     }
 }
-
+// become bomb
 void func_8008FDA8(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
-    player->unk_044 |= 0x200;
+    player->unk_044 |= UNK_044_BECOME_INVISIBLE;
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
         player->particles[temp_v0].IsAlive = 0;
         player->particles[temp_v0].timer = 0;
@@ -2016,6 +2016,7 @@ bool prevent_item_use(Player* player) {
     }
 }
 
+//UNUSED
 void func_800911B4(Player* player, s8 arg1) {
     s32 temp_v0;
 
@@ -2059,6 +2060,7 @@ void func_800911B4(Player* player, s8 arg1) {
     } while (temp_v0 < 10);
 }
 
+// unused
 void func_80091298(Player* player, s8 arg1) {
     s16 var_v1;
     UNUSED s32 stackPadding1;
