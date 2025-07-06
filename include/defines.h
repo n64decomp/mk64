@@ -334,17 +334,16 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define UNK_044_MOVE_BACKWARDS 0x8 // includes lakitu
 #define UNK_044_LOSE_GP_RACE 0x10 // pointless, only unsets itself
 #define UNK_044_PRESS_A 0x20
-//0x40 early spinout right side
-//0x80 early spinout left side
-#define UNK_044_FOO 0x100 //post bomb
+#define UNK_044_EARLY_SPINOUT_RIGHT 0x40 // Spinning out while facing right (not actually used for anything)
+#define UNK_044_EARLY_SPINOUT_LEFT 0x80 // Spinning out while facing left
+#define UNK_044_POST_TUMBLE_GAS 0x100 //Causes particles after a vertical tumble, I think
 #define UNK_044_BECOME_INVISIBLE 0x200
+#define UNK_044_UNUSED_0x400 0x400 //locked behind 0x800 (func_80091440)
+#define UNK_044_UNUSED_0x800 0x800 //locked behind 0x400 (func_8002B830 -> func_800911B4)
+#define UNK_044_UNUSED_0x1000 0x1000 // 0x1000 locked behind 0x400 (func_8002B830 -> func_800911B4)
+#define UNK_044_UNUSED_0x2000 0x2000 // 0x2000 locked behind 0x400 and 0x800 (func_8002B830 -> func_800911B4, apply_effect -> func_80091298, func_80091440)
 #define UNK_044_DRIVING_SPINOUT 0x4000
-//0x8000 something battle related, unclear if ever set
-
-// 0x400 locked behind 0x800 (func_80091440)
-// 0x800 locked behind 0x400 (func_8002B830 -> func_800911B4)
-// 0x2000 locked behind 0x400 and 0x800 (func_8002B830 -> func_800911B4, apply_effect -> func_80091298, func_80091440)
-// 0x1000 locked behind 0x400 (func_8002B830 -> func_800911B4)
+#define UNK_044_UNKNOWN_BATTLE_VAR 0x8000 //0x8000 something battle related, unclear if ever set
 
 /*
  * @brief triggers indicating that an effect should be applied to a kart
