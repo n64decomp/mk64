@@ -4171,7 +4171,7 @@ void func_80062A18(Player* player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->particles[20 + arg1 /* arg1 instead of arg3 */].scale = 0.2f;
     player->particles[20 + arg3].timer = 1;
     player->particles[20 + arg3].rotation = 0;
-    player->unk_0B6 &= ~0x0080;
+    player->unk_0B6 &= ~UNK_0B6_WHIRRR;
     player->particles[20 + arg3].pos[2] = player->pos[2];
     player->particles[20 + arg3].pos[0] = player->pos[0];
     player->particles[20 + arg3].pos[1] = (player->pos[1] + 4.0f);
@@ -4862,7 +4862,7 @@ void func_80064DEC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->particles[20 + arg3].timer;
 
     if (player->particles[20 + arg3].timer == 9) {
-        player->unk_0B6 &= ~0x0040;
+        player->unk_0B6 &= ~UNK_0B6_CRASH;
         player->particles[20 + arg3].IsAlive = 0;
         player->particles[20 + arg3].timer = 0;
         player->particles[20 + arg3].type = 0;
@@ -4884,7 +4884,7 @@ void func_80064EA4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     } else {
         player->particles[20 + arg3].scale -= 1.8;
         if (player->particles[20 + arg3].scale <= 0.0f) {
-            player->unk_0B6 &= ~0x1000;
+            player->unk_0B6 &= ~UNK_0B6_EXPLOSION;
             player->particles[20 + arg3].IsAlive = 0;
             player->particles[20 + arg3].timer = 0;
             player->particles[20 + arg3].type = 0;
@@ -4900,7 +4900,7 @@ void func_80064F88(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
         player->particles[20 + arg3].scale = 1.2f;
     }
     if (player->particles[20 + arg3].timer >= 12) {
-        player->unk_0B6 &= ~0x0800;
+        player->unk_0B6 &= ~UNK_0B6_BOING;
         player->particles[20 + arg3].IsAlive = 0;
         player->particles[20 + arg3].timer = 0;
         player->particles[20 + arg3].type = 0;
@@ -4917,7 +4917,7 @@ void func_80065030(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 
     if (player->particles[20 + arg3].timer >= 12) {
-        player->unk_0B6 &= ~0x0100;
+        player->unk_0B6 &= ~UNK_0B6_POOMP;
         player->particles[20 + arg3].IsAlive = 0;
         player->particles[20 + arg3].timer = 0;
         player->particles[20 + arg3].type = 0;
@@ -4957,7 +4957,7 @@ void func_800651F4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     } else {
         player->particles[20 + arg3].scale -= 0.4;
         if (player->particles[20 + arg3].scale <= 0.0f) {
-            player->unk_0B6 &= ~0x0020;
+            player->unk_0B6 &= ~UNK_0B6_WHISTLE;
             player->particles[20 + arg3].IsAlive = 0;
             player->particles[20 + arg3].timer = 0;
             player->particles[20 + arg3].type = 0;
@@ -6479,19 +6479,19 @@ void func_8006D194(Player* player, s8 playerIndex, s8 arg2) {
                 break;
         }
     } else {
-        if ((player->unk_0B6 & 0x40) == 0x40) {
+        if ((player->unk_0B6 & UNK_0B6_CRASH) == UNK_0B6_CRASH) {
             func_800628C0(player, playerIndex, arg2, 0);
         }
-        if ((player->unk_0B6 & 0x800) == 0x800) {
+        if ((player->unk_0B6 & UNK_0B6_BOING) == UNK_0B6_BOING) {
             func_80062968(player, playerIndex, arg2, 0);
         }
-        if ((player->unk_0B6 & 0x1000) == 0x1000) {
+        if ((player->unk_0B6 & UNK_0B6_EXPLOSION) == UNK_0B6_EXPLOSION) {
             func_80062914(player, playerIndex, arg2, 0);
         }
-        if ((player->unk_0B6 & 0x80) == 0x80) {
+        if ((player->unk_0B6 & UNK_0B6_WHIRRR) == UNK_0B6_WHIRRR) {
             func_80062A18(player, playerIndex, arg2, 0);
         }
-        if ((player->unk_0B6 & 0x100) == 0x100) {
+        if ((player->unk_0B6 & UNK_0B6_POOMP) == UNK_0B6_POOMP) {
             func_800629BC(player, playerIndex, arg2, 0);
         }
     }
@@ -6499,7 +6499,7 @@ void func_8006D194(Player* player, s8 playerIndex, s8 arg2) {
         if (player->particles[0x15].type == 5) {
             func_800651F4(player, playerIndex, arg2, 1);
         }
-    } else if ((player->unk_0B6 & 0x20) == 0x20) {
+    } else if ((player->unk_0B6 & UNK_0B6_WHISTLE) == UNK_0B6_WHISTLE) {
         func_80062AA8(player, playerIndex, arg2, 1);
     }
 }

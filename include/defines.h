@@ -329,6 +329,14 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define MAX_TIME 0x927C0
 #define DEGREES_CONVERSION_FACTOR 182
 
+#define UNK_0B6_WHISTLE 0x20 // Whistle spinout save graphic
+#define UNK_0B6_CRASH 0x40 //Crash! graphic (vertical tumble)
+#define UNK_0B6_WHIRRR 0x80 //Whirrr! graphic (spinning out)
+#define UNK_0B6_POOMP 0x100 //Poomp! graphic (landing from a height)
+#define UNK_0B6_BOING 0x800 //Boing! graphic (hopping)
+#define UNK_0B6_EXPLOSION 0x1000 //Big shock looking graphic when starting tumble
+
+
 
 #define UNK_0CA_LAKITU_RETRIEVAL 0x1 // While lakitu is grabbing you, but before the scene transition of being placed on the track
 #define UNK_0CA_HELD_BY_LAKITU 0x2
@@ -340,9 +348,6 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define UNK_0CA_WENT_OVER_OOB 0x100 // Player went over (or is on) an OOB area. Cancelled if touch back in bounds
 #define UNK_0CA_LAKITU_LAVA 0x1000 // smoky effect when retrieved from lava
 #define UNK_0CA_LAKITU_WATER 0x2000 // dripping effect when retreived from water
-
-
-
 
 #define UNK_044_BACK_UP 0x1
 #define UNK_044_RIGHT_TURN 0x2 // non-drifting (more than 5 degrees)
