@@ -327,10 +327,11 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  * @brief Max representable time, 100 minutes measured in centiseconds
  */
 #define MAX_TIME 0x927C0
+#define DEGREES_CONVERSION_FACTOR 182
 
 #define UNK_044_BACK_UP 0x1
-#define UNK_044_RIGHT_TURN 0x2 // non-drifting
-#define UNK_044_LEFT_TURN 0x4 // non-drifting
+#define UNK_044_RIGHT_TURN 0x2 // non-drifting (more than 5 degrees)
+#define UNK_044_LEFT_TURN 0x4 // non-drifting (more than 5 degrees)
 #define UNK_044_MOVE_BACKWARDS 0x8 // includes lakitu
 #define UNK_044_LOSE_GP_RACE 0x10 // pointless, only unsets itself
 #define UNK_044_PRESS_A 0x20

@@ -3885,11 +3885,11 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         ((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT)) {
         func_80036CB4(player);
     }
-    if ((player->unk_0C0 / 182) < (-5)) {
+    if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) < (-5)) {
         player->unk_044 |= UNK_044_LEFT_TURN;
         player->unk_044 &= ~UNK_044_RIGHT_TURN;
         D_801652C0[arg2]++;
-    } else if ((player->unk_0C0 / 182) >= 6) {
+    } else if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) > 5) {
         player->unk_044 |= UNK_044_RIGHT_TURN;
         player->unk_044 &= ~UNK_044_LEFT_TURN;
         D_801652C0[arg2]++;
