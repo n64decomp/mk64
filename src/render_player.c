@@ -1184,22 +1184,22 @@ void func_800235AC(Player* player, s8 playerIndex) {
         return;
     }
 
-    if (((player->unk_0CA & 0x10) == 0x10) && ((player->unk_0CA & 4) == 4)) {
+    if (((player->unk_0CA & UNK_0CA_FRIGID_EFFECT) == UNK_0CA_FRIGID_EFFECT) && ((player->unk_0CA & UNK_0CA_LAKITU_FIZZLE) == UNK_0CA_LAKITU_FIZZLE)) {
         change_player_color_effect_rgb(player, playerIndex, 0x646464, 0.5f);
         change_player_color_effect_cmy(player, playerIndex, 0xFF0000, 0.1f);
         return;
     }
-    if ((player->unk_0CA & 4) == 4) {
+    if ((player->unk_0CA & UNK_0CA_LAKITU_FIZZLE) == UNK_0CA_LAKITU_FIZZLE) {
         change_player_color_effect_rgb(player, playerIndex, COLOR_BLACK, 1.0f);
         change_player_color_effect_cmy(player, playerIndex, 0, 1.0f);
         return;
     }
-    if ((player->unk_0CA & 0x10) == 0x10) {
+    if ((player->unk_0CA & UNK_0CA_FRIGID_EFFECT) == UNK_0CA_FRIGID_EFFECT) {
         change_player_color_effect_rgb(player, playerIndex, 0x646464, 0.5f);
         change_player_color_effect_cmy(player, playerIndex, 0xFF0000, 0.1f);
         return;
     }
-    if ((player->unk_0CA & 0x20) == 0x20) {
+    if ((player->unk_0CA & UNK_0CA_THAWING_EFFECT) == UNK_0CA_THAWING_EFFECT) {
         change_player_color_effect_rgb(player, playerIndex, COLOR_BLACK, 0.1f);
         change_player_color_effect_cmy(player, playerIndex, 0, 0.1f);
         return;
@@ -1263,7 +1263,7 @@ void func_800235AC(Player* player, s8 playerIndex) {
             return;
         }
         render_light_environment_on_player(player, playerIndex);
-        if ((player->unk_0CA & 0x1000) == 0x1000) {
+        if ((player->unk_0CA & UNK_0CA_LAKITU_LAVA) == UNK_0CA_LAKITU_LAVA) {
             change_player_color_effect_rgb(player, playerIndex, COLOR_BLACK, 0.3f);
             change_player_color_effect_cmy(player, playerIndex, 0xF0F0F0, 0.3f);
         }
@@ -1276,7 +1276,7 @@ void func_80023BF0(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     } else {
         func_80022E84(player, playerId, screenId, arg3);
     }
-    if ((player->unk_0CA & 2) == 2) {
+    if ((player->unk_0CA & UNK_0CA_HELD_BY_LAKITU) == UNK_0CA_HELD_BY_LAKITU) {
         func_80022D60(player, playerId, screenId, arg3);
     }
 }
@@ -1303,7 +1303,7 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
     if (((player->effects & EXPLOSION_CRASH_EFFECT) == EXPLOSION_CRASH_EFFECT) ||
         ((player->effects & HIT_BY_GREEN_SHELL_EFFECT) == HIT_BY_GREEN_SHELL_EFFECT) || ((player->effects & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
         ((player->effects & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) || ((player->effects & HIT_BY_GREEN_SHELL_EFFECT) == HIT_BY_GREEN_SHELL_EFFECT) ||
-        ((player->unk_0CA & 2) == 2) || ((player->effects & HIT_BY_STAR_EFFECT) == HIT_BY_STAR_EFFECT) ||
+        ((player->unk_0CA & UNK_0CA_HELD_BY_LAKITU) == UNK_0CA_HELD_BY_LAKITU) || ((player->effects & HIT_BY_STAR_EFFECT) == HIT_BY_STAR_EFFECT) ||
         ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT) || ((player->effects & MIDAIR_EFFECT) == MIDAIR_EFFECT)) {
 
         var_f2 = (f32) (1.0 - ((f64) player->collision.surfaceDistance[2] * 0.02));
@@ -1502,7 +1502,7 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 flipOffset) {
                              AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
                                  GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         }
-    } else if (((player->unk_0CA & 4) == 4) || (player->triggers & BECOME_BOMB_EFFECT) ||
+    } else if (((player->unk_0CA & UNK_0CA_LAKITU_FIZZLE) == UNK_0CA_LAKITU_FIZZLE) || (player->triggers & BECOME_BOMB_EFFECT) ||
                (player->triggers & LOSE_BATTLE_EFFECT)) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -1735,7 +1735,7 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
         render_ghost(player, playerId, screenId, flipOffset);
     }
     osRecvMesg(&gDmaMesgQueue, (OSMesg*) &sp34, OS_MESG_BLOCK);
-    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & 1) != 1) &&
+    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & UNK_0CA_LAKITU_RETRIEVAL) != UNK_0CA_LAKITU_RETRIEVAL) &&
         (player->collision.surfaceDistance[2] <= 30.0f)) {
         render_player_ice_reflection(player, playerId, screenId, flipOffset);
     }

@@ -4282,7 +4282,7 @@ void func_80062F98(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     temp_f0 = player->particles[10 + arg1].unk_018 / 10.0f;
     ++player->particles[10 + arg1].timer;
     player->particles[10 + arg1].pos[1] += temp_f0;
-    if ((player->unk_0CA & 1) == 1) {
+    if ((player->unk_0CA & UNK_0CA_LAKITU_RETRIEVAL) == UNK_0CA_LAKITU_RETRIEVAL) {
         player->particles[10 + arg1].pos[1] += (temp_f0 + 0.3);
         if ((player->particles[10 + arg1].timer == 0x10) ||
             ((D_801652A0[arg2] - player->particles[10 + arg1].pos[1]) < 3.0f)) {
@@ -6340,7 +6340,7 @@ void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
             player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
             return;
         }
-        if (((((player->unk_0CA & 0x1000) == 0x1000) ||
+        if (((((player->unk_0CA & UNK_0CA_LAKITU_LAVA) == UNK_0CA_LAKITU_LAVA) ||
               ((player->unk_0E0 < 2) && (player->effects & EXPLOSION_CRASH_EFFECT))) ||
              ((player->unk_0E0 < 2) && (player->effects & HIT_BY_STAR_EFFECT))) ||
             (player->effects & HIT_BY_GREEN_SHELL_EFFECT)) {
@@ -6349,7 +6349,7 @@ void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
             player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
             return;
         }
-        if ((player->unk_0CA & 0x2000) == 0x2000) {
+        if ((player->unk_0CA & UNK_0CA_LAKITU_WATER) == UNK_0CA_LAKITU_WATER) {
             func_80061A34(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
@@ -6437,7 +6437,7 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
                 if (((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) &&
                     ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
                     ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
-                    if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100)) {
+                    if (((arg0->unk_0CA & UNK_0CA_HELD_BY_LAKITU) != UNK_0CA_HELD_BY_LAKITU) && ((arg0->unk_0CA & UNK_0CA_FRIGID_EFFECT) != UNK_0CA_FRIGID_EFFECT) && !(arg0->unk_0CA & UNK_0CA_WENT_OVER_OOB)) {
                         func_80060504(arg0, arg1, sp20, arg2, arg3);
                     }
                 }
@@ -6447,14 +6447,14 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                if (((arg0->type & 0x4000) != 0) && ((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) &&
-                    ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
-                    ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
-                    if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100)) {
-                        func_80060504(arg0, arg1, sp20, arg2, arg3);
-                    }
+            if (((arg0->type & 0x4000) != 0) && ((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) &&
+                ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
+                ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
+                if (((arg0->unk_0CA & UNK_0CA_HELD_BY_LAKITU) != UNK_0CA_HELD_BY_LAKITU) && ((arg0->unk_0CA & UNK_0CA_FRIGID_EFFECT) != UNK_0CA_FRIGID_EFFECT) && !(arg0->unk_0CA & UNK_0CA_WENT_OVER_OOB)) {
+                    func_80060504(arg0, arg1, sp20, arg2, arg3);
                 }
-                break;
+            }
+            break;
         }
     }
 }
