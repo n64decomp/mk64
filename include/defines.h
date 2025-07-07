@@ -329,6 +329,15 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define MAX_TIME 0x927C0
 #define DEGREES_CONVERSION_FACTOR 182
 
+/* UNK_002 has something to do with player animations. Each player has a 32-bit
+flag broken into 8 groups of 4 bits. Those 4 bits affect how each of the 8 players
+appear to the specified player */
+#define CHANGING_ANIMATION 0x1 // Seems to be set when the kart animation has to change.
+#define UNK_002_UNKNOWN_0x2 0x2 
+#define UNK_002_UNKNOWN_0x4 0x4 /* Unclear, but has to do with viewing the side of player. At least tends to change if target
+player spins. Something  with avoding rollover of aniamation frame data? */
+#define SIDE_OF_KART 0x8 // Seems to be whether you are in a rectangle shooting out from both sides of target player
+
 #define UNK_0B6_WHISTLE 0x20 // Whistle spinout save graphic
 #define UNK_0B6_CRASH 0x40 //Crash! graphic (vertical tumble)
 #define UNK_0B6_WHIRRR 0x80 //Whirrr! graphic (spinning out)

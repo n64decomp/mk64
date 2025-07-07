@@ -79,14 +79,14 @@ void func_8001F9E4(Player* player, Camera* camera, s8 screenId) {
     get_player_index_for_player(player);
     func_8001F980(&sp30, &sp2C);
 
-    player->unk_002 &= ~(2 << (screenId * 4));
-    player->unk_002 &= ~(8 << (screenId * 4));
+    player->unk_002 &= ~(UNK_002_UNKNOWN_0x2 << (screenId * 4));
+    player->unk_002 &= ~(SIDE_OF_KART << (screenId * 4));
 
     if (check_player_camera_collision(player, camera, (f32) (D_80165578 + sp30), (f32) (D_8016557A + sp2C)) == 1) {
-        player->unk_002 |= 2 << (screenId * 4);
+        player->unk_002 |= UNK_002_UNKNOWN_0x2 << (screenId * 4);
     }
     if (check_player_camera_collision(player, camera, (f32) D_80165580, (f32) D_80165582) == 1) {
-        player->unk_002 |= 8 << (screenId * 4);
+        player->unk_002 |= SIDE_OF_KART << (screenId * 4);
     }
 }
 
@@ -181,7 +181,7 @@ void init_render_player(Player* player, Camera* camera, s8 playerId, s8 screenId
 
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         func_8001F9E4(player, camera, screenId);
-        temp_v0 = 2 << (screenId << 2);
+        temp_v0 = UNK_002_UNKNOWN_0x2 << (screenId << 2);
         if (temp_v0 == (player->unk_002 & temp_v0)) {
             if (!(player->type & PLAYER_START_SEQUENCE)) {
                 func_8002934C(player, camera, screenId, playerId);
@@ -193,7 +193,7 @@ void init_render_player(Player* player, Camera* camera, s8 playerId, s8 screenId
             }
         }
         func_8001F980(&sp4C, &sp48);
-        temp_v0_2 = 1 << (screenId << 2);
+        temp_v0_2 = CHANGING_ANIMATION << (screenId << 2);
         if ((temp_v0 == (player->unk_002 & temp_v0)) && (temp_v0_2 == (player->unk_002 & temp_v0_2))) {
             if ((check_player_camera_collision(player, camera, D_80165570 + sp4C, D_80165572 + sp48) == 1) & 0xFFFF) {
                 gPlayersToRenderPlayerId[gPlayersToRenderCount] = (s16) playerId;
@@ -424,7 +424,7 @@ void load_kart_texture_and_render_kart_particle_on_screen_four(void) {
 void try_rendering_player(Player* player, s8 playerId, s8 arg2) {
 
     if (((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) && ((player->type & PLAYER_UNKNOWN_0x40) == 0)) {
-        if ((player->unk_002 & 2 << (arg2 * 4)) == 2 << (arg2 * 4)) {
+        if ((player->unk_002 & UNK_002_UNKNOWN_0x2 << (arg2 * 4)) == UNK_002_UNKNOWN_0x2 << (arg2 * 4)) {
             render_player(player, playerId, arg2);
         }
     }
@@ -1673,7 +1673,7 @@ void render_player_ice_reflection(Player* player, s8 playerId, s8 screenId, s8 f
     sp9C[0] = player->pos[0];
     sp9C[1] = player->unk_074 + (4.0f * player->size);
     sp9C[2] = player->pos[2];
-    if (!(player->unk_002 & (4 << (screenId * 4)))) {
+    if (!(player->unk_002 & (UNK_002_UNKNOWN_0x4 << (screenId * 4)))) {
         flipOffset = 8;
     } else {
         flipOffset = 0;
@@ -1712,13 +1712,13 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
     OSMesg* sp34;
 
     update_wheel_palette(player, playerId, screenId, D_801651D0[screenId][playerId]);
-    if (!(player->unk_002 & (4 << (screenId * 4)))) {
+    if (!(player->unk_002 & (UNK_002_UNKNOWN_0x4 << (screenId * 4)))) {
         flipOffset = 0;
     } else {
         flipOffset = 8;
     }
     func_80023BF0(player, playerId, screenId, flipOffset);
-    temp_t1 = 8 << (screenId * 4);
+    temp_t1 = SIDE_OF_KART << (screenId * 4);
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->collision.surfaceDistance[2] <= 50.0f) &&
         (player->surfaceType != ICE)) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {

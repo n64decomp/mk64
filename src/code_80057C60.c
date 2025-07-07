@@ -6506,7 +6506,7 @@ void func_8006D194(Player* player, s8 playerIndex, s8 arg2) {
 
 void func_8006D474(Player* player, s8 playerId, s8 screenId) {
     s16 var_s2;
-    if ((player->unk_002 & (8 << (screenId * 4))) == (8 << (screenId * 4))) {
+    if ((player->unk_002 & (SIDE_OF_KART << (screenId * 4))) == (SIDE_OF_KART << (screenId * 4))) {
         for (var_s2 = 0; var_s2 < 10; var_s2++) {
             switch (player->particles[var_s2].type) {
                 case 1:
@@ -6630,7 +6630,7 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
             }
         }
     }
-    if ((gModeSelection == BATTLE) && (player->unk_002 & (2 << (screenId * 4)))) {
+    if ((gModeSelection == BATTLE) && (player->unk_002 & (UNK_002_UNKNOWN_0x2 << (screenId * 4)))) {
         render_remaining_battle_balloons(player, playerId, screenId);
     }
 }
@@ -6639,7 +6639,7 @@ void func_8006DC54(Player* player, s8 playerIndex, s8 screenId) {
     s16 i;
     s32 bitwiseMask;
 
-    bitwiseMask = 8 << (screenId * 4);
+    bitwiseMask = SIDE_OF_KART << (screenId * 4);
     if (bitwiseMask == (player->unk_002 & bitwiseMask)) {
         for (i = 0; i < 10; i++) {
             if (player->particles[i].type == 7) {
@@ -6653,7 +6653,7 @@ void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
     s16 temp_s0;
     s32 temp_v0;
 
-    temp_v0 = 8 << (arg2 * 4);
+    temp_v0 = SIDE_OF_KART << (arg2 * 4);
     if (temp_v0 == (arg0->unk_002 & temp_v0)) {
         for (temp_s0 = 0; temp_s0 < 10; ++temp_s0) {
             temp_v0 = arg0->particles[temp_s0].type;

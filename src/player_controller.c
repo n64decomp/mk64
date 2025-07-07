@@ -765,10 +765,10 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
     temp_a0 = (s16) player->unk_0D4[screenId] * sins((u16) temp_a0) + player->unk_0CC[screenId] * coss((u16) temp_a0);
     move_s16_towards(&player->unk_050[screenId], temp_a0, 0.5f);
     var_a0 = player->animFrameSelector[screenId];
-    player->unk_002 = player->unk_002 & (~(4 << (screenId * 4)));
+    player->unk_002 = player->unk_002 & (~(UNK_002_UNKNOWN_0x4 << (screenId * 4)));
     if (var_a0 >= 0x101) {
         var_a0 = 0x201 - var_a0;
-        player->unk_002 |= (4 << (screenId * 4));
+        player->unk_002 |= (UNK_002_UNKNOWN_0x4 << (screenId * 4));
     }
     if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) &&
         ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT) &&
@@ -839,29 +839,29 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
         ((player->effects & HIT_BY_STAR_EFFECT) == HIT_BY_STAR_EFFECT) || (player->effects & TERRAIN_TUMBLE_EFFECT) ||
         (player->effects & BANANA_SPINOUT_EFFECT) || (player->effects & DRIVING_SPINOUT_EFFECT)) {
 
-        player->unk_002 |= 1 << (screenId * 4);
+        player->unk_002 |= CHANGING_ANIMATION << (screenId * 4);
         D_80165190[screenId][playerId] = 1;
 
         if ((player->effects & BANANA_SPINOUT_EFFECT) || (player->effects & DRIVING_SPINOUT_EFFECT)) {
             if ((player->animFrameSelector[screenId] == gLastAnimFrameSelector[screenId][playerId]) &&
                 (player->animGroupSelector[screenId] == gLastAnimGroupSelector[screenId][playerId])) {
-                player->unk_002 &= ~(1 << (screenId * 4));
+                player->unk_002 &= ~(CHANGING_ANIMATION << (screenId * 4));
                 D_80165190[screenId][playerId] = 1;
             }
         } else if (((player->unk_0A8) >> 8) == D_80165150[screenId][playerId] >> 8) {
-            player->unk_002 &= ~(1 << (screenId * 4));
+            player->unk_002 &= ~(CHANGING_ANIMATION << (screenId * 4));
         }
     } else {
-        player->unk_002 |= 1 << (screenId * 4);
+        player->unk_002 |= CHANGING_ANIMATION << (screenId * 4);
         if (((player->animFrameSelector[screenId] == gLastAnimFrameSelector[screenId][playerId]) &&
              (player->animGroupSelector[screenId] == gLastAnimGroupSelector[screenId][playerId])) &&
             ((D_80165190[screenId][playerId]) == 0)) {
-            player->unk_002 &= ~(1 << (screenId * 4));
+            player->unk_002 &= ~(CHANGING_ANIMATION << (screenId * 4));
         }
     }
     temp_a0_2 = gLastAnimFrameSelector[screenId][playerId] - player->animFrameSelector[screenId];
     if ((temp_a0_2 >= 0x14) || (temp_a0_2 < (-0x13))) {
-        player->unk_002 |= 1 << (screenId * 4);
+        player->unk_002 |= CHANGING_ANIMATION << (screenId * 4);
     }
 }
 
