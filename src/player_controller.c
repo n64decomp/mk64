@@ -217,22 +217,22 @@ s32 get_player_index_for_player(Player* player) {
 
 void func_80027DA8(Player* player, s8 playerId) {
     if (D_8015F890 != 1) {
-        if ((player->type & 0x10) != 0x10) {
-            if (((D_8018D168 == 1) && ((player->type & PLAYER_HUMAN) == 0x4000)) && ((player->type & 0x100) != 0x100)) {
+        if ((player->type & PLAYER_UNKNOWN_0x10) != PLAYER_UNKNOWN_0x10) {
+            if (((D_8018D168 == 1) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                 func_800C94A4(playerId);
-                player->type |= 0x10;
-            } else if ((player->type & 0x2000) == 0) {
+                player->type |= PLAYER_UNKNOWN_0x10;
+            } else if ((player->type & PLAYER_START_SEQUENCE) == 0) {
                 func_800C9A88(playerId);
-                player->type |= 0x10;
+                player->type |= PLAYER_UNKNOWN_0x10;
             }
         }
-    } else if ((player->type & 0x10) != 0x10) {
+    } else if ((player->type & PLAYER_UNKNOWN_0x10) != PLAYER_UNKNOWN_0x10) {
         if ((D_8018D168 == 1) && (player == gPlayerOne)) {
             func_800C94A4(playerId);
-            player->type |= 0x10;
-        } else if ((player->type & 0x2000) == 0) {
+            player->type |= PLAYER_UNKNOWN_0x10;
+        } else if ((player->type & PLAYER_START_SEQUENCE) == 0) {
             func_800C9A88(playerId);
-            player->type |= 0x10;
+            player->type |= PLAYER_UNKNOWN_0x10;
         }
     }
 }
@@ -555,7 +555,7 @@ void func_80028864(Player* player, Camera* camera, s8 playerId, s8 screenId) {
     } else if ((player->type & PLAYER_STAGING) == PLAYER_STAGING) {
         func_8002D028(player, playerId);
         func_8002F730(player, camera, screenId, playerId);
-    } else if (player->type & 0x80) {
+    } else if (player->type & PLAYER_UNKNOWN_0x80) {
         func_8002D268(player, camera, screenId, playerId);
     } else {
         if ((player->type & PLAYER_HUMAN) != PLAYER_HUMAN) {
@@ -2060,7 +2060,7 @@ void func_8002D028(Player* player, s8 playerIndex) {
     if (temp_f18 <= 8.0f) {
         adjust_angle(&player->rotation[1], -0x8000, 0x016C);
         if ((player->rotation[1] < (-0x7F41)) || (player->rotation[1] > 0x7F41)) {
-            player->type &= ~0x0200;
+            player->type &= ~PLAYER_STAGING;
         }
         player->unk_08C = 0;
         player->speed = 0;
@@ -4704,24 +4704,24 @@ void handle_a_press_for_all_players_during_race(void) {
                     if (D_8015F890 != 1) {
                         handle_a_press_for_player_during_race(gPlayerOne, gControllerOne, 0);
                         temp_v0_3 = gPlayerTwo->type;
-                        if (((temp_v0_3 & 0x100) == 0x100) && ((temp_v0_3 & 0x800) != 0x800)) {
+                        if (((temp_v0_3 & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) && ((temp_v0_3 & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE)) {
                             handle_a_press_for_player_during_race(gPlayerTwo, gControllerSix, 1);
                         }
                         temp_v0_4 = gPlayerThree->type;
-                        if (((temp_v0_4 & 0x100) == 0x100) && ((temp_v0_4 & 0x800) != 0x800)) {
+                        if (((temp_v0_4 & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) && ((temp_v0_4 & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE)) {
                             handle_a_press_for_player_during_race(gPlayerThree, gControllerSeven, 2);
                             return;
                         }
                     } else {
-                        if ((gPlayerOne->type & 0x800) != 0x800) {
+                        if ((gPlayerOne->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
                             handle_a_press_for_player_during_race(gPlayerOne, gControllerEight, 0);
                         }
                         temp_v0_5 = gPlayerTwo->type;
-                        if (((temp_v0_5 & 0x100) == 0x100) && ((temp_v0_5 & 0x800) != 0x800)) {
+                        if (((temp_v0_5 & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) && ((temp_v0_5 & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE)) {
                             handle_a_press_for_player_during_race(gPlayerTwo, gControllerSix, 1);
                         }
                         temp_v0_6 = gPlayerThree->type;
-                        if (((temp_v0_6 & 0x100) == 0x100) && ((temp_v0_6 & 0x800) != 0x800)) {
+                        if (((temp_v0_6 & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) && ((temp_v0_6 & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE)) {
                             handle_a_press_for_player_during_race(gPlayerThree, gControllerSeven, 2);
                             return;
                         }

@@ -556,7 +556,7 @@ void func_80005B18(void) {
                 sReplayGhostBufferSize = D_80162D86;
                 D_80162DDC = 1;
             }
-            if ((gPlayerOne->type & 0x800) == 0x800) {
+            if ((gPlayerOne->type & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) {
                 func_80005AE8(gPlayerTwo);
                 func_80005AE8(gPlayerThree);
             } else {

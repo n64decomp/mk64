@@ -6423,7 +6423,7 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
         } else if (((arg0->effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) && (arg0->unk_0B0 < 0x32)) {
             func_80061094(arg0, arg1, sp20, arg2, arg3);
             return;
-        } else if ((arg0->type & 0x4000) == 0x4000) {
+        } else if ((arg0->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
             if ((arg0->unk_0DE & UNK_0DE_UNDER_OOB_LEVEL) == UNK_0DE_UNDER_OOB_LEVEL) {
                 func_80060F50(arg0, arg1, sp20, arg2, arg3);
                 return;
@@ -6447,7 +6447,7 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            if (((arg0->type & 0x4000) != 0) && ((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) &&
+            if (((arg0->type & PLAYER_HUMAN) != 0) && ((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) &&
                 ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
                 ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
                 if (((arg0->unk_0CA & UNK_0CA_HELD_BY_LAKITU) != UNK_0CA_HELD_BY_LAKITU) && ((arg0->unk_0CA & UNK_0CA_FRIGID_EFFECT) != UNK_0CA_FRIGID_EFFECT) && !(arg0->unk_0CA & UNK_0CA_WENT_OVER_OOB)) {
@@ -6670,7 +6670,7 @@ void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
             }
         }
 
-        if (((arg0->type & 0x4000) == 0x4000) && (arg2 == arg1)) {
+        if (((arg0->type & PLAYER_HUMAN) == PLAYER_HUMAN) && (arg2 == arg1)) {
             switch (arg0->particles[20].type) {
                 case 2:
                     func_80068310(arg0, arg1, arg0->particles[20].scale, arg2, 0);
@@ -6714,11 +6714,11 @@ void func_8006E058(void) {
                 case TIME_TRIALS:
                     func_8006E420(gPlayerOne, 0, 0);
 
-                    if ((gPlayerTwo->type & 0x100) == 0x100) {
+                    if ((gPlayerTwo->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) {
                         func_8006E420(gPlayerTwo, 1, 0);
                     }
 
-                    if ((gPlayerThree->type & 0x100) == 0x100) {
+                    if ((gPlayerThree->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) {
                         func_8006E420(gPlayerThree, 2, 0);
                         break;
                     }

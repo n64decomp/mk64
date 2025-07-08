@@ -2380,7 +2380,7 @@ void func_800C70A8(u8 playerId) {
             D_800E9E74[playerId] = 0;
         }
         if ((((gPlayers[playerId].effects & EARLY_START_SPINOUT_EFFECT) == EARLY_START_SPINOUT_EFFECT) &&
-             ((gPlayers[playerId].type & 0x2000) != 0x2000)) ||
+             ((gPlayers[playerId].type & PLAYER_START_SEQUENCE) != PLAYER_START_SEQUENCE)) ||
             ((gPlayers[playerId].effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT) ||
             ((gPlayers[playerId].effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
             ((gPlayers[playerId].effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) ||
@@ -2388,7 +2388,7 @@ void func_800C70A8(u8 playerId) {
             D_800E9E74[playerId] = 0x00000012;
         }
         if ((((gPlayers[playerId].effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) &&
-             ((gPlayers[playerId].type & 0x2000) != 0x2000)) ||
+             ((gPlayers[playerId].type & PLAYER_START_SEQUENCE) != PLAYER_START_SEQUENCE)) ||
             ((gPlayers[playerId].effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT)) {
             D_800E9E74[playerId] = 0x00000013;
         }

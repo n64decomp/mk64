@@ -93,7 +93,9 @@
  * Used in the Player struct's 'type' member: player->type
  */
 #define PLAYER_INACTIVE 0                 // 0x0000
+#define PLAYER_UNKNOWN_0x10 (1 << 4)      // 0x0010 // unused?
 #define PLAYER_UNKNOWN_0x40 (1 << 6)      // 0x0040
+#define PLAYER_UNKNOWN_0x80 (1 << 7)      // 0x0080 // UNUSED
 #define PLAYER_INVISIBLE_OR_BOMB (1 << 8) // 0x0100
 #define PLAYER_STAGING (1 << 9)           // 0x0200
 #define PLAYER_UNKNOWN (1 << 10)          // 0x0400 // unused ?

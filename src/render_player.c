@@ -896,10 +896,10 @@ void func_8002276C(void) {
                     break;
                 case TIME_TRIALS: /* switch 1 */
                     func_80022A98(gPlayerOne, 0);
-                    if ((gPlayerTwo->type & 0x100) == 0x100) {
+                    if ((gPlayerTwo->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) {
                         func_80022A98(gPlayerTwo, 1);
                     }
-                    if ((gPlayerThree->type & 0x100) == 0x100) {
+                    if ((gPlayerThree->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) {
                         func_80022A98(gPlayerThree, 2);
                     }
                     break;
