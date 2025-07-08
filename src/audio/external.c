@@ -2688,7 +2688,7 @@ void func_800C76C0(u8 playerId) {
 }
 
 void func_800C847C(u8 playerId) {
-    if ((gPlayers[playerId].unk_0DE & 1) == 1) {
+    if ((gPlayers[playerId].unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) == UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) {
         if (D_800E9F74[playerId] == 0) {
             if ((s32) D_800EA1C0 < 2) {
                 func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xF9, 0x26));

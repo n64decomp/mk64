@@ -1346,7 +1346,7 @@ void func_8008F494(Player* player, s8 playerIndex) {
     player->unk_042 = 0;
 
     if (((player->type & PLAYER_HUMAN) != 0) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) &&
-        ((player->unk_0CA & UNK_0CA_HELD_BY_LAKITU) == 0) && ((player->unk_0DE & 1) == 0) && ((player->unk_0DE & 2) == 0)) {
+        ((player->unk_0CA & UNK_0CA_HELD_BY_LAKITU) == 0) && ((player->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) == 0) && ((player->unk_0DE & UNK_0DE_PASS_OOB_OR_FLUID_LEVEL) == 0)) {
         func_800C90F4(playerIndex, (player->characterId * 0x10) + 0x29008004);
     }
 }
@@ -1814,14 +1814,14 @@ void func_80090868(Player* player) {
         player->unk_222 = 0;
         player->unk_0CA |= UNK_0CA_HELD_BY_LAKITU;
         player->unk_0C8 = 0;
-        if ((player->unk_0DE & 1) == 1) {
+        if ((player->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) == UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) {
             if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
                 player->unk_0CA |= UNK_0CA_LAKITU_LAVA;
             } else {
                 player->unk_0CA |= UNK_0CA_LAKITU_WATER;
             }
             // removing the water effect for Sherbet Land makes sense. Perhaps rainbow road and skyscraper
-            // had lave instead of an abyss initially?
+            // had lava instead of an abyss initially?
             if ((gCurrentCourseId == COURSE_SHERBET_LAND) || (gCurrentCourseId == COURSE_SKYSCRAPER) ||
                 (gCurrentCourseId == COURSE_RAINBOW_ROAD)) {
                 player->unk_0CA &= ~(UNK_0CA_LAKITU_LAVA | UNK_0CA_LAKITU_WATER);
@@ -1948,7 +1948,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                         pop_player_balloon(player, playerId);
                     }
                     player->unk_0CA &= ~UNK_0CA_HELD_BY_LAKITU;
-                    player->unk_0DE &= ~0x0004;
+                    player->unk_0DE &= ~UNK_0DE_UNDER_FLUID_LEVEL;
                     if ((player->unk_0CA & UNK_0CA_FROZEN_EFFECT) != UNK_0CA_FROZEN_EFFECT) {
                         player->unk_0CA &= ~UNK_0CA_LAKITU_SCENE;
                         if ((player->topSpeed * 0.9) <= player->currentSpeed) {

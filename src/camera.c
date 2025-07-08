@@ -400,7 +400,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
     }
 
-    if ((player->unk_0DE & 1) != 0) {
+    if ((player->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) != 0) {
         *arg4 = D_801652A0[index];
     }
 }
@@ -620,7 +620,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
     }
 
-    if ((player->unk_0DE & 1) != 0) {
+    if ((player->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) != 0) {
         *arg4 = D_801652A0[index];
     }
 }
