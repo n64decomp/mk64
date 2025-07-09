@@ -149,9 +149,9 @@ typedef struct {
     /* 0x0C */ f32 scale;
     /* 0x10 */ u16 unk_010;
     /* 0x12 */ u16 type;
-    /* 0x14 */ f32 unk_014;
+    /* 0x14 */ f32 surfaceType;
     /* 0x18 */ f32 unk_018;
-    /* 0x1C */ s16 IsAlive;
+    /* 0x1C */ s16 isAlive;
     /* 0x1E */ s16 timer;
     /* 0x20 */ s16 rotation;
     /* 0x22 */ s16 unk_022;
@@ -328,7 +328,7 @@ typedef struct {
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
     /* 0x0200 */ u32 unk_200; // May be s32. but less casting required if u32
-    /* 0x0204 */ s16 unk_204;
+    /* 0x0204 */ s16 driftDuration;
     /* 0x0206 */ s16 unk_206;
     /* 0x0208 */ f32 unk_208;
     /* 0x020C */ f32 unk_20C;
@@ -353,7 +353,10 @@ typedef struct {
     /* 0x024C */ u16 animGroupSelector[4];
     /* 0x0254 */ u16 characterId;
     /* 0x0256 */ u16 unk_256;
-    /* 0x0258 */ Particle particles[40];
+    /* 0x0258 */ Particle particlePool0[10];
+    /* 0x0258 */ Particle particlePool1[10];
+    /* 0x0258 */ Particle particlePool2[10];
+    /* 0x0258 */ Particle particlePool3[10];
     /* 0x0D98 */ s16 unk_D98;
     /* 0x0D9A */ s16 unk_D9A;
     /* 0x0D9C */ f32 unk_D9C;
@@ -376,6 +379,19 @@ typedef struct {
     /* 0x0DD2 */ // s16 unk_DD2;
     /* 0x0DD4 */ // s16 unk_DD4;
 } Player;        // size = 0xDD8
+
+enum POOL_1_PARTICLE_TYPES {
+    NO_PARTICLE,
+    DRIFT_PARTICLE,
+    GROUND_PARTICLE,
+    GRASS_PARTICLE,
+    POOL_1_PARTICLE_TYPE_4,
+    POOL_1_PARTICLE_TYPE_5,
+    POOL_1_PARTICLE_TYPE_6,
+    POOL_1_PARTICLE_TYPE_7,
+    POOL_1_PARTICLE_TYPE_8,
+    POOL_1_PARTICLE_TYPE_9
+};
 
 typedef struct {
     // Something related to time trial ghost data?
