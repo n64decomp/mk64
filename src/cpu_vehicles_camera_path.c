@@ -556,7 +556,7 @@ s16 get_angle_between_path(Vec3f arg0, Vec3f arg1) {
     s16 temp_ret;
     s16 phi_v1;
 
-    temp_ret = get_angle_between_points(arg0, arg1);
+    temp_ret = get_xz_angle_between_points(arg0, arg1);
     phi_v1 = temp_ret;
     if (gIsMirrorMode != 0) {
         phi_v1 = -temp_ret;
@@ -1553,7 +1553,7 @@ void update_player(s32 playerId) {
                                     set_track_offset_position(pathIndex, D_80163090[playerId], gPlayerPathIndex);
                                 }
                             }
-                            player->rotation[1] = -get_angle_between_points(player->pos, gOffsetPosition);
+                            player->rotation[1] = -get_xz_angle_between_points(player->pos, gOffsetPosition);
                         } else {
                             player->rotation[1] =
                                 gPathExpectedRotation[gPlayerPathIndex]
@@ -1568,7 +1568,7 @@ void update_player(s32 playerId) {
                     player->effects |= DRIFTING_EFFECT;
                 }
                 if (D_801630E8[playerId] != 0) {
-                    sPlayerAngle[playerId] = -get_angle_between_points(player->oldPos, player->pos);
+                    sPlayerAngle[playerId] = -get_xz_angle_between_points(player->oldPos, player->pos);
                     var_a0_2 =
                         (gCurrentPathPointExpectedRotationPath[(sSomeNearestPathPoint + 2) % gSelectedPathCount] *
                          0x168) /
@@ -1670,7 +1670,7 @@ void update_player(s32 playerId) {
                 minAngle = onePointFive * 182.0f;
                 maxAngle = -onePointFive * 182.0f;
 
-                angle = -get_angle_between_points(player->pos, gOffsetPosition);
+                angle = -get_xz_angle_between_points(player->pos, gOffsetPosition);
                 angle -= (newAngle = player->rotation[1]);
                 if ((s16) minAngle < angle) {
                     angle = minAngle;

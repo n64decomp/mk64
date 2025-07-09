@@ -35,7 +35,7 @@ UNUSED void func_8003DC50(Player* player, Vec3f arg1) {
         arg1[2] = thing2;
     }
     arg1[1] = 0.0f;
-    mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
 }
 
 UNUSED void func_8003DE4C(Player* player, Vec3f arg1) {
@@ -59,7 +59,7 @@ UNUSED void func_8003DE4C(Player* player, Vec3f arg1) {
         arg1[2] = thing2;
     }
     arg1[1] = 0.0f;
-    mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(arg1, player->orientationMatrix);
 }
 
 // Stick to ground?
@@ -87,7 +87,7 @@ void func_8003E048(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         arg3[2] = (-(player->slopeAccel / 182) * 0x32);
     }
     arg3[1] = 0.0f;
-    mtxf_translate_vec3f_mat3(arg3, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(arg3, player->orientationMatrix);
 }
 
 void func_8003E37C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
@@ -116,7 +116,7 @@ void func_8003E37C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         arg3[2] = (-(player->slopeAccel / 182) * 0x32);
     }
     arg3[1] = 0.0f;
-    mtxf_translate_vec3f_mat3(arg3, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(arg3, player->orientationMatrix);
 }
 
 void func_8003E6EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
@@ -138,7 +138,7 @@ void func_8003E6EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         arg3[2] = (-(player->slopeAccel / 182) * 0x32);
     }
     arg3[1] = 0.0f;
-    mtxf_translate_vec3f_mat3(arg3, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(arg3, player->orientationMatrix);
 }
 
 void func_8003E9EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
@@ -173,7 +173,7 @@ void func_8003E9EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         }
     }
     arg3[1] = 0.0f;
-    mtxf_translate_vec3f_mat3(arg3, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(arg3, player->orientationMatrix);
 }
 
 void func_8003EE2C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
@@ -195,7 +195,7 @@ void func_8003EE2C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         arg3[2] = (-(player->slopeAccel / 182) * 0x32);
     }
     arg3[1] = 0.0f;
-    mtxf_translate_vec3f_mat3(arg3, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(arg3, player->orientationMatrix);
 }
 
 void func_8003F138(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
@@ -223,7 +223,7 @@ void func_8003F138(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     }
     arg3[1] = 0.0f;
     arg3[2] = 0.0f;
-    mtxf_translate_vec3f_mat3(arg3, player->orientationMatrix);
+    mtxf_transform_vec3f_mat3(arg3, player->orientationMatrix);
 }
 
 void func_8003F46C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
