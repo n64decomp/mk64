@@ -1,5 +1,6 @@
 var defines_8h =
 [
+    [ "ALL_BUTTONS", "defines_8h.html#a0b6751ae0c905656ba4c7b80b2ed4e8e", null ],
     [ "ALPHA_BOO_EFFECT", "defines_8h.html#a2871d7a02126585577a298308febbf93", null ],
     [ "ALPHA_MAX", "defines_8h.html#ad89cd130c64cf199461b25ce74f5d6c7", null ],
     [ "ALPHA_MIN", "defines_8h.html#ae09b82e8938239b2cc7d928387482ada", null ],
@@ -96,6 +97,15 @@ var defines_8h =
     [ "PLAYER_UNKNOWN_0x40", "defines_8h.html#ab079fbe291edc3435da80019bed0d68e", null ],
     [ "RACING", "defines_8h.html#a9f56a37e87c00c293a2f8db0fc1d6c0c", null ],
     [ "RACING_DUPLICATE", "defines_8h.html#abbdd1cf0ee925abf70bce013973dd494", null ],
+    [ "REPLAY_A_BUTTON", "defines_8h.html#ab6292bc842f356b01ea4259b7a342a26", null ],
+    [ "REPLAY_B_BUTTON", "defines_8h.html#aa60f255f4f392af705fb434b39a068a9", null ],
+    [ "REPLAY_CLEAR_FRAME_COUNTER", "defines_8h.html#a37eb96da683d28250cbc738fa11666f2", null ],
+    [ "REPLAY_FRAME_COUNTER", "defines_8h.html#ad0b21a5a6c960b07f8a2267adfad1460", null ],
+    [ "REPLAY_FRAME_INCREMENT", "defines_8h.html#a051e8d4f005e4aa735b7c4eae94cf69c", null ],
+    [ "REPLAY_R_TRIG", "defines_8h.html#af69245ce38af69042b83f666869e2396", null ],
+    [ "REPLAY_STICK_X", "defines_8h.html#a681d23053fc323ed91ba4620c6d81ab9", null ],
+    [ "REPLAY_STICK_Y", "defines_8h.html#a0c526a42902ffe7c8d6c27fe6b2073ec", null ],
+    [ "REPLAY_Z_TRIG", "defines_8h.html#ae8b11131fcb20e2ff6fcf582d9264f92", null ],
     [ "REVERSE_EFFECT", "defines_8h.html#abedef906907d57f1e862800e9b89641f", null ],
     [ "REVERSE_SOUND_EFFECT", "defines_8h.html#a78e452744065754deb473b2a4e913b3c", null ],
     [ "SCREEN_MODE_1P", "defines_8h.html#a3a21e993535215f388e0deb8852b31f2", null ],

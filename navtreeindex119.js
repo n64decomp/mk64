@@ -1,5 +1,17 @@
 var NAVTREEINDEX119 =
 {
+"structhud__player.html#af2a0d833871a70fd4442d2db87a5be01":[7,0,90,3],
+"structhud__player.html#af93aeb9cb24092f022ce04e295e8a816":[7,0,90,45],
+"structhud__player.html#af9b7eb46b805b0f2934ec4e9adc0785c":[7,0,90,35],
+"structhud__player.html#afdbc844406ee74f8761de1dfa8053a55":[7,0,90,11],
+"structhud__player.html#affea9f0c1bb2f9fe5b9cf45d81cf30b9":[7,0,90,10],
+"structldiv__t.html":[7,0,97],
+"structldiv__t.html#a0f217ff62b8640aa945ec84d6d0bd000":[7,0,97,1],
+"structldiv__t.html#a73efd59c176304c327cb4214d0e5e5c9":[7,0,97,0],
+"structlldiv__t.html":[7,0,98],
+"structlldiv__t.html#a32d4596a917aa9b496c8a49178a0e3c6":[7,0,98,1],
+"structlldiv__t.html#ae4d4bccdf22f41e052073f5790c5ec37":[7,0,98,0],
+"structprintf__struct.html":[7,0,142],
 "structprintf__struct.html#a08bc3d30bee256739a79e8954b52a291":[7,0,142,14],
 "structprintf__struct.html#a192e48d7071ec1a2671e5344f476d836":[7,0,142,8],
 "structprintf__struct.html#a3cc46cdfdb2c2badbb512ee86bc3f5c3":[7,0,142,3],
@@ -237,17 +249,5 @@ var NAVTREEINDEX119 =
 "structuObjTxtrTile__t.html#a4f18c83c5241ea058072b736c98175a9":[7,0,243,5],
 "structuObjTxtrTile__t.html#a65e99d064d9576b9f2cd30a9c19b51be":[7,0,243,0],
 "structuObjTxtrTile__t.html#a678af75df84975d635c6fa26e45ab120":[7,0,243,7],
-"structuObjTxtrTile__t.html#a8b640940a42fc930c2eba474b7a2318b":[7,0,243,3],
-"structuObjTxtrTile__t.html#aa35eca12453b10b703248fe818988690":[7,0,243,6],
-"structuObjTxtrTile__t.html#ab20431a3ee535c9faf0fcbea29da051f":[7,0,243,1],
-"structunexpiredActors.html":[7,0,206],
-"structunexpiredActors.html#a1e1419ce2f7577336dd49e2bd062ce17":[7,0,206,0],
-"structunexpiredActors.html#a2f2bb0a68fe0de6372c3930827b4ca2b":[7,0,206,4],
-"structunexpiredActors.html#a3793eaac13b75822364d822a4f265747":[7,0,206,7],
-"structunexpiredActors.html#a73cdcfaf80db46e271cfcb897e134a8e":[7,0,206,6],
-"structunexpiredActors.html#a8054de617aaae1c1acb1c880078b0fb7":[7,0,206,2],
-"structunexpiredActors.html#a8963b95d7f883fd524083db63c236b70":[7,0,206,3],
-"structunexpiredActors.html#a9e0a5e4086ea99d274e10cd785b98a45":[7,0,206,5],
-"structunexpiredActors.html#ac078e39059e87df951857931426d370a":[7,0,206,1],
-"structunkStruct.html":[7,0,219]
+"structuObjTxtrTile__t.html#a8b640940a42fc930c2eba474b7a2318b":[7,0,243,3]
 };

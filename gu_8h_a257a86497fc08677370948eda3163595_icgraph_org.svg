@@ -785,9 +785,9 @@
 <!-- Node59 -->
 <g id="Node000059" class="node">
 <title>Node59</title>
-<g id="a_Node000059"><a xlink:href="skybox__and__splitscreen_8c.html#a6135e98ec3076399696ca04f441529f4" target="_top" xlink:title=" ">
-<polygon fill="#fff0f0" stroke="red" points="601,-56 508,-56 508,-37 601,-37 601,-56"/>
-<text text-anchor="middle" x="554.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">func_802A4A0C</text>
+<g id="a_Node000059"><a xlink:href="gbiMacro_8c.html#ae1ee5e86b52f3b5fd6474ffc7868168f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="611,-56 498,-56 498,-37 611,-37 611,-56"/>
+<text text-anchor="middle" x="554.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">gfx_func_80040D00</text>
 </a>
 </g>
 </g>
@@ -803,9 +803,9 @@
 <!-- Node60 -->
 <g id="Node000060" class="node">
 <title>Node60</title>
-<g id="a_Node000060"><a xlink:href="gbiMacro_8c.html#ae1ee5e86b52f3b5fd6474ffc7868168f" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="611,-19 498,-19 498,0 611,0 611,-19"/>
-<text text-anchor="middle" x="554.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">gfx_func_80040D00</text>
+<g id="a_Node000060"><a xlink:href="skybox__and__splitscreen_8c.html#a7d6e2be7c860b074339752dc5667194c" target="_top" xlink:title="Sets skybox horizon. Some coordinate transformations which can affect game physics and display of pla...">
+<polygon fill="#fff0f0" stroke="red" points="598.5,-19 510.5,-19 510.5,0 598.5,0 598.5,-19"/>
+<text text-anchor="middle" x="554.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">render_skybox</text>
 </a>
 </g>
 </g>

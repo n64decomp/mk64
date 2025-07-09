@@ -1,32 +1,32 @@
 <map id="render_actor_car" name="render_actor_car">
-<area shape="rect" id="Node000001" title="Renders the car actor. Actor used in Toad&#39;s Turnpike. His update are made in vehicle." alt="" coords="5,195,136,220"/>
-<area shape="rect" id="Node000002" href="$math__util_8c.html#a5e1d12b8745a8d5f8d73ab366328d3cd" title=" " alt="" coords="184,84,375,109"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,192,241,114,243,118,97,197"/>
-<area shape="rect" id="Node000009" href="$math__util_8c.html#a7085bb4bb08bdc39c0fa0b98f25176ef" title=" " alt="" coords="194,169,365,195"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="136,197,180,191,181,197,136,202"/>
-<area shape="rect" id="Node000012" href="$math__util_8c.html#aca95a220db79fe028b35270f35a4a7b3" title=" " alt="" coords="232,219,327,244"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="136,212,219,222,218,227,136,217"/>
-<area shape="rect" id="Node000013" href="$math__util_8c.html#aa23f6384122bc45f13a81ef0fa86c099" title=" " alt="" coords="204,268,355,293"/>
-<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="99,218,185,254,210,262,208,267,183,259,97,223"/>
-<area shape="rect" id="Node000003" href="$math__util_8c.html#a07a66adf3458c156c7961b983983627a" title=" " alt="" coords="459,55,583,80"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="375,82,445,74,445,79,375,88"/>
-<area shape="rect" id="Node000007" href="$math__util_8c.html#a963f23fd2ffec93350816627af02b9da" title=" " alt="" coords="423,5,619,31"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="310,81,422,39,449,32,450,37,424,45,312,86"/>
-<area shape="rect" id="Node000008" href="$math__util_8c.html#a3eb0db0895b2c11953df746ce49b782e" title=" " alt="" coords="447,105,594,145"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="375,105,434,112,433,117,375,110"/>
-<area shape="rect" id="Node000004" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="677,5,743,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="570,52,618,39,663,28,664,33,619,45,571,57"/>
-<area shape="rect" id="Node000006" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="684,55,736,80"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="583,65,670,65,670,70,583,70"/>
-<area shape="rect" id="Node000005" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="801,5,911,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="744,15,788,15,788,21,744,21"/>
-<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="619,15,663,15,663,21,619,21"/>
-<area shape="rect" id="Node000010" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="495,169,546,195"/>
-<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="365,179,482,179,482,185,365,185"/>
-<area shape="rect" id="Node000011" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="497,219,545,244"/>
-<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="343,192,484,221,483,227,342,197"/>
-<area shape="rect" id="Node000014" href="$math__util_8c.html#a32af0f217114736291c9ca6689138b81" title=" " alt="" coords="467,268,574,293"/>
-<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="355,278,454,278,454,283,355,283"/>
-<area shape="rect" id="Node000015" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="667,268,753,293"/>
-<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="574,278,653,278,653,283,574,283"/>
+<area shape="rect" id="Node000001" title="Renders the car actor. Actor used in Toad&#39;s Turnpike. His update are made in vehicle." alt="" coords="5,194,136,219"/>
+<area shape="rect" id="Node000002" href="$math__util_8c.html#ad1ba4fdd256a06293f5f8fa8bdd1e785" title=" " alt="" coords="210,119,353,145"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,191,183,154,208,146,210,151,185,158,98,196"/>
+<area shape="rect" id="Node000009" href="$math__util_8c.html#a2579bc73da43221eb3b79821c7d59099" title=" " alt="" coords="184,169,379,194"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="136,196,170,192,171,197,136,202"/>
+<area shape="rect" id="Node000012" href="$math__util_8c.html#a2dc65f493d949462720d4a5ff509f25e" title=" " alt="" coords="234,218,329,243"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="136,211,221,221,220,226,136,217"/>
+<area shape="rect" id="Node000013" href="$math__util_8c.html#a37b6e37ab5d04e0e2701015911b05296" title=" " alt="" coords="206,267,357,293"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="99,217,185,253,210,261,208,266,183,259,97,222"/>
+<area shape="rect" id="Node000003" href="$math__util_8c.html#acd8ef27c81858774741c6e879bab1aee" title=" " alt="" coords="480,70,544,95"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="341,117,466,90,467,95,342,122"/>
+<area shape="rect" id="Node000007" href="$math__util_8c.html#a4151d0b0e3d70e2f8fb54c50e1fd6793" title=" " alt="" coords="427,5,597,45"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="304,117,426,55,441,48,444,53,428,60,306,122"/>
+<area shape="rect" id="Node000008" href="$math__util_8c.html#a3b799b8c9e82afcda80a19152e793d7c" title=" " alt="" coords="443,119,581,145"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="353,129,429,129,429,135,353,135"/>
+<area shape="rect" id="Node000004" href="$math__util_8c.html#a39b33617a06622150fcb2b20569aa969" title=" " alt="" coords="655,17,722,42"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="543,71,597,55,641,41,643,46,598,60,545,76"/>
+<area shape="rect" id="Node000006" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="663,70,715,95"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="544,80,649,80,649,85,544,85"/>
+<area shape="rect" id="Node000005" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="780,17,889,42"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="722,27,766,27,766,32,722,32"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="598,25,642,26,642,31,598,30"/>
+<area shape="rect" id="Node000010" href="$math__util_8c.html#a5eb0d9752bc1557b7f4ae3809352a0eb" title=" " alt="" coords="487,169,537,194"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="379,179,473,179,473,184,379,184"/>
+<area shape="rect" id="Node000011" href="$math__util_8c.html#adcf81d47666b5d86c4a1dbcb06e47faf" title=" " alt="" coords="488,218,536,243"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="342,191,475,220,474,226,341,197"/>
+<area shape="rect" id="Node000014" href="$math__util_8c.html#a32af0f217114736291c9ca6689138b81" title=" " alt="" coords="459,267,565,293"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="357,277,445,277,445,283,357,283"/>
+<area shape="rect" id="Node000015" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="645,267,732,293"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="566,277,632,277,632,283,566,283"/>
 </map>

@@ -33,7 +33,7 @@ var race__logic_8h =
     [ "start_race", "race__logic_8h.html#a1b2815c62b11e33e3c74d7fd65af5edc", null ],
     [ "update_player_battle_status", "race__logic_8h.html#a9c6f4eb059607fcd18e4df0dcaaeec5b", null ],
     [ "update_race_position_data", "race__logic_8h.html#a2ac76336684bc3948c759d35cf5435b2", null ],
-    [ "D_80162DD6", "race__logic_8h.html#a26fc0e5f675f4602960709d90df9ac8f", null ],
+    [ "COURSE_GHOST_LOCKED", "race__logic_8h.html#a339cd39ca15c5863ed4307a0a9192e78", null ],
     [ "gGPCurrentRaceRankByPlayerId", "race__logic_8h.html#add62d9cde764b79f75bdda1e23560b29", null ],
     [ "gLapCompletionPercentByPlayerId", "race__logic_8h.html#a67c56a3784e4ac63074f9f2d879b2110", null ]
 ];

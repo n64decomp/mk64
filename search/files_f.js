@@ -13,5 +13,7 @@ var searchData=
   ['render_5fobjects_2ec_10',['render_objects.c',['../render__objects_8c.html',1,'']]],
   ['render_5fobjects_2eh_11',['render_objects.h',['../render__objects_8h.html',1,'']]],
   ['render_5fplayer_2ec_12',['render_player.c',['../render__player_8c.html',1,'']]],
-  ['render_5fplayer_2eh_13',['render_player.h',['../render__player_8h.html',1,'']]]
+  ['render_5fplayer_2eh_13',['render_player.h',['../render__player_8h.html',1,'']]],
+  ['replays_2ec_14',['replays.c',['../replays_8c.html',1,'']]],
+  ['replays_2eh_15',['replays.h',['../replays_8h.html',1,'']]]
 ];

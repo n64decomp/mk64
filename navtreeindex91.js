@@ -1,5 +1,16 @@
 var NAVTREEINDEX91 =
 {
+"player__controller_8h.html#aebacd4e43b8924deada79e5f04fda481":[8,0,3,49,100],
+"player__controller_8h.html#aee5b914a1ddf7362e30f2473024f442c":[8,0,3,49,121],
+"player__controller_8h.html#aeffdbb54b2a18ca66d5fe8f44b942ff3":[8,0,3,49,24],
+"player__controller_8h.html#af29a6502ef921511f0a4de4af49ff474":[8,0,3,49,75],
+"player__controller_8h.html#af320405612ade0d0a926ffdaa75ad30f":[8,0,3,49,60],
+"player__controller_8h.html#af40a7f662a3dd0bd16e6201c6e5700c6":[8,0,3,49,80],
+"player__controller_8h.html#af629a9ba6e347180495f707a0e5d45d6":[8,0,3,49,107],
+"player__controller_8h.html#af64e63cd711d06fb9458c360d182d10a":[8,0,3,49,29],
+"player__controller_8h.html#af917f12b29f31fbc3e06e36390b08cae":[8,0,3,49,46],
+"player__controller_8h.html#af9f721cc38ce7d92a55d15676a961b5e":[8,0,3,49,56],
+"player__controller_8h.html#afa8731d4ae7f001614eccce9868c78d9":[8,0,3,49,160],
 "player__controller_8h.html#afb7b90dbe4879f29d125fbf320264a6e":[8,0,3,49,119],
 "player__controller_8h.html#afc14ef22bb2f0a530ba1064ff63c584b":[8,0,3,49,149],
 "player__controller_8h.html#afc6e18b1881cb4c6884f8d3d0e083dce":[8,0,3,49,99],
@@ -238,16 +249,5 @@ var NAVTREEINDEX91 =
 "race__logic_8c.html#aac5e7f61ed2c0c4e066e6b1811ecdeb0":[8,0,3,8,10,34],
 "race__logic_8c.html#aaccff44264902a7c2a0a57af6091e5d6":[8,0,3,8,10,43],
 "race__logic_8c.html#ab3cce6260fc4d7f0c4610aeebce8de54":[8,0,3,8,10,7],
-"race__logic_8c.html#ab653b6e6bb04ca0f7995cb58cbeba9af":[8,0,3,8,10,26],
-"race__logic_8c.html#abe207ea8c493abfaa7e63d66ae57453e":[8,0,3,8,10,5],
-"race__logic_8c.html#ac028ea2114c7fd2e35661cb1f1ec3aa7":[8,0,3,8,10,38],
-"race__logic_8c.html#ac50527ef661d883bf7903adfc6f67497":[8,0,3,8,10,19],
-"race__logic_8c.html#ac566dbdbe9f5b8db1511bce7fc511ed1":[8,0,3,8,10,23],
-"race__logic_8c.html#ac72458a1821d41e46b4017bc4ad752b7":[8,0,3,8,10,11],
-"race__logic_8c.html#ad550ae3a9bf88f8ee61f551cebb44912":[8,0,3,8,10,41],
-"race__logic_8c.html#ad662382097107c855812aa65f2acbd49":[8,0,3,8,10,3],
-"race__logic_8c.html#adcc151267561a295d13a90cea8f0bf31":[8,0,3,8,10,16],
-"race__logic_8c.html#ae1563ce64a716f5d420505adc3e9b89d":[8,0,3,8,10,2],
-"race__logic_8c.html#aeb498a031d0fc8f31b5947bf329344f4":[8,0,3,8,10,8],
-"race__logic_8c.html#aefcaab1261ee66bab80118b8988b0a1f":[8,0,3,8,10,17]
+"race__logic_8c.html#ab653b6e6bb04ca0f7995cb58cbeba9af":[8,0,3,8,10,26]
 };

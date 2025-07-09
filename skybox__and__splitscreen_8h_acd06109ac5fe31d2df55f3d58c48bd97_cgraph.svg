@@ -193,7 +193,7 @@ var sectionId = 'dynsection-44';
 <!-- Node469 -->
 <g id="Node000469" class="node">
 <title>Node469</title>
-<g id="a_Node000469"><a xlink:href="math__util_8c.html#aa23f6384122bc45f13a81ef0fa86c099" target="_top" xlink:title=" ">
+<g id="a_Node000469"><a xlink:href="math__util_8c.html#a37b6e37ab5d04e0e2701015911b05296" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="677,-593 564,-593 564,-574 677,-574 677,-593"/>
 <text text-anchor="middle" x="620.5" y="-581" font-family="Helvetica,sans-Serif" font-size="10.00">render_set_position</text>
 </a>
@@ -717,7 +717,7 @@ var sectionId = 'dynsection-44';
 <!-- Node467 -->
 <g id="Node000467" class="node">
 <title>Node467</title>
-<g id="a_Node000467"><a xlink:href="math__util_8c.html#ad1800f715e0296b6e75f04de02479ea5" target="_top" xlink:title=" ">
+<g id="a_Node000467"><a xlink:href="math__util_8c.html#a3011787ec4cef98a1827460577d8eb56" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="665,-630 576,-630 576,-611 665,-611 665,-630"/>
 <text text-anchor="middle" x="620.5" y="-618" font-family="Helvetica,sans-Serif" font-size="10.00">mtxf_translate</text>
 </a>
@@ -769,9 +769,9 @@ var sectionId = 'dynsection-44';
 </g>
 </g>
 <!-- Node471&#45;&gt;Node465 -->
-<g id="edge38_Node000471_Node000465" class="edge">
+<g id="edge36_Node000471_Node000465" class="edge">
 <title>Node471&#45;&gt;Node465</title>
-<g id="a_edge38_Node000471_Node000465"><a xlink:title=" ">
+<g id="a_edge36_Node000471_Node000465"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M290.67,-364.67C312.73,-368.42 339.68,-372.65 364,-375.5 441.99,-384.64 533.93,-390.21 583.48,-392.79"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="583.52,-396.29 593.68,-393.3 583.87,-389.3 583.52,-396.29"/>
 </a>
@@ -861,18 +861,18 @@ var sectionId = 'dynsection-44';
 <!-- Node492 -->
 <g id="Node000492" class="node">
 <title>Node492</title>
-<g id="a_Node000492"><a xlink:href="skybox__and__splitscreen_8c.html#a6135e98ec3076399696ca04f441529f4" target="_top" xlink:title=" ">
-<polygon fill="#fff0f0" stroke="red" points="486,-329 393,-329 393,-310 486,-310 486,-329"/>
-<text text-anchor="middle" x="439.5" y="-317" font-family="Helvetica,sans-Serif" font-size="10.00">func_802A4A0C</text>
+<g id="a_Node000492"><a xlink:href="skybox__and__splitscreen_8c.html#a7d6e2be7c860b074339752dc5667194c" target="_top" xlink:title="Sets skybox horizon. Some coordinate transformations which can affect game physics and display of pla...">
+<polygon fill="#fff0f0" stroke="red" points="483.5,-329 395.5,-329 395.5,-310 483.5,-310 483.5,-329"/>
+<text text-anchor="middle" x="439.5" y="-317" font-family="Helvetica,sans-Serif" font-size="10.00">render_skybox</text>
 </a>
 </g>
 </g>
 <!-- Node471&#45;&gt;Node492 -->
-<g id="edge36_Node000471_Node000492" class="edge">
+<g id="edge37_Node000471_Node000492" class="edge">
 <title>Node471&#45;&gt;Node492</title>
-<g id="a_edge36_Node000471_Node000492"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M290.75,-347.83C318.26,-342.55 353.59,-335.78 382.81,-330.18"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="383.7,-333.57 392.86,-328.25 382.38,-326.69 383.7,-333.57"/>
+<g id="a_edge37_Node000471_Node000492"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M290.75,-347.83C318.96,-342.42 355.39,-335.43 385.02,-329.75"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="386.03,-333.12 395.19,-327.8 384.71,-326.25 386.03,-333.12"/>
 </a>
 </g>
 </g>
@@ -886,10 +886,10 @@ var sectionId = 'dynsection-44';
 </g>
 </g>
 <!-- Node492&#45;&gt;Node465 -->
-<g id="edge37_Node000492_Node000465" class="edge">
+<g id="edge38_Node000492_Node000465" class="edge">
 <title>Node492&#45;&gt;Node465</title>
-<g id="a_edge37_Node000492_Node000465"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M485.18,-329.02C495.14,-331.66 505.55,-334.82 515,-338.5 543.95,-349.75 575.07,-367.2 595.76,-379.62"/>
+<g id="a_edge38_Node000492_Node000465"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M483.61,-328.61C494.04,-331.32 505.05,-334.63 515,-338.5 543.95,-349.75 575.07,-367.2 595.76,-379.62"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="594.12,-382.72 604.48,-384.94 597.76,-376.75 594.12,-382.72"/>
 </a>
 </g>

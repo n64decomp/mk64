@@ -1,32 +1,32 @@
 <map id="render_actor_falling_rock" name="render_actor_falling_rock">
-<area shape="rect" id="Node000001" title="Renders the falling rock actor. Actor used in Choco Mountain." alt="" coords="5,141,192,167"/>
-<area shape="rect" id="Node000002" href="$collision_8c.html#a6527a2135a10909cdf9a1fd731be5628" title=" " alt="" coords="243,63,427,88"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,139,239,97,266,89,267,94,241,102,131,144"/>
-<area shape="rect" id="Node000003" href="$math__util_8c.html#a5e1d12b8745a8d5f8d73ab366328d3cd" title=" " alt="" coords="240,112,431,137"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,140,226,136,227,141,192,145"/>
-<area shape="rect" id="Node000010" href="$math__util_8c.html#a7085bb4bb08bdc39c0fa0b98f25176ef" title=" " alt="" coords="250,169,421,195"/>
-<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="192,162,237,168,236,173,192,168"/>
-<area shape="rect" id="Node000013" href="$math__util_8c.html#aa23f6384122bc45f13a81ef0fa86c099" title=" " alt="" coords="260,243,411,268"/>
-<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="131,164,293,235,291,240,129,169"/>
-<area shape="rect" id="Node000004" href="$math__util_8c.html#a07a66adf3458c156c7961b983983627a" title=" " alt="" coords="515,55,639,80"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="389,109,508,81,510,86,390,115"/>
-<area shape="rect" id="Node000008" href="$math__util_8c.html#a963f23fd2ffec93350816627af02b9da" title=" " alt="" coords="479,5,675,31"/>
-<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="403,110,429,97,444,84,452,69,461,54,477,40,489,34,491,38,480,44,465,58,457,72,448,87,432,102,405,114"/>
-<area shape="rect" id="Node000009" href="$math__util_8c.html#a3eb0db0895b2c11953df746ce49b782e" title=" " alt="" coords="503,105,650,145"/>
-<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="431,122,489,122,489,127,431,127"/>
-<area shape="rect" id="Node000005" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="733,5,799,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="626,52,674,39,719,28,720,33,675,45,627,57"/>
-<area shape="rect" id="Node000007" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="740,55,792,80"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="639,65,726,65,726,70,639,70"/>
-<area shape="rect" id="Node000006" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="857,5,967,31"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="800,15,844,15,844,21,800,21"/>
-<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="675,15,719,15,719,21,675,21"/>
-<area shape="rect" id="Node000011" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="551,169,602,195"/>
-<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="421,179,538,179,538,185,421,185"/>
-<area shape="rect" id="Node000012" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="553,219,601,244"/>
-<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="399,192,540,221,539,227,398,197"/>
-<area shape="rect" id="Node000014" href="$math__util_8c.html#a32af0f217114736291c9ca6689138b81" title=" " alt="" coords="523,268,630,293"/>
-<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="411,261,510,271,509,276,411,266"/>
-<area shape="rect" id="Node000015" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="723,268,809,293"/>
-<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="630,278,709,278,709,283,630,283"/>
+<area shape="rect" id="Node000001" title="Renders the falling rock actor. Actor used in Choco Mountain." alt="" coords="5,145,192,170"/>
+<area shape="rect" id="Node000002" href="$collision_8c.html#a6527a2135a10909cdf9a1fd731be5628" title=" " alt="" coords="245,70,429,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,142,239,104,267,96,268,101,241,109,133,147"/>
+<area shape="rect" id="Node000003" href="$math__util_8c.html#ad1ba4fdd256a06293f5f8fa8bdd1e785" title=" " alt="" coords="266,119,409,145"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,145,252,138,252,144,193,150"/>
+<area shape="rect" id="Node000010" href="$math__util_8c.html#a2579bc73da43221eb3b79821c7d59099" title=" " alt="" coords="240,169,435,194"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="193,164,227,168,226,173,192,169"/>
+<area shape="rect" id="Node000013" href="$math__util_8c.html#a37b6e37ab5d04e0e2701015911b05296" title=" " alt="" coords="262,242,413,267"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="132,168,294,234,292,239,130,173"/>
+<area shape="rect" id="Node000004" href="$math__util_8c.html#acd8ef27c81858774741c6e879bab1aee" title=" " alt="" coords="536,70,600,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="397,117,522,90,523,95,398,122"/>
+<area shape="rect" id="Node000008" href="$math__util_8c.html#a4151d0b0e3d70e2f8fb54c50e1fd6793" title=" " alt="" coords="483,5,653,45"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="405,117,433,104,448,93,457,81,466,68,481,55,491,49,494,54,484,59,470,72,461,84,452,97,436,109,407,122"/>
+<area shape="rect" id="Node000009" href="$math__util_8c.html#a3b799b8c9e82afcda80a19152e793d7c" title=" " alt="" coords="499,119,637,145"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="409,129,485,129,485,135,409,135"/>
+<area shape="rect" id="Node000005" href="$math__util_8c.html#a39b33617a06622150fcb2b20569aa969" title=" " alt="" coords="711,17,778,42"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="599,71,653,55,697,41,699,46,654,60,601,76"/>
+<area shape="rect" id="Node000007" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="719,70,771,95"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="600,80,705,80,705,85,600,85"/>
+<area shape="rect" id="Node000006" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="836,17,945,42"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="778,27,822,27,822,32,778,32"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="654,25,698,26,698,31,654,30"/>
+<area shape="rect" id="Node000011" href="$math__util_8c.html#a5eb0d9752bc1557b7f4ae3809352a0eb" title=" " alt="" coords="543,169,593,194"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="435,179,529,179,529,184,435,184"/>
+<area shape="rect" id="Node000012" href="$math__util_8c.html#adcf81d47666b5d86c4a1dbcb06e47faf" title=" " alt="" coords="544,218,592,243"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="398,191,531,220,530,226,397,197"/>
+<area shape="rect" id="Node000014" href="$math__util_8c.html#a32af0f217114736291c9ca6689138b81" title=" " alt="" coords="515,267,621,293"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="413,260,501,270,501,275,412,266"/>
+<area shape="rect" id="Node000015" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="701,267,788,293"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="622,277,688,277,688,283,622,283"/>
 </map>

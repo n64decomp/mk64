@@ -38,9 +38,9 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="math__util_8c.html#ad5bb0138c68b50f119d3cb7966f522b7" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="284.5,-319 132.5,-319 132.5,-300 284.5,-300 284.5,-319"/>
-<text text-anchor="middle" x="208.5" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00">mtxf_translate_vec3f_mat3</text>
+<g id="a_Node000003"><a xlink:href="math__util_8c.html#a2af320f247ee4c117aff9eff1b920da3" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="286.5,-319 130.5,-319 130.5,-300 286.5,-300 286.5,-319"/>
+<text text-anchor="middle" x="208.5" y="-307" font-family="Helvetica,sans-Serif" font-size="10.00">mtxf_transform_vec3f_mat3</text>
 </a>
 </g>
 </g>
@@ -48,8 +48,8 @@
 <g id="edge2_Node000001_Node000003" class="edge">
 <title>Node1&#45;&gt;Node3</title>
 <g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M91.35,-295.79C101.01,-296.93 111.53,-298.17 122.16,-299.43"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="122.02,-302.94 132.36,-300.63 122.84,-295.98 122.02,-302.94"/>
+<path fill="none" stroke="#63b8ff" d="M91.35,-295.79C100.42,-296.86 110.25,-298.02 120.22,-299.2"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="119.87,-302.68 130.21,-300.38 120.69,-295.73 119.87,-302.68"/>
 </a>
 </g>
 </g>

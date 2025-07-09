@@ -1,0 +1,33 @@
+<map id="render_skybox" name="render_skybox">
+<area shape="rect" id="Node000001" title="Sets skybox horizon. Some coordinate transformations which can affect game physics and display of pla..." alt="" coords="5,153,123,179"/>
+<area shape="rect" id="Node000002" href="$skybox__and__splitscreen_8c.html#a4b71883a4df655bb1d78757b067448b0" title=" " alt="" coords="175,5,374,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,152,107,97,136,66,169,40,181,33,184,38,172,44,139,70,112,100,75,155"/>
+<area shape="rect" id="Node000003" href="$guOrthoF_8c.html#ad7ee72136daaabbf7bfa2c6a5d791db1" title=" " alt="" coords="237,55,312,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="78,151,117,120,170,89,223,72,225,77,172,94,120,124,81,155"/>
+<area shape="rect" id="Node000007" href="$skybox__and__splitscreen_8c.html#a1ff551b00275f32a4c52eb741006cbc2" title=" " alt="" coords="239,104,310,129"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="118,151,225,125,227,131,120,156"/>
+<area shape="rect" id="Node000008" href="$math__util_8c.html#ad3f368b2bab0dd6189f6109f1d13d4b9" title="Create a lookat matrix (convert to coordinates relative to camera)" alt="" coords="225,153,325,179"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="123,163,211,163,211,169,123,169"/>
+<area shape="rect" id="Node000010" href="$math__util_8c.html#a4b420c1efb18e54899a75aa9cb784433" title="Multiply two 4x4 matrices." alt="" coords="199,203,350,228"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="118,176,171,189,206,197,205,202,170,194,117,181"/>
+<area shape="rect" id="Node000012" href="$math__util_8c.html#a9f884215cd1998c08ac94f682b8db1df" title=" " alt="" coords="212,252,337,277"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="81,177,120,208,172,238,200,248,198,253,170,243,117,212,78,181"/>
+<area shape="rect" id="Node000016" href="$math__util_8c.html#a6356b032dd471a47ea87e2d1c6328675" title=" " alt="" coords="171,301,379,327"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="75,177,112,232,139,262,172,288,184,294,181,299,169,292,136,266,107,235,70,180"/>
+<area shape="rect" id="Node000004" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="467,31,553,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="312,61,452,46,453,52,313,66"/>
+<area shape="rect" id="Node000005" href="$guOrthoF_8c.html#ae2f1eeb1f335f37cca279436f5f15f41" title=" " alt="" coords="469,80,551,105"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="313,69,455,84,454,89,312,74"/>
+<area shape="rect" id="Node000006" href="$guMtxF2L_8c.html#a257a86497fc08677370948eda3163595" title=" " alt="" coords="641,80,745,105"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="551,90,628,90,628,95,551,95"/>
+<area shape="rect" id="Node000009" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="484,153,536,179"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="325,163,470,163,470,169,325,169"/>
+<area shape="rect" id="Node000011" href="$math__util_8c.html#a0738ff09ce2446c58933dcd43f4cdb2b" title=" " alt="" coords="427,203,593,228"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="350,213,413,213,413,218,350,218"/>
+<area shape="rect" id="Node000013" href="$cosf_8c.html#a7b126b2344591e649c21c9ab0b8adb40" title=" " alt="" coords="485,252,535,277"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="338,262,472,262,472,267,338,267"/>
+<area shape="rect" id="Node000014" href="$math__util_8c.html#ac22eee16b1def67d2441ce919df0c5ac" title=" " alt="" coords="455,301,565,327"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="336,275,442,297,441,302,335,280"/>
+<area shape="rect" id="Node000015" href="$sinf_8c.html#a8a7dc2a88e109f4e15b661247665709a" title=" " alt="" coords="487,351,533,376"/>
+<area shape="poly" id="edge14_Node000012_Node000015" title=" " alt="" coords="339,272,380,288,396,300,405,313,414,325,428,337,451,348,474,355,473,360,449,353,425,342,410,329,401,316,392,304,377,292,337,277"/>
+</map>

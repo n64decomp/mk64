@@ -1,5 +1,17 @@
 var NAVTREEINDEX111 =
 {
+"stdlib_8h.html#a0302920caf64a5fbe1ce0862799d7784":[8,0,2,1,4,4],
+"stdlib_8h.html#a10ef0aefc570d851e0e15e98758cde3e":[8,0,2,1,4,2],
+"stdlib_8h.html#a51d8facb71b482170b8bf45b9961df48":[8,0,2,1,4,3],
+"stdlib_8h.html#a5b23c3639f11980dca762c5f1d74f339":[8,0,2,1,4,5],
+"stdlib_8h_source.html":[8,0,2,1,4],
+"string_8c.html":[8,0,3,7,118],
+"string_8c.html#a008e171a518fe0e0352f31b245e03875":[8,0,3,7,118,2],
+"string_8c.html#a988b4defe51a1815ef3b9ddab10e7a89":[8,0,3,7,118,1],
+"string_8c.html#ad7f1ae1bbb49dece44bda378982a704d":[8,0,3,7,118,0],
+"string_8h.html":[8,0,2,1,5],
+"string_8h.html#a008e171a518fe0e0352f31b245e03875":[8,0,2,1,5,2],
+"string_8h.html#a988b4defe51a1815ef3b9ddab10e7a89":[8,0,2,1,5,1],
 "string_8h.html#ad7f1ae1bbb49dece44bda378982a704d":[8,0,2,1,5,0],
 "string_8h_source.html":[8,0,2,1,5],
 "structALADPCMBook.html":[7,0,27],
@@ -237,17 +249,5 @@ var NAVTREEINDEX111 =
 "structBananaActor.html#ae924710af4c69beea980be8be2f7ad0e":[7,0,53,4],
 "structBananaActor.html#af75dd2dea48081a38272afd39b13b0e6":[7,0,53,8],
 "structBananaBunchParent.html":[7,0,54],
-"structBananaBunchParent.html#a1797405069f8c96889c9aeb59f5adbde":[7,0,54,3],
-"structBananaBunchParent.html#a2bfe2004c8d1a9f6d97c9fa1d614fe03":[7,0,54,1],
-"structBananaBunchParent.html#a4ea1e279d4c3e9c579dd740973c746fc":[7,0,54,4],
-"structBananaBunchParent.html#a51be60b0ee4aaf0418157b25163904c2":[7,0,54,7],
-"structBananaBunchParent.html#a523049b0bb754bb1474e316a939734e1":[7,0,54,8],
-"structBananaBunchParent.html#a9da96b458e7d1f0ddd3130cd3443cf36":[7,0,54,10],
-"structBananaBunchParent.html#abe346356b3aaefdd530f6e119deef37a":[7,0,54,2],
-"structBananaBunchParent.html#abed61c26331a3ddf65be3ff692da89ae":[7,0,54,0],
-"structBananaBunchParent.html#ace9ff16f10758860c1c120eb60d9cfc4":[7,0,54,9],
-"structBananaBunchParent.html#ad308ed0758aef4141ec5e6de8b8101f8":[7,0,54,11],
-"structBananaBunchParent.html#ae1c190eae7f8f237b5a37aa109a3e7b5":[7,0,54,6],
-"structBananaBunchParent.html#afb695515f0750a61ead8bda3c38cd033":[7,0,54,5],
-"structBombKart.html":[7,0,55]
+"structBananaBunchParent.html#a1797405069f8c96889c9aeb59f5adbde":[7,0,54,3]
 };

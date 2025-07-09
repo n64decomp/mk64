@@ -1,5 +1,16 @@
 var NAVTREEINDEX86 =
 {
+"osEPiRawStartDma_8c.html#a61b4993ebb70a3b701fccc3221c36d81":[8,0,3,7,73,1],
+"osEPiRawStartDma_8c.html#a9f68445808ae98c1a50579d2c5a95c7f":[8,0,3,7,73,2],
+"osEPiRawStartDma_8c.html#ae4587819cb781270440a086e8fd138b4":[8,0,3,7,73,3],
+"osEepromLongRead_8c.html":[8,0,3,7,68],
+"osEepromLongRead_8c.html#a115ccbb72ad3e50a0af6e1889d835e45":[8,0,3,7,68,6],
+"osEepromLongRead_8c.html#a15b2683c35d6e8cd622bbae66211ba9e":[8,0,3,7,68,4],
+"osEepromLongRead_8c.html#a4b90d060d35a3fd4f1dce21b68a98789":[8,0,3,7,68,1],
+"osEepromLongRead_8c.html#a6765ae238051e57f0d3ac6567a8e0db9":[8,0,3,7,68,5],
+"osEepromLongRead_8c.html#a9d2c6b666a1a317e841b46a6eee01123":[8,0,3,7,68,2],
+"osEepromLongRead_8c.html#ab58627f83d7b5069c7d442eb1c05f014":[8,0,3,7,68,3],
+"osEepromLongRead_8c.html#abcb609bd10840081d17bce1000620d8e":[8,0,3,7,68,0],
 "osEepromLongWrite_8c.html":[8,0,3,7,69],
 "osEepromLongWrite_8c.html#a15b2683c35d6e8cd622bbae66211ba9e":[8,0,3,7,69,3],
 "osEepromLongWrite_8c.html#a497b1f428c5cda00b94e9e4849d50390":[8,0,3,7,69,0],
@@ -238,16 +249,5 @@ var NAVTREEINDEX86 =
 "os_8h.html#a4e8b03188f0ddcb54eba0fb782f522da":[8,0,2,2,7,26],
 "os_8h.html#a4f323f448136db4a312e0b80ed20b823":[8,0,2,2,7,84],
 "os_8h.html#a5066ebfce0a2590bb0409a367f4a346f":[8,0,2,2,7,216],
-"os_8h.html#a50db42f3632074d4f539892b1b803ae4":[8,0,2,2,7,46],
-"os_8h.html#a5240f69f0dee29a787de80d82bb2f611":[8,0,2,2,7,157],
-"os_8h.html#a5441c83c7ed1de1088a4fd754e5303ec":[8,0,2,2,7,39],
-"os_8h.html#a55cbc82654255793675741df6b77d87e":[8,0,2,2,7,33],
-"os_8h.html#a56e1d7e22d90f5a22b633a98824ae814":[8,0,2,2,7,56],
-"os_8h.html#a5709f44313cd430da213682d1992c90d":[8,0,2,2,7,112],
-"os_8h.html#a57c0b5dc1b906de8be3da0a7602fd81c":[8,0,2,2,7,114],
-"os_8h.html#a58f91f88b561dae1200fc76e8936d3ed":[8,0,2,2,7,163],
-"os_8h.html#a59d19d3ce072a8e20ce3e5ead9c35e16":[8,0,2,2,7,171],
-"os_8h.html#a5c1772986025d1cc08818e57c914efcd":[8,0,2,2,7,47],
-"os_8h.html#a5ec59d5e4f6bfacfdf3aa6e7ed5c0373":[8,0,2,2,7,0],
-"os_8h.html#a5ef612288a93912c5e576682dd9b43f8":[8,0,2,2,7,35]
+"os_8h.html#a50db42f3632074d4f539892b1b803ae4":[8,0,2,2,7,46]
 };

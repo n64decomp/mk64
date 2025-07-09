@@ -1,30 +1,30 @@
 <map id="render_actor_mario_sign" name="render_actor_mario_sign">
-<area shape="rect" id="Node000001" title="Renders the Mario sign actor. Actor used in Mario Raceway." alt="" coords="5,193,188,219"/>
-<area shape="rect" id="Node000002" href="$math__util_8c.html#a5e1d12b8745a8d5f8d73ab366328d3cd" title=" " alt="" coords="236,84,427,109"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,191,290,113,292,118,126,196"/>
-<area shape="rect" id="Node000009" href="$math__util_8c.html#a7085bb4bb08bdc39c0fa0b98f25176ef" title=" " alt="" coords="246,193,417,219"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="188,203,232,203,232,209,188,209"/>
-<area shape="rect" id="Node000012" href="$math__util_8c.html#aa23f6384122bc45f13a81ef0fa86c099" title=" " alt="" coords="256,255,407,280"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="147,216,270,249,268,254,145,221"/>
-<area shape="rect" id="Node000003" href="$math__util_8c.html#a07a66adf3458c156c7961b983983627a" title=" " alt="" coords="511,55,635,80"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="427,82,497,74,497,79,427,88"/>
-<area shape="rect" id="Node000007" href="$math__util_8c.html#a963f23fd2ffec93350816627af02b9da" title=" " alt="" coords="475,5,671,31"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="362,81,474,39,501,32,502,37,476,45,364,86"/>
-<area shape="rect" id="Node000008" href="$math__util_8c.html#a3eb0db0895b2c11953df746ce49b782e" title=" " alt="" coords="499,105,646,145"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="427,105,486,112,485,117,427,110"/>
-<area shape="rect" id="Node000004" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="729,5,795,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="622,52,670,39,715,28,716,33,671,45,623,57"/>
-<area shape="rect" id="Node000006" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="736,55,788,80"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="635,65,722,65,722,70,635,70"/>
-<area shape="rect" id="Node000005" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="853,5,963,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="796,15,840,15,840,21,796,21"/>
-<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="671,15,715,15,715,21,671,21"/>
-<area shape="rect" id="Node000010" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="547,169,598,195"/>
-<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="417,195,534,183,534,188,417,200"/>
-<area shape="rect" id="Node000011" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="549,219,597,244"/>
-<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="417,212,535,225,534,230,417,218"/>
-<area shape="rect" id="Node000013" href="$math__util_8c.html#a32af0f217114736291c9ca6689138b81" title=" " alt="" coords="519,268,626,293"/>
-<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="407,269,506,274,505,280,407,274"/>
-<area shape="rect" id="Node000014" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="719,268,805,293"/>
-<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="626,278,705,278,705,283,626,283"/>
+<area shape="rect" id="Node000001" title="Renders the Mario sign actor. Actor used in Mario Raceway." alt="" coords="5,175,188,201"/>
+<area shape="rect" id="Node000002" href="$math__util_8c.html#ad1ba4fdd256a06293f5f8fa8bdd1e785" title=" " alt="" coords="262,114,405,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,173,270,140,271,145,147,178"/>
+<area shape="rect" id="Node000009" href="$math__util_8c.html#a2579bc73da43221eb3b79821c7d59099" title=" " alt="" coords="236,175,431,201"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="188,185,222,185,222,191,188,191"/>
+<area shape="rect" id="Node000012" href="$math__util_8c.html#a37b6e37ab5d04e0e2701015911b05296" title=" " alt="" coords="258,249,409,274"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="140,198,279,242,277,247,138,203"/>
+<area shape="rect" id="Node000003" href="$math__util_8c.html#acd8ef27c81858774741c6e879bab1aee" title=" " alt="" coords="532,70,596,95"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="400,111,518,89,519,94,401,117"/>
+<area shape="rect" id="Node000007" href="$math__util_8c.html#a4151d0b0e3d70e2f8fb54c50e1fd6793" title=" " alt="" coords="479,5,649,45"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="358,112,478,55,494,48,496,53,480,60,360,116"/>
+<area shape="rect" id="Node000008" href="$math__util_8c.html#a3b799b8c9e82afcda80a19152e793d7c" title=" " alt="" coords="495,119,633,145"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="405,126,481,127,481,133,405,131"/>
+<area shape="rect" id="Node000004" href="$math__util_8c.html#a39b33617a06622150fcb2b20569aa969" title=" " alt="" coords="707,17,774,42"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="595,71,649,55,693,41,695,46,650,60,597,76"/>
+<area shape="rect" id="Node000006" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="715,70,767,95"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="596,80,701,80,701,85,596,85"/>
+<area shape="rect" id="Node000005" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="832,17,941,42"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="774,27,818,27,818,32,774,32"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="650,25,694,26,694,31,650,30"/>
+<area shape="rect" id="Node000010" href="$math__util_8c.html#a5eb0d9752bc1557b7f4ae3809352a0eb" title=" " alt="" coords="539,169,589,194"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="431,183,525,180,525,185,431,188"/>
+<area shape="rect" id="Node000011" href="$math__util_8c.html#adcf81d47666b5d86c4a1dbcb06e47faf" title=" " alt="" coords="540,218,588,243"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="403,198,527,221,526,227,402,203"/>
+<area shape="rect" id="Node000013" href="$math__util_8c.html#a32af0f217114736291c9ca6689138b81" title=" " alt="" coords="511,267,617,293"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="409,265,497,272,497,277,408,270"/>
+<area shape="rect" id="Node000014" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="697,267,784,293"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="618,277,684,277,684,283,618,283"/>
 </map>

@@ -48,7 +48,7 @@
 <script type="application/ecmascript">
 var viewWidth = 1382;
 var viewHeight = 497;
-var sectionId = 'dynsection-63';
+var sectionId = 'dynsection-57';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -57,7 +57,7 @@ var sectionId = 'dynsection-63';
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Set the course lighting object Uses a directional light.">
+<g id="a_Node000001"><a xlink:title=" ">
 <polygon fill="#999999" stroke="#666666" points="1374,-301.5 1263,-301.5 1263,-282.5 1374,-282.5 1374,-301.5"/>
 <text text-anchor="middle" x="1318.5" y="-289.5" font-family="Helvetica,sans-Serif" font-size="10.00">set_course_lighting</text>
 </a>
@@ -84,7 +84,7 @@ var sectionId = 'dynsection-63';
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="math__util_8c.html#a4f0b3b806f6fcbb64c15855796f1fd8c" target="_top" xlink:title=" ">
+<g id="a_Node000009"><a xlink:href="math__util_8c.html#a20a0bbaf0a514d9592714d2fcb43a064" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1185.5,-451.5 1092.5,-451.5 1092.5,-432.5 1185.5,-432.5 1185.5,-451.5"/>
 <text text-anchor="middle" x="1139" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_802B5D30</text>
 </a>

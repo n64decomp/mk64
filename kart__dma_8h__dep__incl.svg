@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 632;
+var viewWidth = 610;
 var viewHeight = 192;
 var sectionId = 'dynsection-1';
 </script>
@@ -120,9 +120,9 @@ var sectionId = 'dynsection-1';
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="spawn__players_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="504.5,-129 389.5,-129 389.5,-110 504.5,-110 504.5,-129"/>
-<text text-anchor="middle" x="447" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">src/spawn_players.c</text>
+<g id="a_Node000007"><a xlink:href="replays_8c.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="468,-129 390,-129 390,-110 468,-110 468,-129"/>
+<text text-anchor="middle" x="429" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">src/replays.c</text>
 </a>
 </g>
 </g>
@@ -130,17 +130,17 @@ var sectionId = 'dynsection-1';
 <g id="edge6_Node000001_Node000007" class="edge">
 <title>Node1&#45;&gt;Node7</title>
 <g id="a_edge6_Node000001_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M347.27,-161.16C371.34,-151.35 404.4,-137.87 425.73,-129.17"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="345.83,-157.97 337.89,-164.98 348.47,-164.45 345.83,-157.97"/>
+<path fill="none" stroke="#63b8ff" d="M344.19,-160.63C364.82,-150.87 392.62,-137.71 410.68,-129.17"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="342.54,-157.54 334.99,-164.98 345.53,-163.87 342.54,-157.54"/>
 </a>
 </g>
 </g>
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
-<g id="a_Node000008"><a xlink:href="staff__ghosts_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="623.5,-129 522.5,-129 522.5,-110 623.5,-110 623.5,-129"/>
-<text text-anchor="middle" x="573" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">src/staff_ghosts.c</text>
+<g id="a_Node000008"><a xlink:href="spawn__players_8c.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="601.5,-129 486.5,-129 486.5,-110 601.5,-110 601.5,-129"/>
+<text text-anchor="middle" x="544" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">src/spawn_players.c</text>
 </a>
 </g>
 </g>
@@ -148,8 +148,8 @@ var sectionId = 'dynsection-1';
 <g id="edge7_Node000001_Node000008" class="edge">
 <title>Node1&#45;&gt;Node8</title>
 <g id="a_edge7_Node000001_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M368,-162.94C415.99,-153.01 486.95,-138.31 531.55,-129.08"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="367.21,-159.53 358.13,-164.98 368.63,-166.38 367.21,-159.53"/>
+<path fill="none" stroke="#63b8ff" d="M363.3,-162.69C405.83,-152.76 468.03,-138.24 507.24,-129.08"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="362.41,-159.3 353.47,-164.98 364.01,-166.12 362.41,-159.3"/>
 </a>
 </g>
 </g>

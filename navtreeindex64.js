@@ -1,5 +1,15 @@
 var NAVTREEINDEX64 =
 {
+"koopa__troopa__beach_2course__offsets_8c.html#aff6835561146179db50de00385940443":[8,0,0,9,4,1],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html":[8,0,0,9,5],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a0ded0a0c82224f3f00c0bc0e2992945a":[8,0,0,9,5,4],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a1d8253338d216924f5f841595ec22481":[8,0,0,9,5,2],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a31790aba9cc973bd9fd4c212ce442d4b":[8,0,0,9,5,1],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a3ef69e366373f7aeb8d9b72d2e318a57":[8,0,0,9,5,9],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a43530598d021cbb27b4b6e1eae51d17b":[8,0,0,9,5,3],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a448f8a10938a68ba2ba1e0ab4a86d6a8":[8,0,0,9,5,14],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a47b229650a4ba980021ef1e557714c29":[8,0,0,9,5,0],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a4b5e129457e661102effc6e064f7cb21":[8,0,0,9,5,7],
 "koopa__troopa__beach_2course__textures_8linkonly_8c.html#a547d5598209ae72f6545dd9e825448aa":[8,0,0,9,5,11],
 "koopa__troopa__beach_2course__textures_8linkonly_8c.html#a5fbdb96e96b26399a21cc68b6ebafa09":[8,0,0,9,5,12],
 "koopa__troopa__beach_2course__textures_8linkonly_8c.html#a9b68e5349483b5ffb8fe569d2d13666f":[8,0,0,9,5,15],
@@ -239,15 +249,5 @@ var NAVTREEINDEX64 =
 "load_8c.html#aff477c5ad1a2ae8ee17445646b61dbb9":[8,0,3,1,10,65],
 "load_8h.html":[8,0,3,1,11],
 "load_8h.html#a09567cccba85f0b92def521ec1bd0b85":[8,0,3,1,11,60],
-"load_8h.html#a0993b2f5e3cd31db8a04731a5fa74997":[8,0,3,1,11,10],
-"load_8h.html#a09bd3997d3f65730cc5906c6f53da174":[8,0,3,1,11,53],
-"load_8h.html#a0a5775ae8cd910eecdc331c0de88da6e":[8,0,3,1,11,12],
-"load_8h.html#a0e105888931e8ded9673ed01f6ad71de":[8,0,3,1,11,25],
-"load_8h.html#a12464bb5d99626c0115fb689d3107bf3":[8,0,3,1,11,36],
-"load_8h.html#a1286b8f46af69bd6ce32768f27c18dbe":[8,0,3,1,11,24],
-"load_8h.html#a16e8a2babc428c7c48adcfec07beb562":[8,0,3,1,11,57],
-"load_8h.html#a172dffefb1ca63664d5ab806eadbbada":[8,0,3,1,11,28],
-"load_8h.html#a18ae0c9f2f35d50f907f1e9999891185":[8,0,3,1,11,43],
-"load_8h.html#a1a5cff71e5c10ffbe459f2a317fc5005":[8,0,3,1,11,21],
-"load_8h.html#a1fba068a271b6c5373450b2012880837":[8,0,3,1,11,8]
+"load_8h.html#a0993b2f5e3cd31db8a04731a5fa74997":[8,0,3,1,11,10]
 };

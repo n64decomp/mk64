@@ -1,30 +1,30 @@
 <map id="render_actor_railroad_crossing" name="render_actor_railroad_crossing">
-<area shape="rect" id="Node000001" title="Renders the railroad crossing actor. Actor used in Kalimari Desert." alt="" coords="5,186,167,226"/>
-<area shape="rect" id="Node000002" href="$math__util_8c.html#a5e1d12b8745a8d5f8d73ab366328d3cd" title=" " alt="" coords="215,84,405,109"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,184,270,113,272,118,129,188"/>
-<area shape="rect" id="Node000009" href="$math__util_8c.html#a7085bb4bb08bdc39c0fa0b98f25176ef" title=" " alt="" coords="225,193,395,219"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="167,203,211,203,211,209,167,209"/>
-<area shape="rect" id="Node000012" href="$math__util_8c.html#aa23f6384122bc45f13a81ef0fa86c099" title=" " alt="" coords="235,255,385,280"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="161,224,250,248,249,253,159,229"/>
-<area shape="rect" id="Node000003" href="$math__util_8c.html#a07a66adf3458c156c7961b983983627a" title=" " alt="" coords="489,55,613,80"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="405,82,475,74,476,79,406,88"/>
-<area shape="rect" id="Node000007" href="$math__util_8c.html#a963f23fd2ffec93350816627af02b9da" title=" " alt="" coords="453,5,649,31"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="340,81,452,39,479,32,481,37,454,45,342,86"/>
-<area shape="rect" id="Node000008" href="$math__util_8c.html#a3eb0db0895b2c11953df746ce49b782e" title=" " alt="" coords="478,105,625,145"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="406,105,464,112,464,117,405,110"/>
-<area shape="rect" id="Node000004" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="707,5,774,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="601,52,649,39,693,28,695,33,650,45,602,57"/>
-<area shape="rect" id="Node000006" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="715,55,767,80"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="614,65,701,65,701,70,614,70"/>
-<area shape="rect" id="Node000005" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="832,5,941,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="774,15,818,15,818,21,774,21"/>
-<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="650,15,693,15,693,21,650,21"/>
-<area shape="rect" id="Node000010" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="526,169,577,195"/>
-<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="395,195,512,183,513,188,396,200"/>
-<area shape="rect" id="Node000011" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="527,219,575,244"/>
-<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="396,212,514,225,513,230,395,218"/>
-<area shape="rect" id="Node000013" href="$math__util_8c.html#a32af0f217114736291c9ca6689138b81" title=" " alt="" coords="498,268,605,293"/>
-<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="386,269,484,274,484,280,385,274"/>
-<area shape="rect" id="Node000014" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="697,268,784,293"/>
-<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="605,278,684,278,684,283,605,283"/>
+<area shape="rect" id="Node000001" title="Renders the railroad crossing actor. Actor used in Kalimari Desert." alt="" coords="5,168,167,208"/>
+<area shape="rect" id="Node000002" href="$math__util_8c.html#ad1ba4fdd256a06293f5f8fa8bdd1e785" title=" " alt="" coords="241,114,383,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,165,251,140,252,146,161,170"/>
+<area shape="rect" id="Node000009" href="$math__util_8c.html#a2579bc73da43221eb3b79821c7d59099" title=" " alt="" coords="215,175,409,201"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="167,185,201,185,201,191,167,191"/>
+<area shape="rect" id="Node000012" href="$math__util_8c.html#a37b6e37ab5d04e0e2701015911b05296" title=" " alt="" coords="237,249,387,274"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="149,206,259,242,258,247,148,211"/>
+<area shape="rect" id="Node000003" href="$math__util_8c.html#acd8ef27c81858774741c6e879bab1aee" title=" " alt="" coords="511,70,575,95"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="379,111,496,89,497,94,380,117"/>
+<area shape="rect" id="Node000007" href="$math__util_8c.html#a4151d0b0e3d70e2f8fb54c50e1fd6793" title=" " alt="" coords="457,5,628,45"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="337,112,456,55,473,48,475,53,458,60,339,116"/>
+<area shape="rect" id="Node000008" href="$math__util_8c.html#a3b799b8c9e82afcda80a19152e793d7c" title=" " alt="" coords="473,119,612,145"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="384,126,460,127,460,133,384,131"/>
+<area shape="rect" id="Node000004" href="$math__util_8c.html#a39b33617a06622150fcb2b20569aa969" title=" " alt="" coords="686,17,753,42"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="574,71,627,55,672,41,674,46,629,60,576,76"/>
+<area shape="rect" id="Node000006" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="693,70,745,95"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="575,80,680,80,680,85,575,85"/>
+<area shape="rect" id="Node000005" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="811,17,920,42"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="753,27,797,27,797,32,753,32"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="629,25,672,26,672,31,628,30"/>
+<area shape="rect" id="Node000010" href="$math__util_8c.html#a5eb0d9752bc1557b7f4ae3809352a0eb" title=" " alt="" coords="517,169,568,194"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="409,183,503,180,503,185,409,188"/>
+<area shape="rect" id="Node000011" href="$math__util_8c.html#adcf81d47666b5d86c4a1dbcb06e47faf" title=" " alt="" coords="519,218,567,243"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="382,198,506,221,505,227,381,203"/>
+<area shape="rect" id="Node000013" href="$math__util_8c.html#a32af0f217114736291c9ca6689138b81" title=" " alt="" coords="489,267,596,293"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="388,265,476,272,476,277,387,270"/>
+<area shape="rect" id="Node000014" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="676,267,763,293"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="596,277,662,277,662,283,596,283"/>
 </map>

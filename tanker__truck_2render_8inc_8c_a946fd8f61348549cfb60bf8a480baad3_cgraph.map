@@ -1,30 +1,30 @@
 <map id="render_actor_tanker_truck" name="render_actor_tanker_truck">
-<area shape="rect" id="Node000001" title="Renders the tanker truck actor. Actor used in Toad&#39;s Turnpike. His update are made in vehicle." alt="" coords="5,186,157,226"/>
-<area shape="rect" id="Node000002" href="$math__util_8c.html#a5e1d12b8745a8d5f8d73ab366328d3cd" title=" " alt="" coords="205,84,396,109"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,184,261,113,263,118,124,188"/>
-<area shape="rect" id="Node000009" href="$math__util_8c.html#a7085bb4bb08bdc39c0fa0b98f25176ef" title=" " alt="" coords="215,193,386,219"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="158,203,202,203,202,209,158,209"/>
-<area shape="rect" id="Node000012" href="$math__util_8c.html#aa23f6384122bc45f13a81ef0fa86c099" title=" " alt="" coords="225,255,376,280"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="154,224,242,248,240,253,153,229"/>
-<area shape="rect" id="Node000003" href="$math__util_8c.html#a07a66adf3458c156c7961b983983627a" title=" " alt="" coords="480,55,604,80"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="396,82,466,74,467,79,397,88"/>
-<area shape="rect" id="Node000007" href="$math__util_8c.html#a963f23fd2ffec93350816627af02b9da" title=" " alt="" coords="444,5,640,31"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="331,81,443,39,470,32,472,37,445,45,333,86"/>
-<area shape="rect" id="Node000008" href="$math__util_8c.html#a3eb0db0895b2c11953df746ce49b782e" title=" " alt="" coords="469,105,615,145"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="397,105,455,112,454,117,396,110"/>
-<area shape="rect" id="Node000004" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="698,5,765,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="591,52,639,39,684,28,685,33,641,45,593,57"/>
-<area shape="rect" id="Node000006" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="705,55,757,80"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="604,65,692,65,692,70,604,70"/>
-<area shape="rect" id="Node000005" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="823,5,932,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="765,15,809,15,809,21,765,21"/>
-<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="640,15,684,15,684,21,640,21"/>
-<area shape="rect" id="Node000010" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="517,169,567,195"/>
-<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="386,195,503,183,504,188,386,200"/>
-<area shape="rect" id="Node000011" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="518,219,566,244"/>
-<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="386,212,504,225,504,230,386,218"/>
-<area shape="rect" id="Node000013" href="$math__util_8c.html#a32af0f217114736291c9ca6689138b81" title=" " alt="" coords="489,268,595,293"/>
-<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="376,269,475,274,475,280,376,274"/>
-<area shape="rect" id="Node000014" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="688,268,775,293"/>
-<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="596,278,675,278,675,283,596,283"/>
+<area shape="rect" id="Node000001" title="Renders the tanker truck actor. Actor used in Toad&#39;s Turnpike. His update are made in vehicle." alt="" coords="5,168,157,208"/>
+<area shape="rect" id="Node000002" href="$math__util_8c.html#ad1ba4fdd256a06293f5f8fa8bdd1e785" title=" " alt="" coords="231,114,374,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,165,242,141,244,146,155,170"/>
+<area shape="rect" id="Node000009" href="$math__util_8c.html#a2579bc73da43221eb3b79821c7d59099" title=" " alt="" coords="205,175,400,201"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="158,185,192,185,192,191,158,191"/>
+<area shape="rect" id="Node000012" href="$math__util_8c.html#a37b6e37ab5d04e0e2701015911b05296" title=" " alt="" coords="227,249,378,274"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="143,206,251,242,249,247,142,211"/>
+<area shape="rect" id="Node000003" href="$math__util_8c.html#acd8ef27c81858774741c6e879bab1aee" title=" " alt="" coords="501,70,565,95"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="369,111,487,89,488,94,370,117"/>
+<area shape="rect" id="Node000007" href="$math__util_8c.html#a4151d0b0e3d70e2f8fb54c50e1fd6793" title=" " alt="" coords="448,5,619,45"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="328,112,447,55,463,48,465,53,449,60,330,116"/>
+<area shape="rect" id="Node000008" href="$math__util_8c.html#a3b799b8c9e82afcda80a19152e793d7c" title=" " alt="" coords="464,119,603,145"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="374,126,450,127,450,133,374,131"/>
+<area shape="rect" id="Node000004" href="$math__util_8c.html#a39b33617a06622150fcb2b20569aa969" title=" " alt="" coords="677,17,743,42"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="565,71,618,55,663,41,664,46,619,60,566,76"/>
+<area shape="rect" id="Node000006" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="684,70,736,95"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="565,80,670,80,670,85,565,85"/>
+<area shape="rect" id="Node000005" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="801,17,911,42"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="744,27,788,27,788,32,744,32"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="619,25,663,26,663,31,619,30"/>
+<area shape="rect" id="Node000010" href="$math__util_8c.html#a5eb0d9752bc1557b7f4ae3809352a0eb" title=" " alt="" coords="508,169,559,194"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="400,183,494,180,494,185,400,188"/>
+<area shape="rect" id="Node000011" href="$math__util_8c.html#adcf81d47666b5d86c4a1dbcb06e47faf" title=" " alt="" coords="509,218,557,243"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="372,198,496,221,495,227,371,203"/>
+<area shape="rect" id="Node000013" href="$math__util_8c.html#a32af0f217114736291c9ca6689138b81" title=" " alt="" coords="480,267,587,293"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="378,265,467,272,466,277,378,270"/>
+<area shape="rect" id="Node000014" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="667,267,753,293"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="587,277,653,277,653,283,587,283"/>
 </map>

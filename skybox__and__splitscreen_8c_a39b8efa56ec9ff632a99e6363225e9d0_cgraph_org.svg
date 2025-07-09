@@ -147,7 +147,7 @@
 <!-- Node468 -->
 <g id="Node000468" class="node">
 <title>Node468</title>
-<g id="a_Node000468"><a xlink:href="math__util_8c.html#aa23f6384122bc45f13a81ef0fa86c099" target="_top" xlink:title=" ">
+<g id="a_Node000468"><a xlink:href="math__util_8c.html#a37b6e37ab5d04e0e2701015911b05296" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="663,-594 550,-594 550,-575 663,-575 663,-594"/>
 <text text-anchor="middle" x="606.5" y="-582" font-family="Helvetica,sans-Serif" font-size="10.00">render_set_position</text>
 </a>
@@ -652,7 +652,7 @@
 <!-- Node466 -->
 <g id="Node000466" class="node">
 <title>Node466</title>
-<g id="a_Node000466"><a xlink:href="math__util_8c.html#ad1800f715e0296b6e75f04de02479ea5" target="_top" xlink:title=" ">
+<g id="a_Node000466"><a xlink:href="math__util_8c.html#a3011787ec4cef98a1827460577d8eb56" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="651,-557 562,-557 562,-538 651,-538 651,-557"/>
 <text text-anchor="middle" x="606.5" y="-545" font-family="Helvetica,sans-Serif" font-size="10.00">mtxf_translate</text>
 </a>
@@ -704,9 +704,9 @@
 </g>
 </g>
 <!-- Node470&#45;&gt;Node464 -->
-<g id="edge37_Node000470_Node000464" class="edge">
+<g id="edge35_Node000470_Node000464" class="edge">
 <title>Node470&#45;&gt;Node464</title>
-<g id="a_edge37_Node000470_Node000464"><a xlink:title=" ">
+<g id="a_edge35_Node000470_Node000464"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M275.77,-364.61C298.07,-368.37 325.38,-372.63 350,-375.5 428,-384.59 519.93,-390.18 569.48,-392.77"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="569.52,-396.28 579.68,-393.29 569.88,-389.29 569.52,-396.28"/>
 </a>
@@ -796,18 +796,18 @@
 <!-- Node491 -->
 <g id="Node000491" class="node">
 <title>Node491</title>
-<g id="a_Node000491"><a xlink:href="skybox__and__splitscreen_8c.html#a6135e98ec3076399696ca04f441529f4" target="_top" xlink:title=" ">
-<polygon fill="#fff0f0" stroke="red" points="472,-329 379,-329 379,-310 472,-310 472,-329"/>
-<text text-anchor="middle" x="425.5" y="-317" font-family="Helvetica,sans-Serif" font-size="10.00">func_802A4A0C</text>
+<g id="a_Node000491"><a xlink:href="skybox__and__splitscreen_8c.html#a7d6e2be7c860b074339752dc5667194c" target="_top" xlink:title="Sets skybox horizon. Some coordinate transformations which can affect game physics and display of pla...">
+<polygon fill="#fff0f0" stroke="red" points="469.5,-329 381.5,-329 381.5,-310 469.5,-310 469.5,-329"/>
+<text text-anchor="middle" x="425.5" y="-317" font-family="Helvetica,sans-Serif" font-size="10.00">render_skybox</text>
 </a>
 </g>
 </g>
 <!-- Node470&#45;&gt;Node491 -->
-<g id="edge35_Node000470_Node000491" class="edge">
+<g id="edge36_Node000470_Node000491" class="edge">
 <title>Node470&#45;&gt;Node491</title>
-<g id="a_edge35_Node000470_Node000491"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M275.98,-347.83C303.73,-342.53 339.41,-335.73 368.84,-330.12"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="369.8,-333.5 378.96,-328.18 368.49,-326.62 369.8,-333.5"/>
+<g id="a_edge36_Node000470_Node000491"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M275.98,-347.83C304.56,-342.38 341.54,-335.32 371.45,-329.62"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="372.13,-333.05 381.3,-327.74 370.82,-326.18 372.13,-333.05"/>
 </a>
 </g>
 </g>
@@ -821,10 +821,10 @@
 </g>
 </g>
 <!-- Node491&#45;&gt;Node464 -->
-<g id="edge36_Node000491_Node000464" class="edge">
+<g id="edge37_Node000491_Node000464" class="edge">
 <title>Node491&#45;&gt;Node464</title>
-<g id="a_edge36_Node000491_Node000464"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M471.18,-329.02C481.14,-331.66 491.55,-334.82 501,-338.5 529.95,-349.75 561.07,-367.2 581.76,-379.62"/>
+<g id="a_edge37_Node000491_Node000464"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M469.61,-328.61C480.04,-331.32 491.05,-334.63 501,-338.5 529.95,-349.75 561.07,-367.2 581.76,-379.62"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="580.12,-382.72 590.48,-384.94 583.76,-376.75 580.12,-382.72"/>
 </a>
 </g>
