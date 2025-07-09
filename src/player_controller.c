@@ -2097,20 +2097,20 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     }
     if ((player->tyres[BACK_LEFT].surfaceType == ASPHALT) && (player->tyres[BACK_RIGHT].surfaceType == ASPHALT)) {
         gravityX = (-1 * (player->unk_064[0] + sp16C[0])) +
-               ((-player->collision.orientationVector[0] * player->kartGravity) * 0.925);
+                   ((-player->collision.orientationVector[0] * player->kartGravity) * 0.925);
         gravityY = (-player->collision.orientationVector[1] * player->kartGravity);
         gravityZ = (-1 * (player->unk_064[2] + sp16C[2])) +
-               ((-player->collision.orientationVector[2] * player->kartGravity) * 0.925);
+                   ((-player->collision.orientationVector[2] * player->kartGravity) * 0.925);
     } else {
         temp3 = (((player->speed / 18.0f) * 216.0f) / 10.0f);
         if (temp3 >= 10) {
             temp3 = 10;
         }
         gravityX = -1 * (player->unk_064[0] + sp16C[0]) +
-               ((-player->collision.orientationVector[0] * player->kartGravity) * sp104[temp3]);
+                   ((-player->collision.orientationVector[0] * player->kartGravity) * sp104[temp3]);
         gravityY = (-player->collision.orientationVector[1] * player->kartGravity);
         gravityZ = -1 * (player->unk_064[2] + sp16C[2]) +
-               ((-player->collision.orientationVector[2] * player->kartGravity) * sp104[temp3]);
+                   ((-player->collision.orientationVector[2] * player->kartGravity) * sp104[temp3]);
     }
     if (((player->effects & 8) != 8) && ((player->effects & 0x20) == 0x20)) {
         gravityX = 0 * (player->unk_064[0] + sp16C[0]);
@@ -2150,30 +2150,37 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
 
         if (((player->unk_07C >> 16) >= 0x28) || ((player->unk_07C >> 16) < (-0x27))) {
 
-            newVelocity[0] += (((((f64) ((sp184[0] + gravityX) + sp160[0])) - (newVelocity[0] * (0.12 * ((f64) player->kartFriction)))) /
-                         6000.0) /
-                        (((((f64) player->unk_20C) * 0.6) + 1.0) + sp7C));
-            newVelocity[2] += (((((f64) ((sp184[2] + gravityZ) + sp160[2])) - (newVelocity[2] * (0.12 * ((f64) player->kartFriction)))) /
-                         6000.0) /
-                        (((((f64) player->unk_20C) * 0.6) + 1.0) + sp7C));
+            newVelocity[0] += (((((f64) ((sp184[0] + gravityX) + sp160[0])) -
+                                 (newVelocity[0] * (0.12 * ((f64) player->kartFriction)))) /
+                                6000.0) /
+                               (((((f64) player->unk_20C) * 0.6) + 1.0) + sp7C));
+            newVelocity[2] += (((((f64) ((sp184[2] + gravityZ) + sp160[2])) -
+                                 (newVelocity[2] * (0.12 * ((f64) player->kartFriction)))) /
+                                6000.0) /
+                               (((((f64) player->unk_20C) * 0.6) + 1.0) + sp7C));
         } else {
-            newVelocity[0] += (((((f64) ((sp184[0] + gravityX) + sp160[0])) - (newVelocity[0] * (0.12 * ((f64) player->kartFriction)))) /
-                         6000.0) /
-                        (sp7C + 1));
-            newVelocity[2] += (((((f64) ((sp184[2] + gravityZ) + sp160[2])) - (newVelocity[2] * (0.12 * ((f64) player->kartFriction)))) /
-                         6000.0) /
-                        (sp7C + 1));
+            newVelocity[0] += (((((f64) ((sp184[0] + gravityX) + sp160[0])) -
+                                 (newVelocity[0] * (0.12 * ((f64) player->kartFriction)))) /
+                                6000.0) /
+                               (sp7C + 1));
+            newVelocity[2] += (((((f64) ((sp184[2] + gravityZ) + sp160[2])) -
+                                 (newVelocity[2] * (0.12 * ((f64) player->kartFriction)))) /
+                                6000.0) /
+                               (sp7C + 1));
         }
     } else {
         newVelocity[0] +=
-            (((((f64) ((sp184[0] + gravityX) + sp160[0])) - (newVelocity[0] * (0.12 * ((f64) player->kartFriction)))) / 6000.0) /
+            (((((f64) ((sp184[0] + gravityX) + sp160[0])) - (newVelocity[0] * (0.12 * ((f64) player->kartFriction)))) /
+              6000.0) /
              30.0);
         newVelocity[2] +=
-            (((((f64) ((sp184[2] + gravityZ) + sp160[2])) - (newVelocity[2] * (0.12 * ((f64) player->kartFriction)))) / 6000.0) /
+            (((((f64) ((sp184[2] + gravityZ) + sp160[2])) - (newVelocity[2] * (0.12 * ((f64) player->kartFriction)))) /
+              6000.0) /
              30.0);
     }
     newVelocity[1] +=
-        (((((f64) ((sp184[1] + gravityY) + sp160[1])) - (newVelocity[1] * (0.12 * ((f64) player->kartFriction)))) / 6000.0) /
+        (((((f64) ((sp184[1] + gravityY) + sp160[1])) - (newVelocity[1] * (0.12 * ((f64) player->kartFriction)))) /
+          6000.0) /
          ((f64) player->unk_DAC));
     if (((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) ||
          ((player->effects & HIT_EFFECT) == HIT_EFFECT)) ||
@@ -2416,9 +2423,11 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     func_8002FCA8(player, playerId);
     if ((((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) ||
         ((player->effects & 0x20000) == 0x20000)) {
-        gravityX = -1 * (player->unk_064[0]) + (((-player->collision.orientationVector[0]) * player->kartGravity) * 0.1);
+        gravityX =
+            -1 * (player->unk_064[0]) + (((-player->collision.orientationVector[0]) * player->kartGravity) * 0.1);
         gravityY = (-player->collision.orientationVector[1]) * player->kartGravity;
-        gravityZ = -1 * (player->unk_064[2]) + (((-player->collision.orientationVector[2]) * player->kartGravity) * 0.1);
+        gravityZ =
+            -1 * (player->unk_064[2]) + (((-player->collision.orientationVector[2]) * player->kartGravity) * 0.1);
     } else {
         gravityX = -1 * player->unk_064[0];
         gravityY = -1 * player->kartGravity;
@@ -2446,17 +2455,22 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     if ((player->unk_10C < 3) && ((player->unk_256) < 3) && ((player->effects & 0x400) != 0x400) &&
         ((player->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000) &&
         ((player->effects & HIT_BY_ITEM_EFFECT) != HIT_BY_ITEM_EFFECT)) {
-        newVelocity[0] += (((((spEC[0] + gravityX) + spD4[0])) - (newVelocity[0] * (0.12 * player->kartFriction))) / 6000) /
-                   ((player->unk_20C * 5.0f) + 1.0f);
-        newVelocity[2] += (((((spEC[2] + gravityZ) + spD4[2])) - (newVelocity[2] * (0.12 * player->kartFriction))) / 6000) /
-                   ((player->unk_20C * 5.0f) + 1.0f);
+        newVelocity[0] +=
+            (((((spEC[0] + gravityX) + spD4[0])) - (newVelocity[0] * (0.12 * player->kartFriction))) / 6000) /
+            ((player->unk_20C * 5.0f) + 1.0f);
+        newVelocity[2] +=
+            (((((spEC[2] + gravityZ) + spD4[2])) - (newVelocity[2] * (0.12 * player->kartFriction))) / 6000) /
+            ((player->unk_20C * 5.0f) + 1.0f);
     } else {
         newVelocity[0] +=
-            ((((f64) (spEC[0] + gravityX + spD4[0]) - (newVelocity[0] * (0.2 * (f64) player->kartFriction))) / 6000) * 0.08);
+            ((((f64) (spEC[0] + gravityX + spD4[0]) - (newVelocity[0] * (0.2 * (f64) player->kartFriction))) / 6000) *
+             0.08);
         newVelocity[2] +=
-            ((((f64) (spEC[2] + gravityZ + spD4[2]) - (newVelocity[2] * (0.2 * (f64) player->kartFriction))) / 6000) * 0.08);
+            ((((f64) (spEC[2] + gravityZ + spD4[2]) - (newVelocity[2] * (0.2 * (f64) player->kartFriction))) / 6000) *
+             0.08);
     }
-    newVelocity[1] += (((((spEC[1] + gravityY) + spD4[1])) - (newVelocity[1] * (0.12 * player->kartFriction))) / 6000) / player->unk_DAC;
+    newVelocity[1] += (((((spEC[1] + gravityY) + spD4[1])) - (newVelocity[1] * (0.12 * player->kartFriction))) / 6000) /
+                      player->unk_DAC;
 
     if (((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) {
         newVelocity[0] = 0.0f;
@@ -3668,34 +3682,44 @@ void player_decelerate(Player* player, f32 speedReduction) {
 }
 
 void player_accelerate_global(Player* player, s32 playerIndex) {
-    if ((gPlayerCurrentSpeed[playerIndex] >= 0.0) && (gPlayerCurrentSpeed[playerIndex] < ((f64) player->topSpeed * 0.1))) {
+    if ((gPlayerCurrentSpeed[playerIndex] >= 0.0) &&
+        (gPlayerCurrentSpeed[playerIndex] < ((f64) player->topSpeed * 0.1))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][0] * 3.2;
     }
-    if (((player->topSpeed * 0.1) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.2))) {
+    if (((player->topSpeed * 0.1) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.2))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][1] * 3.2;
     }
-    if (((player->topSpeed * 0.2) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.3))) {
+    if (((player->topSpeed * 0.2) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.3))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][2] * 3.2;
     }
-    if (((player->topSpeed * 0.3) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.4))) {
+    if (((player->topSpeed * 0.3) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.4))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][3] * 3.2;
     }
-    if (((player->topSpeed * 0.4) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.5))) {
+    if (((player->topSpeed * 0.4) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.5))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][4] * 3.2;
     }
-    if (((player->topSpeed * 0.5) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.6))) {
+    if (((player->topSpeed * 0.5) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.6))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][5] * 3.2;
     }
-    if (((player->topSpeed * 0.6) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.7))) {
+    if (((player->topSpeed * 0.6) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.7))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][6] * 3.2;
     }
-    if (((player->topSpeed * 0.7) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.8))) {
+    if (((player->topSpeed * 0.7) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.8))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][7] * 2.8;
     }
-    if (((player->topSpeed * 0.8) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.9))) {
+    if (((player->topSpeed * 0.8) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.9))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][8] * 2.8;
     }
-    if (((player->topSpeed * 0.9) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] <= (player->topSpeed * 1.0))) {
+    if (((player->topSpeed * 0.9) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] <= (player->topSpeed * 1.0))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][9] * 2.8;
     }
     player->unk_044 |= 0x20;
@@ -4375,7 +4399,6 @@ void func_80037614(Player* player, Vec3f arg1, Vec3f arg2) {
     arg2[2] = arg1[2];
 }
 
-
 void func_8003777C(Player* player, Vec3f arg1, Vec3f arg2) {
     f32 var_f12;
     f32 var_f2;
@@ -4555,7 +4578,8 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 playerIndex
             }
         }
         if ((!(player->effects & BOOST_RAMP_ASPHALT_EFFECT)) && (!(player->effects & 4))) {
-            if (((get_clamped_stickY_with_deadzone(controller) < (-0x31)) && (((player->speed / 18.0f) * 216.0f) <= 5.0f)) &&
+            if (((get_clamped_stickY_with_deadzone(controller) < (-0x31)) &&
+                 (((player->speed / 18.0f) * 216.0f) <= 5.0f)) &&
                 (controller->button & B_BUTTON)) {
                 player->currentSpeed = 140.0f;
                 player->unk_044 |= 1;
@@ -4606,7 +4630,7 @@ void handle_a_press_for_player_during_race(Player* player, struct Controller* co
                 func_80037CFC(player, controller, playerIndex);
             }
             D_80164A89 = 1;
-        // If start sequence and unknown condition
+            // If start sequence and unknown condition
         } else if (D_8018D168 == 1) {
             if (D_801656F0 == 1) {
                 if (D_801652E0[playerIndex] == 0) {
@@ -4850,9 +4874,12 @@ void func_80038C6C(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     newVelocity[1] = player->velocity[1];
     newVelocity[2] = player->velocity[2];
 
-    newVelocity[0] += ((((((sp114[0] + spA4) + spF0[0])) - (newVelocity[0] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
-    newVelocity[2] += ((((((sp114[2] + sp9C) + spF0[2])) - (newVelocity[2] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
-    newVelocity[1] += ((((((sp114[1] + spA0) + spF0[1])) - (newVelocity[1] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
+    newVelocity[0] +=
+        ((((((sp114[0] + spA4) + spF0[0])) - (newVelocity[0] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
+    newVelocity[2] +=
+        ((((((sp114[2] + sp9C) + spF0[2])) - (newVelocity[2] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
+    newVelocity[1] +=
+        ((((((sp114[1] + spA0) + spF0[1])) - (newVelocity[1] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
     if ((player->unk_044 & 0x10) == 0x10) {
         player->unk_044 &= 0xFFEF;
     }
