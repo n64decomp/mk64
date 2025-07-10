@@ -66,7 +66,7 @@ s32 D_80162DE8;
 UNUSED static s32 sUnusedReplayCounter;
 s32 gPauseTriggered;
 UNUSED static s32 bUnusedCourseGhostDisabled;
-s32 gPostTTReplayCannotSave;
+s32 gPostTimeTrialReplayCannotSave;
 s32 D_80162DFC;
 
 s32 D_80162E00;
@@ -214,7 +214,7 @@ void func_80005310(void) {
         sPrevCourseId = (u16) gCurrentCourseId;
         gPauseTriggered = 0;
         sUnusedReplayCounter = 0;
-        gPostTTReplayCannotSave = 0;
+        gPostTimeTrialReplayCannotSave = 0;
 
         if (gModeSelection == TIME_TRIALS && gActiveScreenMode == SCREEN_MODE_1P) {
 
@@ -455,7 +455,7 @@ void save_player_replay(void) {
     /* Input file is too long or picked up by lakitu or Out of bounds
     Not sure if there is any way to be considered out of bounds without lakitu getting called */
     if (((sPlayerInputIdx >= 0x1000) || ((gPlayerOne->unk_0CA & 2) != 0)) || ((gPlayerOne->unk_0CA & 8) != 0)) {
-        gPostTTReplayCannotSave = 1;
+        gPostTimeTrialReplayCannotSave = 1;
         return;
     }
 
@@ -517,7 +517,7 @@ void func_80005AE8(Player* ply) {
 
 void func_80005B18(void) {
     if (gModeSelection == TIME_TRIALS) {
-        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gPostTTReplayCannotSave != 1)) {
+        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gPostTimeTrialReplayCannotSave != 1)) {
             if (bPlayerGhostDisabled == 1) {
                 D_80162DD0 = D_80162DCC;
                 func_800052A4();
@@ -551,7 +551,7 @@ void func_80005B18(void) {
                 func_80005AE8(gPlayerThree);
             }
         } else {
-            if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gPostTTReplayCannotSave == 1)) {
+            if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gPostTimeTrialReplayCannotSave == 1)) {
                 sReplayGhostBuffer = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
                 sReplayGhostBufferSize = D_80162D86;
                 D_80162DDC = 1;
@@ -608,5 +608,5 @@ void replays_loop(void) {
     }
     /* This only gets triggered when the previous if-statements are not met
        Seems like just for pausing */
-    gPostTTReplayCannotSave = 1;
+    gPostTimeTrialReplayCannotSave = 1;
 }

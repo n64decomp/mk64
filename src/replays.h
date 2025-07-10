@@ -36,6 +36,6 @@ extern s32 D_80162DE0;
 extern s32 D_80162DE4;
 extern s32 D_80162DE8;
 extern s32 gPauseTriggered;
-extern s32 gPostTTReplayCannotSave;
+extern s32 gPostTimeTrialReplayCannotSave;
 
 #endif /* STAFF_GHOSTS_H */
