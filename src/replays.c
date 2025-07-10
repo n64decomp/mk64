@@ -5,7 +5,7 @@
  * 2. Player ghosts, which were driven by a player and can be raced against
  * 3. Staff ghosts, which can be unlocked on the raceway tracks with a fast enough time
  * All 3 use the same system for storing / replaying the inputs to reproduce a time trial
- * See process_post_TT_replay for additional technical details
+ * See process_post_time_trial_replay for additional technical details
  */
 
 #include <ultra64.h>
@@ -29,8 +29,8 @@
 extern s32 mio0encode(s32 input, s32, s32);
 extern s32 func_80040174(void*, s32, s32);
 
-u8* D_80162D80;
-s16 D_80162D84;
+u8* sReplayGhostBuffer;
+s16 sReplayGhostBufferSize;
 s16 D_80162D86;
 
 static u16 sPlayerGhostButtonsPrev;
@@ -66,13 +66,13 @@ s32 D_80162DE8;
 UNUSED static s32 sUnusedReplayCounter;
 s32 gPauseTriggered;
 UNUSED static s32 bUnusedCourseGhostDisabled;
-s32 gPostTTReplayCannotSave;
+s32 gPostTimeTrialReplayCannotSave;
 s32 D_80162DFC;
 
 s32 D_80162E00;
 
-u32* D_800DC710 = (u32*) &D_802BFB80.arraySize8[0][2][3];
-u32* D_800DC714 = (u32*) &D_802BFB80.arraySize8[1][1][3];
+u32* sReplayGhostEncoded = (u32*) &D_802BFB80.arraySize8[0][2][3];
+u32* gReplayGhostCompressed = (u32*) &D_802BFB80.arraySize8[1][1][3];
 
 extern s32 gLapCountByPlayerId[];
 
@@ -90,7 +90,7 @@ void load_course_ghost(void) {
     sCourseGhostReplayIdx = 0;
 }
 
-void load_post_tt_replay(void) {
+void load_post_time_trial_replay(void) {
     sPostTTReplay = (u32*) &D_802BFB80.arraySize8[0][D_80162DD0][3];
     sPostTTFramesRemaining = *sPostTTReplay & REPLAY_FRAME_COUNTER;
     sPostTTReplayIdx = 0;
@@ -168,17 +168,18 @@ void set_staff_ghost(void) {
 s32 func_800051C4(void) {
     s32 phi_v0;
 
-    if (D_80162D84 != 0) {
+    if (sReplayGhostBufferSize != 0) {
         // func_80040174 in mio0_decode.s
-        func_80040174((void*) D_80162D80, (D_80162D84 * 4) + 0x20, (s32) D_800DC710);
-        phi_v0 = mio0encode((s32) D_800DC710, (D_80162D84 * 4) + 0x20, (s32) D_800DC714);
+        func_80040174((void*) sReplayGhostBuffer, (sReplayGhostBufferSize * 4) + 0x20, (s32) sReplayGhostEncoded);
+        phi_v0 =
+            mio0encode((s32) sReplayGhostEncoded, (sReplayGhostBufferSize * 4) + 0x20, (s32) gReplayGhostCompressed);
         return phi_v0 + 0x1e;
     }
 }
 
 void func_8000522C(void) {
     sPlayerGhostReplay = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
-    mio0decode((u8*) D_800DC714, (u8*) sPlayerGhostReplay);
+    mio0decode((u8*) gReplayGhostCompressed, (u8*) sPlayerGhostReplay);
     sPlayerGhostFramesRemaining = (s32) (*sPlayerGhostReplay & REPLAY_FRAME_COUNTER);
     sPlayerGhostReplayIdx = 0;
     D_80162E00 = 1;
@@ -195,8 +196,8 @@ void func_800052A4(void) {
         D_80162DCC = 0;
     }
     temp_v0 = sPlayerInputIdx;
-    D_80162D80 = (void*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
-    D_80162D84 = temp_v0;
+    sReplayGhostBuffer = (void*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
+    sReplayGhostBufferSize = temp_v0;
     D_80162D86 = temp_v0;
 }
 
@@ -213,12 +214,12 @@ void func_80005310(void) {
         sPrevCourseId = (u16) gCurrentCourseId;
         gPauseTriggered = 0;
         sUnusedReplayCounter = 0;
-        gPostTTReplayCannotSave = 0;
+        gPostTimeTrialReplayCannotSave = 0;
 
         if (gModeSelection == TIME_TRIALS && gActiveScreenMode == SCREEN_MODE_1P) {
 
             if (D_8015F890 == 1) {
-                load_post_tt_replay();
+                load_post_time_trial_replay();
                 if (D_80162DD8 == 0) {
                     load_player_ghost();
                 }
@@ -264,7 +265,7 @@ void func_80005310(void) {
    bit 31: B
    bit 32: A
 */
-void process_post_TT_replay(void) {
+void process_post_time_trial_replay(void) {
     u32 inputs;
     u32 stickBytes;
     UNUSED u16 unk;
@@ -323,7 +324,7 @@ void process_post_TT_replay(void) {
     }
 }
 
-// See process_post_TT_replay comment
+// See process_post_time_trial_replay comment
 void process_course_ghost_replay(void) {
     u32 inputs;
     u32 stickBytes;
@@ -381,7 +382,7 @@ void process_course_ghost_replay(void) {
     }
 }
 
-// See process_post_TT_replay comment
+// See process_post_time_trial_replay comment
 void process_player_ghost_replay(void) {
     u32 inputs;
     u32 stickBytes;
@@ -442,7 +443,7 @@ void process_player_ghost_replay(void) {
     }
 }
 
-// See process_post_TT_replay comment
+// See process_post_time_trial_replay comment
 void save_player_replay(void) {
     s16 buttons;
     u32 inputs;
@@ -454,7 +455,7 @@ void save_player_replay(void) {
     /* Input file is too long or picked up by lakitu or Out of bounds
     Not sure if there is any way to be considered out of bounds without lakitu getting called */
     if (((sPlayerInputIdx >= 0x1000) || ((gPlayerOne->unk_0CA & 2) != 0)) || ((gPlayerOne->unk_0CA & 8) != 0)) {
-        gPostTTReplayCannotSave = 1;
+        gPostTimeTrialReplayCannotSave = 1;
         return;
     }
 
@@ -516,7 +517,7 @@ void func_80005AE8(Player* ply) {
 
 void func_80005B18(void) {
     if (gModeSelection == TIME_TRIALS) {
-        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gPostTTReplayCannotSave != 1)) {
+        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gPostTimeTrialReplayCannotSave != 1)) {
             if (bPlayerGhostDisabled == 1) {
                 D_80162DD0 = D_80162DCC;
                 func_800052A4();
@@ -539,8 +540,8 @@ void func_80005B18(void) {
                 func_80005AE8(gPlayerTwo);
                 func_80005AE8(gPlayerThree);
             } else {
-                D_80162D80 = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
-                D_80162D84 = D_80162D86;
+                sReplayGhostBuffer = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
+                sReplayGhostBufferSize = D_80162D86;
                 D_80162DD0 = D_80162DCC;
                 D_80162DE8 = gPlayerOne->characterId;
                 D_80162DD8 = 0;
@@ -550,9 +551,9 @@ void func_80005B18(void) {
                 func_80005AE8(gPlayerThree);
             }
         } else {
-            if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gPostTTReplayCannotSave == 1)) {
-                D_80162D80 = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
-                D_80162D84 = D_80162D86;
+            if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gPostTimeTrialReplayCannotSave == 1)) {
+                sReplayGhostBuffer = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
+                sReplayGhostBufferSize = D_80162D86;
                 D_80162DDC = 1;
             }
             if ((gPlayerOne->type & 0x800) == 0x800) {
@@ -588,7 +589,7 @@ void func_80005E6C(void) {
             process_course_ghost_replay(); // 2
         }
         if ((gPlayerOne->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
-            process_post_TT_replay(); // 1
+            process_post_time_trial_replay(); // 1
             return;
         }
         func_80005AE8(gPlayerTwo);
@@ -607,5 +608,5 @@ void replays_loop(void) {
     }
     /* This only gets triggered when the previous if-statements are not met
        Seems like just for pausing */
-    gPostTTReplayCannotSave = 1;
+    gPostTimeTrialReplayCannotSave = 1;
 }
