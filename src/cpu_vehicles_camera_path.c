@@ -1495,7 +1495,6 @@ void update_player(s32 playerId) {
                     gPlayerTrackPositionFactorInstruction[playerId].target = 0.0f;
                     gPlayerTrackPositionFactorInstruction[playerId].unkC = 0.0f;
                 }
-                // gNearestPathPointByPlayerId[playerId] might need to be saved to a temp
                 gPlayerPathY[playerId] =
                     gTrackPaths[gPlayerPathIndex][gNearestPathPointByPlayerId[playerId]].posY + 4.3f;
                 if ((D_801631F8[playerId] == 1) && (D_801631E0[playerId] == false)) {
