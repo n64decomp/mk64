@@ -5,45 +5,45 @@
 
 .data
 
-glabel gTexturePlayerSelect
-.incbin "bin/gTexturePlayerSelect.rgba16.tkmk00"
-glabel gTexturePlayerSelect_end
+glabel texture_player_select
+.incbin "bin/texture_player_select.rgba16.tkmk00"
+glabel texture_player_select_end
 
-glabel gTextureOption
-.incbin "bin/gTextureOption.rgba16.tkmk00"
-glabel gTextureOption_end
+glabel texture_option
+.incbin "bin/texture_option.rgba16.tkmk00"
+glabel texture_option_end
 
-glabel gTextureNameDK
-.incbin "bin/gTextureNameDK.rgba16.tkmk00"
-glabel gTextureNameDK_end
+glabel texture_name_dk
+.incbin "bin/texture_name_dk.rgba16.tkmk00"
+glabel texture_name_dk_end
 
-glabel gTextureNameToad
-.incbin "bin/gTextureNameToad.rgba16.tkmk00"
-glabel gTextureNameToad_end
+glabel texture_name_toad
+.incbin "bin/texture_name_toad.rgba16.tkmk00"
+glabel texture_name_toad_end
 
-glabel gTextureNameBowser
-.incbin "bin/gTextureNameBowser.rgba16.tkmk00"
-glabel gTextureNameBowser_end
+glabel texture_name_bowser
+.incbin "bin/texture_name_bowser.rgba16.tkmk00"
+glabel texture_name_bowser_end
 
-glabel gTextureNameLuigi
-.incbin "bin/gTextureNameLuigi.rgba16.tkmk00"
-glabel gTextureNameLuigi_end
+glabel texture_name_luigi
+.incbin "bin/texture_name_luigi.rgba16.tkmk00"
+glabel texture_name_luigi_end
 
-glabel gTextureNameMario
-.incbin "bin/gTextureNameMario.rgba16.tkmk00"
-glabel gTextureNameMario_end
+glabel texture_name_mario
+.incbin "bin/texture_name_mario.rgba16.tkmk00"
+glabel texture_name_mario_end
 
-glabel gTextureNamePeach
-.incbin "bin/gTextureNamePeach.rgba16.tkmk00"
-glabel gTextureNamePeach_end
+glabel texture_name_peach
+.incbin "bin/texture_name_peach.rgba16.tkmk00"
+glabel texture_name_peach_end
 
-glabel gTextureNameWario
-.incbin "bin/gTextureNameWario.rgba16.tkmk00"
-glabel gTextureNameWario_end
+glabel texture_name_wario
+.incbin "bin/texture_name_wario.rgba16.tkmk00"
+glabel texture_name_wario_end
 
-glabel gTextureNameYoshi
-.incbin "bin/gTextureNameYoshi.rgba16.tkmk00"
-glabel gTextureNameYoshi_end
+glabel texture_name_yoshi
+.incbin "bin/texture_name_yoshi.rgba16.tkmk00"
+glabel texture_name_yoshi_end
 
 glabel gTextureTitleMarioRaceway
 .incbin "bin/gTextureTitleMarioRaceway.rgba16.tkmk00"
@@ -145,65 +145,65 @@ glabel gTextureMenuSpecialCup
 .incbin "bin/gTextureMenuSpecialCup.rgba16.tkmk00"
 glabel gTextureMenuSpecialCup_end
 
-glabel gTextureGameSelect
-.incbin "bin/gTextureGameSelect.rgba16.tkmk00"
-glabel gTextureGameSelect_end
+glabel texture_game_select
+.incbin "bin/texture_game_select.rgba16.tkmk00"
+glabel texture_game_select_end
 
-glabel gTextureMenu1PGame
-.incbin "bin/gTextureMenu1PGame.rgba16.tkmk00"
-glabel gTextureMenu1PGame_end
+glabel texture_menu_1p_game
+.incbin "bin/texture_menu_1p_game.rgba16.tkmk00"
+glabel texture_menu_1p_game_end
 
-glabel gTextureMenu2PGame
-.incbin "bin/gTextureMenu2PGame.rgba16.tkmk00"
-glabel gTextureMenu2PGame_end
+glabel texture_menu_2p_game
+.incbin "bin/texture_menu_2p_game.rgba16.tkmk00"
+glabel texture_menu_2p_game_end
 
-glabel gTextureMenu3PGame
-.incbin "bin/gTextureMenu3PGame.rgba16.tkmk00"
-glabel gTextureMenu3PGame_end
+glabel texture_menu_3p_game
+.incbin "bin/texture_menu_3p_game.rgba16.tkmk00"
+glabel texture_menu_3p_game_end
 
-glabel gTextureMenu4PGame
-.incbin "bin/gTextureMenu4PGame.rgba16.tkmk00"
-glabel gTextureMenu4PGame_end
+glabel texture_menu_4p_game
+.incbin "bin/texture_menu_4p_game.rgba16.tkmk00"
+glabel texture_menu_4p_game_end
 
-glabel gTextureMenuModeBattle
-.incbin "bin/gTextureMenuModeBattle.rgba16.tkmk00"
-glabel gTextureMenuModeBattle_end
+glabel texture_mode_battle
+.incbin "bin/texture_mode_battle.rgba16.tkmk00"
+glabel texture_mode_battle_end
 
-glabel gTextureMenuModeTimeTrials
-.incbin "bin/gTextureMenuModeTimeTrials.rgba16.tkmk00"
-glabel gTextureMenuModeTimeTrials_end
+glabel texture_mode_time_trials
+.incbin "bin/texture_mode_time_trials.rgba16.tkmk00"
+glabel texture_mode_time_trials_end
 
-glabel gTextureMenuModeMarioGP
-.incbin "bin/gTextureMenuModeMarioGP.rgba16.tkmk00"
-glabel gTextureMenuModeMarioGP_end
+glabel texture_mode_mario_gp
+.incbin "bin/texture_mode_mario_gp.rgba16.tkmk00"
+glabel texture_mode_mario_gp_end
 
-glabel gTextureMenuModeVS
-.incbin "bin/gTextureMenuModeVS.rgba16.tkmk00"
-glabel gTextureMenuModeVS_end
+glabel texture_mode_vs
+.incbin "bin/texture_mode_vs.rgba16.tkmk00"
+glabel texture_mode_vs_end
 
-glabel gTextureMenuLOption
-.incbin "bin/gTextureMenuLOption.rgba16.tkmk00"
-glabel gTextureMenuLOption_end
+glabel texture_l_option
+.incbin "bin/texture_l_option.rgba16.tkmk00"
+glabel texture_l_option_end
 
-glabel gTextureMenuRData
-.incbin "bin/gTextureMenuRData.rgba16.tkmk00"
-glabel gTextureMenuRData_end
+glabel texture_r_data
+.incbin "bin/texture_r_data.rgba16.tkmk00"
+glabel texture_r_data_end
 
-glabel gTextureMenu50cc
-.incbin "bin/gTextureMenu50cc.rgba16.tkmk00"
-glabel gTextureMenu50cc_end
+glabel texture_50cc
+.incbin "bin/texture_50cc.rgba16.tkmk00"
+glabel texture_50cc_end
 
-glabel gTextureMenu100cc
-.incbin "bin/gTextureMenu100cc.rgba16.tkmk00"
-glabel gTextureMenu100cc_end
+glabel texture_100cc
+.incbin "bin/texture_100cc.rgba16.tkmk00"
+glabel texture_100cc_end
 
-glabel gTextureMenu150cc
-.incbin "bin/gTextureMenu150cc.rgba16.tkmk00"
-glabel gTextureMenu150cc_end
+glabel texture_150cc
+.incbin "bin/texture_150cc.rgba16.tkmk00"
+glabel texture_150cc_end
 
-glabel gTextureMenuExtra
-.incbin "bin/gTextureMenuExtra.rgba16.tkmk00"
-glabel gTextureMenuExtra_end
+glabel texture_extra
+.incbin "bin/texture_extra.rgba16.tkmk00"
+glabel texture_extra_end
 
 glabel gTextureMenuWithoutItem
 .incbin "bin/gTextureMenuWithoutItem.rgba16.tkmk00"
@@ -213,29 +213,29 @@ glabel gTextureMenuWithItem
 .incbin "bin/gTextureMenuWithItem.rgba16.tkmk00"
 glabel gTextureMenuWithItem_end
 
-glabel gTextureMenuBegin
-.incbin "bin/gTextureMenuBegin.rgba16.tkmk00"
-glabel gTextureMenuBegin_end
+glabel texture_begin
+.incbin "bin/texture_begin.rgba16.tkmk00"
+glabel texture_begin_end
 
-glabel gTextureMenuGhost
-.incbin "bin/gTextureMenuGhost.rgba16.tkmk00"
-glabel gTextureMenuGhost_end
+glabel texture_menu_ghost
+.incbin "bin/texture_menu_ghost.rgba16.tkmk00"
+glabel texture_menu_ghost_end
 
-glabel gTextureMenuData
-.incbin "bin/gTextureMenuData.rgba16.tkmk00"
-glabel gTextureMenuData_end
+glabel texture_data
+.incbin "bin/texture_data.rgba16.tkmk00"
+glabel texture_data_end
 
-glabel gTextureMenuOK
-.incbin "bin/gTextureMenuOK.rgba16.tkmk00"
-glabel gTextureMenuOK_end
+glabel texture_ok
+.incbin "bin/texture_ok.rgba16.tkmk00"
+glabel texture_ok_end
 
-glabel gTextureBackgroundBlueSky
-.incbin "bin/gTextureBackgroundBlueSky.rgba16.tkmk00"
-glabel gTextureBackgroundBlueSky_end
+glabel background_blue_sky
+.incbin "bin/background_blue_sky.rgba16.tkmk00"
+glabel background_blue_sky_end
 
-glabel gTextureBackgroundSunset
-.incbin "bin/gTextureBackgroundSunset.rgba16.tkmk00"
-glabel gTextureBackgroundSunset_end
+glabel background_sunset
+.incbin "bin/background_sunset.rgba16.tkmk00"
+glabel background_sunset_end
 
 glabel gTextureGreenGoldStripe
 .incbin "bin/gTextureGreenGoldStripe.rgba16.tkmk00"

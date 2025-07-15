@@ -1340,16 +1340,17 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
 
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
-    gDPLoadTextureBlock(gDisplayListHead++, D_8018D474, G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP,
-                        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, gLoadedTextureKartShadow, G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0,
+                        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
+                        G_TX_NOLOD);
     func_8004B414(0, 0, 0, 0xFF);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E51D0[0], 4, 0);
 
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
-    gDPLoadTextureBlock(gDisplayListHead++, (D_8018D474 + SOME_TEXTURE_POINTER_MATH), G_IM_FMT_I, G_IM_SIZ_8b, 64, 32,
-                        0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
-                        G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, (gLoadedTextureKartShadow + SOME_TEXTURE_POINTER_MATH), G_IM_FMT_I,
+                        G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK,
+                        G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     func_8004B414(0, 0, 0, 0xFF);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E5210[0], 4, 0);
@@ -1394,16 +1395,17 @@ void render_player_shadow_credits(Player* player, s8 playerId, s8 arg2) {
 
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
-    gDPLoadTextureBlock(gDisplayListHead++, D_8018D474, G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP,
-                        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, gLoadedTextureKartShadow, G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0,
+                        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
+                        G_TX_NOLOD);
     func_8004B414(0, 0, 0, 0x000000D0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E51D0[0], 4, 0);
 
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
-    gDPLoadTextureBlock(gDisplayListHead++, (D_8018D474 + SOME_TEXTURE_POINTER_MATH), G_IM_FMT_I, G_IM_SIZ_8b, 64, 32,
-                        0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
-                        G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, (gLoadedTextureKartShadow + SOME_TEXTURE_POINTER_MATH), G_IM_FMT_I,
+                        G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK,
+                        G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     func_8004B414(0, 0, 0, 0x000000D0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E5210[0], 4, 0);

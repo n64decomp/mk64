@@ -704,7 +704,7 @@ void func_8001E45C(Camera* camera, Player* player, s8 arg2) {
     UNUSED s16 pad6;
     s16 temp;
 
-    if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+    if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         var_a3 = 100;
         if (player->unk_078 == 0) {
             camera->unk_B0 = 0;
@@ -826,7 +826,7 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
     UNUSED s16 pad6;
     s16 temp;
 
-    if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+    if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         var_a3 = 100;
         if (player->unk_078 == 0) {
             camera->unk_B0 = 0;

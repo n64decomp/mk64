@@ -53,7 +53,7 @@ void func_8002B9CC(Player*, s8, s32);
 void func_8002BD58(Player*);
 void func_8002BF4C(Player*, s8);
 
-void func_8002C11C(Player*);
+void update_player_drift_duration(Player*);
 void func_8002C17C(Player*, s8);
 void func_8002C4F8(Player*, s8);
 void func_8002C7E4(Player*, s8, s8);

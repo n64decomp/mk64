@@ -1148,68 +1148,68 @@ glabel gTexture68E2D0
 .incbin "textures/standalone/texture_68E2D0.rgba16.mio0"
 
 .balign 4, 0x00
-glabel gTextureGreenShell0
-.incbin "assets/greenshell/gTextureGreenShell0.mio0"
+glabel texture_green_shell_0
+.incbin "assets/greenshell/texture_green_shell_0.mio0"
 
 .balign 4, 0x00
-glabel gTextureGreenShell1
-.incbin "assets/greenshell/gTextureGreenShell1.mio0"
+glabel texture_green_shell_1
+.incbin "assets/greenshell/texture_green_shell_1.mio0"
 
 .balign 4, 0x00
-glabel gTextureGreenShell2
-.incbin "assets/greenshell/gTextureGreenShell2.mio0"
+glabel texture_green_shell_2
+.incbin "assets/greenshell/texture_green_shell_2.mio0"
 
 .balign 4, 0x00
-glabel gTextureGreenShell3
-.incbin "assets/greenshell/gTextureGreenShell3.mio0"
+glabel texture_green_shell_3
+.incbin "assets/greenshell/texture_green_shell_3.mio0"
 
 .balign 4, 0x00
-glabel gTextureGreenShell4
-.incbin "assets/greenshell/gTextureGreenShell4.mio0"
+glabel texture_green_shell_4
+.incbin "assets/greenshell/texture_green_shell_4.mio0"
 
 .balign 4, 0x00
-glabel gTextureGreenShell5
-.incbin "assets/greenshell/gTextureGreenShell5.mio0"
+glabel texture_green_shell_5
+.incbin "assets/greenshell/texture_green_shell_5.mio0"
 
 .balign 4, 0x00
-glabel gTextureGreenShell6
-.incbin "assets/greenshell/gTextureGreenShell6.mio0"
+glabel texture_green_shell_6
+.incbin "assets/greenshell/texture_green_shell_6.mio0"
 
 .balign 4, 0x00
-glabel gTextureGreenShell7
-.incbin "assets/greenshell/gTextureGreenShell7.mio0"
+glabel texture_green_shell_7
+.incbin "assets/greenshell/texture_green_shell_7.mio0"
 
 .balign 4, 0x00
-glabel gTextureBlueShell0
-.incbin "assets/blueshell/gTextureBlueShell0.mio0"
+glabel texture_blue_shell_0
+.incbin "assets/blueshell/texture_blue_shell_0.mio0"
 
 .balign 4, 0x00
-glabel gTextureBlueShell1
-.incbin "assets/blueshell/gTextureBlueShell1.mio0"
+glabel texture_blue_shell_1
+.incbin "assets/blueshell/texture_blue_shell_1.mio0"
 
 .balign 4, 0x00
-glabel gTextureBlueShell2
-.incbin "assets/blueshell/gTextureBlueShell2.mio0"
+glabel texture_blue_shell_2
+.incbin "assets/blueshell/texture_blue_shell_2.mio0"
 
 .balign 4, 0x00
-glabel gTextureBlueShell3
-.incbin "assets/blueshell/gTextureBlueShell3.mio0"
+glabel texture_blue_shell_3
+.incbin "assets/blueshell/texture_blue_shell_3.mio0"
 
 .balign 4, 0x00
-glabel gTextureBlueShell4
-.incbin "assets/blueshell/gTextureBlueShell4.mio0"
+glabel texture_blue_shell_4
+.incbin "assets/blueshell/texture_blue_shell_4.mio0"
 
 .balign 4, 0x00
-glabel gTextureBlueShell5
-.incbin "assets/blueshell/gTextureBlueShell5.mio0"
+glabel texture_blue_shell_5
+.incbin "assets/blueshell/texture_blue_shell_5.mio0"
 
 .balign 4, 0x00
-glabel gTextureBlueShell6
-.incbin "assets/blueshell/gTextureBlueShell6.mio0"
+glabel texture_blue_shell_6
+.incbin "assets/blueshell/texture_blue_shell_6.mio0"
 
 .balign 4, 0x00
-glabel gTextureBlueShell7
-.incbin "assets/blueshell/gTextureBlueShell7.mio0"
+glabel texture_blue_shell_7
+.incbin "assets/blueshell/texture_blue_shell_7.mio0"
 
 .balign 4, 0x00
 glabel gTextureQuestionMarkYellow
@@ -1420,8 +1420,8 @@ glabel gTexture69B140
 .incbin "textures/standalone/texture_69B140.i8.mio0"
 
 .balign 4, 0x00
-glabel gTexture69B378
-.incbin "textures/standalone/texture_69B378.rgba16.mio0"
+glabel gGrassParticle
+.incbin "textures/standalone/gGrassParticle.rgba16.mio0"
 
 .balign 4, 0x00
 glabel gTextureMusicNote
@@ -1456,8 +1456,8 @@ glabel gTextureSmokePuff
 .incbin "textures/standalone/texture_69C354.ia8.mio0"
 
 .balign 4, 0x00
-glabel gTexture69C4E4
-.incbin "textures/standalone/texture_69C4E4.i8.mio0"
+glabel gGroundDust
+.incbin "textures/standalone/gGroundDust.i8.mio0"
 
 .balign 4, 0x00
 glabel gTexture69C80C
@@ -2060,85 +2060,85 @@ glabel gTextureExhaust5
 .incbin "textures/standalone/exhaust_5.ia8.mio0"
 
 .balign 4, 0x00
-glabel gTextureLogoMarioKart64
+glabel logo_mario_kart_64
 .incbin "textures/standalone/logo_mario_kart_64.rgba32.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineMarioRaceway
-.incbin "assets/course_outlines/gTextureCourseOutlineMarioRaceway.mio0"
+glabel minimap_mario_raceway
+.incbin "assets/course_outlines/minimap_mario_raceway.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineChocoMountain
-.incbin "assets/course_outlines/gTextureCourseOutlineChocoMountain.mio0"
+glabel minimap_choco_mountain
+.incbin "assets/course_outlines/minimap_choco_mountain.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineBowsersCastle
-.incbin "assets/course_outlines/gTextureCourseOutlineBowsersCastle.mio0"
+glabel minimap_bowsers_castle
+.incbin "assets/course_outlines/minimap_bowsers_castle.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineBansheeBoardwalk
-.incbin "assets/course_outlines/gTextureCourseOutlineBansheeBoardwalk.mio0"
+glabel minimap_banshee_boardwalk
+.incbin "assets/course_outlines/minimap_banshee_boardwalk.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineYoshiValley
-.incbin "assets/course_outlines/gTextureCourseOutlineYoshiValley.mio0"
+glabel minimap_yoshi_valley
+.incbin "assets/course_outlines/minimap_yoshi_valley.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineFrappeSnowland
-.incbin "assets/course_outlines/gTextureCourseOutlineFrappeSnowland.mio0"
+glabel minimap_frappe_snowland
+.incbin "assets/course_outlines/minimap_frappe_snowland.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineKoopaTroopaBeach
-.incbin "assets/course_outlines/gTextureCourseOutlineKoopaTroopaBeach.mio0"
+glabel minimap_koopa_troopa_beach
+.incbin "assets/course_outlines/minimap_koopa_troopa_beach.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineRoyalRaceway
-.incbin "assets/course_outlines/gTextureCourseOutlineRoyalRaceway.mio0"
+glabel minimap_royal_raceway
+.incbin "assets/course_outlines/minimap_royal_raceway.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineLuigiRaceway
-.incbin "assets/course_outlines/gTextureCourseOutlineLuigiRaceway.mio0"
+glabel minimap_luigi_raceway
+.incbin "assets/course_outlines/minimap_luigi_raceway.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineMooMooFarm
-.incbin "assets/course_outlines/gTextureCourseOutlineMooMooFarm.mio0"
+glabel minimap_moo_moo_farm
+.incbin "assets/course_outlines/minimap_moo_moo_farm.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineToadsTurnpike
-.incbin "assets/course_outlines/gTextureCourseOutlineToadsTurnpike.mio0"
+glabel minimap_toads_turnpike
+.incbin "assets/course_outlines/minimap_toads_turnpike.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineKalimariDesert
-.incbin "assets/course_outlines/gTextureCourseOutlineKalimariDesert.mio0"
+glabel minimap_kalimari_desert
+.incbin "assets/course_outlines/minimap_kalimari_desert.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineSherbetLand
-.incbin "assets/course_outlines/gTextureCourseOutlineSherbetLand.mio0"
+glabel minimap_sherbet_land
+.incbin "assets/course_outlines/minimap_sherbet_land.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineRainbowRoad
-.incbin "assets/course_outlines/gTextureCourseOutlineRainbowRoad.mio0"
+glabel minimap_rainbow_road
+.incbin "assets/course_outlines/minimap_rainbow_road.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineWarioStadium
-.incbin "assets/course_outlines/gTextureCourseOutlineWarioStadium.mio0"
+glabel minimap_wario_stadium
+.incbin "assets/course_outlines/minimap_wario_stadium.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineBlockFort
-.incbin "assets/course_outlines/gTextureCourseOutlineBlockFort.mio0"
+glabel minimap_block_fort
+.incbin "assets/course_outlines/minimap_block_fort.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineSkyscraper
-.incbin "assets/course_outlines/gTextureCourseOutlineSkyscraper.mio0"
+glabel minimap_skyscraper
+.incbin "assets/course_outlines/minimap_skyscraper.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineDoubleDeck
-.incbin "assets/course_outlines/gTextureCourseOutlineDoubleDeck.mio0"
+glabel minimap_double_deck
+.incbin "assets/course_outlines/minimap_double_deck.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineDksJungleParkway
-.incbin "assets/course_outlines/gTextureCourseOutlineDksJungleParkway.mio0"
+glabel minimap_dks_jungle_parkway
+.incbin "assets/course_outlines/minimap_dks_jungle_parkway.mio0"
 
 .balign 4, 0x00
-glabel gTextureCourseOutlineBigDonut
-.incbin "assets/course_outlines/gTextureCourseOutlineBigDonut.mio0"
+glabel minimap_big_donut
+.incbin "assets/course_outlines/minimap_big_donut.mio0"

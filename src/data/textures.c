@@ -1491,7 +1491,7 @@ MkAnimation D_020019DC[2] = {
  *
  */
 MenuTexture D_020019EC[2] = {
-    { 0, gTextureNameDK, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_dk, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1500,7 +1500,7 @@ MenuTexture D_020019EC[2] = {
  *
  */
 MenuTexture D_02001A14[2] = {
-    { 0, gTextureNameToad, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_toad, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1509,7 +1509,7 @@ MenuTexture D_02001A14[2] = {
  *
  */
 MenuTexture D_02001A3C[2] = {
-    { 0, gTextureNameBowser, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_bowser, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1518,7 +1518,7 @@ MenuTexture D_02001A3C[2] = {
  *
  */
 MenuTexture D_02001A64[2] = {
-    { 0, gTextureNameLuigi, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_luigi, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1527,7 +1527,7 @@ MenuTexture D_02001A64[2] = {
  *
  */
 MenuTexture D_02001A8C[2] = {
-    { 0, gTextureNameMario, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_mario, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1536,7 +1536,7 @@ MenuTexture D_02001A8C[2] = {
  *
  */
 MenuTexture D_02001AB4[2] = {
-    { 0, gTextureNamePeach, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_peach, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1545,7 +1545,7 @@ MenuTexture D_02001AB4[2] = {
  *
  */
 MenuTexture D_02001ADC[2] = {
-    { 0, gTextureNameWario, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_wario, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1554,7 +1554,7 @@ MenuTexture D_02001ADC[2] = {
  *
  */
 MenuTexture D_02001B04[2] = {
-    { 0, gTextureNameYoshi, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_yoshi, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2045,8 +2045,8 @@ MkAnimation D_0200210C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200211C[2] = {
-    { 5, gTexture7F2094, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterA[2] = {
+    { 5, font_letter_A, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2054,8 +2054,8 @@ MenuTexture D_0200211C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002144[2] = {
-    { 5, gTexture7F2164, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterB[2] = {
+    { 5, font_letter_B, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2063,8 +2063,8 @@ MenuTexture D_02002144[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200216C[2] = {
-    { 5, gTexture7F2234, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterC[2] = {
+    { 5, font_letter_C, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2072,8 +2072,8 @@ MenuTexture D_0200216C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002194[2] = {
-    { 5, gTexture7F2304, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterD[2] = {
+    { 5, font_letter_D, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2081,8 +2081,8 @@ MenuTexture D_02002194[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020021BC[2] = {
-    { 5, gTexture7F23D4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterE[2] = {
+    { 5, font_letter_E, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2090,8 +2090,8 @@ MenuTexture D_020021BC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020021E4[2] = {
-    { 5, gTexture7F24A4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterF[2] = {
+    { 5, font_letter_F, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2099,8 +2099,8 @@ MenuTexture D_020021E4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200220C[2] = {
-    { 5, gTexture7F2574, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterG[2] = {
+    { 5, font_letter_G, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2108,8 +2108,8 @@ MenuTexture D_0200220C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002234[2] = {
-    { 5, gTexture7F2644, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterH[2] = {
+    { 5, font_letter_H, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2117,8 +2117,8 @@ MenuTexture D_02002234[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200225C[2] = {
-    { 5, gTexture7F2714, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterI[2] = {
+    { 5, font_letter_I, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2126,8 +2126,8 @@ MenuTexture D_0200225C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002284[2] = {
-    { 5, gTexture7F27E4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterJ[2] = {
+    { 5, font_letter_J, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2135,8 +2135,8 @@ MenuTexture D_02002284[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020022AC[2] = {
-    { 5, gTexture7F28B4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterK[2] = {
+    { 5, font_letter_K, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2144,8 +2144,8 @@ MenuTexture D_020022AC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020022D4[2] = {
-    { 5, gTexture7F2984, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterL[2] = {
+    { 5, font_letter_L, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2153,8 +2153,8 @@ MenuTexture D_020022D4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020022FC[2] = {
-    { 5, gTexture7F2A54, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterM[2] = {
+    { 5, font_letter_M, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2162,8 +2162,8 @@ MenuTexture D_020022FC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002324[2] = {
-    { 5, gTexture7F2B24, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterN[2] = {
+    { 5, font_letter_N, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2171,8 +2171,8 @@ MenuTexture D_02002324[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200234C[2] = {
-    { 5, gTexture7F2BF4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterO[2] = {
+    { 5, font_letter_O, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2180,8 +2180,8 @@ MenuTexture D_0200234C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002374[2] = {
-    { 5, gTexture7F2CC4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterP[2] = {
+    { 5, font_letter_P, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2189,8 +2189,8 @@ MenuTexture D_02002374[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200239C[2] = {
-    { 5, gTexture7F2D94, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterQ[2] = {
+    { 5, font_letter_Q, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2198,8 +2198,8 @@ MenuTexture D_0200239C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020023C4[2] = {
-    { 5, gTexture7F2E64, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterR[2] = {
+    { 5, font_letter_R, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2207,8 +2207,8 @@ MenuTexture D_020023C4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020023EC[2] = {
-    { 5, gTexture7F2F34, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterS[2] = {
+    { 5, font_letter_S, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2216,8 +2216,8 @@ MenuTexture D_020023EC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002414[2] = {
-    { 5, gTexture7F3004, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterT[2] = {
+    { 5, font_letter_T, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2225,8 +2225,8 @@ MenuTexture D_02002414[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200243C[2] = {
-    { 5, gTexture7F30D4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterU[2] = {
+    { 5, font_letter_U, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2234,8 +2234,8 @@ MenuTexture D_0200243C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002464[2] = {
-    { 5, gTexture7F31A4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterV[2] = {
+    { 5, font_letter_V, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2243,8 +2243,8 @@ MenuTexture D_02002464[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200248C[2] = {
-    { 5, gTexture7F3274, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterW[2] = {
+    { 5, font_letter_W, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2252,8 +2252,8 @@ MenuTexture D_0200248C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020024B4[2] = {
-    { 5, gTexture7F3344, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterX[2] = {
+    { 5, font_letter_X, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2261,8 +2261,8 @@ MenuTexture D_020024B4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020024DC[2] = {
-    { 5, gTexture7F3414, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterY[2] = {
+    { 5, font_letter_Y, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2270,8 +2270,8 @@ MenuTexture D_020024DC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002504[2] = {
-    { 5, gTexture7F34E4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontLetterZ[2] = {
+    { 5, font_letter_Z, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2279,8 +2279,8 @@ MenuTexture D_02002504[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200252C[2] = {
-    { 5, gTexture7F1394, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontExclamationMark[2] = {
+    { 5, font_exclamation_mark, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2288,8 +2288,8 @@ MenuTexture D_0200252C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002554[2] = {
-    { 5, gTexture7F1464, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontMinus[2] = {
+    { 5, font_minus, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2297,8 +2297,8 @@ MenuTexture D_02002554[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200257C[2] = {
-    { 5, gTexture7F16D4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontInterogationMark[2] = {
+    { 5, font_interogation_mark, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2306,8 +2306,8 @@ MenuTexture D_0200257C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020025A4[2] = {
-    { 5, gTexture7F17A4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontSimpleQuote[2] = {
+    { 5, font_simple_quote, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2315,8 +2315,8 @@ MenuTexture D_020025A4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020025CC[2] = {
-    { 5, gTexture7F12C4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontDoubleQuote[2] = {
+    { 5, font_double_quote, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2324,8 +2324,8 @@ MenuTexture D_020025CC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020025F4[2] = {
-    { 5, gTexture7F1604, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontPlus[2] = {
+    { 5, font_plus, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2333,8 +2333,8 @@ MenuTexture D_020025F4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200261C[2] = {
-    { 5, gTexture7F1534, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontDot[2] = {
+    { 5, font_dot, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2342,8 +2342,8 @@ MenuTexture D_0200261C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002644[2] = {
-    { 5, gTexture7F1124, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontFourDote[2] = {
+    { 5, font_four_dote, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2351,8 +2351,8 @@ MenuTexture D_02002644[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200266C[2] = {
-    { 5, gTexture7F11F4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontCC[2] = {
+    { 5, font_cc, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2360,8 +2360,8 @@ MenuTexture D_0200266C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002694[2] = {
-    { 5, gTexture7F1874, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontNumberZero[2] = {
+    { 5, font_number_zero, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2369,8 +2369,8 @@ MenuTexture D_02002694[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020026BC[2] = {
-    { 5, gTexture7F1944, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontNumberOne[2] = {
+    { 5, font_number_one, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2378,8 +2378,8 @@ MenuTexture D_020026BC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020026E4[2] = {
-    { 5, gTexture7F1A14, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontNumberTwo[2] = {
+    { 5, font_number_two, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2387,8 +2387,8 @@ MenuTexture D_020026E4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200270C[2] = {
-    { 5, gTexture7F1AE4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontNumberThree[2] = {
+    { 5, font_number_three, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2396,8 +2396,8 @@ MenuTexture D_0200270C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002734[2] = {
-    { 5, gTexture7F1BB4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontNumberFour[2] = {
+    { 5, font_number_four, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2405,8 +2405,8 @@ MenuTexture D_02002734[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200275C[2] = {
-    { 5, gTexture7F1C84, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontNumberFive[2] = {
+    { 5, font_number_five, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2414,8 +2414,8 @@ MenuTexture D_0200275C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002784[2] = {
-    { 5, gTexture7F1D54, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontNumberSix[2] = {
+    { 5, font_number_six, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2423,8 +2423,8 @@ MenuTexture D_02002784[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020027AC[2] = {
-    { 5, gTexture7F1E24, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontNumberSeven[2] = {
+    { 5, font_number_seven, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2432,8 +2432,8 @@ MenuTexture D_020027AC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020027D4[2] = {
-    { 5, gTexture7F1EF4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontNumberEight[2] = {
+    { 5, font_number_eight, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2441,8 +2441,8 @@ MenuTexture D_020027D4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020027FC[2] = {
-    { 5, gTexture7F1FC4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontNumberNine[2] = {
+    { 5, font_number_nine, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4071,7 +4071,7 @@ MenuTexture D_0200441C[2] = {
  *
  */
 MenuTexture D_02004444[2] = {
-    { 5, gTexture7FA044, 16, 16, 0, 0, 0x0, 0 },
+    { 5, font_apostrophe, 16, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4124,8 +4124,8 @@ MenuTexture D_0200450C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02004534[2] = {
-    { 5, gTexture7FA334, 16, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontComma[2] = {
+    { 5, font_comma, 16, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4142,7 +4142,7 @@ MenuTexture D_0200455C[2] = {
  * @brief unknown empty MenuTexture
  *
  */
-MenuTexture D_02004584[1] = {
+MenuTexture seg2_textureFontEmpty[1] = {
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4151,7 +4151,7 @@ MenuTexture D_02004584[1] = {
  *
  */
 MenuTexture seg2_blue_sky_background_texture[2] = {
-    { 0, gTextureBackgroundBlueSky, 320, 240, 0, 0, 0xcd60, 0 },
+    { 0, background_blue_sky, 320, 240, 0, 0, 0xcd60, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4160,7 +4160,7 @@ MenuTexture seg2_blue_sky_background_texture[2] = {
  *
  */
 MenuTexture seg2_sunset_background_texture[2] = {
-    { 0, gTextureBackgroundSunset, 320, 240, 0, 0, 0x93c4, 0 },
+    { 0, background_sunset, 320, 240, 0, 0, 0x93c4, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4169,7 +4169,7 @@ MenuTexture seg2_sunset_background_texture[2] = {
  *
  */
 MenuTexture seg2_copyright_1996_texture[2] = {
-    { 1, gTextureCopyright1996, 124, 17, 98, 199, 0x0, 0 },
+    { 1, copyright_1996, 124, 17, 98, 199, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4178,7 +4178,7 @@ MenuTexture seg2_copyright_1996_texture[2] = {
  *
  */
 MenuTexture seg2_push_start_button_texture[2] = {
-    { 1, gTexturePushStartButton, 159, 16, 81, 179, 0x0, 0 },
+    { 1, push_start_button, 159, 16, 81, 179, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4187,7 +4187,7 @@ MenuTexture seg2_push_start_button_texture[2] = {
  *
  */
 MenuTexture D_02004638[2] = {
-    { 0, gTextureOption, 130, 32, 95, 16, 0x0, 0 },
+    { 0, texture_option, 130, 32, 95, 16, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4196,7 +4196,7 @@ MenuTexture D_02004638[2] = {
  *
  */
 MenuTexture seg2_game_select_texture[2] = {
-    { 0, gTextureGameSelect, 200, 32, 0, 0, 0x0, 0 },
+    { 0, texture_game_select, 200, 32, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4205,9 +4205,9 @@ MenuTexture seg2_game_select_texture[2] = {
  *
  */
 MenuTexture seg2_menu_1p_column[4] = {
-    { 1, gTextureMenu1PGame, 64, 54, 0, 0, 0x0, 0 },
-    { 1, gTextureMenuModeMarioGP, 64, 18, 0, 65, 0x0, 0 },
-    { 1, gTextureMenuModeTimeTrials, 64, 18, 0, 83, 0x0, 0 },
+    { 1, texture_menu_1p_game, 64, 54, 0, 0, 0x0, 0 },
+    { 1, texture_mode_mario_gp, 64, 18, 0, 65, 0x0, 0 },
+    { 1, texture_mode_time_trials, 64, 18, 0, 83, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4216,10 +4216,10 @@ MenuTexture seg2_menu_1p_column[4] = {
  *
  */
 MenuTexture seg2_menu_2p_column[5] = {
-    { 1, gTextureMenu2PGame, 64, 54, 0, 0, 0x0, 0 },
-    { 1, gTextureMenuModeMarioGP, 64, 18, 0, 65, 0x0, 0 },
-    { 1, gTextureMenuModeVS, 64, 18, 0, 83, 0x0, 0 },
-    { 1, gTextureMenuModeBattle, 64, 18, 0, 101, 0x0, 0 },
+    { 1, texture_menu_2p_game, 64, 54, 0, 0, 0x0, 0 },
+    { 1, texture_mode_mario_gp, 64, 18, 0, 65, 0x0, 0 },
+    { 1, texture_mode_vs, 64, 18, 0, 83, 0x0, 0 },
+    { 1, texture_mode_battle, 64, 18, 0, 101, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4228,9 +4228,9 @@ MenuTexture seg2_menu_2p_column[5] = {
  *
  */
 MenuTexture seg2_menu_3p_column[4] = {
-    { 1, gTextureMenu3PGame, 64, 54, 0, 0, 0x0, 0 },
-    { 1, gTextureMenuModeVS, 64, 18, 0, 65, 0x0, 0 },
-    { 1, gTextureMenuModeBattle, 64, 18, 0, 83, 0x0, 0 },
+    { 1, texture_menu_3p_game, 64, 54, 0, 0, 0x0, 0 },
+    { 1, texture_mode_vs, 64, 18, 0, 65, 0x0, 0 },
+    { 1, texture_mode_battle, 64, 18, 0, 83, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4239,9 +4239,9 @@ MenuTexture seg2_menu_3p_column[4] = {
  *
  */
 MenuTexture seg2_menu_4p_column[4] = {
-    { 1, gTextureMenu4PGame, 64, 54, 0, 0, 0x0, 0 },
-    { 1, gTextureMenuModeVS, 64, 18, 0, 65, 0x0, 0 },
-    { 1, gTextureMenuModeBattle, 64, 18, 0, 83, 0x0, 0 },
+    { 1, texture_menu_4p_game, 64, 54, 0, 0, 0x0, 0 },
+    { 1, texture_mode_vs, 64, 18, 0, 65, 0x0, 0 },
+    { 1, texture_mode_battle, 64, 18, 0, 83, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4250,7 +4250,7 @@ MenuTexture seg2_menu_4p_column[4] = {
  *
  */
 MenuTexture D_020047DC[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4259,7 +4259,7 @@ MenuTexture D_020047DC[2] = {
  *
  */
 MenuTexture D_02004804[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4268,7 +4268,7 @@ MenuTexture D_02004804[2] = {
  *
  */
 MenuTexture D_0200482C[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4277,7 +4277,7 @@ MenuTexture D_0200482C[2] = {
  *
  */
 MenuTexture D_02004854[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4286,7 +4286,7 @@ MenuTexture D_02004854[2] = {
  *
  */
 MenuTexture D_0200487C[2] = {
-    { 1, gTextureMenuOK, 31, 19, 0, 0, 0x0, 0 },
+    { 1, texture_ok, 31, 19, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4294,8 +4294,8 @@ MenuTexture D_0200487C[2] = {
  * @brief MenuTexture for Menu L Option
  *
  */
-MenuTexture D_020048A4[2] = {
-    { 1, gTextureMenuLOption, 58, 19, 0, 0, 0x0, 0 },
+MenuTexture gTextureMenuLOption[2] = {
+    { 1, texture_l_option, 58, 19, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4303,8 +4303,8 @@ MenuTexture D_020048A4[2] = {
  * @brief MenuTexture for Menu R Option
  *
  */
-MenuTexture D_020048CC[2] = {
-    { 1, gTextureMenuRData, 58, 19, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureMenuRData[2] = {
+    { 1, texture_r_data, 58, 19, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4313,7 +4313,7 @@ MenuTexture D_020048CC[2] = {
  *
  */
 MenuTexture seg2_50_CC_texture[2] = {
-    { 1, gTextureMenu50cc, 64, 18, 0, 0, 0x0, 0 },
+    { 1, texture_50cc, 64, 18, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4322,7 +4322,7 @@ MenuTexture seg2_50_CC_texture[2] = {
  *
  */
 MenuTexture seg2_100_CC_texture[2] = {
-    { 1, gTextureMenu100cc, 64, 18, 0, 0, 0x0, 0 },
+    { 1, texture_100cc, 64, 18, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4331,7 +4331,7 @@ MenuTexture seg2_100_CC_texture[2] = {
  *
  */
 MenuTexture seg2_150_CC_texture[2] = {
-    { 1, gTextureMenu150cc, 64, 18, 0, 0, 0x0, 0 },
+    { 1, texture_150cc, 64, 18, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4340,7 +4340,7 @@ MenuTexture seg2_150_CC_texture[2] = {
  *
  */
 MenuTexture seg2_extra_CC_texture[2] = {
-    { 1, gTextureMenuExtra, 64, 18, 0, 0, 0x0, 0 },
+    { 1, texture_extra, 64, 18, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4367,7 +4367,7 @@ MenuTexture D_020049BC[2] = {
  *
  */
 MenuTexture D_020049E4[2] = {
-    { 1, gTextureMenuBegin, 64, 18, 0, 0, 0x0, 0 },
+    { 1, texture_begin, 64, 18, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4376,7 +4376,7 @@ MenuTexture D_020049E4[2] = {
  *
  */
 MenuTexture D_02004A0C[2] = {
-    { 1, gTextureMenuGhost, 64, 18, 0, 0, 0x0, 0 },
+    { 1, texture_menu_ghost, 64, 18, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4385,7 +4385,7 @@ MenuTexture D_02004A0C[2] = {
  *
  */
 MenuTexture seg2_data_texture[2] = {
-    { 1, gTextureMenuData, 64, 18, 0, 0, 0x0, 0 },
+    { 1, texture_data, 64, 18, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4434,7 +4434,7 @@ MenuTexture seg2_P4_border_texture[3] = {
  *
  */
 MenuTexture D_02004B4C[2] = {
-    { 0, gTexturePlayerSelect, 220, 32, 51, 16, 0x0, 0 },
+    { 0, texture_player_select, 220, 32, 51, 16, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4443,7 +4443,7 @@ MenuTexture D_02004B4C[2] = {
  *
  */
 MenuTexture D_02004B74[2] = {
-    { 1, gTextureMenuOK, 31, 19, 264, 202, 0x0, 0 },
+    { 1, texture_ok, 31, 19, 264, 202, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4566,7 +4566,7 @@ MenuTexture seg2_battle_title_texture[5] = {
  *
  */
 MenuTexture D_02004E80[2] = {
-    { 1, gTextureMenuOK, 31, 19, 265, 208, 0x0, 0 },
+    { 1, texture_ok, 31, 19, 265, 208, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 

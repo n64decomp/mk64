@@ -1995,7 +1995,8 @@ void set_sound_mode(void) {
  * interacted while a fade transition is active
  */
 bool is_screen_being_faded(void) {
-    if ((D_8018E7AC[4] == 2) || (D_8018E7AC[4] == 3) || (D_8018E7AC[4] == 4) || (D_8018E7AC[4] == 7)) {
+    if ((gTransitionType[4] == 2) || (gTransitionType[4] == 3) || (gTransitionType[4] == 4) ||
+        (gTransitionType[4] == 7)) {
         return true;
     }
     return false;

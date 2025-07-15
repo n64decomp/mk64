@@ -144,7 +144,7 @@ void func_80011EC0(s32 playerIndex, Player* player, s32 arg2, UNUSED u16 arg3) {
                 if ((arg2 >= -9) && (D_80162FF8[playerIndex] == 0)) {
                     if ((gTrackPositionFactor[playerIndex] > -0.8) && (gTrackPositionFactor[playerIndex] < 0.5)) {
                         kart_hop(player);
-                        player->effects |= UNKNOWN_EFFECT_0x10;
+                        player->effects |= DRIFTING_EFFECT;
                         D_801630E8[playerIndex] = 1;
                         break;
                     }
@@ -156,7 +156,7 @@ void func_80011EC0(s32 playerIndex, Player* player, s32 arg2, UNUSED u16 arg3) {
                 if ((arg2 < 0xA) && (D_80162FF8[playerIndex] == 0)) {
                     if ((gTrackPositionFactor[playerIndex] > -0.5) && (gTrackPositionFactor[playerIndex] < 0.8)) {
                         kart_hop(player);
-                        player->effects |= UNKNOWN_EFFECT_0x10;
+                        player->effects |= DRIFTING_EFFECT;
                         D_801630E8[playerIndex] = -1;
                         break;
                     }

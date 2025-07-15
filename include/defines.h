@@ -73,12 +73,12 @@
 
 // Float version required for matching
 #ifdef VERSION_EU
-#define COURSE_TIMER_ITER 0.020041665999999999    // 1 / 50
-    #ifdef AVOID_UB
-    #define COURSE_TIMER_ITER_f 0.020041665999999999f // 1 / 50
-    #else
-    #define COURSE_TIMER_ITER_f 0.01666666f //! 1 / 60 - Float unchanged in EU
-    #endif
+#define COURSE_TIMER_ITER 0.020041665999999999 // 1 / 50
+#ifdef AVOID_UB
+#define COURSE_TIMER_ITER_f 0.020041665999999999f // 1 / 50
+#else
+#define COURSE_TIMER_ITER_f 0.01666666f //! 1 / 60 - Float unchanged in EU
+#endif
 #else
 #define COURSE_TIMER_ITER 0.01666666    // 1 / 60
 #define COURSE_TIMER_ITER_f 0.01666666f // 1 / 60
@@ -349,7 +349,7 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  */
 #define UNKNOWN_EFFECT_0x1 0x1               //
 #define BOOST_RAMP_WOOD_EFFECT 0x4           // being boosted by a ramp
-#define UNKNOWN_EFFECT_0x10 0x10             //
+#define DRIFTING_EFFECT 0x10                 // drifting
 #define UNKNOWN_EFFECT_0x40 0x40             //
 #define UNKNOWN_EFFECT_0x80 0x80             //
 #define UNKNOWN_EFFECT_0xC 0xC               //
@@ -368,7 +368,6 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define UNKNOWN_EFFECT_0x10000000 0x10000000 //
 #define LIGHTNING_EFFECT 0x40000000          // being hit by lightning
 #define BOO_EFFECT 0x80000000                // being a boo
-
 
 /**
  * @brief durations of effects

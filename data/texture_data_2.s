@@ -374,7 +374,7 @@ glabel gTextureTinyFontMinus_end
 
 .align 2, 0x00
 glabel gTextureTinyFontComma
-.incbin "textures/standalone/tiny_font_comma.ia16.mio0"
+.incbin "textures/standalone/tiny_font_dot.ia16.mio0"
 glabel gTextureTinyFontComma_end
 
 .align 2, 0x00
@@ -818,184 +818,184 @@ glabel gTexture7F109C
 glabel gTexture7F109C_end
 
 .align 2, 0x00
-glabel gTexture7F1124
-.incbin "textures/raw/7F1124.i4"
+glabel font_four_dote
+.incbin "textures/raw/font_four_dote.i4"
 
 .align 2, 0x00
-glabel gTexture7F11F4
-.incbin "textures/raw/7F11F4.i4"
+glabel font_cc
+.incbin "textures/raw/font_cc.i4"
 
 .align 2, 0x00
-glabel gTexture7F12C4
-.incbin "textures/raw/7F12C4.i4"
+glabel font_double_quote
+.incbin "textures/raw/font_double_quote.i4"
 
 .align 2, 0x00
-glabel gTexture7F1394
-.incbin "textures/raw/7F1394.i4"
+glabel font_exclamation_mark
+.incbin "textures/raw/font_exclamation_mark.i4"
 
 .align 2, 0x00
-glabel gTexture7F1464
-.incbin "textures/raw/7F1464.i4"
+glabel font_minus
+.incbin "textures/raw/font_minus.i4"
 
 .align 2, 0x00
-glabel gTexture7F1534
-.incbin "textures/raw/7F1534.i4"
+glabel font_dot
+.incbin "textures/raw/font_dot.i4"
 
 .align 2, 0x00
-glabel gTexture7F1604
-.incbin "textures/raw/7F1604.i4"
+glabel font_plus
+.incbin "textures/raw/font_plus.i4"
 
 .align 2, 0x00
-glabel gTexture7F16D4
-.incbin "textures/raw/7F16D4.i4"
+glabel font_interogation_mark
+.incbin "textures/raw/font_interogation_mark.i4"
 
 .align 2, 0x00
-glabel gTexture7F17A4
-.incbin "textures/raw/7F17A4.i4"
+glabel font_simple_quote
+.incbin "textures/raw/font_simple_quote.i4"
 
 .align 2, 0x00
-glabel gTexture7F1874
-.incbin "textures/raw/7F1874.i4"
+glabel font_number_zero
+.incbin "textures/raw/font_number_zero.i4"
 
 .align 2, 0x00
-glabel gTexture7F1944
-.incbin "textures/raw/7F1944.i4"
+glabel font_number_one
+.incbin "textures/raw/font_number_one.i4"
 
 .align 2, 0x00
-glabel gTexture7F1A14
-.incbin "textures/raw/7F1A14.i4"
+glabel font_number_two
+.incbin "textures/raw/font_number_two.i4"
 
 .align 2, 0x00
-glabel gTexture7F1AE4
-.incbin "textures/raw/7F1AE4.i4"
+glabel font_number_three
+.incbin "textures/raw/font_number_three.i4"
 
 .align 2, 0x00
-glabel gTexture7F1BB4
-.incbin "textures/raw/7F1BB4.i4"
+glabel font_number_four
+.incbin "textures/raw/font_number_four.i4"
 
 .align 2, 0x00
-glabel gTexture7F1C84
-.incbin "textures/raw/7F1C84.i4"
+glabel font_number_five
+.incbin "textures/raw/font_number_five.i4"
 
 .align 2, 0x00
-glabel gTexture7F1D54
-.incbin "textures/raw/7F1D54.i4"
+glabel font_number_six
+.incbin "textures/raw/font_number_six.i4"
 
 .align 2, 0x00
-glabel gTexture7F1E24
-.incbin "textures/raw/7F1E24.i4"
+glabel font_number_seven
+.incbin "textures/raw/font_number_seven.i4"
 
 .align 2, 0x00
-glabel gTexture7F1EF4
-.incbin "textures/raw/7F1EF4.i4"
+glabel font_number_eight
+.incbin "textures/raw/font_number_eight.i4"
 
 .align 2, 0x00
-glabel gTexture7F1FC4
-.incbin "textures/raw/7F1FC4.i4"
+glabel font_number_nine
+.incbin "textures/raw/font_number_nine.i4"
 
 .align 2, 0x00
-glabel gTexture7F2094
-.incbin "textures/raw/7F2094.i4"
+glabel font_letter_A
+.incbin "textures/raw/font_letter_A.i4"
 
 .align 2, 0x00
-glabel gTexture7F2164
-.incbin "textures/raw/7F2164.i4"
+glabel font_letter_B
+.incbin "textures/raw/font_letter_B.i4"
 
 .align 2, 0x00
-glabel gTexture7F2234
-.incbin "textures/raw/7F2234.i4"
+glabel font_letter_C
+.incbin "textures/raw/font_letter_C.i4"
 
 .align 2, 0x00
-glabel gTexture7F2304
-.incbin "textures/raw/7F2304.i4"
+glabel font_letter_D
+.incbin "textures/raw/font_letter_D.i4"
 
 .align 2, 0x00
-glabel gTexture7F23D4
-.incbin "textures/raw/7F23D4.i4"
+glabel font_letter_E
+.incbin "textures/raw/font_letter_E.i4"
 
 .align 2, 0x00
-glabel gTexture7F24A4
-.incbin "textures/raw/7F24A4.i4"
+glabel font_letter_F
+.incbin "textures/raw/font_letter_F.i4"
 
 .align 2, 0x00
-glabel gTexture7F2574
-.incbin "textures/raw/7F2574.i4"
+glabel font_letter_G
+.incbin "textures/raw/font_letter_G.i4"
 
 .align 2, 0x00
-glabel gTexture7F2644
-.incbin "textures/raw/7F2644.i4"
+glabel font_letter_H
+.incbin "textures/raw/font_letter_H.i4"
 
 .align 2, 0x00
-glabel gTexture7F2714
-.incbin "textures/raw/7F2714.i4"
+glabel font_letter_I
+.incbin "textures/raw/font_letter_I.i4"
 
 .align 2, 0x00
-glabel gTexture7F27E4
-.incbin "textures/raw/7F27E4.i4"
+glabel font_letter_J
+.incbin "textures/raw/font_letter_J.i4"
 
 .align 2, 0x00
-glabel gTexture7F28B4
-.incbin "textures/raw/7F28B4.i4"
+glabel font_letter_K
+.incbin "textures/raw/font_letter_K.i4"
 
 .align 2, 0x00
-glabel gTexture7F2984
-.incbin "textures/raw/7F2984.i4"
+glabel font_letter_L
+.incbin "textures/raw/font_letter_L.i4"
 
 .align 2, 0x00
-glabel gTexture7F2A54
-.incbin "textures/raw/7F2A54.i4"
+glabel font_letter_M
+.incbin "textures/raw/font_letter_M.i4"
 
 .align 2, 0x00
-glabel gTexture7F2B24
-.incbin "textures/raw/7F2B24.i4"
+glabel font_letter_N
+.incbin "textures/raw/font_letter_N.i4"
 
 .align 2, 0x00
-glabel gTexture7F2BF4
-.incbin "textures/raw/7F2BF4.i4"
+glabel font_letter_O
+.incbin "textures/raw/font_letter_O.i4"
 
 .align 2, 0x00
-glabel gTexture7F2CC4
-.incbin "textures/raw/7F2CC4.i4"
+glabel font_letter_P
+.incbin "textures/raw/font_letter_P.i4"
 
 .align 2, 0x00
-glabel gTexture7F2D94
-.incbin "textures/raw/7F2D94.i4"
+glabel font_letter_Q
+.incbin "textures/raw/font_letter_Q.i4"
 
 .align 2, 0x00
-glabel gTexture7F2E64
-.incbin "textures/raw/7F2E64.i4"
+glabel font_letter_R
+.incbin "textures/raw/font_letter_R.i4"
 
 .align 2, 0x00
-glabel gTexture7F2F34
-.incbin "textures/raw/7F2F34.i4"
+glabel font_letter_S
+.incbin "textures/raw/font_letter_S.i4"
 
 .align 2, 0x00
-glabel gTexture7F3004
-.incbin "textures/raw/7F3004.i4"
+glabel font_letter_T
+.incbin "textures/raw/font_letter_T.i4"
 
 .align 2, 0x00
-glabel gTexture7F30D4
-.incbin "textures/raw/7F30D4.i4"
+glabel font_letter_U
+.incbin "textures/raw/font_letter_U.i4"
 
 .align 2, 0x00
-glabel gTexture7F31A4
-.incbin "textures/raw/7F31A4.i4"
+glabel font_letter_V
+.incbin "textures/raw/font_letter_V.i4"
 
 .align 2, 0x00
-glabel gTexture7F3274
-.incbin "textures/raw/7F3274.i4"
+glabel font_letter_W
+.incbin "textures/raw/font_letter_W.i4"
 
 .align 2, 0x00
-glabel gTexture7F3344
-.incbin "textures/raw/7F3344.i4"
+glabel font_letter_X
+.incbin "textures/raw/font_letter_X.i4"
 
 .align 2, 0x00
-glabel gTexture7F3414
-.incbin "textures/raw/7F3414.i4"
+glabel font_letter_Y
+.incbin "textures/raw/font_letter_Y.i4"
 
 .align 2, 0x00
-glabel gTexture7F34E4
-.incbin "textures/raw/7F34E4.i4"
+glabel font_letter_Z
+.incbin "textures/raw/font_letter_Z.i4"
 
 .align 2, 0x00
 glabel gTexture7F35B4
@@ -1738,8 +1738,8 @@ glabel gTexture7F9FC4
 .incbin "textures/raw/7F9FC4.i4"
 
 .align 2, 0x00
-glabel gTexture7FA044
-.incbin "textures/raw/7FA044.i4"
+glabel font_apostrophe
+.incbin "textures/raw/font_apostrophe.i4"
 
 .align 2, 0x00
 glabel gTexture7FA0C4
@@ -1754,5 +1754,5 @@ glabel gTexture7FA264
 .incbin "textures/raw/7FA264.i4"
 
 .align 2, 0x00
-glabel gTexture7FA334
-.incbin "textures/raw/7FA334.i4"
+glabel font_comma
+.incbin "textures/raw/font_comma.i4"
