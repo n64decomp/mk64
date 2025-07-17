@@ -14,6 +14,7 @@
 #include "code_800029B0.h"
 #include "cpu_vehicles_camera_path.h"
 #include "menu_items.h"
+#include "seq_ids.h"
 
 s8 D_8018EF10;
 UnkStruct8018EF18 D_8018EF18[16];
@@ -2394,6 +2395,11 @@ void func_800C70A8(u8 playerId) {
     }
 }
 
+// Routine to tell the game which "finish" music to play depending on which mode the player is in (Grand Prix, Time Trials, etc),
+// whether the game is in multiplayer or not, and which position they ended up finishing in (1st, 2nd, 3rd, etc)
+//
+// Contains a LOT of inlined funcs. 
+// Modify if you dare.
 void func_800C76C0(u8 playerId) {
     if (D_800E9EA4[playerId] != 0) {
         if (D_800E9EA4[playerId] < 0x2BC) {
@@ -2417,15 +2423,15 @@ void func_800C76C0(u8 playerId) {
                             func_800C97C4(playerId);
                             D_800EA0F0 = 2;
                             func_800C9A88(playerId);
-                            func_800CA414(0x000DU, 0x0010U);
+                            play_sequences(SEQ_EVENT_RACE_FINISH_FIRST, SEQ_MENU_RESULTS_SCREEN_WIN);
                         } else if (gPlayers[playerId].currentRank < 4) {
                             func_800C97C4(playerId);
                             D_800EA0F0 = 2;
                             func_800C9A88(playerId);
-                            func_800CA414(0x000EU, 0x0010U);
+                            play_sequences(SEQ_EVENT_RACE_FINISH_OTHER, SEQ_MENU_RESULTS_SCREEN_WIN);
                         } else {
                             func_800C3448(-0x3E9F9C00);
-                            func_800CA414(0x000FU, 0x0018U);
+                            play_sequences(SEQ_EVENT_RACE_FINISH_LOSE, SEQ_MENU_RESULTS_SCREEN_LOSE);
                         }
                     } else {
                         D_800EA0EC[playerId] = 2;
@@ -2436,7 +2442,7 @@ void func_800C76C0(u8 playerId) {
                             func_800C97C4(playerId);
                             D_800EA0F0 = 2;
                             func_800C9A88(playerId);
-                            func_800CA414(0x000DU, 0x0010U);
+                            play_sequences(SEQ_EVENT_RACE_FINISH_FIRST, SEQ_MENU_RESULTS_SCREEN_WIN);
                         } else if (gPlayers[playerId].currentRank < 4) {
                             if (D_800EA104 == 0) {
                                 func_800C3448(0x100100FF);
@@ -2445,12 +2451,12 @@ void func_800C76C0(u8 playerId) {
                             func_800C97C4(playerId);
                             D_800EA0F0 = 2;
                             func_800C9A88(playerId);
-                            func_800CA414(0x000EU, 0x0010U);
+                            play_sequences(SEQ_EVENT_RACE_FINISH_OTHER, SEQ_MENU_RESULTS_SCREEN_WIN);
                         } else if (D_800EA104 == 0) {
                             func_800C3448(0x100100FF);
                             func_800C3448(0x110100FF);
                             func_800C3448(-0x3E9F9C00);
-                            func_800CA414(0x000FU, 0x0018U);
+                            play_sequences(SEQ_EVENT_RACE_FINISH_LOSE, SEQ_MENU_RESULTS_SCREEN_LOSE);
                         }
                         if ((D_800EA104 != 0) || (D_800EA0EC[playerId] != 1)) {
                             func_800C5278(5U);
@@ -2466,9 +2472,9 @@ void func_800C76C0(u8 playerId) {
                     D_800EA0EC[playerId] = 2;
                     func_800C9060(playerId, 0x1900F103U);
                     if (D_801657E5 == 1) {
-                        func_800CA414(0x000DU, 0x0010U);
+                        play_sequences(SEQ_EVENT_RACE_FINISH_FIRST, SEQ_MENU_RESULTS_SCREEN_WIN);
                     } else if (D_8018ED90 == 1) {
-                        func_800CA414(0x000EU, 0x0010U);
+                        play_sequences(SEQ_EVENT_RACE_FINISH_OTHER, SEQ_MENU_RESULTS_SCREEN_WIN);
                     } else {
                         func_800C3448(0x01640010);
                     }
@@ -2483,16 +2489,16 @@ void func_800C76C0(u8 playerId) {
                             func_800C97C4(playerId);
                             D_800EA0F0 = 2;
                             func_800C9A88(playerId);
-                            func_800CA414(0x000DU, 0x0017U);
+                            play_sequences(SEQ_EVENT_RACE_FINISH_FIRST, SEQ_MENU_RESULTS_SCREEN_WIN_VS);
                             break;
                         case 2: /* switch 1 */
                             if ((D_800EA104 == 0) && (D_800EA0EC[playerId] == 1)) {
                                 func_800C3448(0x100100FF);
                                 func_800C3448(0x110100FF);
 #ifdef VERSION_EU
-                                func_800C8EF8(0x000DU);
+                                play_sequence2(SEQ_EVENT_RACE_FINISH_FIRST);
 #else
-                                func_800CA414(0x000DU, 0x0017U);
+                                play_sequences(SEQ_EVENT_RACE_FINISH_FIRST, SEQ_MENU_RESULTS_SCREEN_WIN_VS);
 #endif
                                 D_800EA104 = 1;
                             } else if ((D_800EA104 == 1) && (D_800EA0EC[playerId] == 1)) {
@@ -2502,7 +2508,7 @@ void func_800C76C0(u8 playerId) {
 #endif
                                 {
                                     D_800EA104 = 0;
-                                    func_800CA414(0x000EU, 0x0017U);
+                                    play_sequences(SEQ_EVENT_RACE_FINISH_OTHER, SEQ_MENU_RESULTS_SCREEN_WIN_VS);
                                 }
                                 D_800EA104 = 2;
                             }
@@ -2511,12 +2517,12 @@ void func_800C76C0(u8 playerId) {
                             if ((D_800EA104 == 0) && (D_800EA0EC[playerId] == 1)) {
                                 func_800C3448(0x100100FF);
                                 func_800C3448(0x110100FF);
-                                func_800C8EF8(0x000DU);
+                                play_sequence2(SEQ_EVENT_RACE_FINISH_FIRST);
                                 D_800EA104 = 1;
                             } else if ((D_800EA104 == 1) && (D_800EA0EC[playerId] == 1)) {
                                 if (func_800C3508(1) != 0x000D) {
                                     D_800EA104 = 0;
-                                    func_800C8EF8(0x000EU);
+                                    play_sequence2(SEQ_EVENT_RACE_FINISH_OTHER);
                                 }
                                 D_800EA104 = 2;
                             } else if ((D_800EA104 == 2) && (D_800EA0EC[playerId] == 1)) {
@@ -2526,7 +2532,7 @@ void func_800C76C0(u8 playerId) {
 #endif
                                 {
                                     D_800EA104 = 0;
-                                    func_800CA414(0x000EU, 0x0017U);
+                                    play_sequences(SEQ_EVENT_RACE_FINISH_OTHER, SEQ_MENU_RESULTS_SCREEN_WIN_VS);
                                 }
                                 D_800EA104 = 3;
                             }
@@ -2540,7 +2546,7 @@ void func_800C76C0(u8 playerId) {
                             func_800C3448(0x110100FF);
                             func_800C5278(5U);
                             func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xF9, 0x26));
-                            func_800C8EF8(0x0017U);
+                            play_sequence2(SEQ_MENU_RESULTS_SCREEN_WIN_VS);
                             D_800EA0EC[playerId] = 2;
                             func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) +
                                                         SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
@@ -2549,7 +2555,7 @@ void func_800C76C0(u8 playerId) {
                             if ((D_800EA0EC[0] == 1) && (D_800EA0EC[1] == 1) && (D_800EA0EC[2] == 1)) {
                                 func_800C5278(5U);
                                 func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
-                                func_800C8EF8(0x0017U);
+                                play_sequence2(SEQ_MENU_RESULTS_SCREEN_WIN_VS);
                                 D_800EA0EC[playerId] = 2;
                                 func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) +
                                                             SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
@@ -2560,7 +2566,7 @@ void func_800C76C0(u8 playerId) {
                                 (D_800EA0EC[3] == 1)) {
                                 func_800C5278(5U);
                                 func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
-                                func_800C8EF8(0x0017U);
+                                play_sequence2(SEQ_MENU_RESULTS_SCREEN_WIN_VS);
                                 D_800EA0EC[playerId] = 2;
                                 func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) +
                                                             SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
@@ -2874,14 +2880,14 @@ void play_sound2(s32 soundBits) {
     play_sound(soundBits, &D_800EA1C8, 4, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
 }
 
-void func_800C8EAC(u16 arg0) {
-    func_800C3448(arg0 | 0x10000);
-    D_800EA15C = arg0;
+void play_sequence(u16 index) {
+    func_800C3448(index | 0x0010000);
+    D_800EA15C = index;
 }
 
-void func_800C8EF8(u16 arg0) {
-    func_800C3448(arg0 | 0x1010000);
-    D_800EA160 = arg0;
+void play_sequence2(u16 index) {
+    func_800C3448(index | 0x1010000);
+    D_800EA160 = index;
 }
 
 void func_800C8F44(u8 arg0) {
@@ -3301,12 +3307,12 @@ void func_800CA388(u8 arg0) {
     fade_channel_volume_scale(5, 0, arg0);
 }
 
-void func_800CA414(u16 arg0, u16 arg1) {
+void play_sequences(u16 first, u16 second) {
     if (D_800EA104 == 0) {
         func_800C3448(func_800C3508(0) | 0x30000000);
         func_800C35E8(0);
-        func_800C3448(arg1 | 0xC1510000);
-        func_800C3448(arg0 | 0x1000000);
+        func_800C3448(second | 0xC1510000);
+        func_800C3448(first | 0x01000000);
     }
     D_800EA104 = 1;
 }
@@ -3318,12 +3324,12 @@ void func_800CA49C(u8 playerIndex) {
         } else if (D_800EA164 != 0) {
             func_800C3448(0x100100FF); // 0x19000000
             func_800C3448(0x110100FF);
-            func_800C8EF8(0xC);
+            play_sequence2(SEQ_EVENT_RACE_FINAL_LAP);
             func_800C3448(0xC1510011);
         } else {
             func_800C3448(0x100100FF); // 0x19000000
             func_800C3448(0x110100FF);
-            func_800C8EF8(0xC);
+            play_sequence2(SEQ_EVENT_RACE_FINAL_LAP);
             func_800C3448(D_800EA15C | 0xC1500000);
             func_800C3448(0xC130017D);
         }
@@ -3347,11 +3353,11 @@ void func_800CA59C(u8 playerId) {
                     func_800C3448(0xC1F00000);
                     func_800C3448(0xC1510011);
                 } else {
-                    func_800C8EF8(0x0011U);
+                    play_sequence2(SEQ_EVENT_RACE_POWERUP_STAR);
                 }
             } else {
                 if (1) {} // ?
-                func_800C8EF8(0x0011U);
+                play_sequence2(SEQ_EVENT_RACE_POWERUP_STAR);
             }
         }
         D_800EA10C[playerId] = 1;
@@ -3374,7 +3380,7 @@ void func_800CA730(u8 playerIndex) {
                         if (D_8018FC08 != 0) {
                             if (((u32) (gSequencePlayers[1].enabled)) == 0) {
                                 func_800C3608(1, 5);
-                                func_800C8EAC(D_800EA15C);
+                                play_sequence(D_800EA15C);
                                 func_800C3448(0xB001307DU);
                             } else if ((func_800C3508(1) == 0xC) || (func_800C357C(0x0101000C) == 0)) {
                                 func_800C3448(0xC1F00000U);
@@ -3382,12 +3388,12 @@ void func_800CA730(u8 playerIndex) {
                                 func_800C3448(0xC130017DU);
                             } else {
                                 func_800C3448(0x110100FFU);
-                                func_800C8EAC(D_800EA15C);
+                                play_sequence(D_800EA15C);
                                 func_800C3448(0xB001307DU);
                             }
                         } else {
                             func_800C3448(0x110100FFU);
-                            func_800C8EAC(D_800EA15C);
+                            play_sequence(D_800EA15C);
                         }
                     }
                     D_800EA164 = 0;
@@ -3548,41 +3554,52 @@ void func_800CB134() {
     D_800EA174 = 1;
 }
 
-void func_800CB14C() {
+// Play the entire "losing" sequence for the trophy ceremony.
+//
+// Increments a timer value by one per frame in order to tell which part of the sequence to play at which point.
+void begin_losing_ceremony_sequence() {
     if (D_800EA174 != 0) {
         D_800EA174++;
+
         if (D_800EA174 == 3) {
-            func_800C8EAC(0x001AU);
+            play_sequence(SEQ_EVENT_CEREMONY_PRESENTATION_PART1); // Begin with Part 1 of the ceremony presentation music --- "Everything seems normal..."
             func_800C3448(0x4000007F);
         }
-        if (D_800EA174 == 0x012C) {
-            func_800C8EAC(0x001BU);
+
+        if (D_800EA174 == 300) {
+            play_sequence(SEQ_EVENT_CEREMONY_PRESENTATION_PART2_WIN); // Follow up with Part 2 of the winning ceremony presentation music --- "Looks like I won...?"
             func_800C3448(0x4000007F);
-            func_800C8EF8(0x001DU);
+            play_sequence2(SEQ_EVENT_CEREMONY_PRESENTATION_PART2_LOSE); // Once it ends, begin the LOSING ceremony presentation music, which has a few notes changed to be off-tune --- "Uh oh..."
             func_800C3448(0x41000000);
         }
-        if (D_800EA174 == 0x0230) {
+
+        if (D_800EA174 == 560) { // (Somewhere in this code it slows down the music, changes the pitch of it and completely breaks the music)
             func_800C3448(0x40640000);
             func_800C3448(0xB0640073);
             func_800C3448(0x4150007F);
             func_800C3448(0xB1640073);
         }
-        if (D_800EA174 == 0x02A8) {
+
+        if (D_800EA174 == 680) {
             func_800C3448(0x100100FF);
         }
-        if (D_800EA174 == 0x041A) {
+
+        if (D_800EA174 == 1050) {
             func_800C3448(0xB1500001);
             func_800C3448(0x51500001);
         }
-        if (D_800EA174 == 0x046A) {
+
+        if (D_800EA174 == 1130) {
             func_800C3448(0x41320000);
         }
-        if (D_800EA174 == 0x04B0) {
+
+        if (D_800EA174 == 1200) { // (Player gets hit by the bomb-omb car; play the "explosion" sound effect and the "hurt" voice for the current character)
             func_800C3448(0x110100FF);
         }
-        if (D_800EA174 == 0x04CE) {
-            func_800C8EAC(0x0014U);
-            func_800C3448(0x4000007F);
+
+        if (D_800EA174 == 1230) { // Once the music is completely broken by this point, play the "No Trophy For You!" sequence --- "Aw man, I lost... :("
+            play_sequence(SEQ_EVENT_CEREMONY_TROPHY_LOSE);
+            func_800C3448(0x4000007F); // (Play the "losing" voice for the current character, twice)
         }
     }
 }
