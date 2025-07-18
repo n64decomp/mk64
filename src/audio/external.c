@@ -3556,9 +3556,11 @@ void func_800CB134() {
     D_800EA174 = 1;
 }
 
-// Play the entire "losing" sequence for the trophy ceremony.
-//
-// Increments a timer value by one per frame in order to tell which part of the sequence to play at which point.
+/*
+   Play the entire "losing" sequence for the podium ceremony.
+
+   Increments a timer value by one per frame in order to tell which part of the sequence to play at which point.
+*/
 void begin_losing_ceremony_sequence() {
     if (D_800EA174 != 0) {
         D_800EA174++;
