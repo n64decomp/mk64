@@ -293,7 +293,7 @@ void update_actor_banana_bunch(struct BananaBunchParent* banana_bunch) {
             }
             if (someCount == 0) {
                 destroy_actor((struct Actor*) banana_bunch);
-                owner->triggers &= ~DRAG_ITEM_EFFECT;
+                owner->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
             } else if ((owner->type & 0x4000) != 0) {
                 controller = &gControllers[banana_bunch->playerId];
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
@@ -525,7 +525,7 @@ s32 use_banana_bunch_item(Player* player) {
     bananaBunch = (struct BananaBunchParent*) &gActorList[actorIndex];
     bananaBunch->state = 0;
     bananaBunch->playerId = player - gPlayerOne;
-    player->triggers |= DRAG_ITEM_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -803,7 +803,7 @@ s32 use_fake_itembox_item(Player* player) {
     itemBox = (struct FakeItemBox*) &gActorList[actorIndex];
     itemBox->playerId = (player - gPlayerOne);
     itemBox->state = HELD_FAKE_ITEM_BOX;
-    player->triggers |= DRAG_ITEM_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -850,7 +850,7 @@ s32 use_banana_item(Player* player) {
     banana->playerId = playerId;
     banana->state = HELD_BANANA;
     banana->unk_04 = 0x0014;
-    player->triggers |= DRAG_ITEM_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -872,7 +872,7 @@ void use_thunder_item(Player* player) {
     for (index = 0; index < NUM_PLAYERS; index++) {
         otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
-            otherPlayer->triggers |= LIGHTNING_STRIKE_TRIGGER;
+            otherPlayer->soundEffects |= HIT_ROTATING_SOUND_EFFECT;
         }
     }
 }
@@ -898,22 +898,22 @@ void player_use_item(Player* player) {
             use_banana_bunch_item(player);
             break;
         case ITEM_MUSHROOM:
-            player->triggers |= SHROOM_TRIGGER;
+            player->soundEffects |= BOOST_SOUND_EFFECT;
             break;
         case ITEM_DOUBLE_MUSHROOM:
-            player->triggers |= SHROOM_TRIGGER;
+            player->soundEffects |= BOOST_SOUND_EFFECT;
             break;
         case ITEM_TRIPLE_MUSHROOM:
-            player->triggers |= SHROOM_TRIGGER;
+            player->soundEffects |= BOOST_SOUND_EFFECT;
             break;
         case ITEM_SUPER_MUSHROOM:
-            player->triggers |= SHROOM_TRIGGER;
+            player->soundEffects |= BOOST_SOUND_EFFECT;
             break;
         case ITEM_BOO:
-            player->triggers |= BOO_TRIGGER;
+            player->soundEffects |= BOO_SOUND_EFFECT;
             break;
         case ITEM_STAR:
-            player->triggers |= STAR_TRIGGER;
+            player->soundEffects |= STAR_SOUND_EFFECT;
             break;
         case ITEM_THUNDERBOLT:
             use_thunder_item(player);
