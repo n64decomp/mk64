@@ -134,8 +134,8 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
 
     speed = player->speed;
     if (!(player->effects & 0x80) && !(player->effects & 0x40) && !(player->effects & 0x20000) &&
-        !(player->triggers & VERTICAL_TUMBLE_TRIGGER) && !(player->triggers & HIT_BY_STAR_TRIGGER) && !(player->triggers & HIGH_TUMBLE_TRIGGER) &&
-        !(player->triggers & LOW_TUMBLE_TRIGGER)) {
+        !(player->soundEffects & 0x400000) && !(player->soundEffects & 0x01000000) && !(player->soundEffects & 2) &&
+        !(player->soundEffects & 4)) {
         if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
             func_80007FA4(playerId, player, speed);
         } else if ((bStopAICrossing[playerId] == true) && !(player->effects & (STAR_EFFECT | BOO_EFFECT))) {

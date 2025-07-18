@@ -954,12 +954,12 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     if (player->surfaceType == BOOST_RAMP_ASPHALT) {
         if (((player->effects & BOOST_RAMP_ASPHALT_EFFECT) != BOOST_RAMP_ASPHALT_EFFECT) &&
             ((player->effects & 8) != 8)) {
-            player->triggers |= BOOST_RAMP_ASPHALT_TRIGGER;
+            player->soundEffects |= BOOST_RAMP_ASPHALT_SOUND_EFFECT;
         }
     }
     if (player->surfaceType == BOOST_RAMP_WOOD) {
         if (((player->effects & BOOST_RAMP_WOOD_EFFECT) != BOOST_RAMP_WOOD_EFFECT) && ((player->effects & 8) != 8)) {
-            player->triggers |= BOOST_RAMP_WOOD_TRIGGER;
+            player->soundEffects |= BOOST_RAMP_WOOD_SOUND_EFFECT;
         }
     }
 }
@@ -1039,12 +1039,12 @@ void func_8002A194(Player* player, f32 x, f32 y, f32 z) {
     if (player->surfaceType == BOOST_RAMP_ASPHALT) {
         if (((player->effects & BOOST_RAMP_ASPHALT_EFFECT) != BOOST_RAMP_ASPHALT_EFFECT) &&
             ((player->effects & 8) != 8)) {
-            player->triggers |= BOOST_RAMP_ASPHALT_TRIGGER;
+            player->soundEffects |= BOOST_RAMP_ASPHALT_SOUND_EFFECT;
         }
     }
     if (player->surfaceType == BOOST_RAMP_WOOD) {
         if (((player->effects & BOOST_RAMP_WOOD_EFFECT) != BOOST_RAMP_WOOD_EFFECT) && ((player->effects & 8) != 8)) {
-            player->triggers |= BOOST_RAMP_WOOD_TRIGGER;
+            player->soundEffects |= BOOST_RAMP_WOOD_SOUND_EFFECT;
         }
     }
 }
@@ -1085,7 +1085,7 @@ void func_8002A5F4(Vec3f arg0, f32 arg1, Vec3f arg2, f32 arg3, f32 arg4) {
 
 void func_8002A704(Player* player, s8 playerIndex) {
     player->effects |= BOOST_EFFECT;
-    player->triggers &= ~START_BOOST_TRIGGER;
+    player->soundEffects &= ~0x02000000;
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_800C90F4(0U, (player->characterId * 0x10) + 0x29008001);
@@ -1350,138 +1350,123 @@ void func_8002B218(Player* player) {
     }
 }
 
-void apply_triggers(Player* player, s8 playerId, UNUSED s8 screenId) {
-    if ((player->triggers & HIGH_TUMBLE_TRIGGER) == HIGH_TUMBLE_TRIGGER) {
-        trigger_high_tumble(player, playerId);
+void apply_sound_effect(Player* player, s8 playerId, UNUSED s8 screenId) {
+    if ((player->soundEffects & 2) == 2) {
+        apply_hit_by_item_sound_effect(player, playerId);
     }
-    if ((player->triggers & LOW_TUMBLE_TRIGGER) == LOW_TUMBLE_TRIGGER) {
+    if ((player->soundEffects & 4) == 4) {
         func_8008C528(player, playerId);
     }
-    if ((player->triggers & HIT_BANANA_TRIGGER) == HIT_BANANA_TRIGGER) {
+    if ((player->soundEffects & 1) == 1) {
         func_8008CDC0(player, playerId);
     }
-    if ((player->triggers & SHROOM_TRIGGER) == SHROOM_TRIGGER) {
-        trigger_shroom(player, playerId);
+    if ((player->soundEffects & BOOST_SOUND_EFFECT) == BOOST_SOUND_EFFECT) {
+        apply_boost_sound_effect(player, playerId);
     }
-    if ((player->triggers & START_BOOST_TRIGGER) == START_BOOST_TRIGGER) {
+    if ((player->soundEffects & 0x02000000) == 0x02000000) {
         func_8002A704(player, playerId);
     }
-    if ((player->triggers & UNUSED_TRIGGER_0x1000) == UNUSED_TRIGGER_0x1000) {
+    if ((player->soundEffects & 0x1000) == 0x1000) {
         func_8008D570(player, playerId);
     }
-    if ((player->triggers & UNUSED_TRIGGER_0x20000) == UNUSED_TRIGGER_0x20000) {
+    if ((player->soundEffects & 0x20000) == 0x20000) {
         func_8008D7B0(player, playerId);
     }
-    if ((player->triggers & THWOMP_SQUISH_TRIGGER) == THWOMP_SQUISH_TRIGGER) {
-        trigger_squish(player, playerId);
+    if ((player->soundEffects & HIT_SOUND_EFFECT) == HIT_SOUND_EFFECT) {
+        apply_hit_sound_effect(player, playerId);
     }
-    if ((player->triggers & LIGHTNING_STRIKE_TRIGGER) == LIGHTNING_STRIKE_TRIGGER) {
-        trigger_lightning_strike(player, playerId);
+    if ((player->soundEffects & HIT_ROTATING_SOUND_EFFECT) == HIT_ROTATING_SOUND_EFFECT) {
+        apply_hit_rotating_sound_effect(player, playerId);
     }
-    if ((player->triggers & SPINOUT_TRIGGER) == SPINOUT_TRIGGER) {
+    if ((player->soundEffects & 0x200000) == 0x200000) {
         func_8008C73C(player, playerId);
     }
-    if ((player->triggers & VERTICAL_TUMBLE_TRIGGER) == VERTICAL_TUMBLE_TRIGGER) {
-        trigger_vertical_tumble(player, playerId);
+    if ((player->soundEffects & REVERSE_SOUND_EFFECT) == REVERSE_SOUND_EFFECT) {
+        apply_reverse_sound_effect(player, playerId);
     }
-    if ((player->triggers & HIT_BY_STAR_TRIGGER) == HIT_BY_STAR_TRIGGER) {
-        trigger_high_tumble(player, playerId);
+    if ((player->soundEffects & HIT_BY_ITEM_SOUND_EFFECT) == HIT_BY_ITEM_SOUND_EFFECT) {
+        apply_hit_by_item_sound_effect(player, playerId);
     }
-    if ((player->triggers & BOOST_RAMP_ASPHALT_TRIGGER) == BOOST_RAMP_ASPHALT_TRIGGER) {
-        trigger_asphalt_ramp_boost(player, playerId);
+    if ((player->soundEffects & BOOST_RAMP_ASPHALT_SOUND_EFFECT) == BOOST_RAMP_ASPHALT_SOUND_EFFECT) {
+        apply_boost_ramp_asphalt_sound_effect(player, playerId);
     }
-    if ((player->triggers & BOOST_RAMP_WOOD_TRIGGER) == BOOST_RAMP_WOOD_TRIGGER) {
-        trigger_wood_ramp_boost(player, playerId);
+    if ((player->soundEffects & BOOST_RAMP_WOOD_SOUND_EFFECT) == BOOST_RAMP_WOOD_SOUND_EFFECT) {
+        apply_boost_ramp_wood_sound_effect(player, playerId);
     }
-    if ((player->triggers & STAR_TRIGGER) == STAR_TRIGGER) {
-        trigger_star(player, playerId);
+    if ((player->soundEffects & STAR_SOUND_EFFECT) == STAR_SOUND_EFFECT) {
+        apply_star_sound_effect(player, playerId);
     }
-    if ((player->triggers & BOO_TRIGGER) == BOO_TRIGGER) {
-        trigger_boo(player, playerId);
+    if ((player->soundEffects & BOO_SOUND_EFFECT) == BOO_SOUND_EFFECT) {
+        apply_boo_sound_effect(player, playerId);
     }
-    if (player->triggers & DRIVING_SPINOUT_TRIGGER) {
+    if (player->soundEffects & 0x80) {
         func_8008D0FC(player, playerId);
     }
-    if (player->triggers & HIT_PADDLE_BOAT_TRIGGER) {
-        trigger_vertical_tumble(player, playerId);
+    if (player->soundEffects & 0x80000) {
+        apply_reverse_sound_effect(player, playerId);
     }
 }
 
 void func_8002B5C0(Player* player, UNUSED s8 playerId, UNUSED s8 screenId) {
     if (((player->unk_0CA & 8) != 0) || ((player->unk_0CA & 2) != 0)) {
-        player->triggers &= ALL_TRIGGERS & ~(HIT_TRIGGERS | ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFE1D0478;
     }
-    // Green shell
     if ((player->effects & 0x400) == 0x400) {
-        player->triggers &= ALL_TRIGGERS & ~(ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFF5D457E;
     }
-    // Spinout (banana or driving)
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) {
-        player->triggers &= (ALL_TRIGGERS & ~(ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS)) | UNUSED_TRIGGER_0x20000;
+        player->soundEffects &= 0xFF5F457E;
     }
-    // Near spinout (banana)
     if ((player->effects & 0x800) == 0x800) {
-        player->triggers &= ALL_TRIGGERS & ~(ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFF5D457E;
     }
     if ((player->unk_044 & 0x4000) != 0) {
-        player->triggers &= ALL_TRIGGERS & ~(ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFF5D457E;
     }
-    //unclear
     if ((player->effects & 0x80000) == 0x80000) {
-        player->triggers &= ALL_TRIGGERS & ~((HIT_TRIGGERS ^ LIGHTNING_STRIKE_TRIGGER) | ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFE1D4478;
     }
-    //unclear
     if ((player->effects & 0x800000) == 0x800000) {
-        player->triggers &= ALL_TRIGGERS & ~(HIT_TRIGGERS | ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFE1D0478;
     }
-    //squished
     if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
-        player->triggers &= (ALL_TRIGGERS & ~(HIT_TRIGGERS | ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS)) | THWOMP_SQUISH_TRIGGER;
+        player->soundEffects &= 0xFE1D0578;
     }
-    //explosion crash
     if ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) {
-        player->triggers &= ALL_TRIGGERS & ~((HIT_TRIGGERS ^ LIGHTNING_STRIKE_TRIGGER) | ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFE1D4478;
     }
-    // hit by star or red shell
     if ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) {
-        player->triggers &= ALL_TRIGGERS & ~((HIT_TRIGGERS ^ LIGHTNING_STRIKE_TRIGGER) | ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFE1D4478;
     }
-    // boost asphalt
     if ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) {
-        player->triggers &= ALL_TRIGGERS & ~(HIT_TRIGGERS | ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFE1D0478;
     }
-    // boost ramp
     if ((player->effects & BOOST_RAMP_WOOD_EFFECT) == BOOST_RAMP_WOOD_EFFECT) {
-        player->triggers &= ALL_TRIGGERS & ~(HIT_TRIGGERS | ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFE1D0478;
     }
-    // Terrain tumble
     if ((player->effects & UNKNOWN_EFFECT_0x10000) == UNKNOWN_EFFECT_0x10000) {
-        player->triggers &= ALL_TRIGGERS & ~(HIT_TRIGGERS | ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFE1D0478;
     }
-    // star
     if ((player->effects & STAR_EFFECT) == STAR_EFFECT) {
-        player->triggers &= ALL_TRIGGERS & ~(HIT_TRIGGERS | SHROOM_TRIGGER | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFE9D8478;
     }
-    // boo
     if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-        player->triggers &= ALL_TRIGGERS & ~(HIT_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFE9D8678;
     }
-    // early start spinout
     if ((player->effects & 0x4000) == 0x4000) {
-        player->triggers &= ALL_TRIGGERS & ~(ANY_BOOST_TRIGGERS | SPINOUT_TRIGGER | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFF5D45FF;
     }
-    // CPU_FAST_EFFECTS
     if ((player->effects & 0x20000) == 0x20000) {
-        player->triggers &= ALL_TRIGGERS & ~(HIT_TRIGGERS | ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
+        player->soundEffects &= 0xFE1D0478;
     }
 }
 
 void func_8002B830(Player* player, s8 playerId, s8 screenId) {
-    if (player->triggers != 0) {
+    if (player->soundEffects != 0) {
         func_8002B5C0(player, playerId, screenId);
     }
-    if (player->triggers != 0) {
-        apply_triggers(player, playerId, screenId);
+    if (player->soundEffects != 0) {
+        apply_sound_effect(player, playerId, screenId);
     }
     if ((player->unk_044 & 0x400) != 0) {
         func_800911B4(player, playerId);
@@ -1995,10 +1980,10 @@ void apply_effect(Player* player, s8 playerIndex, s8 arg2) {
         player_decelerate_alternative(player, 10.0f);
     }
     if (D_800DC510 != 5) {
-        if (player->triggers & LOSE_BATTLE_EFFECT) {
+        if (player->soundEffects & 0x04000000) {
             func_8008FC64(player, playerIndex);
         }
-        if (player->triggers & BECOME_BOMB_EFFECT) {
+        if (player->soundEffects & 0x08000000) {
             func_8008FCDC(player, playerIndex);
         }
     }
@@ -3334,10 +3319,9 @@ void player_accelerate_alternative(Player* player) {
         player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
     }
     player->unk_044 |= 0x20;
-    // Hacky way to check for START_SPINOUT_TRIGGER
-    if ((player->triggers * 8) < 0) {
+    if ((player->soundEffects * 8) < 0) {
         func_8008F104(player, player_index);
-        player->triggers &= ~START_SPINOUT_TRIGGER;
+        player->soundEffects &= 0xEFFFFFFF;
     }
 }
 
@@ -3359,10 +3343,9 @@ void player_decelerate_alternative(Player* player, f32 speed) {
         player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
     }
     player->unk_044 &= 0xFFDF;
-    // Hacky way to check for START_SPINOUT_TRIGGER
-    if ((player->triggers * 8) < 0) {
+    if ((player->soundEffects * 8) < 0) {
         func_8008F104(player, player_index);
-        player->triggers &= ~START_SPINOUT_TRIGGER;
+        player->soundEffects &= 0xEFFFFFFF;
     }
 }
 
@@ -3602,11 +3585,11 @@ void player_accelerate_during_start_sequence(Player* player) {
             var_v0 = 8;
         }
         if ((time_delta < var_v0) && ((player->unk_044 & 0x20) != 0x20)) {
-            player->triggers |= START_BOOST_TRIGGER;
+            player->soundEffects |= 0x02000000;
         } else if ((player->topSpeed * 0.9f) <= player->currentSpeed) {
-            if ((player->triggers & START_BOOST_TRIGGER) != START_BOOST_TRIGGER) {
-                player->triggers |= START_SPINOUT_TRIGGER;
-                player->triggers &= ~START_BOOST_TRIGGER;
+            if ((player->soundEffects & 0x02000000) != 0x02000000) {
+                player->soundEffects |= 0x10000000;
+                player->soundEffects &= ~0x02000000;
             }
         }
     }
@@ -3626,9 +3609,9 @@ void player_decelerate_during_start_sequence(Player* player, f32 speedReduction)
         player->currentSpeed = player->topSpeed;
     }
     if ((f64) player->currentSpeed <= (player->topSpeed * 0.7)) {
-        player->triggers &= ~START_SPINOUT_TRIGGER;
+        player->soundEffects &= ~0x10000000;
     }
-    player->triggers &= ~START_BOOST_TRIGGER;
+    player->soundEffects &= ~0x02000000;
     player->unk_044 &= ~0x0020;
     player->unk_098 = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
@@ -3877,7 +3860,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
               (!(player->effects & 8))) &&
              (((player->speed / 18.0f) * 216.0f) >= 40.0f)) &&
             (player->unk_204 == 0)) {
-            player->triggers |= DRIVING_SPINOUT_TRIGGER;
+            player->soundEffects |= 0x80;
         }
     }
     if (((s32) player->tyres[BACK_RIGHT].surfaceType) < 0xF) {

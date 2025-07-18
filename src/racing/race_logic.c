@@ -565,7 +565,7 @@ void func_8028EF28(void) {
                                 }
                                 D_800DC510 = 5;
                                 i = gPlayerPositionLUT[1];
-                                gPlayers[i].triggers |= SPINOUT_TRIGGER;
+                                gPlayers[i].soundEffects |= 0x200000;
                                 gPlayers[i].type |= PLAYER_CPU;
                                 func_800CA118((u8) i);
                                 break;
@@ -583,7 +583,7 @@ void func_8028EF28(void) {
                                     if (*(gNmiUnknown2 + i * 3 + 2) > 99) {
                                         *(gNmiUnknown2 + i * 3 + 2) = 99;
                                     }
-                                    gPlayers[i].triggers |= SPINOUT_TRIGGER;
+                                    gPlayers[i].soundEffects |= 0x200000;
                                     gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8) i);
                                 }
@@ -598,7 +598,7 @@ void func_8028EF28(void) {
                                 if (currentPosition == 2) {
                                     D_800DC510 = 5;
                                     i = gPlayerPositionLUT[3];
-                                    gPlayers[i].triggers |= SPINOUT_TRIGGER;
+                                    gPlayers[i].soundEffects |= 0x200000;
                                     gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8) i);
                                 }
@@ -1138,22 +1138,22 @@ void func_802903D8(Player* playerOne, Player* playerTwo) {
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
             return;
         } else {
-            playerTwo->triggers |= VERTICAL_TUMBLE_TRIGGER;
+            playerTwo->soundEffects |= REVERSE_SOUND_EFFECT;
             func_8008FC1C(playerOne);
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
         }
     } else if (playerTwo->type & PLAYER_UNKNOWN_0x40) {
-        playerOne->triggers |= VERTICAL_TUMBLE_TRIGGER;
+        playerOne->soundEffects |= REVERSE_SOUND_EFFECT;
         func_8008FC1C(playerTwo);
         func_800C9060(playerOne - gPlayerOne, 0x19008001U);
         return;
     }
     if (playerOne->effects & 0x200) {
         if (!(playerTwo->effects & 0x200)) {
-            playerTwo->triggers |= HIT_BY_STAR_TRIGGER;
+            playerTwo->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
         }
     } else if (playerTwo->effects & 0x200) {
-        playerOne->triggers |= HIT_BY_STAR_TRIGGER;
+        playerOne->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
     } else {
         playerOne->effects |= 0x8000;
         playerTwo->effects |= 0x8000;
