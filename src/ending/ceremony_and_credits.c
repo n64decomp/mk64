@@ -21,6 +21,7 @@
 #include "menu_items.h"
 #include "code_80057C60.h"
 #include "defines.h"
+#include "seq_ids.h"
 
 f32 D_802856B0 = 98.0f;
 f32 D_802856B4 = 12.0f;
@@ -720,26 +721,25 @@ void func_80283BA4(UNUSED CinematicCamera* camera) {
     func_800CA0A0();
 }
 
-void func_80283BF0(UNUSED CinematicCamera* camera) {
-    func_800C8EF8(0x1A);
+void play_winning_ceremony_sequence_part1(UNUSED CinematicCamera* camera) {
+    play_sequence2(SEQ_EVENT_CEREMONY_PRESENTATION_PART1);
 }
 
-//
-void func_80283C14(UNUSED CinematicCamera* camera) {
-    func_800C8EF8(0x1B);
+void play_winning_ceremony_sequence_part2(UNUSED CinematicCamera* camera) {
+    play_sequence2(SEQ_EVENT_CEREMONY_PRESENTATION_PART2_WIN);
 }
 
 void wrap_func_800CB134(UNUSED CinematicCamera* camera) {
     func_800CB134();
 }
 
-void wrap_func_800CB14C(UNUSED CinematicCamera* camera) {
-    func_800CB14C();
+void play_losing_ceremony_sequence(UNUSED CinematicCamera* camera) {
+    begin_losing_ceremony_sequence();
 }
 
-void func_80283C78(UNUSED CinematicCamera* arg0) {
+void play_winning_ceremony_credits_sequence(UNUSED CinematicCamera* arg0) {
     if (D_800DC5E4 == 0) {
-        func_800C8EF8(0x1C);
+        play_sequence2(SEQ_EVENT_CEREMONY_TROPHY_CREDITS);
     }
 }
 
@@ -920,7 +920,7 @@ void func_80283D2C(CinematicCamera* camera) {
     gOrderedSizeSlidingBorders = 120.0f;
     cutscene_event(func_80283CA8, camera, 0, 0);
     cutscene_event(wrap_func_800CA0CC, camera, 1, 1);
-    cutscene_event(func_80283BF0, camera, 0, 0);
+    cutscene_event(play_winning_ceremony_sequence_part1, camera, 0, 0);
     cutscene_event(play_sound_balloon_pop, camera, 45, 45);
     cutscene_event(play_sound_balloon_pop, camera, 65, 65);
     cutscene_event(play_sound_balloon_pop, camera, 70, 70);
@@ -972,7 +972,7 @@ void func_80284068(CinematicCamera* camera) {
 }
 
 void func_802840C8(CinematicCamera* camera) {
-    cutscene_event(func_80283C14, camera, 5, 5);
+    cutscene_event(play_winning_ceremony_sequence_part2, camera, 5, 5);
 
     switch (D_802876D8) {
         case 2:
@@ -1448,9 +1448,9 @@ void func_802847CC(CinematicCamera* camera) {
     cutscene_event(func_80283CD0, camera, 0, 0);
     cutscene_event(play_sound_welcome, camera, 8, 8);
 #ifdef VERSION_EU
-    cutscene_event(func_80283C78, camera, 134, 134);
+    cutscene_event(play_winning_ceremony_credits_sequence, camera, 134, 134);
 #else
-    cutscene_event(func_80283C78, camera, 149, 149);
+    cutscene_event(play_winning_ceremony_credits_sequence, camera, 149, 149);
 #endif
     cutscene_event(reset_spline_wrap, camera, 0, 0);
     switch (D_80286A04[D_800DC5E4].unk0) {
@@ -1520,7 +1520,7 @@ void play_cutscene(CinematicCamera* camera) {
         CUTSCENE(4, gCutScene)
         break;
         CUTSCENE(5, D_80285D58)
-        wrap_func_800CB14C(camera);
+        play_losing_ceremony_sequence(camera);
         break;
         CUTSCENE(6, D_80286B5C)
         break;
