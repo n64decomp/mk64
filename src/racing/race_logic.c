@@ -1148,15 +1148,15 @@ void func_802903D8(Player* playerOne, Player* playerTwo) {
         func_800C9060(playerOne - gPlayerOne, 0x19008001U);
         return;
     }
-    if (playerOne->effects & 0x200) {
-        if (!(playerTwo->effects & 0x200)) {
-            playerTwo->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
+    if (playerOne->effects & STAR_EFFECT) {
+        if (!(playerTwo->effects & STAR_EFFECT)) {
+            playerTwo->soundEffects |= HIT_BY_STAR_SOUND_EFFECT;
         }
-    } else if (playerTwo->effects & 0x200) {
-        playerOne->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
+    } else if (playerTwo->effects & STAR_EFFECT) {
+        playerOne->soundEffects |= HIT_BY_STAR_SOUND_EFFECT;
     } else {
-        playerOne->effects |= 0x8000;
-        playerTwo->effects |= 0x8000;
+        playerOne->effects |= ENEMY_BONK_EFFECT;
+        playerTwo->effects |= ENEMY_BONK_EFFECT;
     }
     temp_f0_2 = sqrtf((sp54[0] * sp54[0]) + (sp54[1] * sp54[1]) + (sp54[2] * sp54[2]));
     sp60[0] /= temp_f0;
@@ -1175,7 +1175,7 @@ void func_802903D8(Player* playerOne, Player* playerTwo) {
         temp_f16 = ((sp60[0] * sp54[0]) + (sp60[1] * sp54[1]) + (sp60[2] * sp54[2])) / temp_f0_2;
     }
     temp_f0_2 = temp_f0_2 * temp_f16 * 0.85;
-    if ((playerOne->effects & 0x200) != 0x200) {
+    if ((playerOne->effects & STAR_EFFECT) != STAR_EFFECT) {
         temp_f2 = (temp_f0_2 * sp20) / sp24;
         playerOne->velocity[0] += sp60[0] * temp_f2;
         playerOne->velocity[1] += sp60[1] * temp_f2;
@@ -1184,7 +1184,7 @@ void func_802903D8(Player* playerOne, Player* playerTwo) {
         playerOne->pos[1] -= sp60[1] * sp74 * 0.5f;
         playerOne->pos[2] -= sp60[2] * sp74 * 0.5f;
     }
-    if ((playerTwo->effects & 0x200) != 0x200) {
+    if ((playerTwo->effects & STAR_EFFECT) != STAR_EFFECT) {
         temp_f2 = (temp_f0_2 * sp24) / sp20;
         playerTwo->velocity[0] -= sp60[0] * temp_f2;
         playerTwo->velocity[1] -= sp60[1] * temp_f2;
@@ -1211,14 +1211,14 @@ void func_802909F0(void) {
     for (i = 0; i < 7; i++) {
         ply = &gPlayers[i];
 
-        if ((ply->type & PLAYER_EXISTS) && (!(ply->effects & 0x80000000)) &&
-            (!(ply->type & PLAYER_INVISIBLE_OR_BOMB)) && (!(ply->effects & 0x4000000))) {
+        if ((ply->type & PLAYER_EXISTS) && (!(ply->effects & BOO_EFFECT)) &&
+            (!(ply->type & PLAYER_INVISIBLE_OR_BOMB)) && (!(ply->effects & SQUISH_EFFECT))) {
 
             for (k = i + 1; k < NUM_PLAYERS; k++) {
                 ply2 = &gPlayers[k];
 
-                if ((ply2->type & PLAYER_EXISTS) && (!(ply2->effects & 0x80000000)) &&
-                    (!(ply2->type & PLAYER_INVISIBLE_OR_BOMB)) && (!(ply2->effects & 0x4000000))) {
+                if ((ply2->type & PLAYER_EXISTS) && (!(ply2->effects & BOO_EFFECT)) &&
+                    (!(ply2->type & PLAYER_INVISIBLE_OR_BOMB)) && (!(ply2->effects & SQUISH_EFFECT))) {
 
                     func_802903D8(ply, ply2);
                 }

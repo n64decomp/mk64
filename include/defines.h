@@ -341,34 +341,47 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define HOLD_BANANA_SOUND_EFFECT 0x40000         // holding a banana
 #define REVERSE_SOUND_EFFECT 0x400000            // being in the wrong direction
 #define BOOST_RAMP_ASPHALT_SOUND_EFFECT 0x800000 // being boosted by a boost pad
-#define HIT_BY_ITEM_SOUND_EFFECT 0x1000000       // being hit by an item
+#define HIT_BY_STAR_SOUND_EFFECT 0x1000000       // being hit by an item
 
 /**
  * @brief effect of player's
  * for effects
  */
-#define UNKNOWN_EFFECT_0x1 0x1               //
-#define BOOST_RAMP_WOOD_EFFECT 0x4           // being boosted by a ramp
-#define UNKNOWN_EFFECT_0x10 0x10             //
-#define UNKNOWN_EFFECT_0x40 0x40             //
-#define UNKNOWN_EFFECT_0x80 0x80             //
-#define UNKNOWN_EFFECT_0xC 0xC               //
-#define UNKNOWN_EFFECT_0x10 0x10             //
-#define UNKNOWN_EFFECT_0x100 0x100           //
-#define UNKNOWN_EFFECT_0x1000 0x1000         //
-#define STAR_EFFECT 0x200                    // being a star
-#define BOOST_EFFECT 0x2000                  // being boosted by trigger a mushroom
-#define UNKNOWN_EFFECT_0x10000 0x10000       //
-#define BOOST_RAMP_ASPHALT_EFFECT 0x100000   // being boosted by a boost pad
-#define UNKNOWN_EFFECT_0x200000 0x200000     //
-#define REVERSE_EFFECT 0x400000              // being in reverse of the course
-#define UNKNOWN_EFFECT_0x1000000 0x1000000   //
-#define HIT_BY_ITEM_EFFECT 0x2000000         // being hit by an item
-#define HIT_EFFECT 0x4000000                 // hitting an object
-#define UNKNOWN_EFFECT_0x10000000 0x10000000 //
-#define LIGHTNING_EFFECT 0x40000000          // being hit by lightning
-#define BOO_EFFECT 0x80000000                // being a boo
-
+// clang-format off
+#define BRAKING_EFFECT                   0x1 // pressing brake
+#define HOP_EFFECT                       0x2 // from when you hop to when you land
+#define BOOST_RAMP_WOOD_EFFECT           0x4 // being boosted by DKJP ramp
+#define MIDAIR_EFFECT                    0x8 // in midair
+#define DRIFTING_EFFECT                 0x10 // drifting
+#define AB_SPIN_EFFECT                  0x20 // spinning with a+b
+#define DRIVING_SPINOUT_EFFECT          0x40 // spinout (from erratic driving) or crab
+#define BANANA_SPINOUT_EFFECT           0x80 // spinout (from hitting a banana or another driver)
+#define MINI_TURBO_EFFECT              0x100 // mini-turbo
+#define STAR_EFFECT                    0x200 // using a star
+#define HIT_BY_GREEN_SHELL_EFFECT      0x400 // tumbling after hit with a green shell
+#define BANANA_NEAR_SPINOUT_EFFECT     0x800 // decreased steering sensitivity after hitting a banana, but before spinning out
+#define LOST_RACE_EFFECT              0x1000 // lost race in GP mode
+#define MUSHROOM_EFFECT               0x2000 // using a mushroom
+#define EARLY_START_SPINOUT_EFFECT    0x4000 // spinning out by pressing a too early at the startline or after lakitu retrieves you
+#define ENEMY_BONK_EFFECT             0x8000 // bouncing off an enemy (penguin, thwomp, etc)
+#define TERRAIN_TUMBLE_EFFECT        0x10000 // tumbling after hitting steep terrain
+#define LIGHTNING_STRIKE_EFFECT      0x20000 // spinning and shrinking during a lightning strike
+#define BANANA_SPINOUT_SAVE_EFFECT   0x40000 // avoid spinning out by pressing b
+#define UNKNOWN_EFFECT_0x80000       0x80000 // Only set when soundEffect 0x1000 is set. Unclear if it ever is
+#define BOOST_RAMP_ASPHALT_EFFECT   0x100000 // being boosted by the Royal Raceway ramp
+#define CPU_FAST_EFFECT             0x200000 // CPU Rubberbanding flag
+#define REVERSE_EFFECT              0x400000 // facing backwards
+#define UNKNOWN_EFFECT_0x800000     0x800000 // Only set when soundEffect 0x20000 is set
+#define EXPLOSION_CRASH_EFFECT     0x1000000 // vertical launch (hitting car, snowman, etc.)
+#define HIT_BY_STAR_EFFECT         0x2000000 // being hit by a red shell or star
+#define SQUISH_EFFECT              0x4000000 // hitting an object
+#define POST_SQUISH_EFFECT         0x8000000 // briefly after being squished (boulder, thwomp, etc.)
+#define UNKNOWN_EFFECT_0x10000000 0x10000000 // UNUSED (set in unused func_8008FDF4)
+#define DRIFT_OUTSIDE_EFFECT      0x20000000 // drifting toward the outside of your turn
+#define LIGHTNING_EFFECT          0x40000000 // suffering the effects of lightning
+#define BOO_EFFECT                0x80000000 // being a boo
+#define ALL_EFFECTS               0xFFFFFFFF
+// clang-format on
 
 /**
  * @brief durations of effects
