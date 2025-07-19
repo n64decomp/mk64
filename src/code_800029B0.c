@@ -327,7 +327,7 @@ void func_80003040(void) {
             break;
         case COURSE_BANSHEE_BOARDWALK:
             // d_course_banshee_boardwalk_packed_dl_878
-            find_vtx_and_set_colours(0x07000878, -0x80, 0, 0, 0);
+            find_vtx_and_set_colours(0x07000878, 128, 0, 0, 0);
             break;
         case COURSE_YOSHI_VALLEY:
             vec3f_set(position, -2300.0f, 0.0f, 634.0f);
@@ -351,17 +351,17 @@ void func_80003040(void) {
             break;
         case COURSE_SHERBET_LAND:
             // d_course_sherbet_land_packed_dl_1EB8
-            find_vtx_and_set_colours(0x07001EB8, -0x4C, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x07001EB8, 180, 0xFF, 0xFF, 0xFF);
             // d_course_sherbet_land_packed_dl_2308
-            find_vtx_and_set_colours(0x07002308, -0x6A, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x07002308, 150, 0xFF, 0xFF, 0xFF);
             break;
         case COURSE_RAINBOW_ROAD:
             // d_course_rainbow_road_packed_dl_2068
-            find_vtx_and_set_colours(0x07002068, -0x6A, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x07002068, 150, 0xFF, 0xFF, 0xFF);
             // d_course_rainbow_road_packed_dl_1E18
-            find_vtx_and_set_colours(0x07001E18, -0x6A, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x07001E18, 150, 0xFF, 0xFF, 0xFF);
             // d_course_rainbow_road_packed_dl_1318
-            find_vtx_and_set_colours(0x07001318, -1, 0xFF, 0xFF, 0);
+            find_vtx_and_set_colours(0x07001318, 255, 0xFF, 0xFF, 0);
             break;
         case COURSE_WARIO_STADIUM:
             vec3f_set(position, -131.0f, 83.0f, 286.0f);
