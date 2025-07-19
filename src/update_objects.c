@@ -161,26 +161,18 @@ s32 add_unused_obj_index(s32* listIdx, s32* nextFree, s32 size) {
     }
     count = 0;
     id = &listIdx[*nextFree];
-    /**
-     * @todo This HAS to be a for-loop of some variety, but I can't make a for-loop to match.
-     * If you replace this with ```for(var_v1 = 0; var_v1 < size; var_v1++)```
-     * The diff gets massive.
-     */
-    if (size > 0) {
-    loop_3:
+
+    for (count = 0; count < size; count++) {
         if (*id == NULL_OBJECT_ID) {
             objectIndex = find_unused_obj_index(id);
             *nextFree += 1;
+            break;
         } else {
             *nextFree += 1;
             if (*nextFree >= size) {
                 *nextFree = 0;
             }
-            count += 1;
             id = &listIdx[*nextFree];
-            if (count != size) { // check if don't check all element of the list
-                goto loop_3;
-            }
         }
     }
     if (count == size) {
