@@ -19,6 +19,7 @@
 #include "save_data.h"
 #include <sounds.h>
 #include "spawn_players.h"
+#include "seq_ids.h"
 
 #if ENABLE_DEBUG_MODE
 #define DEBUG_MODE_TOGGLE true
@@ -1840,7 +1841,7 @@ void load_menu_states(s32 menuSelection) {
             }
             gScreenModeListIndex = sScreenModeIdxFromPlayerMode[gPlayerCount - 1];
             func_800CA008(0, 0);
-            func_800C8EAC(1);
+            play_sequence(SEQ_MENU_TITLE_SCREEN);
             gCourseMapInit = 0;
             break;
         }
@@ -1857,13 +1858,13 @@ void load_menu_states(s32 menuSelection) {
                 func_800CB2C4();
                 gGamestate = 0;
                 gGamestateNext = 0;
-                func_800C8EAC(2);
+                play_sequence(SEQ_MENU_MAIN_MENU);
             }
 
             switch (gMenuFadeType) {
                 case MENU_FADE_TYPE_MAIN: {
                     gMainMenuSelection = MAIN_MENU_PLAYER_SELECT;
-                    func_800C8EAC(2);
+                    play_sequence(SEQ_MENU_MAIN_MENU);
                     gPlayerCount = 1;
                     if (gScreenModeSelection >= NUM_SCREEN_MODES || gScreenModeSelection < 0) {
                         gScreenModeSelection = SCREEN_MODE_1P;
@@ -1915,7 +1916,7 @@ void load_menu_states(s32 menuSelection) {
                         func_800CB2C4();
                         gGamestate = 0;
                         gGamestateNext = 0;
-                        func_800C8EAC(2);
+                        play_sequence(SEQ_MENU_MAIN_MENU);
                         for (i = 0; i < ARRAY_COUNT(gCharacterGridIsSelected); i++) {
                             gCharacterGridIsSelected[i] = false;
                         }
@@ -1953,7 +1954,7 @@ void load_menu_states(s32 menuSelection) {
                 func_800CB2C4();
                 gGamestate = 0;
                 gGamestateNext = 0;
-                func_800C8EAC(2);
+                play_sequence(SEQ_MENU_MAIN_MENU);
             }
             play_sound2(SOUND_MENU_SELECT_MAP);
             sTempCupSelection = 0;

@@ -13,7 +13,7 @@ void func_8028E3A0(void);
 void func_8028E438(void);
 void func_8028E678(void);
 void func_8028EC38(s32);
-void func_8028EC98(s32);
+void play_music_for_current_track(s32);
 void start_race(void);
 f32 func_8028EE8C(s32);
 void func_8028EEF0(s32);

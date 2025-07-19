@@ -23,6 +23,7 @@
 #include "effects.h"
 #include "math.h"
 #include "menus.h"
+#include "seq_ids.h"
 
 #pragma intrinsic(sqrtf)
 
@@ -415,59 +416,76 @@ UNUSED void func_8028EC38(s32 arg0) {
     gDemoTimer = 5;
 }
 
-void func_8028EC98(s32 arg0) {
+void play_music_for_current_track(s32 track) {
 
     if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        return;
+        return; // If 3P/4P splitscreen mode is currently on, don't play the music for the current track.
     }
 
     func_800029B0();
 
-    switch (arg0) {
-        case COURSE_MARIO_RACEWAY:
+    switch (track) {
+        case COURSE_MARIO_RACEWAY: // Raceways, Wario Stadium
         case COURSE_ROYAL_RACEWAY:
         case COURSE_LUIGI_RACEWAY:
         case COURSE_WARIO_STADIUM:
-            func_800C8EAC(3);
+            play_sequence(SEQ_TRACK_RACEWAY);
             break;
-        case COURSE_TOADS_TURNPIKE:
-            func_800C8EAC(21);
+
+        case COURSE_TOADS_TURNPIKE: // Toad's Turnpike
+            play_sequence(SEQ_TRACK_TURNPIKE);
             break;
-        case COURSE_YOSHI_VALLEY:
+
+        case COURSE_YOSHI_VALLEY: // Yoshi Valley, Moo Moo Farm
         case COURSE_MOO_MOO_FARM:
-            func_800C8EAC(4);
+            play_sequence(SEQ_TRACK_FARM);
             break;
-        case COURSE_CHOCO_MOUNTAIN:
+
+        case COURSE_CHOCO_MOUNTAIN: // Choco Mountain, Various Battle Stages
         case COURSE_BLOCK_FORT:
         case COURSE_DOUBLE_DECK:
-            func_800C8EAC(5);
+            play_sequence(SEQ_TRACK_MOUNTAIN);
             break;
-        case COURSE_KALAMARI_DESERT:
-            func_800C8EAC(10);
+
+        case COURSE_KALAMARI_DESERT: // Kalimari Desert
+            play_sequence(SEQ_TRACK_DESERT);
             break;
-        case COURSE_KOOPA_BEACH:
-            func_800C8EAC(6);
+
+        case COURSE_KOOPA_BEACH: // Koopa Troopa Beach
+            play_sequence(SEQ_TRACK_BEACH);
             break;
-        case COURSE_BOWSER_CASTLE:
-            func_800C8EAC(9);
+
+        case COURSE_BOWSER_CASTLE: // Bowser Castle
+            play_sequence(SEQ_TRACK_CASTLE);
             break;
-        case COURSE_BANSHEE_BOARDWALK:
-            func_800C8EAC(7);
+
+        case COURSE_BANSHEE_BOARDWALK: // Banshee Boardwalk
+            play_sequence(SEQ_TRACK_SCARY);
             break;
-        case COURSE_FRAPPE_SNOWLAND:
+
+        case COURSE_FRAPPE_SNOWLAND: // Frappe Snowland, Sherbet Land
         case COURSE_SHERBET_LAND:
-            func_800C8EAC(8);
+            play_sequence(SEQ_TRACK_SNOW);
             break;
-        case COURSE_RAINBOW_ROAD:
-            func_800C8EAC(18);
+
+        case COURSE_RAINBOW_ROAD: // Rainbow Road
+            play_sequence(SEQ_TRACK_RAINBOW);
             break;
-        case COURSE_DK_JUNGLE:
-            func_800C8EAC(19);
+
+        case COURSE_DK_JUNGLE: // DK's Jungle Parkway
+            play_sequence(SEQ_TRACK_JUNGLE);
             break;
-        case COURSE_SKYSCRAPER:
+
+        case COURSE_SKYSCRAPER: // Other Battle Stages
         case COURSE_BIG_DONUT:
-            func_800C8EAC(25);
+            play_sequence(SEQ_TRACK_BATTLE);
             break;
+		
+#ifdef AVOID_UB
+		default: //! @BUG: No default case. Enable AVOID_UB for custom tracks.
+		    play_sequence(SEQ_TRACK_RACEWAY);
+			break;
+#endif
     }
 }
 
@@ -475,8 +493,8 @@ void start_race(void) {
     s32 i;
 
     D_8015011E = -1;
-    if (!gDemoMode) {
-        func_8028EC98(gCurrentCourseId);
+    if (!gDemoMode) { // If we're not in the title screen demo, play the music for the current track.
+        play_music_for_current_track(gCurrentCourseId);
     }
 
     if (D_800DC510 == 2) {
@@ -898,13 +916,13 @@ void func_8028FCBC(void) {
     }
     switch (D_800DC510) {
         case 0:
-            if (!gDemoMode) {
+            if (!gDemoMode) { // If we're not in the demo mode, play the starting fanfare for the current mode (Grand Prix / Time Trials / VS / Battle)
                 if (gModeSelection == GRAND_PRIX) {
-                    func_800C8EF8(11);
+                    play_sequence2(SEQ_EVENT_RACE_STARTING);
                     play_sound2(SOUND_ACTION_REV_ENGINE);
                     play_sound2(SOUND_ACTION_REV_ENGINE_2);
                 } else {
-                    func_800C8EF8(22);
+                    play_sequence2(SEQ_EVENT_RACE_STARTING_VS);
                 }
             }
             func_80002DAC();
