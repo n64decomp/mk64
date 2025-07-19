@@ -11,13 +11,13 @@ void func_80007D04(s32 playerId, Player* player) {
         s16 val2 = temp_t2 - temp_t1;
 
         if (val2 > 400 && val1 >= 6) {
-            player->effects &= ~UNKNOWN_EFFECT_0x200000;
+            player->effects &= ~CPU_FAST_EFFECT;
             player_accelerate_alternative(player);
             D_801634C0[playerId] = 4;
             return;
         }
     } else {
-        player->effects |= UNKNOWN_EFFECT_0x200000;
+        player->effects |= CPU_FAST_EFFECT;
         player_accelerate_alternative(player);
         D_801634C0[playerId] = 3;
         return;
@@ -63,19 +63,19 @@ void func_80007D04(s32 playerId, Player* player) {
     }
 
     if (temp_t2 < temp_t1) {
-        player->effects |= UNKNOWN_EFFECT_0x200000;
+        player->effects |= CPU_FAST_EFFECT;
         player_accelerate_alternative(player);
         D_801634C0[playerId] = 1;
     } else if (temp_t2 < (temp_t1 + var_v0 + 0x32)) {
-        player->effects &= ~UNKNOWN_EFFECT_0x200000;
+        player->effects &= ~CPU_FAST_EFFECT;
         player_accelerate_alternative(player);
         D_801634C0[playerId] = 3;
     } else if (D_801631E0[playerId] == false) {
-        player->effects &= ~UNKNOWN_EFFECT_0x200000;
+        player->effects &= ~CPU_FAST_EFFECT;
         player_accelerate_alternative(player);
         D_801634C0[playerId] = 2;
     } else {
-        player->effects &= ~UNKNOWN_EFFECT_0x200000;
+        player->effects &= ~CPU_FAST_EFFECT;
         player_decelerate_alternative(player, 1.0f);
         D_801634C0[playerId] = -1;
     }
@@ -133,9 +133,9 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
     s32 var_a1;
 
     speed = player->speed;
-    if (!(player->effects & 0x80) && !(player->effects & 0x40) && !(player->effects & 0x20000) &&
-        !(player->soundEffects & 0x400000) && !(player->soundEffects & 0x01000000) && !(player->soundEffects & 2) &&
-        !(player->soundEffects & 4)) {
+    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) &&
+        !(player->effects & LIGHTNING_STRIKE_EFFECT) && !(player->soundEffects & 0x400000) &&
+        !(player->soundEffects & 0x01000000) && !(player->soundEffects & 2) && !(player->soundEffects & 4)) {
         if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
             func_80007FA4(playerId, player, speed);
         } else if ((bStopAICrossing[playerId] == true) && !(player->effects & (STAR_EFFECT | BOO_EFFECT))) {
@@ -158,34 +158,34 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
                     break;
             }
             if (speed < var_f0) {
-                player->effects &= ~UNKNOWN_EFFECT_0x200000;
+                player->effects &= ~CPU_FAST_EFFECT;
                 player_accelerate_alternative(player);
             } else if (player->type & PLAYER_CINEMATIC_MODE) {
                 if (speed < targetSpeed) {
-                    player->effects &= ~UNKNOWN_EFFECT_0x200000;
+                    player->effects &= ~CPU_FAST_EFFECT;
                     player_accelerate_alternative(player);
                 } else {
-                    player->effects &= ~UNKNOWN_EFFECT_0x200000;
+                    player->effects &= ~CPU_FAST_EFFECT;
                     player_decelerate_alternative(player, 1.0f);
                 }
             } else if ((D_801631E0[playerId] == true) && (D_80163330[playerId] != 1)) {
                 if (func_800088D8(playerId, gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerIdDup[playerId]) ==
                     1) {
-                    player->effects |= UNKNOWN_EFFECT_0x200000;
+                    player->effects |= CPU_FAST_EFFECT;
                     player_accelerate_alternative(player);
                 } else {
-                    player->effects &= ~UNKNOWN_EFFECT_0x200000;
+                    player->effects &= ~CPU_FAST_EFFECT;
                     player_decelerate_alternative(player, 1.0f);
                 }
             } else {
                 var_a1 = 1;
                 switch (gSpeedCPUBehaviour[playerId]) { /* switch 1; irregular */
                     case SPEED_CPU_BEHAVIOUR_FAST:      /* switch 1 */
-                        player->effects &= ~UNKNOWN_EFFECT_0x200000;
+                        player->effects &= ~CPU_FAST_EFFECT;
                         player_accelerate_alternative(player);
                         break;
                     case SPEED_CPU_BEHAVIOUR_MAX: /* switch 1 */
-                        player->effects |= UNKNOWN_EFFECT_0x200000;
+                        player->effects |= CPU_FAST_EFFECT;
                         player_accelerate_alternative(player);
                         break;
                     case SPEED_CPU_BEHAVIOUR_SLOW: /* switch 1 */
@@ -207,14 +207,14 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
                             func_80007D04(playerId, player);
                         } else if (func_800088D8(playerId, gLapCountByPlayerId[playerId],
                                                  gGPCurrentRaceRankByPlayerIdDup[playerId]) == true) {
-                            player->effects |= UNKNOWN_EFFECT_0x200000;
+                            player->effects |= CPU_FAST_EFFECT;
                             player_accelerate_alternative(player);
                         } else {
-                            player->effects &= ~UNKNOWN_EFFECT_0x200000;
+                            player->effects &= ~CPU_FAST_EFFECT;
                             player_decelerate_alternative(player, 1.0f);
                         }
                     } else {
-                        player->effects &= ~UNKNOWN_EFFECT_0x200000;
+                        player->effects &= ~CPU_FAST_EFFECT;
                         if (targetSpeed > 1.0f) {
                             player_decelerate_alternative(player, 2.0f);
                         } else {

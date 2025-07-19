@@ -1921,7 +1921,7 @@ void func_800C6108(u8 playerId) {
     } else {
         D_800E9E54[playerId] = (f32) -player->unk_0C0;
     }
-    if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+    if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         D_800E9EB4[playerId] = D_800E9E64[playerId] + D_800E9DE4[playerId];
     } else {
         D_800E9EB4[playerId] = D_800E9E64[playerId] + D_800E9DE4[playerId] - (D_800E9E54[playerId] / 12000.0f);
@@ -2191,8 +2191,7 @@ void func_800C683C(u8 cameraId) {
 void func_800C70A8(u8 playerId) {
     if (D_800EA0EC[playerId] == 0) {
         D_800E9E74[playerId] = 0;
-        if ((D_800E9E54[playerId] > 3500.0f) ||
-            ((gPlayers[playerId].effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10)) {
+        if ((D_800E9E54[playerId] > 3500.0f) || ((gPlayers[playerId].effects & DRIFTING_EFFECT) == DRIFTING_EFFECT)) {
             D_800E9E74[playerId] = 1;
             switch (gPlayers[playerId].tyres[AUDIO_LEFT_TYRE].surfaceType) {
                 case DIRT: /* switch 1 */
@@ -2224,7 +2223,7 @@ void func_800C70A8(u8 playerId) {
                     break;
             }
         }
-        if ((gPlayers[playerId].effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+        if ((gPlayers[playerId].effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
             D_800E9E74[playerId] = 2;
             switch (gPlayers[playerId].tyres[AUDIO_LEFT_TYRE].surfaceType) { /* switch 2 */
                 case DIRT:                                                   /* switch 2 */
@@ -2376,17 +2375,21 @@ void func_800C70A8(u8 playerId) {
                 D_800E9E74[playerId] = 0x0000001B;
                 break;
         }
-        if (((gPlayers[playerId].speed < 0.5f) || ((gPlayers[playerId].effects & 8) == 8)) &&
+        if (((gPlayers[playerId].speed < 0.5f) || ((gPlayers[playerId].effects & MIDAIR_EFFECT) == MIDAIR_EFFECT)) &&
             (D_800E9E74[playerId] != 0x0000001C)) {
             D_800E9E74[playerId] = 0;
         }
-        if ((((gPlayers[playerId].effects & 0x4000) == 0x4000) && ((gPlayers[playerId].type & 0x2000) != 0x2000)) ||
-            ((gPlayers[playerId].effects & 0x800) == 0x800) || ((gPlayers[playerId].effects & 0x80) == 0x80) ||
-            ((gPlayers[playerId].effects & 0x40) == 0x40) || ((gPlayers[playerId].unk_044 & 0x4000) == 0x4000)) {
+        if ((((gPlayers[playerId].effects & EARLY_START_SPINOUT_EFFECT) == EARLY_START_SPINOUT_EFFECT) &&
+             ((gPlayers[playerId].type & 0x2000) != 0x2000)) ||
+            ((gPlayers[playerId].effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT) ||
+            ((gPlayers[playerId].effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
+            ((gPlayers[playerId].effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) ||
+            ((gPlayers[playerId].unk_044 & 0x4000) == 0x4000)) {
             D_800E9E74[playerId] = 0x00000012;
         }
-        if ((((gPlayers[playerId].effects & 0x20) == 0x20) && ((gPlayers[playerId].type & 0x2000) != 0x2000)) ||
-            ((gPlayers[playerId].effects & 0x800) == 0x800)) {
+        if ((((gPlayers[playerId].effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) &&
+             ((gPlayers[playerId].type & 0x2000) != 0x2000)) ||
+            ((gPlayers[playerId].effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT)) {
             D_800E9E74[playerId] = 0x00000013;
         }
         if (gPlayers[playerId].unk_20C != 0.0f) {
@@ -2722,13 +2725,13 @@ void func_800C847C(u8 playerId) {
 }
 
 void func_800C86D8(u8 playerId) {
-    if (((gPlayers[playerId].effects & 0x40000000) != 0x40000000) && (D_800E9F24[playerId] == 1)) {
+    if (((gPlayers[playerId].effects & LIGHTNING_EFFECT) != LIGHTNING_EFFECT) && (D_800E9F24[playerId] == 1)) {
         func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x08));
     }
 }
 
 void func_800C8770(u8 playerId) {
-    if ((gPlayers[playerId].effects & 0x40000000) == 0x40000000) {
+    if ((gPlayers[playerId].effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) {
         D_800E9F24[playerId] = 1;
         if (D_800E9F2C[playerId] < 0xFA) {
             D_800E9F2C[playerId]++;
@@ -2761,11 +2764,14 @@ void func_800C8770(u8 playerId) {
 
 // Checks the same field for all players before doing something?
 void func_800C8920(void) {
-    if (((u8) D_800EA168 != 0) && ((gPlayers[0].effects & 0x40000000) != 0x40000000) &&
-        ((gPlayers[1].effects & 0x40000000) != 0x40000000) && ((gPlayers[2].effects & 0x40000000) != 0x40000000) &&
-        ((gPlayers[3].effects & 0x40000000) != 0x40000000) && ((gPlayers[4].effects & 0x40000000) != 0x40000000) &&
-        ((gPlayers[5].effects & 0x40000000) != 0x40000000) && ((gPlayers[6].effects & 0x40000000) != 0x40000000) &&
-        ((gPlayers[7].effects & 0x40000000) != 0x40000000)) {
+    if (((u8) D_800EA168 != 0) && ((gPlayers[0].effects & LIGHTNING_EFFECT) != LIGHTNING_EFFECT) &&
+        ((gPlayers[1].effects & LIGHTNING_EFFECT) != LIGHTNING_EFFECT) &&
+        ((gPlayers[2].effects & LIGHTNING_EFFECT) != LIGHTNING_EFFECT) &&
+        ((gPlayers[3].effects & LIGHTNING_EFFECT) != LIGHTNING_EFFECT) &&
+        ((gPlayers[4].effects & LIGHTNING_EFFECT) != LIGHTNING_EFFECT) &&
+        ((gPlayers[5].effects & LIGHTNING_EFFECT) != LIGHTNING_EFFECT) &&
+        ((gPlayers[6].effects & LIGHTNING_EFFECT) != LIGHTNING_EFFECT) &&
+        ((gPlayers[7].effects & LIGHTNING_EFFECT) != LIGHTNING_EFFECT)) {
         func_800CAC08();
     }
 }
@@ -2936,7 +2942,8 @@ void func_800C90F4(u8 playerId, u32 soundBits) {
                     ((soundBits & ~0xF0) == SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x05))) {
                     D_800EA180 = 1;
                 }
-                if (((gPlayers[playerId].effects & 0x40000000) == 0x40000000) && ((s32) D_800E9F2C[playerId] >= 0x1F)) {
+                if (((gPlayers[playerId].effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) &&
+                    ((s32) D_800E9F2C[playerId] >= 0x1F)) {
                     play_sound(soundBits, &D_800E9F7C[playerId].pos, playerId, &D_800EA150, &D_800EA1D4,
                                (s8*) &D_800E9F7C[playerId].unk_14);
                 } else {
@@ -2965,7 +2972,8 @@ void func_800C92CC(u8 playerId, u32 soundBits) {
                                     (u8) var_s0, soundBits);
             if (temp_v0 != NULL) {
                 temp_v0->unk34 = 170.0f;
-                if (((gPlayers[playerId].effects & 0x40000000) == 0x40000000) && ((s32) D_800E9F2C[playerId] >= 0x1F)) {
+                if (((gPlayers[playerId].effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) &&
+                    ((s32) D_800E9F2C[playerId] >= 0x1F)) {
                     play_sound((gPlayers[playerId].characterId * 0x10) + soundBits, &temp_v0->unk18, var_s0,
                                &D_800EA150, &D_800EA1D4, (s8*) &D_800EA06C[playerId].unk0C);
                 } else {

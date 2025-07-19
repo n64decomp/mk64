@@ -73,13 +73,13 @@ void func_8003E048(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
         player_decelerate_alternative(player, 4.0f);
         player->unk_DAC = 0.5f;
-        if ((player->effects & BOOST_EFFECT) != 0) {
-            remove_boost_effect(player);
+        if ((player->effects & MUSHROOM_EFFECT) != 0) {
+            remove_mushroom_effect(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) ||
-               ((player->effects & UNKNOWN_EFFECT_0x10000) == UNKNOWN_EFFECT_0x10000)) {
+               ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
     } else {
@@ -102,13 +102,13 @@ void func_8003E37C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
             player_decelerate_alternative(player, 5.0f);
         }
         player->unk_DAC = 0.5f;
-        if ((player->effects & BOOST_EFFECT) != 0) {
-            remove_boost_effect(player);
+        if ((player->effects & MUSHROOM_EFFECT) != 0) {
+            remove_mushroom_effect(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) ||
-               ((player->effects & UNKNOWN_EFFECT_0x10000) == UNKNOWN_EFFECT_0x10000)) {
+               ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x32);
     } else {
@@ -130,7 +130,7 @@ void func_8003E6EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         player_decelerate_alternative(player, 4.0f);
         func_8003DC40(player);
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) ||
-               ((player->effects & UNKNOWN_EFFECT_0x10000) == UNKNOWN_EFFECT_0x10000)) {
+               ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
     } else {
@@ -153,7 +153,7 @@ void func_8003E9EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         func_8003DC40(player);
     } else {
         if ((((player->speed / 18.0f) * 216.0f) > 20.0f) ||
-            ((player->effects & UNKNOWN_EFFECT_0x10000) == UNKNOWN_EFFECT_0x10000)) {
+            ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
             if ((player->tyres[BACK_LEFT].surfaceType == ASPHALT) ||
                 (player->tyres[BACK_RIGHT].surfaceType == ASPHALT) ||
                 (player->tyres[FRONT_RIGHT].surfaceType == ASPHALT) ||
@@ -167,7 +167,7 @@ void func_8003E9EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
             arg3[0] = 0.0f;
             arg3[2] = (-(player->slopeAccel / 182) * 0x32);
         }
-        if ((player->effects & UNKNOWN_EFFECT_0x10000) != 0) {
+        if ((player->effects & TERRAIN_TUMBLE_EFFECT) != 0) {
             arg3[0] = ((player->unk_206 / 182) * 0x78);
             arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
         }
@@ -187,7 +187,7 @@ void func_8003EE2C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         player_decelerate_alternative(player, 4.0f);
         func_8003DC40(player);
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) ||
-               ((player->effects & UNKNOWN_EFFECT_0x10000) == UNKNOWN_EFFECT_0x10000)) {
+               ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
     } else {
@@ -213,7 +213,7 @@ void func_8003F138(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         player->unk_DAC = 0.5f;
         arg3[0] = 0;
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) ||
-               ((player->effects & UNKNOWN_EFFECT_0x10000) == UNKNOWN_EFFECT_0x10000)) {
+               ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
         arg3[0] = ((player->unk_206 / 182) * 0x78);
         arg3[2] = (-(player->slopeAccel / 182) * 0x78);
         arg3[0] = 0;
@@ -268,7 +268,7 @@ void func_8003F46C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
 #else
 
 #endif
-        if (player->effects & UNKNOWN_EFFECT_0x10000) {
+        if (player->effects & TERRAIN_TUMBLE_EFFECT) {
             player->unk_DAC = 0.5f;
         }
     }
@@ -296,7 +296,7 @@ void func_8003F734(Player* player, Vec3f arg1, Vec3f arg2, f32* arg3, f32* arg4,
         *arg5 += arg1[1] * player->collision.surfaceDistance[0] * 0.1;
         *arg6 += arg1[2] * player->collision.surfaceDistance[0] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1, 0);
-        if ((!(player->effects & UNKNOWN_EFFECT_0x10000)) && ((player->effects & 8) == 0)) {
+        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & MIDAIR_EFFECT) == 0)) {
             arg2[1] *= -1e-05;
         }
     } else {
@@ -309,11 +309,11 @@ void func_8003F734(Player* player, Vec3f arg1, Vec3f arg2, f32* arg3, f32* arg4,
         }
         *arg6 += arg1[2] * player->collision.surfaceDistance[0] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1.2f, 0);
-        if ((!(player->effects & UNKNOWN_EFFECT_0x10000)) && ((player->effects & 8) == 0)) {
+        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & MIDAIR_EFFECT) == 0)) {
             arg2[1] *= -1e-05;
         }
     }
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFTING_EFFECT;
     temp_f12 = player->collision.surfaceDistance[0] * arg1[0];
     temp_f14 = player->collision.surfaceDistance[0] * arg1[2];
     if (((temp_f12 >= 0) && (temp_f14 >= 0)) || ((temp_f12 < 0) && (temp_f14 >= 0))) {
@@ -350,7 +350,7 @@ void func_8003FBAC(Player* player, Vec3f arg1, Vec3f arg2, f32* arg3, f32* arg4,
         *arg5 += arg1[1] * player->collision.surfaceDistance[1] * 0.1;
         *arg6 += arg1[2] * player->collision.surfaceDistance[1] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1, 0);
-        if ((!(player->effects & UNKNOWN_EFFECT_0x10000)) && ((player->effects & 8) == 0)) {
+        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & MIDAIR_EFFECT) == 0)) {
             arg2[1] *= -1e-05;
         }
     } else {
@@ -363,11 +363,11 @@ void func_8003FBAC(Player* player, Vec3f arg1, Vec3f arg2, f32* arg3, f32* arg4,
         }
         *arg6 += arg1[2] * player->collision.surfaceDistance[1] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1.2f, 0);
-        if ((!(player->effects & UNKNOWN_EFFECT_0x10000)) && ((player->effects & 8) == 0)) {
+        if ((!(player->effects & TERRAIN_TUMBLE_EFFECT)) && ((player->effects & MIDAIR_EFFECT) == 0)) {
             arg2[1] *= -1e-05;
         }
     }
-    player->effects &= ~0x10;
+    player->effects &= ~DRIFTING_EFFECT;
     temp_f12 = player->collision.surfaceDistance[1] * arg1[0];
     temp_f14 = player->collision.surfaceDistance[1] * arg1[2];
     if (((temp_f12 >= 0) && (temp_f14 >= 0)) || ((temp_f12 >= 0) && (temp_f14 < 0))) {
