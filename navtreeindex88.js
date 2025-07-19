@@ -1,5 +1,17 @@
 var NAVTREEINDEX88 =
 {
+"os__exception_8h.html#af7e1829cb7146dbdbad73530b752b633":[8,0,2,2,12,13],
+"os__exception_8h_source.html":[8,0,2,2,12],
+"os__internal_8h.html":[8,0,2,2,13],
+"os__internal_8h.html#a522530f32aa7e6bc6f173b48666b51b5":[8,0,2,2,13,0],
+"os__internal_8h_source.html":[8,0,2,2,13],
+"os__libc_8h.html":[8,0,2,2,14],
+"os__libc_8h.html#aa4c3aee2deb111efd7af25f98541c29a":[8,0,2,2,14,0],
+"os__libc_8h.html#ab828ad07c8ebf898973f27778c543651":[8,0,2,2,14,1],
+"os__libc_8h_source.html":[8,0,2,2,14],
+"os__message_8h.html":[8,0,2,2,15],
+"os__message_8h.html#a07f0bd7e3065476fb974088e04555a93":[8,0,2,2,15,15],
+"os__message_8h.html#a094636a7b7ff845a38131ce3c84216c1":[8,0,2,2,15,5],
 "os__message_8h.html#a0ed87f35c738e6ece799fd2b7ab86752":[8,0,2,2,15,25],
 "os__message_8h.html#a1d861d83479b9293ca770daffbbb0549":[8,0,2,2,15,3],
 "os__message_8h.html#a275b21d3af0f7e6c182301af9e2bbff5":[8,0,2,2,15,12],
@@ -237,17 +249,5 @@ var NAVTREEINDEX88 =
 "path__spawn__metadata_8h.html#a8d65df57aa21b7e861b48e554d96c613":[8,0,3,4,3,0],
 "path__spawn__metadata_8h.html#aa1225cbe034f8220381bf006bcb48ba1":[8,0,3,4,3,3],
 "path__spawn__metadata_8h.html#af413342ee8a98ba5e66ef582acb47476":[8,0,3,4,3,1],
-"path__spawn__metadata_8h.html#af69a77cb9a7c881876c8487ed29769cc":[8,0,3,4,3,4],
-"path__spawn__metadata_8h_source.html":[8,0,3,4,3],
-"path__utils_8inc_8c.html":[8,0,3,3,6],
-"path__utils_8inc_8c.html#a072d199e27b05801ecc506ea10695d54":[8,0,3,3,6,20],
-"path__utils_8inc_8c.html#a213cc48734c334d651e61ea2b73b5604":[8,0,3,3,6,19],
-"path__utils_8inc_8c.html#a3369c0c7791c16418382ddd702784cd6":[8,0,3,3,6,3],
-"path__utils_8inc_8c.html#a3397bd912fcc6eb0f3ae931186ca1f2d":[8,0,3,3,6,7],
-"path__utils_8inc_8c.html#a378e7658e99022775eee23b67d1a38cf":[8,0,3,3,6,16],
-"path__utils_8inc_8c.html#a44c754d762164fef82f8e769dfda5b81":[8,0,3,3,6,12],
-"path__utils_8inc_8c.html#a54d4fdff9a2e57dc38533f07080b27f2":[8,0,3,3,6,11],
-"path__utils_8inc_8c.html#a56cc4d29afeb765dda89d79fe75f848e":[8,0,3,3,6,4],
-"path__utils_8inc_8c.html#a606bec721253c10bb68a4bb4a445ee10":[8,0,3,3,6,22],
-"path__utils_8inc_8c.html#a64865cf2565ef9f4215c5fa73b04233f":[8,0,3,3,6,6]
+"path__spawn__metadata_8h.html#af69a77cb9a7c881876c8487ed29769cc":[8,0,3,4,3,4]
 };

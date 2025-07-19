@@ -1,5 +1,17 @@
 var NAVTREEINDEX118 =
 {
+"structVibratoState.html#ad999ff2598868fa4ebe80cf441e4fe11":[7,0,248,6],
+"structVibratoState.html#afe16472a2e442cf2e9a5fe8450c07a67":[7,0,248,3],
+"structVolumeChange.html":[7,0,249],
+"structVolumeChange.html#a021b049e75d04ef9d7fffcfd237b38d2":[7,0,249,2],
+"structVolumeChange.html#a5a54284947f770817436ddd65c195c19":[7,0,249,0],
+"structVolumeChange.html#abbc6c7d5ee5a6e4acf7314ff0b112a09":[7,0,249,1],
+"structVolumeChange.html#ace77b1c1e7a1f002fcbdd5d10c9c9159":[7,0,249,3],
+"structYoshiValleyEgg.html":[7,0,250],
+"structYoshiValleyEgg.html#a0ab1923c00ae6a34e0ef6d397abb3a29":[7,0,250,11],
+"structYoshiValleyEgg.html#a217fb03109992b5767e9828e0784beb1":[7,0,250,8],
+"structYoshiValleyEgg.html#a310c040e760d3aa654300c466e7598f6":[7,0,250,1],
+"structYoshiValleyEgg.html#a4c5b57a229178a92a9d4f9396deb52d8":[7,0,250,7],
 "structYoshiValleyEgg.html#a697fefc9791a902b358368460f28c6d4":[7,0,250,2],
 "structYoshiValleyEgg.html#a7486545052cc5b59e18bb1b39dad2be2":[7,0,250,6],
 "structYoshiValleyEgg.html#a89e9111131ab6793977cd6be47c76116":[7,0,250,4],
@@ -237,17 +249,5 @@ var NAVTREEINDEX118 =
 "structhud__player.html#aa31a3dba04a6ec7fd466b830ba559572":[7,0,90,57],
 "structhud__player.html#aa997af0a1d2e30df45af4f513e27fa2f":[7,0,90,46],
 "structhud__player.html#aac5469899e53712fb9ab5f6e4c377d20":[7,0,90,4],
-"structhud__player.html#ab7dafcc65d68285b304ab0891db0f4c6":[7,0,90,47],
-"structhud__player.html#aba79e1f46efa9fc3ee5976c1e05b5033":[7,0,90,5],
-"structhud__player.html#ac4fcd01635f62b2e56fa1d6c592f2685":[7,0,90,44],
-"structhud__player.html#acb9be128a8ffa6f199414f304deb8f7f":[7,0,90,24],
-"structhud__player.html#acbbcb18b11223e46c8acf1627a93a250":[7,0,90,27],
-"structhud__player.html#ad20a2396bdeea50bad530d0cf53a6a30":[7,0,90,51],
-"structhud__player.html#ad25d903ae2ba7196f91f40396965f44d":[7,0,90,62],
-"structhud__player.html#ad63b2babe179fc63c0284687ea309729":[7,0,90,37],
-"structhud__player.html#ad80fe1d21b4947560b519495d273b804":[7,0,90,34],
-"structhud__player.html#addcf13b10195eedb4d4406f7cfc0bc23":[7,0,90,2],
-"structhud__player.html#ae4a30d3697a89825523f1a72bb53065f":[7,0,90,52],
-"structhud__player.html#ae61a4259154866235d37b7d111e7330b":[7,0,90,38],
-"structhud__player.html#ae79672e0d4f621f8d0570dff1c7cd2b5":[7,0,90,39]
+"structhud__player.html#ab7dafcc65d68285b304ab0891db0f4c6":[7,0,90,47]
 };

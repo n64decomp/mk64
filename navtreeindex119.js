@@ -1,5 +1,17 @@
 var NAVTREEINDEX119 =
 {
+"structhud__player.html#aba79e1f46efa9fc3ee5976c1e05b5033":[7,0,90,5],
+"structhud__player.html#ac4fcd01635f62b2e56fa1d6c592f2685":[7,0,90,44],
+"structhud__player.html#acb9be128a8ffa6f199414f304deb8f7f":[7,0,90,24],
+"structhud__player.html#acbbcb18b11223e46c8acf1627a93a250":[7,0,90,27],
+"structhud__player.html#ad20a2396bdeea50bad530d0cf53a6a30":[7,0,90,51],
+"structhud__player.html#ad25d903ae2ba7196f91f40396965f44d":[7,0,90,62],
+"structhud__player.html#ad63b2babe179fc63c0284687ea309729":[7,0,90,37],
+"structhud__player.html#ad80fe1d21b4947560b519495d273b804":[7,0,90,34],
+"structhud__player.html#addcf13b10195eedb4d4406f7cfc0bc23":[7,0,90,2],
+"structhud__player.html#ae4a30d3697a89825523f1a72bb53065f":[7,0,90,52],
+"structhud__player.html#ae61a4259154866235d37b7d111e7330b":[7,0,90,38],
+"structhud__player.html#ae79672e0d4f621f8d0570dff1c7cd2b5":[7,0,90,39],
 "structhud__player.html#af2a0d833871a70fd4442d2db87a5be01":[7,0,90,3],
 "structhud__player.html#af93aeb9cb24092f022ce04e295e8a816":[7,0,90,45],
 "structhud__player.html#af9b7eb46b805b0f2934ec4e9adc0785c":[7,0,90,35],
@@ -237,17 +249,5 @@ var NAVTREEINDEX119 =
 "structuObjTxtrTLUT__t.html":[7,0,244],
 "structuObjTxtrTLUT__t.html#a144bf1f5171b80d6733637e1456426a3":[7,0,244,6],
 "structuObjTxtrTLUT__t.html#a38959f822cce627bc704ed281a91dd8f":[7,0,244,7],
-"structuObjTxtrTLUT__t.html#a39c686fc59e6a725e2643c5080394cec":[7,0,244,4],
-"structuObjTxtrTLUT__t.html#a53463848478572072c630d43d3700702":[7,0,244,2],
-"structuObjTxtrTLUT__t.html#a731eef3c9e66c617514422dcc7fe1252":[7,0,244,1],
-"structuObjTxtrTLUT__t.html#ab004696bb4fb6e467db3f2195dbe920d":[7,0,244,3],
-"structuObjTxtrTLUT__t.html#ab2fd6f0238105dd45fdf7a0237deeeb6":[7,0,244,5],
-"structuObjTxtrTLUT__t.html#ae6d432d10c015175bac4c0cdc483100f":[7,0,244,0],
-"structuObjTxtrTile__t.html":[7,0,243],
-"structuObjTxtrTile__t.html#a313e046aa836a77b4147b80c03a1cf74":[7,0,243,2],
-"structuObjTxtrTile__t.html#a3edcd19cde94f970e825e3809f3bafd5":[7,0,243,4],
-"structuObjTxtrTile__t.html#a4f18c83c5241ea058072b736c98175a9":[7,0,243,5],
-"structuObjTxtrTile__t.html#a65e99d064d9576b9f2cd30a9c19b51be":[7,0,243,0],
-"structuObjTxtrTile__t.html#a678af75df84975d635c6fa26e45ab120":[7,0,243,7],
-"structuObjTxtrTile__t.html#a8b640940a42fc930c2eba474b7a2318b":[7,0,243,3]
+"structuObjTxtrTLUT__t.html#a39c686fc59e6a725e2643c5080394cec":[7,0,244,4]
 };

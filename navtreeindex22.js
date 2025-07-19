@@ -215,7 +215,7 @@ var NAVTREEINDEX22 =
 "course__offsets_8h.html":[8,0,2,8],
 "course__offsets_8h_source.html":[8,0,2,8],
 "courses.html":[2,0],
-"courses.html#courses":[2,0,0],
+"courses.html#courses-1":[2,0,0],
 "coursesmenu.html":[2],
 "cow_2render_8inc_8c.html":[8,0,3,0,4,0],
 "cow_2render_8inc_8c.html#a3032e5759fffafb766e96e1991ab0350":[8,0,3,0,4,0,0],

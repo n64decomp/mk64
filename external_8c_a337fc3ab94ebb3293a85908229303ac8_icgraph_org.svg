@@ -58,9 +58,9 @@
 <!-- Node29 -->
 <g id="Node000029" class="node">
 <title>Node29</title>
-<g id="a_Node000029"><a xlink:href="effects_8c.html#a5603414c9f08f239f131fb2241f7d566" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="617,-1389 476,-1389 476,-1359 617,-1359 617,-1389"/>
-<text text-anchor="start" x="484" y="-1377" font-family="Helvetica,sans-Serif" font-size="10.00">apply_hit_by_item_sound</text>
+<g id="a_Node000029"><a xlink:href="effects_8c.html#af91fa8b2559753b91b626992b13a8642" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="615,-1389 478,-1389 478,-1359 615,-1359 615,-1389"/>
+<text text-anchor="start" x="486" y="-1377" font-family="Helvetica,sans-Serif" font-size="10.00">apply_hit_by_star_sound</text>
 <text text-anchor="middle" x="546.5" y="-1366" font-family="Helvetica,sans-Serif" font-size="10.00">_effect</text>
 </a>
 </g>
@@ -69,7 +69,7 @@
 <g id="edge5_Node000001_Node000029" class="edge">
 <title>Node1&#45;&gt;Node29</title>
 <g id="a_edge5_Node000001_Node000029"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M879.73,-744.79C878.15,-833.98 867.53,-1198.06 799,-1284 755.2,-1338.93 675.16,-1360.37 617.11,-1368.71"/>
+<path fill="none" stroke="#63b8ff" d="M879.73,-744.79C878.15,-833.98 867.53,-1198.06 799,-1284 754.69,-1339.57 673.3,-1360.86 615.11,-1369"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="883.23,-744.74 879.89,-734.69 876.23,-744.63 883.23,-744.74"/>
 </a>
 </g>
@@ -724,8 +724,8 @@
 <g id="edge6_Node000029_Node000003" class="edge">
 <title>Node29&#45;&gt;Node3</title>
 <g id="a_edge6_Node000029_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M465.81,-1384.6C450.21,-1386.67 434.19,-1388.8 419.64,-1390.73"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="466.52,-1388.03 475.97,-1383.24 465.6,-1381.09 466.52,-1388.03"/>
+<path fill="none" stroke="#63b8ff" d="M467.76,-1384.34C451.54,-1386.49 434.76,-1388.72 419.58,-1390.74"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="468.32,-1387.79 477.77,-1383 467.4,-1380.85 468.32,-1387.79"/>
 </a>
 </g>
 </g>

@@ -1,5 +1,17 @@
 var NAVTREEINDEX52 =
 {
+"kart__dma_8h.html#a6448b2fb88eb269295afbe3c68ccb453":[8,0,3,39,1478],
+"kart__dma_8h.html#a6454b919539ec363604cfde881584491":[8,0,3,39,52],
+"kart__dma_8h.html#a6466aac80ad89d4a820aa55b800018dd":[8,0,3,39,2277],
+"kart__dma_8h.html#a6482a85e34e0212c353938546f157817":[8,0,3,39,1078],
+"kart__dma_8h.html#a6487ac0b0493c84a3ca0b5bbfc25fc22":[8,0,3,39,2347],
+"kart__dma_8h.html#a64c224424e5a7468c8eab6dbfffd04ae":[8,0,3,39,2240],
+"kart__dma_8h.html#a64d525b15a5157108c940cdec3c402c9":[8,0,3,39,1227],
+"kart__dma_8h.html#a64da9da82bfb2435a4fe800d8e4a6cc4":[8,0,3,39,208],
+"kart__dma_8h.html#a64e03ffef77632b149d63563ca1ca2e1":[8,0,3,39,1802],
+"kart__dma_8h.html#a64edcfa9cefe9ab3cab13508027756ac":[8,0,3,39,1308],
+"kart__dma_8h.html#a65180dd57732194fd1ffdef6eef231b5":[8,0,3,39,783],
+"kart__dma_8h.html#a652b392298456c187dc17cd52744250b":[8,0,3,39,352],
 "kart__dma_8h.html#a653ee676a8ed2f9b25f00ce0a6213d0f":[8,0,3,39,2570],
 "kart__dma_8h.html#a654ed8291b6772d144752a329fb699b3":[8,0,3,39,2101],
 "kart__dma_8h.html#a65553e2aa1b4430939f83bb96823a489":[8,0,3,39,1082],
@@ -237,17 +249,5 @@ var NAVTREEINDEX52 =
 "kart__dma_8h.html#a79dec2b447e0fe8f826962924df2275b":[8,0,3,39,1179],
 "kart__dma_8h.html#a79fb7f1b6d13226f6abde2ca003c3fb3":[8,0,3,39,1866],
 "kart__dma_8h.html#a7a0816299a65bf87d2593af9f1395e27":[8,0,3,39,928],
-"kart__dma_8h.html#a7a0aff68ed0a991530a35441eca35a2e":[8,0,3,39,1503],
-"kart__dma_8h.html#a7a2b6ab9883fca9071d03134e6c35951":[8,0,3,39,2114],
-"kart__dma_8h.html#a7a6474fce95a385a77c30473f4a82cc9":[8,0,3,39,766],
-"kart__dma_8h.html#a7a8f75cec379e10e3adfafe363521bd4":[8,0,3,39,395],
-"kart__dma_8h.html#a7a9c974fbacfac8a8f23ca05fe84b921":[8,0,3,39,2690],
-"kart__dma_8h.html#a7aa3dc1fa830446e0967c579c9de8431":[8,0,3,39,2649],
-"kart__dma_8h.html#a7ab91b23c512f792efe12229c22efb71":[8,0,3,39,2210],
-"kart__dma_8h.html#a7ad299853fcb1fa347b6686767d72288":[8,0,3,39,1315],
-"kart__dma_8h.html#a7afaa31a198297b2cc283620c597fd47":[8,0,3,39,2373],
-"kart__dma_8h.html#a7b0b97c9bdcc5f5c0067090662f0d91d":[8,0,3,39,1400],
-"kart__dma_8h.html#a7b1b0d5f92f900305cc4995533248593":[8,0,3,39,1030],
-"kart__dma_8h.html#a7b29cc4feea71f22233773ca995154b6":[8,0,3,39,2447],
-"kart__dma_8h.html#a7b5b9701b4f9add5165f4f191f687d7d":[8,0,3,39,178]
+"kart__dma_8h.html#a7a0aff68ed0a991530a35441eca35a2e":[8,0,3,39,1503]
 };

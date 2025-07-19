@@ -1,5 +1,17 @@
 var NAVTREEINDEX116 =
 {
+"structSeqOrBankEntry.html#a970e3bb4e58a3a033742eaaed511b551":[7,0,154,2],
+"structSeqOrBankEntry.html#aca73d6b5641e6ef48b0cb165a83c1e22":[7,0,154,1],
+"structSequenceChannel.html":[7,0,155],
+"structSequenceChannel.html#a01f6754eb412ac217c3c251caad84035":[7,0,155,43],
+"structSequenceChannel.html#a08d073bbed11b25b19d8b424d7c9d438":[7,0,155,26],
+"structSequenceChannel.html#a09f307822632c610119f377eb2a7e300":[7,0,155,22],
+"structSequenceChannel.html#a0c4e31ade0f8dc78c3256b39c3b377ea":[7,0,155,15],
+"structSequenceChannel.html#a0db3a4e22eeb5c551db2522eee9e097b":[7,0,155,46],
+"structSequenceChannel.html#a15cad4ea8bf40de2eb3dd631741725fc":[7,0,155,6],
+"structSequenceChannel.html#a21462ffb79a5c13b003709ec8eea0db9":[7,0,155,13],
+"structSequenceChannel.html#a2539dddc70bd6159d5927d6c82e974da":[7,0,155,23],
+"structSequenceChannel.html#a27e24351e14a4c394673fea7c71c04a4":[7,0,155,41],
 "structSequenceChannel.html#a2df4dd94b4ca99190ac1310b345a26e9":[7,0,155,8],
 "structSequenceChannel.html#a35bf2219b76321032b4e9b77bf742f4e":[7,0,155,16],
 "structSequenceChannel.html#a374893f359c69077e1a52c2de92a3477":[7,0,155,11],
@@ -237,17 +249,5 @@ var NAVTREEINDEX116 =
 "structThwompSpawn.html#ad125afdac071b04e78cc7c0134d9f7ae":[7,0,198,1],
 "structThwompSpawn.html#ae947218abf0b0de40a991c6a929b19d5":[7,0,198,3],
 "structTrackPathPoint.html":[7,0,199],
-"structTrackPathPoint.html#a08ddd8f8aa6861879491267096956278":[7,0,199,0],
-"structTrackPathPoint.html#a3572feaaa5b94c4948f447adfd4aa66e":[7,0,199,3],
-"structTrackPathPoint.html#a3a789afaadf7e222bf1e18d11f5c7e9a":[7,0,199,2],
-"structTrackPathPoint.html#a78cf2f99584e1d3efc59d53ded671774":[7,0,199,1],
-"structTrackPositionFactorInstruction.html":[7,0,200],
-"structTrackPositionFactorInstruction.html#a46784a36fc904e298d2b043a334ae27a":[7,0,200,2],
-"structTrackPositionFactorInstruction.html#a5f25add966a6ce37f6d287f2a4d483f2":[7,0,200,3],
-"structTrackPositionFactorInstruction.html#ab189b22b6caf0d4274609d53652b6399":[7,0,200,1],
-"structTrackPositionFactorInstruction.html#acb27a2a2fef47fad6ef25ad2fcd357ce":[7,0,200,0],
-"structTrackSections.html":[7,0,201],
-"structTrackSections.html#a095fe08228ac18a98e54f01c5ecc5a71":[7,0,201,0],
-"structTrackSections.html#a53d5aca8370d2850514a4507044dcbd3":[7,0,201,2],
-"structTrackSections.html#a5da9422111f0325e591566d162776c1d":[7,0,201,3]
+"structTrackPathPoint.html#a08ddd8f8aa6861879491267096956278":[7,0,199,0]
 };

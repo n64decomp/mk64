@@ -1,5 +1,17 @@
 var NAVTREEINDEX117 =
 {
+"structTrackPathPoint.html#a3572feaaa5b94c4948f447adfd4aa66e":[7,0,199,3],
+"structTrackPathPoint.html#a3a789afaadf7e222bf1e18d11f5c7e9a":[7,0,199,2],
+"structTrackPathPoint.html#a78cf2f99584e1d3efc59d53ded671774":[7,0,199,1],
+"structTrackPositionFactorInstruction.html":[7,0,200],
+"structTrackPositionFactorInstruction.html#a46784a36fc904e298d2b043a334ae27a":[7,0,200,2],
+"structTrackPositionFactorInstruction.html#a5f25add966a6ce37f6d287f2a4d483f2":[7,0,200,3],
+"structTrackPositionFactorInstruction.html#ab189b22b6caf0d4274609d53652b6399":[7,0,200,1],
+"structTrackPositionFactorInstruction.html#acb27a2a2fef47fad6ef25ad2fcd357ce":[7,0,200,0],
+"structTrackSections.html":[7,0,201],
+"structTrackSections.html#a095fe08228ac18a98e54f01c5ecc5a71":[7,0,201,0],
+"structTrackSections.html#a53d5aca8370d2850514a4507044dcbd3":[7,0,201,2],
+"structTrackSections.html#a5da9422111f0325e591566d162776c1d":[7,0,201,3],
 "structTrackSections.html#ad5b479d66f3ab630872a6a2042ad8270":[7,0,201,1],
 "structTrainCar.html":[7,0,202],
 "structTrainCar.html#a0c4a8df640964eaecd78ababa075c9b3":[7,0,202,0],
@@ -237,17 +249,5 @@ var NAVTREEINDEX117 =
 "structVibratoState.html#a61aedc3462f8aa140ba58d724bba4dde":[7,0,248,0],
 "structVibratoState.html#a764da96013725ad7ca6b5bebc9e37619":[7,0,248,8],
 "structVibratoState.html#a87e0a6727c5d3f8126380b96f0a25514":[7,0,248,1],
-"structVibratoState.html#ac7b0ebaf890134933a4888c2be0fbfc9":[7,0,248,2],
-"structVibratoState.html#ad999ff2598868fa4ebe80cf441e4fe11":[7,0,248,6],
-"structVibratoState.html#afe16472a2e442cf2e9a5fe8450c07a67":[7,0,248,3],
-"structVolumeChange.html":[7,0,249],
-"structVolumeChange.html#a021b049e75d04ef9d7fffcfd237b38d2":[7,0,249,2],
-"structVolumeChange.html#a5a54284947f770817436ddd65c195c19":[7,0,249,0],
-"structVolumeChange.html#abbc6c7d5ee5a6e4acf7314ff0b112a09":[7,0,249,1],
-"structVolumeChange.html#ace77b1c1e7a1f002fcbdd5d10c9c9159":[7,0,249,3],
-"structYoshiValleyEgg.html":[7,0,250],
-"structYoshiValleyEgg.html#a0ab1923c00ae6a34e0ef6d397abb3a29":[7,0,250,11],
-"structYoshiValleyEgg.html#a217fb03109992b5767e9828e0784beb1":[7,0,250,8],
-"structYoshiValleyEgg.html#a310c040e760d3aa654300c466e7598f6":[7,0,250,1],
-"structYoshiValleyEgg.html#a4c5b57a229178a92a9d4f9396deb52d8":[7,0,250,7]
+"structVibratoState.html#ac7b0ebaf890134933a4888c2be0fbfc9":[7,0,248,2]
 };

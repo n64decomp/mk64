@@ -246,17 +246,18 @@
 <g id="edge15_Node000002_Node000016" class="edge">
 <title>Node2&#45;&gt;Node16</title>
 <g id="a_edge15_Node000002_Node000016"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M174.16,-617.46C175.3,-653.97 184.4,-781.71 255,-845.5 261.37,-851.26 269.22,-855.29 277.45,-858.08"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="276.65,-861.49 287.23,-860.83 278.54,-854.76 276.65,-861.49"/>
+<path fill="none" stroke="#63b8ff" d="M174.2,-617.39C175.48,-653.66 185.01,-780.57 255,-844.5 261.36,-850.31 269.2,-854.42 277.43,-857.32"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="276.62,-860.73 287.2,-860.19 278.59,-854.01 276.62,-860.73"/>
 </a>
 </g>
 </g>
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="effects_8c.html#a5b9e2c886a5267f2cca1190984277a38" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="393.5,-836 274.5,-836 274.5,-817 393.5,-817 393.5,-836"/>
-<text text-anchor="middle" x="334" y="-824" font-family="Helvetica,sans-Serif" font-size="10.00">remove_boost_effect</text>
+<g id="a_Node000017"><a xlink:href="effects_8c.html#a4768d56263e476d3bac47ee01bac3dc8" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="413,-835.5 255,-835.5 255,-805.5 413,-805.5 413,-835.5"/>
+<text text-anchor="start" x="263" y="-823.5" font-family="Helvetica,sans-Serif" font-size="10.00">remove_boost_ramp_asphalt</text>
+<text text-anchor="middle" x="334" y="-812.5" font-family="Helvetica,sans-Serif" font-size="10.00">_effect</text>
 </a>
 </g>
 </g>
@@ -264,18 +265,18 @@
 <g id="edge16_Node000002_Node000017" class="edge">
 <title>Node2&#45;&gt;Node17</title>
 <g id="a_edge16_Node000002_Node000017"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M174.88,-617.2C178.34,-649.57 194.05,-754.85 255,-807.5 258.06,-810.14 261.42,-812.43 264.99,-814.41"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="263.65,-817.64 274.19,-818.72 266.62,-811.31 263.65,-817.64"/>
+<path fill="none" stroke="#63b8ff" d="M175.3,-617.4C179.93,-648.58 198.45,-745.67 255,-796.5 256.3,-797.67 257.66,-798.79 259.07,-799.85"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="257.3,-802.87 267.6,-805.34 261.09,-796.98 257.3,-802.87"/>
 </a>
 </g>
 </g>
 <!-- Node18 -->
 <g id="Node000018" class="node">
 <title>Node18</title>
-<g id="a_Node000018"><a xlink:href="effects_8c.html#a4768d56263e476d3bac47ee01bac3dc8" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="413,-798.5 255,-798.5 255,-768.5 413,-768.5 413,-798.5"/>
-<text text-anchor="start" x="263" y="-786.5" font-family="Helvetica,sans-Serif" font-size="10.00">remove_boost_ramp_asphalt</text>
-<text text-anchor="middle" x="334" y="-775.5" font-family="Helvetica,sans-Serif" font-size="10.00">_effect</text>
+<g id="a_Node000018"><a xlink:href="effects_8c.html#aafe14c45e9b91bb1d409ef2f2bfe5c53" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="408.5,-787.5 259.5,-787.5 259.5,-757.5 408.5,-757.5 408.5,-787.5"/>
+<text text-anchor="start" x="267.5" y="-775.5" font-family="Helvetica,sans-Serif" font-size="10.00">remove_boost_ramp_wood</text>
+<text text-anchor="middle" x="334" y="-764.5" font-family="Helvetica,sans-Serif" font-size="10.00">_effect</text>
 </a>
 </g>
 </g>
@@ -283,18 +284,18 @@
 <g id="edge17_Node000002_Node000018" class="edge">
 <title>Node2&#45;&gt;Node18</title>
 <g id="a_edge17_Node000002_Node000018"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M176.42,-617.35C183.54,-644.31 207.03,-719.92 255,-759.5 256.56,-760.78 258.18,-762 259.86,-763.15"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="258.29,-766.29 268.68,-768.38 261.87,-760.27 258.29,-766.29"/>
+<path fill="none" stroke="#63b8ff" d="M176.75,-617.01C184.56,-642.35 209.34,-712.03 255,-748.5 256.75,-749.9 258.59,-751.22 260.49,-752.46"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="258.77,-755.51 269.19,-757.43 262.24,-749.43 258.77,-755.51"/>
 </a>
 </g>
 </g>
 <!-- Node19 -->
 <g id="Node000019" class="node">
 <title>Node19</title>
-<g id="a_Node000019"><a xlink:href="effects_8c.html#aafe14c45e9b91bb1d409ef2f2bfe5c53" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="408.5,-750.5 259.5,-750.5 259.5,-720.5 408.5,-720.5 408.5,-750.5"/>
-<text text-anchor="start" x="267.5" y="-738.5" font-family="Helvetica,sans-Serif" font-size="10.00">remove_boost_ramp_wood</text>
-<text text-anchor="middle" x="334" y="-727.5" font-family="Helvetica,sans-Serif" font-size="10.00">_effect</text>
+<g id="a_Node000019"><a xlink:href="effects_8c.html#a5f1aead641683fd07375d6737dfafac2" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="390.5,-739.5 277.5,-739.5 277.5,-709.5 390.5,-709.5 390.5,-739.5"/>
+<text text-anchor="start" x="285.5" y="-727.5" font-family="Helvetica,sans-Serif" font-size="10.00">remove_hit_by_star</text>
+<text text-anchor="middle" x="334" y="-716.5" font-family="Helvetica,sans-Serif" font-size="10.00">_effect</text>
 </a>
 </g>
 </g>
@@ -302,18 +303,17 @@
 <g id="edge18_Node000002_Node000019" class="edge">
 <title>Node2&#45;&gt;Node19</title>
 <g id="a_edge18_Node000002_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M178.85,-617.13C189.64,-637.63 217.7,-685.77 255,-711.5 257.27,-713.07 259.65,-714.54 262.11,-715.91"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="260.77,-719.15 271.28,-720.49 263.89,-712.89 260.77,-719.15"/>
+<path fill="none" stroke="#63b8ff" d="M179.82,-617.24C191.61,-636.13 220.17,-677.86 255,-700.5 259.02,-703.11 263.34,-705.46 267.81,-707.55"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="266.58,-710.83 277.15,-711.52 269.32,-704.39 266.58,-710.83"/>
 </a>
 </g>
 </g>
 <!-- Node20 -->
 <g id="Node000020" class="node">
 <title>Node20</title>
-<g id="a_Node000020"><a xlink:href="effects_8c.html#ab786df737be99c2f2ce6abda17b13d6b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="392.5,-702.5 275.5,-702.5 275.5,-672.5 392.5,-672.5 392.5,-702.5"/>
-<text text-anchor="start" x="283.5" y="-690.5" font-family="Helvetica,sans-Serif" font-size="10.00">remove_hit_by_item</text>
-<text text-anchor="middle" x="334" y="-679.5" font-family="Helvetica,sans-Serif" font-size="10.00">_effect</text>
+<g id="a_Node000020"><a xlink:href="effects_8c.html#a9be2cc0ebbe72a9d5276a4fd2675eef3" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="406.5,-691 261.5,-691 261.5,-672 406.5,-672 406.5,-691"/>
+<text text-anchor="middle" x="334" y="-679" font-family="Helvetica,sans-Serif" font-size="10.00">remove_mushroom_effect</text>
 </a>
 </g>
 </g>
@@ -321,8 +321,8 @@
 <g id="edge19_Node000002_Node000020" class="edge">
 <title>Node2&#45;&gt;Node20</title>
 <g id="a_edge19_Node000002_Node000020"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M185.37,-617.06C200.43,-629.31 228.24,-650.52 255,-663.5 258.98,-665.43 263.15,-667.25 267.4,-668.95"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="266.21,-672.24 276.8,-672.49 268.68,-665.69 266.21,-672.24"/>
+<path fill="none" stroke="#63b8ff" d="M184.98,-617.14C199.83,-629.68 227.63,-651.41 255,-663.5 259.65,-665.55 264.56,-667.39 269.56,-669.02"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="268.68,-672.41 279.26,-671.93 270.69,-665.7 268.68,-672.41"/>
 </a>
 </g>
 </g>

@@ -1,5 +1,17 @@
 var NAVTREEINDEX87 =
 {
+"os_8h.html#a47d030c53afb3f152847babbc0f818c2":[8,0,2,2,7,42],
+"os_8h.html#a490d60bc5ebcb8cf2ea5bea9dc9e8b00":[8,0,2,2,7,180],
+"os_8h.html#a4a243eb58e0a087c3d465e3ae1a8761b":[8,0,2,2,7,105],
+"os_8h.html#a4a885b1164a7db1f78a0ebe1a3c20ba4":[8,0,2,2,7,3],
+"os_8h.html#a4b6f568b57b092c7345dd97af3e2ecec":[8,0,2,2,7,111],
+"os_8h.html#a4b7989948328391b363da29c43fc5b3d":[8,0,2,2,7,41],
+"os_8h.html#a4cac2f67358ee9eecaef4d8eb45a6655":[8,0,2,2,7,206],
+"os_8h.html#a4e49cf555d366ccdf312acddaf9b90ac":[8,0,2,2,7,227],
+"os_8h.html#a4e8b03188f0ddcb54eba0fb782f522da":[8,0,2,2,7,26],
+"os_8h.html#a4f323f448136db4a312e0b80ed20b823":[8,0,2,2,7,84],
+"os_8h.html#a5066ebfce0a2590bb0409a367f4a346f":[8,0,2,2,7,216],
+"os_8h.html#a50db42f3632074d4f539892b1b803ae4":[8,0,2,2,7,46],
 "os_8h.html#a5240f69f0dee29a787de80d82bb2f611":[8,0,2,2,7,157],
 "os_8h.html#a5441c83c7ed1de1088a4fd754e5303ec":[8,0,2,2,7,39],
 "os_8h.html#a55cbc82654255793675741df6b77d87e":[8,0,2,2,7,33],
@@ -237,17 +249,5 @@ var NAVTREEINDEX87 =
 "os__exception_8h.html#aafcb5061a3f3e43bb378b50f086789be":[8,0,2,2,12,16],
 "os__exception_8h.html#abc51f6c5521e1b3a785c5c482f2cbc59":[8,0,2,2,12,15],
 "os__exception_8h.html#acec0bfd95642f11fde3c020ef6655918":[8,0,2,2,12,19],
-"os__exception_8h.html#adc9468fbf10359c76d60e284dae08e6c":[8,0,2,2,12,14],
-"os__exception_8h.html#af7e1829cb7146dbdbad73530b752b633":[8,0,2,2,12,13],
-"os__exception_8h_source.html":[8,0,2,2,12],
-"os__internal_8h.html":[8,0,2,2,13],
-"os__internal_8h.html#a522530f32aa7e6bc6f173b48666b51b5":[8,0,2,2,13,0],
-"os__internal_8h_source.html":[8,0,2,2,13],
-"os__libc_8h.html":[8,0,2,2,14],
-"os__libc_8h.html#aa4c3aee2deb111efd7af25f98541c29a":[8,0,2,2,14,0],
-"os__libc_8h.html#ab828ad07c8ebf898973f27778c543651":[8,0,2,2,14,1],
-"os__libc_8h_source.html":[8,0,2,2,14],
-"os__message_8h.html":[8,0,2,2,15],
-"os__message_8h.html#a07f0bd7e3065476fb974088e04555a93":[8,0,2,2,15,15],
-"os__message_8h.html#a094636a7b7ff845a38131ce3c84216c1":[8,0,2,2,15,5]
+"os__exception_8h.html#adc9468fbf10359c76d60e284dae08e6c":[8,0,2,2,12,14]
 };

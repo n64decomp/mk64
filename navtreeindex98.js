@@ -1,5 +1,17 @@
 var NAVTREEINDEX98 =
 {
+"render__objects_8h.html#ab5ccc28e6ca6f47c9d1d04479d126b17":[8,0,3,53,360],
+"render__objects_8h.html#ab6a502ac92c1ef70d680f51ae944d956":[8,0,3,53,338],
+"render__objects_8h.html#ab6b932f9c82bdd171af55c44f78f895d":[8,0,3,53,261],
+"render__objects_8h.html#ab74f89cbd39e9764c7b96fab3f4e44af":[8,0,3,53,204],
+"render__objects_8h.html#ab7c8a163acc4ace6d78f66909d2e6232":[8,0,3,53,12],
+"render__objects_8h.html#ab948e36ed06d40bf9fb71cb6c5c226e1":[8,0,3,53,147],
+"render__objects_8h.html#ab962944d09f6b66e879659504c1a21f4":[8,0,3,53,353],
+"render__objects_8h.html#ab965119a165a6c6c36c5dd5a08ea7831":[8,0,3,53,339],
+"render__objects_8h.html#ab99d813f895772f2b3b25baa2784e54d":[8,0,3,53,364],
+"render__objects_8h.html#aba2178fb18fb97ea150d127081b9bd6a":[8,0,3,53,225],
+"render__objects_8h.html#aba95f2f354009b0507e787aa0bc29486":[8,0,3,53,299],
+"render__objects_8h.html#aba9d660517a6902419c4774ac4493f77":[8,0,3,53,184],
 "render__objects_8h.html#abbba33fb626b1cf1d5e56bce6eb995a9":[8,0,3,53,11],
 "render__objects_8h.html#abeb55912d8bd0a329e96328531624e81":[8,0,3,53,35],
 "render__objects_8h.html#abecbd1a1b07837fa3a4f1c69c858c2d8":[8,0,3,53,157],
@@ -237,17 +249,5 @@ var NAVTREEINDEX98 =
 "render__player_8h.html#a14d6105e55d6423e025439f94010d286":[8,0,3,55,101],
 "render__player_8h.html#a155f3e567a19e42e46813a32e6529001":[8,0,3,55,152],
 "render__player_8h.html#a161f524b61227bd4a80f63a2b5629aa1":[8,0,3,55,209],
-"render__player_8h.html#a182a19940777d289233a9950198ca6ee":[8,0,3,55,159],
-"render__player_8h.html#a19d6393ae2cc5067313ebae7b3a4bf27":[8,0,3,55,181],
-"render__player_8h.html#a1af549fb35d04700f8d72b05a0691080":[8,0,3,55,130],
-"render__player_8h.html#a1b80982103b5703ff9f452ba53b70e73":[8,0,3,55,180],
-"render__player_8h.html#a1bab38db93bbe7e039a924bf527ce3e7":[8,0,3,55,83],
-"render__player_8h.html#a1c816d2b624b402635b26b8bbfe91eef":[8,0,3,55,6],
-"render__player_8h.html#a1d0730c291fc256d72d924ef6116ad63":[8,0,3,55,156],
-"render__player_8h.html#a1d333648c70c301a2be2f2b8bb953389":[8,0,3,55,139],
-"render__player_8h.html#a1d5802bd16936a9d499e22863359708d":[8,0,3,55,82],
-"render__player_8h.html#a1e341ed43afa4ff9634d871e3ae6e6ee":[8,0,3,55,178],
-"render__player_8h.html#a1ecd90a216e025282c0800ea5f356f47":[8,0,3,55,4],
-"render__player_8h.html#a1f3ba2aad3c58de75cfabcf891546b4b":[8,0,3,55,103],
-"render__player_8h.html#a20badceebdf8f9580d4c6c2f020934f2":[8,0,3,55,211]
+"render__player_8h.html#a182a19940777d289233a9950198ca6ee":[8,0,3,55,159]
 };

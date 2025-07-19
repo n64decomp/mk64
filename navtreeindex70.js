@@ -1,5 +1,17 @@
 var NAVTREEINDEX70 =
 {
+"luigi__raceway_2staff__ghost_8inc_8c.html":[8,0,0,10,8],
+"luigi__raceway_2staff__ghost_8inc_8c_source.html":[8,0,0,10,8],
+"macros_8h.html":[8,0,2,13],
+"macros_8h.html#a08b2c3c00c27891c0b0179c9d8a1c2b6":[8,0,2,13,0],
+"macros_8h.html#a0a3920b8b184cd75133b9e51c4c8d99d":[8,0,2,13,18],
+"macros_8h.html#a10664b2f9bc7d6aca323c2176607ed25":[8,0,2,13,6],
+"macros_8h.html#a38dd3cc47348bf50cffa34352cc93156":[8,0,2,13,11],
+"macros_8h.html#a3fcac48969e76bd4245894796b40b7b6":[8,0,2,13,1],
+"macros_8h.html#a4bf0a01781df461ad257e5391ac09ae7":[8,0,2,13,3],
+"macros_8h.html#a635e1ead21634c60d387a6602b27ada8":[8,0,2,13,7],
+"macros_8h.html#a6ee57cbc899a869579ce6c9a9d91481e":[8,0,2,13,4],
+"macros_8h.html#a8aacf963fc7253845c961ed3912d78a2":[8,0,2,13,10],
 "macros_8h.html#a8ce491b27b644889db1ca99d8c99c24e":[8,0,2,13,16],
 "macros_8h.html#a93a390d3f6c6f748f9ce929cf323168a":[8,0,2,13,8],
 "macros_8h.html#a981d727c769c9516175fef643b82477d":[8,0,2,13,12],
@@ -237,17 +249,5 @@ var NAVTREEINDEX70 =
 "main_8h.html#a393ed93dbcc21cf420c007add64c2d97":[8,0,3,41,157],
 "main_8h.html#a3a0697cf1e2b0c4ec6ddbf605926eac4":[8,0,3,41,28],
 "main_8h.html#a3c23059382c9061b9ee0db7c5ff9fbe7":[8,0,3,41,8],
-"main_8h.html#a3e7f5dc57f158b3772b2ab86f730b3d7":[8,0,3,41,12],
-"main_8h.html#a3e8b07d4dfd3c346ab1e694d67caec7b":[8,0,3,41,58],
-"main_8h.html#a400f2d70bc82560a81bed876f0314be7":[8,0,3,41,153],
-"main_8h.html#a43a622e651d4173986079d972ce4b032":[8,0,3,41,111],
-"main_8h.html#a46357dddbcd84888275e4cfc4716ffc5":[8,0,3,41,124],
-"main_8h.html#a47a548bbf988125912df970a7ec6aa64":[8,0,3,41,31],
-"main_8h.html#a4b6820ecb517ae844d72cb317e76c4e6":[8,0,3,41,65],
-"main_8h.html#a4d789d195e6fdd4b69cd8a0dd40b0647":[8,0,3,41,117],
-"main_8h.html#a4e4114ca0a38ca93f3df2c94b56c73a9":[8,0,3,41,48],
-"main_8h.html#a4f697d7f1105784e32df2656d15fb3a1":[8,0,3,41,87],
-"main_8h.html#a4f87d43525fe95f60ea92bc8a3b70e62":[8,0,3,41,39],
-"main_8h.html#a5005a83f9006657fc6010c87f9f6ba58":[8,0,3,41,73],
-"main_8h.html#a50c76a56d6f6bd77b6ea582444626431":[8,0,3,41,121]
+"main_8h.html#a3e7f5dc57f158b3772b2ab86f730b3d7":[8,0,3,41,12]
 };

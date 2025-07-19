@@ -205,11 +205,12 @@ var searchData=
   ['course_5fselect_5fmenu_5ffrom_5fquit_202',['COURSE_SELECT_MENU_FROM_QUIT',['../defines_8h.html#a337651c847b706a5fa2c8c02ae323db7',1,'defines.h']]],
   ['course_5ftimer_5fiter_203',['COURSE_TIMER_ITER',['../defines_8h.html#ab651d36bd66fc3e614b826872df411ea',1,'defines.h']]],
   ['course_5ftimer_5fiter_5ff_204',['COURSE_TIMER_ITER_f',['../defines_8h.html#a2f525ee1d4444807b6d6d63db4ec8579',1,'defines.h']]],
-  ['credits_5fsequence_205',['CREDITS_SEQUENCE',['../defines_8h.html#ab44391bcab18019b1dce1711ea9995c1',1,'defines.h']]],
-  ['cutscene_206',['CUTSCENE',['../ceremony__and__credits_8c.html#a8a5c0237779d67c7e4b5ae4cc942bde6',1,'ceremony_and_credits.c']]],
-  ['cvg_5fdst_5fclamp_207',['CVG_DST_CLAMP',['../gbi_8h.html#a769e8756ba583b0bd63bc9f22fda2cdb',1,'gbi.h']]],
-  ['cvg_5fdst_5ffull_208',['CVG_DST_FULL',['../gbi_8h.html#aa608e8bdc6034574d27c53baff196e1f',1,'gbi.h']]],
-  ['cvg_5fdst_5fsave_209',['CVG_DST_SAVE',['../gbi_8h.html#ad28025e31450fcbfb20f6e7daaae06dc',1,'gbi.h']]],
-  ['cvg_5fdst_5fwrap_210',['CVG_DST_WRAP',['../gbi_8h.html#a1e3e7d30082cb6e1959db313069da55e',1,'gbi.h']]],
-  ['cvg_5fx_5falpha_211',['CVG_X_ALPHA',['../gbi_8h.html#a253bd61ff62eba4c0446af1c46110f88',1,'gbi.h']]]
+  ['cpu_5ffast_5feffect_205',['CPU_FAST_EFFECT',['../defines_8h.html#aeeea4d02810240ac9a7b0d03eb653515',1,'defines.h']]],
+  ['credits_5fsequence_206',['CREDITS_SEQUENCE',['../defines_8h.html#ab44391bcab18019b1dce1711ea9995c1',1,'defines.h']]],
+  ['cutscene_207',['CUTSCENE',['../ceremony__and__credits_8c.html#a8a5c0237779d67c7e4b5ae4cc942bde6',1,'ceremony_and_credits.c']]],
+  ['cvg_5fdst_5fclamp_208',['CVG_DST_CLAMP',['../gbi_8h.html#a769e8756ba583b0bd63bc9f22fda2cdb',1,'gbi.h']]],
+  ['cvg_5fdst_5ffull_209',['CVG_DST_FULL',['../gbi_8h.html#aa608e8bdc6034574d27c53baff196e1f',1,'gbi.h']]],
+  ['cvg_5fdst_5fsave_210',['CVG_DST_SAVE',['../gbi_8h.html#ad28025e31450fcbfb20f6e7daaae06dc',1,'gbi.h']]],
+  ['cvg_5fdst_5fwrap_211',['CVG_DST_WRAP',['../gbi_8h.html#a1e3e7d30082cb6e1959db313069da55e',1,'gbi.h']]],
+  ['cvg_5fx_5falpha_212',['CVG_X_ALPHA',['../gbi_8h.html#a253bd61ff62eba4c0446af1c46110f88',1,'gbi.h']]]
 ];

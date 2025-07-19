@@ -2,20 +2,12 @@ var searchData=
 [
   ['u_5fcbuttons_0',['U_CBUTTONS',['../os_8h.html#a4e49cf555d366ccdf312acddaf9b90ac',1,'U_CBUTTONS:&#160;os.h'],['../os__cont_8h.html#a4e49cf555d366ccdf312acddaf9b90ac',1,'U_CBUTTONS:&#160;os_cont.h']]],
   ['u_5fjpad_1',['U_JPAD',['../os_8h.html#a8dc1c5424dfe2c222a8aff0bcde0b955',1,'U_JPAD:&#160;os.h'],['../os__cont_8h.html#a8dc1c5424dfe2c222a8aff0bcde0b955',1,'U_JPAD:&#160;os_cont.h']]],
-  ['unknown_5feffect_5f0x1_2',['UNKNOWN_EFFECT_0x1',['../defines_8h.html#aadb78c0ceeb138891e134a5ec90ad6ed',1,'defines.h']]],
-  ['unknown_5feffect_5f0x10_3',['UNKNOWN_EFFECT_0x10',['../defines_8h.html#ab48bff6cd0ed2e11713ebf5a7d8235ad',1,'UNKNOWN_EFFECT_0x10:&#160;defines.h'],['../defines_8h.html#ab48bff6cd0ed2e11713ebf5a7d8235ad',1,'UNKNOWN_EFFECT_0x10:&#160;defines.h']]],
-  ['unknown_5feffect_5f0x100_4',['UNKNOWN_EFFECT_0x100',['../defines_8h.html#abdafcfef69ac70f880def7a5870c4a04',1,'defines.h']]],
-  ['unknown_5feffect_5f0x1000_5',['UNKNOWN_EFFECT_0x1000',['../defines_8h.html#a12b30f45f25ffd04108b874e5e2bc963',1,'defines.h']]],
-  ['unknown_5feffect_5f0x10000_6',['UNKNOWN_EFFECT_0x10000',['../defines_8h.html#aceb46aa6f9f7319770d1324a7ced921c',1,'defines.h']]],
-  ['unknown_5feffect_5f0x1000000_7',['UNKNOWN_EFFECT_0x1000000',['../defines_8h.html#a03cf69615f60a668bed3fd9eea1f29b7',1,'defines.h']]],
-  ['unknown_5feffect_5f0x10000000_8',['UNKNOWN_EFFECT_0x10000000',['../defines_8h.html#a5a6718f73ba2ea4becbb7263614dfb37',1,'defines.h']]],
-  ['unknown_5feffect_5f0x200000_9',['UNKNOWN_EFFECT_0x200000',['../defines_8h.html#a95ef18843b47c2178269d3590cee26e5',1,'defines.h']]],
-  ['unknown_5feffect_5f0x40_10',['UNKNOWN_EFFECT_0x40',['../defines_8h.html#a45d26d77ae6aa8fd4c5e8f836b24fe64',1,'defines.h']]],
-  ['unknown_5feffect_5f0x80_11',['UNKNOWN_EFFECT_0x80',['../defines_8h.html#af6d872b97dc59d66480d0233d568c76d',1,'defines.h']]],
-  ['unknown_5feffect_5f0xc_12',['UNKNOWN_EFFECT_0xC',['../defines_8h.html#a6a11bf2c764db6604b20be6e31e88b23',1,'defines.h']]],
-  ['unused_13',['UNUSED',['../macros_8h.html#addf5ec070e9499d36b7f2009ce736076',1,'macros.h']]],
-  ['update_5freg_14',['UPDATE_REG',['../osEPiRawStartDma_8c.html#a9f68445808ae98c1a50579d2c5a95c7f',1,'UPDATE_REG:&#160;osEPiRawStartDma.c'],['../piint_8h.html#a9f68445808ae98c1a50579d2c5a95c7f',1,'UPDATE_REG:&#160;piint.h']]],
-  ['us_5ffloat_15',['US_FLOAT',['../internal_8h.html#aa8d5fa5d7506353e4e791caab237c721',1,'internal.h']]],
-  ['us_5ffloat2_16',['US_FLOAT2',['../internal_8h.html#a2f239f4efd736d565a88b9b82391fa08',1,'internal.h']]],
-  ['ut_5fvec_17',['UT_VEC',['../R4300_8h.html#a744b72afff2809906b8c3bf2d5f8f3e5',1,'R4300.h']]]
+  ['unknown_5feffect_5f0x10000000_2',['UNKNOWN_EFFECT_0x10000000',['../defines_8h.html#a5a6718f73ba2ea4becbb7263614dfb37',1,'defines.h']]],
+  ['unknown_5feffect_5f0x80000_3',['UNKNOWN_EFFECT_0x80000',['../defines_8h.html#a1177c299d1b477c5fff8fabed97ebee0',1,'defines.h']]],
+  ['unknown_5feffect_5f0x800000_4',['UNKNOWN_EFFECT_0x800000',['../defines_8h.html#aa1062a9908335b03e1243325e24c059c',1,'defines.h']]],
+  ['unused_5',['UNUSED',['../macros_8h.html#addf5ec070e9499d36b7f2009ce736076',1,'macros.h']]],
+  ['update_5freg_6',['UPDATE_REG',['../osEPiRawStartDma_8c.html#a9f68445808ae98c1a50579d2c5a95c7f',1,'UPDATE_REG:&#160;osEPiRawStartDma.c'],['../piint_8h.html#a9f68445808ae98c1a50579d2c5a95c7f',1,'UPDATE_REG:&#160;piint.h']]],
+  ['us_5ffloat_7',['US_FLOAT',['../internal_8h.html#aa8d5fa5d7506353e4e791caab237c721',1,'internal.h']]],
+  ['us_5ffloat2_8',['US_FLOAT2',['../internal_8h.html#a2f239f4efd736d565a88b9b82391fa08',1,'internal.h']]],
+  ['ut_5fvec_9',['UT_VEC',['../R4300_8h.html#a744b72afff2809906b8c3bf2d5f8f3e5',1,'R4300.h']]]
 ];
