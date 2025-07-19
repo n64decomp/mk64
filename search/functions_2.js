@@ -6,7 +6,8 @@ var searchData=
   ['bank_5fload_5fimmediate_3',['bank_load_immediate',['../load_8c.html#a50bf1c2ea23d6f19ae9fc9e59ccda202',1,'bank_load_immediate(s32 bankId, s32 arg1):&#160;load.c'],['../load_8h.html#a6419f1b73da584071051dcccbdab2537',1,'bank_load_immediate(s32, s32):&#160;load.c']]],
   ['bcmp_4',['bcmp',['../bstring_8h.html#a41defc2ecf285507e63eb254a8b427fd',1,'bstring.h']]],
   ['bcopy_5',['bcopy',['../bstring_8h.html#aa4c3aee2deb111efd7af25f98541c29a',1,'bcopy(const void *, void *, size_t):&#160;bstring.h'],['../os__libc_8h.html#aa4c3aee2deb111efd7af25f98541c29a',1,'bcopy(const void *, void *, size_t):&#160;os_libc.h']]],
-  ['blkclr_6',['blkclr',['../bstring_8h.html#a8f1a0f470802fada1c57bec05015a780',1,'bstring.h']]],
-  ['build_5fsynthetic_5fwave_7',['build_synthetic_wave',['../playback_8c.html#acd82370edabb02666da36b6537ef7ed2',1,'build_synthetic_wave(struct Note *note, struct SequenceChannelLayer *seqLayer, s32 waveId):&#160;playback.c'],['../playback_8h.html#acd82370edabb02666da36b6537ef7ed2',1,'build_synthetic_wave(struct Note *note, struct SequenceChannelLayer *seqLayer, s32 waveId):&#160;playback.c']]],
-  ['bzero_8',['bzero',['../bstring_8h.html#ab828ad07c8ebf898973f27778c543651',1,'bzero(void *, size_t):&#160;bstring.h'],['../os__libc_8h.html#ab828ad07c8ebf898973f27778c543651',1,'bzero(void *, size_t):&#160;os_libc.h']]]
+  ['begin_5flosing_5fceremony_5fsequence_6',['begin_losing_ceremony_sequence',['../external_8c.html#a78ccf7a3e5a59b8a9ee7985c72101469',1,'external.c']]],
+  ['blkclr_7',['blkclr',['../bstring_8h.html#a8f1a0f470802fada1c57bec05015a780',1,'bstring.h']]],
+  ['build_5fsynthetic_5fwave_8',['build_synthetic_wave',['../playback_8c.html#acd82370edabb02666da36b6537ef7ed2',1,'build_synthetic_wave(struct Note *note, struct SequenceChannelLayer *seqLayer, s32 waveId):&#160;playback.c'],['../playback_8h.html#acd82370edabb02666da36b6537ef7ed2',1,'build_synthetic_wave(struct Note *note, struct SequenceChannelLayer *seqLayer, s32 waveId):&#160;playback.c']]],
+  ['bzero_9',['bzero',['../bstring_8h.html#ab828ad07c8ebf898973f27778c543651',1,'bzero(void *, size_t):&#160;bstring.h'],['../os__libc_8h.html#ab828ad07c8ebf898973f27778c543651',1,'bzero(void *, size_t):&#160;os_libc.h']]]
 ];

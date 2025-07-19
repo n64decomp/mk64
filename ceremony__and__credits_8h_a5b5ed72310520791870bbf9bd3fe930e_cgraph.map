@@ -1,17 +1,17 @@
 <map id="play_cutscene" name="play_cutscene">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,120,56"/>
-<area shape="rect" id="Node000002" href="$ceremony__and__credits_8c.html#ad7eaa744a487416940013f05c90a2cd0" title=" " alt="" coords="199,5,300,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,33,185,24,185,29,121,38"/>
-<area shape="rect" id="Node000003" href="$ceremony__and__credits_8c.html#adf46bb9c06b61e3ec855348683c51608" title=" " alt="" coords="168,55,331,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="121,48,155,52,154,58,120,53"/>
-<area shape="rect" id="Node000004" href="$external_8c.html#ae71450546a81c5fa5a5ec8b5a529a5ef" title=" " alt="" coords="379,55,503,80"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="331,65,365,65,365,70,331,70"/>
-<area shape="rect" id="Node000005" href="$external_8c.html#ac48b7cbfcaa7737f892877ead85e4ba7" title=" " alt="" coords="723,55,845,80"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="485,52,550,39,613,35,675,39,726,49,725,54,674,45,613,40,551,45,487,57"/>
-<area shape="rect" id="Node000006" href="$external_8c.html#afcb6c1c892ff72b06f548327e6e21586" title=" " alt="" coords="551,55,675,80"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="503,65,537,65,537,70,503,70"/>
-<area shape="rect" id="Node000007" href="$external_8c.html#abe95a0078365cac07b3648b4a92dca8e" title=" " alt="" coords="551,104,674,129"/>
-<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="486,77,555,98,554,103,485,83"/>
-<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="675,65,709,65,709,70,675,70"/>
-<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="657,101,725,82,726,87,658,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,52,120,77"/>
+<area shape="rect" id="Node000002" href="$ceremony__and__credits_8c.html#a5887e2e7b3571606f1f22a42863e229b" title=" " alt="" coords="168,15,336,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,53,154,48,155,53,120,58"/>
+<area shape="rect" id="Node000007" href="$ceremony__and__credits_8c.html#ad7eaa744a487416940013f05c90a2cd0" title=" " alt="" coords="201,80,303,105"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="120,70,188,80,187,86,120,76"/>
+<area shape="rect" id="Node000003" href="$external_8c.html#a78ccf7a3e5a59b8a9ee7985c72101469" title=" " alt="" coords="384,15,560,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,33,370,33,370,38,336,38"/>
+<area shape="rect" id="Node000004" href="$external_8c.html#ac48b7cbfcaa7737f892877ead85e4ba7" title=" " alt="" coords="783,23,905,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="560,14,608,7,671,3,735,7,786,17,785,22,734,13,671,8,608,13,561,19"/>
+<area shape="rect" id="Node000005" href="$external_8c.html#ad99507ba223474857829e7c56bd45fd1" title=" " alt="" coords="612,23,731,48"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="560,33,598,33,598,38,560,38"/>
+<area shape="rect" id="Node000006" href="$external_8c.html#a09ce26bd251215683216e0001814799c" title=" " alt="" coords="608,72,735,97"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="554,53,607,66,606,71,553,58"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="731,33,769,33,769,38,731,38"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="716,69,785,49,786,54,717,74"/>
 </map>
