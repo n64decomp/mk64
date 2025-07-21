@@ -351,15 +351,15 @@ void func_80003040(void) {
             break;
         case COURSE_SHERBET_LAND:
             // d_course_sherbet_land_packed_dl_1EB8
-            find_vtx_and_set_colours(0x07001EB8, 76, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x07001EB8, 180, 0xFF, 0xFF, 0xFF);
             // d_course_sherbet_land_packed_dl_2308
-            find_vtx_and_set_colours(0x07002308, 106, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x07002308, 150, 0xFF, 0xFF, 0xFF);
             break;
         case COURSE_RAINBOW_ROAD:
             // d_course_rainbow_road_packed_dl_2068
-            find_vtx_and_set_colours(0x07002068, 106, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x07002068, 150, 0xFF, 0xFF, 0xFF);
             // d_course_rainbow_road_packed_dl_1E18
-            find_vtx_and_set_colours(0x07001E18, 106, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x07001E18, 150, 0xFF, 0xFF, 0xFF);
             // d_course_rainbow_road_packed_dl_1318
             find_vtx_and_set_colours(0x07001318, 255, 0xFF, 0xFF, 0);
             break;

@@ -361,7 +361,7 @@ void handle_trains_interactions(s32 playerId, Player* player) {
     s32 passengerCarIndex;
 
     if (D_801631E0[playerId] != true) {
-        if (!(player->effects & UNKNOWN_EFFECT_0x1000000)) {
+        if (!(player->effects & EXPLOSION_CRASH_EFFECT)) {
             playerPosX = player->pos[0];
             playerPosZ = player->pos[2];
             for (trainIndex = 0; trainIndex < NUM_TRAINS; trainIndex++) {
@@ -605,7 +605,7 @@ void handle_paddle_boats_interactions(Player* player) {
     f32 playerZ;
     f32 playerY;
 
-    if (!((player->effects & UNKNOWN_EFFECT_0x1000000)) && (!(player->effects & HIT_BY_ITEM_EFFECT))) {
+    if (!((player->effects & EXPLOSION_CRASH_EFFECT)) && (!(player->effects & HIT_BY_STAR_EFFECT))) {
         playerX = player->pos[0];
         playerY = player->pos[1];
         playerZ = player->pos[2];
@@ -788,7 +788,7 @@ void handle_vehicle_interactions(s32 playerId, Player* player, VehicleStuff* veh
     f32 playerZ;
 
     if (((D_801631E0[playerId] != true) || ((((player->type & PLAYER_HUMAN) != 0)) && !(player->type & PLAYER_CPU))) &&
-        !(player->effects & UNKNOWN_EFFECT_0x1000000)) {
+        !(player->effects & EXPLOSION_CRASH_EFFECT)) {
 
         playerX = player->pos[0];
         playerY = player->pos[1];

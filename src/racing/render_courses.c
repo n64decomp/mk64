@@ -1547,13 +1547,13 @@ void course_generate_collision_mesh(void) {
             parse_course_displaylists((uintptr_t) d_course_koopa_troopa_beach_addr);
             func_80295C6C();
             // d_course_koopa_troopa_beach_packed_dl_ADE0
-            find_vtx_and_set_colours((uintptr_t) 0x0700ADE0, 106, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) 0x0700ADE0, 150, 255, 255, 255);
             // d_course_koopa_troopa_beach_packed_dl_A540
-            find_vtx_and_set_colours((uintptr_t) 0x0700A540, 106, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) 0x0700A540, 150, 255, 255, 255);
             // d_course_koopa_troopa_beach_packed_dl_9E70
-            find_vtx_and_set_colours((uintptr_t) 0x07009E70, 106, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) 0x07009E70, 150, 255, 255, 255);
             // d_course_koopa_troopa_beach_packed_dl_358
-            find_vtx_and_set_colours((uintptr_t) 0x07000358, 106, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) 0x07000358, 150, 255, 255, 255);
             break;
         case COURSE_ROYAL_RACEWAY:
             parse_course_displaylists((uintptr_t) d_course_royal_raceway_addr);
@@ -1590,9 +1590,9 @@ void course_generate_collision_mesh(void) {
             func_80295C6C();
             D_8015F8E4 = -18.0f;
             // d_course_sherbet_land_packed_dl_1EB8
-            find_vtx_and_set_colours((uintptr_t) 0x07001EB8, 76, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) 0x07001EB8, 180, 255, 255, 255);
             // d_course_sherbet_land_packed_dl_2308
-            find_vtx_and_set_colours((uintptr_t) 0x07002308, 106, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) 0x07002308, 150, 255, 255, 255);
             break;
         case COURSE_RAINBOW_ROAD:
             D_800DC5C8 = 1;
@@ -1600,14 +1600,14 @@ void course_generate_collision_mesh(void) {
             func_80295C6C();
             D_8015F8E4 = 0.0f;
             // d_course_rainbow_road_packed_dl_2068
-            find_vtx_and_set_colours((uintptr_t) 0x07002068, 106, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) 0x07002068, 150, 255, 255, 255);
             // d_course_rainbow_road_packed_dl_1E18
-            find_vtx_and_set_colours((uintptr_t) 0x07001E18, 106, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) 0x07001E18, 150, 255, 255, 255);
             // d_course_rainbow_road_packed_dl_1318
             find_vtx_and_set_colours((uintptr_t) 0x07001318, 255, 255, 255, 0);
             if (gGamestate != CREDITS_SEQUENCE) {
                 // d_course_rainbow_road_packed_dl_1FB8
-                find_vtx_and_set_colours((uintptr_t) 0x07001FB8, 106, 255, 255, 255);
+                find_vtx_and_set_colours((uintptr_t) 0x07001FB8, 150, 255, 255, 255);
             }
             break;
         case COURSE_WARIO_STADIUM:
