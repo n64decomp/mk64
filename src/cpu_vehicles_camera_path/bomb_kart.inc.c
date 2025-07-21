@@ -139,7 +139,7 @@ void func_8000DF8C(s32 bombKartId) {
                     if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) + (temp_f12 * temp_f12)) < 25.0f) {
                         var_s1 = 0;
                         sp7E = 4;
-                        var_v0->soundEffects |= 0x400000;
+                        var_v0->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         var_v0->type &= ~0x2000;
                     }
                 }
@@ -147,7 +147,7 @@ void func_8000DF8C(s32 bombKartId) {
 
                 for (var_a0 = 0; var_a0 < gPlayerCount; var_a0++) {
                     var_v0 = &gPlayers[var_a0];
-                    if (!(var_v0->effects & 0x80000000)) {
+                    if (!(var_v0->effects & BOO_EFFECT)) {
                         temp_f0 = var_f22 - var_v0->pos[0];
                         temp_f2 = var_f20 - var_v0->pos[1];
                         temp_f12 = var_f24 - var_v0->pos[2];
@@ -155,9 +155,9 @@ void func_8000DF8C(s32 bombKartId) {
                             sp7E = 4;
                             var_s1 = 0;
                             if (gCurrentCourseId == COURSE_FRAPPE_SNOWLAND) {
-                                var_v0->soundEffects |= 0x01000000;
+                                var_v0->triggers |= HIT_BY_STAR_TRIGGER;
                             } else {
-                                var_v0->soundEffects |= 0x400000;
+                                var_v0->triggers |= VERTICAL_TUMBLE_TRIGGER;
                             }
                         }
                     }

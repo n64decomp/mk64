@@ -362,7 +362,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     arg2[0] = camera->lookAt[0];
     arg2[1] = camera->lookAt[1];
     arg2[2] = camera->lookAt[2];
-    if ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) {
+    if ((player->effects & EXPLOSION_CRASH_EFFECT) == EXPLOSION_CRASH_EFFECT) {
         sp84[2] /= 3.0f;
     }
     calculate_orientation_matrix(sp9C, 0, 1, 0, arg7);
@@ -375,7 +375,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     arg2[0] += (x - camera->lookAt[0]) * D_80164A78[index];
     arg2[2] += ((z - camera->lookAt[2]) * D_80164A78[index]);
 
-    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
+    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & HOP_EFFECT) == HOP_EFFECT)) {
         arg2[1] += ((y - camera->lookAt[1]) * 0.02);
     } else {
         arg2[1] += ((y - camera->lookAt[1]) * 0.5);
@@ -383,7 +383,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     mtxf_transform_vec3f_mat3(sp90, sp9C);
     x = player->pos[0] + sp90[0];
     z = player->pos[2] + sp90[2];
-    if ((player->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000) {
+    if ((player->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT) {
         var_f0 = player->pos[1] + sp90[1];
         // permute
         y = var_f0;
@@ -394,7 +394,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     *arg3 = camera->pos[0] + ((x - camera->pos[0]) * D_80164A78[index]);
     *arg5 = camera->pos[2] + ((z - camera->pos[2]) * D_80164A78[index]);
 
-    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
+    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & HOP_EFFECT) == HOP_EFFECT)) {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.01));
     } else {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
@@ -582,7 +582,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     arg2[0] = camera->lookAt[0];
     arg2[1] = camera->lookAt[1];
     arg2[2] = camera->lookAt[2];
-    if ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) {
+    if ((player->effects & EXPLOSION_CRASH_EFFECT) == EXPLOSION_CRASH_EFFECT) {
         sp84[2] /= 3.0f;
     }
     calculate_orientation_matrix(sp9C, 0, 1, 0, arg7);
@@ -595,7 +595,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     arg2[0] += (x - camera->lookAt[0]) * D_80164A78[index];
     arg2[2] += ((z - camera->lookAt[2]) * D_80164A78[index]);
 
-    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
+    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & HOP_EFFECT) == HOP_EFFECT)) {
         arg2[1] += ((y - camera->lookAt[1]) * 0.02);
     } else {
         arg2[1] += ((y - camera->lookAt[1]) * 0.5);
@@ -603,7 +603,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     mtxf_transform_vec3f_mat3(sp90, sp9C);
     x = player->pos[0] + sp90[0];
     z = player->pos[2] + sp90[2];
-    if ((player->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000) {
+    if ((player->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT) {
         var_f0 = player->pos[1] + sp90[1];
         // permute
         y = var_f0;
@@ -614,7 +614,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     *arg3 = camera->pos[0] + ((x - camera->pos[0]) * D_80164A78[index]);
     *arg5 = camera->pos[2] + ((z - camera->pos[2]) * D_80164A78[index]);
 
-    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
+    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & HOP_EFFECT) == HOP_EFFECT)) {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.01));
     } else {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
@@ -704,21 +704,21 @@ void func_8001E45C(Camera* camera, Player* player, s8 arg2) {
     UNUSED s16 pad6;
     s16 temp;
 
-    if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+    if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         var_a3 = 100;
         if (player->unk_078 == 0) {
             camera->unk_B0 = 0;
         } else {
             if (player->unk_078 < 0) {
                 var_a3 = 0xA5 - (player->unk_078 / 2);
-                if ((player->effects & 0x20000000) == 0x20000000) {
+                if ((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) {
                     move_s16_towards(&camera->unk_B0, -0x0B60, 0.1f);
                 } else {
                     move_s16_towards(&camera->unk_B0, -0x0888, 0.1f);
                 }
             } else {
                 var_a3 = (player->unk_078 / 2) + 0xA5;
-                if ((player->effects & 0x20000000) == 0x20000000) {
+                if ((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) {
                     move_s16_towards(&camera->unk_B0, 0x0B60, 0.1f);
                 } else {
                     move_s16_towards(&camera->unk_B0, 0x0888, 0.1f);
@@ -729,7 +729,7 @@ void func_8001E45C(Camera* camera, Player* player, s8 arg2) {
         move_s16_towards(&camera->unk_B0, 0, 0.05f);
         var_a3 = ((s16) camera->unk_2C / 182) - ((s16) player->rotation[1] / 182);
         if (player->unk_078 == 0) {
-            if ((player->effects & 0x20) == 0x20) {
+            if ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) {
                 var_a3 = 0x02D8;
             } else {
                 var_a3 = 0x01F4;
@@ -746,11 +746,14 @@ void func_8001E45C(Camera* camera, Player* player, s8 arg2) {
             var_a3 = (player->unk_078 / 2) + 0xA5;
         }
     }
-    if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
-        ((player->effects & 0x4000) == 0x4000) || ((player->effects & 0x80000) == 0x80000) ||
-        ((player->effects & 0x800000) == 0x800000) || (((player->effects & 0x20) == 0x20) && (player->unk_078 != 0)) ||
+    if (((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
+        ((player->effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) ||
+        ((player->effects & EARLY_START_SPINOUT_EFFECT) == EARLY_START_SPINOUT_EFFECT) ||
+        ((player->effects & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
+        ((player->effects & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) ||
+        (((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) && (player->unk_078 != 0)) ||
         (player->collision.surfaceDistance[0] <= 0.0f) || (player->collision.surfaceDistance[1] <= 0.0f) ||
-        ((player->effects & 0x20000) == 0x20000)) {
+        ((player->effects & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT)) {
         func_8001CCEC(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
         adjust_angle(&camera->unk_2C, (s16) (player->rotation[1] + camera->unk_B0), var_a3);
@@ -826,7 +829,7 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
     UNUSED s16 pad6;
     s16 temp;
 
-    if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+    if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         var_a3 = 100;
         if (player->unk_078 == 0) {
             camera->unk_B0 = 0;
@@ -834,14 +837,14 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
             if (player->unk_078 < 0) {
                 var_a3 = 0xA5 - (player->unk_078 / 2);
 
-                if ((player->effects & 0x20000000) == 0x20000000) {
+                if ((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) {
                     move_s16_towards(&camera->unk_B0, -0x0B60, 0.1f);
                 } else {
                     move_s16_towards(&camera->unk_B0, -0x0888, 0.1f);
                 }
             } else {
                 var_a3 = (player->unk_078 / 2) + 0xA5;
-                if ((player->effects & 0x20000000) == 0x20000000) {
+                if ((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) {
                     move_s16_towards(&camera->unk_B0, 0x0B60, 0.1f);
                 } else {
                     move_s16_towards(&camera->unk_B0, 0x0888, 0.1f);
@@ -852,7 +855,7 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
         move_s16_towards(&camera->unk_B0, 0, 0.05f);
         var_a3 = ((s16) camera->unk_2C / 182) - ((s16) player->rotation[1] / 182);
         if (player->unk_078 == 0) {
-            if ((player->effects & 0x20) == 0x20) {
+            if ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) {
                 var_a3 = 0x02D8;
             } else {
                 var_a3 = 0x01F4;
@@ -869,11 +872,14 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
             var_a3 = (player->unk_078 / 2) + 0xA5;
         }
     }
-    if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
-        ((player->effects & 0x4000) == 0x4000) || ((player->effects & 0x80000) == 0x80000) ||
-        ((player->effects & 0x800000) == 0x800000) || (((player->effects & 0x20) == 0x20) && (player->unk_078 != 0)) ||
+    if (((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
+        ((player->effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) ||
+        ((player->effects & EARLY_START_SPINOUT_EFFECT) == EARLY_START_SPINOUT_EFFECT) ||
+        ((player->effects & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
+        ((player->effects & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) ||
+        (((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) && (player->unk_078 != 0)) ||
         (player->collision.surfaceDistance[0] <= 0.0f) || (player->collision.surfaceDistance[1] <= 0.0f) ||
-        ((player->effects & 0x20000) == 0x20000)) {
+        ((player->effects & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT)) {
         func_8001D944(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
         adjust_angle(&camera->unk_2C, (s16) (player->rotation[1] + camera->unk_B0), var_a3);
@@ -1024,26 +1030,27 @@ void func_8001F394(Player* player, f32* arg1) {
     }
 
     if (D_80164A08[playerIndex] == 0) {
-        if (player->soundEffects & HOLD_BANANA_SOUND_EFFECT) {
+        if (player->triggers & DRAG_ITEM_EFFECT) {
             D_80164A08[playerIndex] = 1;
         }
-        if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
+        if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
             D_80164A08[playerIndex] = 2;
         }
         if ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) {
             D_80164A08[playerIndex] = 3;
         }
-        if ((player->soundEffects & 0x100) == 0x100) {
+        if ((player->triggers & THWOMP_SQUISH_TRIGGER) == THWOMP_SQUISH_TRIGGER) {
             D_80164A08[playerIndex] = 4;
         }
-        if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) {
+        if (((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
+            ((player->effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT)) {
             D_80164A08[playerIndex] = 5;
         }
         D_80164498[playerIndex] = 0.0f;
     }
     switch (D_80164A08[playerIndex]) {
         case 1:
-            if (player->soundEffects & HOLD_BANANA_SOUND_EFFECT) {
+            if (player->triggers & DRAG_ITEM_EFFECT) {
                 move_f32_towards(&D_80164498[playerIndex], 20.0f, 0.2f);
             } else {
                 if (D_80164498[playerIndex] > 1.0f) {
@@ -1055,7 +1062,7 @@ void func_8001F394(Player* player, f32* arg1) {
             }
             break;
         case 2:
-            if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
+            if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
                 if (player->boostTimer != 0) {
                     move_f32_towards(&D_80164498[playerIndex], 8.0f, 0.2f);
                 }
@@ -1070,7 +1077,7 @@ void func_8001F394(Player* player, f32* arg1) {
             break;
         case 3:
             if (((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) &&
-                ((player->effects & 8) == 8)) {
+                ((player->effects & MIDAIR_EFFECT) == MIDAIR_EFFECT)) {
                 move_f32_towards(&D_80164498[playerIndex], 20.0f, 0.1f);
             } else {
                 if (D_80164498[playerIndex] > 1.0f) {
@@ -1082,7 +1089,7 @@ void func_8001F394(Player* player, f32* arg1) {
             }
             break;
         case 4:
-            if ((player->soundEffects & 0x100) == 0x100) {
+            if ((player->triggers & THWOMP_SQUISH_TRIGGER) == THWOMP_SQUISH_TRIGGER) {
                 move_f32_towards(&D_80164498[playerIndex], 25.0f, 1.0f);
             } else {
                 if (D_80164498[playerIndex] > 1.0f) {
@@ -1094,7 +1101,8 @@ void func_8001F394(Player* player, f32* arg1) {
             }
             break;
         case 5:
-            if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) {
+            if (((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
+                ((player->effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT)) {
                 move_f32_towards(&D_80164498[playerIndex], 18.0f, 0.2f);
             } else {
                 if (D_80164498[playerIndex] > 1.0f) {

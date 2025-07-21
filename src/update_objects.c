@@ -161,26 +161,18 @@ s32 add_unused_obj_index(s32* listIdx, s32* nextFree, s32 size) {
     }
     count = 0;
     id = &listIdx[*nextFree];
-    /**
-     * @todo This HAS to be a for-loop of some variety, but I can't make a for-loop to match.
-     * If you replace this with ```for(var_v1 = 0; var_v1 < size; var_v1++)```
-     * The diff gets massive.
-     */
-    if (size > 0) {
-    loop_3:
+
+    for (count = 0; count < size; count++) {
         if (*id == NULL_OBJECT_ID) {
             objectIndex = find_unused_obj_index(id);
             *nextFree += 1;
+            break;
         } else {
             *nextFree += 1;
             if (*nextFree >= size) {
                 *nextFree = 0;
             }
-            count += 1;
             id = &listIdx[*nextFree];
-            if (count != size) { // check if don't check all element of the list
-                goto loop_3;
-            }
         }
     }
     if (count == size) {
@@ -3152,7 +3144,7 @@ void func_80079860(s32 playerId) {
     player = &gPlayerOne[playerId];
     if ((func_80072354(objectIndex, 1) != 0) &&
         (((func_802ABDF4(player->collision.meshIndexZX) != 0) && (player->collision.surfaceDistance[2] <= 3.0f)) ||
-         (player->unk_0CA & 1) || ((player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & 8)))) {
+         (player->unk_0CA & 1) || ((player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & MIDAIR_EFFECT)))) {
         func_80090778(player);
         func_800797AC(playerId);
     }
@@ -3476,7 +3468,7 @@ void update_object_lakitu_reverse(s32 objectIndex, s32 playerId) {
     }
     switch (gObjectList[objectIndex].unk_0D6) { /* switch 1; irregular */
         case 1:                                 /* switch 1 */
-            if ((gObjectList[objectIndex].state >= 3) && (!(sp2C->effects & 0x400000))) {
+            if ((gObjectList[objectIndex].state >= 3) && (!(sp2C->effects & REVERSE_EFFECT))) {
                 func_80086F10(objectIndex, 6, &D_800E69F4);
                 gObjectList[objectIndex].unk_0D6 = 2;
                 gObjectList[objectIndex].unk_04C = 0x00000050;
@@ -3536,7 +3528,7 @@ void func_8007A88C(s32 playerId) {
     objectIndex = gIndexLakituList[playerId];
     player = &gPlayerOne[playerId];
 
-    if ((gObjectList[objectIndex].state == 0) && (player->effects & 0x400000)) {
+    if ((gObjectList[objectIndex].state == 0) && (player->effects & REVERSE_EFFECT)) {
         func_800790E4(playerId);
     }
 }
@@ -5981,12 +5973,12 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
 
     temp_s0 = &gPlayerOne[playerId];
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        if (!(temp_s0->soundEffects & 0x100)) {
+        if (!(temp_s0->triggers & THWOMP_SQUISH_TRIGGER)) {
             temp_f0 = func_80088F54(objectIndex, temp_s0);
-            if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) &&
+            if ((temp_f0 <= 9.0) && !(temp_s0->effects & SQUISH_EFFECT) &&
                 (has_collided_horizontally_with_player(objectIndex, temp_s0) != 0)) {
                 if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & 0x100)) {
-                    if (!(temp_s0->effects & 0x200)) {
+                    if (!(temp_s0->effects & STAR_EFFECT)) {
                         func_80089474(objectIndex, playerId, 1.4f, 1.1f, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x4C));
                     } else if (func_80072354(objectIndex, 0x00000040) != 0) {
                         if (temp_s0->type & 0x1000) {
@@ -6012,7 +6004,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
                     func_800722A4(objectIndex, 2);
                     temp_s0->unk_040 = (s16) objectIndex;
                     temp_s0->unk_046 |= 2;
-                    temp_s0->soundEffects |= 0x100;
+                    temp_s0->triggers |= THWOMP_SQUISH_TRIGGER;
                     func_80088FF0(temp_s0);
                 }
             }
@@ -6029,7 +6021,7 @@ void func_80080DE4(s32 arg0) {
     player = gPlayerOne;
     for (var_v1 = 0; var_v1 < NUM_PLAYERS; var_v1++, player++) {
         if (arg0 == player->unk_040) {
-            player->soundEffects &= ~0x100;
+            player->triggers &= ~THWOMP_SQUISH_TRIGGER;
             player->unk_040 = -1;
         }
     }
@@ -6386,7 +6378,7 @@ void func_80081D34(s32 objectIndex) {
     player = gPlayerOne;
     var_s4 = camera1;
     for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++, var_s4++) {
-        if ((is_obj_flag_status_active(objectIndex, 0x00000200) != 0) && !(player->effects & 0x80000000) &&
+        if ((is_obj_flag_status_active(objectIndex, 0x00000200) != 0) && !(player->effects & BOO_EFFECT) &&
             (has_collided_with_player(objectIndex, player) != 0)) {
             if ((player->type & PLAYER_EXISTS) && !(player->type & 0x100)) {
                 var_s5 = 1;
@@ -6394,10 +6386,10 @@ void func_80081D34(s32 objectIndex) {
                 if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
                 }
-                if (player->effects & 0x200) {
+                if (player->effects & STAR_EFFECT) {
                     func_800C9060(playerIndex, 0x1900A046U);
                 } else {
-                    player->soundEffects |= 2;
+                    player->triggers |= HIGH_TUMBLE_TRIGGER;
                 }
                 object->direction_angle[1] = var_s4->rot[1];
                 object->velocity[1] = (player->speed / 2) + 3.0;
