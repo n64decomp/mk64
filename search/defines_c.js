@@ -87,9 +87,12 @@ var searchData=
   ['leo_5ftrack_5fmode_84',['LEO_TRACK_MODE',['../os_8h.html#a5c1772986025d1cc08818e57c914efcd',1,'os.h']]],
   ['lightning_5feffect_85',['LIGHTNING_EFFECT',['../defines_8h.html#a8dbdabe3aa4cd649ab8c2c052ff0846d',1,'defines.h']]],
   ['lightning_5fstrike_5feffect_86',['LIGHTNING_STRIKE_EFFECT',['../defines_8h.html#a34df0bbf3026d34b4a3f572cd66ef1ea',1,'defines.h']]],
-  ['locomotive_5fonly_87',['LOCOMOTIVE_ONLY',['../vehicles_8h.html#a7bb7f90607adbbc2d74f3b248f820e09',1,'vehicles.h']]],
-  ['logo_5fintro_5fmenu_88',['LOGO_INTRO_MENU',['../defines_8h.html#a26c323982c7634f09f2d93900f27856d',1,'defines.h']]],
-  ['lost_5frace_5feffect_89',['LOST_RACE_EFFECT',['../defines_8h.html#a45d6d1d7f07149de1ee8086b9f3b6f91',1,'defines.h']]],
-  ['luigi_90',['LUIGI',['../defines_8h.html#a1ba3226d974a364d7682f44614e311d9',1,'defines.h']]],
-  ['luigi_5fsize_91',['LUIGI_SIZE',['../defines_8h.html#a57d2983415fa3cf8ab2a9bee6f087c7a',1,'defines.h']]]
+  ['lightning_5fstrike_5ftrigger_87',['LIGHTNING_STRIKE_TRIGGER',['../defines_8h.html#a8b62c4d0ecf9ddbd6e3eabec5a06e74b',1,'defines.h']]],
+  ['locomotive_5fonly_88',['LOCOMOTIVE_ONLY',['../vehicles_8h.html#a7bb7f90607adbbc2d74f3b248f820e09',1,'vehicles.h']]],
+  ['logo_5fintro_5fmenu_89',['LOGO_INTRO_MENU',['../defines_8h.html#a26c323982c7634f09f2d93900f27856d',1,'defines.h']]],
+  ['lose_5fbattle_5feffect_90',['LOSE_BATTLE_EFFECT',['../defines_8h.html#a60528aaa3366d7dfd35145c2bfd62f69',1,'defines.h']]],
+  ['lost_5frace_5feffect_91',['LOST_RACE_EFFECT',['../defines_8h.html#a45d6d1d7f07149de1ee8086b9f3b6f91',1,'defines.h']]],
+  ['low_5ftumble_5ftrigger_92',['LOW_TUMBLE_TRIGGER',['../defines_8h.html#a31213c9fb13bbc97f0ae1e30c1a6b1cf',1,'defines.h']]],
+  ['luigi_93',['LUIGI',['../defines_8h.html#a1ba3226d974a364d7682f44614e311d9',1,'defines.h']]],
+  ['luigi_5fsize_94',['LUIGI_SIZE',['../defines_8h.html#a57d2983415fa3cf8ab2a9bee6f087c7a',1,'defines.h']]]
 ];

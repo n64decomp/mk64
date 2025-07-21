@@ -2,7 +2,7 @@ var player__controller_8c =
 [
     [ "apply_cpu_turn", "player__controller_8c.html#a320c24f0c2de049f9e6ba453bad28d0d", null ],
     [ "apply_effect", "player__controller_8c.html#ae1e0f1d135400016f11a5385b2dc63fb", null ],
-    [ "apply_sound_effect", "player__controller_8c.html#ac1629fdff5af23b077201884ffff7f59", null ],
+    [ "apply_triggers", "player__controller_8c.html#a11a2ec537f347797e51ff2729b883678", null ],
     [ "control_cpu_movement", "player__controller_8c.html#a5bb23c788b1a40f8ed2a56ccbd4d5aea", null ],
     [ "detect_triple_a_combo_a_pressed", "player__controller_8c.html#af664eee1a948701ecb82a1ed9d3881c1", null ],
     [ "detect_triple_a_combo_a_released", "player__controller_8c.html#a87754d3029a46143393b05d7b80c5095", null ],

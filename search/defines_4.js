@@ -135,9 +135,11 @@ var searchData=
   ['dps_5ftbist_5fgo_132',['DPS_TBIST_GO',['../rcp_8h.html#ad6f9075b0e2812973deb37ad033f6c9b',1,'rcp.h']]],
   ['dps_5ftbist_5freg_133',['DPS_TBIST_REG',['../rcp_8h.html#a6320aa79249e08e8808e1d3c3f97d6a5',1,'rcp.h']]],
   ['dps_5ftest_5fmode_5freg_134',['DPS_TEST_MODE_REG',['../rcp_8h.html#a69cdd08ac590962d828a1570f53ccf0c',1,'rcp.h']]],
-  ['draw_5fcode_135',['DRAW_CODE',['../crash__screen_8c.html#a6e86d9bd5fab8cd3013afe8a9d74d1dd',1,'crash_screen.c']]],
-  ['drift_5foutside_5feffect_136',['DRIFT_OUTSIDE_EFFECT',['../defines_8h.html#a8781fa97e3e2ac35c91ea7c69532963f',1,'defines.h']]],
-  ['drifting_5feffect_137',['DRIFTING_EFFECT',['../defines_8h.html#a3e226e3ad50d318aa0e7dfa1be372961',1,'defines.h']]],
-  ['driving_5fspinout_5feffect_138',['DRIVING_SPINOUT_EFFECT',['../defines_8h.html#a49c6b424bbbde8727e6b64661cc66963',1,'defines.h']]],
-  ['dvdl_139',['DVDL',['../debug_8h.html#a24dcc0e2be4e5fd7da6da57d3477edea',1,'debug.h']]]
+  ['drag_5fitem_5feffect_135',['DRAG_ITEM_EFFECT',['../defines_8h.html#adc856e170e2775ef474d350e0179c09b',1,'defines.h']]],
+  ['draw_5fcode_136',['DRAW_CODE',['../crash__screen_8c.html#a6e86d9bd5fab8cd3013afe8a9d74d1dd',1,'crash_screen.c']]],
+  ['drift_5foutside_5feffect_137',['DRIFT_OUTSIDE_EFFECT',['../defines_8h.html#a8781fa97e3e2ac35c91ea7c69532963f',1,'defines.h']]],
+  ['drifting_5feffect_138',['DRIFTING_EFFECT',['../defines_8h.html#a3e226e3ad50d318aa0e7dfa1be372961',1,'defines.h']]],
+  ['driving_5fspinout_5feffect_139',['DRIVING_SPINOUT_EFFECT',['../defines_8h.html#a49c6b424bbbde8727e6b64661cc66963',1,'defines.h']]],
+  ['driving_5fspinout_5ftrigger_140',['DRIVING_SPINOUT_TRIGGER',['../defines_8h.html#aafd5522730cfe2fac2e8c4ee75e38742',1,'defines.h']]],
+  ['dvdl_141',['DVDL',['../debug_8h.html#a24dcc0e2be4e5fd7da6da57d3477edea',1,'debug.h']]]
 ];
