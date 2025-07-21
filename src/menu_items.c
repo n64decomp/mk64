@@ -2994,8 +2994,9 @@ Gfx* func_80096CD8(Gfx* displayListHead, s32 xPos, s32 yPos, u32 width, u32 heig
                 if (rectXoffset == 0) {
                     break;
                 }
-            } else
+            } else {
                 rectXoffset = tileWidth;
+            }
 
             gDPLoadTextureTile(displayListHead++, (D_0B002A00 + random_int(128) * 2), G_IM_FMT_IA, G_IM_SIZ_16b, width,
                                height, x, y, x + rectXoffset, y + rectYoffset, 0, G_TX_WRAP, G_TX_WRAP, masks, maskt,
@@ -3714,8 +3715,9 @@ void func_80099EC4(void) {
     var_s1 = D_8018E0E8;
     temp_s2 = var_s1->mk64Texture;
 
-    if (temp_s2 == NULL)
+    if (temp_s2 == NULL) {
         return;
+    }
 
     huh = temp_s2->size;
     if (huh != 0) {
@@ -3753,8 +3755,9 @@ void func_80099EC4(void) {
                    D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
-        if (var_s4 != 0)
+        if (var_s4 != 0) {
             break;
+        }
         osRecvMesg(&gDmaMesgQueue, &sp64, 1);
         if ((var_s1 + 1)->mk64Texture == NULL) {
             var_s4 += 1;
@@ -3777,8 +3780,9 @@ void func_80099EC4(void) {
                    D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
-        if (var_s4 != 0)
+        if (var_s4 != 0) {
             break;
+        }
         osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     }
 }
@@ -10975,7 +10979,8 @@ void func_800ACF40(MenuItem* arg0) {
             break;
         case 3:
             if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= D_800E8440[temp_a1]) {
-                func_8009A640(arg0->D_8018DEE0_index, 0, somePlayerIndex, segmented_to_virtual_dupe_2(D_800E83A0[temp_a1]));
+                func_8009A640(arg0->D_8018DEE0_index, 0, somePlayerIndex,
+                              segmented_to_virtual_dupe_2(D_800E83A0[temp_a1]));
                 arg0->state = 4;
             }
             break;
