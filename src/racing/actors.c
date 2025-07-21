@@ -1658,13 +1658,13 @@ bool collision_yoshi_egg(Player* player, struct YoshiValleyEgg* egg) {
             func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
         } else {
-            apply_hit_sound_effect(player, player - gPlayerOne);
+            trigger_squish(player, player - gPlayerOne);
             if ((gModeSelection == TIME_TRIALS) && ((player->type & PLAYER_CPU) == 0)) {
                 gPostTTReplayCannotSave = 1;
             }
         }
     } else {
-        apply_hit_sound_effect(player, player - gPlayerOne);
+        trigger_squish(player, player - gPlayerOne);
     }
 
     return true;
@@ -1862,7 +1862,7 @@ void destroy_destructable_actor(struct Actor* actor) {
                     break;
                 case HELD_BANANA:
                     player = &gPlayers[banana->playerId];
-                    player->soundEffects &= ~0x00040000;
+                    player->triggers &= ~DRAG_ITEM_EFFECT;
                     /* fallthrough */
                 case BANANA_ON_GROUND:
                     banana->flags = -0x8000;
@@ -1957,7 +1957,7 @@ void destroy_destructable_actor(struct Actor* actor) {
             fakeItemBox = (struct FakeItemBox*) actor;
             player = &gPlayers[(s16) fakeItemBox->playerId];
             if (fakeItemBox->state == HELD_FAKE_ITEM_BOX) {
-                player->soundEffects &= ~0x00040000;
+                player->triggers &= ~DRAG_ITEM_EFFECT;
             }
             fakeItemBox->state = DESTROYED_FAKE_ITEM_BOX;
             fakeItemBox->flags = -0x8000;
@@ -2081,7 +2081,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                 (BOO_EFFECT | BANANA_NEAR_SPINOUT_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) {
                 break;
             }
-            if (player->soundEffects & 1) {
+            if (player->triggers & HIT_BANANA_TRIGGER) {
                 break;
             }
             temp_v1 = actor->rot[0];
@@ -2089,7 +2089,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                 (query_collision_player_vs_actor_item(player, actor) != COLLISION)) {
                 break;
             }
-            player->soundEffects |= 1;
+            player->triggers |= HIT_BANANA_TRIGGER;
             owner = &gPlayers[temp_v1];
             if (owner->type & 0x4000) {
                 if (actor->flags & 0xF) {
@@ -2110,7 +2110,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             if (player->effects & (BOO_EFFECT | HIT_BY_GREEN_SHELL_EFFECT)) {
                 break;
             }
-            if (player->soundEffects & 4) {
+            if (player->triggers & LOW_TUMBLE_TRIGGER) {
                 break;
             }
             temp_v1 = actor->rot[2];
@@ -2118,7 +2118,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                 (query_collision_player_vs_actor_item(player, actor) != COLLISION)) {
                 break;
             }
-            player->soundEffects |= 4;
+            player->triggers |= LOW_TUMBLE_TRIGGER;
             func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             owner = &gPlayers[temp_v1];
             if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
@@ -2127,7 +2127,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             destroy_destructable_actor(actor);
             break;
         case ACTOR_BLUE_SPINY_SHELL:
-            if (player->soundEffects & 2) {
+            if (player->triggers & HIGH_TUMBLE_TRIGGER) {
                 break;
             }
             temp_v1 = actor->rot[2];
@@ -2136,7 +2136,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                 break;
             }
             if (!(player->effects & BOO_EFFECT)) {
-                player->soundEffects |= 2;
+                player->triggers |= HIGH_TUMBLE_TRIGGER;
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             }
             owner = &gPlayers[temp_v1];
@@ -2152,7 +2152,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             if (player->effects & EXPLOSION_CRASH_EFFECT) {
                 break;
             }
-            if (player->soundEffects & 2) {
+            if (player->triggers & HIGH_TUMBLE_TRIGGER) {
                 break;
             }
             temp_v1 = actor->rot[2];
@@ -2161,7 +2161,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                 break;
             }
             if (!(player->effects & BOO_EFFECT)) {
-                player->soundEffects |= 2;
+                player->triggers |= HIGH_TUMBLE_TRIGGER;
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             }
             owner = &gPlayers[temp_v1];
@@ -2206,7 +2206,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                     if (player->effects & STAR_EFFECT) {
                         actor->velocity[1] = 10.0f;
                     } else {
-                        apply_hit_sound_effect(player, player - gPlayerOne);
+                        trigger_squish(player, player - gPlayerOne);
                     }
                 }
             }
@@ -2221,7 +2221,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                 (query_collision_player_vs_actor_item(player, actor) != COLLISION)) {
                 break;
             }
-            player->soundEffects |= REVERSE_SOUND_EFFECT;
+            player->triggers |= VERTICAL_TUMBLE_TRIGGER;
             owner = &gPlayers[temp_v1];
             if (owner->type & 0x4000) {
                 if (actor->flags & 0xF) {
@@ -2236,7 +2236,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                     }
                 }
                 if (actor->state == 0) {
-                    owner->soundEffects &= ~0x00040000;
+                    owner->triggers &= ~DRAG_ITEM_EFFECT;
                 }
             }
             actor->state = 2;
