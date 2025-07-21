@@ -52,7 +52,6 @@ var NAVTREEINDEX92 =
 "race__logic_8h.html#a2645116d52469ec9b45c668d694e98c4":[8,0,3,8,11,11],
 "race__logic_8h.html#a2ac76336684bc3948c759d35cf5435b2":[8,0,3,8,11,32],
 "race__logic_8h.html#a3189893b0ea5d4a7b1d679edc52d78ed":[8,0,3,8,11,28],
-"race__logic_8h.html#a339cd39ca15c5863ed4307a0a9192e78":[8,0,3,8,11,33],
 "race__logic_8h.html#a356c21937c0221ceae8f34442bb2e820":[8,0,3,8,11,23],
 "race__logic_8h.html#a3e9f9e3af8403dbedd2e08adb6342fe7":[8,0,3,8,11,10],
 "race__logic_8h.html#a47f2e46e866e68495bc5792fb13f0d66":[8,0,3,8,11,3],
@@ -64,7 +63,7 @@ var NAVTREEINDEX92 =
 "race__logic_8h.html#a61d9300f16e004fdcaf6c29d12b31d32":[8,0,3,8,11,29],
 "race__logic_8h.html#a66020eab44dae8f0dc54c06c17f44e53":[8,0,3,8,11,21],
 "race__logic_8h.html#a662efb47ae5df81910b914a0277db461":[8,0,3,8,11,8],
-"race__logic_8h.html#a67c56a3784e4ac63074f9f2d879b2110":[8,0,3,8,11,35],
+"race__logic_8h.html#a67c56a3784e4ac63074f9f2d879b2110":[8,0,3,8,11,34],
 "race__logic_8h.html#a7f21a1ef55b61f5678170da62e5e51dc":[8,0,3,8,11,20],
 "race__logic_8h.html#a836d0734cc365cdfb4b35561107bfe4e":[8,0,3,8,11,12],
 "race__logic_8h.html#a9c6f4eb059607fcd18e4df0dcaaeec5b":[8,0,3,8,11,31],
@@ -75,7 +74,7 @@ var NAVTREEINDEX92 =
 "race__logic_8h.html#ace0a9e0f3aa6865267ff2c5e58613d5a":[8,0,3,8,11,26],
 "race__logic_8h.html#ad662382097107c855812aa65f2acbd49":[8,0,3,8,11,2],
 "race__logic_8h.html#adcc151267561a295d13a90cea8f0bf31":[8,0,3,8,11,14],
-"race__logic_8h.html#add62d9cde764b79f75bdda1e23560b29":[8,0,3,8,11,34],
+"race__logic_8h.html#add62d9cde764b79f75bdda1e23560b29":[8,0,3,8,11,33],
 "race__logic_8h.html#ae1563ce64a716f5d420505adc3e9b89d":[8,0,3,8,11,1],
 "race__logic_8h.html#aeb498a031d0fc8f31b5947bf329344f4":[8,0,3,8,11,7],
 "race__logic_8h.html#aefcaab1261ee66bab80118b8988b0a1f":[8,0,3,8,11,15],
@@ -249,5 +248,6 @@ var NAVTREEINDEX92 =
 "rainbow__road_2course__data_8h.html#a9a0670db71c50226a9be512039b61f1c":[8,0,0,13,1,55],
 "rainbow__road_2course__data_8h.html#a9ac8c87499fda3d9972936d52c3dfa39":[8,0,0,13,1,76],
 "rainbow__road_2course__data_8h.html#a9ad580d5bc81aeb42d09bc6c2e6f9a9b":[8,0,0,13,1,60],
-"rainbow__road_2course__data_8h.html#a9ae89ad6361280f6d4fa4175f2894490":[8,0,0,13,1,14]
+"rainbow__road_2course__data_8h.html#a9ae89ad6361280f6d4fa4175f2894490":[8,0,0,13,1,14],
+"rainbow__road_2course__data_8h.html#a9e081d427c046d08356fbca9cf0dd335":[8,0,0,13,1,33]
 };

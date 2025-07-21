@@ -1,6 +1,5 @@
 var NAVTREEINDEX115 =
 {
-"structObject.html#ac119943023c98ad6d4a7e7e080678178":[7,0,115,27],
 "structObject.html#acbb95928b8f6b3b7b7ce7a1ee600636d":[7,0,115,1],
 "structObject.html#acd56662e2cd8ae1de22450f59ba5cc81":[7,0,115,16],
 "structObject.html#acd592ea1870890b429c082cec0ce42c3":[7,0,115,15],
@@ -249,5 +248,6 @@ var NAVTREEINDEX115 =
 "structRailroadCrossing.html":[7,0,144],
 "structRailroadCrossing.html#a08df8cfa936281bcfa3e9c92bf413cf5":[7,0,144,10],
 "structRailroadCrossing.html#a0fbfb0fba4e5cadf01e818c2dc3ea23a":[7,0,144,9],
-"structRailroadCrossing.html#a2d3d0c41ebef172d7a36217adba08f60":[7,0,144,5]
+"structRailroadCrossing.html#a2d3d0c41ebef172d7a36217adba08f60":[7,0,144,5],
+"structRailroadCrossing.html#a32a153577e51ddfddefed879dfad7a02":[7,0,144,8]
 };

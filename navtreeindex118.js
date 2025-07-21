@@ -1,6 +1,5 @@
 var NAVTREEINDEX118 =
 {
-"structUnk__800E9F7C.html#ae8fed38a7f135f9e08adf0c2ae48518b":[7,0,209,7],
 "structUnk__800E9F7C.html#aff5da45aa2a91d4e2c8a88237fd81984":[7,0,209,0],
 "structUnk__800EA06C.html":[7,0,210],
 "structUnk__800EA06C.html#a47df6d2468982fc1601dc0f822aad05c":[7,0,210,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX118 =
 "structcredits__data__1FA0.html#af2cbf2d10951a249c473c7a0b9062264":[7,0,72,2],
 "structcredits__data__1FA0.html#afa65faaaadcae3add022517492f75075":[7,0,72,14],
 "structcredits__data__1FA0.html#afbf7d294952e405aa22e5cbe9384c495":[7,0,72,10],
-"structcredits__data__1FA0.html#aff5eb22f28d3472580a2bf7eaf2a586a":[7,0,72,17]
+"structcredits__data__1FA0.html#aff5eb22f28d3472580a2bf7eaf2a586a":[7,0,72,17],
+"structexceptionPreamble.html":[7,0,82]
 };

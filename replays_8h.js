@@ -11,11 +11,11 @@ var replays_8h =
     [ "func_80040174", "replays_8h.html#aaa8df3480c7ade28b5511c10c671eb33", null ],
     [ "load_course_ghost", "replays_8h.html#ada30ba013c97df306b243dbd89d8979f", null ],
     [ "load_player_ghost", "replays_8h.html#a83973fcda05d24a97b11dc1eca20aea5", null ],
-    [ "load_post_tt_replay", "replays_8h.html#a10b1800a3bd39fbda8e7dce9b035bbc6", null ],
+    [ "load_post_time_trial_replay", "replays_8h.html#ae7d61f2c74810b3ee3efdf03b4dcc3d2", null ],
     [ "mio0encode", "replays_8h.html#aee8d226c442bc6a60158a37eeef8656a", null ],
     [ "process_course_ghost_replay", "replays_8h.html#a54bf30e0f61649a5c1337da985154dd9", null ],
     [ "process_player_ghost_replay", "replays_8h.html#a1222747ec31ebcacce5ef87743ab4846", null ],
-    [ "process_replay_replay", "replays_8h.html#a01242a76a391cb23f35456c3f5a9837c", null ],
+    [ "process_post_time_trial_replay", "replays_8h.html#a34754865101fad6a4e3a9fc1b814c155", null ],
     [ "replays_loop", "replays_8h.html#a59a502f5731aede840d62afee090455f", null ],
     [ "set_staff_ghost", "replays_8h.html#a80fa9da37c18f25041a3ec02cec5cd25", null ],
     [ "bCourseGhostDisabled", "replays_8h.html#af977369c31c9c9e0bd2e0605d0c933ff", null ],
@@ -28,5 +28,5 @@ var replays_8h =
     [ "D_80162DE8", "replays_8h.html#a6391b1c00d3b9e1d73c43ca096ca1997", null ],
     [ "D_80162E00", "replays_8h.html#a0eb82092a448ee36c1e468dfa4765ce6", null ],
     [ "gPauseTriggered", "replays_8h.html#ab3a67a2b3cc3c0d0c925c07a4982a9f7", null ],
-    [ "gPostTTReplayCannotSave", "replays_8h.html#a5822ae29f83ecffbab185a83569704c0", null ]
+    [ "gPostTimeTrialReplayCannotSave", "replays_8h.html#a00d76e17b6cf4eab22dbc0a2cb1eeaf6", null ]
 ];

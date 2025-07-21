@@ -1,6 +1,5 @@
 var NAVTREEINDEX117 =
 {
-"structSplineData.html#a26e851c5551204840dee5ae9982c1ce4":[7,0,167,0],
 "structSplineData.html#a9f62364564a3fc4e264647e2b69c1621":[7,0,167,1],
 "structStaffGhost.html":[7,0,169],
 "structStaffGhost.html#a526c3c56c8a948b0e515848065f5bcc6":[7,0,169,2],
@@ -249,5 +248,6 @@ var NAVTREEINDEX117 =
 "structUnk__800E9F7C.html#a77e10a0f94eee2ccbdc8d6c0ce4b9f21":[7,0,209,4],
 "structUnk__800E9F7C.html#a82d24ddf3bf8b5a49d6affe4484769cb":[7,0,209,2],
 "structUnk__800E9F7C.html#a87c83f2ccddc2e170a2ac29a27a67502":[7,0,209,9],
-"structUnk__800E9F7C.html#aaf16346504718babc5e50ab18d945e68":[7,0,209,12]
+"structUnk__800E9F7C.html#aaf16346504718babc5e50ab18d945e68":[7,0,209,12],
+"structUnk__800E9F7C.html#ae8fed38a7f135f9e08adf0c2ae48518b":[7,0,209,7]
 };

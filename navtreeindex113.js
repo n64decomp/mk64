@@ -1,6 +1,5 @@
 var NAVTREEINDEX113 =
 {
-"structCrabSpawn.html#ae360b7292c549a8b6857c0663c8d7921":[7,0,71,0],
 "structCreditsRenderInfo.html":[7,0,73],
 "structCreditsRenderInfo.html#a070bc6dabde8bd85a94aa88bd5007036":[7,0,73,4],
 "structCreditsRenderInfo.html#a090acbb788424a45eded5604be6e88d5":[7,0,73,7],
@@ -249,5 +248,6 @@ var NAVTREEINDEX113 =
 "structMenuItem.html#a14129b9e200f59544ba7af3649358c93":[7,0,102,8],
 "structMenuItem.html#a1609ce8ea42dee7350b651817fdf91b4":[7,0,102,5],
 "structMenuItem.html#a1c31220f3d1e3db48b2d30b2a132c363":[7,0,102,11],
-"structMenuItem.html#a373ff30850cb50eff978e08b477ffd43":[7,0,102,9]
+"structMenuItem.html#a373ff30850cb50eff978e08b477ffd43":[7,0,102,9],
+"structMenuItem.html#a702d840ba8ce2cbcdaad15fc0c084100":[7,0,102,7]
 };

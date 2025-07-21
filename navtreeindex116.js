@@ -1,6 +1,5 @@
 var NAVTREEINDEX116 =
 {
-"structRailroadCrossing.html#a32a153577e51ddfddefed879dfad7a02":[7,0,144,8],
 "structRailroadCrossing.html#a5fd919ce89c0786852789ceacf5d690a":[7,0,144,1],
 "structRailroadCrossing.html#ab0b59419d7707e9d2f096730729ed2f5":[7,0,144,0],
 "structRailroadCrossing.html#ab9db8067085f28f314a19c64b7cad921":[7,0,144,7],
@@ -249,5 +248,6 @@ var NAVTREEINDEX116 =
 "structSplineControlPoint.html":[7,0,166],
 "structSplineControlPoint.html#a152d68920abe7000d46964cdb924aef4":[7,0,166,1],
 "structSplineControlPoint.html#a20b1849e16690c9f8a86155920a7a09b":[7,0,166,0],
-"structSplineData.html":[7,0,167]
+"structSplineData.html":[7,0,167],
+"structSplineData.html#a26e851c5551204840dee5ae9982c1ce4":[7,0,167,0]
 };

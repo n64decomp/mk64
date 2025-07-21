@@ -71,7 +71,6 @@ var save_8h =
     [ "validate_save_data", "save_8h.html#a8dc090a6f3860eb91143ff48d44df6b5", null ],
     [ "validate_save_data_checksum_backup", "save_8h.html#ab9bff5073d8eb0971f86030dde8bcd26", null ],
     [ "write_save_data_grand_prix_points_and_sound_mode", "save_8h.html#a2afb543114bf6836bf722730aed3fbc0", null ],
-    [ "D_800DC714", "save_8h.html#a679f0f383eed9f5e52a4506c9220788e", null ],
     [ "D_800F2E60", "save_8h.html#aed94f146270a96d82a32325c2c538765", null ],
     [ "D_80162DD6", "save_8h.html#a26fc0e5f675f4602960709d90df9ac8f", null ],
     [ "D_80162DE0", "save_8h.html#a909ba9a7cda091f75ea4d7e508e82c53", null ],
@@ -89,6 +88,7 @@ var save_8h =
     [ "gExtCode", "save_8h.html#a1bfb0d1d3a7dbeeb56a2ac8c3ce84a50", null ],
     [ "gGameCode", "save_8h.html#a2cd84a7b5994c8883c29c2ac2c4fa863", null ],
     [ "gGameName", "save_8h.html#abb029e0b19248952b65c7fae2da31382", null ],
+    [ "gReplayGhostCompressed", "save_8h.html#adb82b3575b5edee855a069cc37937215", null ],
     [ "pfsError", "save_8h.html#a58a8022099c802b7ec83d22a0afa4e12", null ],
     [ "pfsState", "save_8h.html#ac66c1aa10fb7f6d4fecdb722fde6ce15", null ],
     [ "sControllerPak2State", "save_8h.html#acf34c97df90c2045ed58664182ea5d21", null ]

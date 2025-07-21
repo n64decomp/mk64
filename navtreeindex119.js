@@ -1,6 +1,5 @@
 var NAVTREEINDEX119 =
 {
-"structexceptionPreamble.html":[7,0,82],
 "structexceptionPreamble.html#a24df675a64592bdd350c23dd4914e843":[7,0,82,1],
 "structexceptionPreamble.html#a298bf389ef8a63e27e6459d6f47e7482":[7,0,82,2],
 "structexceptionPreamble.html#aa74d1fa5f5ddb5fd71a3a96a9e4560d4":[7,0,82,3],
@@ -249,5 +248,6 @@ var NAVTREEINDEX119 =
 "structuObjMtx__t.html#adde5a6fc203ebdc9a58f6e89536d9060":[7,0,234,6],
 "structuObjMtx__t.html#af1f3a7188e52f2d3b0f530a9d228f9e3":[7,0,234,0],
 "structuObjScaleBg__t.html":[7,0,235],
-"structuObjScaleBg__t.html#a00bc2548021b3d0c8b03cb3a8eaa938f":[7,0,235,13]
+"structuObjScaleBg__t.html#a00bc2548021b3d0c8b03cb3a8eaa938f":[7,0,235,13],
+"structuObjScaleBg__t.html#a058925d057343269870d3d8027d90fd2":[7,0,235,6]
 };
