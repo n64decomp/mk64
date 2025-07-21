@@ -135,8 +135,8 @@ UNUSED void func_unnamed33(void) {
 
 void func_8008C310(Player* player) {
     // The << 9 is a hacky way to check for VERTICAL_TUMBLE_TRIGGER
-    if ((player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) || ((player->triggers << 9) < 0) ||
-        (player->triggers & HIT_BY_STAR_TRIGGER)) {
+    if ((player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) ||
+        ((player->triggers << 9) < 0) || (player->triggers & HIT_BY_STAR_TRIGGER)) {
         player->unk_0B6 = ((u16) player->unk_0B6 | 0x1000);
     }
 }

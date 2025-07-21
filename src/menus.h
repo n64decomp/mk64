@@ -47,12 +47,12 @@ enum SubMenuSelectionType {
     SUB_MENU_ERASE_QUIT = SUB_MENU_ERASE_MIN,
     SUB_MENU_ERASE_ERASE,
     SUB_MENU_ERASE_MAX = SUB_MENU_ERASE_ERASE, // 0x1F
-    SUB_MENU_SAVE_DATA_ERASED, // 0x20
+    SUB_MENU_SAVE_DATA_ERASED,                 // 0x20
     SUB_MENU_COPY_PAK_FROM_GHOST_MIN = 0x28,
     SUB_MENU_COPY_PAK_FROM_GHOST1_1P = SUB_MENU_COPY_PAK_FROM_GHOST_MIN,
     SUB_MENU_COPY_PAK_FROM_GHOST2_1P,
     SUB_MENU_COPY_PAK_FROM_GHOST_MAX = SUB_MENU_COPY_PAK_FROM_GHOST2_1P, // 0x29
-    SUB_MENU_COPY_PAK_ERROR_2P_MIN, // 0x2A
+    SUB_MENU_COPY_PAK_ERROR_2P_MIN,                                      // 0x2A
     SUB_MENU_COPY_PAK_ERROR_NO_GHOST_DATA = SUB_MENU_COPY_PAK_ERROR_2P_MIN,
     SUB_MENU_COPY_PAK_ERROR_NO_GAME_DATA,
     SUB_MENU_COPY_PAK_ERROR_NO_PAK_2P,
@@ -93,10 +93,10 @@ enum MainMenuSelectionType {
     MAIN_MENU_OPTION,
     MAIN_MENU_DATA,
     MAIN_MENU_PLAYER_SELECT,
-    MAIN_MENU_MODE_SELECT, // Mario GP - T. Trials - VS - Battle
-    MAIN_MENU_MODE_SUB_SELECT, // CC Selection and T.Trials options (Begin, Data)
-    MAIN_MENU_OK_SELECT, // OK option after selecting a submode
-    MAIN_MENU_OK_SELECT_GO_BACK, // OK option after going back from player select
+    MAIN_MENU_MODE_SELECT,            // Mario GP - T. Trials - VS - Battle
+    MAIN_MENU_MODE_SUB_SELECT,        // CC Selection and T.Trials options (Begin, Data)
+    MAIN_MENU_OK_SELECT,              // OK option after selecting a submode
+    MAIN_MENU_OK_SELECT_GO_BACK,      // OK option after going back from player select
     MAIN_MENU_MODE_SUB_SELECT_GO_BACK // Used in T.Trials after going back to Data option from course data
 };
 
@@ -106,7 +106,7 @@ enum MainMenuSelectionType {
 enum PlayerSelectMenuSelectionTypes {
     PLAYER_SELECT_MENU_NONE,
     PLAYER_SELECT_MENU_MAIN,
-    PLAYER_SELECT_MENU_OK, // OK option after selecting characters
+    PLAYER_SELECT_MENU_OK,        // OK option after selecting characters
     PLAYER_SELECT_MENU_OK_GO_BACK // OK option after going back from map select
 };
 
@@ -176,11 +176,7 @@ enum DebugGotoSceneTypes {
 /**
  * @brief Options for gFadeModeSelection
  */
-enum FadeModeSelectionTypes {
-    FADE_MODE_NONE,
-    FADE_MODE_MAIN,
-    FADE_MODE_LOGO
-};
+enum FadeModeSelectionTypes { FADE_MODE_NONE, FADE_MODE_MAIN, FADE_MODE_LOGO };
 
 /**
  * @brief Options for gControllerPakScrollDirection
@@ -190,7 +186,6 @@ enum ControllerPakScrollDirectionTypes {
     CONTROLLER_PAK_SCROLL_DIR_DOWN,
     CONTROLLER_PAK_SCROLL_DIR_UP
 };
-
 
 /* functions */
 void update_menus(void);

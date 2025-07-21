@@ -119,7 +119,8 @@ void func_80007FA4(s32 playerId, Player* player, f32 arg2) {
             (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 6) : player_decelerate_alternative(player, 1.0f);
         } else if (D_80163410[playerId] == 0) {
             test = 35;
-            (arg2 < (((test ^ 0) * 18.0) / 216.0)) ? func_80038BE4(player, 2) : player_decelerate_alternative(player, 1.0f);
+            (arg2 < (((test ^ 0) * 18.0) / 216.0)) ? func_80038BE4(player, 2)
+                                                   : player_decelerate_alternative(player, 1.0f);
         } else {
             player_decelerate_alternative(player, 1.0f);
         }
@@ -133,8 +134,9 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
     s32 var_a1;
 
     speed = player->speed;
-    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) && !(player->effects & LIGHTNING_STRIKE_EFFECT) &&
-        !(player->triggers & VERTICAL_TUMBLE_TRIGGER) && !(player->triggers & HIT_BY_STAR_TRIGGER) && !(player->triggers & HIGH_TUMBLE_TRIGGER) &&
+    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) &&
+        !(player->effects & LIGHTNING_STRIKE_EFFECT) && !(player->triggers & VERTICAL_TUMBLE_TRIGGER) &&
+        !(player->triggers & HIT_BY_STAR_TRIGGER) && !(player->triggers & HIGH_TUMBLE_TRIGGER) &&
         !(player->triggers & LOW_TUMBLE_TRIGGER)) {
         if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
             func_80007FA4(playerId, player, speed);

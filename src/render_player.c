@@ -483,7 +483,8 @@ void render_players_on_screen_one(void) {
 
 s32 junk[] = { 0, 0, 0 };
 
-Vtx* gPlayerVtx[] = { gPlayerOneVtx, gPlayerTwoVtx, gPlayerThreeVtx, gPlayerFourVtx, gPlayerFiveVtx, gPlayerSixVtx, gPlayerSevenVtx, gPlayerEightVtx };
+Vtx* gPlayerVtx[] = { gPlayerOneVtx,  gPlayerTwoVtx, gPlayerThreeVtx, gPlayerFourVtx,
+                      gPlayerFiveVtx, gPlayerSixVtx, gPlayerSevenVtx, gPlayerEightVtx };
 
 f32 gCharacterSize[] = { MARIO_SIZE, LUIGI_SIZE, YOSHI_SIZE, TOAD_SIZE, DK_SIZE, WARIO_SIZE, PEACH_SIZE, BOWSER_SIZE };
 
@@ -956,7 +957,8 @@ void func_80022A98(Player* player, s8 playerIndex) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         func_80026A48(player, playerIndex);
         func_800235AC(player, playerIndex);
-        if (((player->effects & SQUISH_EFFECT) == SQUISH_EFFECT) || ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT)) {
+        if (((player->effects & SQUISH_EFFECT) == SQUISH_EFFECT) ||
+            ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT)) {
             if ((player->effects & SQUISH_EFFECT) == SQUISH_EFFECT) {
                 func_80022B50(player, playerIndex);
             }
@@ -1073,8 +1075,8 @@ void change_player_color_effect_rgb(UNUSED Player* player, s8 playerIndex, s32 a
     gPlayerRedEffect[playerIndex] =
         (s16) ((f32) gPlayerRedEffect[playerIndex] - ((gPlayerRedEffect[playerIndex] - ((arg2 >> 16) & 0xFF)) * alpha));
 
-    gPlayerGreenEffect[playerIndex] =
-        (s16) ((f32) gPlayerGreenEffect[playerIndex] - ((gPlayerGreenEffect[playerIndex] - ((arg2 >> 8) & 0xFF)) * alpha));
+    gPlayerGreenEffect[playerIndex] = (s16) ((f32) gPlayerGreenEffect[playerIndex] -
+                                             ((gPlayerGreenEffect[playerIndex] - ((arg2 >> 8) & 0xFF)) * alpha));
 
     gPlayerBlueEffect[playerIndex] =
         (s16) ((f32) gPlayerBlueEffect[playerIndex] - ((gPlayerBlueEffect[playerIndex] - (arg2 & 0xFF)) * alpha));
@@ -1093,10 +1095,14 @@ void change_player_color_effect_cmy(UNUSED Player* player, s8 playerIndex, s32 a
 bool is_player_under_light_luigi_raceway(Player* player, s8 playerIndex) {
     switch (gCurrentCourseId) {
         case COURSE_LUIGI_RACEWAY:
-            if (((gNearestPathPointByPlayerId[playerIndex] >= 0x14F) && (gNearestPathPointByPlayerId[playerIndex] < 0x158)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x15E) && (gNearestPathPointByPlayerId[playerIndex] < 0x164)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x169) && (gNearestPathPointByPlayerId[playerIndex] < 0x170)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x174) && (gNearestPathPointByPlayerId[playerIndex] < 0x17A)) ||
+            if (((gNearestPathPointByPlayerId[playerIndex] >= 0x14F) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x158)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x15E) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x164)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x169) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x170)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x174) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x17A)) ||
                 ((gNearestPathPointByPlayerId[playerIndex] >= 0x17E) &&
                  (gNearestPathPointByPlayerId[playerIndex] < 0x184))) { // under a light in the tunnel
                 change_player_color_effect_rgb(player, playerIndex, COLOR_LIGHT, 0.3f);
@@ -1114,18 +1120,26 @@ bool is_player_under_light_luigi_raceway(Player* player, s8 playerIndex) {
 void render_light_environment_on_player(Player* player, s8 playerIndex) {
     switch (gCurrentCourseId) {
         case COURSE_BOWSER_CASTLE:
-            if (((gNearestPathPointByPlayerId[playerIndex] >= 0x15) && (gNearestPathPointByPlayerId[playerIndex] < 0x2A)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x14D) && (gNearestPathPointByPlayerId[playerIndex] < 0x15C)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x1D1) && (gNearestPathPointByPlayerId[playerIndex] < 0x1E4)) ||
+            if (((gNearestPathPointByPlayerId[playerIndex] >= 0x15) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x2A)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x14D) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x15C)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x1D1) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x1E4)) ||
                 (player->collision.surfaceDistance[2] >= 500.0f)) { // over lava
                 change_player_color_effect_rgb(player, playerIndex, COLOR_LAVA, 0.3f);
                 change_player_color_effect_cmy(player, playerIndex, 0x004040, 0.3f);
                 D_80164B80[playerIndex] = 0;
-            } else if (((gNearestPathPointByPlayerId[playerIndex] >= 0xF1) && (gNearestPathPointByPlayerId[playerIndex] < 0xF5)) ||
-                       ((gNearestPathPointByPlayerId[playerIndex] >= 0xFB) && (gNearestPathPointByPlayerId[playerIndex] < 0xFF)) ||
-                       ((gNearestPathPointByPlayerId[playerIndex] >= 0x105) && (gNearestPathPointByPlayerId[playerIndex] < 0x109)) ||
-                       ((gNearestPathPointByPlayerId[playerIndex] >= 0x10F) && (gNearestPathPointByPlayerId[playerIndex] < 0x113)) ||
-                       ((gNearestPathPointByPlayerId[playerIndex] >= 0x145) && (gNearestPathPointByPlayerId[playerIndex] < 0x14A)) ||
+            } else if (((gNearestPathPointByPlayerId[playerIndex] >= 0xF1) &&
+                        (gNearestPathPointByPlayerId[playerIndex] < 0xF5)) ||
+                       ((gNearestPathPointByPlayerId[playerIndex] >= 0xFB) &&
+                        (gNearestPathPointByPlayerId[playerIndex] < 0xFF)) ||
+                       ((gNearestPathPointByPlayerId[playerIndex] >= 0x105) &&
+                        (gNearestPathPointByPlayerId[playerIndex] < 0x109)) ||
+                       ((gNearestPathPointByPlayerId[playerIndex] >= 0x10F) &&
+                        (gNearestPathPointByPlayerId[playerIndex] < 0x113)) ||
+                       ((gNearestPathPointByPlayerId[playerIndex] >= 0x145) &&
+                        (gNearestPathPointByPlayerId[playerIndex] < 0x14A)) ||
                        ((gNearestPathPointByPlayerId[playerIndex] >= 0x15E) &&
                         (gNearestPathPointByPlayerId[playerIndex] < 0x163))) { // under a lamp
                 change_player_color_effect_rgb(player, playerIndex, COLOR_LIGHT, 0.3f);
@@ -1138,23 +1152,40 @@ void render_light_environment_on_player(Player* player, s8 playerIndex) {
             }
             break;
         case COURSE_BANSHEE_BOARDWALK:
-            if (((gNearestPathPointByPlayerId[playerIndex] >= 0xD) && (gNearestPathPointByPlayerId[playerIndex] < 0x15)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x29) && (gNearestPathPointByPlayerId[playerIndex] < 0x39)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x46) && (gNearestPathPointByPlayerId[playerIndex] < 0x4E)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x5F) && (gNearestPathPointByPlayerId[playerIndex] < 0x67)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x7B) && (gNearestPathPointByPlayerId[playerIndex] < 0x86)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x9D) && (gNearestPathPointByPlayerId[playerIndex] < 0xA6)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0xB9) && (gNearestPathPointByPlayerId[playerIndex] < 0xC3)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0xB9) && (gNearestPathPointByPlayerId[playerIndex] < 0xC3)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0xD7) && (gNearestPathPointByPlayerId[playerIndex] < 0xE1)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x10E) && (gNearestPathPointByPlayerId[playerIndex] < 0x119)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x154) && (gNearestPathPointByPlayerId[playerIndex] < 0x15F)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x1EF) && (gNearestPathPointByPlayerId[playerIndex] < 0x1F7)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x202) && (gNearestPathPointByPlayerId[playerIndex] < 0x209)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x216) && (gNearestPathPointByPlayerId[playerIndex] < 0x21D)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x230) && (gNearestPathPointByPlayerId[playerIndex] < 0x23A)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x24C) && (gNearestPathPointByPlayerId[playerIndex] < 0x256)) ||
-                ((gNearestPathPointByPlayerId[playerIndex] >= 0x288) && (gNearestPathPointByPlayerId[playerIndex] < 0x269)) ||
+            if (((gNearestPathPointByPlayerId[playerIndex] >= 0xD) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x15)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x29) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x39)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x46) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x4E)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x5F) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x67)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x7B) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x86)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x9D) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0xA6)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0xB9) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0xC3)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0xB9) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0xC3)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0xD7) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0xE1)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x10E) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x119)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x154) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x15F)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x1EF) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x1F7)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x202) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x209)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x216) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x21D)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x230) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x23A)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x24C) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x256)) ||
+                ((gNearestPathPointByPlayerId[playerIndex] >= 0x288) &&
+                 (gNearestPathPointByPlayerId[playerIndex] < 0x269)) ||
                 ((gNearestPathPointByPlayerId[playerIndex] >= 0x274) &&
                  (gNearestPathPointByPlayerId[playerIndex] < 0x27E))) { // under a lamp
                 change_player_color_effect_rgb(player, playerIndex, COLOR_LIGHT, 0.3f);
@@ -1271,7 +1302,8 @@ void func_800235AC(Player* player, s8 playerIndex) {
 }
 
 void func_80023BF0(Player* player, s8 playerId, s8 screenId, s8 arg3) {
-    if (((player->effects & SQUISH_EFFECT) == SQUISH_EFFECT) || ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT)) {
+    if (((player->effects & SQUISH_EFFECT) == SQUISH_EFFECT) ||
+        ((player->effects & POST_SQUISH_EFFECT) == POST_SQUISH_EFFECT)) {
         func_80022CA8(player, playerId, screenId, arg3);
     } else {
         func_80022E84(player, playerId, screenId, arg3);
@@ -1301,10 +1333,13 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
     spAC = -sins(temp_t9 << 7) * 2;
 
     if (((player->effects & EXPLOSION_CRASH_EFFECT) == EXPLOSION_CRASH_EFFECT) ||
-        ((player->effects & HIT_BY_GREEN_SHELL_EFFECT) == HIT_BY_GREEN_SHELL_EFFECT) || ((player->effects & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
-        ((player->effects & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) || ((player->effects & HIT_BY_GREEN_SHELL_EFFECT) == HIT_BY_GREEN_SHELL_EFFECT) ||
-        ((player->unk_0CA & 2) == 2) || ((player->effects & HIT_BY_STAR_EFFECT) == HIT_BY_STAR_EFFECT) ||
-        ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT) || ((player->effects & MIDAIR_EFFECT) == MIDAIR_EFFECT)) {
+        ((player->effects & HIT_BY_GREEN_SHELL_EFFECT) == HIT_BY_GREEN_SHELL_EFFECT) ||
+        ((player->effects & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
+        ((player->effects & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) ||
+        ((player->effects & HIT_BY_GREEN_SHELL_EFFECT) == HIT_BY_GREEN_SHELL_EFFECT) || ((player->unk_0CA & 2) == 2) ||
+        ((player->effects & HIT_BY_STAR_EFFECT) == HIT_BY_STAR_EFFECT) ||
+        ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT) ||
+        ((player->effects & MIDAIR_EFFECT) == MIDAIR_EFFECT)) {
 
         var_f2 = (f32) (1.0 - ((f64) player->collision.surfaceDistance[2] * 0.02));
         if (var_f2 < 0.0f) {
@@ -1747,7 +1782,8 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
 void func_80026A48(Player* player, s8 playerIndex) {
     f32 temp_f0;
 
-    if (((player->effects & EARLY_START_SPINOUT_EFFECT) == EARLY_START_SPINOUT_EFFECT) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
+    if (((player->effects & EARLY_START_SPINOUT_EFFECT) == EARLY_START_SPINOUT_EFFECT) &&
+        ((player->type & PLAYER_START_SEQUENCE) == 0)) {
         player->tyreSpeed += D_800DDE74[8];
         if (player->tyreSpeed >= 0x400) {
             player->tyreSpeed = 0;
@@ -1779,10 +1815,14 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     s16 temp_t2 = player->tyreSpeed;
     s16 temp_num = 0x40; // setting this as a variable gets rid of regalloc
 
-    if (((player->effects & EARLY_START_SPINOUT_EFFECT) == EARLY_START_SPINOUT_EFFECT) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
-        if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) && ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT) &&
-            ((player->effects & LIGHTNING_STRIKE_EFFECT) != LIGHTNING_STRIKE_EFFECT) && ((player->effects & UNKNOWN_EFFECT_0x80000) != UNKNOWN_EFFECT_0x80000) &&
-            ((player->effects & UNKNOWN_EFFECT_0x800000) != UNKNOWN_EFFECT_0x800000) && ((player->unk_044 & 0x800) == 0)) {
+    if (((player->effects & EARLY_START_SPINOUT_EFFECT) == EARLY_START_SPINOUT_EFFECT) &&
+        ((player->type & PLAYER_START_SEQUENCE) == 0)) {
+        if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) &&
+            ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT) &&
+            ((player->effects & LIGHTNING_STRIKE_EFFECT) != LIGHTNING_STRIKE_EFFECT) &&
+            ((player->effects & UNKNOWN_EFFECT_0x80000) != UNKNOWN_EFFECT_0x80000) &&
+            ((player->effects & UNKNOWN_EFFECT_0x800000) != UNKNOWN_EFFECT_0x800000) &&
+            ((player->unk_044 & 0x800) == 0)) {
 
             if (frameId <= 20) {
                 load_player_data_non_blocking(player,
@@ -1809,9 +1849,12 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
             }
         }
     } else {
-        if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) && ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT) &&
-            ((player->effects & UNKNOWN_EFFECT_0x80000) != UNKNOWN_EFFECT_0x80000) && ((player->effects & UNKNOWN_EFFECT_0x800000) != UNKNOWN_EFFECT_0x800000) &&
-            ((player->effects & LIGHTNING_STRIKE_EFFECT) != LIGHTNING_STRIKE_EFFECT) && ((player->unk_044 & 0x800) == 0)) {
+        if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) &&
+            ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT) &&
+            ((player->effects & UNKNOWN_EFFECT_0x80000) != UNKNOWN_EFFECT_0x80000) &&
+            ((player->effects & UNKNOWN_EFFECT_0x800000) != UNKNOWN_EFFECT_0x800000) &&
+            ((player->effects & LIGHTNING_STRIKE_EFFECT) != LIGHTNING_STRIKE_EFFECT) &&
+            ((player->unk_044 & 0x800) == 0)) {
 
             if (frameId <= 20) {
                 load_player_data_non_blocking(player,
