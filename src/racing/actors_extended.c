@@ -710,58 +710,61 @@ void func_802B2914(struct BananaBunchParent* banana_bunch, Player* player, s16 b
     startingRot[1] = 0;
     startingRot[2] = 0;
     actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_BANANA);
-    if (actorIndex >= 0) {
-        newBanana = (struct BananaActor*) &gActorList[actorIndex];
-        startingPos[0] = player->pos[0];
-        startingPos[1] = player->pos[1];
-        startingPos[2] = player->pos[2];
-        actor_terrain_collision(&newBanana->unk30, newBanana->boundingBoxSize + 1.0f, newBanana->pos[0],
-                                newBanana->pos[1], newBanana->pos[2], startingPos[0], startingPos[1], startingPos[2]);
-        func_802B4E30((struct Actor*) newBanana);
-        newBanana->flags = 0x9000;
-        newBanana->playerId = player - gPlayerOne;
-        newBanana->parentIndex = (struct Actor*) banana_bunch - gActorList;
-        newBanana->youngerIndex = -1;
-        newBanana->unk_04 = 0x0014;
-        newBanana->bananaId = bananaId;
-        switch (bananaId) {
-            case 0:
-                newBanana->state = 2;
-                banana_bunch->bananaIndices[0] = actorIndex;
-                newBanana->elderIndex = -1;
-                break;
-            case 1:
-                newBanana->state = 3;
-                banana_bunch->bananaIndices[1] = actorIndex;
-                newBanana->elderIndex = banana_bunch->bananaIndices[0];
-                tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[0]];
-                tempBanana->youngerIndex = actorIndex;
-                break;
-            case 2:
-                newBanana->state = 3;
-                banana_bunch->bananaIndices[2] = actorIndex;
-                newBanana->elderIndex = banana_bunch->bananaIndices[1];
-                tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[1]];
-                tempBanana->youngerIndex = actorIndex;
-                break;
-            case 3:
-                newBanana->state = 3;
-                banana_bunch->bananaIndices[3] = actorIndex;
-                newBanana->elderIndex = banana_bunch->bananaIndices[2];
-                tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[2]];
-                tempBanana->youngerIndex = actorIndex;
-                break;
-            case 4:
-                newBanana->state = 3;
-                banana_bunch->bananaIndices[4] = actorIndex;
-                newBanana->elderIndex = banana_bunch->bananaIndices[3];
-                tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[3]];
-                tempBanana->youngerIndex = actorIndex;
-                break;
-        }
-        if ((player->type & PLAYER_HUMAN) != 0) {
-            func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
-        }
+
+    if (actorIndex < 0) {
+        return;
+    }
+
+    newBanana = (struct BananaActor*) &gActorList[actorIndex];
+    startingPos[0] = player->pos[0];
+    startingPos[1] = player->pos[1];
+    startingPos[2] = player->pos[2];
+    actor_terrain_collision(&newBanana->unk30, newBanana->boundingBoxSize + 1.0f, newBanana->pos[0],
+                            newBanana->pos[1], newBanana->pos[2], startingPos[0], startingPos[1], startingPos[2]);
+    func_802B4E30((struct Actor*) newBanana);
+    newBanana->flags = 0x9000;
+    newBanana->playerId = player - gPlayerOne;
+    newBanana->parentIndex = (struct Actor*) banana_bunch - gActorList;
+    newBanana->youngerIndex = -1;
+    newBanana->unk_04 = 0x0014;
+    newBanana->bananaId = bananaId;
+    switch (bananaId) {
+        case 0:
+            newBanana->state = 2;
+            banana_bunch->bananaIndices[0] = actorIndex;
+            newBanana->elderIndex = -1;
+            break;
+        case 1:
+            newBanana->state = 3;
+            banana_bunch->bananaIndices[1] = actorIndex;
+            newBanana->elderIndex = banana_bunch->bananaIndices[0];
+            tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[0]];
+            tempBanana->youngerIndex = actorIndex;
+            break;
+        case 2:
+            newBanana->state = 3;
+            banana_bunch->bananaIndices[2] = actorIndex;
+            newBanana->elderIndex = banana_bunch->bananaIndices[1];
+            tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[1]];
+            tempBanana->youngerIndex = actorIndex;
+            break;
+        case 3:
+            newBanana->state = 3;
+            banana_bunch->bananaIndices[3] = actorIndex;
+            newBanana->elderIndex = banana_bunch->bananaIndices[2];
+            tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[2]];
+            tempBanana->youngerIndex = actorIndex;
+            break;
+        case 4:
+            newBanana->state = 3;
+            banana_bunch->bananaIndices[4] = actorIndex;
+            newBanana->elderIndex = banana_bunch->bananaIndices[3];
+            tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[3]];
+            tempBanana->youngerIndex = actorIndex;
+            break;
+    }
+    if ((player->type & PLAYER_HUMAN) != 0) {
+        func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
     }
 }
 
