@@ -16,7 +16,7 @@ n64graphics_SOURCES := n64graphics.c utils.c
 n64graphics_CFLAGS  := -DN64GRAPHICS_STANDALONE
 
 displaylist_packer_SOURCES := displaylist_packer.c
-displaylist_packer_CFLAGS  := -Wno-unused-result
+displaylist_packer_CFLAGS  := -Wno-unused-result -I ../include -DF3DEX_GBI=1 -D_LANGUAGE_C=1
 
 mio0_SOURCES := libmio0.c
 mio0_CFLAGS := -DMIO0_STANDALONE
