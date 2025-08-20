@@ -23,15 +23,20 @@
 #define TEX_PARAM_ON  0x0001
 #define TEX_PARAM_OFF 0xFFFF
 
-/* gDPSetCombine presets (low 16 bits). These are the low 16 bits of w1 for known CC mux patterns.
- * Encoding them with GCC macros at runtime is infeasible here (we only match constants from input),
- * so we keep numeric values and document their canonical meanings:
- * - 0xF3F9: maps to a common RGBA/IA modulate preset (legacy packer preset F3F9).
- * - 0x793C: maps to another known preset used by MK64 materials.
+/* gDPSetCombine presets (low 16 bits).
+ * Nommage en fonction des macros GBI G_CC_* utilisées côté runtime (memory.c):
+ *  - 0xFFFF → G_CC_MODULATERGBA
+ *  - 0xF3F9 → G_CC_MODULATERGBDECALA
+ *  - 0x793C → G_CC_SHADE
+ *  - 0xFFFD → G_CC_DECALRGBA
  */
-#define COMB_PRESET_F3F9 0xF3F9
-#define COMB_PRESET_FFFF 0xFFFF
-#define COMB_PRESET_793C 0x793C
+#define COMB_CC_MODULATERGBA        0xFFFF
+#define COMB_CC_MODULATERGBDECALA   0xF3F9
+#define COMB_CC_SHADE               0x793C
+#define COMB_CC_DECALRGBA           0xFFFD
+/* Variante « ALT » vue dans certains exports (reste une heuristique) */
+#define COMB_PRESET_ALT1            0xF9FC
+/* (aliases retirés pour éviter la confusion et favoriser les noms G_CC_ explicites) */
 
 /* gDPSetTextureImage quirks (kept for context; not used after gbi refactor) */
 /* #define SETTIMG_P4_EXPECT 0x70 */
@@ -102,14 +107,14 @@ uint32_t compressB1(uint8_t a, uint8_t b, uint8_t c) {
 #define OPCODE(val) (uint8_t)((val) >> 56)
 
 enum packed_op {
-    /* Set combine presets */
-    PG_SETCOMBINE_PRESET_FFFF = 0x15,
-    PG_SETCOMBINE_PRESET_F3F9 = 0x16,
-    PG_SETCOMBINE_PRESET_793C = 0x17,
+    /* Set combine presets (renommés en fonction des macros G_CC_*) */
+    PG_SETCOMBINE_CC_MODULATERGBA      = 0x15, /* ex-PG_SETCOMBINE_PRESET_FFFF */
+    PG_SETCOMBINE_CC_MODULATERGBDECALA = 0x16, /* ex-PG_SETCOMBINE_PRESET_F3F9 */
+    PG_SETCOMBINE_CC_SHADE             = 0x17, /* ex-PG_SETCOMBINE_PRESET_793C */
 
-    /* gSPSetOtherModeL shortcuts */
-    PG_SETOTHERMODE_L_2078 = 0x18,
-    PG_SETOTHERMODE_L_3078 = 0x19,
+    /* Render modes via gSPSetOtherModeL shortcuts (parité memory.c) */
+    PG_RMODE_OPA     = 0x18, /* ex-PG_SETOTHERMODE_L_2078 */
+    PG_RMODE_TEXEDGE = 0x19, /* ex-PG_SETOTHERMODE_L_3078 */
 
     /* Tile/tile size configurations following RDPTILESYNC+SETTILE+SETTILESIZE */
     PG_TILECFG_A = 0x1A, /* 0xF51010000007C07C */
@@ -118,7 +123,6 @@ enum packed_op {
     PG_TILECFG_D = 0x1D, /* 0xF57010000007C07C */
     PG_TILECFG_E = 0x1E, /* 0xF5702000000FC07C */
     PG_TILECFG_F = 0x1F, /* 0xF57010000007C0FC */
-    PG_TILECFG_G = 0x2C, /* 0xF51011000007C07C */
 
     /* Texture loadblock variants after gDPSetTextureImage */
     PG_TIMG_LOADBLOCK_0 = 0x20, /* 0xF3000000073FF100 */
@@ -132,14 +136,34 @@ enum packed_op {
     PG_TEXTURE_OFF = 0x26,
     PG_TEXTURE_ON  = 0x27,
 
+    /* VTX compact op (bank/count encoded) */
+    PG_VTX1  = 0x28,
+
     /* Display list ops */
     PG_TRI1  = 0x29,
     PG_ENDDL = 0x2A,
     PG_DL    = 0x2B,
+    PG_TILECFG_G = 0x2C, /* 0xF51011000007C07C */
     PG_CULLDL = 0x2D,
+
+    /* Alternate combine preset used in memory.c */
+    PG_SETCOMBINE_ALT = 0x2E,
+
+    /* XLU render mode (not currently emitted) */
+    PG_RMODE_XLU = 0x2F,
+
+    /* Project-specific primitive (spline), not currently emitted here */
+    PG_SPLINE3D = 0x30,
 
     /* Vertex packet base (computed as base + bank index) */
     PG_VTX_BASE = 0x32,
+
+    /* Extra combine preset used by memory.c */
+    PG_SETCOMBINE_CC_DECALRGBA = 0x53, /* ex-PG_SETCOMBINE_DECALRGBA */
+
+    /* Render mode decal variants (not currently emitted) */
+    PG_RMODE_OPA_DECAL = 0x54,
+    PG_RMODE_XLU_DECAL = 0x55,
 
     /* Geometry mode */
     PG_SETGEOMETRYMODE   = 0x56,
@@ -185,11 +209,24 @@ void pack(FILE *input_file, FILE *output_file) {
             case (uint8_t)G_SETOTHERMODE_L:
                 p7 = (uint16_t) cmd;
                 if (p7 == OML_AA_ZCMP_ZUPD_IMRD_ALPHA_CVG_SEL) {
-                    data[count++] = PG_SETOTHERMODE_L_2078;
-                    if (debug) fprintf(stderr, "@%u PG_SETOTHERMODE_L_2078\n", count-1);
+                    data[count++] = PG_RMODE_OPA;
+                    if (debug) fprintf(stderr, "@%u PG_RMODE_OPA\n", count-1);
                 } else if (p7 == OML_AA_ZCMP_ZUPD_IMRD_CVG_X_ALPHA_ALPHA_CVG_SEL) {
-                    data[count++] = PG_SETOTHERMODE_L_3078;
-                    if (debug) fprintf(stderr, "@%u PG_SETOTHERMODE_L_3078\n", count-1);
+                    data[count++] = PG_RMODE_TEXEDGE;
+                    if (debug) fprintf(stderr, "@%u PG_RMODE_TEXEDGE\n", count-1);
+                } else if ((p7 & ZMODE_XLU) == ZMODE_XLU) {
+                    /* Any render mode with ZMODE_XLU set maps to translucent; refine as DECAL if ALPHA_CVG_SEL is set */
+                    if ((p7 & ALPHA_CVG_SEL) == ALPHA_CVG_SEL) {
+                        data[count++] = PG_RMODE_XLU_DECAL;
+                        if (debug) fprintf(stderr, "@%u PG_RMODE_XLU_DECAL (ZMODE_XLU|ALPHA_CVG_SEL)\n", count-1);
+                    } else {
+                        data[count++] = PG_RMODE_XLU;
+                        if (debug) fprintf(stderr, "@%u PG_RMODE_XLU (ZMODE_XLU)\n", count-1);
+                    }
+                } else if ((p7 & ALPHA_CVG_SEL) == ALPHA_CVG_SEL) {
+                    /* Opaque decal variant (no ZMODE_XLU, but with ALPHA_CVG_SEL) */
+                    data[count++] = PG_RMODE_OPA_DECAL;
+                    if (debug) fprintf(stderr, "@%u PG_RMODE_OPA_DECAL (ALPHA_CVG_SEL)\n", count-1);
                 }
                 break;
             case (uint8_t)G_TRI1:
@@ -208,6 +245,29 @@ void pack(FILE *input_file, FILE *output_file) {
                 *(uint16_t*) (data + count) = (uint16_t)(((uint32_t)cmd) / 8);
                 count++; count++;
                 break;
+            case (uint8_t)G_QUAD: {
+                /* Pack MK64 quad into compact SPLINE3D triplet, mirroring unpack_spline_3D expectations */
+                data[count++] = PG_SPLINE3D;
+                if (debug) fprintf(stderr, "@%u PG_SPLINE3D\n", count-1);
+                uint32_t w1 = (uint32_t)cmd;
+                uint8_t a0 = (uint8_t)(w1 >> 24) / 2;
+                uint8_t t0 = (uint8_t)(w1 >> 16) / 2;
+                uint8_t a3 = (uint8_t)(w1 >> 8)  / 2;
+                uint8_t a2 = (uint8_t)(w1)       / 2;
+                /* Build three packed bytes (non-mirror path in memory.c):
+                 * P0: [a3 bits2:0]<<5 | (t0 & 0x1F)
+                 * P1: [a0 bit0]<<7 | (a2 & 0x1F)<<2 | [a3 bits4:3]
+                 * P2: (a0 >> 1) & 0x0F
+                 */
+                uint8_t P0 = ((a3 & 0x7) << 5) | (t0 & 0x1F);
+                uint8_t P1 = ((a0 & 0x1) << 7) | ((a2 & 0x1F) << 2) | ((a3 >> 3) & 0x3);
+                uint8_t P2 = (a0 >> 1) & 0x0F;
+                data[count++] = P0;
+                data[count++] = P1;
+                data[count++] = P2;
+                if (debug) fprintf(stderr, "    quad a0=%u t0=%u a3=%u a2=%u -> P0=%02X P1=%02X P2=%02X\n", a0, t0, a3, a2, P0, P1, P2);
+                break;
+            }
             case (uint8_t)G_TRI2:
                 data[count++] = PG_TRI2;
                 if (debug) fprintf(stderr, "@%u PG_TRI2\n", count-1);
@@ -439,15 +499,21 @@ void pack(FILE *input_file, FILE *output_file) {
                 break;
             case G_SETCOMBINE:
                 p7 = (uint16_t)cmd;
-                if (p7 == COMB_PRESET_F3F9) {
-                    data[count++] = PG_SETCOMBINE_PRESET_F3F9;
+                if (p7 == COMB_CC_MODULATERGBDECALA) {
+                    data[count++] = PG_SETCOMBINE_CC_MODULATERGBDECALA; /* was: PRESET_F3F9 */
                     if (debug) fprintf(stderr, "@%u PG_SETCOMBINE_PRESET_F3F9\n", count-1);
-                } else if (p7 == COMB_PRESET_FFFF) {
-                    data[count++] = PG_SETCOMBINE_PRESET_FFFF;
+                } else if (p7 == COMB_CC_MODULATERGBA) {
+                    data[count++] = PG_SETCOMBINE_CC_MODULATERGBA; /* was: PRESET_FFFF */
                     if (debug) fprintf(stderr, "@%u PG_SETCOMBINE_PRESET_FFFF\n", count-1);
-                } else if (p7 == COMB_PRESET_793C) {
-                    data[count++] = PG_SETCOMBINE_PRESET_793C;
+                } else if (p7 == COMB_CC_SHADE) {
+                    data[count++] = PG_SETCOMBINE_CC_SHADE; /* was: PRESET_793C */
                     if (debug) fprintf(stderr, "@%u PG_SETCOMBINE_PRESET_793C\n", count-1);
+                } else if (p7 == COMB_CC_DECALRGBA) {
+                    data[count++] = PG_SETCOMBINE_CC_DECALRGBA;
+                    if (debug) fprintf(stderr, "@%u PG_SETCOMBINE_DECALRGBA\n", count-1);
+                } else if (p7 == COMB_PRESET_ALT1) {
+                    data[count++] = PG_SETCOMBINE_ALT;
+                    if (debug) fprintf(stderr, "@%u PG_SETCOMBINE_ALT\n", count-1);
                 }
                 //data[count++] = 0x53;
                 break;
