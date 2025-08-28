@@ -1185,23 +1185,23 @@ void func_800235AC(Player* player, s8 playerIndex) {
         return;
     }
 
-    if (((player->lakitu_props & FRIGID_EFFECT) == FRIGID_EFFECT) &&
-        ((player->lakitu_props & LAKITU_FIZZLE) == LAKITU_FIZZLE)) {
+    if (((player->lakituProps & FRIGID_EFFECT) == FRIGID_EFFECT) &&
+        ((player->lakituProps & LAKITU_FIZZLE) == LAKITU_FIZZLE)) {
         change_player_color_effect_rgb(player, playerIndex, 0x646464, 0.5f);
         change_player_color_effect_cmy(player, playerIndex, 0xFF0000, 0.1f);
         return;
     }
-    if ((player->lakitu_props & LAKITU_FIZZLE) == LAKITU_FIZZLE) {
+    if ((player->lakituProps & LAKITU_FIZZLE) == LAKITU_FIZZLE) {
         change_player_color_effect_rgb(player, playerIndex, COLOR_BLACK, 1.0f);
         change_player_color_effect_cmy(player, playerIndex, 0, 1.0f);
         return;
     }
-    if ((player->lakitu_props & FRIGID_EFFECT) == FRIGID_EFFECT) {
+    if ((player->lakituProps & FRIGID_EFFECT) == FRIGID_EFFECT) {
         change_player_color_effect_rgb(player, playerIndex, 0x646464, 0.5f);
         change_player_color_effect_cmy(player, playerIndex, 0xFF0000, 0.1f);
         return;
     }
-    if ((player->lakitu_props & THAWING_EFFECT) == THAWING_EFFECT) {
+    if ((player->lakituProps & THAWING_EFFECT) == THAWING_EFFECT) {
         change_player_color_effect_rgb(player, playerIndex, COLOR_BLACK, 0.1f);
         change_player_color_effect_cmy(player, playerIndex, 0, 0.1f);
         return;
@@ -1265,7 +1265,7 @@ void func_800235AC(Player* player, s8 playerIndex) {
             return;
         }
         render_light_environment_on_player(player, playerIndex);
-        if ((player->lakitu_props & LAKITU_LAVA) == LAKITU_LAVA) {
+        if ((player->lakituProps & LAKITU_LAVA) == LAKITU_LAVA) {
             change_player_color_effect_rgb(player, playerIndex, COLOR_BLACK, 0.3f);
             change_player_color_effect_cmy(player, playerIndex, 0xF0F0F0, 0.3f);
         }
@@ -1279,7 +1279,7 @@ void func_80023BF0(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     } else {
         func_80022E84(player, playerId, screenId, arg3);
     }
-    if ((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU) {
+    if ((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU) {
         func_80022D60(player, playerId, screenId, arg3);
     }
 }
@@ -1308,7 +1308,7 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
         ((player->effects & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
         ((player->effects & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) ||
         ((player->effects & HIT_BY_GREEN_SHELL_EFFECT) == HIT_BY_GREEN_SHELL_EFFECT) ||
-        ((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
+        ((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
         ((player->effects & HIT_BY_STAR_EFFECT) == HIT_BY_STAR_EFFECT) ||
         ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT) ||
         ((player->effects & MIDAIR_EFFECT) == MIDAIR_EFFECT)) {
@@ -1509,7 +1509,7 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 flipOffset) {
                              AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
                                  GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         }
-    } else if (((player->lakitu_props & LAKITU_FIZZLE) == LAKITU_FIZZLE) || (player->triggers & BECOME_BOMB_EFFECT) ||
+    } else if (((player->lakituProps & LAKITU_FIZZLE) == LAKITU_FIZZLE) || (player->triggers & BECOME_BOMB_EFFECT) ||
                (player->triggers & LOSE_BATTLE_EFFECT)) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -1743,7 +1743,7 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
     }
     osRecvMesg(&gDmaMesgQueue, (OSMesg*) &sp34, OS_MESG_BLOCK);
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) &&
-        ((player->lakitu_props & LAKITU_RETRIEVAL) != LAKITU_RETRIEVAL) &&
+        ((player->lakituProps & LAKITU_RETRIEVAL) != LAKITU_RETRIEVAL) &&
         (player->collision.surfaceDistance[2] <= 30.0f)) {
         render_player_ice_reflection(player, playerId, screenId, flipOffset);
     }

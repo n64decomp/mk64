@@ -330,7 +330,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
             D_80164A78[index] = D_800DDB30[gActiveScreenMode];
         }
     }
-    if ((player->lakitu_props & WENT_OVER_OOB) == WENT_OVER_OOB) {
+    if ((player->lakituProps & WENT_OVER_OOB) == WENT_OVER_OOB) {
         switch (gActiveScreenMode) {
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
@@ -445,7 +445,7 @@ void func_8001D53C(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     stackPadding0 = player->pos[0] + sp68[0];
     stackPadding2 = player->pos[2] + sp68[2];
     stackPadding1 = sp68[1] + (player->unk_074 + 1.5);
-    if ((player->lakitu_props & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) {
+    if ((player->lakituProps & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) {
         stackPadding1 = sp68[1] + (thing + 10.0f);
     }
     *arg3 = stackPadding0;
@@ -564,7 +564,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
             D_80164A78[index] = D_800DDB30[gActiveScreenMode];
         }
     }
-    if ((player->lakitu_props & WENT_OVER_OOB) == WENT_OVER_OOB) {
+    if ((player->lakituProps & WENT_OVER_OOB) == WENT_OVER_OOB) {
 
         move_f32_towards(&D_80164A90[index], 15, 0.02f);
         move_f32_towards(&D_80164AA0[index], 20, 0.02f);
@@ -988,8 +988,8 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
                 func_8001A588(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
                 break;
             case 1:
-                if (((player->lakitu_props & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) ||
-                    ((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
+                if (((player->lakituProps & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) ||
+                    ((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
                     func_8001E8E8(camera, player, index);
                     break;
                 }
@@ -1000,8 +1000,8 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
                 func_8001F87C(cameraIndex);
                 break;
             case 9:
-                if (((player->lakitu_props & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) ||
-                    ((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
+                if (((player->lakituProps & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) ||
+                    ((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
                     func_8001E8E8(camera, player, index);
                     break;
                 }

@@ -293,7 +293,7 @@ typedef struct {
     /* 0x00B0 */ s16 unk_0B0;
     /* 0x00B2 */ s16 unk_0B2;
     /* 0x00B4 */ u16 unk_0B4;
-    /* 0x00B6 */ u16 kart_graphics;
+    /* 0x00B6 */ u16 kartGraphics;
     /* 0x00B8 */ f32 unk_0B8;
     /* 0x00BC */ u32 effects;
     /* 0x00C0 */ s16 unk_0C0;
@@ -301,7 +301,7 @@ typedef struct {
     /* 0x00C4 */ s16 slopeAccel;
     /* 0x00C6 */ s16 alpha;
     /* 0x00C8 */ s16 unk_0C8;
-    /* 0x00CA */ s16 lakitu_props;
+    /* 0x00CA */ s16 lakituProps;
     /* 0x00CC */ Vec4s unk_0CC;
     /* 0x00D4 */ Vec4s unk_0D4;
     /* 0x00DC */ s16 boostTimer;

@@ -533,8 +533,8 @@ void func_80028864(Player* player, Camera* camera, s8 playerId, s8 screenId) {
                 break;
         }
         if ((isVisible == 1) || ((player->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) ||
-            (gModeSelection == BATTLE) || ((player->lakitu_props & HELD_BY_LAKITU) != 0) ||
-            (player->lakitu_props & LAKITU_SCENE) ||
+            (gModeSelection == BATTLE) || ((player->lakituProps & HELD_BY_LAKITU) != 0) ||
+            (player->lakituProps & LAKITU_SCENE) ||
             //! @todo make a proper match
             ((*(D_801633F8 + (playerId))) == ((s16) 1U))) {
             player->effects &= ~LOST_RACE_EFFECT;
@@ -591,8 +591,8 @@ void func_80028C44(Player* player, Camera* camera, s8 playerId, s8 screenId) {
 }
 
 void func_80028D3C(Player* player, Camera* camera, s8 playerId, s8 screenId) {
-    if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (D_800DC510 != 5)) || (player->lakitu_props & 2) != 0 ||
-        (player->lakitu_props & LAKITU_SCENE) != 0 ||
+    if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (D_800DC510 != 5)) || (player->lakituProps & 2) != 0 ||
+        (player->lakituProps & LAKITU_SCENE) != 0 ||
         (player->effects & (LIGHTNING_EFFECT | EXPLOSION_CRASH_EFFECT | HIT_BY_STAR_EFFECT | SQUISH_EFFECT |
                             POST_SQUISH_EFFECT | TERRAIN_TUMBLE_EFFECT | 0xC00 | 0xC0)) != 0) {
         player->effects &= ~LOST_RACE_EFFECT;
@@ -796,7 +796,7 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
         player->unk_050[screenId] = 0;
     }
     if (((player->effects & MIDAIR_EFFECT) == MIDAIR_EFFECT) &&
-        ((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
+        ((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
         player->unk_050[screenId] = 0;
     }
     var_a0 = (player->unk_048[screenId] + player->rotation[1] + player->unk_0C0);
@@ -954,7 +954,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     temp_f2_3 = ((gCharacterSize[player->characterId] * 18.0f) + 1.0f) * player->size;
     temp_f0_2 = player->unk_23C - player->unk_230;
     player->unk_206 = -atan1s(temp_f0_2 / temp_f2_3);
-    if (((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU) || (player->effects & MIDAIR_EFFECT)) {
+    if (((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU) || (player->effects & MIDAIR_EFFECT)) {
         player->unk_206 = 0;
     }
     if ((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) {
@@ -971,7 +971,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
         move_s16_towards(&player->slopeAccel, temp_v0, 0.5f);
     }
     if (((player->effects & MIDAIR_EFFECT) == MIDAIR_EFFECT) &&
-        ((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
+        ((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
         player->slopeAccel = (s16) ((s32) player->unk_D9C);
     }
     player->surfaceType = get_surface_type(player->collision.meshIndexZX) & 0xFF;
@@ -1434,7 +1434,7 @@ void apply_triggers(Player* player, s8 playerId, UNUSED s8 screenId) {
 }
 
 void func_8002B5C0(Player* player, UNUSED s8 playerId, UNUSED s8 screenId) {
-    if (((player->lakitu_props & LAKITU_SCENE) != 0) || ((player->lakitu_props & HELD_BY_LAKITU) != 0)) {
+    if (((player->lakituProps & LAKITU_SCENE) != 0) || ((player->lakituProps & HELD_BY_LAKITU) != 0)) {
         player->triggers &=
             ALL_TRIGGERS & ~(HIT_TRIGGERS | ANY_BOOST_TRIGGERS | RACING_SPINOUT_TRIGGERS | STATE_TRANSITION_TRIGGERS);
     }
@@ -1812,7 +1812,7 @@ void func_8002C17C(Player* player, s8 playerId) {
             } else if (D_80165330[playerId] == 0) {
                 gCopyNearestPathPointByPlayerId[playerId] = gNearestPathPointByPlayerId[playerId];
                 gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
-            } else if (!((player->effects & MIDAIR_EFFECT) || (player->lakitu_props & LAKITU_RETRIEVAL))) {
+            } else if (!((player->effects & MIDAIR_EFFECT) || (player->lakituProps & LAKITU_RETRIEVAL))) {
                 D_80165330[playerId] = 0;
             }
             break;
@@ -1856,16 +1856,16 @@ void func_8002C4F8(Player* player, s8 playerIndex) {
     }
     if ((player->boundingBoxSize < (D_801652A0[playerIndex] - player->pos[1])) &&
         (player->collision.surfaceDistance[2] >= 600.0f)) {
-        player->lakitu_props |= LAKITU_RETRIEVAL;
+        player->lakituProps |= LAKITU_RETRIEVAL;
     }
     if (player->collision.surfaceDistance[2] >= 600.0f) {
-        player->lakitu_props |= WENT_OVER_OOB;
+        player->lakituProps |= WENT_OVER_OOB;
     } else if ((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) {
-        player->lakitu_props &= ~WENT_OVER_OOB;
+        player->lakituProps &= ~WENT_OVER_OOB;
     }
     if ((player->type & PLAYER_CPU) &&
-        ((func_802ABDF4(player->collision.meshIndexZX) != 0) || (player->lakitu_props & LAKITU_RETRIEVAL))) {
-        if (!(player->lakitu_props & HELD_BY_LAKITU) && !(player->lakitu_props & LAKITU_SCENE) &&
+        ((func_802ABDF4(player->collision.meshIndexZX) != 0) || (player->lakituProps & LAKITU_RETRIEVAL))) {
+        if (!(player->lakituProps & HELD_BY_LAKITU) && !(player->lakituProps & LAKITU_SCENE) &&
             !(player->effects & LOST_RACE_EFFECT)) {
             func_80090778(player);
             func_80090868(player);
@@ -1931,7 +1931,7 @@ void func_8002C954(Player* player, s8 playerId, Vec3f velocity) {
          ((((temp_f0 >= 20.0f) || (temp_f0 < (-1.0f))) && ((player->effects & TERRAIN_TUMBLE_EFFECT) == 0)) &&
           (player->effects & MIDAIR_EFFECT)) ||
          ((player->collision.unk34 == 0) && ((player->effects & TERRAIN_TUMBLE_EFFECT) == 0))) &&
-        (((player->lakitu_props & HELD_BY_LAKITU) == 0) || (!(player->lakitu_props & LAKITU_SCENE)))) {
+        (((player->lakituProps & HELD_BY_LAKITU) == 0) || (!(player->lakituProps & LAKITU_SCENE)))) {
         func_8008F494(player, playerId);
     }
     if ((player->unk_046 & 0x20) != 0x20) {
@@ -1979,8 +1979,8 @@ void func_8002C954(Player* player, s8 playerId, Vec3f velocity) {
 }
 
 void apply_effect(Player* player, s8 playerIndex, s8 arg2) {
-    if (((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
-        ((player->lakitu_props & LAKITU_SCENE) == LAKITU_SCENE)) {
+    if (((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
+        ((player->lakituProps & LAKITU_SCENE) == LAKITU_SCENE)) {
         func_80090970(player, playerIndex, arg2);
     }
     if ((player->effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT) {
@@ -2244,10 +2244,10 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
         (((((f64) ((sp184[1] + gravityY) + sp160[1])) - (newVelocity[1] * (0.12 * ((f64) player->kartFriction)))) /
           6000.0) /
          ((f64) player->unk_DAC));
-    if (((((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
-          ((player->lakitu_props & LAKITU_SCENE) == LAKITU_SCENE)) ||
+    if (((((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
+          ((player->lakituProps & LAKITU_SCENE) == LAKITU_SCENE)) ||
          ((player->effects & SQUISH_EFFECT) == SQUISH_EFFECT)) ||
-        (player->lakitu_props & LAKITU_RETRIEVAL)) {
+        (player->lakituProps & LAKITU_RETRIEVAL)) {
         newVelocity[0] = 0.0f;
         newVelocity[1] = 0.0f;
         newVelocity[2] = 0.0f;
@@ -2267,10 +2267,10 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     nextY = posY + player->velocity[1];
     nextZ = posZ + player->velocity[2] + D_8018CE10[playerId].unk_04[2];
 
-    if (((((player->lakitu_props & HELD_BY_LAKITU) != HELD_BY_LAKITU) &&
-          ((player->lakitu_props & LAKITU_SCENE) != LAKITU_SCENE)) &&
+    if (((((player->lakituProps & HELD_BY_LAKITU) != HELD_BY_LAKITU) &&
+          ((player->lakituProps & LAKITU_SCENE) != LAKITU_SCENE)) &&
          ((player->effects & SQUISH_EFFECT) != SQUISH_EFFECT)) &&
-        (!(player->lakitu_props & LAKITU_RETRIEVAL))) {
+        (!(player->lakituProps & LAKITU_RETRIEVAL))) {
         func_8002AAC0(player);
         nextY += player->kartHopVelocity;
         nextY -= 0.02;
@@ -2299,7 +2299,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
             }
             player->unk_DB4.unkC = 3.0f;
             player->unk_DB4.unk18 = 0;
-            player->kart_graphics |= POOMP;
+            player->kartGraphics |= POOMP;
             if ((((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
                  ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT)) &&
                 ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
@@ -2368,7 +2368,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     }
     if (((!(player->effects & MIDAIR_EFFECT)) && (func_802ABDB8(player->collision.meshIndexZX) != 0)) &&
         ((player->effects & TERRAIN_TUMBLE_EFFECT) != TERRAIN_TUMBLE_EFFECT)) {
-        if ((!(player->lakitu_props & HELD_BY_LAKITU)) || (!(player->lakitu_props & LAKITU_SCENE))) {
+        if ((!(player->lakituProps & HELD_BY_LAKITU)) || (!(player->lakituProps & LAKITU_SCENE))) {
             func_8008F494(player, playerId);
         }
     } else if (((!(player->effects & MIDAIR_EFFECT)) && (func_802ABDB8(player->collision.meshIndexZX) == 0)) &&
@@ -2539,8 +2539,8 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     newVelocity[1] += (((((spEC[1] + gravityY) + spD4[1])) - (newVelocity[1] * (0.12 * player->kartFriction))) / 6000) /
                       player->unk_DAC;
 
-    if (((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
-        ((player->lakitu_props & LAKITU_SCENE) == LAKITU_SCENE)) {
+    if (((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
+        ((player->lakituProps & LAKITU_SCENE) == LAKITU_SCENE)) {
         newVelocity[0] = 0.0f;
         newVelocity[1] = 0.0f;
         newVelocity[2] = 0.0f;
@@ -2577,7 +2577,7 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
                     player->unk_0C2 = 0x0032;
                 }
                 player->unk_DB4.unk18 = 0;
-                player->kart_graphics |= POOMP;
+                player->kartGraphics |= POOMP;
                 player->unk_DB4.unkC = 3.0f;
                 if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
                     ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
@@ -2662,7 +2662,7 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     if (((func_802ABDB8(player->collision.meshIndexZX) != 0) &&
          ((player->effects & TERRAIN_TUMBLE_EFFECT) != TERRAIN_TUMBLE_EFFECT)) &&
         (((player->speed / 18.0f) * 216.0f) >= 20.0f)) {
-        if ((!(player->lakitu_props & HELD_BY_LAKITU)) || (!(player->lakitu_props & LAKITU_SCENE))) {
+        if ((!(player->lakituProps & HELD_BY_LAKITU)) || (!(player->lakituProps & LAKITU_SCENE))) {
             func_8008F494(player, playerId);
         }
     } else if (((!(player->effects & MIDAIR_EFFECT)) && (func_802ABDB8(player->collision.meshIndexZX) == 0)) &&
@@ -3017,7 +3017,7 @@ f32 func_80030150(Player* player, s8 playerIndex) {
             }
         }
         if (((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) &&
-            ((player->lakitu_props & HELD_BY_LAKITU) != HELD_BY_LAKITU)) {
+            ((player->lakituProps & HELD_BY_LAKITU) != HELD_BY_LAKITU)) {
             temp_lo = player->slopeAccel / 182;
             if (var_f2 >= 20.0f) {
                 if ((temp_lo > 0x11) || (temp_lo < -0x11)) {
@@ -3108,8 +3108,8 @@ f32 func_80030150(Player* player, s8 playerIndex) {
     if (var_f2 < 0.0f) {
         var_f2 = 0.0f;
     }
-    if (((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
-        ((player->lakitu_props & LAKITU_SCENE) == LAKITU_SCENE) ||
+    if (((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
+        ((player->lakituProps & LAKITU_SCENE) == LAKITU_SCENE) ||
         ((player->type & PLAYER_START_SEQUENCE) == PLAYER_START_SEQUENCE)) {
         return (1.0f - player->unk_104) * var_f2;
     }
@@ -3133,8 +3133,8 @@ void func_80030A34(Player* player) {
     f32 var_f0;
     f32 var_f2;
 
-    if (((player->lakitu_props & HELD_BY_LAKITU) != HELD_BY_LAKITU) &&
-        ((player->lakitu_props & LAKITU_SCENE) != LAKITU_SCENE)) {
+    if (((player->lakituProps & HELD_BY_LAKITU) != HELD_BY_LAKITU) &&
+        ((player->lakituProps & LAKITU_SCENE) != LAKITU_SCENE)) {
         if ((((player->speed / 18.0f) * 216.0f) >= 8.0f) && (player->unk_DB4.unkC < 1.0f)) {
             switch (player->surfaceType) { /* irregular */
                 case ASPHALT:
@@ -4300,7 +4300,7 @@ void func_80036C5C(Player* player) {
     if (((player->speed / 18.0f) * 216.0f) > 20.0f) {
         player->unk_204 = 0;
         player->effects |= DRIFTING_EFFECT;
-        player->kart_graphics |= BOING;
+        player->kartGraphics |= BOING;
     }
 }
 
@@ -4704,8 +4704,8 @@ void handle_a_press_for_player_during_race(Player* player, struct Controller* co
         ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
         // If not start sequence
         if ((player->type & PLAYER_START_SEQUENCE) != PLAYER_START_SEQUENCE) {
-            if (((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
-                ((player->lakitu_props & LAKITU_SCENE) == LAKITU_SCENE)) {
+            if (((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
+                ((player->lakituProps & LAKITU_SCENE) == LAKITU_SCENE)) {
                 if (controller->button & A_BUTTON) {
                     player_accelerate(player);
                 } else {

@@ -1436,7 +1436,7 @@ void update_player(s32 playerId) {
         if (gCourseMaxZ < player->pos[2]) {            D_801633E0[playerId] = 4;        }
         // clang-format on
 
-        if (!(player->lakitu_props & HELD_BY_LAKITU) && !(player->lakitu_props & LAKITU_SCENE)) {
+        if (!(player->lakituProps & HELD_BY_LAKITU) && !(player->lakituProps & LAKITU_SCENE)) {
             gPlayerPathIndex = gPathIndexByPlayerId[playerId];
             set_current_path(gPlayerPathIndex);
             switch (gCurrentCourseId) { /* irregular */
@@ -3795,8 +3795,8 @@ void func_8001A588(UNUSED u16* localD_80152300, Camera* camera, Player* player, 
                         if (playerId >= 8) {
                             playerId = 1;
                         }
-                        if ((!(gPlayers[playerId].lakitu_props & HELD_BY_LAKITU) &&
-                             !(gPlayers[playerId].lakitu_props & LAKITU_SCENE))) {
+                        if ((!(gPlayers[playerId].lakituProps & HELD_BY_LAKITU) &&
+                             !(gPlayers[playerId].lakituProps & LAKITU_SCENE))) {
                             break;
                         }
                     }

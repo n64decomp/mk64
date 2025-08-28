@@ -4171,7 +4171,7 @@ void func_80062A18(Player* player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->particles[20 + arg1 /* arg1 instead of arg3 */].scale = 0.2f;
     player->particles[20 + arg3].timer = 1;
     player->particles[20 + arg3].rotation = 0;
-    player->kart_graphics &= ~WHIRRR;
+    player->kartGraphics &= ~WHIRRR;
     player->particles[20 + arg3].pos[2] = player->pos[2];
     player->particles[20 + arg3].pos[0] = player->pos[0];
     player->particles[20 + arg3].pos[1] = (player->pos[1] + 4.0f);
@@ -4282,7 +4282,7 @@ void func_80062F98(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     temp_f0 = player->particles[10 + arg1].unk_018 / 10.0f;
     ++player->particles[10 + arg1].timer;
     player->particles[10 + arg1].pos[1] += temp_f0;
-    if ((player->lakitu_props & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) {
+    if ((player->lakituProps & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) {
         player->particles[10 + arg1].pos[1] += (temp_f0 + 0.3);
         if ((player->particles[10 + arg1].timer == 0x10) ||
             ((D_801652A0[arg2] - player->particles[10 + arg1].pos[1]) < 3.0f)) {
@@ -4862,7 +4862,7 @@ void func_80064DEC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->particles[20 + arg3].timer;
 
     if (player->particles[20 + arg3].timer == 9) {
-        player->kart_graphics &= ~CRASH;
+        player->kartGraphics &= ~CRASH;
         player->particles[20 + arg3].IsAlive = 0;
         player->particles[20 + arg3].timer = 0;
         player->particles[20 + arg3].type = 0;
@@ -4884,7 +4884,7 @@ void func_80064EA4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     } else {
         player->particles[20 + arg3].scale -= 1.8;
         if (player->particles[20 + arg3].scale <= 0.0f) {
-            player->kart_graphics &= ~EXPLOSION;
+            player->kartGraphics &= ~EXPLOSION;
             player->particles[20 + arg3].IsAlive = 0;
             player->particles[20 + arg3].timer = 0;
             player->particles[20 + arg3].type = 0;
@@ -4900,7 +4900,7 @@ void func_80064F88(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
         player->particles[20 + arg3].scale = 1.2f;
     }
     if (player->particles[20 + arg3].timer >= 12) {
-        player->kart_graphics &= ~BOING;
+        player->kartGraphics &= ~BOING;
         player->particles[20 + arg3].IsAlive = 0;
         player->particles[20 + arg3].timer = 0;
         player->particles[20 + arg3].type = 0;
@@ -4917,7 +4917,7 @@ void func_80065030(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 
     if (player->particles[20 + arg3].timer >= 12) {
-        player->kart_graphics &= ~POOMP;
+        player->kartGraphics &= ~POOMP;
         player->particles[20 + arg3].IsAlive = 0;
         player->particles[20 + arg3].timer = 0;
         player->particles[20 + arg3].type = 0;
@@ -4957,7 +4957,7 @@ void func_800651F4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     } else {
         player->particles[20 + arg3].scale -= 0.4;
         if (player->particles[20 + arg3].scale <= 0.0f) {
-            player->kart_graphics &= ~WHISTLE;
+            player->kartGraphics &= ~WHISTLE;
             player->particles[20 + arg3].IsAlive = 0;
             player->particles[20 + arg3].timer = 0;
             player->particles[20 + arg3].type = 0;
@@ -6340,7 +6340,7 @@ void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
             player->kartProps &= ~POST_TUMBLE_GAS;
             return;
         }
-        if (((((player->lakitu_props & LAKITU_LAVA) == LAKITU_LAVA) ||
+        if (((((player->lakituProps & LAKITU_LAVA) == LAKITU_LAVA) ||
               ((player->unk_0E0 < 2) && (player->effects & EXPLOSION_CRASH_EFFECT))) ||
              ((player->unk_0E0 < 2) && (player->effects & HIT_BY_STAR_EFFECT))) ||
             (player->effects & HIT_BY_GREEN_SHELL_EFFECT)) {
@@ -6349,7 +6349,7 @@ void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
             player->kartProps &= ~POST_TUMBLE_GAS;
             return;
         }
-        if ((player->lakitu_props & LAKITU_WATER) == LAKITU_WATER) {
+        if ((player->lakituProps & LAKITU_WATER) == LAKITU_WATER) {
             func_80061A34(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
             player->kartProps &= ~POST_TUMBLE_GAS;
@@ -6437,9 +6437,9 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
                 if (((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) &&
                     ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
                     ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
-                    if (((arg0->lakitu_props & HELD_BY_LAKITU) != HELD_BY_LAKITU) &&
-                        ((arg0->lakitu_props & FRIGID_EFFECT) != FRIGID_EFFECT) &&
-                        !(arg0->lakitu_props & WENT_OVER_OOB)) {
+                    if (((arg0->lakituProps & HELD_BY_LAKITU) != HELD_BY_LAKITU) &&
+                        ((arg0->lakituProps & FRIGID_EFFECT) != FRIGID_EFFECT) &&
+                        !(arg0->lakituProps & WENT_OVER_OOB)) {
                         func_80060504(arg0, arg1, sp20, arg2, arg3);
                     }
                 }
@@ -6452,9 +6452,9 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
                 if (((arg0->type & PLAYER_HUMAN) != 0) && ((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) &&
                     ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
                     ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
-                    if (((arg0->lakitu_props & HELD_BY_LAKITU) != HELD_BY_LAKITU) &&
-                        ((arg0->lakitu_props & FRIGID_EFFECT) != FRIGID_EFFECT) &&
-                        !(arg0->lakitu_props & WENT_OVER_OOB)) {
+                    if (((arg0->lakituProps & HELD_BY_LAKITU) != HELD_BY_LAKITU) &&
+                        ((arg0->lakituProps & FRIGID_EFFECT) != FRIGID_EFFECT) &&
+                        !(arg0->lakituProps & WENT_OVER_OOB)) {
                         func_80060504(arg0, arg1, sp20, arg2, arg3);
                     }
                 }
@@ -6483,19 +6483,19 @@ void func_8006D194(Player* player, s8 playerIndex, s8 arg2) {
                 break;
         }
     } else {
-        if ((player->kart_graphics & CRASH) == CRASH) {
+        if ((player->kartGraphics & CRASH) == CRASH) {
             func_800628C0(player, playerIndex, arg2, 0);
         }
-        if ((player->kart_graphics & BOING) == BOING) {
+        if ((player->kartGraphics & BOING) == BOING) {
             func_80062968(player, playerIndex, arg2, 0);
         }
-        if ((player->kart_graphics & EXPLOSION) == EXPLOSION) {
+        if ((player->kartGraphics & EXPLOSION) == EXPLOSION) {
             func_80062914(player, playerIndex, arg2, 0);
         }
-        if ((player->kart_graphics & WHIRRR) == WHIRRR) {
+        if ((player->kartGraphics & WHIRRR) == WHIRRR) {
             func_80062A18(player, playerIndex, arg2, 0);
         }
-        if ((player->kart_graphics & POOMP) == POOMP) {
+        if ((player->kartGraphics & POOMP) == POOMP) {
             func_800629BC(player, playerIndex, arg2, 0);
         }
     }
@@ -6503,7 +6503,7 @@ void func_8006D194(Player* player, s8 playerIndex, s8 arg2) {
         if (player->particles[0x15].type == 5) {
             func_800651F4(player, playerIndex, arg2, 1);
         }
-    } else if ((player->kart_graphics & WHISTLE) == WHISTLE) {
+    } else if ((player->kartGraphics & WHISTLE) == WHISTLE) {
         func_80062AA8(player, playerIndex, arg2, 1);
     }
 }

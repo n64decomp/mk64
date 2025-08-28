@@ -331,7 +331,7 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define MAX_TIME 0x927C0
 #define DEGREES_CONVERSION_FACTOR 182
 
-// UNK_0DE
+// player->oobProps
 /* Deals with the lower out of bounds (OOB) plane on levels. Represented by fluids (water / lava)
   or nothing for Rainbow Road and Skyscraper. */
 #define UNDER_OOB_OR_FLUID_LEVEL 0x1 // Set while mostly under the plane. Does not necessarily trigger Lakitu on Koopa Troopa Beach.
@@ -357,8 +357,7 @@ player spins. Something  with avoding rollover of aniamation frame data? */
 #define BOING 0x800      // Boing! graphic (hopping)
 #define EXPLOSION 0x1000 // Big shock looking graphic when starting tumble
 
-
-
+// player->lakituProps
 #define LAKITU_RETRIEVAL 0x1 // While lakitu is grabbing you, but before the scene transition of being placed on the track
 #define HELD_BY_LAKITU   0x2
 #define LAKITU_FIZZLE    0x4 // Disintegration and reintegration effect when transitioning from retrieval to placement
@@ -370,6 +369,7 @@ player spins. Something  with avoding rollover of aniamation frame data? */
 #define LAKITU_LAVA   0x1000 // smoky effect when retrieved from lava
 #define LAKITU_WATER  0x2000 // dripping effect when retreived from water
 
+// player->kartGraphics
 #define BACK_UP               0x1
 #define RIGHT_TURN            0x2 // non-drifting (more than 5 degrees)
 #define LEFT_TURN             0x4 // non-drifting (more than 5 degrees)
