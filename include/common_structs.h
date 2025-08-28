@@ -293,7 +293,7 @@ typedef struct {
     /* 0x00B0 */ s16 unk_0B0;
     /* 0x00B2 */ s16 unk_0B2;
     /* 0x00B4 */ u16 unk_0B4;
-    /* 0x00B6 */ u16 unk_0B6;
+    /* 0x00B6 */ u16 kart_graphics;
     /* 0x00B8 */ f32 unk_0B8;
     /* 0x00BC */ u32 effects;
     /* 0x00C0 */ s16 unk_0C0;

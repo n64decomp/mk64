@@ -350,12 +350,12 @@ appear to the specified player */
 player spins. Something  with avoding rollover of aniamation frame data? */
 #define SIDE_OF_KART 0x8 // Seems to be whether you are in a rectangle shooting out from both sides of target player
 
-#define UNK_0B6_WHISTLE 0x20 // Whistle spinout save graphic
-#define UNK_0B6_CRASH 0x40 //Crash! graphic (vertical tumble)
-#define UNK_0B6_WHIRRR 0x80 //Whirrr! graphic (spinning out)
-#define UNK_0B6_POOMP 0x100 //Poomp! graphic (landing from a height)
-#define UNK_0B6_BOING 0x800 //Boing! graphic (hopping)
-#define UNK_0B6_EXPLOSION 0x1000 //Big shock looking graphic when starting tumble
+#define WHISTLE 0x20 // Whistle spinout save graphic
+#define CRASH 0x40 //Crash! graphic (vertical tumble)
+#define WHIRRR 0x80 //Whirrr! graphic (spinning out)
+#define POOMP 0x100 //Poomp! graphic (landing from a height)
+#define BOING 0x800 //Boing! graphic (hopping)
+#define EXPLOSION 0x1000 //Big shock looking graphic when starting tumble
 
 
 

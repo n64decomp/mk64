@@ -137,7 +137,7 @@ void func_8008C310(Player* player) {
     // The << 9 is a hacky way to check for VERTICAL_TUMBLE_TRIGGER
     if ((player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) || ((player->triggers << 9) < 0) ||
         (player->triggers & HIT_BY_STAR_TRIGGER)) {
-        player->unk_0B6 = ((u16) player->unk_0B6 | UNK_0B6_EXPLOSION);
+        player->kart_graphics = ((u16) player->kart_graphics | EXPLOSION);
     }
 }
 
@@ -269,7 +269,7 @@ void func_8008C73C(Player* player, s8 playerIndex) {
             player->effects |= BANANA_SPINOUT_EFFECT;
         }
 
-        player->unk_0B6 |= UNK_0B6_WHIRRR;
+        player->kart_graphics |= WHIRRR;
         // clang-format off
         player->unk_0C0 = 0; player->unk_07C = 0; player->unk_078 = 0; player->unk_0AE = player->rotation[1]; player->unk_0B2 = 2;
         // clang-format on
@@ -414,7 +414,7 @@ void func_8008CEB0(Player* player, s8 playerIndex) {
                 func_8008C73C(player, playerIndex);
                 var_v1 = 0;
             } else {
-                player->unk_0B6 |= UNK_0B6_WHISTLE;
+                player->kart_graphics |= WHISTLE;
                 player->effects &= ~BANANA_SPINOUT_SAVE_EFFECT;
                 if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
                     func_800C90F4(playerIndex, (player->characterId * 0x10) + 0x29008008);
@@ -479,7 +479,7 @@ void func_8008D170(Player* player, s8 playerIndex) {
                 func_8008C73C(player, playerIndex);
                 var_v1 = 0;
             } else {
-                player->unk_0B6 |= UNK_0B6_WHISTLE;
+                player->kart_graphics |= WHISTLE;
                 player->effects &= ~BANANA_SPINOUT_SAVE_EFFECT;
                 if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
                     func_800C90F4(playerIndex, (player->characterId * 0x10) + 0x29008008);
@@ -1031,7 +1031,7 @@ void trigger_vertical_tumble(Player* player, s8 playerIndex) {
     }
 
     player->triggers &= ~(VERTICAL_TUMBLE_TRIGGER | HIT_PADDLE_BOAT_TRIGGER);
-    player->unk_0B6 |= UNK_0B6_CRASH;
+    player->kart_graphics |= CRASH;
     gTimerBoostTripleACombo[playerIndex] = 0;
     gIsPlayerTripleAButtonCombo[playerIndex] = false;
     gCountASwitch[playerIndex] = 0;
@@ -1131,7 +1131,7 @@ void trigger_high_tumble(Player* player, s8 playerIndex) {
     }
 
     player->effects |= HIT_BY_STAR_EFFECT;
-    player->unk_0B6 |= UNK_0B6_CRASH;
+    player->kart_graphics |= CRASH;
     player->triggers &= ~(HIT_BY_STAR_TRIGGER | HIGH_TUMBLE_TRIGGER);
 
     gTimerBoostTripleACombo[playerIndex] = 0;

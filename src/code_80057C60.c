@@ -4171,7 +4171,7 @@ void func_80062A18(Player* player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->particles[20 + arg1 /* arg1 instead of arg3 */].scale = 0.2f;
     player->particles[20 + arg3].timer = 1;
     player->particles[20 + arg3].rotation = 0;
-    player->unk_0B6 &= ~UNK_0B6_WHIRRR;
+    player->kart_graphics &= ~WHIRRR;
     player->particles[20 + arg3].pos[2] = player->pos[2];
     player->particles[20 + arg3].pos[0] = player->pos[0];
     player->particles[20 + arg3].pos[1] = (player->pos[1] + 4.0f);
@@ -4862,7 +4862,7 @@ void func_80064DEC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->particles[20 + arg3].timer;
 
     if (player->particles[20 + arg3].timer == 9) {
-        player->unk_0B6 &= ~UNK_0B6_CRASH;
+        player->kart_graphics &= ~CRASH;
         player->particles[20 + arg3].IsAlive = 0;
         player->particles[20 + arg3].timer = 0;
         player->particles[20 + arg3].type = 0;
@@ -4884,7 +4884,7 @@ void func_80064EA4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     } else {
         player->particles[20 + arg3].scale -= 1.8;
         if (player->particles[20 + arg3].scale <= 0.0f) {
-            player->unk_0B6 &= ~UNK_0B6_EXPLOSION;
+            player->kart_graphics &= ~EXPLOSION;
             player->particles[20 + arg3].IsAlive = 0;
             player->particles[20 + arg3].timer = 0;
             player->particles[20 + arg3].type = 0;
@@ -4900,7 +4900,7 @@ void func_80064F88(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
         player->particles[20 + arg3].scale = 1.2f;
     }
     if (player->particles[20 + arg3].timer >= 12) {
-        player->unk_0B6 &= ~UNK_0B6_BOING;
+        player->kart_graphics &= ~BOING;
         player->particles[20 + arg3].IsAlive = 0;
         player->particles[20 + arg3].timer = 0;
         player->particles[20 + arg3].type = 0;
@@ -4917,7 +4917,7 @@ void func_80065030(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 
     if (player->particles[20 + arg3].timer >= 12) {
-        player->unk_0B6 &= ~UNK_0B6_POOMP;
+        player->kart_graphics &= ~POOMP;
         player->particles[20 + arg3].IsAlive = 0;
         player->particles[20 + arg3].timer = 0;
         player->particles[20 + arg3].type = 0;
@@ -4957,7 +4957,7 @@ void func_800651F4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     } else {
         player->particles[20 + arg3].scale -= 0.4;
         if (player->particles[20 + arg3].scale <= 0.0f) {
-            player->unk_0B6 &= ~UNK_0B6_WHISTLE;
+            player->kart_graphics &= ~WHISTLE;
             player->particles[20 + arg3].IsAlive = 0;
             player->particles[20 + arg3].timer = 0;
             player->particles[20 + arg3].type = 0;
@@ -6479,19 +6479,19 @@ void func_8006D194(Player* player, s8 playerIndex, s8 arg2) {
                 break;
         }
     } else {
-        if ((player->unk_0B6 & UNK_0B6_CRASH) == UNK_0B6_CRASH) {
+        if ((player->kart_graphics & CRASH) == CRASH) {
             func_800628C0(player, playerIndex, arg2, 0);
         }
-        if ((player->unk_0B6 & UNK_0B6_BOING) == UNK_0B6_BOING) {
+        if ((player->kart_graphics & BOING) == BOING) {
             func_80062968(player, playerIndex, arg2, 0);
         }
-        if ((player->unk_0B6 & UNK_0B6_EXPLOSION) == UNK_0B6_EXPLOSION) {
+        if ((player->kart_graphics & EXPLOSION) == EXPLOSION) {
             func_80062914(player, playerIndex, arg2, 0);
         }
-        if ((player->unk_0B6 & UNK_0B6_WHIRRR) == UNK_0B6_WHIRRR) {
+        if ((player->kart_graphics & WHIRRR) == WHIRRR) {
             func_80062A18(player, playerIndex, arg2, 0);
         }
-        if ((player->unk_0B6 & UNK_0B6_POOMP) == UNK_0B6_POOMP) {
+        if ((player->kart_graphics & POOMP) == POOMP) {
             func_800629BC(player, playerIndex, arg2, 0);
         }
     }
@@ -6499,7 +6499,7 @@ void func_8006D194(Player* player, s8 playerIndex, s8 arg2) {
         if (player->particles[0x15].type == 5) {
             func_800651F4(player, playerIndex, arg2, 1);
         }
-    } else if ((player->unk_0B6 & UNK_0B6_WHISTLE) == UNK_0B6_WHISTLE) {
+    } else if ((player->kart_graphics & WHISTLE) == WHISTLE) {
         func_80062AA8(player, playerIndex, arg2, 1);
     }
 }

@@ -2270,7 +2270,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
             }
             player->unk_DB4.unkC = 3.0f;
             player->unk_DB4.unk18 = 0;
-            player->unk_0B6 |= UNK_0B6_POOMP;
+            player->kart_graphics |= POOMP;
             if ((((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
                  ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT)) &&
                 ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
@@ -2541,7 +2541,7 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
                     player->unk_0C2 = 0x0032;
                 }
                 player->unk_DB4.unk18 = 0;
-                player->unk_0B6 |= UNK_0B6_POOMP;
+                player->kart_graphics |= POOMP;
                 player->unk_DB4.unkC = 3.0f;
                 if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
                     ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
@@ -4258,7 +4258,7 @@ void func_80036C5C(Player* player) {
     if (((player->speed / 18.0f) * 216.0f) > 20.0f) {
         player->unk_204 = 0;
         player->effects |= DRIFTING_EFFECT;
-        player->unk_0B6 |= UNK_0B6_BOING;
+        player->kart_graphics |= BOING;
     }
 }
 

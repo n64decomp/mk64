@@ -81,7 +81,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->type = PLAYER_INACTIVE;
     player->unk_08C = 0;
     player->characterId = characterId;
-    player->unk_0B6 = 0;
+    player->kart_graphics = 0;
     player->kartFriction = gKartFrictionTable[player->characterId];
     player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
     player->kartGravity = gKartGravityTable[player->characterId];
