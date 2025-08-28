@@ -331,7 +331,7 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define MAX_TIME 0x927C0
 #define DEGREES_CONVERSION_FACTOR 182
 
-//UNK_0DE
+// UNK_0DE
 /* Deals with the lower out of bounds (OOB) plane on levels. Represented by fluids (water / lava)
   or nothing for Rainbow Road and Skyscraper. */
 #define UNDER_OOB_OR_FLUID_LEVEL 0x1 // Set while mostly under the plane. Does not necessarily trigger Lakitu on Koopa Troopa Beach.
@@ -350,42 +350,43 @@ appear to the specified player */
 player spins. Something  with avoding rollover of aniamation frame data? */
 #define SIDE_OF_KART 0x8 // Seems to be whether you are in a rectangle shooting out from both sides of target player
 
-#define WHISTLE 0x20 // Whistle spinout save graphic
-#define CRASH 0x40 //Crash! graphic (vertical tumble)
-#define WHIRRR 0x80 //Whirrr! graphic (spinning out)
-#define POOMP 0x100 //Poomp! graphic (landing from a height)
-#define BOING 0x800 //Boing! graphic (hopping)
-#define EXPLOSION 0x1000 //Big shock looking graphic when starting tumble
+#define WHISTLE 0x20     // Whistle spinout save graphic
+#define CRASH 0x40       // Crash! graphic (vertical tumble)
+#define WHIRRR 0x80      // Whirrr! graphic (spinning out)
+#define POOMP 0x100      // Poomp! graphic (landing from a height)
+#define BOING 0x800      // Boing! graphic (hopping)
+#define EXPLOSION 0x1000 // Big shock looking graphic when starting tumble
 
 
 
 #define LAKITU_RETRIEVAL 0x1 // While lakitu is grabbing you, but before the scene transition of being placed on the track
-#define HELD_BY_LAKITU 0x2
-#define LAKITU_FIZZLE 0x4 // Disintegration and reintegration effect when transitioning from retrieval to placement
-#define LAKITU_SCENE 0x8 // the whole segment from when lakitu is called to when you regain control
-#define FRIGID_EFFECT 0x10 // Cold colors on Sherbet Land after in frigid water
-#define THAWING_EFFECT 0x20 // Regaining usual colors post frigid effect
-#define FROZEN_EFFECT 0x80 // In the ice cube
-#define WENT_OVER_OOB 0x100 // Player went over (or is on) an OOB area. Cancelled if touch back in bounds
-#define LAKITU_LAVA 0x1000 // smoky effect when retrieved from lava
-#define LAKITU_WATER 0x2000 // dripping effect when retreived from water
+#define HELD_BY_LAKITU   0x2
+#define LAKITU_FIZZLE    0x4 // Disintegration and reintegration effect when transitioning from retrieval to placement
+#define LAKITU_SCENE     0x8 // the whole segment from when lakitu is called to when you regain control
+#define FRIGID_EFFECT   0x10 // Cold colors on Sherbet Land after in frigid water
+#define THAWING_EFFECT  0x20 // Regaining usual colors post frigid effect
+#define FROZEN_EFFECT   0x80 // In the ice cube
+#define WENT_OVER_OOB  0x100 // Player went over (or is on) an OOB area. Cancelled if touch back in bounds
+#define LAKITU_LAVA   0x1000 // smoky effect when retrieved from lava
+#define LAKITU_WATER  0x2000 // dripping effect when retreived from water
 
-#define BACK_UP 0x1
-#define RIGHT_TURN 0x2 // non-drifting (more than 5 degrees)
-#define LEFT_TURN 0x4 // non-drifting (more than 5 degrees)
-#define MOVE_BACKWARDS 0x8 // includes lakitu
-#define LOSE_GP_RACE 0x10 // pointless, only unsets itself
-#define PRESS_A 0x20
-#define EARLY_SPINOUT_RIGHT 0x40 // Spinning out while facing right (not actually used for anything)
-#define EARLY_SPINOUT_LEFT 0x80 // Spinning out while facing left
-#define POST_TUMBLE_GAS 0x100 //Causes particles after a vertical tumble, I think
-#define BECOME_INVISIBLE 0x200
-#define UNUSED_0x400 0x400 //locked behind 0x800 (func_80091440)
-#define UNUSED_0x800 0x800 //locked behind 0x400 (func_8002B830 -> func_800911B4)
-#define UNUSED_0x1000 0x1000 // 0x1000 locked behind 0x400 (func_8002B830 -> func_800911B4)
-#define UNUSED_0x2000 0x2000 // 0x2000 locked behind 0x400 and 0x800 (func_8002B830 -> func_800911B4, apply_effect -> func_80091298, func_80091440)
-#define DRIVING_SPINOUT 0x4000
-#define UNKNOWN_BATTLE_VAR 0x8000 //0x8000 something battle related, unclear if ever set
+#define BACK_UP               0x1
+#define RIGHT_TURN            0x2 // non-drifting (more than 5 degrees)
+#define LEFT_TURN             0x4 // non-drifting (more than 5 degrees)
+#define MOVE_BACKWARDS        0x8 // includes lakitu
+#define LOSE_GP_RACE         0x10 // pointless, only unsets itself
+#define PRESS_A              0x20
+#define EARLY_SPINOUT_RIGHT  0x40 // Spinning out while facing right (not actually used for anything)
+#define EARLY_SPINOUT_LEFT   0x80 // Spinning out while facing left
+#define POST_TUMBLE_GAS     0x100 // Causes particles after a vertical tumble, I think
+#define BECOME_INVISIBLE    0x200
+#define UNUSED_0x400        0x400 // locked behind 0x800 (func_80091440)
+#define UNUSED_0x800        0x800 // locked behind 0x400 (func_8002B830 -> func_800911B4)
+#define UNUSED_0x1000      0x1000 // 0x1000 locked behind 0x400 (func_8002B830 -> func_800911B4)
+#define UNUSED_0x2000      0x2000 // 0x2000 locked behind 0x400 and 0x800 (func_8002B830 -> func_800911B4, apply_effect -> func_80091298,
+                                  // func_80091440)
+#define DRIVING_SPINOUT    0x4000
+#define UNKNOWN_BATTLE_VAR 0x8000 // 0x8000 something battle related, unclear if ever set
 
 /*
  * @brief triggers indicating that an effect should be applied to a kart
@@ -416,11 +417,13 @@ player spins. Something  with avoding rollover of aniamation frame data? */
 
 #define ALL_TRIGGERS (0xFFFFFFFF)
 #define RACING_SPINOUT_TRIGGERS (SPINOUT_TRIGGER | DRIVING_SPINOUT_TRIGGER | HIT_BANANA_TRIGGER) // 0x200081
-#define RAMP_BOOST_TRIGGERS (BOOST_RAMP_ASPHALT_TRIGGER | BOOST_RAMP_WOOD_TRIGGER) // 0x00808000
-#define ANY_BOOST_TRIGGERS (RAMP_BOOST_TRIGGERS | SHROOM_TRIGGER) // 0x00808200
-#define STATE_TRANSITION_TRIGGERS (STAR_TRIGGER | BOO_TRIGGER | UNUSED_TRIGGER_0x1000 | UNUSED_TRIGGER_0x20000)// 0x00023800
-#define HIT_TRIGGERS (HIT_BY_STAR_TRIGGER | VERTICAL_TUMBLE_TRIGGER | \
-    LIGHTNING_STRIKE_TRIGGER | LOW_TUMBLE_TRIGGER | HIGH_TUMBLE_TRIGGER | THWOMP_SQUISH_TRIGGER) // 0x01404106
+#define RAMP_BOOST_TRIGGERS (BOOST_RAMP_ASPHALT_TRIGGER | BOOST_RAMP_WOOD_TRIGGER)               // 0x00808000
+#define ANY_BOOST_TRIGGERS (RAMP_BOOST_TRIGGERS | SHROOM_TRIGGER)                                // 0x00808200
+#define STATE_TRANSITION_TRIGGERS \
+    (STAR_TRIGGER | BOO_TRIGGER | UNUSED_TRIGGER_0x1000 | UNUSED_TRIGGER_0x20000) // 0x00023800
+#define HIT_TRIGGERS                                                                                 \
+    (HIT_BY_STAR_TRIGGER | VERTICAL_TUMBLE_TRIGGER | LIGHTNING_STRIKE_TRIGGER | LOW_TUMBLE_TRIGGER | \
+     HIGH_TUMBLE_TRIGGER | THWOMP_SQUISH_TRIGGER) // 0x01404106
 
 /**
  * @brief effect of player's

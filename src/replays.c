@@ -454,7 +454,8 @@ void save_player_replay(void) {
     u32 prevInputs;
     /* Input file is too long or picked up by lakitu or Out of bounds
     Not sure if there is any way to be considered out of bounds without lakitu getting called */
-    if (((sPlayerInputIdx >= 0x1000) || ((gPlayerOne->lakitu_props & HELD_BY_LAKITU) != 0)) || ((gPlayerOne->lakitu_props & LAKITU_SCENE) != 0)) {
+    if (((sPlayerInputIdx >= 0x1000) || ((gPlayerOne->lakitu_props & HELD_BY_LAKITU) != 0)) ||
+        ((gPlayerOne->lakitu_props & LAKITU_SCENE) != 0)) {
         gPostTimeTrialReplayCannotSave = 1;
         return;
     }

@@ -1361,7 +1361,8 @@ void play_cpu_sound_effect(s32 arg0, Player* player) {
     }
     if (D_801633B0[arg0] >= 0xB) {
         if ((player->triggers & VERTICAL_TUMBLE_TRIGGER) || (player->triggers & HIT_BY_STAR_TRIGGER) ||
-            (player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) || (player->effects & SQUISH_EFFECT)) {
+            (player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) ||
+            (player->effects & SQUISH_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0B));
             D_801633B0[arg0] = 0;
         }
@@ -3794,7 +3795,8 @@ void func_8001A588(UNUSED u16* localD_80152300, Camera* camera, Player* player, 
                         if (playerId >= 8) {
                             playerId = 1;
                         }
-                        if ((!(gPlayers[playerId].lakitu_props & HELD_BY_LAKITU) && !(gPlayers[playerId].lakitu_props & LAKITU_SCENE))) {
+                        if ((!(gPlayers[playerId].lakitu_props & HELD_BY_LAKITU) &&
+                             !(gPlayers[playerId].lakitu_props & LAKITU_SCENE))) {
                             break;
                         }
                     }
@@ -4545,8 +4547,10 @@ void func_8001C14C(void) {
                 if (playerId != 3) {
                     if (1) {}
                     // Why oh why is a ternary required here? Who does that?
-                    (D_8016347C == 0) ? (temp_s0->type |= PLAYER_START_SEQUENCE) : (temp_s0->type &= ~PLAYER_START_SEQUENCE);
-                    if ((gPlayerOne->type & PLAYER_START_SEQUENCE) && (gPlayerTwo->type & PLAYER_START_SEQUENCE) && (gPlayerThree->type & PLAYER_START_SEQUENCE)) {
+                    (D_8016347C == 0) ? (temp_s0->type |= PLAYER_START_SEQUENCE)
+                                      : (temp_s0->type &= ~PLAYER_START_SEQUENCE);
+                    if ((gPlayerOne->type & PLAYER_START_SEQUENCE) && (gPlayerTwo->type & PLAYER_START_SEQUENCE) &&
+                        (gPlayerThree->type & PLAYER_START_SEQUENCE)) {
                         D_8016347C = 1;
                         D_80163480 = 0;
                     }

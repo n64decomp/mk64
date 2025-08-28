@@ -6437,7 +6437,9 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
                 if (((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) &&
                     ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
                     ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
-                    if (((arg0->lakitu_props & HELD_BY_LAKITU) != HELD_BY_LAKITU) && ((arg0->lakitu_props & FRIGID_EFFECT) != FRIGID_EFFECT) && !(arg0->lakitu_props & WENT_OVER_OOB)) {
+                    if (((arg0->lakitu_props & HELD_BY_LAKITU) != HELD_BY_LAKITU) &&
+                        ((arg0->lakitu_props & FRIGID_EFFECT) != FRIGID_EFFECT) &&
+                        !(arg0->lakitu_props & WENT_OVER_OOB)) {
                         func_80060504(arg0, arg1, sp20, arg2, arg3);
                     }
                 }
@@ -6447,13 +6449,15 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            if (((arg0->type & PLAYER_HUMAN) != 0) && ((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) &&
-                ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
-                ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
-                if (((arg0->lakitu_props & HELD_BY_LAKITU) != HELD_BY_LAKITU) && ((arg0->lakitu_props & FRIGID_EFFECT) != FRIGID_EFFECT) && !(arg0->lakitu_props & WENT_OVER_OOB)) {
-                    func_80060504(arg0, arg1, sp20, arg2, arg3);
+                if (((arg0->type & PLAYER_HUMAN) != 0) && ((arg0->effects & SQUISH_EFFECT) != SQUISH_EFFECT) &&
+                    ((arg0->effects & HIT_BY_GREEN_SHELL_EFFECT) != HIT_BY_GREEN_SHELL_EFFECT) &&
+                    ((arg0->effects & EXPLOSION_CRASH_EFFECT) != EXPLOSION_CRASH_EFFECT)) {
+                    if (((arg0->lakitu_props & HELD_BY_LAKITU) != HELD_BY_LAKITU) &&
+                        ((arg0->lakitu_props & FRIGID_EFFECT) != FRIGID_EFFECT) &&
+                        !(arg0->lakitu_props & WENT_OVER_OOB)) {
+                        func_80060504(arg0, arg1, sp20, arg2, arg3);
+                    }
                 }
-            }
             break;
         }
     }

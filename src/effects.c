@@ -135,8 +135,8 @@ UNUSED void func_unnamed33(void) {
 
 void func_8008C310(Player* player) {
     // The << 9 is a hacky way to check for VERTICAL_TUMBLE_TRIGGER
-    if ((player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) || ((player->triggers << 9) < 0) ||
-        (player->triggers & HIT_BY_STAR_TRIGGER)) {
+    if ((player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) ||
+        ((player->triggers << 9) < 0) || (player->triggers & HIT_BY_STAR_TRIGGER)) {
         player->kart_graphics = ((u16) player->kart_graphics | EXPLOSION);
     }
 }
@@ -1346,7 +1346,8 @@ void func_8008F494(Player* player, s8 playerIndex) {
     player->unk_042 = 0;
 
     if (((player->type & PLAYER_HUMAN) != 0) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) &&
-        ((player->lakitu_props & HELD_BY_LAKITU) == 0) && ((player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) == 0) && ((player->oobProps & PASS_OOB_OR_FLUID_LEVEL) == 0)) {
+        ((player->lakitu_props & HELD_BY_LAKITU) == 0) && ((player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) == 0) &&
+        ((player->oobProps & PASS_OOB_OR_FLUID_LEVEL) == 0)) {
         func_800C90F4(playerIndex, (player->characterId * 0x10) + 0x29008004);
     }
 }
@@ -1987,7 +1988,8 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
 
 bool prevent_item_use(Player* player) {
     s32 phi_v0 = 0;
-    if ((((((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU) || ((player->lakitu_props & LAKITU_SCENE) == LAKITU_SCENE)) ||
+    if ((((((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
+           ((player->lakitu_props & LAKITU_SCENE) == LAKITU_SCENE)) ||
           ((player->type & PLAYER_UNKNOWN_0x40) != 0)) ||
          ((player->type & PLAYER_CINEMATIC_MODE) != 0)) ||
         ((player->type & PLAYER_EXISTS) == 0)) {

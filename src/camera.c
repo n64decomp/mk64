@@ -988,7 +988,8 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
                 func_8001A588(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
                 break;
             case 1:
-                if (((player->lakitu_props & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) || ((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
+                if (((player->lakitu_props & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) ||
+                    ((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
                     func_8001E8E8(camera, player, index);
                     break;
                 }
@@ -999,7 +1000,8 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
                 func_8001F87C(cameraIndex);
                 break;
             case 9:
-                if (((player->lakitu_props & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) || ((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
+                if (((player->lakitu_props & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) ||
+                    ((player->lakitu_props & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
                     func_8001E8E8(camera, player, index);
                     break;
                 }
@@ -1150,7 +1152,8 @@ void func_8001F87C(s32 cameraId) {
     if (gActiveScreenMode == SCREEN_MODE_1P) {
         if (gModeSelection == GRAND_PRIX) {
             for (playerIndex = 0; playerIndex < NUM_PLAYERS; playerIndex++) {
-                if ((gPlayerOne[playerIndex].type & PLAYER_STAGING) || (gPlayerOne[playerIndex].type & PLAYER_UNKNOWN_0x80)) {
+                if ((gPlayerOne[playerIndex].type & PLAYER_STAGING) ||
+                    (gPlayerOne[playerIndex].type & PLAYER_UNKNOWN_0x80)) {
                     break;
                 }
                 if (playerIndex == 7) {
