@@ -3561,7 +3561,7 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     s32 temp_v0;
     UNUSED s32 test;
 
-    if ((player->unk_044 & UNK_044_PRESS_A) == UNK_044_PRESS_A) {
+    if ((player->kartProps & PRESS_A) == PRESS_A) {
         var_v0 = 5;
     } else {
         var_v0 = 0xE;
@@ -3583,7 +3583,7 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         }
     }
     player->particles[arg1].unk_024 = 0.0f;
-    if ((player->unk_044 & UNK_044_PRESS_A) == UNK_044_PRESS_A) {
+    if ((player->kartProps & PRESS_A) == PRESS_A) {
         player->particles[arg1].unk_040 = 0;
         if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
             set_particle_colour(&player->particles[arg1], 0x00FFFF00, 0x0080);
@@ -3743,7 +3743,7 @@ void func_80061224(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     } else if (player->particles[arg2].timer >= 2) {
         func_80061130(player, arg1, arg2, arg3, arg4);
         if (arg1 == 9) {
-            player->unk_044 &= ~UNK_044_BECOME_INVISIBLE;
+            player->kartProps &= ~BECOME_INVISIBLE;
         }
     }
 }
@@ -3783,7 +3783,7 @@ void func_80061430(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
         player->particles[0x1E + var_s2].pos[2] = player->pos[2];
         player->particles[0x1E + var_s2].pos[0] = player->pos[0];
     }
-    player->unk_044 &= ~UNK_044_UNUSED_0x1000;
+    player->kartProps &= ~UNUSED_0x1000;
 }
 
 void func_800615AC(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
@@ -4068,42 +4068,42 @@ void func_800624D8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
                 }
                 func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             break;
         case GRASS:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
                 func_8005DAD8(&player->particles[0x1E + var_s1], 2, 1, 0x00A8);
                 func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             break;
         case SAND_OFFROAD:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
                 func_8005DAD8(&player->particles[0x1E + var_s1], 2, 1, 0x00A8);
                 func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             break;
         case SAND:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
                 func_8005DAD8(&player->particles[0x1E + var_s1], 3, 1, 0x00A8);
                 func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             break;
         case WET_SAND:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
                 func_8005DAD8(&player->particles[0x1E + var_s1], 4, 1, 0x00A8);
                 func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             break;
         case DIRT_OFFROAD:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
                 func_8005DAD8(&player->particles[0x1E + var_s1], 5, 1, 0x00A8);
                 func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             break;
         case SNOW:
         case SNOW_OFFROAD:
@@ -4111,7 +4111,7 @@ void func_800624D8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
                 func_8005DAD8(&player->particles[0x1E + var_s1], 6, 1, 0x00A8);
                 func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             break;
         case ASPHALT:
         case STONE:
@@ -4120,14 +4120,14 @@ void func_800624D8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
                 func_8005DAD8(&player->particles[0x1E + var_s1], 0, 0, 0x00A8);
                 func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             break;
         default:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
                 func_8005DAD8(&player->particles[0x1E + var_s1], 0, 0, 0x00A8);
                 func_80062484(player, &player->particles[0x1E + var_s1], var_s1);
             }
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             break;
     }
 }
@@ -6277,7 +6277,7 @@ void func_8006C6AC(Player* player, s16 arg1, s8 arg2, s8 arg3) {
                 func_8005F90C(player, arg1, sp28, arg2_copy, arg3);
             } else if (((player->effects & EARLY_START_SPINOUT_EFFECT) && !(player->type & PLAYER_START_SEQUENCE)) ||
                        (player->effects & BANANA_NEAR_SPINOUT_EFFECT) || (player->effects & AB_SPIN_EFFECT) ||
-                       (player->unk_044 & UNK_044_DRIVING_SPINOUT)) {
+                       (player->kartProps & DRIVING_SPINOUT)) {
                 func_8005ED48(player, arg1, sp28, arg2_copy, arg3);
             } else {
                 setup_tyre_particles(player, arg1, sp28, arg2_copy, arg3);
@@ -6335,9 +6335,9 @@ void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
                 break;
         }
     } else {
-        if (player->unk_044 & UNK_044_UNUSED_0x1000) {
+        if (player->kartProps & UNUSED_0x1000) {
             func_80061430(player, arg1, sp28, playerIndex, arg3);
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             return;
         }
         if (((((player->lakitu_props & LAKITU_LAVA) == LAKITU_LAVA) ||
@@ -6346,31 +6346,31 @@ void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
             (player->effects & HIT_BY_GREEN_SHELL_EFFECT)) {
             func_8006199C(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             return;
         }
         if ((player->lakitu_props & LAKITU_WATER) == LAKITU_WATER) {
             func_80061A34(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             return;
         }
         if ((player->effects & STAR_EFFECT) &&
             ((((s32) gCourseTimer) - gPlayerStarEffectStartTime[playerIndex]) < STAR_EFFECT_DURATION - 1)) {
             func_800615AC(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             return;
         }
         if ((player->unk_046 & 8) == 8) {
             func_800612F8(player, arg1, sp28, playerIndex, arg3);
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             return;
         }
         if (((player->unk_046 & 0x20) == 0x20) && (((player->speed / 18.0f) * 216.0f) >= 20.0f)) {
             func_80061D4C(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             return;
         }
         if ((player->effects & MUSHROOM_EFFECT) && (player->type & PLAYER_HUMAN)) {
@@ -6381,10 +6381,10 @@ void func_8006C9B8(Player* player, s16 arg1, s8 playerIndex, s8 arg3) {
             ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
             func_80061EF4(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
-            player->unk_044 &= ~UNK_044_POST_TUMBLE_GAS;
+            player->kartProps &= ~POST_TUMBLE_GAS;
             return;
         }
-        if ((player->unk_044 & UNK_044_POST_TUMBLE_GAS) == UNK_044_POST_TUMBLE_GAS) {
+        if ((player->kartProps & POST_TUMBLE_GAS) == POST_TUMBLE_GAS) {
             func_800624D8(player, arg1, sp28, playerIndex, arg3);
             player->unk_046 &= ~0x0008;
         }
@@ -6417,7 +6417,7 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
                 break;
         }
     } else {
-        if ((arg0->unk_044 & UNK_044_BECOME_INVISIBLE) && (arg0->type & UNK_044_DRIVING_SPINOUT)) {
+        if ((arg0->kartProps & BECOME_INVISIBLE) && (arg0->type & DRIVING_SPINOUT)) {
             func_80061224(arg0, arg1, sp20, arg2, arg3);
             return;
         } else if (((arg0->effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) && (arg0->unk_0B0 < 0x32)) {

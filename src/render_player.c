@@ -654,16 +654,16 @@ void func_80021B0C(void) {
         func_8006E7CC(gPlayerEight, 7, 0);
     }
     if (gGamestate == ENDING) {
-        if (gPlayerOne->unk_044 & UNK_044_UNUSED_0x2000) {
+        if (gPlayerOne->kartProps & UNUSED_0x2000) {
             render_player_shadow_credits(gPlayerOne, 0, 0);
         }
-        if (gPlayerTwo->unk_044 & UNK_044_UNUSED_0x2000) {
+        if (gPlayerTwo->kartProps & UNUSED_0x2000) {
             render_player_shadow_credits(gPlayerTwo, 1, 0);
         }
-        if (gPlayerThree->unk_044 & UNK_044_UNUSED_0x2000) {
+        if (gPlayerThree->kartProps & UNUSED_0x2000) {
             render_player_shadow_credits(gPlayerThree, 2, 0);
         }
-        if (gPlayerFour->unk_044 & UNK_044_UNUSED_0x2000) {
+        if (gPlayerFour->kartProps & UNUSED_0x2000) {
             render_player_shadow_credits(gPlayerFour, 3, 0);
         }
     }
@@ -1424,7 +1424,7 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 flipOffset) {
     s16 temp_v1;
     s16 thing;
 
-    if (player->unk_044 & UNK_044_UNUSED_0x2000) {
+    if (player->kartProps & UNUSED_0x2000) {
         sp14C[0] = 0;
         sp14C[1] = player->unk_048[arg2];
         sp14C[2] = 0;
@@ -1782,7 +1782,7 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     if (((player->effects & EARLY_START_SPINOUT_EFFECT) == EARLY_START_SPINOUT_EFFECT) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
         if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) && ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT) &&
             ((player->effects & LIGHTNING_STRIKE_EFFECT) != LIGHTNING_STRIKE_EFFECT) && ((player->effects & UNKNOWN_EFFECT_0x80000) != UNKNOWN_EFFECT_0x80000) &&
-            ((player->effects & UNKNOWN_EFFECT_0x800000) != UNKNOWN_EFFECT_0x800000) && ((player->unk_044 & UNK_044_UNUSED_0x800) == 0)) {
+            ((player->effects & UNKNOWN_EFFECT_0x800000) != UNKNOWN_EFFECT_0x800000) && ((player->kartProps & UNUSED_0x800) == 0)) {
 
             if (frameId <= 20) {
                 load_player_data_non_blocking(player,
@@ -1811,7 +1811,7 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     } else {
         if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) && ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT) &&
             ((player->effects & UNKNOWN_EFFECT_0x80000) != UNKNOWN_EFFECT_0x80000) && ((player->effects & UNKNOWN_EFFECT_0x800000) != UNKNOWN_EFFECT_0x800000) &&
-            ((player->effects & LIGHTNING_STRIKE_EFFECT) != LIGHTNING_STRIKE_EFFECT) && ((player->unk_044 & UNK_044_UNUSED_0x800) == 0)) {
+            ((player->effects & LIGHTNING_STRIKE_EFFECT) != LIGHTNING_STRIKE_EFFECT) && ((player->kartProps & UNUSED_0x800) == 0)) {
 
             if (frameId <= 20) {
                 load_player_data_non_blocking(player,

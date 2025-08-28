@@ -370,22 +370,22 @@ player spins. Something  with avoding rollover of aniamation frame data? */
 #define LAKITU_LAVA 0x1000 // smoky effect when retrieved from lava
 #define LAKITU_WATER 0x2000 // dripping effect when retreived from water
 
-#define UNK_044_BACK_UP 0x1
-#define UNK_044_RIGHT_TURN 0x2 // non-drifting (more than 5 degrees)
-#define UNK_044_LEFT_TURN 0x4 // non-drifting (more than 5 degrees)
-#define UNK_044_MOVE_BACKWARDS 0x8 // includes lakitu
-#define UNK_044_LOSE_GP_RACE 0x10 // pointless, only unsets itself
-#define UNK_044_PRESS_A 0x20
-#define UNK_044_EARLY_SPINOUT_RIGHT 0x40 // Spinning out while facing right (not actually used for anything)
-#define UNK_044_EARLY_SPINOUT_LEFT 0x80 // Spinning out while facing left
-#define UNK_044_POST_TUMBLE_GAS 0x100 //Causes particles after a vertical tumble, I think
-#define UNK_044_BECOME_INVISIBLE 0x200
-#define UNK_044_UNUSED_0x400 0x400 //locked behind 0x800 (func_80091440)
-#define UNK_044_UNUSED_0x800 0x800 //locked behind 0x400 (func_8002B830 -> func_800911B4)
-#define UNK_044_UNUSED_0x1000 0x1000 // 0x1000 locked behind 0x400 (func_8002B830 -> func_800911B4)
-#define UNK_044_UNUSED_0x2000 0x2000 // 0x2000 locked behind 0x400 and 0x800 (func_8002B830 -> func_800911B4, apply_effect -> func_80091298, func_80091440)
-#define UNK_044_DRIVING_SPINOUT 0x4000
-#define UNK_044_UNKNOWN_BATTLE_VAR 0x8000 //0x8000 something battle related, unclear if ever set
+#define BACK_UP 0x1
+#define RIGHT_TURN 0x2 // non-drifting (more than 5 degrees)
+#define LEFT_TURN 0x4 // non-drifting (more than 5 degrees)
+#define MOVE_BACKWARDS 0x8 // includes lakitu
+#define LOSE_GP_RACE 0x10 // pointless, only unsets itself
+#define PRESS_A 0x20
+#define EARLY_SPINOUT_RIGHT 0x40 // Spinning out while facing right (not actually used for anything)
+#define EARLY_SPINOUT_LEFT 0x80 // Spinning out while facing left
+#define POST_TUMBLE_GAS 0x100 //Causes particles after a vertical tumble, I think
+#define BECOME_INVISIBLE 0x200
+#define UNUSED_0x400 0x400 //locked behind 0x800 (func_80091440)
+#define UNUSED_0x800 0x800 //locked behind 0x400 (func_8002B830 -> func_800911B4)
+#define UNUSED_0x1000 0x1000 // 0x1000 locked behind 0x400 (func_8002B830 -> func_800911B4)
+#define UNUSED_0x2000 0x2000 // 0x2000 locked behind 0x400 and 0x800 (func_8002B830 -> func_800911B4, apply_effect -> func_80091298, func_80091440)
+#define DRIVING_SPINOUT 0x4000
+#define UNKNOWN_BATTLE_VAR 0x8000 //0x8000 something battle related, unclear if ever set
 
 /*
  * @brief triggers indicating that an effect should be applied to a kart

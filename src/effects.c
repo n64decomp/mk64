@@ -157,7 +157,7 @@ void clean_effect(Player* player, s8 playerIndex) {
     if ((player->effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT) {
         func_8008D0E4(player, playerIndex);
     }
-    if ((player->unk_044 & UNK_044_DRIVING_SPINOUT) != 0) {
+    if ((player->kartProps & DRIVING_SPINOUT) != 0) {
         func_8008D3B0(player, playerIndex);
     }
     if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
@@ -190,7 +190,7 @@ void clean_effect(Player* player, s8 playerIndex) {
     if ((player->effects & UNKNOWN_EFFECT_0x10000000) == UNKNOWN_EFFECT_0x10000000) {
         func_8008FEDC(player, playerIndex);
     }
-    player->unk_044 = (s16) (player->unk_044 & ~UNK_044_BACK_UP);
+    player->kartProps = (s16) (player->kartProps & ~BACK_UP);
     player->effects = (s32) (player->effects & ~AB_SPIN_EFFECT);
 }
 
@@ -452,7 +452,7 @@ void func_8008D0FC(Player* player, s8 playerIndex) {
     player->unk_0B8 = 2.0f;
     player->unk_0AC = 1;
     player->effects &= ~DRIFTING_EFFECT;
-    player->unk_044 |= UNK_044_DRIVING_SPINOUT;
+    player->kartProps |= DRIVING_SPINOUT;
 }
 
 void func_8008D170(Player* player, s8 playerIndex) {
@@ -470,11 +470,11 @@ void func_8008D170(Player* player, s8 playerIndex) {
         var_v1 = 0;
         var_a3 = -var_a3;
         var_f0 *= 0.9;
-        if (((player->effects & BRAKING_EFFECT) == BRAKING_EFFECT) || !(player->unk_044 & UNK_044_PRESS_A)) {
+        if (((player->effects & BRAKING_EFFECT) == BRAKING_EFFECT) || !(player->kartProps & PRESS_A)) {
             player->effects |= BANANA_SPINOUT_SAVE_EFFECT;
         }
         if (var_f0 <= 1.3) {
-            player->unk_044 &= ~UNK_044_DRIVING_SPINOUT;
+            player->kartProps &= ~DRIVING_SPINOUT;
             if ((player->effects & BANANA_SPINOUT_SAVE_EFFECT) != BANANA_SPINOUT_SAVE_EFFECT) {
                 func_8008C73C(player, playerIndex);
                 var_v1 = 0;
@@ -501,12 +501,12 @@ void func_8008D170(Player* player, s8 playerIndex) {
     player->unk_0AC = var_a3;
     if (player->effects & MIDAIR_EFFECT) {
         func_8008C73C(player, playerIndex);
-        player->unk_044 &= ~UNK_044_DRIVING_SPINOUT;
+        player->kartProps &= ~DRIVING_SPINOUT;
     }
 }
 
 void func_8008D3B0(Player* player, UNUSED s8 playerIndex) {
-    player->unk_044 &= ~UNK_044_DRIVING_SPINOUT;
+    player->kartProps &= ~DRIVING_SPINOUT;
 }
 
 void trigger_shroom(Player* player, s8 playerIndex) {
@@ -1167,7 +1167,7 @@ void trigger_asphalt_ramp_boost(Player* player, s8 playerId) {
         func_800C90F4(playerId, (player->characterId * 0x10) + 0x29008001);
         func_800C9060(playerId, 0x1900A40B);
     }
-    player->unk_044 &= ~UNK_044_BACK_UP;
+    player->kartProps &= ~BACK_UP;
     player->effects &= ~AB_SPIN_EFFECT;
 }
 
@@ -1215,7 +1215,7 @@ void trigger_wood_ramp_boost(Player* player, s8 playerId) {
         func_800C9060(playerId, 0x1900A40B);
     }
 
-    player->unk_044 &= ~UNK_044_BACK_UP;
+    player->kartProps &= ~BACK_UP;
     player->effects &= ~AB_SPIN_EFFECT;
 }
 
@@ -1263,7 +1263,7 @@ void func_8008F1B8(Player* player, s8 arg1) {
 
     player->unk_08C = (player->unk_210 * 0.05);
     if (player->unk_0B2 < 0) {
-        if ((player->unk_044 & UNK_044_EARLY_SPINOUT_LEFT) == UNK_044_EARLY_SPINOUT_LEFT) {
+        if ((player->kartProps & EARLY_SPINOUT_LEFT) == EARLY_SPINOUT_LEFT) {
             player->rotation[1] += 182;
             D_8018D920[arg1] += 182;
 
@@ -1292,8 +1292,8 @@ void func_8008F1B8(Player* player, s8 arg1) {
             if (temp < 71) {
                 --player->unk_0B2;
             }
-            player->unk_044 |= UNK_044_EARLY_SPINOUT_LEFT;
-            player->unk_044 &= ~UNK_044_EARLY_SPINOUT_RIGHT;
+            player->kartProps |= EARLY_SPINOUT_LEFT;
+            player->kartProps &= ~EARLY_SPINOUT_RIGHT;
             return;
         }
         player->rotation[1] += 364;
@@ -1302,8 +1302,8 @@ void func_8008F1B8(Player* player, s8 arg1) {
         if (temp >= 110) {
             --player->unk_0B2;
         }
-        player->unk_044 |= UNK_044_EARLY_SPINOUT_RIGHT;
-        player->unk_044 &= ~UNK_044_EARLY_SPINOUT_LEFT;
+        player->kartProps |= EARLY_SPINOUT_RIGHT;
+        player->kartProps &= ~EARLY_SPINOUT_LEFT;
     }
 }
 
@@ -1333,7 +1333,7 @@ void func_8008F494(Player* player, s8 playerIndex) {
          ((player->effects & EXPLOSION_CRASH_EFFECT)) || ((player->effects & HIT_BY_STAR_EFFECT)) ||
          ((player->effects & HIT_BY_GREEN_SHELL_EFFECT) != 0)) &&
         (gModeSelection == BATTLE)) {
-        player->unk_044 |= UNK_044_UNKNOWN_BATTLE_VAR;
+        player->kartProps |= UNKNOWN_BATTLE_VAR;
     }
 
     clean_effect(player, playerIndex);
@@ -1353,9 +1353,9 @@ void func_8008F494(Player* player, s8 playerIndex) {
 
 void func_8008F5A4(Player* player, s8 playerIndex) {
 
-    if ((player->unk_044 & UNK_044_UNKNOWN_BATTLE_VAR) != 0) {
+    if ((player->kartProps & UNKNOWN_BATTLE_VAR) != 0) {
         pop_player_balloon(player, playerIndex);
-        player->unk_044 &= ~UNK_044_UNKNOWN_BATTLE_VAR;
+        player->kartProps &= ~UNKNOWN_BATTLE_VAR;
     }
 
     player->unk_206 = 0;
@@ -1470,7 +1470,7 @@ void trigger_boo(Player* player, s8 playerIndex) {
     s16 temp_v1;
     // become boo
     if ((player->type & PLAYER_HUMAN) != 0) {
-        player->unk_044 |= UNK_044_BECOME_INVISIBLE;
+        player->kartProps |= BECOME_INVISIBLE;
 
         for (temp_v1 = 0; temp_v1 < 10; ++temp_v1) {
             player->particles[temp_v1].IsAlive = 0;
@@ -1551,7 +1551,7 @@ void func_8008FD4C(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
 
     player->triggers |= LOSE_BATTLE_EFFECT;
-    player->unk_044 |= UNK_044_BECOME_INVISIBLE;
+    player->kartProps |= BECOME_INVISIBLE;
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
         player->particles[temp_v0].IsAlive = 0;
@@ -1562,7 +1562,7 @@ void func_8008FD4C(Player* player, UNUSED s8 arg1) {
 // become bomb
 void func_8008FDA8(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
-    player->unk_044 |= UNK_044_BECOME_INVISIBLE;
+    player->kartProps |= BECOME_INVISIBLE;
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
         player->particles[temp_v0].IsAlive = 0;
         player->particles[temp_v0].timer = 0;
@@ -2022,9 +2022,9 @@ void func_800911B4(Player* player, s8 arg1) {
     s32 temp_v0;
 
     player->unk_0AE = player->rotation[1];
-    player->unk_044 |= (UNK_044_UNUSED_0x1000 | UNK_044_UNUSED_0x800);
-    player->unk_044 &= ~UNK_044_UNUSED_0x400;
-    player->unk_044 |= UNK_044_UNUSED_0x2000;
+    player->kartProps |= (UNUSED_0x1000 | UNUSED_0x800);
+    player->kartProps &= ~UNUSED_0x400;
+    player->kartProps |= UNUSED_0x2000;
     player->kartHopJerk = 0.002f;
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = 2.6f;
@@ -2067,7 +2067,7 @@ void func_80091298(Player* player, s8 arg1) {
     UNUSED s32 stackPadding1;
     Vec3f spC = { 27.167f, 25.167f, 23.167f };
 
-    player->unk_044 |= UNK_044_UNUSED_0x2000;
+    player->kartProps |= UNUSED_0x2000;
     if (player->unk_0B2 == 0) {
         var_v1 = 0;
     } else {
@@ -2089,7 +2089,7 @@ void func_80091298(Player* player, s8 arg1) {
                 player->unk_07C = 0;
                 player->unk_0C0 = 0;
                 player->unk_DB4.unkC = 3.0f;
-                player->unk_044 &= ~UNK_044_UNUSED_0x800;
+                player->kartProps &= ~UNUSED_0x800;
                 player->kartGravity = gKartGravityTable[player->characterId];
                 player->unk_0D4[0] = 0;
                 player->type |= PLAYER_START_SEQUENCE;
@@ -2105,8 +2105,8 @@ void func_80091298(Player* player, s8 arg1) {
 }
 
 void func_80091440(s8 arg0) {
-    if ((gPlayers[arg0].unk_044 & UNK_044_UNUSED_0x800) == 0) {
-        gPlayers[arg0].unk_044 |= (UNK_044_UNUSED_0x2000 | UNK_044_UNUSED_0x400);
+    if ((gPlayers[arg0].kartProps & UNUSED_0x800) == 0) {
+        gPlayers[arg0].kartProps |= (UNUSED_0x2000 | UNUSED_0x400);
         gPlayers[arg0].type &= ~PLAYER_START_SEQUENCE;
     }
 }

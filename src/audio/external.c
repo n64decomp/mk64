@@ -1824,7 +1824,7 @@ void func_800C5CB8(void) {
 }
 
 void func_800C5D04(u8 playerId) {
-    if ((gPlayers[playerId].unk_044 & UNK_044_PRESS_A) == UNK_044_PRESS_A) {
+    if ((gPlayers[playerId].kartProps & PRESS_A) == PRESS_A) {
         D_800E9E34[playerId] = 0;
         if (D_800E9E24[playerId] < 0x4E20) {
             if ((u8) D_800EA16C == 0) {
@@ -1853,7 +1853,7 @@ void func_800C5D04(u8 playerId) {
 
 void func_800C5E38(u8 playerId) {
     if (D_800EA108 == 0) {
-        if (((gPlayers[playerId].unk_044 & UNK_044_PRESS_A) != UNK_044_PRESS_A) && (gPlayers[playerId].unk_098 > 400.0f)) {
+        if (((gPlayers[playerId].kartProps & PRESS_A) != PRESS_A) && (gPlayers[playerId].unk_098 > 400.0f)) {
             D_800E9E14[playerId] = 1;
             if (D_800EA0EC[playerId] == 0) {
                 D_800E9F7C[playerId].unk_10 = 0.6f - D_800E9F54[playerId];
@@ -1905,7 +1905,7 @@ void func_800C6108(u8 playerId) {
 
     player = &gPlayers[playerId];
     D_800E9E64[playerId] = (player->unk_098 / D_800E9DC4[playerId]) + D_800E9DD4[playerId];
-    if ((player->unk_098 < 1800.0f) && ((player->unk_044 & UNK_044_PRESS_A) != UNK_044_PRESS_A)) {
+    if ((player->unk_098 < 1800.0f) && ((player->kartProps & PRESS_A) != PRESS_A)) {
         D_800E9E64[playerId] = (player->unk_098 / D_800E9F7C[playerId].unk_34) + D_800E9F7C[playerId].unk_28;
         if (D_800E9EC4) {} // ?
     }
@@ -2003,7 +2003,7 @@ void func_800C64A0(u8 playerId) {
     if (D_800E9EF4[playerId] < 0.0f) {
         D_800E9EF4[playerId] = 0.0f;
     }
-    if ((gPlayers[playerId].unk_044 & UNK_044_PRESS_A) == UNK_044_PRESS_A) {
+    if ((gPlayers[playerId].kartProps & PRESS_A) == PRESS_A) {
         D_800E9F04[playerId] = 0.56f - (D_800E9E24[playerId] * 0.06f);
     } else {
         D_800E9F04[playerId] = (D_800E9E34[playerId] / 50.0f) + 0.25f;
@@ -2384,7 +2384,7 @@ void func_800C70A8(u8 playerId) {
             ((gPlayers[playerId].effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT) ||
             ((gPlayers[playerId].effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
             ((gPlayers[playerId].effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) ||
-            ((gPlayers[playerId].unk_044 & UNK_044_DRIVING_SPINOUT) == UNK_044_DRIVING_SPINOUT)) {
+            ((gPlayers[playerId].kartProps & DRIVING_SPINOUT) == DRIVING_SPINOUT)) {
             D_800E9E74[playerId] = 0x00000012;
         }
         if ((((gPlayers[playerId].effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) &&

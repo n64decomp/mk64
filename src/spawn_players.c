@@ -154,7 +154,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->currentSpeed = 0.0f;
     player->unk_20C = 0.0f;
     player->unk_DAC = 0.0f;
-    player->unk_044 = 0;
+    player->kartProps = 0;
     player->unk_046 = 0;
     player->triggers = 0;
     player->alpha = ALPHA_MAX;

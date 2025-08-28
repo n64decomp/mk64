@@ -263,7 +263,7 @@ typedef struct {
     /* 0x0034 */ Vec3f velocity;
     /* 0x0040 */ s16 unk_040;
     /* 0x0042 */ s16 unk_042;
-    /* 0x0044 */ s16 unk_044;
+    /* 0x0044 */ s16 kartProps;
     /* 0x0046 */ u16 unk_046;
     /* 0x0048 */ Vec4s unk_048;
     /* 0x0050 */ Vec4s unk_050;

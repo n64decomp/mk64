@@ -1457,7 +1457,7 @@ void update_player(s32 playerId) {
             }
             if (player->type & PLAYER_CINEMATIC_MODE) {
                 player->effects &= ~REVERSE_EFFECT;
-                player->unk_044 &= ~UNK_044_BACK_UP;
+                player->kartProps &= ~BACK_UP;
             }
             update_player_path_completion(playerId, player);
             if ((gCurrentCourseId != COURSE_AWARD_CEREMONY) && ((D_80163240[playerId] == 1) || (playerId == 0))) {
