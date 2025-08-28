@@ -301,7 +301,7 @@ typedef struct {
     /* 0x00C4 */ s16 slopeAccel;
     /* 0x00C6 */ s16 alpha;
     /* 0x00C8 */ s16 unk_0C8;
-    /* 0x00CA */ s16 unk_0CA;
+    /* 0x00CA */ s16 lakitu_props;
     /* 0x00CC */ Vec4s unk_0CC;
     /* 0x00D4 */ Vec4s unk_0D4;
     /* 0x00DC */ s16 boostTimer;

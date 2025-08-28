@@ -359,16 +359,16 @@ player spins. Something  with avoding rollover of aniamation frame data? */
 
 
 
-#define UNK_0CA_LAKITU_RETRIEVAL 0x1 // While lakitu is grabbing you, but before the scene transition of being placed on the track
-#define UNK_0CA_HELD_BY_LAKITU 0x2
-#define UNK_0CA_LAKITU_FIZZLE 0x4 // Disintegration and reintegration effect when transitioning from retrieval to placement
-#define UNK_0CA_LAKITU_SCENE 0x8 // the whole segment from when lakitu is called to when you regain control
-#define UNK_0CA_FRIGID_EFFECT 0x10 // Cold colors on Sherbet Land after in frigid water
-#define UNK_0CA_THAWING_EFFECT 0x20 // Regaining usual colors post frigid effect
-#define UNK_0CA_FROZEN_EFFECT 0x80 // In the ice cube
-#define UNK_0CA_WENT_OVER_OOB 0x100 // Player went over (or is on) an OOB area. Cancelled if touch back in bounds
-#define UNK_0CA_LAKITU_LAVA 0x1000 // smoky effect when retrieved from lava
-#define UNK_0CA_LAKITU_WATER 0x2000 // dripping effect when retreived from water
+#define LAKITU_RETRIEVAL 0x1 // While lakitu is grabbing you, but before the scene transition of being placed on the track
+#define HELD_BY_LAKITU 0x2
+#define LAKITU_FIZZLE 0x4 // Disintegration and reintegration effect when transitioning from retrieval to placement
+#define LAKITU_SCENE 0x8 // the whole segment from when lakitu is called to when you regain control
+#define FRIGID_EFFECT 0x10 // Cold colors on Sherbet Land after in frigid water
+#define THAWING_EFFECT 0x20 // Regaining usual colors post frigid effect
+#define FROZEN_EFFECT 0x80 // In the ice cube
+#define WENT_OVER_OOB 0x100 // Player went over (or is on) an OOB area. Cancelled if touch back in bounds
+#define LAKITU_LAVA 0x1000 // smoky effect when retrieved from lava
+#define LAKITU_WATER 0x2000 // dripping effect when retreived from water
 
 #define UNK_044_BACK_UP 0x1
 #define UNK_044_RIGHT_TURN 0x2 // non-drifting (more than 5 degrees)

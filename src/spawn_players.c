@@ -144,7 +144,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->speed = 0.0f;
     player->unk_074 = 0.0f;
     player->type = playerType;
-    player->unk_0CA = 0;
+    player->lakitu_props = 0;
     player->unk_0DE = 0;
     player->unk_10C = 0;
     player->unk_0E2 = 0;
@@ -185,7 +185,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_0C0 = 0;
     player->unk_0C2 = 0;
     player->unk_0C8 = 0;
-    player->unk_0CA = 0;
+    player->lakitu_props = 0;
     player->boostTimer = 0;
     player->unk_0DE = 0;
     player->unk_0E0 = 0;
