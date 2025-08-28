@@ -1346,7 +1346,7 @@ void func_8008F494(Player* player, s8 playerIndex) {
     player->unk_042 = 0;
 
     if (((player->type & PLAYER_HUMAN) != 0) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) &&
-        ((player->lakitu_props & HELD_BY_LAKITU) == 0) && ((player->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) == 0) && ((player->unk_0DE & UNK_0DE_PASS_OOB_OR_FLUID_LEVEL) == 0)) {
+        ((player->lakitu_props & HELD_BY_LAKITU) == 0) && ((player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) == 0) && ((player->oobProps & PASS_OOB_OR_FLUID_LEVEL) == 0)) {
         func_800C90F4(playerIndex, (player->characterId * 0x10) + 0x29008004);
     }
 }
@@ -1814,7 +1814,7 @@ void func_80090868(Player* player) {
         player->unk_222 = 0;
         player->lakitu_props |= HELD_BY_LAKITU;
         player->unk_0C8 = 0;
-        if ((player->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) == UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) {
+        if ((player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) == UNDER_OOB_OR_FLUID_LEVEL) {
             if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
                 player->lakitu_props |= LAKITU_LAVA;
             } else {
@@ -1948,7 +1948,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                         pop_player_balloon(player, playerId);
                     }
                     player->lakitu_props &= ~HELD_BY_LAKITU;
-                    player->unk_0DE &= ~UNK_0DE_UNDER_FLUID_LEVEL;
+                    player->oobProps &= ~UNDER_FLUID_LEVEL;
                     if ((player->lakitu_props & FROZEN_EFFECT) != FROZEN_EFFECT) {
                         player->lakitu_props &= ~LAKITU_SCENE;
                         if ((player->topSpeed * 0.9) <= player->currentSpeed) {

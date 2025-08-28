@@ -1802,20 +1802,20 @@ void func_8002C17C(Player* player, s8 playerId) {
 void func_8002C4F8(Player* player, s8 playerIndex) {
     D_801652A0[playerIndex] = func_802AAB4C(player);
     if (player->pos[1] <= D_801652A0[playerIndex]) {
-        player->unk_0DE |= UNK_0DE_PASS_OOB_OR_FLUID_LEVEL;
+        player->oobProps |= PASS_OOB_OR_FLUID_LEVEL;
     } else {
-        player->unk_0DE &= ~UNK_0DE_PASS_OOB_OR_FLUID_LEVEL;
+        player->oobProps &= ~PASS_OOB_OR_FLUID_LEVEL;
     }
     if (player->boundingBoxSize < (D_801652A0[playerIndex] - player->pos[1])) {
-        player->unk_0DE |= UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL;
-        player->unk_0DE &= ~UNK_0DE_PASS_OOB_OR_FLUID_LEVEL;
+        player->oobProps |= UNDER_OOB_OR_FLUID_LEVEL;
+        player->oobProps &= ~PASS_OOB_OR_FLUID_LEVEL;
     } else {
-        player->unk_0DE &= ~UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL;
+        player->oobProps &= ~UNDER_OOB_OR_FLUID_LEVEL;
     }
     if (player->boundingBoxSize < (D_801652A0[playerIndex] - player->pos[1])) {
-        if ((player->unk_0DE & UNK_0DE_UNDER_FLUID_LEVEL) != UNK_0DE_UNDER_FLUID_LEVEL) {
-            player->unk_0DE |= UNK_0DE_UNDER_OOB_LEVEL;
-            player->unk_0DE |= UNK_0DE_UNDER_FLUID_LEVEL;
+        if ((player->oobProps & UNDER_FLUID_LEVEL) != UNDER_FLUID_LEVEL) {
+            player->oobProps |= UNDER_OOB_LEVEL;
+            player->oobProps |= UNDER_FLUID_LEVEL;
             if ((gCurrentCourseId != COURSE_KOOPA_BEACH) && (gCurrentCourseId != COURSE_SKYSCRAPER) &&
                 (gCurrentCourseId != COURSE_RAINBOW_ROAD) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                 if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
@@ -1828,7 +1828,7 @@ void func_8002C4F8(Player* player, s8 playerIndex) {
     }
     if ((gCurrentCourseId == COURSE_KOOPA_BEACH) || (gCurrentCourseId == COURSE_SKYSCRAPER) ||
         (gCurrentCourseId == COURSE_RAINBOW_ROAD)) {
-        player->unk_0DE &= ~(UNK_0DE_UNDER_OOB_LEVEL | UNK_0DE_UNDER_FLUID_LEVEL);
+        player->oobProps &= ~(UNDER_OOB_LEVEL | UNDER_FLUID_LEVEL);
     }
     if ((player->boundingBoxSize < (D_801652A0[playerIndex] - player->pos[1])) &&
         (player->collision.surfaceDistance[2] >= 600.0f)) {
@@ -3020,10 +3020,10 @@ f32 func_80030150(Player* player, s8 playerIndex) {
                 var_f0 += -0.25;
             }
         }
-        if ((player->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) == UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) {
+        if ((player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) == UNDER_OOB_OR_FLUID_LEVEL) {
             var_f0 += 0.3;
         } else {
-            if ((player->unk_0DE & UNK_0DE_PASS_OOB_OR_FLUID_LEVEL) == UNK_0DE_PASS_OOB_OR_FLUID_LEVEL) {
+            if ((player->oobProps & PASS_OOB_OR_FLUID_LEVEL) == PASS_OOB_OR_FLUID_LEVEL) {
                 var_f0 += 0.15;
             }
             if (((D_801652A0[playerIndex] - player->tyres[BACK_LEFT].baseHeight) >= 3.5) ||
@@ -3962,11 +3962,11 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
             sp2CC = 8;
         }
     }
-    if ((player->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) == UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) {
+    if ((player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) == UNDER_OOB_OR_FLUID_LEVEL) {
         sp2C8 *= 1.5;
         sp2CC *= 1.5;
     } else {
-        if ((player->unk_0DE & UNK_0DE_PASS_OOB_OR_FLUID_LEVEL) == UNK_0DE_PASS_OOB_OR_FLUID_LEVEL) {
+        if ((player->oobProps & PASS_OOB_OR_FLUID_LEVEL) == PASS_OOB_OR_FLUID_LEVEL) {
             sp2C8 *= 1.2;
             sp2CC *= 1.2;
         }

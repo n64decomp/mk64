@@ -3628,7 +3628,7 @@ void func_800608E0(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
         var_f0 = 0.0f;
     }
     sp4C = (D_801652A0[arg3] - player->pos[1]) - 3.0f;
-    if ((player->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) && (gCurrentCourseId != COURSE_KOOPA_BEACH)) {
+    if ((player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) && (gCurrentCourseId != COURSE_KOOPA_BEACH)) {
         var_f0 = 2.5f;
         sp4C = (f32) ((f64) (D_801652A0[arg3] - player->pos[1]) + 0.1);
     }
@@ -3711,7 +3711,7 @@ void func_80060F50(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
     player->particles[arg1].pos[2] = player->pos[2] + (coss(player->particles[arg1].rotation) * -5.8);
     player->particles[arg1].pos[0] = player->pos[0] + (sins(player->particles[arg1].rotation) * -5.8);
     player->particles[arg1].pos[1] = D_801652A0[arg3];
-    player->unk_0DE &= ~UNK_0DE_UNDER_OOB_LEVEL;
+    player->oobProps &= ~UNDER_OOB_LEVEL;
 }
 
 void func_80061094(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
@@ -4618,7 +4618,7 @@ void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     f32 sp3C;
 
     sp40 = D_801652A0[arg2] - player->pos[1] - 3.0f;
-    if (((player->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) != 0) && (gCurrentCourseId != COURSE_KOOPA_BEACH)) {
+    if (((player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) != 0) && (gCurrentCourseId != COURSE_KOOPA_BEACH)) {
         sp40 = D_801652A0[arg2] - player->pos[1] + 0.1;
     }
 
@@ -6263,7 +6263,7 @@ void func_8006C6AC(Player* player, s16 arg1, s8 arg2, s8 arg3) {
                 break;
         }
     } else {
-        if (player->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL) {
+        if (player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) {
             func_80060BCC(player, arg1, sp28, arg2_copy, arg3);
         } else if (!(player->effects & MIDAIR_EFFECT) && !(player->effects & HOP_EFFECT)) {
             if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) &&
@@ -6424,10 +6424,10 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
             func_80061094(arg0, arg1, sp20, arg2, arg3);
             return;
         } else if ((arg0->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-            if ((arg0->unk_0DE & UNK_0DE_UNDER_OOB_LEVEL) == UNK_0DE_UNDER_OOB_LEVEL) {
+            if ((arg0->oobProps & UNDER_OOB_LEVEL) == UNDER_OOB_LEVEL) {
                 func_80060F50(arg0, arg1, sp20, arg2, arg3);
                 return;
-            } else if ((arg0->unk_0DE & UNK_0DE_PASS_OOB_OR_FLUID_LEVEL) || (arg0->unk_0DE & UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL)) {
+            } else if ((arg0->oobProps & PASS_OOB_OR_FLUID_LEVEL) || (arg0->oobProps & UNDER_OOB_OR_FLUID_LEVEL)) {
                 func_80060B14(arg0, arg1, sp20, arg2, arg3);
                 return;
             }

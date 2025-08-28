@@ -305,7 +305,7 @@ typedef struct {
     /* 0x00CC */ Vec4s unk_0CC;
     /* 0x00D4 */ Vec4s unk_0D4;
     /* 0x00DC */ s16 boostTimer;
-    /* 0x00DE */ u16 unk_0DE;
+    /* 0x00DE */ u16 oobProps;
     /* 0x00E0 */ s16 unk_0E0;
     /* 0x00E2 */ s16 unk_0E2;
     /* 0x00E4 */ f32 unk_0E4;

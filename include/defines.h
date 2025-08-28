@@ -334,11 +334,11 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 //UNK_0DE
 /* Deals with the lower out of bounds (OOB) plane on levels. Represented by fluids (water / lava)
   or nothing for Rainbow Road and Skyscraper. */
-#define UNK_0DE_UNDER_OOB_OR_FLUID_LEVEL 0x1 // Set while mostly under the plane. Does not necessarily trigger Lakitu on Koopa Troopa Beach.
-#define UNK_0DE_PASS_OOB_OR_FLUID_LEVEL 0x2 // Set when passing through the lower plane in either direction
+#define UNDER_OOB_OR_FLUID_LEVEL 0x1 // Set while mostly under the plane. Does not necessarily trigger Lakitu on Koopa Troopa Beach.
+#define PASS_OOB_OR_FLUID_LEVEL 0x2 // Set when passing through the lower plane in either direction
 // The next two are also activated when passing through the lower plane.
-#define UNK_0DE_UNDER_FLUID_LEVEL 0x4 // Stays active until Lakitu places back on track
-#define UNK_0DE_UNDER_OOB_LEVEL 0x8 // Active while under a non-fluid OOB plane. Is momentarily active when passing through fluids.
+#define UNDER_FLUID_LEVEL 0x4 // Stays active until Lakitu places back on track
+#define UNDER_OOB_LEVEL 0x8 // Active while under a non-fluid OOB plane. Is momentarily active when passing through fluids.
 
 
 /* UNK_002 has something to do with player animations. Each player has a 32-bit
