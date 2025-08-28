@@ -369,7 +369,7 @@ player spins. Something  with avoding rollover of aniamation frame data? */
 #define LAKITU_LAVA   0x1000 // smoky effect when retrieved from lava
 #define LAKITU_WATER  0x2000 // dripping effect when retreived from water
 
-// player->kartGraphics
+// player->kartProps
 #define BACK_UP               0x1
 #define RIGHT_TURN            0x2 // non-drifting (more than 5 degrees)
 #define LEFT_TURN             0x4 // non-drifting (more than 5 degrees)
