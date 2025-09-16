@@ -375,7 +375,7 @@ player spins. Something  with avoding rollover of aniamation frame data? */
 #define LEFT_TURN             0x4 // non-drifting (more than 5 degrees)
 #define MOVE_BACKWARDS        0x8 // includes lakitu
 #define LOSE_GP_RACE         0x10 // pointless, only unsets itself
-#define PRESS_A              0x20
+#define THROTTLE             0x20 // Closely tied to just pressing A. Possible exception for AB-spins
 #define EARLY_SPINOUT_RIGHT  0x40 // Spinning out while facing right (not actually used for anything)
 #define EARLY_SPINOUT_LEFT   0x80 // Spinning out while facing left
 #define POST_TUMBLE_GAS     0x100 // Causes particles after a vertical tumble, I think

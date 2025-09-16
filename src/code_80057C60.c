@@ -3561,7 +3561,7 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     s32 temp_v0;
     UNUSED s32 test;
 
-    if ((player->kartProps & PRESS_A) == PRESS_A) {
+    if ((player->kartProps & THROTTLE) == THROTTLE) {
         var_v0 = 5;
     } else {
         var_v0 = 0xE;
@@ -3583,7 +3583,7 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         }
     }
     player->particles[arg1].unk_024 = 0.0f;
-    if ((player->kartProps & PRESS_A) == PRESS_A) {
+    if ((player->kartProps & THROTTLE) == THROTTLE) {
         player->particles[arg1].unk_040 = 0;
         if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
             set_particle_colour(&player->particles[arg1], 0x00FFFF00, 0x0080);

@@ -470,7 +470,7 @@ void func_8008D170(Player* player, s8 playerIndex) {
         var_v1 = 0;
         var_a3 = -var_a3;
         var_f0 *= 0.9;
-        if (((player->effects & BRAKING_EFFECT) == BRAKING_EFFECT) || !(player->kartProps & PRESS_A)) {
+        if (((player->effects & BRAKING_EFFECT) == BRAKING_EFFECT) || !(player->kartProps & THROTTLE)) {
             player->effects |= BANANA_SPINOUT_SAVE_EFFECT;
         }
         if (var_f0 <= 1.3) {

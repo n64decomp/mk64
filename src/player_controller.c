@@ -3405,7 +3405,7 @@ void player_accelerate_alternative(Player* player) {
     if (!((player->effects & MIDAIR_EFFECT)) || ((player->effects & LIGHTNING_EFFECT))) {
         player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
     }
-    player->kartProps |= PRESS_A;
+    player->kartProps |= THROTTLE;
     // Hacky way to check for START_SPINOUT_TRIGGER
     if ((player->triggers * 8) < 0) {
         func_8008F104(player, player_index);
@@ -3430,7 +3430,7 @@ void player_decelerate_alternative(Player* player, f32 speed) {
     if ((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) {
         player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
     }
-    player->kartProps &= ~PRESS_A;
+    player->kartProps &= ~THROTTLE;
     // Hacky way to check for START_SPINOUT_TRIGGER
     if ((player->triggers * 8) < 0) {
         func_8008F104(player, player_index);
@@ -3673,7 +3673,7 @@ void player_accelerate_during_start_sequence(Player* player) {
         } else {
             var_v0 = 8;
         }
-        if ((time_delta < var_v0) && ((player->kartProps & PRESS_A) != PRESS_A)) {
+        if ((time_delta < var_v0) && ((player->kartProps & THROTTLE) != THROTTLE)) {
             player->triggers |= START_BOOST_TRIGGER;
         } else if ((player->topSpeed * 0.9f) <= player->currentSpeed) {
             if ((player->triggers & START_BOOST_TRIGGER) != START_BOOST_TRIGGER) {
@@ -3682,7 +3682,7 @@ void player_accelerate_during_start_sequence(Player* player) {
             }
         }
     }
-    player->kartProps |= PRESS_A;
+    player->kartProps |= THROTTLE;
     player->unk_098 = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 
@@ -3701,7 +3701,7 @@ void player_decelerate_during_start_sequence(Player* player, f32 speedReduction)
         player->triggers &= ~START_SPINOUT_TRIGGER;
     }
     player->triggers &= ~START_BOOST_TRIGGER;
-    player->kartProps &= ~PRESS_A;
+    player->kartProps &= ~THROTTLE;
     player->unk_098 = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 
@@ -3791,7 +3791,7 @@ void player_accelerate_global(Player* player, s32 playerIndex) {
     if (((player->topSpeed * 0.9) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] <= (player->topSpeed * 1.0))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][9] * 2.8;
     }
-    player->kartProps |= PRESS_A;
+    player->kartProps |= THROTTLE;
     if (gPlayerCurrentSpeed[playerIndex] < 0.0f) {
         gPlayerCurrentSpeed[playerIndex] = 0.0f;
     }
@@ -3799,7 +3799,7 @@ void player_accelerate_global(Player* player, s32 playerIndex) {
 }
 
 void player_decelerate_global(Player* player, f32 speedReduction, s32 playerIndex) {
-    player->kartProps &= ~PRESS_A;
+    player->kartProps &= ~THROTTLE;
     gPlayerCurrentSpeed[playerIndex] -= speedReduction;
     if (gPlayerCurrentSpeed[playerIndex] <= 0.0f) {
         gPlayerCurrentSpeed[playerIndex] = 0.0f;
@@ -4909,7 +4909,7 @@ void func_80038BE4(Player* player, s16 arg1) {
     if (player->currentSpeed >= 250.0f) {
         player->currentSpeed = 250.0f;
     }
-    player->kartProps |= PRESS_A;
+    player->kartProps |= THROTTLE;
     player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 
