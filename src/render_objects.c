@@ -1801,7 +1801,7 @@ void render_texture_tile_rgba32_block(s16 x, s16 y, u8* texture, u32 width, u32 
 
         centerY += heightDiv;
     }
-    
+
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
     // FAKE
     centerX++;
@@ -4478,12 +4478,12 @@ void func_800569F4(s32 playerIndex) {
     gObjectList[objectIndex].primAlpha = 0;
 }
 
-void func_80056A40(s32 playerIndex, s32 arg1) {
+void func_80056A40(s32 playerIndex, s32 primAlpha) {
     s32 objectIndex;
 
     objectIndex = gIndexObjectBombKart[playerIndex];
     init_object(objectIndex, 0);
-    gObjectList[objectIndex].primAlpha = (s16) arg1;
+    gObjectList[objectIndex].primAlpha = (s16) primAlpha;
 }
 
 void func_80056A94(s32 playerIndex) {

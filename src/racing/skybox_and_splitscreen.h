@@ -8,7 +8,7 @@
 
 /* Function Prototypes */
 
-void func_802A4A0C(Vtx*, struct UnkStruct_800DC5EC*, s32, s32, f32*);
+void render_skybox(Vtx*, struct UnkStruct_800DC5EC*, s32, s32, f32*);
 
 void func_802A3730(struct UnkStruct_800DC5EC*);
 void func_802A38AC(void);

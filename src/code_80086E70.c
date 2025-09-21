@@ -976,7 +976,7 @@ void func_80089020(s32 playerId, f32* arg1) {
     } else {
         var_f2 = -*arg1;
     }
-    if (player->effects & 0xC0) {
+    if (player->effects & (BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) {
         if (gCurrentCourseId == COURSE_SHERBET_LAND) {
             if (var_f2 <= 0.5) {
                 var_f0 = 0.025f;
@@ -1043,7 +1043,7 @@ f32 func_8008933C(Player* player, s32 objectIndex, f32 arg2, f32 arg3) {
     if (temp_v1->unk_18[6] == 0) {
         object = &gObjectList[objectIndex];
         player->unk_046 |= 2;
-        player->effects |= 0x8000;
+        player->effects |= ENEMY_BONK_EFFECT;
         temp_v1->unk_18[6] = 4;
         something = (player->pos[0] - object->pos[0]) * object->velocity[0];
         if (something >= 0.0f) {
@@ -1181,11 +1181,11 @@ s32 func_80089B50(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
         for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++, test++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & (BOO_EFFECT | UNKNOWN_EFFECT_0x1000000)) &&
+            if ((gObjectList[objectIndex].state != 0) && !(player->effects & (BOO_EFFECT | EXPLOSION_CRASH_EFFECT)) &&
                 (player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) &&
                 (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (!(player->effects & STAR_EFFECT)) {
-                    player->soundEffects |= REVERSE_SOUND_EFFECT;
+                    player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
@@ -1208,11 +1208,11 @@ s32 func_80089CBC(s32 objectIndex, f32 arg1) {
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
         for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & (BOO_EFFECT | UNKNOWN_EFFECT_0x1000000))) {
+            if ((gObjectList[objectIndex].state != 0) && !(player->effects & (BOO_EFFECT | EXPLOSION_CRASH_EFFECT))) {
                 if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) &&
                     (has_collided_with_player_and_within_height(objectIndex, player, arg1) != 0)) {
                     if (!(player->effects & STAR_EFFECT)) {
-                        player->soundEffects |= REVERSE_SOUND_EFFECT;
+                        player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                             func_80072180();
                         }
@@ -1234,12 +1234,13 @@ s32 func_80089E18(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
         for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x800000C0) &&
+            if ((gObjectList[objectIndex].state != 0) &&
+                !(player->effects & (BOO_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT)) &&
                 (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (player->effects & STAR_EFFECT) {
                     var_s6 = 1;
                 } else {
-                    player->soundEffects |= 1;
+                    player->triggers |= HIT_BANANA_TRIGGER;
                 }
             }
         }
@@ -1256,14 +1257,15 @@ s32 func_80089F24(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
         for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x800002C0)) {
+            if ((gObjectList[objectIndex].state != 0) &&
+                !(player->effects & (BOO_EFFECT | STAR_EFFECT | BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT))) {
                 if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) &&
                     (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                     var_s7 = 1;
                     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
-                    player->soundEffects |= 0x200000;
+                    player->triggers |= SPINOUT_TRIGGER;
                 }
             }
         }

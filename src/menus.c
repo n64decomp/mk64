@@ -15,10 +15,11 @@
 #include "menu_items.h"
 #include "code_800AF9B0.h"
 #include "save.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "save_data.h"
 #include <sounds.h>
 #include "spawn_players.h"
+#include "seq_ids.h"
 #include "rumble_init.h"
 
 #if ENABLE_DEBUG_MODE
@@ -1811,7 +1812,7 @@ void load_menu_states(s32 menuSelection) {
     gDebugGotoScene = DEBUG_GOTO_RACING;
     gGhostPlayerInit = 0;
     D_8016556E = 0;
-    D_80162DD4 = 1;
+    bPlayerGhostDisabled = 1;
     D_80162DD8 = 1;
     D_80162E00 = 0;
     D_80162DC8 = 1;
@@ -1850,7 +1851,7 @@ void load_menu_states(s32 menuSelection) {
             }
             gScreenModeListIndex = sScreenModeIdxFromPlayerMode[gPlayerCount - 1];
             func_800CA008(0, 0);
-            func_800C8EAC(1);
+            play_sequence(SEQ_MENU_TITLE_SCREEN);
             gCourseMapInit = 0;
             break;
         }
@@ -1867,13 +1868,13 @@ void load_menu_states(s32 menuSelection) {
                 func_800CB2C4();
                 gGamestate = 0;
                 gGamestateNext = 0;
-                func_800C8EAC(2);
+                play_sequence(SEQ_MENU_MAIN_MENU);
             }
 
             switch (gMenuFadeType) {
                 case MENU_FADE_TYPE_MAIN: {
                     gMainMenuSelection = MAIN_MENU_PLAYER_SELECT;
-                    func_800C8EAC(2);
+                    play_sequence(SEQ_MENU_MAIN_MENU);
                     gPlayerCount = 1;
                     if (gScreenModeSelection >= NUM_SCREEN_MODES || gScreenModeSelection < 0) {
                         gScreenModeSelection = SCREEN_MODE_1P;
@@ -1925,7 +1926,7 @@ void load_menu_states(s32 menuSelection) {
                         func_800CB2C4();
                         gGamestate = 0;
                         gGamestateNext = 0;
-                        func_800C8EAC(2);
+                        play_sequence(SEQ_MENU_MAIN_MENU);
                         for (i = 0; i < ARRAY_COUNT(gCharacterGridIsSelected); i++) {
                             gCharacterGridIsSelected[i] = false;
                         }
@@ -1963,7 +1964,7 @@ void load_menu_states(s32 menuSelection) {
                 func_800CB2C4();
                 gGamestate = 0;
                 gGamestateNext = 0;
-                func_800C8EAC(2);
+                play_sequence(SEQ_MENU_MAIN_MENU);
             }
             play_sound2(SOUND_MENU_SELECT_MAP);
             sTempCupSelection = 0;

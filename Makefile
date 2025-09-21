@@ -32,6 +32,9 @@ $(eval $(call validate-option,COMPILER,ido gcc))
 # Run make clean first
 DEBUG ?= 0
 
+# Avoid undefined behavior. Enables shiftability when making changes
+AVOID_UB ?= 0
+
 # Compile with GCC
 GCC ?= 0
 
@@ -55,7 +58,12 @@ endif
 
 ifeq ($(DEBUG),1)
   DEFINES += DEBUG=1
+  DEFINES += AVOID_UB=1
   COMPARE ?= 0
+endif
+
+ifeq ($(AVOID_UB),1)
+  DEFINES += AVOID_UB=1
 endif
 
 TARGET := mk64.$(VERSION)

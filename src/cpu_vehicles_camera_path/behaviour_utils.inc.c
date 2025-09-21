@@ -47,7 +47,7 @@ void cpu_behaviour_start(s32 playerId, Player* player) {
                 break;
             case BEHAVIOUR_HOP:
                 kart_hop(player);
-                player->effects &= ~0x10;
+                player->effects &= ~DRIFTING_EFFECT;
                 D_801630E8[playerId] = 0;
                 break;
             case BEHAVIOUR_DRIVE_CENTER:
@@ -74,7 +74,7 @@ void cpu_behaviour_start(s32 playerId, Player* player) {
             case BEHAVIOUR_9:
                 D_801633F8[playerId] = 1;
                 D_801631E0[playerId] = false;
-                gPlayers[playerId].effects &= ~UNKNOWN_EFFECT_0x1000;
+                gPlayers[playerId].effects &= ~LOST_RACE_EFFECT;
                 break;
             case BEHAVIOUR_10:
                 D_801633F8[playerId] = 0;
@@ -95,7 +95,7 @@ void cpu_behaviour_end(s32 playerIndex, Player* player) {
     if (nearestPathPoint >= pathPointEnd) {
         switch (behaviourType) {
             case BEHAVIOUR_1:
-                player->effects &= ~0x10;
+                player->effects &= ~DRIFTING_EFFECT;
                 D_801630E8[playerIndex] = 0;
                 cpu_BehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
                 break;
@@ -144,7 +144,7 @@ void func_80011EC0(s32 playerIndex, Player* player, s32 arg2, UNUSED u16 arg3) {
                 if ((arg2 >= -9) && (D_80162FF8[playerIndex] == 0)) {
                     if ((gTrackPositionFactor[playerIndex] > -0.8) && (gTrackPositionFactor[playerIndex] < 0.5)) {
                         kart_hop(player);
-                        player->effects |= UNKNOWN_EFFECT_0x10;
+                        player->effects |= DRIFTING_EFFECT;
                         D_801630E8[playerIndex] = 1;
                         break;
                     }
@@ -156,7 +156,7 @@ void func_80011EC0(s32 playerIndex, Player* player, s32 arg2, UNUSED u16 arg3) {
                 if ((arg2 < 0xA) && (D_80162FF8[playerIndex] == 0)) {
                     if ((gTrackPositionFactor[playerIndex] > -0.5) && (gTrackPositionFactor[playerIndex] < 0.8)) {
                         kart_hop(player);
-                        player->effects |= UNKNOWN_EFFECT_0x10;
+                        player->effects |= DRIFTING_EFFECT;
                         D_801630E8[playerIndex] = -1;
                         break;
                     }

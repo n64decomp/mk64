@@ -8,7 +8,7 @@
 #include "menu_items.h"
 #include "menus.h"
 #include "save_data.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "code_80057C60.h"
 #include "rumble_init.h"
 
@@ -772,7 +772,7 @@ u8 func_800B60E8(s32 page) {
     u32 checksum = 0;
     u8* addr;
 
-    for (i = 0, addr = (u8*) &((u8*) D_800DC714)[page * 256]; i < 256; i++) {
+    for (i = 0, addr = (u8*) &((u8*) gReplayGhostCompressed)[page * 256]; i < 256; i++) {
         checksum += (*addr++ * (page + 1) + i);
     }
     return checksum;
@@ -803,7 +803,7 @@ s32 func_800B6178(s32 arg0) {
         }
     } else {
         var_v0 = osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, 1U, (arg0 * 0x3C00) + 0x100,
-                                    0x00003C00, (u8*) D_800DC714);
+                                    0x00003C00, (u8*) gReplayGhostCompressed);
         if (var_v0 == 0) {
             temp_s3->ghostDataSaved = 1;
             if (gGamestate == RACING) {
@@ -852,7 +852,7 @@ s32 func_800B63F0(s32 arg0) {
     s32 phi_s3;
 
     func_800051C4();
-    D_80162DD6 = 1;
+    bCourseGhostDisabled = 1;
     func_80005AE8(gPlayerThree);
 
     phi_s3 = 0;
@@ -892,7 +892,7 @@ s32 func_800B64EC(s32 arg0) {
     }
 
     temp_v0 = osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_READ, (arg0 * 0x3C00) + 0x100,
-                                 0x3C00, (u8*) D_800DC714);
+                                 0x3C00, (u8*) gReplayGhostCompressed);
     if (temp_v0 == 0) {
         // clang-format off
         phi_s1 = (u8 *) &D_8018EE10[arg0]; temp_s0 = 0; while (1) {
@@ -906,7 +906,7 @@ s32 func_800B64EC(s32 arg0) {
             ++phi_s1;
             if ((++temp_s0) == 0x3C) {
                 func_8000522C();
-                D_80162DD4 = 0;
+                bPlayerGhostDisabled = 0;
                 D_80162DE0 = (s32) D_8018EE10[arg0].characterId;
                 D_80162DFC = D_8018EE10[arg0].unk_00;
                 break;
@@ -930,7 +930,7 @@ s32 func_800B65F4(s32 arg0, s32 arg1) {
             return -1;
     }
     writeStatus = osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, 0U, (arg0 * 0x3C00) + 0x100,
-                                     0x00003C00, (u8*) D_800DC714);
+                                     0x00003C00, (u8*) gReplayGhostCompressed);
     if (writeStatus == 0) {
         temp_s3 = &((struct_8018EE10_entry*) gSomeDLBuffer)[arg0];
         for (i = 0; i < 0x3C; i++) {

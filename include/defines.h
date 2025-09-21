@@ -45,6 +45,25 @@
 
 #define HOLD_ALL_DPAD_AND_C_BUTTONS \
     (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
+#define ALL_BUTTONS                                                                                                   \
+    (A_BUTTON | B_BUTTON | L_TRIG | R_TRIG | Z_TRIG | START_BUTTON | U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | \
+     L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
+/**
+ * Replay controller buttons
+ * Used for time trial replays (including staff and player ghosts)
+ * Each entry is converted to a u32 value
+ * This allows access to the button struct member
+ */
+#define REPLAY_A_BUTTON (1 << 31) // 0x80000000
+#define REPLAY_B_BUTTON (1 << 30) // 0x40000000
+#define REPLAY_Z_TRIG (1 << 29)   // 0x20000000
+#define REPLAY_R_TRIG (1 << 28)   // 0x10000000
+
+#define REPLAY_FRAME_COUNTER 0xFF0000
+#define REPLAY_CLEAR_FRAME_COUNTER (0xFFFFFFFF & ~REPLAY_FRAME_COUNTER)
+#define REPLAY_STICK_Y 0xFF00
+#define REPLAY_STICK_X 0xFF
+#define REPLAY_FRAME_INCREMENT 0x10000
 
 /**
  * @brief Jump to demo mode from the debug menu using L and A
@@ -74,7 +93,9 @@
  * Used in the Player struct's 'type' member: player->type
  */
 #define PLAYER_INACTIVE 0                 // 0x0000
+#define PLAYER_UNKNOWN_0x10 (1 << 4)      // 0x0010 // unused?
 #define PLAYER_UNKNOWN_0x40 (1 << 6)      // 0x0040
+#define PLAYER_UNKNOWN_0x80 (1 << 7)      // 0x0080 // UNUSED
 #define PLAYER_INVISIBLE_OR_BOMB (1 << 8) // 0x0100
 #define PLAYER_STAGING (1 << 9)           // 0x0200
 #define PLAYER_UNKNOWN (1 << 10)          // 0x0400 // unused ?
@@ -308,53 +329,154 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  * @brief Max representable time, 100 minutes measured in centiseconds
  */
 #define MAX_TIME 0x927C0
+#define DEGREES_CONVERSION_FACTOR 182
 
-/**
- * @brief sound effect of player's
- * for soundEffect
+// player->oobProps
+/* Deals with the lower out of bounds (OOB) plane on levels. Represented by fluids (water / lava)
+  or nothing for Rainbow Road and Skyscraper. */
+#define UNDER_OOB_OR_FLUID_LEVEL 0x1 // Set while mostly under the plane. Does not necessarily trigger Lakitu on Koopa Troopa Beach.
+#define PASS_OOB_OR_FLUID_LEVEL 0x2 // Set when passing through the lower plane in either direction
+// The next two are also activated when passing through the lower plane.
+#define UNDER_FLUID_LEVEL 0x4 // Stays active until Lakitu places back on track
+#define UNDER_OOB_LEVEL 0x8 // Active while under a non-fluid OOB plane. Is momentarily active when passing through fluids.
+
+
+/* UNK_002 has something to do with player animations. Each player has a 32-bit
+flag broken into 8 groups of 4 bits. Those 4 bits affect how each of the 8 players
+appear to the specified player */
+#define CHANGING_ANIMATION 0x1 // Seems to be set when the kart animation has to change.
+#define UNK_002_UNKNOWN_0x2 0x2 
+#define UNK_002_UNKNOWN_0x4 0x4 /* Unclear, but has to do with viewing the side of player. At least tends to change if target
+player spins. Something  with avoding rollover of aniamation frame data? */
+#define SIDE_OF_KART 0x8 // Seems to be whether you are in a rectangle shooting out from both sides of target player
+
+#define WHISTLE 0x20     // Whistle spinout save graphic
+#define CRASH 0x40       // Crash! graphic (vertical tumble)
+#define WHIRRR 0x80      // Whirrr! graphic (spinning out)
+#define POOMP 0x100      // Poomp! graphic (landing from a height)
+#define BOING 0x800      // Boing! graphic (hopping)
+#define EXPLOSION 0x1000 // Big shock looking graphic when starting tumble
+
+// player->lakituProps
+#define LAKITU_RETRIEVAL 0x1 // While lakitu is grabbing you, but before the scene transition of being placed on the track
+#define HELD_BY_LAKITU   0x2
+#define LAKITU_FIZZLE    0x4 // Disintegration and reintegration effect when transitioning from retrieval to placement
+#define LAKITU_SCENE     0x8 // the whole segment from when lakitu is called to when you regain control
+#define FRIGID_EFFECT   0x10 // Cold colors on Sherbet Land after in frigid water
+#define THAWING_EFFECT  0x20 // Regaining usual colors post frigid effect
+#define FROZEN_EFFECT   0x80 // In the ice cube
+#define WENT_OVER_OOB  0x100 // Player went over (or is on) an OOB area. Cancelled if touch back in bounds
+#define LAKITU_LAVA   0x1000 // smoky effect when retrieved from lava
+#define LAKITU_WATER  0x2000 // dripping effect when retreived from water
+
+// player->kartProps
+#define BACK_UP               0x1
+#define RIGHT_TURN            0x2 // non-drifting (more than 5 degrees)
+#define LEFT_TURN             0x4 // non-drifting (more than 5 degrees)
+#define MOVE_BACKWARDS        0x8 // includes lakitu
+#define LOSE_GP_RACE         0x10 // pointless, only unsets itself
+#define THROTTLE             0x20 // Closely tied to just pressing A. Possible exception for AB-spins
+#define EARLY_SPINOUT_RIGHT  0x40 // Spinning out while facing right (not actually used for anything)
+#define EARLY_SPINOUT_LEFT   0x80 // Spinning out while facing left
+#define POST_TUMBLE_GAS     0x100 // Causes particles after a vertical tumble, I think
+#define BECOME_INVISIBLE    0x200
+#define UNUSED_0x400        0x400 // locked behind 0x800 (func_80091440)
+#define UNUSED_0x800        0x800 // locked behind 0x400 (func_8002B830 -> func_800911B4)
+#define UNUSED_0x1000      0x1000 // 0x1000 locked behind 0x400 (func_8002B830 -> func_800911B4)
+#define UNUSED_0x2000      0x2000 // 0x2000 locked behind 0x400 and 0x800 (func_8002B830 -> func_800911B4, apply_effect -> func_80091298,
+                                  // func_80091440)
+#define DRIVING_SPINOUT    0x4000
+#define UNKNOWN_BATTLE_VAR 0x8000 // 0x8000 something battle related, unclear if ever set
+
+/*
+ * @brief triggers indicating that an effect should be applied to a kart
  */
-#define HIT_SOUND_EFFECT 0x100                   // hitting an object
-#define BOOST_SOUND_EFFECT 0x200                 // being boosted by trigger a mushroom
-#define BOO_SOUND_EFFECT 0x800                   // being a boo
-#define STAR_SOUND_EFFECT 0x2000                 // being a star
-#define HIT_ROTATING_SOUND_EFFECT 0x4000         // hitting a rotating object
-#define BOOST_RAMP_WOOD_SOUND_EFFECT 0x8000      // being boosted by a ramp
-#define HOLD_BANANA_SOUND_EFFECT 0x40000         // holding a banana
-#define REVERSE_SOUND_EFFECT 0x400000            // being in the wrong direction
-#define BOOST_RAMP_ASPHALT_SOUND_EFFECT 0x800000 // being boosted by a boost pad
-#define HIT_BY_ITEM_SOUND_EFFECT 0x1000000       // being hit by an item
+#define HIT_BANANA_TRIGGER              0x1 // hits a banana
+#define HIGH_TUMBLE_TRIGGER             0x2 // hit by a red shell, blue shell, or hit a mole
+#define LOW_TUMBLE_TRIGGER              0x4 // hit by a green shell
+#define DRIVING_SPINOUT_TRIGGER        0x80 // spinning out from erratic driving
+#define THWOMP_SQUISH_TRIGGER         0x100 // stomped by thwomp
+#define SHROOM_TRIGGER                0x200 // being boosted by trigger a mushroom
+#define BOO_TRIGGER                   0x800 // being a boo
+#define UNUSED_TRIGGER_0x1000        0x1000 // Unused
+#define STAR_TRIGGER                 0x2000 // Starting a star
+#define LIGHTNING_STRIKE_TRIGGER     0x4000 // Struck by lightning
+#define BOOST_RAMP_WOOD_TRIGGER      0x8000 // being boosted by a ramp
+#define UNUSED_TRIGGER_0x20000      0x20000 // Unused
+#define DRAG_ITEM_EFFECT            0x40000 // holding a non-shell item behind you
+#define HIT_PADDLE_BOAT_TRIGGER     0x80000 // hit paddle boat
+#define UNUSED_TRIGGER_0x10000     0x100000 // Unused
+#define SPINOUT_TRIGGER            0x200000 // hit crab or spiny spinout or losing versus race
+#define VERTICAL_TUMBLE_TRIGGER    0x400000 // hitting a fake item / bomb / snowman / car / train
+#define BOOST_RAMP_ASPHALT_TRIGGER 0x800000 // being boosted by a boost pad
+#define HIT_BY_STAR_TRIGGER       0x1000000 // being hit by a star
+#define START_BOOST_TRIGGER       0x2000000 // Start boost
+#define LOSE_BATTLE_EFFECT        0x4000000 // When losing battle mode
+#define BECOME_BOMB_EFFECT        0x8000000 // When becoming a bomb in battle mode
+#define START_SPINOUT_TRIGGER    0x10000000 // Spinning out by holding gas at start of race
+
+#define ALL_TRIGGERS (0xFFFFFFFF)
+#define RACING_SPINOUT_TRIGGERS (SPINOUT_TRIGGER | DRIVING_SPINOUT_TRIGGER | HIT_BANANA_TRIGGER) // 0x200081
+#define RAMP_BOOST_TRIGGERS (BOOST_RAMP_ASPHALT_TRIGGER | BOOST_RAMP_WOOD_TRIGGER)               // 0x00808000
+#define ANY_BOOST_TRIGGERS (RAMP_BOOST_TRIGGERS | SHROOM_TRIGGER)                                // 0x00808200
+#define STATE_TRANSITION_TRIGGERS \
+    (STAR_TRIGGER | BOO_TRIGGER | UNUSED_TRIGGER_0x1000 | UNUSED_TRIGGER_0x20000) // 0x00023800
+#define HIT_TRIGGERS                                                                                 \
+    (HIT_BY_STAR_TRIGGER | VERTICAL_TUMBLE_TRIGGER | LIGHTNING_STRIKE_TRIGGER | LOW_TUMBLE_TRIGGER | \
+     HIGH_TUMBLE_TRIGGER | THWOMP_SQUISH_TRIGGER) // 0x01404106
 
 /**
  * @brief effect of player's
  * for effects
  */
-#define UNKNOWN_EFFECT_0x1 0x1               //
-#define BOOST_RAMP_WOOD_EFFECT 0x4           // being boosted by a ramp
-#define UNKNOWN_EFFECT_0x10 0x10             //
-#define UNKNOWN_EFFECT_0x40 0x40             //
-#define UNKNOWN_EFFECT_0x80 0x80             //
-#define UNKNOWN_EFFECT_0xC 0xC               //
-#define UNKNOWN_EFFECT_0x10 0x10             //
-#define UNKNOWN_EFFECT_0x100 0x100           //
-#define UNKNOWN_EFFECT_0x1000 0x1000         //
-#define STAR_EFFECT 0x200                    // being a star
-#define BOOST_EFFECT 0x2000                  // being boosted by trigger a mushroom
-#define UNKNOWN_EFFECT_0x10000 0x10000       //
-#define BOOST_RAMP_ASPHALT_EFFECT 0x100000   // being boosted by a boost pad
-#define UNKNOWN_EFFECT_0x200000 0x200000     //
-#define REVERSE_EFFECT 0x400000              // being in reverse of the course
-#define UNKNOWN_EFFECT_0x1000000 0x1000000   //
-#define HIT_BY_ITEM_EFFECT 0x2000000         // being hit by an item
-#define HIT_EFFECT 0x4000000                 // hitting an object
-#define UNKNOWN_EFFECT_0x10000000 0x10000000 //
-#define LIGHTNING_EFFECT 0x40000000          // being hit by lightning
-#define BOO_EFFECT 0x80000000                // being a boo
-
+// clang-format off
+#define BRAKING_EFFECT                   0x1 // pressing brake
+#define HOP_EFFECT                       0x2 // from when you hop to when you land
+#define BOOST_RAMP_WOOD_EFFECT           0x4 // being boosted by DKJP ramp
+#define MIDAIR_EFFECT                    0x8 // in midair
+#define DRIFTING_EFFECT                 0x10 // drifting
+#define AB_SPIN_EFFECT                  0x20 // spinning with a+b
+#define DRIVING_SPINOUT_EFFECT          0x40 // spinout (from erratic driving) or crab
+#define BANANA_SPINOUT_EFFECT           0x80 // spinout (from hitting a banana or another driver)
+#define MINI_TURBO_EFFECT              0x100 // mini-turbo
+#define STAR_EFFECT                    0x200 // using a star
+#define HIT_BY_GREEN_SHELL_EFFECT      0x400 // tumbling after hit with a green shell
+#define BANANA_NEAR_SPINOUT_EFFECT     0x800 // decreased steering sensitivity after hitting a banana, but before spinning out
+#define LOST_RACE_EFFECT              0x1000 // lost race in GP mode
+#define MUSHROOM_EFFECT               0x2000 // using a mushroom
+#define EARLY_START_SPINOUT_EFFECT    0x4000 // spinning out by pressing a too early at the startline or after lakitu retrieves you
+#define ENEMY_BONK_EFFECT             0x8000 // bouncing off an enemy (penguin, thwomp, etc)
+#define TERRAIN_TUMBLE_EFFECT        0x10000 // tumbling after hitting steep terrain
+#define LIGHTNING_STRIKE_EFFECT      0x20000 // spinning and shrinking during a lightning strike
+#define BANANA_SPINOUT_SAVE_EFFECT   0x40000 // avoid spinning out by pressing b
+#define UNKNOWN_EFFECT_0x80000       0x80000 // Only set when soundEffect 0x1000 is set. Unclear if it ever is
+#define BOOST_RAMP_ASPHALT_EFFECT   0x100000 // being boosted by the Royal Raceway ramp
+#define CPU_FAST_EFFECT             0x200000 // CPU Rubberbanding flag
+#define REVERSE_EFFECT              0x400000 // facing backwards
+#define UNKNOWN_EFFECT_0x800000     0x800000 // Only set when soundEffect 0x20000 is set
+#define EXPLOSION_CRASH_EFFECT     0x1000000 // vertical launch (hitting car, snowman, etc.)
+#define HIT_BY_STAR_EFFECT         0x2000000 // being hit by a red shell or star
+#define SQUISH_EFFECT              0x4000000 // hitting an object
+#define POST_SQUISH_EFFECT         0x8000000 // briefly after being squished (boulder, thwomp, etc.)
+#define UNKNOWN_EFFECT_0x10000000 0x10000000 // UNUSED (set in unused func_8008FDF4)
+#define DRIFT_OUTSIDE_EFFECT      0x20000000 // drifting toward the outside of your turn
+#define LIGHTNING_EFFECT          0x40000000 // suffering the effects of lightning
+#define BOO_EFFECT                0x80000000 // being a boo
+#define ALL_EFFECTS               0xFFFFFFFF
+// clang-format on
 
 /**
  * @brief durations of effects
  */
 #define STAR_EFFECT_DURATION 0xA
+#define BOO_EFFECT_DURATION 0x7
+
+/**
+ * @brief alpha relates values
+ */
+#define ALPHA_MAX 0xFF
+#define ALPHA_MIN 0x0
+#define ALPHA_BOO_EFFECT 0x60
 
 /**
  * @brief shell state

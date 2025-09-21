@@ -20,8 +20,8 @@ void render_actor_falling_rock(Camera* camera, struct FallingRock* rock) {
         return;
     }
 
-    height = is_within_render_distance(camera->pos, rock->pos, camera->rot[1], 400.0f, gCameraZoom[camera - camera1],
-                                       4000000.0f);
+    height = distance_if_visible(camera->pos, rock->pos, camera->rot[1], 400.0f, gCameraZoom[camera - camera1],
+                                     4000000.0f);
 
     if (height < 0.0f) {
         return;
@@ -37,14 +37,14 @@ void render_actor_falling_rock(Camera* camera, struct FallingRock* rock) {
             sp98[1] = 0;
             sp98[2] = 0;
             sp8C[1] = height + 2.0f;
-            mtxf_pos_rotation_xyz(sp4C, sp8C, sp98);
+            mtxf_rotate_zxy_translate(sp4C, sp8C, sp98);
             if (render_set_position(sp4C, 0) == 0) {
                 return;
             }
             gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_6F88);
         }
     }
-    mtxf_pos_rotation_xyz(sp4C, rock->pos, rock->rot);
+    mtxf_rotate_zxy_translate(sp4C, rock->pos, rock->rot);
     if (render_set_position(sp4C, 0) == 0) {
         return;
     }

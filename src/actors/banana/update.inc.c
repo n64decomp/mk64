@@ -60,7 +60,7 @@ void update_actor_banana(struct BananaActor* banana) {
                     controller->buttonDepressed &= ~Z_TRIG;
                     banana->state = DROPPED_BANANA;
                     banana->unk_04 = 0x00B4;
-                    player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                    player->triggers &= ~DRAG_ITEM_EFFECT;
                     func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                     pad3 = controller->rawStickY;
                     if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
@@ -72,7 +72,7 @@ void update_actor_banana(struct BananaActor* banana) {
                             temp_f0 = (player->speed * 0.75f) + 3.5f + pad3;
                         }
                         vec3f_set(someVelocity, 0, pad3, temp_f0);
-                        func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
+                        vec3f_rotate_y(someVelocity, player->rotation[1] + player->unk_0C0);
                         banana->velocity[0] = someVelocity[0];
                         banana->velocity[1] = someVelocity[1];
                         banana->velocity[2] = someVelocity[2];
@@ -121,7 +121,7 @@ void update_actor_banana(struct BananaActor* banana) {
             someVelocity[0] = 0.0f;
             someVelocity[1] = 0.0f;
             someVelocity[2] = -5.0f;
-            func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
+            vec3f_rotate_y(someVelocity, player->rotation[1] + player->unk_0C0);
             unkX = player->pos[0] + someVelocity[0];
             unkY = player->pos[1] + someVelocity[1];
             unkZ = player->pos[2] + someVelocity[2];

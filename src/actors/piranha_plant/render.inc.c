@@ -25,7 +25,7 @@ void render_actor_piranha_plant(Camera* arg0, Mat4 arg1, struct PiranhaPlant* ar
         return;
     }
 
-    temp_f0 = is_within_render_distance(arg0->pos, arg2->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 1000000.0f);
+    temp_f0 = distance_if_visible(arg0->pos, arg2->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 1000000.0f);
 
     if (temp_f0 < 0.0f) {
 

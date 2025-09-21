@@ -15,7 +15,7 @@
 #include "code_80057C60.h"
 #include "collision.h"
 #include "render_courses.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "cpu_vehicles_camera_path.h"
 #include "render_player.h"
 #include "podium_ceremony_actors.h"
@@ -81,7 +81,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->type = PLAYER_INACTIVE;
     player->unk_08C = 0;
     player->characterId = characterId;
-    player->unk_0B6 = 0;
+    player->kartGraphics = 0;
     player->kartFriction = gKartFrictionTable[player->characterId];
     player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
     player->kartGravity = gKartGravityTable[player->characterId];
@@ -144,8 +144,8 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->speed = 0.0f;
     player->unk_074 = 0.0f;
     player->type = playerType;
-    player->unk_0CA = 0;
-    player->unk_0DE = 0;
+    player->lakituProps = 0;
+    player->oobProps = 0;
     player->unk_10C = 0;
     player->unk_0E2 = 0;
     player->unk_0E8 = 0.0f;
@@ -154,10 +154,10 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->currentSpeed = 0.0f;
     player->unk_20C = 0.0f;
     player->unk_DAC = 0.0f;
-    player->unk_044 = 0;
+    player->kartProps = 0;
     player->unk_046 = 0;
-    player->soundEffects = 0;
-    player->unk_0C6 = 0xFF;
+    player->triggers = 0;
+    player->alpha = ALPHA_MAX;
 
     player->unk_206 = 0;
     player->slopeAccel = 0;
@@ -185,9 +185,9 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_0C0 = 0;
     player->unk_0C2 = 0;
     player->unk_0C8 = 0;
-    player->unk_0CA = 0;
+    player->lakituProps = 0;
     player->boostTimer = 0;
-    player->unk_0DE = 0;
+    player->oobProps = 0;
     player->unk_0E0 = 0;
     player->unk_0E2 = 0;
     player->unk_10C = 0;
@@ -195,7 +195,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_204 = 0;
     player->nearestPathPointId = 0;
     player->unk_228 = 0;
-    player->unk_22A = 0;
+    player->driftState = 0;
     player->unk_234 = 0;
     player->unk_236 = 0;
     player->unk_238 = 0;
@@ -279,9 +279,9 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     D_801652E0[playerIndex] = 0;
     D_801652C0[playerIndex] = 0;
     D_80165020[playerIndex] = 0;
-    D_80165070[playerIndex][0] = 0.0f;
-    D_80165070[playerIndex][1] = 0.0f;
-    D_80165070[playerIndex][2] = 0.0f;
+    gPlayerLastVelocity[playerIndex][0] = 0.0f;
+    gPlayerLastVelocity[playerIndex][1] = 0.0f;
+    gPlayerLastVelocity[playerIndex][2] = 0.0f;
     gPlayerCurrentSpeed[playerIndex] = 0.0f;
     D_801652A0[playerIndex] = 0.0f;
     gPlayerIsThrottleActive[playerIndex] = 0;
@@ -570,14 +570,14 @@ void spawn_players_versus_one_player(f32* arg0, f32* arg1, f32 arg2) {
     } else if (D_8015F890 != 1) {
         spawn_player(gPlayerOneCopy, 0, arg0[0], arg1[0], arg2, 32768.0f, gCharacterSelections[0],
                      PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
-        if (D_80162DD4 == 0) {
+        if (bPlayerGhostDisabled == 0) {
             spawn_player(gPlayerTwo, 1, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE0,
                          PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
             spawn_player(gPlayerTwo, 1, arg0[0], arg1[0], arg2, 32768.0f, gCharacterSelections[0],
                          PLAYER_START_SEQUENCE | PLAYER_CPU);
         }
-        if (D_80162DD6 == 0) {
+        if (bCourseGhostDisabled == 0) {
             spawn_player(gPlayerThree, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4,
                          PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
@@ -594,7 +594,7 @@ void spawn_players_versus_one_player(f32* arg0, f32* arg1, f32 arg2) {
             spawn_player(gPlayerTwo, 1, arg0[0], arg1[0], arg2, 32768.0f, gCharacterSelections[0],
                          PLAYER_START_SEQUENCE | PLAYER_CPU);
         }
-        if (D_80162DD6 == 0) {
+        if (bCourseGhostDisabled == 0) {
             spawn_player(gPlayerThree, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4,
                          PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {

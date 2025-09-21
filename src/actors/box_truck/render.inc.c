@@ -17,7 +17,7 @@ void render_actor_box_truck(Camera* arg0, struct Actor* arg1) {
     Mat4 spD8;
     UNUSED s32 pad2[32];
     f32 temp_f0 =
-        is_within_render_distance(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
+        distance_if_visible(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
     if (temp_f0 < 0.0f) {
         return;
     }
@@ -25,7 +25,7 @@ void render_actor_box_truck(Camera* arg0, struct Actor* arg1) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    mtxf_pos_rotation_xyz(spD8, arg1->pos, arg1->rot);
+    mtxf_rotate_zxy_translate(spD8, arg1->pos, arg1->rot);
     if (render_set_position(spD8, 0) != 0) {
 
         switch (arg1->state) {
