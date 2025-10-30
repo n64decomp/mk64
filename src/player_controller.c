@@ -1582,7 +1582,7 @@ void func_8002B9CC(Player* player, s8 playerIndex, UNUSED s32 arg2) {
     s16 temp;
     s16 temp2;
 
-    if ((player->unk_046 & 2) == 2) {
+    if ((player->unk_046 & CRITTER_TOUCH) == CRITTER_TOUCH) {
         temp_f0 = D_8018CE10[playerIndex].unk_04[0];
         temp_f2 = 0;
         temp_f14 = D_8018CE10[playerIndex].unk_04[2];
@@ -1890,10 +1890,10 @@ void func_8002C7E4(Player* player, s8 playerIndex, s8 arg2) {
             if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
                 func_8001CA24(player, 2.8f);
             }
-            if ((player->unk_046 & 2) == 2) {
-                if ((player->unk_046 & 4) != 4) {
-                    player->unk_046 |= 4;
-                    player->unk_046 |= 0x40;
+            if ((player->unk_046 & CRITTER_TOUCH) == CRITTER_TOUCH) {
+                if ((player->unk_046 & CRITTER_TOUCH_GATE) != CRITTER_TOUCH_GATE) {
+                    player->unk_046 |= CRITTER_TOUCH_GATE;
+                    player->unk_046 |= INSTANT_SPINOUT;
                     if (player->effects & MUSHROOM_EFFECT) {
                         remove_mushroom_effect(player);
                     }

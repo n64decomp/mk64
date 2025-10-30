@@ -307,7 +307,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
     D_80165190[2][playerId] = 1;
     D_80165190[3][playerId] = 1;
 
-    player->unk_046 &= 0xFFBF;
+    player->unk_046 &= ~INSTANT_SPINOUT;
 
     if ((gIsPlayerTripleAButtonCombo[playerId] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
         player->currentSpeed = (f32) (player->currentSpeed + 100.0f);
@@ -325,7 +325,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
 
     player->unk_206 = 0;
     player->slopeAccel = 0;
-    if ((player->unk_046 & 0x40) == 0x40) {
+    if ((player->unk_046 & INSTANT_SPINOUT) == INSTANT_SPINOUT) {
         player_decelerate_alternative(player, 100.0f);
     } else {
         if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {

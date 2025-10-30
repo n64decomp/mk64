@@ -6004,7 +6004,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
                     }
                     func_800722A4(objectIndex, 2);
                     temp_s0->unk_040 = (s16) objectIndex;
-                    temp_s0->unk_046 |= 2;
+                    temp_s0->unk_046 |= CRITTER_TOUCH;
                     temp_s0->triggers |= THWOMP_SQUISH_TRIGGER;
                     func_80088FF0(temp_s0);
                 }
@@ -6144,7 +6144,7 @@ void func_80081210(void) {
     player = gPlayerOne;
     for (var_s4 = 0; var_s4 < NUM_PLAYERS; var_s4++, player++) {
         player->tyres[FRONT_LEFT].unk_14 &= ~3;
-        player->unk_046 &= ~0x0006;
+        player->unk_046 &= ~(CRITTER_TOUCH_GATE | CRITTER_TOUCH);
         for (var_s2_3 = 0; var_s2_3 < gNumActiveThwomps; var_s2_3++) {
             objectIndex = indexObjectList1[var_s2_3];
             if (!(player->effects & BOO_EFFECT)) {
