@@ -6,7 +6,7 @@
 #include <actor_types.h>
 #include "camera.h"
 
-struct UnkStruct_800DC5EC {
+struct ScreenContext {
     /* 0x00 */ struct Controller* controllers; // gControllers ptr 800F6910
     /* 0x04 */ Camera* camera;                 // Player camera ptr
     /* 0x08 */ Player* player;                 // Player ptr 800F6990
@@ -54,11 +54,11 @@ extern s32 D_800DC5E0;
 extern u16 D_800DC5E4;
 extern s32 gPlayerWinningIndex;
 
-extern struct UnkStruct_800DC5EC D_8015F480[4];
-extern struct UnkStruct_800DC5EC* D_800DC5EC;
-extern struct UnkStruct_800DC5EC* D_800DC5F0;
-extern struct UnkStruct_800DC5EC* D_800DC5F4;
-extern struct UnkStruct_800DC5EC* D_800DC5F8;
+extern struct ScreenContext gScreenContexts[4];
+extern struct ScreenContext* gScreenOneCtx;
+extern struct ScreenContext* gScreenTwoCtx;
+extern struct ScreenContext* gScreenThreeCtx;
+extern struct ScreenContext* gScreenFourCtx;
 extern u16 gIsGamePaused;
 extern u8* pAppNmiBuffer;
 extern s32 gIsMirrorMode; // D_800DC604

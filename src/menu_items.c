@@ -1253,10 +1253,10 @@ void func_80091B78(void) {
         D_8018E838[i] = 0;
     }
 
-    D_800DC5EC->screenStartX = 160;
-    D_800DC5EC->screenStartY = 120;
-    D_800DC5EC->screenWidth = SCREEN_WIDTH;
-    D_800DC5EC->screenHeight = SCREEN_HEIGHT;
+    gScreenOneCtx->screenStartX = 160;
+    gScreenOneCtx->screenStartY = 120;
+    gScreenOneCtx->screenWidth = SCREEN_WIDTH;
+    gScreenOneCtx->screenHeight = SCREEN_HEIGHT;
     gFadeModeSelection = FADE_MODE_MAIN;
     setup_menus();
 
@@ -4499,10 +4499,10 @@ void func_8009C918(void) {
     s32 someIndex;
 
     for (someIndex = 0; someIndex < 4; someIndex++) {
-        D_8018E7E8[someIndex].x = D_8015F480[someIndex].screenStartX;
-        D_8018E7E8[someIndex].y = D_8015F480[someIndex].screenStartY;
-        D_8018E810[someIndex].x = D_8015F480[someIndex].screenWidth;
-        D_8018E810[someIndex].y = D_8015F480[someIndex].screenHeight;
+        D_8018E7E8[someIndex].x = gScreenContexts[someIndex].screenStartX;
+        D_8018E7E8[someIndex].y = gScreenContexts[someIndex].screenStartY;
+        D_8018E810[someIndex].x = gScreenContexts[someIndex].screenWidth;
+        D_8018E810[someIndex].y = gScreenContexts[someIndex].screenHeight;
     }
 
     D_8018E7E8[4].x = 0x00A0;
@@ -4563,7 +4563,7 @@ void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
     RGBA16* color;
     s16 x, y, w, h;
     UNUSED s32 pad[3];
-    struct UnkStruct_800DC5EC* unk;
+    struct ScreenContext* unk;
     struct UnkStruct_8018E7E8 *size, *start;
 
     if ((gModeSelection == GRAND_PRIX) || (gModeSelection == TIME_TRIALS)) {
@@ -4581,7 +4581,7 @@ void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
         w = size->x;
         h = size->y;
     } else {
-        unk = &D_8015F480[arg0];
+        unk = &gScreenContexts[arg0];
         x = unk->screenStartX;
         y = unk->screenStartY;
         w = unk->screenWidth;
@@ -4965,10 +4965,10 @@ void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
         var_ra = D_8018E810[arg0].x;
         sp44 = D_8018E810[arg0].y;
     } else {
-        var_t3 = D_8015F480[arg0].screenStartX;
-        var_t4 = D_8015F480[arg0].screenStartY;
-        var_ra = D_8015F480[arg0].screenWidth;
-        sp44 = D_8015F480[arg0].screenHeight;
+        var_t3 = gScreenContexts[arg0].screenStartX;
+        var_t4 = gScreenContexts[arg0].screenStartY;
+        var_ra = gScreenContexts[arg0].screenWidth;
+        sp44 = gScreenContexts[arg0].screenHeight;
     }
     var_t2 = (D_8018E7D0[arg0] * 0xFF) / D_8018E7B8[arg0];
     if (var_t2 >= 0x100) {
@@ -5021,10 +5021,10 @@ void func_8009D998(s32 arg0) {
         var_t2 = D_8018E810[arg0].x;
         var_t3 = D_8018E810[arg0].y;
     } else {
-        var_t0 = D_8015F480[arg0].screenStartX;
-        var_t1 = D_8015F480[arg0].screenStartY;
-        var_t2 = D_8015F480[arg0].screenWidth;
-        var_t3 = D_8015F480[arg0].screenHeight;
+        var_t0 = gScreenContexts[arg0].screenStartX;
+        var_t1 = gScreenContexts[arg0].screenStartY;
+        var_t2 = gScreenContexts[arg0].screenWidth;
+        var_t3 = gScreenContexts[arg0].screenHeight;
     }
     temp_v0 = var_t2 / 2;
     temp_v1 = var_t3 / 2;
@@ -7650,9 +7650,9 @@ void render_pause_menu_versus(MenuItem* arg0) {
     s32 var_s0;
     s32 var_s1;
     Unk_D_800E70A0* temp_s3;
-    struct UnkStruct_800DC5EC* temp_v0;
+    struct ScreenContext* temp_v0;
 
-    temp_v0 = &D_8015F480[gIsGamePaused - 1];
+    temp_v0 = &gScreenContexts[gIsGamePaused - 1];
     temp_v1 = temp_v0->screenStartX;
     temp_t0 = temp_v0->screenStartY;
     temp_t3 = temp_v0->screenWidth / 2;
@@ -7680,10 +7680,10 @@ void render_pause_grand_prix(MenuItem* arg0) {
     s32 temp_t4;
     s32 var_s0;
     Unk_D_800E70A0* temp_s3;
-    struct UnkStruct_800DC5EC* temp_v0;
+    struct ScreenContext* temp_v0;
     f32 one = 1.0f;
 
-    temp_v0 = &D_8015F480[gIsGamePaused - 1];
+    temp_v0 = &gScreenContexts[gIsGamePaused - 1];
     temp_v1 = temp_v0->screenStartX;
     temp_t0 = temp_v0->screenStartY;
     temp_t3 = temp_v0->screenWidth / 2;
@@ -7707,7 +7707,7 @@ void render_pause_grand_prix(MenuItem* arg0) {
 }
 
 void render_pause_battle(MenuItem* arg0) {
-    struct UnkStruct_800DC5EC* temp_v0;
+    struct ScreenContext* temp_v0;
     s16 temp_t0;
     s16 temp_v1;
     s32 temp_t3;
@@ -7716,7 +7716,7 @@ void render_pause_battle(MenuItem* arg0) {
     s32 var_s1;
     Unk_D_800E70A0* temp_s3;
 
-    temp_v0 = &D_8015F480[gIsGamePaused - 1];
+    temp_v0 = &gScreenContexts[gIsGamePaused - 1];
     temp_v1 = temp_v0->screenStartX;
     temp_t0 = temp_v0->screenStartY;
     temp_t3 = temp_v0->screenWidth / 2;
@@ -10648,15 +10648,15 @@ void func_800AC458(MenuItem* arg0) {
 
             if ((arg0->param2 + temp) < 0) {
                 arg0->param2 += temp;
-                D_800DC5EC->screenStartX += temp;
-                D_800DC5F0->screenStartX -= temp;
+                gScreenOneCtx->screenStartX += temp;
+                gScreenTwoCtx->screenStartX -= temp;
             } else {
                 arg0->param2 = 0;
                 arg0->column = 0;
                 arg0->state = 2;
                 arg0->param1 = 0;
-                D_800DC5EC->screenStartX = 0x00F0;
-                D_800DC5F0->screenStartX = 0x0050;
+                gScreenOneCtx->screenStartX = 0x00F0;
+                gScreenTwoCtx->screenStartX = 0x0050;
             }
             break;
         case 2:
@@ -10753,14 +10753,14 @@ void func_800AC458(MenuItem* arg0) {
             arg0->row = arg0->param2;
             if (arg0->param2 < 0xF0) {
                 arg0->param2 += 0x10;
-                D_800DC5EC->screenStartY += 0x10;
-                D_800DC5F0->screenStartY -= 0x10;
+                gScreenOneCtx->screenStartY += 0x10;
+                gScreenTwoCtx->screenStartY -= 0x10;
             } else {
                 arg0->param2 = 0;
                 arg0->state = 0x0000000D;
                 arg0->param1 = 0;
-                D_800DC5EC->screenStartY = 0x012C;
-                D_800DC5F0->screenStartY = -0x003C;
+                gScreenOneCtx->screenStartY = 0x012C;
+                gScreenTwoCtx->screenStartY = -0x003C;
                 D_8015F894 = 4;
                 func_800CA330(0x19U);
             }
@@ -11056,8 +11056,8 @@ void func_800AD2E8(MenuItem* arg0) {
             }
             if ((arg0->param2 + var_a1) < 0) {
                 arg0->param2 += var_a1;
-                D_800DC5EC->screenStartX += var_a1;
-                D_800DC5F0->screenStartX -= var_a1;
+                gScreenOneCtx->screenStartX += var_a1;
+                gScreenTwoCtx->screenStartX -= var_a1;
             } else {
                 arg0->param2 = 0;
                 arg0->column = 0;
@@ -11065,8 +11065,8 @@ void func_800AD2E8(MenuItem* arg0) {
                 if ((arg0->state == 9) && (gPostTimeTrialReplayCannotSave == 1)) {
                     arg0->state--;
                 }
-                D_800DC5EC->screenStartX = 0x00F0;
-                D_800DC5F0->screenStartX = 0x0050;
+                gScreenOneCtx->screenStartX = 0x00F0;
+                gScreenTwoCtx->screenStartX = 0x0050;
             }
             break;
         case 5:  /* switch 3 */
@@ -11335,8 +11335,8 @@ void func_800AD2E8(MenuItem* arg0) {
             arg0->row = arg0->param2;
             if (arg0->param2 < 0xF0) {
                 arg0->param2 += 0x10;
-                D_800DC5EC->screenStartY += 0x10;
-                D_800DC5F0->screenStartY -= 0x10;
+                gScreenOneCtx->screenStartY += 0x10;
+                gScreenTwoCtx->screenStartY -= 0x10;
                 return;
             }
             switch (arg0->param1) { /* switch 3 */
@@ -11362,8 +11362,8 @@ void func_800AD2E8(MenuItem* arg0) {
             }
             arg0->param2 = 0;
             arg0->state = 0x0000001F;
-            D_800DC5EC->screenStartY = 0x012C;
-            D_800DC5F0->screenStartY = -0x003C;
+            gScreenOneCtx->screenStartY = 0x012C;
+            gScreenTwoCtx->screenStartY = -0x003C;
             D_8015F894 = 4;
             func_800CA330(0x19U);
             break;

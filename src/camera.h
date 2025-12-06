@@ -16,6 +16,8 @@
 #define BAD_RETURN(cmd) cmd
 #endif
 
+#define NUM_CAMERAS 4
+
 typedef struct {
     f32 unk_0;
     s16 unk_4;

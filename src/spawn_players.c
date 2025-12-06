@@ -840,7 +840,7 @@ void func_8003BE30(void) {
     func_80039AE4();
 }
 
-void func_8003C0F0(void) {
+void spawn_and_set_player_spawns(void) {
     s16 sp5E;
     s16 sp5C;
     s16 sp5A;
@@ -1189,7 +1189,7 @@ void func_8003CD98(Player* player, Camera* camera, s8 playerId, s8 screenId) {
     }
 }
 
-void func_8003D080(void) {
+void spawn_players_and_cameras(void) {
     UNUSED s32 pad;
     Player* player = &gPlayers[0];
 
@@ -1197,7 +1197,7 @@ void func_8003D080(void) {
     if (gGamestate == ENDING) {
         func_8003CD78();
     } else {
-        func_8003C0F0();
+        spawn_and_set_player_spawns();
     }
     if (!gDemoMode) {
         switch (gActiveScreenMode) {
