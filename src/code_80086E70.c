@@ -1042,7 +1042,7 @@ f32 func_8008933C(Player* player, s32 objectIndex, f32 arg2, f32 arg3) {
     var_f2 = 0.0f;
     if (temp_v1->unk_18[6] == 0) {
         object = &gObjectList[objectIndex];
-        player->unk_046 |= 2;
+        player->unk_046 |= CRITTER_TOUCH;
         player->effects |= ENEMY_BONK_EFFECT;
         temp_v1->unk_18[6] = 4;
         something = (player->pos[0] - object->pos[0]) * object->velocity[0];
