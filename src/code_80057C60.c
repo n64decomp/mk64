@@ -6445,8 +6445,8 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 playerId, s8 arg3) {
 }
 
 void func_8006D194(Player* player, s8 playerIndex, s8 arg2) {
-    if (player->particlePool2[2].isAlive == 1) {
-        switch (player->particlePool2[2].type) {
+    if (player->particlePool2[0].isAlive == 1) {
+        switch (player->particlePool2[0].type) {
             case 2:
                 func_80064DEC(player, playerIndex, arg2, 0);
                 break;
