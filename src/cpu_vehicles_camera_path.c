@@ -745,7 +745,7 @@ void set_places(void) {
     }
 
     for (playerId = 0; playerId < numPlayer - 1; playerId++) {
-        if ((gPlayers[gGPCurrentRacePlayerIdByRank[playerId]].type & 0x800)) {
+        if ((gPlayers[gGPCurrentRacePlayerIdByRank[playerId]].type & PLAYER_CINEMATIC_MODE)) {
             continue;
         }
 
@@ -984,7 +984,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
         return 1;
     }
     player = &gPlayers[playerId];
-    if (player->type & 0x4000) {
+    if (player->type & PLAYER_HUMAN) {
         return 1;
     }
 
@@ -1361,7 +1361,8 @@ void play_cpu_sound_effect(s32 arg0, Player* player) {
     }
     if (D_801633B0[arg0] >= 0xB) {
         if ((player->triggers & VERTICAL_TUMBLE_TRIGGER) || (player->triggers & HIT_BY_STAR_TRIGGER) ||
-            (player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) || (player->effects & SQUISH_EFFECT)) {
+            (player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) ||
+            (player->effects & SQUISH_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0B));
             D_801633B0[arg0] = 0;
         }
@@ -1435,7 +1436,7 @@ void update_player(s32 playerId) {
         if (gCourseMaxZ < player->pos[2]) {            D_801633E0[playerId] = 4;        }
         // clang-format on
 
-        if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
+        if (!(player->lakituProps & HELD_BY_LAKITU) && !(player->lakituProps & LAKITU_SCENE)) {
             gPlayerPathIndex = gPathIndexByPlayerId[playerId];
             set_current_path(gPlayerPathIndex);
             switch (gCurrentCourseId) { /* irregular */
@@ -1457,7 +1458,7 @@ void update_player(s32 playerId) {
             }
             if (player->type & PLAYER_CINEMATIC_MODE) {
                 player->effects &= ~REVERSE_EFFECT;
-                player->unk_044 &= ~0x0001;
+                player->kartProps &= ~BACK_UP;
             }
             update_player_path_completion(playerId, player);
             if ((gCurrentCourseId != COURSE_AWARD_CEREMONY) && ((D_80163240[playerId] == 1) || (playerId == 0))) {
@@ -3794,7 +3795,8 @@ void func_8001A588(UNUSED u16* localD_80152300, Camera* camera, Player* player, 
                         if (playerId >= 8) {
                             playerId = 1;
                         }
-                        if ((!(gPlayers[playerId].unk_0CA & 2) && !(gPlayers[playerId].unk_0CA & 8))) {
+                        if ((!(gPlayers[playerId].lakituProps & HELD_BY_LAKITU) &&
+                             !(gPlayers[playerId].lakituProps & LAKITU_SCENE))) {
                             break;
                         }
                     }
@@ -4538,26 +4540,28 @@ void func_8001C14C(void) {
 
         temp_s0 = &gPlayerOne[playerId];
         update_player(playerId);
-        if (!(temp_s0->type & 0x2000)) {
+        if (!(temp_s0->type & PLAYER_START_SEQUENCE)) {
             temp_f0 = D_80163418[playerId] - temp_s0->pos[0];
             temp_f2 = D_80163438[playerId] - temp_s0->pos[2];
             if ((f64) ((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 1.0) {
                 if (playerId != 3) {
                     if (1) {}
                     // Why oh why is a ternary required here? Who does that?
-                    (D_8016347C == 0) ? (temp_s0->type |= 0x2000) : (temp_s0->type &= ~0x2000);
-                    if ((gPlayerOne->type & 0x2000) && (gPlayerTwo->type & 0x2000) && (gPlayerThree->type & 0x2000)) {
+                    (D_8016347C == 0) ? (temp_s0->type |= PLAYER_START_SEQUENCE)
+                                      : (temp_s0->type &= ~PLAYER_START_SEQUENCE);
+                    if ((gPlayerOne->type & PLAYER_START_SEQUENCE) && (gPlayerTwo->type & PLAYER_START_SEQUENCE) &&
+                        (gPlayerThree->type & PLAYER_START_SEQUENCE)) {
                         D_8016347C = 1;
                         D_80163480 = 0;
                     }
                 } else if (D_8016347E == 0) {
                     if (!(temp_s0->effects & EXPLOSION_CRASH_EFFECT)) {
-                        temp_s0->type |= 0x2000;
+                        temp_s0->type |= PLAYER_START_SEQUENCE;
                     }
                     D_8016347E = 1;
                     D_80163484 = 0;
                 } else if (!(temp_s0->effects & EXPLOSION_CRASH_EFFECT)) {
-                    temp_s0->type |= 0x2000;
+                    temp_s0->type |= PLAYER_START_SEQUENCE;
                 }
             }
         }

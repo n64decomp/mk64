@@ -140,7 +140,7 @@ void func_8000DF8C(s32 bombKartId) {
                         var_s1 = 0;
                         sp7E = 4;
                         var_v0->triggers |= VERTICAL_TUMBLE_TRIGGER;
-                        var_v0->type &= ~0x2000;
+                        var_v0->type &= ~PLAYER_START_SEQUENCE;
                     }
                 }
             } else {

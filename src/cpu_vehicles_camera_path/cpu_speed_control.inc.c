@@ -133,8 +133,9 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
     s32 var_a1;
 
     speed = player->speed;
-    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) && !(player->effects & LIGHTNING_STRIKE_EFFECT) &&
-        !(player->triggers & VERTICAL_TUMBLE_TRIGGER) && !(player->triggers & HIT_BY_STAR_TRIGGER) && !(player->triggers & HIGH_TUMBLE_TRIGGER) &&
+    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) &&
+        !(player->effects & LIGHTNING_STRIKE_EFFECT) && !(player->triggers & VERTICAL_TUMBLE_TRIGGER) &&
+        !(player->triggers & HIT_BY_STAR_TRIGGER) && !(player->triggers & HIGH_TUMBLE_TRIGGER) &&
         !(player->triggers & LOW_TUMBLE_TRIGGER)) {
         if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
             func_80007FA4(playerId, player, speed);

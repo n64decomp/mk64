@@ -2978,14 +2978,14 @@ void func_800791F0(s32 objectIndex, s32 playerId) {
     if ((gObjectList[objectIndex].unk_0D8 != 3) && (gObjectList[objectIndex].unk_0D8 != 7)) {
         func_800722CC(objectIndex, 1);
         if (gCurrentCourseId == COURSE_SHERBET_LAND) {
-            player->unk_0CA &= 0xFFEF;
+            player->lakituProps &= ~FRIGID_EFFECT;
         }
     } else {
         // ?????
     }
     if (gCurrentCourseId == COURSE_SHERBET_LAND) {
         func_800722CC(objectIndex, 0x00000010);
-        player->unk_0CA &= 0xFFDF;
+        player->lakituProps &= ~THAWING_EFFECT;
     }
     func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
 }
@@ -3127,9 +3127,9 @@ void func_800797AC(s32 playerId) {
 
     objectIndex = gIndexLakituList[playerId];
     player = &gPlayerOne[playerId];
-    if ((gCurrentCourseId == COURSE_SHERBET_LAND) && (player->unk_0CA & 1)) {
+    if ((gCurrentCourseId == COURSE_SHERBET_LAND) && (player->lakituProps & LAKITU_RETRIEVAL)) {
         init_object(objectIndex, 7);
-        player->unk_0CA |= 0x10;
+        player->lakituProps |= FRIGID_EFFECT;
     } else {
         init_object(objectIndex, 3);
     }
@@ -3144,14 +3144,15 @@ void func_80079860(s32 playerId) {
     player = &gPlayerOne[playerId];
     if ((func_80072354(objectIndex, 1) != 0) &&
         (((func_802ABDF4(player->collision.meshIndexZX) != 0) && (player->collision.surfaceDistance[2] <= 3.0f)) ||
-         (player->unk_0CA & 1) || ((player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & MIDAIR_EFFECT)))) {
+         (player->lakituProps & LAKITU_RETRIEVAL) ||
+         ((player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & MIDAIR_EFFECT)))) {
         func_80090778(player);
         func_800797AC(playerId);
     }
 }
 
 void func_8007993C(s32 objectIndex, Player* player) {
-    if (player->unk_0CA & 4) {
+    if (player->lakituProps & LAKITU_FIZZLE) {
         func_800722A4(objectIndex, 2);
         gObjectList[objectIndex].primAlpha = player->alpha;
         return;
@@ -3228,7 +3229,7 @@ void update_object_lakitu_fishing(s32 objectIndex, s32 playerId) {
             func_80073654(objectIndex);
             break;
         case 3:
-            if (!(player->unk_0CA & 2)) {
+            if (!(player->lakituProps & HELD_BY_LAKITU)) {
                 func_80086EAC(objectIndex, 0, 3);
                 func_80073654(objectIndex);
             }
@@ -3263,7 +3264,7 @@ void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
         case 2: /* switch 1 */
             set_object_flag_status_true(objectIndex, 0x00000010);
             func_800736E0(objectIndex);
-            player->unk_0CA |= 0x80;
+            player->lakituProps |= FROZEN_EFFECT;
             object_next_state(objectIndex);
             break;
         case 3: /* switch 1 */
@@ -3283,11 +3284,11 @@ void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
             func_80073654(objectIndex);
             break;
         case 3:
-            if ((player->surfaceType == ICE) && !(player->unk_0CA & 1) &&
+            if ((player->surfaceType == ICE) && !(player->lakituProps & LAKITU_RETRIEVAL) &&
                 ((f64) player->collision.surfaceDistance[2] <= 30.0)) {
                 func_800722A4(objectIndex, 8);
             }
-            if (!(player->unk_0CA & 2)) {
+            if (!(player->lakituProps & HELD_BY_LAKITU)) {
                 func_80086EAC(objectIndex, 0, 3);
                 func_80073654(objectIndex);
             }
@@ -3296,7 +3297,7 @@ void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
             func_8007375C(objectIndex, 0x0000001E);
             break;
         case 5:
-            player->unk_0CA &= 0xFF7F;
+            player->lakituProps &= ~FROZEN_EFFECT;
             func_800722A4(objectIndex, 0x00000010);
             func_800722A4(objectIndex, 0x00000020);
             func_800722CC(objectIndex, 4);
@@ -3307,8 +3308,8 @@ void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
         case 6:
             if (func_8007375C(objectIndex, 0x000000A0) != 0) {
                 func_800722CC(objectIndex, 0x00000010);
-                player->unk_0CA &= 0xFFEF;
-                player->unk_0CA |= 0x20;
+                player->lakituProps &= ~FRIGID_EFFECT;
+                player->lakituProps |= THAWING_EFFECT;
             }
             break;
         case 7:
@@ -3317,7 +3318,7 @@ void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
         case 8:
             func_80073720(objectIndex);
             func_80072428(objectIndex);
-            player->unk_0CA &= 0xFFDF;
+            player->lakituProps &= ~THAWING_EFFECT;
             func_800722CC(objectIndex, 1);
             func_800C9018((u8) playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
             break;
@@ -5977,11 +5978,11 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
             temp_f0 = func_80088F54(objectIndex, temp_s0);
             if ((temp_f0 <= 9.0) && !(temp_s0->effects & SQUISH_EFFECT) &&
                 (has_collided_horizontally_with_player(objectIndex, temp_s0) != 0)) {
-                if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & 0x100)) {
+                if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & PLAYER_INVISIBLE_OR_BOMB)) {
                     if (!(temp_s0->effects & STAR_EFFECT)) {
                         func_80089474(objectIndex, playerId, 1.4f, 1.1f, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x4C));
                     } else if (func_80072354(objectIndex, 0x00000040) != 0) {
-                        if (temp_s0->type & 0x1000) {
+                        if (temp_s0->type & PLAYER_CPU) {
                             func_800C98B8(temp_s0->pos, temp_s0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0xA2, 0x4A));
                         } else {
                             func_800C9060((u8) playerId, SOUND_ARG_LOAD(0x19, 0x01, 0xA2, 0x4A));
@@ -5997,13 +5998,13 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
             } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) &&
                        (is_within_horizontal_distance_of_player(objectIndex, temp_s0, (temp_s0->speed * 0.5) + 7.0) !=
                         0)) {
-                if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & 0x100)) {
+                if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & PLAYER_INVISIBLE_OR_BOMB)) {
                     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
                     func_800722A4(objectIndex, 2);
                     temp_s0->unk_040 = (s16) objectIndex;
-                    temp_s0->unk_046 |= 2;
+                    temp_s0->unk_046 |= CRITTER_TOUCH;
                     temp_s0->triggers |= THWOMP_SQUISH_TRIGGER;
                     func_80088FF0(temp_s0);
                 }
@@ -6143,7 +6144,7 @@ void func_80081210(void) {
     player = gPlayerOne;
     for (var_s4 = 0; var_s4 < NUM_PLAYERS; var_s4++, player++) {
         player->tyres[FRONT_LEFT].unk_14 &= ~3;
-        player->unk_046 &= ~0x0006;
+        player->unk_046 &= ~(CRITTER_TOUCH_GATE | CRITTER_TOUCH);
         for (var_s2_3 = 0; var_s2_3 < gNumActiveThwomps; var_s2_3++) {
             objectIndex = indexObjectList1[var_s2_3];
             if (!(player->effects & BOO_EFFECT)) {
@@ -6380,7 +6381,7 @@ void func_80081D34(s32 objectIndex) {
     for (playerIndex = 0; playerIndex < D_8018D158; playerIndex++, player++, var_s4++) {
         if ((is_obj_flag_status_active(objectIndex, 0x00000200) != 0) && !(player->effects & BOO_EFFECT) &&
             (has_collided_with_player(objectIndex, player) != 0)) {
-            if ((player->type & PLAYER_EXISTS) && !(player->type & 0x100)) {
+            if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
                 var_s5 = 1;
                 object = &gObjectList[objectIndex];
                 if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {

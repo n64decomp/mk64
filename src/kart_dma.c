@@ -1191,7 +1191,7 @@ void load_kart_texture(Player* player, s8 playerId, s8 screenId, s8 screenId2, s
         ((temp & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) ||
         ((temp & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
         ((temp & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) ||
-        ((temp & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT) || ((player->unk_044 & 0x800) != 0)) {
+        ((temp & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT) || ((player->kartProps & UNUSED_0x800) != 0)) {
         if (player->animFrameSelector[screenId] != 0) {
             osInvalDCache(&gEncodedKartTexture[index][screenId2][playerId], D_800DDEB0[player->characterId]);
 
@@ -1247,7 +1247,7 @@ void load_kart_texture_non_blocking(Player* player, s8 arg1, s8 arg2, s8 arg3, s
         ((temp & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) ||
         ((temp & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
         ((temp & UNKNOWN_EFFECT_0x800000) == UNKNOWN_EFFECT_0x800000) ||
-        ((temp & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT) || ((player->unk_044 & 0x800) != 0)) {
+        ((temp & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT) || ((player->kartProps & UNUSED_0x800) != 0)) {
         if (player->animFrameSelector[arg2] != 0) {
             osInvalDCache(&gEncodedKartTexture[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
 

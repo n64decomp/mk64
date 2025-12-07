@@ -458,12 +458,12 @@ s16 update_player_path(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, Player*
         }
     } else { // AI or special case player handling
         if (D_801631E0[playerId] == true) {
-            if (player->unk_0CA & 1) {
+            if (player->lakituProps & LAKITU_RETRIEVAL) {
                 temp_v1 = &gTrackPaths[pathIndex][pathPointIndex];
                 player->pos[0] = (f32) temp_v1->posX;
                 player->pos[1] = (f32) temp_v1->posY;
                 player->pos[2] = (f32) temp_v1->posZ;
-                player->unk_0CA &= ~0x0001;
+                player->lakituProps &= ~LAKITU_RETRIEVAL;
                 return pathPointIndex;
             }
             if (playerId == ((s32) D_80163488 % 8)) {
