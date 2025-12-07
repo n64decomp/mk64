@@ -745,7 +745,7 @@ void set_places(void) {
     }
 
     for (playerId = 0; playerId < numPlayer - 1; playerId++) {
-        if ((gPlayers[gGPCurrentRacePlayerIdByRank[playerId]].type & 0x800)) {
+        if ((gPlayers[gGPCurrentRacePlayerIdByRank[playerId]].type & PLAYER_CINEMATIC_MODE)) {
             continue;
         }
 
@@ -984,7 +984,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
         return 1;
     }
     player = &gPlayers[playerId];
-    if (player->type & 0x4000) {
+    if (player->type & PLAYER_HUMAN) {
         return 1;
     }
 
@@ -1239,7 +1239,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
         s16 var_t0 = 0;
         if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
             D_801634EC = 0;
-            if (player->effects & 0x200) {
+            if (player->effects & STAR_EFFECT) {
                 D_801634EC = 1;
             }
             if (gIsMirrorMode != 0) {
@@ -1353,14 +1353,16 @@ void update_vehicles(void) {
 
 void play_cpu_sound_effect(s32 arg0, Player* player) {
     if (D_80163398[arg0] >= 0xB) {
-        if ((player->effects & 0x80) || (player->effects & 0x40) || (player->effects & 0x20000)) {
+        if ((player->effects & BANANA_SPINOUT_EFFECT) || (player->effects & DRIVING_SPINOUT_EFFECT) ||
+            (player->effects & LIGHTNING_STRIKE_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0A));
             D_80163398[arg0] = 0;
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->soundEffects & REVERSE_EFFECT) || (player->soundEffects & 0x01000000) ||
-            (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & HIT_EFFECT)) {
+        if ((player->triggers & VERTICAL_TUMBLE_TRIGGER) || (player->triggers & HIT_BY_STAR_TRIGGER) ||
+            (player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) ||
+            (player->effects & SQUISH_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0B));
             D_801633B0[arg0] = 0;
         }
@@ -1434,7 +1436,7 @@ void update_player(s32 playerId) {
         if (gCourseMaxZ < player->pos[2]) {            D_801633E0[playerId] = 4;        }
         // clang-format on
 
-        if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
+        if (!(player->lakituProps & HELD_BY_LAKITU) && !(player->lakituProps & LAKITU_SCENE)) {
             gPlayerPathIndex = gPathIndexByPlayerId[playerId];
             set_current_path(gPlayerPathIndex);
             switch (gCurrentCourseId) { /* irregular */
@@ -1456,7 +1458,7 @@ void update_player(s32 playerId) {
             }
             if (player->type & PLAYER_CINEMATIC_MODE) {
                 player->effects &= ~REVERSE_EFFECT;
-                player->unk_044 &= ~0x0001;
+                player->kartProps &= ~BACK_UP;
             }
             update_player_path_completion(playerId, player);
             if ((gCurrentCourseId != COURSE_AWARD_CEREMONY) && ((D_80163240[playerId] == 1) || (playerId == 0))) {
@@ -1481,7 +1483,7 @@ void update_player(s32 playerId) {
                         break;
                 }
                 D_801631E0[playerId] = false;
-                if ((player->effects & UNKNOWN_EFFECT_0x1000) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
+                if ((player->effects & LOST_RACE_EFFECT) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
                     D_801631E0[playerId] = true;
                 }
                 if ((D_801646CC == 1) || (player->type & PLAYER_CINEMATIC_MODE) ||
@@ -1495,7 +1497,6 @@ void update_player(s32 playerId) {
                     gPlayerTrackPositionFactorInstruction[playerId].target = 0.0f;
                     gPlayerTrackPositionFactorInstruction[playerId].unkC = 0.0f;
                 }
-                // gNearestPathPointByPlayerId[playerId] might need to be saved to a temp
                 gPlayerPathY[playerId] =
                     gTrackPaths[gPlayerPathIndex][gNearestPathPointByPlayerId[playerId]].posY + 4.3f;
                 if ((D_801631F8[playerId] == 1) && (D_801631E0[playerId] == false)) {
@@ -1521,7 +1522,7 @@ void update_player(s32 playerId) {
                 }
                 if (D_801631E0[playerId] == true) {
                     D_801630E8[playerId] = 0;
-                    player->effects &= ~0x10;
+                    player->effects &= ~DRIFTING_EFFECT;
                     if ((playerId & 1) != (gIncrementUpdatePlayer & 1)) {
                         apply_cpu_turn(player, 0);
                         regulate_cpu_speed(playerId, gPreviousCpuTargetSpeed[playerId], player);
@@ -1543,7 +1544,8 @@ void update_player(s32 playerId) {
                     determine_ideal_cpu_position_offset(playerId, gCurrentNearestPathPoint);
                     distX = gOffsetPosition[0] - player->pos[0];
                     minAngle = gOffsetPosition[2] - player->pos[2];
-                    if (!(player->effects & 0x80) && !(player->effects & 0x40) && !(player->effects & 0x800)) {
+                    if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT) &&
+                        !(player->effects & BANANA_NEAR_SPINOUT_EFFECT)) {
                         if (((distX * distX) + (minAngle * minAngle)) > 6400.0f) {
                             if (gPlayerPathIndex == 0) {
                                 func_8000B140(playerId);
@@ -1597,13 +1599,13 @@ void update_player(s32 playerId) {
                         case -1:
                             if (steeringSensitivity > 5) {
                                 D_801630E8[playerId] = 0;
-                                player->effects &= ~0x10;
+                                player->effects &= ~DRIFTING_EFFECT;
                             }
                             break;
                         case 1:
                             if (steeringSensitivity < -5) {
                                 D_801630E8[playerId] = 0;
-                                player->effects &= ~0x10;
+                                player->effects &= ~DRIFTING_EFFECT;
                             }
                             break;
                         default:
@@ -1700,9 +1702,9 @@ void update_player(s32 playerId) {
                 if ((cpu_BehaviourState[playerId] == CPU_BEHAVIOUR_STATE_RUNNING) &&
                     ((gTrackPositionFactor[playerId] > 0.9f) || (gTrackPositionFactor[playerId] < -0.9f))) {
                     D_801630E8[playerId] = 0;
-                    player->effects &= ~0x10;
+                    player->effects &= ~DRIFTING_EFFECT;
                 }
-                if (player->effects & 2) {
+                if (player->effects & HOP_EFFECT) {
                     switch (D_801630E8[playerId]) {
                         case 1:
                             newAngle = 0x0035;
@@ -1715,7 +1717,7 @@ void update_player(s32 playerId) {
                                 (gPreviousAngleSteering[playerId] + ((angle * steeringSensitivity) / minAngle)) / 2;
                             break;
                     }
-                } else if (player->effects & (UNKNOWN_EFFECT_0x10000000 | UNKNOWN_EFFECT_0xC)) {
+                } else if (player->effects & (UNKNOWN_EFFECT_0x10000000 | MIDAIR_EFFECT | BOOST_RAMP_WOOD_EFFECT)) {
                     newAngle = 0;
                 } else {
                     newAngle = (gPreviousAngleSteering[playerId] + ((angle * steeringSensitivity) / minAngle)) / 2;
@@ -1724,7 +1726,7 @@ void update_player(s32 playerId) {
                 gPreviousAngleSteering[playerId] = newAngle;
                 if ((gIsPlayerInCurve[playerId] == true) || (D_801630E8[playerId] == 1) ||
                     (D_801630E8[playerId] == -1) ||
-                    (player->effects & (UNKNOWN_EFFECT_0x10000000 | UNKNOWN_EFFECT_0xC))) {
+                    (player->effects & (UNKNOWN_EFFECT_0x10000000 | MIDAIR_EFFECT | BOOST_RAMP_WOOD_EFFECT))) {
                     cpu_TargetSpeed[playerId] = GET_COURSE_cpu_CurveTargetSpeed(gCCSelection);
                 } else {
                     cpu_TargetSpeed[playerId] = GET_COURSE_cpu_NormalTargetSpeed(gCCSelection);
@@ -1739,7 +1741,7 @@ void update_player(s32 playerId) {
                     cpu_TargetSpeed[playerId] = 3.3333333f;
                 }
                 gCurrentCpuTargetSpeed = cpu_TargetSpeed[playerId];
-                player->effects &= ~UNKNOWN_EFFECT_0x200000;
+                player->effects &= ~CPU_FAST_EFFECT;
                 gPreviousCpuTargetSpeed[playerId] = gCurrentCpuTargetSpeed;
                 check_ai_crossing_distance(playerId);
                 regulate_cpu_speed(playerId, gCurrentCpuTargetSpeed, player);
@@ -2216,7 +2218,7 @@ void init_players(void) {
 
             for (i = 0; i < NUM_PLAYERS; i++) {
                 if (D_80163330[i] == 1) {
-                    gPlayers[i].soundEffects |= 0x02000000;
+                    gPlayers[i].triggers |= START_BOOST_TRIGGER;
                 }
             }
         }
@@ -2422,7 +2424,7 @@ void func_80015390(Camera* camera, UNUSED Player* player, UNUSED s32 arg2) {
     } else {
         var_a2 = 0xA0 + (temp_s1->unk_078 / 16);
     }
-    if (!((temp_s1->effects & 0x80) || (temp_s1->effects & 0x40))) {
+    if (!((temp_s1->effects & BANANA_SPINOUT_EFFECT) || (temp_s1->effects & DRIVING_SPINOUT_EFFECT))) {
         adjust_angle(&camera->unk_2C, temp_s1->rotation[1], var_a2);
     }
     func_8001D794(temp_s1, camera, sp64, &sp84, &sp80, &sp7C, camera->unk_2C);
@@ -3708,7 +3710,7 @@ void func_8001A450(s32 playerId, s32 arg1, s32 arg2) {
     s16 pathPoint;
     s32 temp_v0;
 
-    if (!(gPlayers[playerId].effects & (UNKNOWN_EFFECT_0x10000000 | UNKNOWN_EFFECT_0xC))) {
+    if (!(gPlayers[playerId].effects & (UNKNOWN_EFFECT_0x10000000 | MIDAIR_EFFECT | BOOST_RAMP_WOOD_EFFECT))) {
         temp_v1 = D_80164680[arg1];
         pathPoint = gNearestPathPointByCameraId[arg1];
         temp_v0 = func_8001A310(pathPoint, (temp_v1 + 1) % 10);
@@ -3793,7 +3795,8 @@ void func_8001A588(UNUSED u16* localD_80152300, Camera* camera, Player* player, 
                         if (playerId >= 8) {
                             playerId = 1;
                         }
-                        if ((!(gPlayers[playerId].unk_0CA & 2) && !(gPlayers[playerId].unk_0CA & 8))) {
+                        if ((!(gPlayers[playerId].lakituProps & HELD_BY_LAKITU) &&
+                             !(gPlayers[playerId].lakituProps & LAKITU_SCENE))) {
                             break;
                         }
                     }
@@ -3943,7 +3946,7 @@ void cpu_use_item_strategy(s32 playerId) {
             } else if (cpuStrategy->branch == CPU_STRATEGY_ITEM_BANANA) {
                 cpuStrategy->actorIndex = use_banana_item(player);
                 if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
-                    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+                    player->triggers |= DRAG_ITEM_EFFECT;
                     cpuStrategy->branch = CPU_STRATEGY_HOLD_BANANA;
                     cpuStrategy->timer = 0;
                     cpuStrategy->numItemUse += 1;
@@ -3968,7 +3971,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
-                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                player->triggers &= ~DRAG_ITEM_EFFECT;
             } else if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
                 cpuStrategy->branch = CPU_STRATEGY_DROP_BANANA;
             }
@@ -3997,7 +4000,7 @@ void cpu_use_item_strategy(s32 playerId) {
                         (BANANA_ACTOR(actor)->boundingBoxSize + 1.0f);
                 }
             }
-            player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+            player->triggers &= ~DRAG_ITEM_EFFECT;
             cpuStrategy->timer = 0;
             cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             break;
@@ -4007,7 +4010,7 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
                 actor = &gActorList[cpuStrategy->actorIndex];
                 BANANA_ACTOR(actor)->state = BANANA_ON_GROUND;
-                player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+                player->triggers |= DRAG_ITEM_EFFECT;
                 cpuStrategy->branch = CPU_STRATEGY_HOLD_THROW_BANANA;
                 cpuStrategy->timer = 0;
                 cpuStrategy->numItemUse += 1;
@@ -4040,7 +4043,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
                 cpuStrategy->timer = 0;
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
-                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                player->triggers &= ~DRAG_ITEM_EFFECT;
             } else {
                 BANANA_ACTOR(actor)->velocity[1] -= 0.4;
                 BANANA_ACTOR(actor)->pos[0] += BANANA_ACTOR(actor)->velocity[0];
@@ -4073,7 +4076,7 @@ void cpu_use_item_strategy(s32 playerId) {
                     get_surface_height(BANANA_ACTOR(actor)->pos[0], BANANA_ACTOR(actor)->pos[1] + 30.0, BANANA_ACTOR(actor)->pos[2]) +
                     (BANANA_ACTOR(actor)->boundingBoxSize + 1.0f);
             }
-            player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+            player->triggers &= ~DRAG_ITEM_EFFECT;
             cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             cpuStrategy->timer = 0;
             break;
@@ -4367,7 +4370,7 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case CPU_STRATEGY_ITEM_STAR:
-            player->soundEffects |= STAR_SOUND_EFFECT;
+            player->triggers |= STAR_TRIGGER;
             cpuStrategy->branch = CPU_STRATEGY_END_ITEM_STAR;
             cpuStrategy->timer = 0;
             cpuStrategy->numItemUse += 1;
@@ -4381,7 +4384,7 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case CPU_STRATEGY_ITEM_BOO:
-            player->soundEffects |= BOO_SOUND_EFFECT;
+            player->triggers |= BOO_TRIGGER;
             cpuStrategy->branch = CPU_STRATEGY_WAIT_END_BOO;
             cpuStrategy->timer = 0;
             cpuStrategy->numItemUse += 1;
@@ -4395,7 +4398,7 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case CPU_STRATEGY_ITEM_MUSHROOM:
-            player->soundEffects |= BOOST_SOUND_EFFECT;
+            player->triggers |= SHROOM_TRIGGER;
             cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             cpuStrategy->timer = 0;
             cpuStrategy->numItemUse += 1;
@@ -4403,7 +4406,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_ITEM_DOUBLE_MUSHROOM:
             if (cpuStrategy->timer >= 0x3D) {
-                player->soundEffects |= BOOST_SOUND_EFFECT;
+                player->triggers |= SHROOM_TRIGGER;
                 cpuStrategy->branch = CPU_STRATEGY_ITEM_MUSHROOM;
                 cpuStrategy->timer = 0;
             }
@@ -4411,7 +4414,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_ITEM_TRIPLE_MUSHROOM:
             if (cpuStrategy->timer >= 0x3D) {
-                player->soundEffects |= BOOST_SOUND_EFFECT;
+                player->triggers |= SHROOM_TRIGGER;
                 cpuStrategy->branch = CPU_STRATEGY_ITEM_DOUBLE_MUSHROOM;
                 cpuStrategy->timer = 0;
             }
@@ -4425,7 +4428,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_USE_SUPER_MUSHROOM:
             if ((((s16) cpuStrategy->timer) % 60) == 0) {
-                player->soundEffects |= BOOST_SOUND_EFFECT;
+                player->triggers |= SHROOM_TRIGGER;
                 if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
                     cpuStrategy->timer = 0;
                     cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
@@ -4440,7 +4443,7 @@ void cpu_use_item_strategy(s32 playerId) {
     if (cpuStrategy->timer < 10000) {
         cpuStrategy->timer += 1;
     }
-    if (player->effects & (BOO_EFFECT | BOOST_EFFECT | STAR_EFFECT)) { // 0x80002200
+    if (player->effects & (BOO_EFFECT | MUSHROOM_EFFECT | STAR_EFFECT)) {
         cpuStrategy->timer = 0;
     }
 }
@@ -4537,26 +4540,28 @@ void func_8001C14C(void) {
 
         temp_s0 = &gPlayerOne[playerId];
         update_player(playerId);
-        if (!(temp_s0->type & 0x2000)) {
+        if (!(temp_s0->type & PLAYER_START_SEQUENCE)) {
             temp_f0 = D_80163418[playerId] - temp_s0->pos[0];
             temp_f2 = D_80163438[playerId] - temp_s0->pos[2];
             if ((f64) ((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 1.0) {
                 if (playerId != 3) {
                     if (1) {}
                     // Why oh why is a ternary required here? Who does that?
-                    (D_8016347C == 0) ? (temp_s0->type |= 0x2000) : (temp_s0->type &= ~0x2000);
-                    if ((gPlayerOne->type & 0x2000) && (gPlayerTwo->type & 0x2000) && (gPlayerThree->type & 0x2000)) {
+                    (D_8016347C == 0) ? (temp_s0->type |= PLAYER_START_SEQUENCE)
+                                      : (temp_s0->type &= ~PLAYER_START_SEQUENCE);
+                    if ((gPlayerOne->type & PLAYER_START_SEQUENCE) && (gPlayerTwo->type & PLAYER_START_SEQUENCE) &&
+                        (gPlayerThree->type & PLAYER_START_SEQUENCE)) {
                         D_8016347C = 1;
                         D_80163480 = 0;
                     }
                 } else if (D_8016347E == 0) {
-                    if (!(temp_s0->effects & UNKNOWN_EFFECT_0x1000000)) {
-                        temp_s0->type |= 0x2000;
+                    if (!(temp_s0->effects & EXPLOSION_CRASH_EFFECT)) {
+                        temp_s0->type |= PLAYER_START_SEQUENCE;
                     }
                     D_8016347E = 1;
                     D_80163484 = 0;
-                } else if (!(temp_s0->effects & UNKNOWN_EFFECT_0x1000000)) {
-                    temp_s0->type |= 0x2000;
+                } else if (!(temp_s0->effects & EXPLOSION_CRASH_EFFECT)) {
+                    temp_s0->type |= PLAYER_START_SEQUENCE;
                 }
             }
         }

@@ -40,12 +40,12 @@ void update_actor_fake_item_box(struct FakeItemBox* fake_item_box) {
                                      fake_item_box->pos[1], fake_item_box->pos[2]);
             func_802B4E30((struct Actor*) fake_item_box);
             temp_v1_3 = &gControllers[temp_v1];
-            if ((temp_v0_4->type & 0x4000) != 0) {
+            if ((temp_v0_4->type & PLAYER_HUMAN) != 0) {
 
                 if ((temp_v1_3->buttonDepressed & Z_TRIG) != 0) {
                     temp_v1_3->buttonDepressed &= 0xDFFF;
                     func_802A1064(fake_item_box);
-                    temp_v0_4->soundEffects &= 0xFFFBFFFF;
+                    temp_v0_4->triggers &= ~DRAG_ITEM_EFFECT;
                     func_800C9060((u8) (temp_v0_4 - gPlayerOne), SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                 }
             }

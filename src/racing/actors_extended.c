@@ -100,7 +100,7 @@ void destroy_banana_in_banana_bunch(struct BananaActor* banana) {
 
     func_802B0464(banana->youngerIndex);
     func_802B04E8(banana, banana->elderIndex);
-    if ((gPlayers[banana->playerId].type & 0x4000) != 0) {
+    if ((gPlayers[banana->playerId].type & PLAYER_HUMAN) != 0) {
         func_800C9060(banana->playerId, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
     }
     banana->flags = -0x8000;
@@ -293,8 +293,8 @@ void update_actor_banana_bunch(struct BananaBunchParent* banana_bunch) {
             }
             if (someCount == 0) {
                 destroy_actor((struct Actor*) banana_bunch);
-                owner->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
-            } else if ((owner->type & 0x4000) != 0) {
+                owner->triggers &= ~DRAG_ITEM_EFFECT;
+            } else if ((owner->type & PLAYER_HUMAN) != 0) {
                 controller = &gControllers[banana_bunch->playerId];
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
                     controller->buttonPressed &= ~Z_TRIG;
@@ -525,7 +525,7 @@ s32 use_banana_bunch_item(Player* player) {
     bananaBunch = (struct BananaBunchParent*) &gActorList[actorIndex];
     bananaBunch->state = 0;
     bananaBunch->playerId = player - gPlayerOne;
-    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+    player->triggers |= DRAG_ITEM_EFFECT;
     return actorIndex;
 }
 
@@ -803,7 +803,7 @@ s32 use_fake_itembox_item(Player* player) {
     itemBox = (struct FakeItemBox*) &gActorList[actorIndex];
     itemBox->playerId = (player - gPlayerOne);
     itemBox->state = HELD_FAKE_ITEM_BOX;
-    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+    player->triggers |= DRAG_ITEM_EFFECT;
     return actorIndex;
 }
 
@@ -850,7 +850,7 @@ s32 use_banana_item(Player* player) {
     banana->playerId = playerId;
     banana->state = HELD_BANANA;
     banana->unk_04 = 0x0014;
-    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+    player->triggers |= DRAG_ITEM_EFFECT;
     return actorIndex;
 }
 
@@ -872,7 +872,7 @@ void use_thunder_item(Player* player) {
     for (index = 0; index < NUM_PLAYERS; index++) {
         otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
-            otherPlayer->soundEffects |= HIT_ROTATING_SOUND_EFFECT;
+            otherPlayer->triggers |= LIGHTNING_STRIKE_TRIGGER;
         }
     }
 }
@@ -898,22 +898,22 @@ void player_use_item(Player* player) {
             use_banana_bunch_item(player);
             break;
         case ITEM_MUSHROOM:
-            player->soundEffects |= BOOST_SOUND_EFFECT;
+            player->triggers |= SHROOM_TRIGGER;
             break;
         case ITEM_DOUBLE_MUSHROOM:
-            player->soundEffects |= BOOST_SOUND_EFFECT;
+            player->triggers |= SHROOM_TRIGGER;
             break;
         case ITEM_TRIPLE_MUSHROOM:
-            player->soundEffects |= BOOST_SOUND_EFFECT;
+            player->triggers |= SHROOM_TRIGGER;
             break;
         case ITEM_SUPER_MUSHROOM:
-            player->soundEffects |= BOOST_SOUND_EFFECT;
+            player->triggers |= SHROOM_TRIGGER;
             break;
         case ITEM_BOO:
-            player->soundEffects |= BOO_SOUND_EFFECT;
+            player->triggers |= BOO_TRIGGER;
             break;
         case ITEM_STAR:
-            player->soundEffects |= STAR_SOUND_EFFECT;
+            player->triggers |= STAR_TRIGGER;
             break;
         case ITEM_THUNDERBOLT:
             use_thunder_item(player);

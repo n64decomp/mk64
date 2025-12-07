@@ -361,7 +361,7 @@ void handle_trains_interactions(s32 playerId, Player* player) {
     s32 passengerCarIndex;
 
     if (D_801631E0[playerId] != true) {
-        if (!(player->effects & UNKNOWN_EFFECT_0x1000000)) {
+        if (!(player->effects & EXPLOSION_CRASH_EFFECT)) {
             playerPosX = player->pos[0];
             playerPosZ = player->pos[2];
             for (trainIndex = 0; trainIndex < NUM_TRAINS; trainIndex++) {
@@ -372,14 +372,14 @@ void handle_trains_interactions(s32 playerId, Player* player) {
                     if ((z_dist > -100.0) && (z_dist < 100.0)) {
                         if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
                                                     trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                            player->soundEffects |= REVERSE_SOUND_EFFECT;
+                            player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         }
                         trainCar = &gTrainList[trainIndex].tender;
                         if (trainCar->isActive == 1) {
                             if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2],
                                                         trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f,
                                                         playerPosX, playerPosZ) == 1) {
-                                player->soundEffects |= REVERSE_SOUND_EFFECT;
+                                player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                             }
                         }
                     }
@@ -395,7 +395,7 @@ void handle_trains_interactions(s32 playerId, Player* player) {
                                 if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2],
                                                             trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f,
                                                             playerPosX, playerPosZ) == 1) {
-                                    player->soundEffects |= REVERSE_SOUND_EFFECT;
+                                    player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                                 }
                             }
                         }
@@ -605,7 +605,7 @@ void handle_paddle_boats_interactions(Player* player) {
     f32 playerZ;
     f32 playerY;
 
-    if (!((player->effects & UNKNOWN_EFFECT_0x1000000)) && (!(player->effects & HIT_BY_ITEM_EFFECT))) {
+    if (!((player->effects & EXPLOSION_CRASH_EFFECT)) && (!(player->effects & HIT_BY_STAR_EFFECT))) {
         playerX = player->pos[0];
         playerY = player->pos[1];
         playerZ = player->pos[2];
@@ -621,7 +621,7 @@ void handle_paddle_boats_interactions(Player* player) {
                                                      tempPaddleWheelBoat->velocity[0], tempPaddleWheelBoat->velocity[2],
                                                      200.0f, 60.0f, playerX, playerZ) == 1) &&
                             (y_diff < 60.0)) {
-                            player->soundEffects |= 0x80000;
+                            player->triggers |= HIT_PADDLE_BOAT_TRIGGER;
                         }
                     }
                 }
@@ -788,7 +788,7 @@ void handle_vehicle_interactions(s32 playerId, Player* player, VehicleStuff* veh
     f32 playerZ;
 
     if (((D_801631E0[playerId] != true) || ((((player->type & PLAYER_HUMAN) != 0)) && !(player->type & PLAYER_CPU))) &&
-        !(player->effects & UNKNOWN_EFFECT_0x1000000)) {
+        !(player->effects & EXPLOSION_CRASH_EFFECT)) {
 
         playerX = player->pos[0];
         playerY = player->pos[1];
@@ -805,7 +805,7 @@ void handle_vehicle_interactions(s32 playerId, Player* player, VehicleStuff* veh
                         if (is_collide_with_vehicle(vehicle->position[0], vehicle->position[2], vehicle->velocity[0],
                                                     vehicle->velocity[2], distanceX, distanceY, playerX,
                                                     playerZ) == (s32) 1) {
-                            player->soundEffects |= REVERSE_SOUND_EFFECT;
+                            player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         }
                     }
                 }
