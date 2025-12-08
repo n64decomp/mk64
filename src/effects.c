@@ -307,7 +307,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
     D_80165190[2][playerId] = 1;
     D_80165190[3][playerId] = 1;
 
-    player->unk_046 &= 0xFFBF;
+    player->unk_046 &= ~INSTANT_SPINOUT;
 
     if ((gIsPlayerTripleAButtonCombo[playerId] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
         player->currentSpeed = (f32) (player->currentSpeed + 100.0f);
@@ -325,7 +325,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
 
     player->unk_206 = 0;
     player->slopeAccel = 0;
-    if ((player->unk_046 & 0x40) == 0x40) {
+    if ((player->unk_046 & INSTANT_SPINOUT) == INSTANT_SPINOUT) {
         player_decelerate_alternative(player, 100.0f);
     } else {
         if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
@@ -1474,9 +1474,9 @@ void trigger_boo(Player* player, s8 playerIndex) {
         player->kartProps |= BECOME_INVISIBLE;
 
         for (temp_v1 = 0; temp_v1 < 10; ++temp_v1) {
-            player->particles[temp_v1].IsAlive = 0;
-            player->particles[temp_v1].timer = 0;
-            player->particles[temp_v1].type = 0;
+            player->particlePool0[temp_v1].isAlive = 0;
+            player->particlePool0[temp_v1].timer = 0;
+            player->particlePool0[temp_v1].type = 0;
         }
     }
 
@@ -1555,9 +1555,9 @@ void func_8008FD4C(Player* player, UNUSED s8 arg1) {
     player->kartProps |= BECOME_INVISIBLE;
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->particles[temp_v0].IsAlive = 0;
-        player->particles[temp_v0].timer = 0;
-        player->particles[temp_v0].type = 0;
+        player->particlePool0[temp_v0].isAlive = 0;
+        player->particlePool0[temp_v0].timer = 0;
+        player->particlePool0[temp_v0].type = 0;
     }
 }
 // become bomb
@@ -1565,9 +1565,9 @@ void func_8008FDA8(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
     player->kartProps |= BECOME_INVISIBLE;
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->particles[temp_v0].IsAlive = 0;
-        player->particles[temp_v0].timer = 0;
-        player->particles[temp_v0].type = 0;
+        player->particlePool0[temp_v0].isAlive = 0;
+        player->particlePool0[temp_v0].timer = 0;
+        player->particlePool0[temp_v0].type = 0;
     }
 }
 
@@ -2036,30 +2036,30 @@ void func_800911B4(Player* player, s8 arg1) {
     player->unk_078 = 0;
     D_8018D920[arg1] = 0;
 
-    player->particles[31].type = 0;
-    player->particles[31].timer = 0;
-    player->particles[31].IsAlive = 0;
-    player->particles[30].type = 0;
-    player->particles[30].timer = 0;
-    player->particles[30].IsAlive = 0;
+    player->particlePool3[1].type = 0;
+    player->particlePool3[1].timer = 0;
+    player->particlePool3[1].isAlive = 0;
+    player->particlePool3[0].type = 0;
+    player->particlePool3[0].timer = 0;
+    player->particlePool3[0].isAlive = 0;
 
     // clang-format off
     temp_v0 = 2; do {
         // clang-format on
-        player->particles[31 + temp_v0].IsAlive = 0;
-        player->particles[31 + temp_v0].timer = 0;
-        player->particles[31 + temp_v0].type = 0;
-        player->particles[32 + temp_v0].IsAlive = 0;
-        player->particles[32 + temp_v0].timer = 0;
-        player->particles[32 + temp_v0].type = 0;
-        player->particles[33 + temp_v0].IsAlive = 0;
-        player->particles[33 + temp_v0].timer = 0;
-        player->particles[33 + temp_v0].type = 0;
+        player->particlePool3[1 + temp_v0].isAlive = 0;
+        player->particlePool3[1 + temp_v0].timer = 0;
+        player->particlePool3[1 + temp_v0].type = 0;
+        player->particlePool3[2 + temp_v0].isAlive = 0;
+        player->particlePool3[2 + temp_v0].timer = 0;
+        player->particlePool3[2 + temp_v0].type = 0;
+        player->particlePool3[3 + temp_v0].isAlive = 0;
+        player->particlePool3[3 + temp_v0].timer = 0;
+        player->particlePool3[3 + temp_v0].type = 0;
 
         temp_v0 += 4;
-        player->particles[26 + temp_v0].IsAlive = 0;
-        player->particles[26 + temp_v0].timer = 0;
-        player->particles[26 + temp_v0].type = 0;
+        player->particlePool2[6 + temp_v0].isAlive = 0;
+        player->particlePool2[6 + temp_v0].timer = 0;
+        player->particlePool2[6 + temp_v0].type = 0;
     } while (temp_v0 < 10);
 }
 

@@ -798,11 +798,11 @@ glabel gTextureCupBronze
 glabel gTextureCupBronze_end
 
 .align 2, 0x00
-glabel gTexturePushStartButton
+glabel push_start_button
 .incbin "textures/raw/push_start_button.rgba16"
 
 .align 2, 0x00
-glabel gTextureCopyright1996
+glabel copyright_1996
 .incbin "textures/raw/copyright_1996.rgba16"
 
 .align 2, 0x00
@@ -822,7 +822,7 @@ glabel gTextureP4BorderGreen
 .incbin "textures/raw/p4_border_green.rgba16"
 
 .align 2, 0x00
-glabel gTextureSmallGreenTriangle
+glabel texture_small_green_triangle
 .incbin "textures/raw/small_green_triangle.rgba16"
 
 .align 2, 0x00

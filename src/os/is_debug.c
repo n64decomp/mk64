@@ -66,7 +66,7 @@ void osSyncPrintfUnused(const char* fmt, ...) {
     va_list args;
     va_start(args, fmt);
 
-    _Printf((char* (*) (char*, const char*, size_t)) is_proutSyncPrintf, NULL, fmt, args);
+    _Printf((char* (*) (char*, const char*, size_t) ) is_proutSyncPrintf, NULL, fmt, args);
 
     va_end(args);
 }
@@ -75,7 +75,7 @@ void osSyncPrintf(const char* fmt, ...) {
     va_list args;
     va_start(args, fmt);
 
-    _Printf((char* (*) (char*, const char*, size_t)) is_proutSyncPrintf, NULL, fmt, args);
+    _Printf((char* (*) (char*, const char*, size_t) ) is_proutSyncPrintf, NULL, fmt, args);
 
     va_end(args);
 }
@@ -84,7 +84,7 @@ void print(const char* fmt, ...) {
     va_list args;
     va_start(args, fmt);
 
-    _Printf((char* (*) (char*, const char*, size_t)) is_proutSyncPrintf, NULL, fmt, args);
+    _Printf((char* (*) (char*, const char*, size_t) ) is_proutSyncPrintf, NULL, fmt, args);
 
     va_end(args);
 }
@@ -94,7 +94,7 @@ void rmonPrintf(const char* fmt, ...) {
     va_list args;
     va_start(args, fmt);
 
-    _Printf((char* (*) (char*, const char*, size_t)) is_proutSyncPrintf, NULL, fmt, args);
+    _Printf((char* (*) (char*, const char*, size_t) ) is_proutSyncPrintf, NULL, fmt, args);
 
     va_end(args);
 }

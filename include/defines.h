@@ -73,12 +73,12 @@
 
 // Float version required for matching
 #ifdef VERSION_EU
-#define COURSE_TIMER_ITER 0.020041665999999999    // 1 / 50
-    #ifdef AVOID_UB
-    #define COURSE_TIMER_ITER_f 0.020041665999999999f // 1 / 50
-    #else
-    #define COURSE_TIMER_ITER_f 0.01666666f //! 1 / 60 - Float unchanged in EU
-    #endif
+#define COURSE_TIMER_ITER 0.020041665999999999 // 1 / 50
+#ifdef AVOID_UB
+#define COURSE_TIMER_ITER_f 0.020041665999999999f // 1 / 50
+#else
+#define COURSE_TIMER_ITER_f 0.01666666f //! 1 / 60 - Float unchanged in EU
+#endif
 #else
 #define COURSE_TIMER_ITER 0.01666666    // 1 / 60
 #define COURSE_TIMER_ITER_f 0.01666666f // 1 / 60
@@ -330,6 +330,16 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  */
 #define MAX_TIME 0x927C0
 #define DEGREES_CONVERSION_FACTOR 182
+
+// player->unk_046
+
+/* The first time you touch a penguin or bat, and anytime you touch a thwomp during a
+   race will set a flag which will cause your next spinout to be instant (i.e. no 
+   sliding forward). Probably half-implemented code to prevent sliding through enemies,
+   but causes this bug */
+#define CRITTER_TOUCH 0x2 // Touched a penguin, bat or thwomp
+#define CRITTER_TOUCH_GATE 0x4
+#define INSTANT_SPINOUT 0x40
 
 // player->oobProps
 /* Deals with the lower out of bounds (OOB) plane on levels. Represented by fluids (water / lava)

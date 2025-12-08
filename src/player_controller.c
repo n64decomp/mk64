@@ -1365,7 +1365,7 @@ void func_8002B218(Player* player) {
         if (player->unk_006 == sp38[someIndex]) {
             player->effects |= DRIFTING_EFFECT;
             kart_hop(player);
-            player->unk_204 = 0;
+            player->driftDuration = 0;
             break;
         }
 
@@ -1582,7 +1582,7 @@ void func_8002B9CC(Player* player, s8 playerIndex, UNUSED s32 arg2) {
     s16 temp;
     s16 temp2;
 
-    if ((player->unk_046 & 2) == 2) {
+    if ((player->unk_046 & CRITTER_TOUCH) == CRITTER_TOUCH) {
         temp_f0 = D_8018CE10[playerIndex].unk_04[0];
         temp_f2 = 0;
         temp_f14 = D_8018CE10[playerIndex].unk_04[2];
@@ -1752,16 +1752,16 @@ void func_8002BF4C(Player* player, s8 playerIndex) {
     }
 }
 
-void func_8002C11C(Player* player) {
+void update_player_drift_duration(Player* player) {
     if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
-        player->unk_204 += 1;
-        if (player->unk_204 >= 0x65) {
-            player->unk_204 = 0x64;
+        player->driftDuration += 1;
+        if (player->driftDuration >= 101) {
+            player->driftDuration = 100;
         }
     } else {
-        player->unk_204 -= 1;
-        if (player->unk_204 < 0) {
-            player->unk_204 = 0;
+        player->driftDuration -= 1;
+        if (player->driftDuration < 0) {
+            player->driftDuration = 0;
         }
     }
 }
@@ -1890,10 +1890,10 @@ void func_8002C7E4(Player* player, s8 playerIndex, s8 arg2) {
             if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
                 func_8001CA24(player, 2.8f);
             }
-            if ((player->unk_046 & 2) == 2) {
-                if ((player->unk_046 & 4) != 4) {
-                    player->unk_046 |= 4;
-                    player->unk_046 |= 0x40;
+            if ((player->unk_046 & CRITTER_TOUCH) == CRITTER_TOUCH) {
+                if ((player->unk_046 & CRITTER_TOUCH_GATE) != CRITTER_TOUCH_GATE) {
+                    player->unk_046 |= CRITTER_TOUCH_GATE;
+                    player->unk_046 |= INSTANT_SPINOUT;
                     if (player->effects & MUSHROOM_EFFECT) {
                         remove_mushroom_effect(player);
                     }
@@ -2135,7 +2135,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     UNUSED s32 pad4[6];
 
     func_80027EDC(player, playerId);
-    func_8002C11C(player);
+    update_player_drift_duration(player);
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
         func_8002A79C(player, playerId);
     }
@@ -2730,7 +2730,7 @@ void control_cpu_movement(Player* player, UNUSED Camera* camera, s8 screenId, s8
     player->effects |= LOST_RACE_EFFECT;
     player->kartProps |= LOSE_GP_RACE;
     nextY = gPlayerPathY[playerId];
-    player->unk_204 = 0;
+    player->driftDuration = 0;
     player->effects &= ~DRIFTING_EFFECT;
     func_8002B830(player, playerId, screenId);
     apply_effect(player, playerId, screenId);
@@ -3031,7 +3031,7 @@ f32 func_80030150(Player* player, s8 playerIndex) {
                     var_f0 += -0.55;
                 }
             }
-            if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) || (player->unk_204 > 0)) {
+            if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) || (player->driftDuration > 0)) {
                 var_v0 = (s16) player->unk_0C0 / 182;
                 if (var_v0 < 0) {
                     var_f0 += -var_v0 * 0.004;
@@ -3952,7 +3952,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         if ((((((!(player->effects & DRIFTING_EFFECT)) && (gCCSelection == CC_150)) && (gModeSelection != BATTLE)) &&
               (!(player->effects & MIDAIR_EFFECT))) &&
              (((player->speed / 18.0f) * 216.0f) >= 40.0f)) &&
-            (player->unk_204 == 0)) {
+            (player->driftDuration == 0)) {
             player->triggers |= DRIVING_SPINOUT_TRIGGER;
         }
     }
@@ -4298,7 +4298,7 @@ void apply_cpu_turn(Player* player, s16 targetAngle) {
 
 void func_80036C5C(Player* player) {
     if (((player->speed / 18.0f) * 216.0f) > 20.0f) {
-        player->unk_204 = 0;
+        player->driftDuration = 0;
         player->effects |= DRIFTING_EFFECT;
         player->kartGraphics |= BOING;
     }
