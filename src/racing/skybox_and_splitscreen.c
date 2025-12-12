@@ -371,37 +371,37 @@ struct Skybox sBottomSkyBoxColors[] = {
 void course_set_skybox_colours(Vtx* skybox) {
     s32 i;
 
-    if (D_800DC5BC != 0) {
+    if (bFog != 0) {
 
-        if (D_801625EC < 0) {
-            D_801625EC = 0;
+        if (gFogRed < 0) {
+            gFogRed = 0;
         }
 
-        if (D_801625F4 < 0) {
-            D_801625F4 = 0;
+        if (gFogGreen < 0) {
+            gFogGreen = 0;
         }
 
-        if (D_801625F0 < 0) {
-            D_801625F0 = 0;
+        if (gFogBlue < 0) {
+            gFogBlue = 0;
         }
 
-        if (D_801625EC > 255) {
-            D_801625EC = 255;
+        if (gFogRed > 255) {
+            gFogRed = 255;
         }
 
-        if (D_801625F4 > 255) {
-            D_801625F4 = 255;
+        if (gFogGreen > 255) {
+            gFogGreen = 255;
         }
 
-        if (D_801625F0 > 255) {
-            D_801625F0 = 255;
+        if (gFogBlue > 255) {
+            gFogBlue = 255;
         }
 
         for (i = 0; i < 8; i++) {
 
-            skybox[i].v.cn[0] = (s16) D_801625EC;
-            skybox[i].v.cn[1] = (s16) D_801625F4;
-            skybox[i].v.cn[2] = (s16) D_801625F0;
+            skybox[i].v.cn[0] = (s16) gFogRed;
+            skybox[i].v.cn[1] = (s16) gFogGreen;
+            skybox[i].v.cn[2] = (s16) gFogBlue;
         }
         return;
     }

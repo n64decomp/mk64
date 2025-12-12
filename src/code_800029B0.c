@@ -35,7 +35,7 @@ s32 D_800DC5AC = 0;
 u16 D_800DC5B0 = 1;
 u16 D_800DC5B4 = 0;
 u16 D_800DC5B8 = 0;
-u16 D_800DC5BC = 0;
+u16 bFog = 0;
 u16 gIsInQuitToMenuTransition = 0;
 u16 gQuitToMenuTransitionCounter = 0;
 u16 D_800DC5C8 = 0;
@@ -153,9 +153,9 @@ UNUSED u8 D_80162578[sizeof(struct Actor)];
 
 s16 gDebugPathCount;
 s16 sIsController1Unplugged;
-s32 D_801625EC;
-s32 D_801625F0;
-s32 D_801625F4;
+s32 gFogRed;
+s32 gFogBlue;
+s32 gFogGreen;
 s32 D_801625F8;
 f32 D_801625FC;
 
@@ -299,7 +299,7 @@ void func_80003040(void) {
     Vec3f velocity = { 0, 0, 0 };
     Vec3s rotation = { 0, 0, 0 };
 
-    D_800DC5BC = 0;
+    bFog = 0;
     D_800DC5C8 = 0;
     gNumActors = 0;
     gIsMirrorMode = 0;
