@@ -320,7 +320,7 @@ void update_controller(s32 index) {
     controller->rawStickX = gControllerPads[index].stick_x;
     controller->rawStickY = gControllerPads[index].stick_y;
 
-    if ((gControllerPads[index].button & 4) != 0) {
+    if ((gControllerPads[index].button & D_CBUTTONS) != 0) {
         gControllerPads[index].button |= Z_TRIG;
     }
     controller->buttonPressed = gControllerPads[index].button & (gControllerPads[index].button ^ controller->button);

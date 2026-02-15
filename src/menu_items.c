@@ -10893,7 +10893,7 @@ void func_800ACA14(MenuItem* arg0) {
                 break;
             }
 
-            if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & 0x800) {
+            if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & U_JPAD) {
                 if (arg0->state >= 0xC) {
                     arg0->state--;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -10903,7 +10903,7 @@ void func_800ACA14(MenuItem* arg0) {
                     arg0->subState = -1;
                 }
             }
-            if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & 0x400) {
+            if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & D_JPAD) {
                 if (arg0->state < 0xC) {
                     arg0->state++;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -10913,7 +10913,7 @@ void func_800ACA14(MenuItem* arg0) {
                     arg0->subState = 1;
                 }
             }
-            if (gControllerFive->buttonPressed & 0x9000) {
+            if (gControllerFive->buttonPressed & (A_BUTTON | START_BUTTON)) {
                 func_8009DFE0(0x0000001E);
                 func_800CA330(0x19U);
                 play_sound2(SOUND_ACTION_CONTINUE_UNKNOWN);
@@ -10965,7 +10965,7 @@ void func_800ACC50(MenuItem* arg0) {
         case 12:
         case 13:
             if (is_screen_being_faded() == 0) {
-                if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & 0x800) {
+                if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & U_JPAD) {
                     if (arg0->state >= 0xB) {
                         arg0->state--;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -10975,7 +10975,7 @@ void func_800ACC50(MenuItem* arg0) {
                         arg0->subState = -1;
                     }
                 }
-                if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & 0x400) {
+                if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & D_JPAD) {
                     if (arg0->state < 0xD) {
                         arg0->state++;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -10985,7 +10985,7 @@ void func_800ACC50(MenuItem* arg0) {
                         arg0->subState = 1;
                     }
                 }
-                if (gControllerFive->buttonPressed & 0x9000) {
+                if (gControllerFive->buttonPressed & (START_BUTTON | A_BUTTON)) {
                     func_8009DFE0(0x0000001E);
                     play_sound2(SOUND_MENU_OK_CLICKED);
                     if (gModeSelection == VERSUS) {
@@ -11158,7 +11158,7 @@ void func_800AD2E8(MenuItem* arg0) {
         case 9:  /* switch 3 */
         case 10: /* switch 3 */
             if (is_screen_being_faded() == 0) {
-                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) {
+                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & U_JPAD) {
                     if (arg0->state >= 6) {
                         arg0->state--;
                         if ((gPostTimeTrialReplayCannotSave == 1) && (arg0->state == 9)) {
@@ -11171,7 +11171,7 @@ void func_800AD2E8(MenuItem* arg0) {
                         arg0->subState = -1;
                     }
                 }
-                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
+                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & D_JPAD) {
                     if (arg0->state < 0xA) {
                         arg0->state++;
                         if ((gPostTimeTrialReplayCannotSave == 1) && (arg0->state == 9)) {
@@ -11188,7 +11188,7 @@ void func_800AD2E8(MenuItem* arg0) {
                         }
                     }
                 }
-                if (gControllerOne->buttonPressed & 0x9000) {
+                if (gControllerOne->buttonPressed & (START_BUTTON | A_BUTTON)) {
                     if (arg0->state == 0x0000000A) {
                         var_v1 = 0;
                         if (arg0->paramf < 4.2) {
@@ -11288,7 +11288,7 @@ void func_800AD2E8(MenuItem* arg0) {
         case 15:
         case 16:
         case 26:
-            if (gControllerOne->buttonPressed & 0xD000) {
+            if (gControllerOne->buttonPressed & (A_BUTTON | B_BUTTON | START_BUTTON)) {
                 arg0->state = 0x0000000A;
                 play_sound2(SOUND_MENU_GO_BACK);
                 if (arg0->paramf < 4.2) {
@@ -11300,7 +11300,7 @@ void func_800AD2E8(MenuItem* arg0) {
         case 18:
             arg0->param2 = arg0->state - 0x11;
             if (func_800B639C((gCupSelection * 4) + gCourseIndexInCup) != arg0->param2) {
-                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) {
+                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & U_JPAD) {
                     if (arg0->state >= 0x12) {
                         arg0->state--;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11310,7 +11310,7 @@ void func_800AD2E8(MenuItem* arg0) {
                         arg0->subState = -1;
                     }
                 }
-                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
+                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & D_JPAD) {
                     if (arg0->state < 0x12) {
                         arg0->state++;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11321,12 +11321,12 @@ void func_800AD2E8(MenuItem* arg0) {
                     }
                 }
             }
-            if (gControllerOne->buttonPressed & 0x4000) {
+            if (gControllerOne->buttonPressed & B_BUTTON) {
                 arg0->state = 0x0000000A;
                 play_sound2(SOUND_MENU_GO_BACK);
                 return;
             }
-            if (gControllerOne->buttonPressed & 0x9000) {
+            if (gControllerOne->buttonPressed & (START_BUTTON | A_BUTTON)) {
                 thing = &D_8018EE10[arg0->param2];
                 if (thing->ghostDataSaved == 0) {
                     arg0->state = 0x00000019;
@@ -11355,7 +11355,7 @@ void func_800AD2E8(MenuItem* arg0) {
             break;
         case 20:
         case 21:
-            if (((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) && (arg0->state >= 0x15)) {
+            if (((gControllerOne->buttonPressed | gControllerOne->stickPressed) & U_JPAD) && (arg0->state >= 0x15)) {
                 arg0->state--;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
                 if (arg0->paramf < 4.2) {
@@ -11363,7 +11363,7 @@ void func_800AD2E8(MenuItem* arg0) {
                 }
                 arg0->subState = -1;
             }
-            if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
+            if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & D_JPAD) {
                 if (arg0->state < 0x15) {
                     arg0->state++;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11373,12 +11373,12 @@ void func_800AD2E8(MenuItem* arg0) {
                     arg0->subState = 1;
                 }
             }
-            if (gControllerOne->buttonPressed & 0x4000) {
+            if (gControllerOne->buttonPressed & B_BUTTON) {
                 arg0->state = arg0->param2 + 0x11;
                 play_sound2(SOUND_MENU_GO_BACK);
                 return;
             }
-            if (gControllerOne->buttonPressed & 0x9000) {
+            if (gControllerOne->buttonPressed & (START_BUTTON | A_BUTTON)) {
                 if (arg0->state == 0x00000015) {
                     arg0->state = 0x00000019;
                     arg0->param1 = 0;
@@ -11485,7 +11485,7 @@ void func_800ADF48(MenuItem* arg0) {
             case 44:
                 if (is_screen_being_faded() == 0) {
                     controller = &gControllers[gIsGamePaused - 1];
-                    if ((controller->buttonPressed | controller->stickPressed) & 0x800) {
+                    if ((controller->buttonPressed | controller->stickPressed) & U_JPAD) {
                         if (D_800F0B50[gModeSelection] < arg0->state) {
                             arg0->state--;
                             play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11495,7 +11495,7 @@ void func_800ADF48(MenuItem* arg0) {
                             arg0->subState = -1;
                         }
                     }
-                    if ((controller->buttonPressed | controller->stickPressed) & 0x400) {
+                    if ((controller->buttonPressed | controller->stickPressed) & D_JPAD) {
                         if (arg0->state < D_800F0B54[gModeSelection]) {
                             arg0->state++;
                             play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11549,7 +11549,7 @@ void func_800AE218(MenuItem* arg0) {
             if (arg0->param1 < 0x1E) {
                 arg0->param1++;
             }
-            if (gControllerOne->buttonPressed & 0x1000) {
+            if (gControllerOne->buttonPressed & START_BUTTON) {
                 arg0->state = 0x0000000F;
                 play_sound2(SOUND_ACTION_GO_BACK_2);
             } else if (playerHUD[PLAYER_ONE].raceCompleteBool != 0) {
@@ -11572,7 +11572,7 @@ void func_800AE218(MenuItem* arg0) {
         case 15:
         case 16:
             if (is_screen_being_faded() == 0) {
-                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) {
+                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & U_JPAD) {
                     if (arg0->state >= 0xC) {
                         arg0->state--;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11582,7 +11582,7 @@ void func_800AE218(MenuItem* arg0) {
                         arg0->subState = -1;
                     }
                 }
-                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
+                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & D_JPAD) {
                     if (arg0->state < 0x10) {
                         arg0->state++;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11592,7 +11592,7 @@ void func_800AE218(MenuItem* arg0) {
                         arg0->subState = 1;
                     }
                 }
-                if (gControllerOne->buttonPressed & 0x9000) {
+                if (gControllerOne->buttonPressed & (START_BUTTON | A_BUTTON)) {
                     if (arg0->state == 0x00000010) {
                         var_v1 = 0;
                         if (arg0->paramf < 4.2) {
@@ -11690,7 +11690,7 @@ void func_800AE218(MenuItem* arg0) {
         case 25:
         case 26:
         case 41:
-            if (gControllerOne->buttonPressed & 0xD000) {
+            if (gControllerOne->buttonPressed & (A_BUTTON | B_BUTTON | START_BUTTON)) {
                 arg0->state = 0x00000010;
                 play_sound2(SOUND_MENU_GO_BACK);
                 if (arg0->paramf < 4.2) {
@@ -11702,7 +11702,7 @@ void func_800AE218(MenuItem* arg0) {
         case 31:
             arg0->param2 = (u32) arg0->state - 0x1E;
             if (func_800B639C((gCupSelection * 4) + gCourseIndexInCup) != arg0->param2) {
-                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) {
+                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & U_JPAD) {
                     if (arg0->state >= 0x1F) {
                         arg0->state--;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11712,7 +11712,7 @@ void func_800AE218(MenuItem* arg0) {
                         arg0->subState = -1;
                     }
                 }
-                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
+                if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & D_JPAD) {
                     if (arg0->state < 0x1F) {
                         arg0->state++;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11723,10 +11723,10 @@ void func_800AE218(MenuItem* arg0) {
                     }
                 }
             }
-            if (gControllerOne->buttonPressed & 0x4000) {
+            if (gControllerOne->buttonPressed & B_BUTTON) {
                 arg0->state = 0x00000010;
                 play_sound2(SOUND_MENU_GO_BACK);
-            } else if (gControllerOne->buttonPressed & 0x9000) {
+            } else if (gControllerOne->buttonPressed & (START_BUTTON | A_BUTTON)) {
                 thing = &D_8018EE10[arg0->param2];
                 if (thing->ghostDataSaved == 0) {
                     arg0->state = 0x00000028;
@@ -11754,7 +11754,7 @@ void func_800AE218(MenuItem* arg0) {
             break;
         case 35:
         case 36:
-            if (((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) &&
+            if (((gControllerOne->buttonPressed | gControllerOne->stickPressed) & U_JPAD) &&
                 ((s32) (u32) arg0->state >= 0x24)) {
                 arg0->state--;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11763,7 +11763,7 @@ void func_800AE218(MenuItem* arg0) {
                 }
                 arg0->subState = -1;
             }
-            if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
+            if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & D_JPAD) {
                 if (arg0->state < 0x24) {
                     arg0->state++;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11773,10 +11773,10 @@ void func_800AE218(MenuItem* arg0) {
                     arg0->subState = 1;
                 }
             }
-            if (gControllerOne->buttonPressed & 0x4000) {
+            if (gControllerOne->buttonPressed & B_BUTTON) {
                 arg0->state = arg0->param2 + 0x1E;
                 play_sound2(SOUND_MENU_GO_BACK);
-            } else if (gControllerOne->buttonPressed & 0x9000) {
+            } else if (gControllerOne->buttonPressed & (START_BUTTON | A_BUTTON)) {
                 if (arg0->state == 0x00000024) {
                     arg0->state = 0x00000028;
                     arg0->param1 = 0;

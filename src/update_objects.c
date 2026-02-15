@@ -3819,7 +3819,7 @@ void func_8007B34C(s32 playerId) {
     sp38 = &gPlayerOne[playerId];
     sp40 = 0;
     new_var = &gControllerOne[playerId];
-    if (new_var->buttonPressed & 0x2000) {
+    if (new_var->buttonPressed & Z_TRIG) {
         sp40 = 1;
     }
     if (D_80165888 != 0) {

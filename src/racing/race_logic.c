@@ -815,7 +815,7 @@ void func_8028F970(void) {
 
         if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
             if ((controller->buttonPressed & L_TRIG) && !(controller->button & R_TRIG)) {
-                controller->buttonPressed &= 0xFFDF;
+                controller->buttonPressed &= ~L_TRIG;
 
                 D_800DC5A8++;
                 if (D_800DC5A8 >= 3) {
