@@ -40,6 +40,18 @@ var common__structs_8h =
       [ "Z", "common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7baa70478ce277ffc322f8e1e3418e07355", null ],
       [ "R", "common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7ba1784b1a3d7cbd43c45ff82c72d05e4ae", null ]
     ] ],
+    [ "POOL_1_PARTICLE_TYPES", "common__structs_8h.html#a716891f13e6eacddeab1f963e3cf858a", [
+      [ "NO_PARTICLE", "common__structs_8h.html#a716891f13e6eacddeab1f963e3cf858aa0a16db77643c5f8c2609ebfb4cf36997", null ],
+      [ "DRIFT_PARTICLE", "common__structs_8h.html#a716891f13e6eacddeab1f963e3cf858aae513604b6e2bc8d897feb30527e6b471", null ],
+      [ "GROUND_PARTICLE", "common__structs_8h.html#a716891f13e6eacddeab1f963e3cf858aad5841e0bdc4afd0f8e36b16eab4a8597", null ],
+      [ "GRASS_PARTICLE", "common__structs_8h.html#a716891f13e6eacddeab1f963e3cf858aaa34e3c7138973acfb36a9f000f18974a", null ],
+      [ "POOL_1_PARTICLE_TYPE_4", "common__structs_8h.html#a716891f13e6eacddeab1f963e3cf858aa124baea464ffe15e8cb7d48bec8ebd63", null ],
+      [ "POOL_1_PARTICLE_TYPE_5", "common__structs_8h.html#a716891f13e6eacddeab1f963e3cf858aa5dcea5928fbab8cff099d67dd8a6f66d", null ],
+      [ "POOL_1_PARTICLE_TYPE_6", "common__structs_8h.html#a716891f13e6eacddeab1f963e3cf858aa0ce72cb679e628d28a5433f17c6837e2", null ],
+      [ "POOL_1_PARTICLE_TYPE_7", "common__structs_8h.html#a716891f13e6eacddeab1f963e3cf858aa1ce76ae7bac0f45e3071bf6fe4d470b3", null ],
+      [ "POOL_1_PARTICLE_TYPE_8", "common__structs_8h.html#a716891f13e6eacddeab1f963e3cf858aae222346dd52faec867d1443d15eaceb3", null ],
+      [ "POOL_1_PARTICLE_TYPE_9", "common__structs_8h.html#a716891f13e6eacddeab1f963e3cf858aa447676bd34a11ca7c6194bffd8eacd9d", null ]
+    ] ],
     [ "SpTaskState", "common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03", [
       [ "SPTASK_STATE_NOT_STARTED", "common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03aa1d36cbdfdd74c1dffec49c527c434e2", null ],
       [ "SPTASK_STATE_RUNNING", "common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03a9afa6ccb46b744f4b86c4c8c3e882f0a", null ],

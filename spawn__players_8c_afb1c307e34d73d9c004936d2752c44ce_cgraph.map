@@ -33,14 +33,14 @@
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="540,305,727,422,724,427,537,310"/>
 <area shape="rect" id="Node000015" href="$code__80057C60_8c.html#ab6fd60c5cc852960210c924ba7aa47f6" title=" " alt="" coords="677,183,864,209"/>
 <area shape="poly" id="edge7_Node000005_Node000015" title=" " alt="" coords="572,285,597,278,621,267,636,256,644,243,654,230,669,218,682,211,685,216,672,222,658,234,649,246,640,259,624,272,599,283,574,290"/>
-<area shape="rect" id="Node000016" href="$code__80057C60_8c.html#a4d111aaf9c9ecb0d617dc5b672298222" title=" " alt="" coords="709,233,833,258"/>
-<area shape="poly" id="edge8_Node000005_Node000016" title=" " alt="" coords="573,281,695,257,696,263,574,286"/>
-<area shape="rect" id="Node000017" href="$render__courses_8c.html#a37ee937c815f25140e16f2ae6c528a73" title=" " alt="" coords="709,282,832,307"/>
-<area shape="poly" id="edge9_Node000005_Node000017" title=" " alt="" coords="573,292,696,292,696,297,573,297"/>
-<area shape="rect" id="Node000020" href="$collision_8c.html#af40212f95fb9273a88b4d4d54f96b2aa" title="Returns the height of the surface below the provided position. Used to set actors onto the course mes..." alt="" coords="697,882,844,907"/>
-<area shape="poly" id="edge10_Node000005_Node000020" title=" " alt="" coords="533,306,579,357,604,392,625,430,640,468,648,503,653,563,657,624,662,658,673,698,692,747,715,794,756,869,752,872,710,797,687,749,668,700,657,659,651,624,648,563,643,504,635,470,620,432,600,394,575,360,529,309"/>
-<area shape="rect" id="Node000023" href="$code__80057C60_8c.html#a773d5828c568b599837ee0c6695a68e9" title=" " alt="" coords="683,331,859,357"/>
-<area shape="poly" id="edge11_Node000005_Node000023" title=" " alt="" coords="574,303,692,326,691,331,573,308"/>
+<area shape="rect" id="Node000016" href="$render__courses_8c.html#a37ee937c815f25140e16f2ae6c528a73" title=" " alt="" coords="709,233,832,258"/>
+<area shape="poly" id="edge8_Node000005_Node000016" title=" " alt="" coords="573,281,695,257,696,262,574,286"/>
+<area shape="rect" id="Node000019" href="$collision_8c.html#af40212f95fb9273a88b4d4d54f96b2aa" title="Returns the height of the surface below the provided position. Used to set actors onto the course mes..." alt="" coords="697,882,844,907"/>
+<area shape="poly" id="edge9_Node000005_Node000019" title=" " alt="" coords="533,306,579,357,604,392,625,430,640,468,648,503,653,563,657,624,662,658,673,698,692,747,715,794,756,869,752,872,710,797,687,749,668,700,657,659,651,624,648,563,643,504,635,470,620,432,600,394,575,360,529,309"/>
+<area shape="rect" id="Node000022" href="$code__80057C60_8c.html#a773d5828c568b599837ee0c6695a68e9" title=" " alt="" coords="683,282,859,307"/>
+<area shape="poly" id="edge10_Node000005_Node000022" title=" " alt="" coords="573,292,668,292,668,297,573,297"/>
+<area shape="rect" id="Node000025" href="$code__80057C60_8c.html#a94d34593138565c85a016c12cd68639d" title=" " alt="" coords="673,331,868,357"/>
+<area shape="poly" id="edge11_Node000005_Node000025" title=" " alt="" coords="574,303,692,326,691,331,573,308"/>
 <area shape="rect" id="Node000011" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="941,1087,993,1113"/>
 <area shape="poly" id="edge6_Node000006_Node000011" title=" " alt="" coords="788,471,830,541,853,587,873,634,911,760,938,887,956,997,965,1073,960,1074,951,998,933,888,906,762,868,636,848,589,825,544,783,474"/>
 <area shape="poly" id="edge13_Node000026_Node000004" title=" " alt="" coords="332,206,442,228,441,233,331,211"/>
@@ -89,7 +89,7 @@
 <area shape="rect" id="Node000038" href="$path__calc_8inc_8c.html#a7f230a1d618ed1435ca6607369eab314" title=" " alt="" coords="701,1038,840,1063"/>
 <area shape="poly" id="edge28_Node000037_Node000038" title=" " alt="" coords="594,1048,688,1048,688,1053,594,1053"/>
 <area shape="poly" id="edge29_Node000038_Node000011" title=" " alt="" coords="826,1061,871,1072,928,1087,927,1092,870,1077,825,1066"/>
-<area shape="poly" id="edge32_Node000039_Node000020" title=" " alt="" coords="573,937,700,908,701,913,574,942"/>
+<area shape="poly" id="edge32_Node000039_Node000019" title=" " alt="" coords="573,937,700,908,701,913,574,942"/>
 <area shape="poly" id="edge31_Node000039_Node000038" title=" " alt="" coords="585,962,624,973,685,1000,738,1029,735,1033,683,1005,622,979,584,967"/>
 <area shape="rect" id="Node000042" href="$vehicle__utils_8inc_8c.html#aeb850d32920625d39a2e90c40cfa4835" title=" " alt="" coords="680,647,861,687"/>
 <area shape="poly" id="edge35_Node000041_Node000042" title=" " alt="" coords="582,758,622,746,677,720,726,692,728,696,679,725,624,750,583,763"/>
@@ -100,7 +100,7 @@
 <area shape="rect" id="Node000063" href="$vehicle__utils_8inc_8c.html#a2bdffbe68850abfd39cd2f3dc4cc1b06" title=" " alt="" coords="689,1187,852,1227"/>
 <area shape="poly" id="edge43_Node000062_Node000063" title=" " alt="" coords="591,1200,676,1202,676,1207,591,1206"/>
 <area shape="poly" id="edge45_Node000064_Node000042" title=" " alt="" coords="573,709,668,687,669,692,574,714"/>
-<area shape="poly" id="edge48_Node000070_Node000020" title=" " alt="" coords="600,892,684,892,684,897,600,897"/>
+<area shape="poly" id="edge48_Node000070_Node000019" title=" " alt="" coords="600,892,684,892,684,897,600,897"/>
 <area shape="rect" id="Node000072" href="$behaviour__utils_8inc_8c.html#ac842533b23b073d73ad370538493ac1c" title=" " alt="" coords="411,1550,623,1575"/>
 <area shape="poly" id="edge50_Node000071_Node000072" title=" " alt="" coords="320,1514,448,1544,447,1549,318,1519"/>
 <area shape="rect" id="Node000073" href="$cpu__item__strategy_8inc_8c.html#afb7a20357b7271b1854444f3a66eaaea" title=" " alt="" coords="455,1599,578,1625"/>

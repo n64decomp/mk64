@@ -9,7 +9,10 @@ var searchData=
   ['watchlo_5frtrap_6',['WATCHLO_RTRAP',['../R4300_8h.html#a552a19ef457161fb18082a5ff0a44bd6',1,'R4300.h']]],
   ['watchlo_5fvalidmask_7',['WATCHLO_VALIDMASK',['../R4300_8h.html#a55fdad7366f8ba76401505cac62053ce',1,'R4300.h']]],
   ['watchlo_5fwtrap_8',['WATCHLO_WTRAP',['../R4300_8h.html#a0a8e20512cbeb46cf186698b59425afd',1,'R4300.h']]],
-  ['white_5fcolour_9',['WHITE_COLOUR',['../crash__screen_8c.html#aad02939da416336a05981ba7525073c1',1,'crash_screen.c']]],
-  ['write_5fprotect_5ferror_10',['WRITE_PROTECT_ERROR',['../hardware_8h.html#a662c43b9eb64d896d3cac6c4073e9ba8',1,'hardware.h']]],
-  ['wrong_5fdirection_5fframes_5flimit_11',['WRONG_DIRECTION_FRAMES_LIMIT',['../cpu__vehicles__camera__path_8h.html#a4b618b87d235d8e7b1c1d37dfb490532',1,'cpu_vehicles_camera_path.h']]]
+  ['went_5fover_5foob_9',['WENT_OVER_OOB',['../defines_8h.html#a32d1992f072517fafe44d275bcbb5038',1,'defines.h']]],
+  ['whirrr_10',['WHIRRR',['../defines_8h.html#a9e5cb358fd5bf5e6a7d1f5e10397aad3',1,'defines.h']]],
+  ['whistle_11',['WHISTLE',['../defines_8h.html#af9473c71307411413b373ac2e061d2fc',1,'defines.h']]],
+  ['white_5fcolour_12',['WHITE_COLOUR',['../crash__screen_8c.html#aad02939da416336a05981ba7525073c1',1,'crash_screen.c']]],
+  ['write_5fprotect_5ferror_13',['WRITE_PROTECT_ERROR',['../hardware_8h.html#a662c43b9eb64d896d3cac6c4073e9ba8',1,'hardware.h']]],
+  ['wrong_5fdirection_5fframes_5flimit_14',['WRONG_DIRECTION_FRAMES_LIMIT',['../cpu__vehicles__camera__path_8h.html#a4b618b87d235d8e7b1c1d37dfb490532',1,'cpu_vehicles_camera_path.h']]]
 ];
