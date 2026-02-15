@@ -2,7 +2,9 @@
 #include <macros.h>
 #include "profiler.h"
 #include <mk64.h>
+#include <defines.h>
 #include "main.h"
+#include "render_objects.h"
 
 struct ProfilerFrameData gProfilerFrameData[2];
 
@@ -43,6 +45,44 @@ void profiler_log_vblank_time(void) {
     if (profiler->numVblankTimes < ARRAY_COUNT(profiler->vblankTimes)) {
         profiler->vblankTimes[profiler->numVblankTimes++] = osGetTime();
     }
+}
+
+void profiler_get_last_gfx_times_ms(s32* rspMs, s32* rdpMs) {
+    struct ProfilerFrameData* profiler = &gProfilerFrameData[D_800DC66C ^ 1];
+    OSTime taskQueued;
+    OSTime rspComplete;
+    OSTime rdpComplete;
+    s64 rspDuration;
+    s64 rdpDuration;
+
+    if (rspMs == NULL || rdpMs == NULL) {
+        return;
+    }
+
+    taskQueued = profiler->gfxTimes[TASKS_QUEUED];
+    rspComplete = profiler->gfxTimes[RSP_COMPLETE];
+    rdpComplete = profiler->gfxTimes[RDP_COMPLETE];
+
+    if (rspComplete > taskQueued) {
+        rspDuration = (s64) (rspComplete - taskQueued);
+    } else {
+        rspDuration = 0;
+    }
+
+    if (rdpComplete > taskQueued) {
+        rdpDuration = (s64) (rdpComplete - taskQueued);
+    } else {
+        rdpDuration = 0;
+    }
+
+    if (osClockRate == 0) {
+        *rspMs = 0;
+        *rdpMs = 0;
+        return;
+    }
+
+    *rspMs = (s32) ((rspDuration * 1000) / (s64) osClockRate);
+    *rdpMs = (s32) ((rdpDuration * 1000) / (s64) osClockRate);
 }
 
 // Draw the specified profiler given the information passed.
@@ -131,6 +171,8 @@ void draw_profiler_mode_1(void) {
 void draw_profiler_mode_0(void) {
     s32 i;
     struct ProfilerFrameData* profiler;
+    s16 soundCount;
+    s16 vblankCount;
 
     u64 clockStart;
     // Does this naming apply to MK64?
@@ -146,8 +188,16 @@ void draw_profiler_mode_0(void) {
     // xor it to get the last frame profiler.
     profiler = &gProfilerFrameData[D_800DC668 ^ 1];
 
+    // like above functions, toss the odd bit.
+    soundCount = profiler->numSoundTimes & 0xFFFE;
+    vblankCount = profiler->numVblankTimes & 0xFFFE;
+
     // was thread 5 ran before thread 4? set the lower one to be the clockStart.
-    clockStart = profiler->gameTimes[0] <= profiler->soundTimes[0] ? profiler->gameTimes[0] : profiler->soundTimes[0];
+    if (soundCount >= 2) {
+        clockStart = profiler->gameTimes[0] <= profiler->soundTimes[0] ? profiler->gameTimes[0] : profiler->soundTimes[0];
+    } else {
+        clockStart = profiler->gameTimes[0];
+    }
 
     // set variables for duration of tasks.
     levelScriptDuration = profiler->gameTimes[1] - clockStart;
@@ -157,11 +207,8 @@ void draw_profiler_mode_0(void) {
     rdpDuration = profiler->gfxTimes[2] - profiler->gfxTimes[0];
     vblank = 0;
 
-    // like above functions, toss the odd bit.
-    profiler->numSoundTimes &= 0xFFFE;
-
     // sound duration seems to be rendered with empty space and not actually drawn.
-    for (i = 0; i < profiler->numSoundTimes; i += 2) {
+    for (i = 0; i < soundCount; i += 2) {
         // calculate sound duration of max - min
         soundDuration = profiler->soundTimes[i + 1] - profiler->soundTimes[i];
         taskStart += soundDuration;
@@ -175,14 +222,11 @@ void draw_profiler_mode_0(void) {
         }
     }
 
-    // same as above. toss the odd bit.
-    profiler->numSoundTimes &= 0xFFFE;
-
     //! wrong index used to retrieve vblankTimes, thus empty pairs can
     //  potentially be passed to draw_profiler_bar, because it could be sending
     //  pairs that are beyond the numVblankTimes enforced non-odd limit, due to
     //  using the wrong num value.
-    for (i = 0; i < profiler->numSoundTimes; i += 2) {
+    for (i = 0; i < vblankCount; i += 2) {
         vblank += (profiler->vblankTimes[i + 1] - profiler->vblankTimes[i]);
     }
 
@@ -228,4 +272,42 @@ void resource_display(void) {
         D_800DC664 ^= 1;
     }
     draw_profiler_mode_0();
+
+    if ((gModeSelection == VERSUS) && (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) &&
+        (gPlayerCountSelection1 >= THREE_PLAYERS_SELECTED)) {
+        s32 rspMs = 0;
+        s32 rdpMs = 0;
+        char rspLabel[5];
+        char rdpLabel[5];
+        s32 x;
+        s32 y;
+
+        rspLabel[0] = 'R';
+        rspLabel[1] = 'S';
+        rspLabel[2] = 'P';
+        rspLabel[3] = ' ';
+        rspLabel[4] = '\0';
+
+        rdpLabel[0] = 'R';
+        rdpLabel[1] = 'D';
+        rdpLabel[2] = 'P';
+        rdpLabel[3] = ' ';
+        rdpLabel[4] = '\0';
+
+        profiler_get_last_gfx_times_ms(&rspMs, &rdpMs);
+        load_debug_font();
+
+        x = 0;
+        y = 0;
+        debug_print_string(&x, &y, rspLabel);
+        debug_print_number(&x, &y, rspMs, 10);
+
+        x = 0;
+        y = 8;
+        debug_print_string(&x, &y, rdpLabel);
+        debug_print_number(&x, &y, rdpMs, 10);
+
+
+        func_80057778();
+    }
 }
