@@ -2379,9 +2379,10 @@ void setup_menus(void) {
                 add_menu_item(MENU_ITEM_TYPE_0D9, 0, 0, MENU_ITEM_PRIORITY_A);
                 break;
             case START_MENU:
-                add_menu_item(MENU_ITEM_UI_LOGO_AND_COPYRIGHT, 0, 0, MENU_ITEM_PRIORITY_4);
-                add_menu_item(MENU_ITEM_UI_START_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_0);
-                add_menu_item(START_MENU_FLAG, 0, 0, MENU_ITEM_PRIORITY_0);
+                // maybe remove background from start menu
+                // add_menu_item(MENU_ITEM_UI_LOGO_AND_COPYRIGHT, 0, 0, MENU_ITEM_PRIORITY_4);
+                // add_menu_item(MENU_ITEM_UI_START_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_0);
+                // add_menu_item(START_MENU_FLAG, 0, 0, MENU_ITEM_PRIORITY_0);
                 if (gControllerBits & 1) {
                     add_menu_item(MENU_ITEM_UI_PUSH_START_BUTTON, 0, 0, MENU_ITEM_PRIORITY_2);
                 } else {
@@ -2542,8 +2543,9 @@ void func_80095574(void) {
         play_sound2(SOUND_INTRO_WELCOME);
     }
     if (gMenuTimingCounter > 300) {
-        func_8009E230();
-        func_800CA0A0();
+       // don't fade on title screen to demo 
+       // func_8009E230();
+       // func_800CA0A0();
     }
     gSPDisplayList(gDisplayListHead++, D_020076E0);
 }
@@ -5753,7 +5755,7 @@ void render_custom_overlay(void) {
     char nameBuf[32];
     char valBuf[4];
 
-    /* Modifier names provided by user; if an entry is empty, fallback to "Modifier N" */
+    /* Menu items; if an entry is empty, fallback to "Modifier N" */
     static const char* customModifierNames[CUSTOM_MENU_ROWS] = {
         "tracks",
         "scaling",
@@ -5764,7 +5766,7 @@ void render_custom_overlay(void) {
         "vs tracks",
         "vs timer",
         "stats",
-        "vs scores",
+        "",
         "tie logic",
         "mirror",
         "" /* keep last empty if CUSTOM_MENU_ROWS > 12 */
@@ -5779,20 +5781,20 @@ void render_custom_overlay(void) {
 
     // option name placeholders (second column) and values (third column)
     for (i = 0; i < CUSTOM_MENU_ROWS; i++) {
-        /* standard row stride (single-line names) */
-        rowY = y + (i * 0x10);
+        /* standard row stride (single-line names) - reduced spacing */
+        rowY = y + 0x18 + (i * 0xC);
 
-        /* first column: selection pointer (yellow asterisk) */
+        /* first column: selection pointer  */
         if (i == gCustomMenuSelection) {
-            print_text1_left(x - 0x30, rowY, "*", 0, 0.6f, 0.6f);
+            print_text_mode_1(x - 0x40, rowY, "X", 0, 0.6f, 0.6f);
         } else {
             /* draw empty space to keep alignment */
-            print_text1_left(x - 0x50, rowY, " ", 0, 0.6f, 0.6f);
+            print_text1_left(x - 0x30, rowY, " ", 0, 0.6f, 0.6f);
         }
 
         /* second column: option name (single line) */
         if (customModifierNames[i][0] != '\0') {
-            print_text1_left(x, rowY, (char*)customModifierNames[i], 0, 0.8f, 0.8f);
+            print_text_mode_1(x - 0x30, rowY, (char*)customModifierNames[i], 0, 0.6f, 0.6f);
         } else {
             /* Build "Modifier N" manually to avoid linking snprintf */
             const char* prefix = "Modifier ";
@@ -5809,19 +5811,29 @@ void render_custom_overlay(void) {
                 nameBuf[pos++] = '0' + (num % 10);
             }
             nameBuf[pos] = '\0';
-            print_text1_left(x, rowY, nameBuf, 0, 0.8f, 0.8f);
+            // default case i guess
+            print_text_mode_1(x - 0x30, rowY, nameBuf, 0, 0.6f, 0.6f);
         }
 
-        /* third column: current value for this row (1/2/3) */
-        valIdx = gCustomMenuOptionValues[i];
-        if (valIdx <= 0)
-            valBuf[0] = '1';
-        else if (valIdx == 1)
-            valBuf[0] = '2';
-        else
-            valBuf[0] = '3';
-        valBuf[1] = '\0';
-        print_text1_left(x + 0x40, rowY, valBuf, 0, 0.8f, 0.8f);
+        /* third column: current value for this row */
+        if (i == 0) { /* tracks: custom labels (default, random) */
+            static const char* tracks_labels[] = {"default", "random"};
+            int idx = gCustomMenuOptionValues[0];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(tracks_labels) / sizeof(tracks_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)tracks_labels[idx], 0, 0.6f, 0.6f);
+        } else {
+            /* fallback: numeric representation 1/2/3 to match previous behavior */
+            valIdx = gCustomMenuOptionValues[i];
+            if (valIdx <= 0)
+                valBuf[0] = '1';
+            else if (valIdx == 1)
+                valBuf[0] = '2';
+            else
+                valBuf[0] = '3';
+            valBuf[1] = '\0';
+            print_text1_left(x + 0x40, rowY, valBuf, 0, 0.6f, 0.6f);
+        }
     }
 }
 
