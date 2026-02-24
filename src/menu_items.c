@@ -35,11 +35,14 @@
 #include "spawn_players.h"
 #include "render_player.h"
 #include "decode.h"
+#include <stdio.h>
 //! @todo Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
 
 void guMtxCatL(Mtx* m, Mtx* n, Mtx* res);
+
+void render_custom_overlay(void);
 
 u16* gMenuTextureBuffer;
 u32* gMenuCompressedBuffer;
@@ -2297,6 +2300,7 @@ void func_80094A64(struct GfxPool* pool) {
         case START_MENU:
             func_80095574();
             func_80093E40();
+            render_custom_overlay(); // render custom overlay in start menu
             break;
         case OPTIONS_MENU:
         case DATA_MENU:
@@ -2375,9 +2379,10 @@ void setup_menus(void) {
                 add_menu_item(MENU_ITEM_TYPE_0D9, 0, 0, MENU_ITEM_PRIORITY_A);
                 break;
             case START_MENU:
-                add_menu_item(MENU_ITEM_UI_LOGO_AND_COPYRIGHT, 0, 0, MENU_ITEM_PRIORITY_4);
-                add_menu_item(MENU_ITEM_UI_START_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_0);
-                add_menu_item(START_MENU_FLAG, 0, 0, MENU_ITEM_PRIORITY_0);
+                // maybe remove background from start menu
+                // add_menu_item(MENU_ITEM_UI_LOGO_AND_COPYRIGHT, 0, 0, MENU_ITEM_PRIORITY_4);
+                // add_menu_item(MENU_ITEM_UI_START_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_0);
+                // add_menu_item(START_MENU_FLAG, 0, 0, MENU_ITEM_PRIORITY_0);
                 if (gControllerBits & 1) {
                     add_menu_item(MENU_ITEM_UI_PUSH_START_BUTTON, 0, 0, MENU_ITEM_PRIORITY_2);
                 } else {
@@ -2538,8 +2543,9 @@ void func_80095574(void) {
         play_sound2(SOUND_INTRO_WELCOME);
     }
     if (gMenuTimingCounter > 300) {
-        func_8009E230();
-        func_800CA0A0();
+       // don't fade on title screen to demo 
+       // func_8009E230();
+       // func_800CA0A0();
     }
     gSPDisplayList(gDisplayListHead++, D_020076E0);
 }
@@ -5737,6 +5743,97 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
         case MENU_ITEM_TYPE_1CE:
         default:
             break;
+    }
+}
+
+// render custom menu over title screen 
+void render_custom_overlay(void) {
+    s32 x = 0xA0, y = 0x40; // centered horizontally; tweak
+    int i;
+    s32 rowY;
+    s32 valIdx;
+    char nameBuf[32];
+    char valBuf[4];
+
+    /* Menu items; if an entry is empty, fallback to "Modifier N" */
+    static const char* customModifierNames[CUSTOM_MENU_ROWS] = {
+        "tracks",
+        "scaling",
+        "widescreen",
+        "mp music",
+        "mp train",
+        "mp boat",
+        "vs tracks",
+        "vs timer",
+        "stats",
+        "",
+        "tie logic",
+        "mirror",
+        "" /* keep last empty if CUSTOM_MENU_ROWS > 12 */
+    };
+
+    set_text_color(TEXT_YELLOW);
+
+    // title (centered) - smaller
+    print_text1_center_mode_1(x, y - 0x30, "WEATHERTON  ABNEY  CLIMATEE", 0, 0.80f, 0.80f);
+    // version / date (smaller) - left-aligned to start under 'KART'
+    print_text1_left(x + 0x5A, y + 0x06, "TE V2026-02-22", 0, 0.65f, 0.65f);
+
+    // option name placeholders (second column) and values (third column)
+    for (i = 0; i < CUSTOM_MENU_ROWS; i++) {
+        /* standard row stride (single-line names) - reduced spacing */
+        rowY = y + 0x18 + (i * 0xC);
+
+        /* first column: selection pointer  */
+        if (i == gCustomMenuSelection) {
+            print_text_mode_1(x - 0x40, rowY, "X", 0, 0.6f, 0.6f);
+        } else {
+            /* draw empty space to keep alignment */
+            print_text1_left(x - 0x30, rowY, " ", 0, 0.6f, 0.6f);
+        }
+
+        /* second column: option name (single line) */
+        if (customModifierNames[i][0] != '\0') {
+            print_text_mode_1(x - 0x30, rowY, (char*)customModifierNames[i], 0, 0.6f, 0.6f);
+        } else {
+            /* Build "Modifier N" manually to avoid linking snprintf */
+            const char* prefix = "Modifier ";
+            int num = i + 1;
+            int pos = 0;
+            const char* p = prefix;
+            while (*p && pos < (int)sizeof(nameBuf) - 1) {
+                nameBuf[pos++] = *p++;
+            }
+            if (num >= 10 && pos < (int)sizeof(nameBuf) - 2) {
+                nameBuf[pos++] = '0' + (num / 10);
+                nameBuf[pos++] = '0' + (num % 10);
+            } else if (pos < (int)sizeof(nameBuf) - 1) {
+                nameBuf[pos++] = '0' + (num % 10);
+            }
+            nameBuf[pos] = '\0';
+            // default case i guess
+            print_text_mode_1(x - 0x30, rowY, nameBuf, 0, 0.6f, 0.6f);
+        }
+
+        /* third column: current value for this row */
+        if (i == 0) { /* tracks: custom labels (default, random) */
+            static const char* tracks_labels[] = {"default", "random"};
+            int idx = gCustomMenuOptionValues[0];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(tracks_labels) / sizeof(tracks_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)tracks_labels[idx], 0, 0.6f, 0.6f);
+        } else {
+            /* fallback: numeric representation 1/2/3 to match previous behavior */
+            valIdx = gCustomMenuOptionValues[i];
+            if (valIdx <= 0)
+                valBuf[0] = '1';
+            else if (valIdx == 1)
+                valBuf[0] = '2';
+            else
+                valBuf[0] = '3';
+            valBuf[1] = '\0';
+            print_text1_left(x + 0x40, rowY, valBuf, 0, 0.6f, 0.6f);
+        }
     }
 }
 

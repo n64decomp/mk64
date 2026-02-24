@@ -29,6 +29,7 @@
 #include "code_80280000.h"
 #include "podium_ceremony_actors.h"
 #include "menu_items.h"
+#include "options.h"
 #include "code_80057C60.h"
 #include "profiler.h"
 #include "player_controller.h"
@@ -54,6 +55,9 @@ struct SPTask* sCurrentAudioSPTask = NULL;
 struct SPTask* sCurrentDisplaySPTask = NULL;
 struct SPTask* sNextAudioSPTask = NULL;
 struct SPTask* sNextDisplaySPTask = NULL;
+
+// Global game options (defined here so the linker includes the symbol)
+GameOptions gOptions = { TRACKS_DEFAULT };
 
 struct Controller gControllers[NUM_PLAYERS];
 struct Controller* gControllerOne = &gControllers[0];

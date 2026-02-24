@@ -265,4 +265,14 @@ extern const s16 gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP];
 
 // end of menus.c variables
 
+// start of custom menu var
+#define CUSTOM_MENU_ROWS 13
+#define CUSTOM_MENU_VALUE_COUNT 3
+
+extern s8 gCustomMenuTitle;                         // tournament rom credits title
+extern s8 gCustomMenuDate;                          // TE Version/date
+extern s8 gCustomMenuOption[CUSTOM_MENU_ROWS][2];   // rows x (col1=name col2=unused/flags)
+extern s8 gCustomMenuSelection;                     // menu selection index
+extern s8 gCustomMenuOptionValues[CUSTOM_MENU_ROWS]; // current value index for each row
+
 #endif /* MENUS_H */

@@ -24,19 +24,19 @@ TARGET_N64 ?= 1
 #   ido - uses the SGI IRIS Development Option compiler, which is used to build
 #         an original matching N64 ROM
 #   gcc - uses the GNU C Compiler
-COMPILER ?= gcc
+COMPILER ?= ido
 $(eval $(call validate-option,COMPILER,ido gcc))
 
 # Add debug tools with 'make DEBUG=1' and modify the macros in include/debug.h
 # Adds crash screen enhancement and activates debug mode
 # Run make clean first
-DEBUG ?= 1
+DEBUG ?= 0
 
 # Avoid undefined behavior. Enables shiftability when making changes
 AVOID_UB ?= 1
 
 # Compile with GCC
-GCC ?= 1
+GCC ?= 0
 
 # VERSION - selects the version of the game to build
 #  us     - builds the 1997 North American version
@@ -122,7 +122,7 @@ endif
 # COMPARE - whether to verify the SHA-1 hash of the ROM after building
 #   1 - verifies the SHA-1 hash of the selected version of the game
 #   0 - does not verify the hash
-COMPARE ?= 1
+COMPARE ?= 0
 $(eval $(call validate-option,COMPARE,0 1))
 
 
@@ -327,7 +327,7 @@ AR      := $(CROSS)ar
 OBJDUMP := $(CROSS)objdump
 OBJCOPY := $(CROSS)objcopy
 
-OPT_FLAGS := -Os
+OPT_FLAGS := -O2
 
 ifeq ($(TARGET_N64),1)
   TARGET_CFLAGS := -nostdinc -DTARGET_N64 -D_LANGUAGE_C
