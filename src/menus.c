@@ -20,6 +20,7 @@
 #include <sounds.h>
 #include "spawn_players.h"
 #include "seq_ids.h"
+#include "../include/options.h"
 
 #if ENABLE_DEBUG_MODE
 #define DEBUG_MODE_TOGGLE true
@@ -163,6 +164,18 @@ const s8 unref_800F2BDC[4] = { 1, 0, 0, 0 };
 const s8 sScreenModeIdxFromPlayerMode[4] = { 0, 1, 3, 4 };
 
 const union GameModePack sSoundMenuPack = { { SOUND_STEREO, SOUND_HEADPHONES, SOUND_UNUSED, SOUND_MONO } };
+
+// end of standard var init
+
+// start of new var init
+
+s8 gCustomMenuTitle = 0;
+s8 gCustomMenuDate = 0;
+s8 gCustomMenuOption[CUSTOM_MENU_ROWS][2] = { 0 };
+s8 gCustomMenuSelection = 0;
+s8 gCustomMenuOptionValues[CUSTOM_MENU_ROWS] = { 0 };
+
+// end of new var init
 
 /**************************/
 
@@ -1035,6 +1048,55 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
     if (is_screen_being_faded() == 0) {
         if (controllerIdx == PLAYER_ONE) {
             gMenuDelayTimer += 1;
+
+            // handles input to custom menu
+            // navigation
+            // works
+            if (btnAndStick & U_JPAD) {
+                gCustomMenuSelection--;
+                if (gCustomMenuSelection < 0) gCustomMenuSelection = CUSTOM_MENU_ROWS - 1;
+                play_sound2(SOUND_MENU_CURSOR_MOVE);
+            }
+            if (btnAndStick & D_JPAD) {
+                gCustomMenuSelection++;
+                if (gCustomMenuSelection >= CUSTOM_MENU_ROWS) gCustomMenuSelection = 0;
+                play_sound2(SOUND_MENU_CURSOR_MOVE);
+            }
+            // cycle option value with R_DPAD, L_DPAD (advance through defined value count)
+            // go forward one if press right dpad
+            if (btnAndStick & R_JPAD) {
+                if (gCustomMenuSelection == 0) { // tracks: only 2 values (default, random)
+                    gCustomMenuOptionValues[0] = (gCustomMenuOptionValues[0] + 1) % 2;
+                    gOptions.tracks = (gCustomMenuOptionValues[0] == 1) ? TRACKS_RANDOM : TRACKS_DEFAULT;
+                } else {
+                    gCustomMenuOptionValues[gCustomMenuSelection] =
+                        (gCustomMenuOptionValues[gCustomMenuSelection] + 1) % CUSTOM_MENU_VALUE_COUNT;
+                }
+                play_sound2(SOUND_MENU_OK);
+            }
+            // go backwards one if press left dpad and not at first index
+            else if (btnAndStick & L_JPAD && (gCustomMenuOptionValues[gCustomMenuSelection] != 0) ) {
+                if (gCustomMenuSelection == 0) { // tracks: only 2 values
+                    gCustomMenuOptionValues[0] = (gCustomMenuOptionValues[0] - 1);
+                    if (gCustomMenuOptionValues[0] < 0) gCustomMenuOptionValues[0] = 0;
+                    gOptions.tracks = (gCustomMenuOptionValues[0] == 1) ? TRACKS_RANDOM : TRACKS_DEFAULT;
+                } else {
+                    gCustomMenuOptionValues[gCustomMenuSelection] =
+                        (gCustomMenuOptionValues[gCustomMenuSelection] - 1);
+                }
+                play_sound2(SOUND_MENU_OK);
+            }
+            // go to end if press left dpad at first index
+            else if (btnAndStick & L_JPAD && (gCustomMenuOptionValues[gCustomMenuSelection] == 0) ) {
+                if (gCustomMenuSelection == 0) { // tracks: wrap to last (1)
+                    gCustomMenuOptionValues[0] = 1;
+                    gOptions.tracks = TRACKS_RANDOM;
+                } else {
+                    gCustomMenuOptionValues[gCustomMenuSelection] =
+                        CUSTOM_MENU_VALUE_COUNT - 1;
+                }
+                play_sound2(SOUND_MENU_OK);
+            }
         }
         switch (gDebugMenuSelection) {
             case DEBUG_MENU_DISABLED: {

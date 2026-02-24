@@ -35,11 +35,14 @@
 #include "spawn_players.h"
 #include "render_player.h"
 #include "decode.h"
+#include <stdio.h>
 //! @todo Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
 
 void guMtxCatL(Mtx* m, Mtx* n, Mtx* res);
+
+void render_custom_overlay(void);
 
 u16* gMenuTextureBuffer;
 u32* gMenuCompressedBuffer;
@@ -2297,6 +2300,7 @@ void func_80094A64(struct GfxPool* pool) {
         case START_MENU:
             func_80095574();
             func_80093E40();
+            render_custom_overlay(); // render custom overlay in start menu
             break;
         case OPTIONS_MENU:
         case DATA_MENU:
@@ -5737,6 +5741,87 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
         case MENU_ITEM_TYPE_1CE:
         default:
             break;
+    }
+}
+
+// render custom menu over title screen 
+void render_custom_overlay(void) {
+    s32 x = 0xA0, y = 0x40; // centered horizontally; tweak
+    int i;
+    s32 rowY;
+    s32 valIdx;
+    char nameBuf[32];
+    char valBuf[4];
+
+    /* Modifier names provided by user; if an entry is empty, fallback to "Modifier N" */
+    static const char* customModifierNames[CUSTOM_MENU_ROWS] = {
+        "tracks",
+        "scaling",
+        "widescreen",
+        "mp music",
+        "mp train",
+        "mp boat",
+        "vs tracks",
+        "vs timer",
+        "stats",
+        "vs scores",
+        "tie logic",
+        "mirror",
+        "" /* keep last empty if CUSTOM_MENU_ROWS > 12 */
+    };
+
+    set_text_color(TEXT_YELLOW);
+
+    // title (centered) - smaller
+    print_text1_center_mode_1(x, y - 0x30, "WEATHERTON  ABNEY  CLIMATEE", 0, 0.80f, 0.80f);
+    // version / date (smaller) - left-aligned to start under 'KART'
+    print_text1_left(x + 0x5A, y + 0x06, "TE V2026-02-22", 0, 0.65f, 0.65f);
+
+    // option name placeholders (second column) and values (third column)
+    for (i = 0; i < CUSTOM_MENU_ROWS; i++) {
+        /* standard row stride (single-line names) */
+        rowY = y + (i * 0x10);
+
+        /* first column: selection pointer (yellow asterisk) */
+        if (i == gCustomMenuSelection) {
+            print_text1_left(x - 0x30, rowY, "*", 0, 0.6f, 0.6f);
+        } else {
+            /* draw empty space to keep alignment */
+            print_text1_left(x - 0x50, rowY, " ", 0, 0.6f, 0.6f);
+        }
+
+        /* second column: option name (single line) */
+        if (customModifierNames[i][0] != '\0') {
+            print_text1_left(x, rowY, (char*)customModifierNames[i], 0, 0.8f, 0.8f);
+        } else {
+            /* Build "Modifier N" manually to avoid linking snprintf */
+            const char* prefix = "Modifier ";
+            int num = i + 1;
+            int pos = 0;
+            const char* p = prefix;
+            while (*p && pos < (int)sizeof(nameBuf) - 1) {
+                nameBuf[pos++] = *p++;
+            }
+            if (num >= 10 && pos < (int)sizeof(nameBuf) - 2) {
+                nameBuf[pos++] = '0' + (num / 10);
+                nameBuf[pos++] = '0' + (num % 10);
+            } else if (pos < (int)sizeof(nameBuf) - 1) {
+                nameBuf[pos++] = '0' + (num % 10);
+            }
+            nameBuf[pos] = '\0';
+            print_text1_left(x, rowY, nameBuf, 0, 0.8f, 0.8f);
+        }
+
+        /* third column: current value for this row (1/2/3) */
+        valIdx = gCustomMenuOptionValues[i];
+        if (valIdx <= 0)
+            valBuf[0] = '1';
+        else if (valIdx == 1)
+            valBuf[0] = '2';
+        else
+            valBuf[0] = '3';
+        valBuf[1] = '\0';
+        print_text1_left(x + 0x40, rowY, valBuf, 0, 0.8f, 0.8f);
     }
 }
 
