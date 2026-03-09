@@ -108,8 +108,8 @@ void render_actor_yoshi_egg(Camera*, Mat4, struct YoshiValleyEgg*, u16);
 void render_actor_mario_sign(Camera*, Mat4, struct Actor*);
 void render_actor_railroad_crossing(Camera*, struct RailroadCrossing*);
 void render_actor_palm_tree(Camera*, Mat4, struct PalmTree*);
-void render_item_boxes(struct UnkStruct_800DC5EC*);
-void render_course_actors(struct UnkStruct_800DC5EC*);
+void render_item_boxes(struct ScreenContext*);
+void render_course_actors(struct ScreenContext*);
 void update_course_actors(void);
 
 // audio/external.c

@@ -24,7 +24,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
     f32 temp_f2_2;
     f32 someMultiplier;
 
-    if (distance_if_visible(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, gCameraZoom[camera - camera1],
+    if (distance_if_visible(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, gCameraFOV[camera - camera1],
                                 1000000.0f) < 0) {
         actor_not_rendered(camera, (struct Actor*) fakeItemBox);
         return;

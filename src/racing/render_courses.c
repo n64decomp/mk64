@@ -71,7 +71,7 @@ void parse_course_displaylists(uintptr_t addr) {
 
 extern u32 isFlycam;
 
-void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC* arg1) {
+void render_course_segments(uintptr_t addr, struct ScreenContext* arg1) {
     Player* player = arg1->player;
     Camera* camera = arg1->camera;
     u32 segment = SEGMENT_NUMBER2(addr);
@@ -112,7 +112,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC* arg1) {
     }
     arg1->playerDirection = direction;
 
-    if (D_80152300[camera - camera1] == 1) {
+    if (gCameraMode[camera - camera1] == 1) {
         sp1E = get_track_section_id(camera->collision.meshIndexZX);
         temp_v0_3 = get_track_section_id(player->collision.meshIndexZX);
         index = sp1E - temp_v0_3;
@@ -195,7 +195,7 @@ void func_802911C4(void) {
     }
 }
 
-void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
+void func_8029122C(struct ScreenContext* arg0, s32 playerId) {
     UNUSED s32 pad;
     Player* player = arg0->player;
     Mat4 matrix;
@@ -521,7 +521,7 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
     }
 }
 
-void render_mario_raceway(struct UnkStruct_800DC5EC* arg0) {
+void render_mario_raceway(struct ScreenContext* arg0) {
     UNUSED s32 pad;
     u16 sp22 = arg0->pathCounter;
     u16 playerDirection = arg0->playerDirection;
@@ -635,7 +635,7 @@ void render_mario_raceway(struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000160));
 }
 
-void render_choco_mountain(struct UnkStruct_800DC5EC* arg0) {
+void render_choco_mountain(struct ScreenContext* arg0) {
     UNUSED s32 pad[13];
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -684,7 +684,7 @@ void render_choco_mountain(struct UnkStruct_800DC5EC* arg0) {
     gDPPipeSync(gDisplayListHead++);
 }
 
-void render_bowsers_castle(struct UnkStruct_800DC5EC* arg0) {
+void render_bowsers_castle(struct ScreenContext* arg0) {
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -712,7 +712,7 @@ void render_bowsers_castle(struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000248));
 }
 
-void render_banshee_boardwalk(struct UnkStruct_800DC5EC* arg0) {
+void render_banshee_boardwalk(struct ScreenContext* arg0) {
     Camera* camera = arg0->camera;
     Mat4 spCC;
     UNUSED s32 pad[6];
@@ -771,7 +771,7 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC* arg0) {
     gDPPipeSync(gDisplayListHead++);
 }
 
-void render_yoshi_valley(struct UnkStruct_800DC5EC* arg0) {
+void render_yoshi_valley(struct ScreenContext* arg0) {
 
     gDPPipeSync(gDisplayListHead++);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
@@ -781,7 +781,7 @@ void render_yoshi_valley(struct UnkStruct_800DC5EC* arg0) {
     gDPPipeSync(gDisplayListHead++);
 }
 
-void render_frappe_snowland(struct UnkStruct_800DC5EC* arg0) {
+void render_frappe_snowland(struct ScreenContext* arg0) {
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -799,7 +799,7 @@ void render_frappe_snowland(struct UnkStruct_800DC5EC* arg0) {
     render_course_segments((uintptr_t) d_course_frappe_snowland_dl_list, arg0);
 }
 
-void render_koopa_troopa_beach(struct UnkStruct_800DC5EC* arg0) {
+void render_koopa_troopa_beach(struct ScreenContext* arg0) {
 
     gDPPipeSync(gDisplayListHead++);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -826,7 +826,7 @@ void render_koopa_troopa_beach(struct UnkStruct_800DC5EC* arg0) {
     gDPPipeSync(gDisplayListHead++);
 }
 
-void render_royal_raceway(struct UnkStruct_800DC5EC* arg0) {
+void render_royal_raceway(struct ScreenContext* arg0) {
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -856,7 +856,7 @@ void render_royal_raceway(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void render_luigi_raceway(struct UnkStruct_800DC5EC* arg0) {
+void render_luigi_raceway(struct ScreenContext* arg0) {
 
     UNUSED s32 pad;
     u16 sp22 = (u16) arg0->pathCounter;
@@ -942,7 +942,7 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC* arg0) {
 }
 
 // Missing {} around if statements necessary for matching.
-void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
+void render_moo_moo_farm(struct ScreenContext* arg0) {
     UNUSED s32 pad[13];
     s16 temp_s0 = arg0->pathCounter;
     s16 playerDirection = arg0->playerDirection;
@@ -1009,7 +1009,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x070010C0));
 }
 
-void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
+void render_toads_turnpike(struct ScreenContext* arg0) {
     UNUSED s32 pad[13];
 
     set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
@@ -1037,7 +1037,7 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
 
-void render_kalimari_desert(struct UnkStruct_800DC5EC* arg0) {
+void render_kalimari_desert(struct ScreenContext* arg0) {
 
     set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
 
@@ -1071,7 +1071,7 @@ void render_kalimari_desert(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void render_sherbet_land(struct UnkStruct_800DC5EC* arg0) {
+void render_sherbet_land(struct ScreenContext* arg0) {
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1081,7 +1081,7 @@ void render_sherbet_land(struct UnkStruct_800DC5EC* arg0) {
     render_course_segments((uintptr_t) sherbet_land_dls, arg0);
 }
 
-void render_rainbow_road(UNUSED struct UnkStruct_800DC5EC* arg0) {
+void render_rainbow_road(UNUSED struct ScreenContext* arg0) {
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -1090,7 +1090,7 @@ void render_rainbow_road(UNUSED struct UnkStruct_800DC5EC* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-void render_wario_stadium(struct UnkStruct_800DC5EC* arg0) {
+void render_wario_stadium(struct ScreenContext* arg0) {
     s16 prevFrame;
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -1166,7 +1166,7 @@ void render_wario_stadium(struct UnkStruct_800DC5EC* arg0) {
     }
 }
 
-void render_block_fort(UNUSED struct UnkStruct_800DC5EC* arg0) {
+void render_block_fort(UNUSED struct ScreenContext* arg0) {
 
     set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -1176,7 +1176,7 @@ void render_block_fort(UNUSED struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x070015C0));
 }
 
-void render_skyscraper(UNUSED struct UnkStruct_800DC5EC* arg0) {
+void render_skyscraper(UNUSED struct ScreenContext* arg0) {
     set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -1199,7 +1199,7 @@ void render_skyscraper(UNUSED struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000258));
 }
 
-void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
+void render_double_deck(UNUSED struct ScreenContext* arg0) {
 
     set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -1211,7 +1211,7 @@ void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void render_dks_jungle_parkway(struct UnkStruct_800DC5EC* arg0) {
+void render_dks_jungle_parkway(struct ScreenContext* arg0) {
 
     set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     set_course_lighting(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
@@ -1235,7 +1235,7 @@ void render_dks_jungle_parkway(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
+void render_big_donut(struct ScreenContext* arg0) {
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1333,7 +1333,7 @@ void render_course_credits(void) {
 #endif
 }
 
-void render_course(struct UnkStruct_800DC5EC* arg0) {
+void render_course(struct ScreenContext* arg0) {
 
     set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     if (creditsRenderMode) {

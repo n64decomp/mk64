@@ -70,7 +70,7 @@ void render_podium_ceremony(void) {
     }
     func_8028150C();
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective((Mtx*) &gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, gCourseNearPersp,
+    guPerspective((Mtx*) &gGfxPool->mtxPersp[0], &perspNorm, gCameraFOV[0], gScreenAspect, gCourseNearPersp,
                   gCourseFarPersp, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
