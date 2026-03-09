@@ -334,7 +334,7 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 // player->unk_046
 
 /* The first time you touch a penguin or bat, and anytime you touch a thwomp during a
-   race will set a flag which will cause your next spinout to be instant (i.e. no 
+   race will set a flag which will cause your next spinout to be instant (i.e. no
    sliding forward). Probably half-implemented code to prevent sliding through enemies,
    but causes this bug */
 #define CRITTER_TOUCH 0x2 // Touched a penguin, bat or thwomp
@@ -344,19 +344,21 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 // player->oobProps
 /* Deals with the lower out of bounds (OOB) plane on levels. Represented by fluids (water / lava)
   or nothing for Rainbow Road and Skyscraper. */
-#define UNDER_OOB_OR_FLUID_LEVEL 0x1 // Set while mostly under the plane. Does not necessarily trigger Lakitu on Koopa Troopa Beach.
+#define UNDER_OOB_OR_FLUID_LEVEL \
+    0x1 // Set while mostly under the plane. Does not necessarily trigger Lakitu on Koopa Troopa Beach.
 #define PASS_OOB_OR_FLUID_LEVEL 0x2 // Set when passing through the lower plane in either direction
 // The next two are also activated when passing through the lower plane.
 #define UNDER_FLUID_LEVEL 0x4 // Stays active until Lakitu places back on track
-#define UNDER_OOB_LEVEL 0x8 // Active while under a non-fluid OOB plane. Is momentarily active when passing through fluids.
-
+#define UNDER_OOB_LEVEL \
+    0x8 // Active while under a non-fluid OOB plane. Is momentarily active when passing through fluids.
 
 /* UNK_002 has something to do with player animations. Each player has a 32-bit
 flag broken into 8 groups of 4 bits. Those 4 bits affect how each of the 8 players
 appear to the specified player */
 #define CHANGING_ANIMATION 0x1 // Seems to be set when the kart animation has to change.
-#define UNK_002_UNKNOWN_0x2 0x2 
-#define UNK_002_UNKNOWN_0x4 0x4 /* Unclear, but has to do with viewing the side of player. At least tends to change if target
+#define UNK_002_UNKNOWN_0x2 0x2
+#define UNK_002_UNKNOWN_0x4                                                                                            \
+    0x4                  /* Unclear, but has to do with viewing the side of player. At least tends to change if target \
 player spins. Something  with avoding rollover of aniamation frame data? */
 #define SIDE_OF_KART 0x8 // Seems to be whether you are in a rectangle shooting out from both sides of target player
 
@@ -368,62 +370,64 @@ player spins. Something  with avoding rollover of aniamation frame data? */
 #define EXPLOSION 0x1000 // Big shock looking graphic when starting tumble
 
 // player->lakituProps
-#define LAKITU_RETRIEVAL 0x1 // While lakitu is grabbing you, but before the scene transition of being placed on the track
-#define HELD_BY_LAKITU   0x2
-#define LAKITU_FIZZLE    0x4 // Disintegration and reintegration effect when transitioning from retrieval to placement
-#define LAKITU_SCENE     0x8 // the whole segment from when lakitu is called to when you regain control
-#define FRIGID_EFFECT   0x10 // Cold colors on Sherbet Land after in frigid water
-#define THAWING_EFFECT  0x20 // Regaining usual colors post frigid effect
-#define FROZEN_EFFECT   0x80 // In the ice cube
-#define WENT_OVER_OOB  0x100 // Player went over (or is on) an OOB area. Cancelled if touch back in bounds
-#define LAKITU_LAVA   0x1000 // smoky effect when retrieved from lava
-#define LAKITU_WATER  0x2000 // dripping effect when retreived from water
+#define LAKITU_RETRIEVAL \
+    0x1 // While lakitu is grabbing you, but before the scene transition of being placed on the track
+#define HELD_BY_LAKITU 0x2
+#define LAKITU_FIZZLE 0x4   // Disintegration and reintegration effect when transitioning from retrieval to placement
+#define LAKITU_SCENE 0x8    // the whole segment from when lakitu is called to when you regain control
+#define FRIGID_EFFECT 0x10  // Cold colors on Sherbet Land after in frigid water
+#define THAWING_EFFECT 0x20 // Regaining usual colors post frigid effect
+#define FROZEN_EFFECT 0x80  // In the ice cube
+#define WENT_OVER_OOB 0x100 // Player went over (or is on) an OOB area. Cancelled if touch back in bounds
+#define LAKITU_LAVA 0x1000  // smoky effect when retrieved from lava
+#define LAKITU_WATER 0x2000 // dripping effect when retreived from water
 
 // player->kartProps
-#define BACK_UP               0x1
-#define RIGHT_TURN            0x2 // non-drifting (more than 5 degrees)
-#define LEFT_TURN             0x4 // non-drifting (more than 5 degrees)
-#define MOVE_BACKWARDS        0x8 // includes lakitu
-#define LOSE_GP_RACE         0x10 // pointless, only unsets itself
-#define THROTTLE             0x20 // Closely tied to just pressing A. Possible exception for AB-spins
-#define EARLY_SPINOUT_RIGHT  0x40 // Spinning out while facing right (not actually used for anything)
-#define EARLY_SPINOUT_LEFT   0x80 // Spinning out while facing left
-#define POST_TUMBLE_GAS     0x100 // Causes particles after a vertical tumble, I think
-#define BECOME_INVISIBLE    0x200
-#define UNUSED_0x400        0x400 // locked behind 0x800 (func_80091440)
-#define UNUSED_0x800        0x800 // locked behind 0x400 (func_8002B830 -> func_800911B4)
-#define UNUSED_0x1000      0x1000 // 0x1000 locked behind 0x400 (func_8002B830 -> func_800911B4)
-#define UNUSED_0x2000      0x2000 // 0x2000 locked behind 0x400 and 0x800 (func_8002B830 -> func_800911B4, apply_effect -> func_80091298,
-                                  // func_80091440)
-#define DRIVING_SPINOUT    0x4000
+#define BACK_UP 0x1
+#define RIGHT_TURN 0x2           // non-drifting (more than 5 degrees)
+#define LEFT_TURN 0x4            // non-drifting (more than 5 degrees)
+#define MOVE_BACKWARDS 0x8       // includes lakitu
+#define LOSE_GP_RACE 0x10        // pointless, only unsets itself
+#define THROTTLE 0x20            // Closely tied to just pressing A. Possible exception for AB-spins
+#define EARLY_SPINOUT_RIGHT 0x40 // Spinning out while facing right (not actually used for anything)
+#define EARLY_SPINOUT_LEFT 0x80  // Spinning out while facing left
+#define POST_TUMBLE_GAS 0x100    // Causes particles after a vertical tumble, I think
+#define BECOME_INVISIBLE 0x200
+#define UNUSED_0x400 0x400   // locked behind 0x800 (func_80091440)
+#define UNUSED_0x800 0x800   // locked behind 0x400 (func_8002B830 -> func_800911B4)
+#define UNUSED_0x1000 0x1000 // 0x1000 locked behind 0x400 (func_8002B830 -> func_800911B4)
+#define UNUSED_0x2000 \
+    0x2000 // 0x2000 locked behind 0x400 and 0x800 (func_8002B830 -> func_800911B4, apply_effect -> func_80091298,
+           // func_80091440)
+#define DRIVING_SPINOUT 0x4000
 #define UNKNOWN_BATTLE_VAR 0x8000 // 0x8000 something battle related, unclear if ever set
 
 /*
  * @brief triggers indicating that an effect should be applied to a kart
  */
-#define HIT_BANANA_TRIGGER              0x1 // hits a banana
-#define HIGH_TUMBLE_TRIGGER             0x2 // hit by a red shell, blue shell, or hit a mole
-#define LOW_TUMBLE_TRIGGER              0x4 // hit by a green shell
-#define DRIVING_SPINOUT_TRIGGER        0x80 // spinning out from erratic driving
-#define THWOMP_SQUISH_TRIGGER         0x100 // stomped by thwomp
-#define SHROOM_TRIGGER                0x200 // being boosted by trigger a mushroom
-#define BOO_TRIGGER                   0x800 // being a boo
-#define UNUSED_TRIGGER_0x1000        0x1000 // Unused
-#define STAR_TRIGGER                 0x2000 // Starting a star
-#define LIGHTNING_STRIKE_TRIGGER     0x4000 // Struck by lightning
-#define BOOST_RAMP_WOOD_TRIGGER      0x8000 // being boosted by a ramp
-#define UNUSED_TRIGGER_0x20000      0x20000 // Unused
-#define DRAG_ITEM_EFFECT            0x40000 // holding a non-shell item behind you
-#define HIT_PADDLE_BOAT_TRIGGER     0x80000 // hit paddle boat
-#define UNUSED_TRIGGER_0x10000     0x100000 // Unused
-#define SPINOUT_TRIGGER            0x200000 // hit crab or spiny spinout or losing versus race
-#define VERTICAL_TUMBLE_TRIGGER    0x400000 // hitting a fake item / bomb / snowman / car / train
+#define HIT_BANANA_TRIGGER 0x1              // hits a banana
+#define HIGH_TUMBLE_TRIGGER 0x2             // hit by a red shell, blue shell, or hit a mole
+#define LOW_TUMBLE_TRIGGER 0x4              // hit by a green shell
+#define DRIVING_SPINOUT_TRIGGER 0x80        // spinning out from erratic driving
+#define THWOMP_SQUISH_TRIGGER 0x100         // stomped by thwomp
+#define SHROOM_TRIGGER 0x200                // being boosted by trigger a mushroom
+#define BOO_TRIGGER 0x800                   // being a boo
+#define UNUSED_TRIGGER_0x1000 0x1000        // Unused
+#define STAR_TRIGGER 0x2000                 // Starting a star
+#define LIGHTNING_STRIKE_TRIGGER 0x4000     // Struck by lightning
+#define BOOST_RAMP_WOOD_TRIGGER 0x8000      // being boosted by a ramp
+#define UNUSED_TRIGGER_0x20000 0x20000      // Unused
+#define DRAG_ITEM_EFFECT 0x40000            // holding a non-shell item behind you
+#define HIT_PADDLE_BOAT_TRIGGER 0x80000     // hit paddle boat
+#define UNUSED_TRIGGER_0x10000 0x100000     // Unused
+#define SPINOUT_TRIGGER 0x200000            // hit crab or spiny spinout or losing versus race
+#define VERTICAL_TUMBLE_TRIGGER 0x400000    // hitting a fake item / bomb / snowman / car / train
 #define BOOST_RAMP_ASPHALT_TRIGGER 0x800000 // being boosted by a boost pad
-#define HIT_BY_STAR_TRIGGER       0x1000000 // being hit by a star
-#define START_BOOST_TRIGGER       0x2000000 // Start boost
-#define LOSE_BATTLE_EFFECT        0x4000000 // When losing battle mode
-#define BECOME_BOMB_EFFECT        0x8000000 // When becoming a bomb in battle mode
-#define START_SPINOUT_TRIGGER    0x10000000 // Spinning out by holding gas at start of race
+#define HIT_BY_STAR_TRIGGER 0x1000000       // being hit by a star
+#define START_BOOST_TRIGGER 0x2000000       // Start boost
+#define LOSE_BATTLE_EFFECT 0x4000000        // When losing battle mode
+#define BECOME_BOMB_EFFECT 0x8000000        // When becoming a bomb in battle mode
+#define START_SPINOUT_TRIGGER 0x10000000    // Spinning out by holding gas at start of race
 
 #define ALL_TRIGGERS (0xFFFFFFFF)
 #define RACING_SPINOUT_TRIGGERS (SPINOUT_TRIGGER | DRIVING_SPINOUT_TRIGGER | HIT_BANANA_TRIGGER) // 0x200081

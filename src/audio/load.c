@@ -787,7 +787,10 @@ void audio_init(void) {
 #ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.
     ptr64 = (u64*) ((u8*) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
-    for (k = ((uintptr_t) &gAudioGlobalsEndMarker - (uintptr_t) ((u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer))) ) / 8; k >= 0; k--) {
+    for (k = ((uintptr_t) &gAudioGlobalsEndMarker -
+              (uintptr_t) ((u64*) ((u8*) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer)))) /
+             8;
+         k >= 0; k--) {
         *ptr64++ = 0;
     }
 #endif
@@ -882,7 +885,7 @@ void audio_init(void) {
 
     // Load bank sets for each sequence
     gAlBankSets = soundAlloc(&gAudioInitPool, 0x100);
-    audio_dma_copy_immediate((u8 *) &_instrument_setsSegmentRomStart, gAlBankSets, 0x100);
+    audio_dma_copy_immediate((u8*) &_instrument_setsSegmentRomStart, gAlBankSets, 0x100);
 
     sound_alloc_pool_init(&gUnkPool1.pool, soundAlloc(&gAudioInitPool, (u32) D_800EA5D8), (u32) D_800EA5D8);
     init_sequence_players();
