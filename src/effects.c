@@ -2019,7 +2019,7 @@ bool prevent_item_use(Player* player) {
     }
 }
 
-//UNUSED
+// UNUSED
 void func_800911B4(Player* player, s8 arg1) {
     s32 temp_v0;
 
