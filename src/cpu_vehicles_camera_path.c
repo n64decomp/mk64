@@ -4582,11 +4582,11 @@ void render_bomb_karts_wrap(s32 cameraId) {
 
 UNUSED void func_8001C42C(void) {
     if (D_800DDB20 == 0) {
-        if ((gControllerThree->buttonPressed & 0x20) != 0) {
+        if ((gControllerThree->buttonPressed & L_TRIG) != 0) {
             D_800DDB20 = 1;
         }
     } else {
-        if ((gControllerThree->buttonPressed & 0x20) != 0) {
+        if ((gControllerThree->buttonPressed & L_TRIG) != 0) {
             D_800DDB20 = 0;
         }
         func_80057C60();

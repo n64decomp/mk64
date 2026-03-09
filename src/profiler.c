@@ -224,7 +224,7 @@ void resource_display(void) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
     gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(0, 0, 0, 0) << 16 | GPACK_RGBA5551(0, 0, 0, 0));
 
-    if ((gControllerOne->buttonPressed & 0x20) != 0) {
+    if ((gControllerOne->buttonPressed & L_TRIG) != 0) {
         D_800DC664 ^= 1;
     }
     draw_profiler_mode_0();
