@@ -20,6 +20,7 @@
 #include <sounds.h>
 #include "spawn_players.h"
 #include "seq_ids.h"
+#include "rumble_init.h"
 
 #if ENABLE_DEBUG_MODE
 #define DEBUG_MODE_TOGGLE true
@@ -1448,6 +1449,9 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                     gMenuTimingCounter++;
                     if ((gMenuTimingCounter == 60) || !(gMenuTimingCounter % 300)) {
                         play_sound2(SOUND_MENU_OK);
+#if ENABLE_RUMBLE
+                        queue_rumble_data(0, 5, 80);
+#endif
                     }
                 }
                 if (btnAndStick & B_BUTTON) {
@@ -1653,6 +1657,9 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     gMenuTimingCounter++;
                     if (gMenuTimingCounter == 0x3C || !(gMenuTimingCounter % 300)) {
                         play_sound2(SOUND_MENU_OK);
+#if ENABLE_RUMBLE
+                        queue_rumble_data(0, 5, 80);
+#endif
                     }
                 }
                 if (btnAndStick & B_BUTTON) {
@@ -1758,6 +1765,9 @@ void course_select_menu_act(struct Controller* arg0, u16 controllerIdx) {
                 if ((controllerIdx == PLAYER_ONE) &&
                     ((++gMenuTimingCounter == 0x3C) || ((gMenuTimingCounter % 300) == 0))) {
                     play_sound2(SOUND_MENU_OK);
+                    #if ENABLE_RUMBLE
+                        queue_rumble_data(0, 5, 80);
+                    #endif
                 }
 
                 if ((btnAndStick & B_BUTTON) != 0) {
