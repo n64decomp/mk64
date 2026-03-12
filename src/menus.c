@@ -175,6 +175,9 @@ s8 gCustomMenuOption[CUSTOM_MENU_ROWS][2] = { 0 };
 s8 gCustomMenuSelection = 0;
 s8 gCustomMenuOptionValues[CUSTOM_MENU_ROWS] = { 0 };
 
+// Per-row number of selectable values (matches label arrays in render_custom_overlay)
+static const s8 gCustomMenuValueCounts[CUSTOM_MENU_ROWS] = { 3, 3, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 1 };
+
 // end of new var init
 
 /**************************/
@@ -1065,35 +1068,31 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
             // cycle option value with R_DPAD, L_DPAD (advance through defined value count)
             // go forward one if press right dpad
             if (btnAndStick & R_JPAD) {
-                if (gCustomMenuSelection == 0) { // tracks: only 2 values (default, random)
-                    gCustomMenuOptionValues[0] = (gCustomMenuOptionValues[0] + 1) % 2;
-                    gOptions.tracks = (gCustomMenuOptionValues[0] == 1) ? TRACKS_RANDOM : TRACKS_DEFAULT;
-                } else {
-                    gCustomMenuOptionValues[gCustomMenuSelection] =
-                        (gCustomMenuOptionValues[gCustomMenuSelection] + 1) % CUSTOM_MENU_VALUE_COUNT;
+                int count = gCustomMenuValueCounts[gCustomMenuSelection];
+                if (count <= 0) count = 1;
+                gCustomMenuOptionValues[gCustomMenuSelection] =
+                    (gCustomMenuOptionValues[gCustomMenuSelection] + 1) % count;
+                if (gCustomMenuSelection == 0) {
+                    gOptions.tracks = (gCustomMenuOptionValues[0] == 2) ? TRACKS_RANDOM : TRACKS_DEFAULT;
                 }
                 play_sound2(SOUND_MENU_OK);
             }
             // go backwards one if press left dpad and not at first index
             else if (btnAndStick & L_JPAD && (gCustomMenuOptionValues[gCustomMenuSelection] != 0) ) {
-                if (gCustomMenuSelection == 0) { // tracks: only 2 values
-                    gCustomMenuOptionValues[0] = (gCustomMenuOptionValues[0] - 1);
-                    if (gCustomMenuOptionValues[0] < 0) gCustomMenuOptionValues[0] = 0;
-                    gOptions.tracks = (gCustomMenuOptionValues[0] == 1) ? TRACKS_RANDOM : TRACKS_DEFAULT;
-                } else {
-                    gCustomMenuOptionValues[gCustomMenuSelection] =
-                        (gCustomMenuOptionValues[gCustomMenuSelection] - 1);
+                gCustomMenuOptionValues[gCustomMenuSelection] = (gCustomMenuOptionValues[gCustomMenuSelection] - 1);
+                if (gCustomMenuOptionValues[gCustomMenuSelection] < 0) gCustomMenuOptionValues[gCustomMenuSelection] = 0;
+                if (gCustomMenuSelection == 0) {
+                    gOptions.tracks = (gCustomMenuOptionValues[0] == 2) ? TRACKS_RANDOM : TRACKS_DEFAULT;
                 }
                 play_sound2(SOUND_MENU_OK);
             }
             // go to end if press left dpad at first index
             else if (btnAndStick & L_JPAD && (gCustomMenuOptionValues[gCustomMenuSelection] == 0) ) {
-                if (gCustomMenuSelection == 0) { // tracks: wrap to last (1)
-                    gCustomMenuOptionValues[0] = 1;
-                    gOptions.tracks = TRACKS_RANDOM;
-                } else {
-                    gCustomMenuOptionValues[gCustomMenuSelection] =
-                        CUSTOM_MENU_VALUE_COUNT - 1;
+                int count = gCustomMenuValueCounts[gCustomMenuSelection];
+                if (count <= 0) count = 1;
+                gCustomMenuOptionValues[gCustomMenuSelection] = count - 1;
+                if (gCustomMenuSelection == 0) {
+                    gOptions.tracks = (gCustomMenuOptionValues[0] == 2) ? TRACKS_RANDOM : TRACKS_DEFAULT;
                 }
                 play_sound2(SOUND_MENU_OK);
             }

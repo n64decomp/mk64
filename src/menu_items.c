@@ -716,6 +716,8 @@ const s8 gGPPointRewards[] = { 9, 6, 3, 1 };
 const s8 D_800F0B1C[] = {
     0, 0, 1, 0, 1, 0, 1, 2, 0, 1, 2, 3,
 };
+
+// lightning flash pattern
 const s8 D_800F0B28[] = {
     0, 1, 2, 1, 2, 1, 2, 1, 2, 0, 0, 1, 2, 2, 1, 2, 2, 1, 2, 2,
     1, 2, 2, 1, 2, 2, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
@@ -724,11 +726,12 @@ const s8 D_800F0B28[] = {
 const s8 D_800F0B50[] = { 0x1f, 0x0b, 0x15, 0x29 };
 const s8 D_800F0B54[] = { 0x20, 0x0f, 0x18, 0x2c };
 
+// lightning flash color palette
 RGBA16 D_800E7AC8[] = {
-    { 0x00, 0x00, 0x00, 0x00 },
-    { 0xff, 0xff, 0xff, 0xff },
-    { 0x00, 0x00, 0x50, 0xff },
-    { 0xff, 0xff, 0xff, 0xff },
+    { 0x00, 0x00, 0x00, 0x00 }, // background, clear
+    { 0x00, 0x00, 0x90, 0xff }, // changed to mid blue from white
+    { 0x00, 0x00, 0x50, 0xff }, // dark blue
+    { 0xff, 0xff, 0x90, 0xff }, // changed to mid blue from white
 };
 
 RGBA16 D_800E7AE8[] = {
@@ -5258,7 +5261,7 @@ void func_8009E2A8(s32 arg0) {
             break;
     }
 }
-
+// lightning flash renderer
 void func_8009E2F0(s32 arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -5750,10 +5753,18 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
 void render_custom_overlay(void) {
     s32 x = 0xA0, y = 0x40; // centered horizontally; tweak
     int i;
+    int idx;
     s32 rowY;
     s32 valIdx;
     char nameBuf[32];
     char valBuf[4];
+    MenuItem cursorItem;
+    Unk_D_800E70A0 sp84;
+
+    // // temp var for debug font
+    // s32 x1;
+    // s32 y1;
+
 
     /* Menu items; if an entry is empty, fallback to "Modifier N" */
     static const char* customModifierNames[CUSTOM_MENU_ROWS] = {
@@ -5763,7 +5774,7 @@ void render_custom_overlay(void) {
         "mp music",
         "mp train",
         "mp boat",
-        "vs tracks",
+        "",
         "vs timer",
         "stats",
         "",
@@ -5772,10 +5783,31 @@ void render_custom_overlay(void) {
         "" /* keep last empty if CUSTOM_MENU_ROWS > 12 */
     };
 
+    /* per-option label arrays */
+    static const char* tracks_labels[] = {"TE", "kalliera", "random"};
+    static const char* scaling_labels[] = {"default", "30fps", "60fps"};
+    static const char* widescreen_labels[] = {"default", "enabled"};
+    static const char* mpMusic_labels[] = {"default", "enabled"};
+    static const char* mpTrain_labels[] = {"default", "full"};
+    static const char* mpBoat_labels[] = {"default", "enabled"};
+    static const char* opt6_labels[] = {"1"};
+    static const char* timer_labels[] = {"default", "enabled"};
+    static const char* stats_labels[] = {"all yoshi", "default"};
+    static const char* opt10_labels[] = {"1"};
+    static const char* tieLogic_labels[] = {"timer", "port"};
+    static const char* mirror_labels[] = {"default", "enabled"};
+    static const char* opt13_labels[] = {"1"};
+
     set_text_color(TEXT_YELLOW);
 
     // title (centered) - smaller
     print_text1_center_mode_1(x, y - 0x30, "WEATHERTON  ABNEY  CLIMATEE", 0, 0.80f, 0.80f);
+
+    // /* use debug font helper */
+    // x1 = 0;
+    // y1 = 0;
+    // func_800579B8(x1, y1, "WEATHERTON  ABNEY  CLIMATEE");
+
     // version / date (smaller) - left-aligned to start under 'KART'
     print_text1_left(x + 0x5A, y + 0x06, "TE V2026-02-22", 0, 0.65f, 0.65f);
 
@@ -5786,7 +5818,13 @@ void render_custom_overlay(void) {
 
         /* first column: selection pointer  */
         if (i == gCustomMenuSelection) {
-            print_text_mode_1(x - 0x40, rowY, "X", 0, 0.6f, 0.6f);
+            /* build a local MenuItem for the cursor effect and set the target position */
+            sp84.column = x - 0x40;
+            sp84.row = rowY - 0x06;
+            cursorItem.paramf = 2.0f;      /* start scale/rotation multiplier */
+            cursorItem.subState = 1;       /* small non-zero rotation driver */
+            func_800A66A8(&cursorItem, &sp84);
+            //print_text_mode_1(x - 0x40, rowY, "X", 0, 0.6f, 0.6f);
         } else {
             /* draw empty space to keep alignment */
             print_text1_left(x - 0x30, rowY, " ", 0, 0.6f, 0.6f);
@@ -5816,26 +5854,103 @@ void render_custom_overlay(void) {
         }
 
         /* third column: current value for this row */
-        if (i == 0) { /* tracks: custom labels (default, random) */
-            static const char* tracks_labels[] = {"default", "random"};
-            int idx = gCustomMenuOptionValues[0];
+        switch (i) {
+        case 0:     
+            /* tracks: custom labels (TE, kalliera, random) */
+            idx = gCustomMenuOptionValues[i];
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(tracks_labels) / sizeof(tracks_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x40, rowY, (char*)tracks_labels[idx], 0, 0.6f, 0.6f);
-        } else {
-            /* fallback: numeric representation 1/2/3 to match previous behavior */
-            valIdx = gCustomMenuOptionValues[i];
-            if (valIdx <= 0)
-                valBuf[0] = '1';
-            else if (valIdx == 1)
-                valBuf[0] = '2';
-            else
-                valBuf[0] = '3';
-            valBuf[1] = '\0';
-            print_text1_left(x + 0x40, rowY, valBuf, 0, 0.6f, 0.6f);
+            break;
+        case 1:
+            /* scaling: labels (default, 30fps, 60fps) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(scaling_labels) / sizeof(scaling_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)scaling_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 2:
+            /* widescreen: labels (default, enabled) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(widescreen_labels) / sizeof(widescreen_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)widescreen_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 3:
+            /* mp music: labels (default, enabled) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(mpMusic_labels) / sizeof(mpMusic_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)mpMusic_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 4:
+            /* mp train: labels (default, full) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(mpTrain_labels) / sizeof(mpTrain_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)mpTrain_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 5:
+            /* mp boat: labels (default, enabled) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(mpBoat_labels) / sizeof(mpBoat_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)mpBoat_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 6:
+            /*  */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(opt6_labels) / sizeof(opt6_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)opt6_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 7:
+            /* vs timer: labels (default, enabled) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(timer_labels) / sizeof(timer_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)timer_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 8:
+            /* stats: labels (default, all yoshi) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(stats_labels) / sizeof(stats_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)stats_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 9:
+            /* */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(opt10_labels) / sizeof(opt10_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)opt10_labels[idx], 0, 0.6f, 0.6f);
+            break;    
+        case 10:
+            /* tie logic: labels (timer, port) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(tieLogic_labels) / sizeof(tieLogic_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)tieLogic_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 11:
+            /* mirror: labels (default, enabled) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(mirror_labels) / sizeof(mirror_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)mirror_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 12:
+            /* */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(opt13_labels) / sizeof(opt13_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x40, rowY, (char*)opt13_labels[idx], 0, 0.6f, 0.6f);
+            break;  
         }
     }
 }
+
+
 
 void render_menus(MenuItem* arg0) {
     s32 var_a1;
@@ -6253,6 +6368,7 @@ void render_menus(MenuItem* arg0) {
             case MENU_ITEM_TYPE_0AF: /* switch 6 */
                 func_800A6034(arg0);
                 break;
+            // vs results menu render
             case MENU_ITEM_TYPE_0B0: /* switch 6 */
                 func_800A638C(arg0);
                 break;
@@ -6676,7 +6792,13 @@ void func_800A1500(MenuItem* arg0) {
             break;
     }
 }
-
+/*Renders a course selection menu item by determining the course ID 
+from the cup/course order based on the item's type, displaying 
+the course image and name bar, and optionally drawing a flashing 
+selection highlight with a checkmark icon (from D_02004A0C) if the
+ course has been completed (as indicated by func_800B639C returning 
+ a non-negative value). Note: the ^ 0 XOR on arg0->row is a deliberate
+  no-op used to force a specific register allocation in the compiled output.*/
 void func_800A15EC(MenuItem* arg0) {
     s16 courseId = gCupCourseOrder[(arg0->type - 0x7C) / 4][(arg0->type - 0x7C) % 4];
     gDisplayListHead =
@@ -6693,7 +6815,14 @@ void func_800A15EC(MenuItem* arg0) {
             func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(&D_02004A0C), arg0->column + 0x20, arg0->row, 2);
     }
 }
-
+/*This function renders a menu item by interpolating between 
+two consecutive colors from a color table (D_800E74D0) based on param1 
+as a blend factor (0-256) and param2 as the base color index, 
+setting the result as the display list's primitive color, 
+and then drawing a menu texture at the item's column and row position. 
+The color interpolation cycles through three colors using modular
+ arithmetic, creating a smooth color transition effect for the menu 
+ element.*/
 void func_800A1780(MenuItem* arg0) {
     RGBA16* temp_a1;
     RGBA16* temp_v1;
@@ -7108,7 +7237,15 @@ void func_800A1FB0(MenuItem* arg0) {
     }
     func_800A66A8(arg0, (Unk_D_800E70A0*) &spE0);
 }
-
+/*func_800A2D1C renders a screen wipe/iris transition effect 
+using horizontal black bars (top and bottom) that either appear
+ or shrink closed based on the state of D_80164A28, drawing 
+ rectangles via func_80098FC8 to the display list and decrementing 
+ arg0->param1 to animate the bars inward until they disappear 
+ (setting arg0->type = 0), with a special case in the default branch 
+ that only runs the closing animation in single-player Grand Prix mode
+  without controller demo, otherwise immediately disabling the menu 
+  item.*/
 void func_800A2D1C(MenuItem* arg0) {
     switch (D_80164A28) {
         case 1:
@@ -7141,6 +7278,7 @@ void func_800A2D1C(MenuItem* arg0) {
     }
 }
 
+// 1/2p gp results screen?
 void func_800A2EB8(MenuItem* arg0) {
     s8 sp70[8];
     UNUSED s32 stackPadding0;
@@ -7186,6 +7324,7 @@ void func_800A2EB8(MenuItem* arg0) {
         D_800E76CC[gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
 }
 
+// timer?
 void func_800A32B4(s32 arg0, s32 arg1, s32 characterId, s32 rank) {
     UNUSED s32 stackPadding0;
     f32 sp50;
@@ -7210,7 +7349,13 @@ void func_800A32B4(s32 arg0, s32 arg1, s32 characterId, s32 rank) {
     print_text_mode_1(arg0 + 0x62, arg1, "\"", 0, 0.7f, 0.7f);
     func_800939C8(arg0 + 0x6A, arg1, sp3C, 0, 0.7f, 0.7f);
 }
-
+/*Renders the Grand Prix "Driver's Points" scoreboard UI for a MenuItem, 
+displaying the current round number, each player's rank and character 
+with animated text colors (cycling for human players, static for CPU), 
+the cup name, and the CC/engine class selection, with support for 
+both mid-race rankings (states 1-8) and final overall rankings
+ (state 9+), including a staggered reveal animation controlled by 
+ param1.*/
 void func_800A34A8(MenuItem* arg0) {
     s8 sp80[8];
     UNUSED s32 stackPadding0;
@@ -8053,6 +8198,15 @@ void func_800A6034(MenuItem* arg0) {
     }
 }
 
+/*Renders a pause menu overlay by drawing a darkened background box 
+and displaying pause button text entries, with behavior depending on 
+the menu's state: when in state 0, it fades in using param1 as an 
+opacity factor and draws text in yellow, otherwise it draws at 
+full opacity with a rainbow text effect and a selection cursor 
+(func_800A66A8) positioned based on the current state. 
+Additionally, if param2 is positive, it draws horizontal 
+screen-wipe bars from the top and bottom edges of the
+ screen, used for a transition or iris effect.*/
 void func_800A6154(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -8087,6 +8241,7 @@ void func_800A6154(MenuItem* arg0) {
     }
 }
 
+// 4p/3p vs results screen menu draw
 void func_800A638C(MenuItem* arg0) {
     UNUSED s32 temp_a0;
     s32 var_a1;
@@ -8139,6 +8294,14 @@ void func_800A638C(MenuItem* arg0) {
     }
 }
 
+        /*This function animates and renders a 3D menu item with a spinning/tumbling effect
+         by applying cumulative rotations around all three axes 
+         (with rotation speeds derived from arg0->paramf and arg0->subState)
+          and a scaling factor, while gradually decaying paramf toward a minimum of 1.5.
+           It constructs a composite transformation matrix (scale → Y rotation → Z rotation → X rotation
+            → translation to the item's grid position), pushes it to the display list,
+             and draws the display list D_0D003090 with cloud-surface blending and modulated 
+             intensity-alpha combine mode.*/
 void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     Mtx* mtx;
     f32 tmp;
@@ -8182,6 +8345,13 @@ void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     gSPDisplayList(gDisplayListHead++, D_0D003090);
 }
 
+        /*Renders the win/lose results overlay for each player in 
+        versus or battle mode by determining each player's 
+        win/loss status, setting the text color 
+        (cycling colors for the winner, blue for losers), 
+        drawing each player's score and the corresponding win/lose text
+         at the appropriate screen positions, and finally drawing a 
+         Japanese dash character ("ー") as a separator.*/
 void func_800A69C8(UNUSED MenuItem* arg0) {
     Unk_D_800E70A0* thing;
     UNUSED s32 stackPadding1;
@@ -8223,6 +8393,11 @@ void func_800A69C8(UNUSED MenuItem* arg0) {
     text_draw(0x0000009E, D_800E7300[0].row + 0x6D, "ー", 0, 1.0f, 1.0f);
 }
 
+        /*Iterates over all players and, based on the current mode selection, 
+        calls either func_800A6E94 (for Versus mode) or func_800A6D94 
+        (for Battle mode) with a fixed parameter of 3 (3 PLAYER VERSUS), the current player 
+        index, and a mode-specific global value (gNmiUnknown2 or gNmiUnknown5).
+         The MenuItem parameter is unused.*/
 void func_800A6BEC(UNUSED MenuItem* arg0) {
     s32 var_s0;
 
@@ -8238,6 +8413,12 @@ void func_800A6BEC(UNUSED MenuItem* arg0) {
     }
 }
 
+        /*Iterates over all players and, based on the current mode selection,
+         calls either func_800A6E94 (for Versus mode) or func_800A6D94 
+         (for Battle mode) with a fixed first argument of 4 (4 PLAYER VERSUS), 
+         the current player index, and a corresponding global NMI-related 
+         variable (gNmiUnknown3 or gNmiUnknown6). The MenuItem parameter 
+         is unused.*/
 void func_800A6CC0(UNUSED MenuItem* arg0) {
     s32 var_s0;
 
@@ -8278,15 +8459,76 @@ void func_800A6D94(s32 arg0, s32 arg1, u8* arg2) {
               0.75f);
 }
 
-// The ｓ/ｎ/ｒ/ー are not ASCII characters, they're EUC-JP characters
+/*The ｓ/ｎ/ｒ/ー are not ASCII characters, they're EUC-JP characters
+
+ draws race finish tallies for versus races
+ additionally draws vs scores for tournament edition*/
 void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
     UNUSED s32 stackPadding0;
     u8* temp_v0;
     Unk_D_800E70A0* temp_s0;
     char sp40[3];
     s32 rank;
+
+    // var for drawing scores
+    s32 base_xPos_4p;
+    s32 base_xPos_3p;
+    s32 Y_pos;
+    s32 X_pos;
+    s32 draw_offset;
+    u8  *tally;
+    s32 firsts;
+    s32 seconds;
+    s32 thirds;
+    u8  i;
+    s32 points;
+    char pointsBuf[5]; 
+
     // Everything about this variable is bizarre
     s32 sp38 = -1;
+
+    // base x and y position for drawing scores
+    // x-coord increment will be different for 3p and 4p vs
+    base_xPos_4p = 0x1A; 
+    base_xPos_3p = 0x34;
+    Y_pos = 0x20;
+    // i: player index
+    i = 0;
+
+    // change tally var based off of player count
+    // gNmiUnknown2 for 3p, gNmiUnknown3 for 4p
+    tally = (gPlayerCountSelection1 == 3) ? gNmiUnknown2 : gNmiUnknown3;
+
+    // Only draw scores on the first player call to avoid overdraw
+    // (func_800A6E94 is called once per player by func_800A6BEC/func_800A6CC0)
+    if (arg1 == 0) {
+        set_text_color(TEXT_YELLOW);
+        while(i < gPlayerCountSelection1) {
+            firsts  = tally[i * 3 + 0];
+            seconds = tally[i * 3 + 1];
+            thirds  = tally[i * 3 + 2];
+
+            // custom point calculation
+            points = (firsts * 3) + (seconds * 2) + (thirds * 1);
+
+            // convert to ascii char
+            convert_number_to_ascii(points, pointsBuf);
+
+            // remove zero padding in ascii conversion
+            if (pointsBuf[0] == '0') {
+                pointsBuf[0] = ' ';
+            }
+
+            // calculate x-position to draw vs scores
+            X_pos = (gPlayerCountSelection1 == 3) ? (base_xPos_3p + (i * 0x4E)) : (base_xPos_4p + (i * 0x45));
+
+            // player i points - left-aligned with leftmost visible digit at same X position
+            // if single digit (space padded), offset X by space width so digit aligns with double-digit numbers
+            draw_offset = (pointsBuf[0] == ' ') ? -0x5 : 0;
+            text_draw(X_pos + draw_offset , Y_pos, pointsBuf, 0, 0.80f, 0.80f);
+            i++;
+        }
+    }
 
     temp_s0 = &D_800E7300[((arg0 - 2) * 4) + arg1];
     rank = gGPCurrentRaceRankByPlayerId[arg1];
@@ -8297,7 +8539,7 @@ void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
     }
     text_draw(temp_s0->column + 4, temp_s0->row + 0x5A, "1 ｓ ー", 0, 0.8f, 0.8f);
     temp_v0 = arg2 + (arg1 * 3);
-    convert_number_to_ascii(temp_v0[0], sp40);
+    convert_number_to_ascii(temp_v0[0], sp40); // first place tally for each player
     text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x5A, sp40, 0, 0.8f, 0.8f);
     if (rank == ++sp38) {
         set_text_color(gGlobalTimer % 3);
@@ -8305,7 +8547,7 @@ void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
         set_text_color(TEXT_BLUE);
     }
     text_draw(temp_s0->column + 4, temp_s0->row + 0x69, "2 ｎ ー", 0, 0.8f, 0.8f);
-    convert_number_to_ascii(temp_v0[1], sp40);
+    convert_number_to_ascii(temp_v0[1], sp40); // second place tally for each player
     text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x69, sp40, 0, 0.8f, 0.8f);
     if (++sp38 == rank) {
         set_text_color(gGlobalTimer % 3);
@@ -8313,7 +8555,7 @@ void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
         set_text_color(TEXT_RED);
     }
     text_draw(temp_s0->column + 4, temp_s0->row + 0x78, "3 ｒ ー", 0, 0.8f, 0.8f);
-    convert_number_to_ascii(temp_v0[2], sp40);
+    convert_number_to_ascii(temp_v0[2], sp40); // third place tally for each player
     text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x78, sp40, 0, 0.8f, 0.8f);
 }
 
