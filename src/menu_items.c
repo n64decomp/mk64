@@ -1507,6 +1507,7 @@ void func_800925CC(void) {
     }
 }
 
+// 4p and 3p vs menu?
 void func_80092604(void) {
     add_menu_item(MENU_ITEM_TYPE_0B0, 0, 0, MENU_ITEM_PRIORITY_0);
 }
@@ -8249,6 +8250,11 @@ void func_800A638C(MenuItem* arg0) {
     s32 var_s1;
     UNUSED s8** var_s2;
 
+                s32 nextIndex;
+                s32 nextCourseId;
+                f32 xOffset;
+                const char* continueText;
+
     if (arg0->state == 0) {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, arg0->param1);
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
@@ -8257,7 +8263,8 @@ void func_800A638C(MenuItem* arg0) {
     } else {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x00000064);
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-        print_text1_center_mode_1(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
+        // dont print vs match ranking text at the top
+        // print_text1_center_mode_1(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
     }
     switch (arg0->state) { /* irregular */
         default:
@@ -8287,8 +8294,25 @@ void func_800A638C(MenuItem* arg0) {
     }
     if (arg0->state >= 10) {
         for (var_s1 = 0; var_s1 < 4; var_s1++) {
+            /* For 3P/4P Versus, change the first option to "CONTINUE TO <next course>" */
             text_rainbow_effect(arg0->state - 0xA, var_s1, TEXT_GREEN);
-            print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f, 0.8f);
+            if ((var_s1 == 0) && (gModeSelection == VERSUS) && ((gPlayerCount == 3) || (gPlayerCount == 4))) {
+                continueText = "CONTINUE TO ";
+
+                /* compute next course index in the current cup */
+                nextIndex = (gCourseIndexInCup + 1) & 3; /* wrap 0-3 */
+                nextCourseId = gCupCourseOrder[gCupSelection][nextIndex];
+
+                /* draw "CONTINUE TO " then the course name after it */
+                print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), continueText, 0, 0.8f, 0.8f);
+                xOffset = (get_string_width((char*)continueText) * 0.8f) + 4.0f;
+                print_text_mode_1((s32)(0x00000069 + xOffset), 0xAE + (0xF * var_s1),
+                                  gCourseNamesDup[nextCourseId], 0, 0.8f, 0.8f);
+            } else {
+                /* default: RETRY, COURSE CHANGE, DRIVER CHANGE, QUIT */
+                print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f,
+                                  0.8f);
+            }
         }
         func_800A66A8(arg0, &D_800E7360[arg0->state - 10]);
     }
@@ -11187,6 +11211,7 @@ void func_800ACA14(MenuItem* arg0) {
     }
 }
 
+// renders VS/battle end-of-race rankings menu 
 void func_800ACC50(MenuItem* arg0) {
     s32 i;
 

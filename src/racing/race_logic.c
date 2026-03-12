@@ -522,10 +522,12 @@ f32 func_8028EE8C(s32 arg0) {
     return gCourseTimer - ((COURSE_TIMER_ITER_f * temp_f14) / (temp_f14 + temp_f16));
 }
 
+// set finish state
 void func_8028EEF0(s32 i) {
     gPlayers[i].type |= PLAYER_CINEMATIC_MODE;
 }
 
+// synchronizes lap counts and awards race tallies
 void func_8028EF28(void) {
     s16 currentPosition;
     s32 i;
@@ -533,7 +535,14 @@ void func_8028EF28(void) {
     for (i = 0; i < NUM_PLAYERS; i++) {
         Player* player = &gPlayers[i];
 
+        // skip slots that don't have active player
         if ((gPlayers[i].type & PLAYER_EXISTS) == 0) {
+            continue;
+        }
+
+        // skip finished players (players in cinematic mode)
+        // added condition to prevent double finishes/Wonn from cheating
+        if ((gPlayers[i].type & PLAYER_CINEMATIC_MODE) != 0) {
             continue;
         }
 
@@ -574,6 +583,7 @@ void func_8028EF28(void) {
                             gPlayerWinningIndex = i;
                         }
                         switch (gPlayerCountSelection1) {
+                            // 2 player?
                             case 2:
                                 if (currentPosition == 0) {
                                     *(gNmiUnknown1 + i) += 1;
@@ -587,6 +597,7 @@ void func_8028EF28(void) {
                                 gPlayers[i].type |= PLAYER_CPU;
                                 func_800CA118((u8) i);
                                 break;
+                            // 3 player?
                             case 3:
                                 if (currentPosition < 3) {
                                     *(gNmiUnknown2 + i * 3 + currentPosition) += 1;
@@ -606,6 +617,7 @@ void func_8028EF28(void) {
                                     func_800CA118((u8) i);
                                 }
                                 break;
+                            // 4 player?
                             case 4:
                                 if (currentPosition < 3) {
                                     *(gNmiUnknown3 + i * 3 + currentPosition) += 1;
