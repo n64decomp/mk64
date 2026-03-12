@@ -144,7 +144,6 @@ void func_8028E298(void) {
 }
 
 void func_8028E3A0(void) {
-
     if (D_80150120) {
 
         if (gCourseIndexInCup == COURSE_FOUR) {

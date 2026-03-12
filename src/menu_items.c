@@ -358,6 +358,31 @@ s8 gCupSelectionByCourseId[] = {
 #include "assets/course_metadata/gCupSelectionByCourseId.inc.c"
 };
 
+// Tournament course sequence mode: 0 = VA, 1 = KA, 2 = KA_MMF
+s8 gTournamentCourseMode = 0;
+
+// Course name abbreviations for each tournament mode
+char* gCourseNamesVA[] = {
+    "LR", "MMF", "KTB", "KD",
+    "DKJP", "YV", "BB", "RRd",
+    "WS", "SL", "RRy", "BC",
+    "TT", "FS", "CM", "MR"
+};
+
+char* gCourseNamesKA[] = {
+    "LR", "MMF", "KTB", "KD",
+    "TT", "FS", "CM", "MR",
+    "WS", "SL", "RRy", "BC",
+    "DKJP", "YV", "BB", "RRd"
+};
+
+char* gCourseNamesKA_MMF[] = {
+    "LR", "MMF", "KTB", "KD",
+    "TT", "FS", "CM", "MR",
+    "WS", "SL", "RRy", "BC",
+    "DKJP", "YV", "BB", "MMF"
+};
+
 char* gCupText[] = {
     "none",
     "bronze",
@@ -5785,7 +5810,7 @@ void render_custom_overlay(void) {
     };
 
     /* per-option label arrays */
-    static const char* tracks_labels[] = {"TE", "kalliera", "random"};
+    static const char* tracks_labels[] = {"VA", "kalliera", "kalliera mmf"};
     static const char* scaling_labels[] = {"default", "30fps", "60fps"};
     static const char* widescreen_labels[] = {"default", "enabled"};
     static const char* mpMusic_labels[] = {"default", "enabled"};
@@ -5862,6 +5887,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(tracks_labels) / sizeof(tracks_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x40, rowY, (char*)tracks_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentCourseMode = idx; // set track order
             break;
         case 1:
             /* scaling: labels (default, 30fps, 60fps) */
@@ -5952,6 +5978,32 @@ void render_custom_overlay(void) {
 }
 
 
+// Get the next course ID based on current tournament mode
+s16 getNextCourseId(void) {
+    s32 linearCourseIndex = (gCupSelection * 4) + gCourseIndexInCup;
+    s32 nextLinearIndex = (linearCourseIndex + 1) & 0xF;
+    s32 nextCup = nextLinearIndex / 4;
+    s32 nextIndexInCup = nextLinearIndex % 4;
+
+    return get_course_id_for_tournament_cursor(nextCup, nextIndexInCup);
+}
+
+// Get the course abbreviation string for the next course
+char* getNextCourseAbbrString(void) {
+    s32 linearCourseIndex = (gCupSelection * 4) + gCourseIndexInCup;
+    s32 nextLinearIndex = (linearCourseIndex + 1) & 0xF;
+
+    switch (gTournamentCourseMode) {
+        case 0: // VA mode - use VA abbreviations
+            return gCourseNamesVA[nextLinearIndex];
+        case 1: // KA mode - use KA abbreviations
+            return gCourseNamesKA[nextLinearIndex];
+        case 2: // KA_MMF mode - use KA_MMF abbreviations
+            return gCourseNamesKA_MMF[nextLinearIndex];
+        default:
+            return gCourseNamesDup[getNextCourseId()];
+    }
+}
 
 void render_menus(MenuItem* arg0) {
     s32 var_a1;
@@ -8249,23 +8301,22 @@ void func_800A638C(MenuItem* arg0) {
     UNUSED s32 var_s0;
     s32 var_s1;
     UNUSED s8** var_s2;
-
-                s32 nextIndex;
-                s32 nextCourseId;
-                f32 xOffset;
-                const char* continueText;
+    f32 xOffset;
+    char* continueText;
 
     if (arg0->state == 0) {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, arg0->param1);
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, (arg0->param1 * 0xFF) / 100);
-        print_text1_center_mode_2(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
+        // dont print vs match ranking text at the top during fade in transition
+        // print_text1_center_mode_2(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
     } else {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x00000064);
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         // dont print vs match ranking text at the top
         // print_text1_center_mode_1(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
     }
+
     switch (arg0->state) { /* irregular */
         default:
             var_a1 = 0x000000FF;
@@ -8278,7 +8329,9 @@ void func_800A638C(MenuItem* arg0) {
             var_a1 = arg0->param1;
             break;
     }
+
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, var_a1);
+
     switch (gPlayerCount) {
         case 2:
             func_800A69C8(arg0);
@@ -8292,24 +8345,18 @@ void func_800A638C(MenuItem* arg0) {
         default:
             break;
     }
+
     if (arg0->state >= 10) {
         for (var_s1 = 0; var_s1 < 4; var_s1++) {
             /* For 3P/4P Versus, change the first option to "CONTINUE TO <next course>" */
             text_rainbow_effect(arg0->state - 0xA, var_s1, TEXT_GREEN);
             if ((var_s1 == 0) && (gModeSelection == VERSUS) && ((gPlayerCount == 3) || (gPlayerCount == 4))) {
                 continueText = "CONTINUE TO ";
-
-                /* compute next course index in the current cup */
-                nextIndex = (gCourseIndexInCup + 1) & 3; /* wrap 0-3 */
-                nextCourseId = gCupCourseOrder[gCupSelection][nextIndex];
-
-                /* draw "CONTINUE TO " then the course name after it */
                 print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), continueText, 0, 0.8f, 0.8f);
-                xOffset = (get_string_width((char*)continueText) * 0.8f) + 4.0f;
-                print_text_mode_1((s32)(0x00000069 + xOffset), 0xAE + (0xF * var_s1),
-                                  gCourseNamesDup[nextCourseId], 0, 0.8f, 0.8f);
+                xOffset = (get_string_width(continueText) * 0.8f) + 1.0f;
+                print_text_mode_1((s32) (0x00000069 + xOffset), 0xAE + (0xF * var_s1), getNextCourseAbbrString(),
+                                  0, 0.8f, 0.8f);
             } else {
-                /* default: RETRY, COURSE CHANGE, DRIVER CHANGE, QUIT */
                 print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f,
                                   0.8f);
             }
