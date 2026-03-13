@@ -3249,6 +3249,7 @@ void func_800CA0E4(void) {
     func_800C5278(5);
 }
 
+// animation sequence for vs mode finish transition to vs match rankings screen
 void func_800CA118(u8 arg0) {
     D_800EA0EC[arg0] = 1;
     D_800E9EA4[arg0] = 1;
