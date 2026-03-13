@@ -144,8 +144,7 @@ void render_actor_tree_moo_moo_farm(Camera* camera, Mat4 arg1, struct Actor* arg
     }
 }
 
-// have all the properties of the tree
-void func_80299864(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_luigi_raceway(Camera* camera, Mat4 arg1, struct Actor* arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
@@ -178,13 +177,13 @@ void func_80299864(Camera* camera, Mat4 arg1, struct Actor* arg2) {
 }
 
 /**
- * @brief Renders the tree actor in Bowser's Castle.
+ * @brief Renders Peach's Castle trees in Royal Raceway.
  *
  * @param camera
  * @param arg1
  * @param arg2
  */
-void render_actor_tree_bowser_castle(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_peach_castle(Camera* camera, Mat4 arg1, struct Actor* arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
