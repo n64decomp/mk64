@@ -743,9 +743,11 @@ const s8 D_800F0B1C[] = {
 };
 
 // lightning flash pattern
+// changed two zeros (indices 8 and 9) to 1
+// changed all twos to 1
 const s8 D_800F0B28[] = {
-    0, 1, 2, 1, 2, 1, 2, 1, 2, 0, 0, 1, 2, 2, 1, 2, 2, 1, 2, 2,
-    1, 2, 2, 1, 2, 2, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
 };
 
 const s8 D_800F0B50[] = { 0x1f, 0x0b, 0x15, 0x29 };
@@ -754,9 +756,9 @@ const s8 D_800F0B54[] = { 0x20, 0x0f, 0x18, 0x2c };
 // lightning flash color palette
 RGBA16 D_800E7AC8[] = {
     { 0x00, 0x00, 0x00, 0x00 }, // background, clear
-    { 0x00, 0x00, 0x90, 0xff }, // changed to mid blue from white
+    { 0xff, 0xff, 0xff, 0xff }, // white
     { 0x00, 0x00, 0x50, 0xff }, // dark blue
-    { 0xff, 0xff, 0x90, 0xff }, // changed to mid blue from white
+    { 0xff, 0xff, 0xff, 0xff }, // white
 };
 
 RGBA16 D_800E7AE8[] = {
