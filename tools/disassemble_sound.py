@@ -14,9 +14,10 @@ TYPE_TBL = 2
 
 
 class AifcEntry:
-    def __init__(self, data, book, loop):
+    def __init__(self, data, flags, book, loop):
         self.name = None
         self.data = data
+        self.flags = flags
         self.book = book
         self.loop = loop
         self.tunings = []
@@ -29,7 +30,7 @@ class SampleBank:
         self.data = data
         self.entries = {}
 
-    def add_sample(self, offset, sample_size, book, loop):
+    def add_sample(self, offset, sample_size, flags, book, loop):
         assert sample_size % 2 == 0
         if sample_size % 9 != 0:
             assert sample_size % 9 == 1
@@ -41,7 +42,7 @@ class SampleBank:
             assert entry.loop == loop
             assert len(entry.data) == sample_size
         else:
-            entry = AifcEntry(self.data[offset : offset + sample_size], book, loop)
+            entry = AifcEntry(self.data[offset : offset + sample_size], flags, book, loop)
             self.entries[offset] = entry
 
         return entry
@@ -207,13 +208,12 @@ def parse_book(addr, bank_data):
 
 
 def parse_sample(data, bank_data, sample_bank):
-    zero, addr, loop, book, sample_size = struct.unpack(">IIIII", data)
-    # assert zero == 0
+    flags, addr, loop, book, sample_size = struct.unpack(">IIIII", data)
     assert loop != 0
     assert book != 0
     loop = parse_loop(loop, bank_data)
     book = parse_book(book, bank_data)
-    return sample_bank.add_sample(addr, sample_size, book, loop)
+    return sample_bank.add_sample(addr, sample_size, flags, book, loop)
 
 
 def parse_envelope(addr, data_bank):
@@ -482,6 +482,11 @@ def write_aifc(entry, out):
                 entry.loop.count,
                 *entry.loop.state
             ),
+        )
+    if entry.flags != 0:
+        writer.add_custom_section(
+            b"VADPCMFLAGS",
+            struct.pack(">I", entry.flags),
         )
     writer.finish()
 

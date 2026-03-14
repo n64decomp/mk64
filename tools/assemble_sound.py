@@ -20,7 +20,7 @@ orderedJsonDecoder = JSONDecoder(object_pairs_hook=OrderedDict)
 
 
 class Aifc:
-    def __init__(self, name, fname, data, sample_rate, book, loop):
+    def __init__(self, name, fname, data, sample_rate, book, loop, flags):
         self.name = name
         self.fname = fname
         self.data = data
@@ -29,6 +29,7 @@ class Aifc:
         self.loop = loop
         self.used = False
         self.offset = None
+        self.flags = flags
 
 
 class SampleBank:
@@ -141,6 +142,7 @@ def parse_aifc(data, name, fname):
     audio_data = None
     vadpcm_codes = None
     vadpcm_loops = None
+    vadpcm_flags = 0
     sample_rate = None
 
     for (tp, data) in sections:
@@ -152,6 +154,8 @@ def parse_aifc(data, name, fname):
                 vadpcm_codes = data
             elif tp == b"VADPCMLOOPS":
                 vadpcm_loops = data
+            elif tp == b"VADPCMFLAGS":
+                vadpcm_flags = struct.unpack(">I", data[:4])[0]
         elif tp == b"SSND":
             audio_data = data[8:]
         elif tp == b"COMM":
@@ -163,7 +167,7 @@ def parse_aifc(data, name, fname):
 
     book = parse_aifc_book(vadpcm_codes)
     loop = parse_aifc_loop(vadpcm_loops) if vadpcm_loops is not None else None
-    return Aifc(name, fname, audio_data, sample_rate, book, loop)
+    return Aifc(name, fname, audio_data, sample_rate, book, loop, vadpcm_flags)
 
 
 class ReserveSerializer:
@@ -275,6 +279,7 @@ def validate_sound(json, sample_bank, forstr=""):
     validate_json_format(json, {"sample": str}, forstr)
     if "tuning" in json:
         validate_json_format(json, {"tuning": float}, forstr)
+
     validate(
         json["sample"] in sample_bank.name_to_entry,
         "reference to sound {} which isn't found in sample bank {}".format(
@@ -572,7 +577,10 @@ def serialize_ctl(bank, base_ser, is_shindou):
         sample_len = len(aifc.data)
 
         # Sample
-        ser.add(pack("IX", align(sample_len, 2) if is_shindou else 0))
+        if is_shindou:
+            ser.add(pack("IX", align(sample_len, 2)))
+        else:
+            ser.add(pack("I", aifc.flags))
         ser.add(pack("P", aifc.offset))
         loop_addr_buf = ser.reserve(WORD_BYTES)
         book_addr_buf = ser.reserve(WORD_BYTES)

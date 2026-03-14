@@ -41,9 +41,11 @@ int main(int argc, char **argv)
     s32 cType;
     s32 nBytes = 0;
     u32 loopEnd;
+    u32 vadpcmFlags = 0;
     char *compName = "VADPCM ~4-1";
     char *appCodeName = "VADPCMCODES";
     char *appLoopName = "VADPCMLOOPS";
+    char *appFlagName = "VADPCMFLAGS";
     u8 strnLen;
     Chunk AppChunk;
     Chunk FormChunk;
@@ -220,7 +222,23 @@ int main(int argc, char **argv)
             soundPointer = ftell(ifile);
             fseek(ifile, offset + Header.ckSize, SEEK_SET);
             break;
-
+        case 0x4150504c: { // APPL
+            u32 ts;
+            offset = ftell(ifile);
+            fread(&ts, sizeof(u32), 1, ifile);
+            BSWAP32(ts)
+            if (ts == 0x73746f63) // stoc
+            {
+                char* ChunkName = ReadPString(ifile);
+                if (strcmp("VADPCMFLAGS", ChunkName) == 0)
+                {
+                    fread(&vadpcmFlags, sizeof(vadpcmFlags), 1, ifile);
+                    BSWAP32(vadpcmFlags)
+                }
+            }
+            fseek(ifile, offset + Header.ckSize, SEEK_SET);
+            break;
+        }
         case 0x4d41524b: // MARK
             offset = ftell(ifile);
             fread(&numMarkers, sizeof(s16), 1, ifile);
@@ -309,6 +327,18 @@ int main(int argc, char **argv)
     BSWAP16(InstChunk.releaseLoop.beginLoop)
     BSWAP16(InstChunk.releaseLoop.endLoop)
     fwrite(&InstChunk, sizeof(InstrumentChunk), 1, ofile);
+
+    strnLen = sizeof("VADPCMFLAGS") - 1;
+    AppChunk.ckID = 0x4150504c; // APPL
+    AppChunk.ckSize = 4 + 1 + strnLen + 4;
+    AppChunk.formType = 0x73746f63; // stoc
+    BSWAP32(AppChunk.ckID)
+    BSWAP32(AppChunk.ckSize)
+    BSWAP32(AppChunk.formType)
+    fwrite(&AppChunk, sizeof(Chunk), 1, ofile);
+    fwrite(&strnLen, 1, 1, ofile);
+    fwrite(appFlagName, strnLen, 1, ofile);
+    fwrite(&vadpcmFlags, sizeof(vadpcmFlags), 1, ofile);
 
     tableSize = order * 2 * npredictors * 8;
     strnLen = sizeof("VADPCMCODES") - 1;
