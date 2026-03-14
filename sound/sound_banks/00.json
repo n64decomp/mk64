@@ -1,0 +1,779 @@
+{
+    "date": "1996-06-24",
+    "sample_bank": "sample_bank0",
+    "envelopes": {
+        "envelope0": [
+            [2, 32700],
+            [1, 32700],
+            [32700, 29430],
+            "hang"
+        ]
+    },
+    "instruments": {
+        "inst0": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "07"
+        },
+        "inst1": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "08"
+        },
+        "inst2": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "06"
+        },
+        "inst3": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "09"
+        },
+        "inst4": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "0A"
+        },
+        "inst5": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "04"
+        },
+        "inst6": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "0B"
+        },
+        "inst7": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "0C"
+        },
+        "inst8": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "0D"
+        },
+        "inst9": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "0E"
+        },
+        "inst10": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "0F"
+        },
+        "inst11": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "10"
+        },
+        "inst12": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "11"
+        },
+        "inst13": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "12"
+        },
+        "inst14": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "13"
+        },
+        "inst15": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "14"
+        },
+        "inst16": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "15"
+        },
+        "inst17": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "16"
+        },
+        "inst18": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "17"
+        },
+        "inst19": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "18"
+        },
+        "inst20": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "19"
+        },
+        "inst21": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "1A"
+        },
+        "inst22": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "1B"
+        },
+        "inst23": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "1C"
+        },
+        "inst24": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "1D"
+        },
+        "inst25": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "05"
+        },
+        "inst26": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "1E"
+        },
+        "inst27": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "1F"
+        },
+        "inst28": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "20"
+        },
+        "inst29": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": {"sample": "21", "tuning": 0.8227612}
+        },
+        "inst30": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "22"
+        },
+        "inst31": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "02"
+        },
+        "inst32": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": {"sample": "23", "tuning": 0.8227612}
+        },
+        "inst33": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "00"
+        },
+        "inst34": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "03"
+        },
+        "inst35": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": {"sample": "23", "tuning": 0.8202985}
+        },
+        "inst36": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": {"sample": "21", "tuning": 0.81955224}
+        },
+        "inst37": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "24"
+        },
+        "inst38": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "01"
+        },
+        "inst39": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "25"
+        },
+        "inst40": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "26"
+        },
+        "inst41": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "27"
+        },
+        "inst42": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "28"
+        },
+        "inst43": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "29"
+        },
+        "inst44": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "2A"
+        },
+        "inst45": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "2B"
+        },
+        "inst46": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "2C"
+        },
+        "inst47": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "2D"
+        },
+        "inst48": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "2E"
+        },
+        "inst49": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "2F"
+        },
+        "inst50": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "30"
+        },
+        "inst51": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "31"
+        },
+        "inst52": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "32"
+        },
+        "inst53": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "33"
+        },
+        "inst54": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "34"
+        },
+        "inst55": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "35"
+        },
+        "inst56": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "36"
+        },
+        "inst57": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "37"
+        },
+        "inst58": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "38"
+        },
+        "inst59": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "39"
+        },
+        "inst60": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "3A"
+        },
+        "inst61": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "3B"
+        },
+        "inst62": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "3C"
+        },
+        "inst63": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "3D"
+        },
+        "inst64": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "3E"
+        },
+        "inst65": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "3F"
+        },
+        "inst66": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "40"
+        },
+        "inst67": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "41"
+        },
+        "inst68": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "42"
+        },
+        "inst69": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "43"
+        },
+        "inst70": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "44"
+        },
+        "inst71": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "45"
+        },
+        "inst72": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "46"
+        },
+        "inst73": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "47"
+        },
+        "inst74": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "48"
+        },
+        "inst75": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "49"
+        },
+        "inst76": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "4A"
+        },
+        "inst77": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "4B"
+        },
+        "inst78": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "4C"
+        },
+        "inst79": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "4D"
+        },
+        "inst80": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "4E"
+        },
+        "inst81": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "4F"
+        },
+        "inst82": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "50"
+        },
+        "inst83": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "51"
+        },
+        "inst84": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "52"
+        },
+        "inst85": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "53"
+        },
+        "inst86": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "54"
+        },
+        "inst87": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "55"
+        },
+        "inst88": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "56"
+        },
+        "inst89": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "57"
+        },
+        "inst90": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "58"
+        },
+        "inst91": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "59"
+        },
+        "inst92": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "5A"
+        },
+        "inst93": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "5B"
+        },
+        "inst94": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "5C"
+        },
+        "inst95": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "5D"
+        },
+        "inst96": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "5E"
+        },
+        "inst97": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "5F"
+        },
+        "inst98": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "60"
+        },
+        "inst99": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "61"
+        },
+        "inst100": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "62"
+        },
+        "inst101": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "63"
+        },
+        "inst102": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "64"
+        },
+        "inst103": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "65"
+        },
+        "inst104": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "66"
+        },
+        "inst105": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "67"
+        },
+        "inst106": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "68"
+        },
+        "inst107": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "69"
+        },
+        "inst108": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "6A"
+        },
+        "inst109": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "6B"
+        },
+        "inst110": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "6C"
+        },
+        "inst111": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "6D"
+        },
+        "inst112": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "6E"
+        },
+        "inst113": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "6F"
+        },
+        "inst114": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "70"
+        },
+        "inst115": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "71"
+        },
+        "inst116": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "72"
+        },
+        "inst117": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": {"sample": "73", "tuning": 1.0}
+        },
+        "inst118": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "74"
+        },
+        "inst119": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "75"
+        },
+        "inst120": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "76"
+        },
+        "inst121": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "77"
+        },
+        "inst122": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "78"
+        },
+        "inst123": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "79"
+        },
+        "inst124": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "7A"
+        },
+        "inst125": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "7B"
+        },
+        "inst126": {
+            "release_rate": 127,
+            "envelope": "envelope0",
+            "sound": "7C"
+        }
+    },
+    "instrument_list": [
+        "inst0",
+        "inst1",
+        "inst2",
+        "inst27",
+        "inst74",
+        "inst75",
+        "inst76",
+        "inst3",
+        "inst77",
+        "inst78",
+        "inst7",
+        "inst79",
+        "inst80",
+        "inst81",
+        "inst82",
+        "inst83",
+        "inst8",
+        "inst84",
+        "inst85",
+        "inst9",
+        "inst86",
+        "inst87",
+        "inst14",
+        "inst13",
+        "inst53",
+        "inst54",
+        "inst55",
+        "inst56",
+        "inst57",
+        "inst71",
+        "inst72",
+        "inst88",
+        "inst89",
+        "inst90",
+        "inst10",
+        "inst91",
+        "inst92",
+        "inst11",
+        "inst93",
+        "inst12",
+        "inst15",
+        "inst16",
+        "inst17",
+        "inst18",
+        "inst19",
+        "inst20",
+        "inst21",
+        "inst22",
+        "inst23",
+        "inst95",
+        "inst96",
+        "inst97",
+        "inst94",
+        "inst98",
+        "inst99",
+        "inst109",
+        "inst100",
+        "inst101",
+        "inst102",
+        "inst103",
+        "inst104",
+        "inst110",
+        "inst105",
+        "inst106",
+        "inst4",
+        "inst107",
+        "inst108",
+        "inst111",
+        "inst112",
+        "inst113",
+        "inst114",
+        "inst115",
+        "inst116",
+        "inst117",
+        "inst118",
+        "inst119",
+        "inst24",
+        "inst25",
+        "inst26",
+        "inst28",
+        "inst29",
+        "inst30",
+        "inst31",
+        "inst32",
+        "inst33",
+        "inst34",
+        "inst35",
+        "inst36",
+        "inst37",
+        "inst38",
+        "inst39",
+        "inst40",
+        "inst41",
+        "inst42",
+        "inst43",
+        "inst44",
+        "inst45",
+        "inst46",
+        "inst47",
+        "inst48",
+        "inst49",
+        "inst50",
+        "inst51",
+        "inst52",
+        "inst58",
+        "inst59",
+        "inst60",
+        "inst61",
+        "inst62",
+        "inst63",
+        "inst64",
+        "inst65",
+        "inst66",
+        "inst67",
+        "inst68",
+        "inst69",
+        "inst70",
+        "inst73",
+        "inst5",
+        "inst6",
+        "inst120",
+        "inst121",
+        "inst122",
+        "inst123",
+        "inst124",
+        "inst125",
+        "inst126"
+    ],
+    "drum_list": []
+}
