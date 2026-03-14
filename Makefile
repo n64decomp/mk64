@@ -577,7 +577,7 @@ $(SOUND_BIN_DIR)/sound_data.tbl: $(SOUND_BIN_DIR)/sound_data.ctl
 $(BUILD_DIR)/data/sound_data/audiobanks.o: $(SOUND_BIN_DIR)/sound_data.ctl
 $(BUILD_DIR)/data/sound_data/audiotables.o: $(SOUND_BIN_DIR)/sound_data.tbl
 
-# TODO: the rest of these rules are currently not used by the build since sequenes.json has not been dissambled
+# TODO: the rest of these rules are currently not used by the build since sequences.json has not been dissambled
 
 $(SOUND_BIN_DIR)/ctl_header: $(SOUND_BIN_DIR)/sound_data.ctl
 	@true
