@@ -535,7 +535,7 @@ def serialize_ctl(bank, base_ser, is_shindou):
             pack(
                 "IIII",
                 len(json["instrument_list"]),
-                len(drums),
+                len(json["drum_list"]),
                 1 if len(bank.sample_bank.uses) > 1 else 0,
                 to_bcd(date),
             )
@@ -675,7 +675,11 @@ def serialize_ctl(bank, base_ser, is_shindou):
         ser.align(16)
 
         drum_pos_buf.append(pack("P", ser.size))
-        for pos in drum_poses:
+        for i in range(len(json["drum_list"])):
+            if i < len(drum_poses):
+                pos = drum_poses[i]
+            else:
+                pos = 0
             ser.add(pack("P", pos))
         ser.align(16)
 
