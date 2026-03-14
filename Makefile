@@ -244,12 +244,15 @@ TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
 # Sound files
-SOUND_BANK_FILES    := $(wildcard sound/sound_banks/*.json)
-SOUND_SAMPLE_DIRS   := $(wildcard sound/samples/*)
-SOUND_SAMPLE_AIFFS  := $(foreach dir,$(SOUND_SAMPLE_DIRS),$(wildcard $(dir)/*.aiff))
+SOUND_BANK_FILES              := $(wildcard sound/sound_banks/*.json)
+SOUND_SAMPLE_DIRS             := $(wildcard sound/samples/*)
+SOUND_SAMPLE_AIFFS            := $(foreach dir,$(SOUND_SAMPLE_DIRS),$(wildcard $(dir)/*.aiff))
+NONMATCHED_SOUND_SAMPLE_AIFFS := $(foreach dir,$(SOUND_SAMPLE_DIRS),$(wildcard $(dir)/*.aifc))
+
 SOUND_SAMPLE_TABLES := $(foreach file,$(SOUND_SAMPLE_AIFFS),$(BUILD_DIR)/$(file:.aiff=.table))
-SOUND_SAMPLE_AIFCS  := $(foreach file,$(SOUND_SAMPLE_AIFFS),$(BUILD_DIR)/$(file:.aiff=.aifc))
+SOUND_SAMPLE_AIFCS  := $(foreach file,$(SOUND_SAMPLE_AIFFS),$(BUILD_DIR)/$(file:.aiff=.aifc)) $(foreach file,$(NONMATCHED_SOUND_SAMPLE_AIFFS),$(BUILD_DIR)/$(file))
 SOUND_SEQUENCE_DIRS := sound/sequences sound/sequences/$(VERSION)
+
 # all .m64 files in SOUND_SEQUENCE_DIRS, plus all .m64 files that are generated from .s files in SOUND_SEQUENCE_DIRS
 SOUND_SEQUENCE_FILES := \
   $(foreach dir,$(SOUND_SEQUENCE_DIRS),\
@@ -558,6 +561,10 @@ $(BUILD_DIR)/%.table: %.aiff
 $(BUILD_DIR)/%.aifc: $(BUILD_DIR)/%.table %.aiff
 	$(call print,Encoding ADPCM:,$(word 2,$^),$@)
 	$(V)$(VADPCM_ENC) -c $^ $@
+
+$(BUILD_DIR)/%.aifc: %.aifc
+	$(call print,Copying unmatched AIFC:,$<,$@)
+	$(V)cp $< $@
 
 $(ENDIAN_BITWIDTH): $(TOOLS_DIR)/determine-endian-bitwidth.c
 	@$(PRINT) "$(GREEN)Generating endian-bitwidth $(NO_COL)\n"

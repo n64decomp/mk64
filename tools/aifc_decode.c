@@ -566,7 +566,8 @@ int main(int argc, char **argv)
             do {
                 if (++iter > 1000000) {
                     printf("Failed to match frame %d after 1000000 attempts\n", currPos);
-                    break;
+                    exit(1);
+                    // break;
                 }
                 permute(guess, decoded, scale);
                 memcpy(state, lastState, sizeof(lastState));
