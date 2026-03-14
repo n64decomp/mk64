@@ -667,13 +667,6 @@ def serialize_ctl(bank, base_ser, is_shindou):
 
     if drums:
         drum_poses = []
-        # for i in range(len(json["drum_list"])):
-            # empty drums are always at the end
-            # TODO: this might be wrong
-            # if i >= len(drums):
-            #     drum_poses.append(pack("P", 0))
-            #     continue
-            # drum = drums[i]
         for drum in drums:
             drum_poses.append(ser.size)
             ser.add(pack("BBBBX", drum["release_rate"], drum["pan"], 0, 0))
