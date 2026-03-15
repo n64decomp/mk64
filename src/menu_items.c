@@ -363,9 +363,9 @@ s8 gTournamentCourseMode = 0;
 
 // Course name abbreviations for each tournament mode
 char* gCourseNamesVA[] = {
-    "LR", "MMF", "KTB", "KD",
+    "WS", "MMF", "KTB", "KD",
     "DKJP", "YV", "BB", "RRd",
-    "WS", "SL", "RRy", "BC",
+    "LR", "SL", "RRy", "BC",
     "TT", "FS", "CM", "MR"
 };
 
@@ -4652,6 +4652,7 @@ void func_8009CE1C(void) {
     }
 }
 
+// fade out transition for versus menu
 void func_8009CE64(s32 arg0) {
     s32 thing;
     s32 var_a1;
@@ -4689,16 +4690,26 @@ void func_8009CE64(s32 arg0) {
                 if (temp_v0 != NULL) {
                     switch (temp_v0->state) { /* switch 8; irregular */
                         case 10:              /* switch 8 */
-                            func_802903B0();
+                            if (gModeSelection == VERSUS) {
+                                // custom function: go to next track
+                                gotoNextTrack();
+                            }
+                            else {
+                                // retry (vs mode)
+                                func_802903B0();
+                            }
                             break;
                         case 11: /* switch 8 */
+                            // course change (vs mode)
                             func_80290388();
                             break;
                         case 12: /* switch 8 */
+                            // driver change (vs mode)
                             func_80290360();
                             break;
                         default: /* switch 8 */
                         case 13: /* switch 8 */
+                            // quit (vs mode)
                             func_80290338();
                             break;
                     }
@@ -11316,6 +11327,7 @@ void func_800ACC50(MenuItem* arg0) {
                         arg0->subState = 1;
                     }
                 }
+                // input handling for versus menu
                 if (gControllerFive->buttonPressed & 0x9000) {
                     func_8009DFE0(0x0000001E);
                     play_sound2(SOUND_MENU_OK_CLICKED);

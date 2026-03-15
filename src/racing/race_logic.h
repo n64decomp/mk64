@@ -34,6 +34,7 @@ void func_80290338(void);
 void func_80290360(void);
 void func_80290388(void);
 void func_802903B0(void);
+void gotoNextTrack(void);
 void func_802909F0(void);
 void func_80290B14(void);
 

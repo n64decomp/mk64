@@ -35,6 +35,7 @@ extern u16 D_802BA048;
 
 extern s32 D_8018D2AC;
 extern s32 D_802B91E0;
+extern s16 getNextCourseId(void);
 
 u16 D_802BA030;
 u16 D_802BA032;
@@ -1131,10 +1132,26 @@ void func_80290388(void) {
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = COURSE_SELECT_MENU_FROM_QUIT;
 }
-
+// retry function
 void func_802903B0(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
+    gGotoMode = RACING;
+}
+
+// proceed to next track in selection (vs mode only)
+void gotoNextTrack(void) {
+    s16 nextCourse;
+    s32 nextLinearIndex;
+
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
+    nextLinearIndex = (((s32) gCupSelection * 4) + gCourseIndexInCup + 1) & 0xF;
+    nextCourse = getNextCourseId();
+    gCurrentCourseId = nextCourse;
+    gCupSelection = nextLinearIndex / 4;
+    D_800DC540 = gCupSelection;
+    gCourseIndexInCup = nextLinearIndex % 4;
     gGotoMode = RACING;
 }
 
