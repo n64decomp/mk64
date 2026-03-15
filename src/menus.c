@@ -1619,14 +1619,15 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
 /**
  * Check if there is no currently selected and/or
  * hovered character at grid position `gridId`
+ * changed to always return true so that any character can be selected multiple times
  */
 bool is_character_spot_free(s32 gridId) {
-    s32 i;
-    for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
-        if (gridId == gCharacterGridSelections[i]) {
-            return false;
-        }
-    }
+    // s32 i;
+    // for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
+    //     if (gridId == gCharacterGridSelections[i]) {
+    //         return false;
+    //     }
+    // }
     return true;
 }
 
@@ -1689,6 +1690,7 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     break;
                 }
                 j = gCharacterGridSelections[controllerIdx];
+                // navigation in character select menu
                 if ((btnAndStick & R_JPAD) && (btnAndStick & D_JPAD)) {
                     if ((gCharacterGridSelections[controllerIdx] == 1U) || (gCharacterGridSelections[controllerIdx] == 2U) || (gCharacterGridSelections[controllerIdx] == 3U)) {
                         j = gCharacterGridSelections[controllerIdx] + 5;
@@ -1774,7 +1776,8 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if ((btnAndStick & D_JPAD) && (gCharacterGridSelections[controllerIdx] < 5)) {
                     j = gCharacterGridSelections[controllerIdx] + 4;
                 }
-                if (is_character_spot_free(j)) {
+                // play SOUND_MENU_CURSOR_MOVE when the cursor index changes instead of when character is free to select
+                if ((j != gCharacterGridSelections[controllerIdx])) {
                     gCharacterGridSelections[controllerIdx] = j;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
