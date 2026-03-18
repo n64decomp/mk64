@@ -601,6 +601,7 @@ def main():
         ctl_entries, tbls, range(len(ctl_entries))
     ):
         sample_bank = sample_bank_map[sample_bank_name]
+        print(offset, length)
         entry = ctl_data[offset : offset + length]
         banks.append(parse_ctl(entry[:16], entry[16:], sample_bank, index))
 

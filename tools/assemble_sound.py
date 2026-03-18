@@ -460,13 +460,13 @@ def validate_bank(json, sample_bank):
             isinstance(inst, str),
             "drum list should contain only strings and nulls",
         )
-        # validate(
-        #     inst in instrument_names, "reference to non-existent instrument " + inst
-        # )
-        # validate(
-        #     inst not in seen_instruments, inst + " occurs twice in the instrument list"
-        # )
-        # seen_instruments.add(inst)
+        validate(
+            inst in instrument_names, "reference to non-existent instrument " + inst
+        )
+        validate(
+            inst not in seen_instruments, inst + " occurs twice in the instrument list"
+        )
+        seen_instruments.add(inst)
 
     for inst in instrument_names:
         validate(inst in seen_instruments, "unreferenced instrument " + inst)
@@ -569,7 +569,10 @@ def serialize_ctl(bank, base_ser, is_shindou):
                 used_samples.append(inst["sound_hi"]["sample"])
 
     sample_name_to_addr = {}
-    for name in used_samples:
+    book_to_addr = {}
+    # hack: looking for a better solution so this. They are only sorted in entry 0
+    samples = sorted(used_samples) if bank.name == "00" else used_samples
+    for name in samples:
         if name in sample_name_to_addr:
             continue
         sample_name_to_addr[name] = ser.size
@@ -589,10 +592,15 @@ def serialize_ctl(bank, base_ser, is_shindou):
         ser.align(16)
 
         # Book
-        book_addr_buf.append(pack("P", ser.size))
-        ser.add(pack("ii", aifc.book.order, aifc.book.npredictors))
+        book_data = pack("ii", aifc.book.order, aifc.book.npredictors)
         for x in aifc.book.table:
-            ser.add(pack("h", x))
+            book_data += pack("h", x)
+        if book_data in book_to_addr:
+            book_addr_buf.append(pack("P", book_to_addr[book_data]))
+        else:
+            book_to_addr[book_data] = ser.size
+            book_addr_buf.append(pack("P", ser.size))
+            ser.add(book_data)
         ser.align(16)
 
         # Loop
