@@ -369,7 +369,8 @@ def validate_bank(json, sample_bank):
             instruments.append((name, inst))
             instrument_names.add(name)
 
-    for drum in drums:
+    drum_names = set()
+    for i, drum in enumerate(drums):
         validate(isinstance(drum, dict), "drum entry must be an object")
         validate_json_format(
             drum,
@@ -381,6 +382,7 @@ def validate_bank(json, sample_bank):
             "reference to non-existent envelope " + drum["envelope"],
             "drum",
         )
+        drum_names.add(f"drum{i}")
 
     no_sound = {}
 
@@ -453,23 +455,27 @@ def validate_bank(json, sample_bank):
         )
         seen_instruments.add(inst)
     
-    for inst in json["drum_list"]:
-        if inst is None:
+    seen_drums = set()
+    for drum in json["drum_list"]:
+        if drum is None:
             continue
         validate(
-            isinstance(inst, str),
+            isinstance(drum, str),
             "drum list should contain only strings and nulls",
         )
-        # validate(
-        #     inst in instrument_names, "reference to non-existent instrument " + inst
-        # )
-        # validate(
-        #     inst not in seen_instruments, inst + " occurs twice in the instrument list"
-        # )
-        seen_instruments.add(inst)
+        validate(
+            drum in drum_names, "reference to non-existent instrument " + drum
+        )
+        validate(
+            drum not in seen_drums, drum + " occurs twice in the instrument list"
+        )
+        seen_drums.add(drum)
 
     for inst in instrument_names:
         validate(inst in seen_instruments, "unreferenced instrument " + inst)
+    
+    for drum in drum_names:
+        validate(drum in seen_drums, "unreferenced drum " + drum)
 
 
 def apply_ifs(json, defines):
@@ -571,7 +577,7 @@ def serialize_ctl(bank, base_ser, is_shindou):
     sample_name_to_addr = {}
     book_to_addr = {}
     # hack: looking for a better solution so this. They are only sorted in entry 0
-    samples = sorted(used_samples) if bank.name == "00" else used_samples
+    samples = sorted(used_samples) if bank.name.startswith("00") else used_samples
     for name in samples:
         if name in sample_name_to_addr:
             continue
