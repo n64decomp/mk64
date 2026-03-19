@@ -237,7 +237,7 @@ def parse_ctl(header, data, sample_bank, index):
     d = date % 100
     iso_date = "{:02}-{:02}-{:02}".format(y, m, d)
     assert shared in [0, 1]
-    print("{}: {}, {} + {}".format(name, iso_date, num_instruments, num_drums))
+    # print("{}: {}, {} + {}".format(name, iso_date, num_instruments, num_drums))
 
     drum_base_addr, = struct.unpack(">I", data[:4])
     drum_addrs = []
@@ -280,7 +280,7 @@ def parse_ctl(header, data, sample_bank, index):
     insts = []
     for inst_addr in inst_addrs:
         insts.append(parse_inst(data[inst_addr : inst_addr + 32], inst_addr))
-
+    
     drums = []
     for drum_addr in drum_addrs:
         drums.append(parse_drum(data[drum_addr : drum_addr + 16], drum_addr))
@@ -560,11 +560,19 @@ def main():
     need_help = False
     only_samples = False
     only_samples_list = []
-    for a in sys.argv[1:]:
+    shindou_headers = None
+    skip_next = 0
+    for i, a in enumerate(sys.argv[1:], 1):
+        if skip_next > 0:
+            skip_next -= 1
+            continue
         if a == "--help" or a == "-h":
             need_help = True
         elif a == "--only-samples":
             only_samples = True
+        elif a == "--shindou-headers":
+            shindou_headers = sys.argv[i + 1 : i + 5]
+            skip_next = 4
         elif a.startswith("-"):
             print("Unrecognized option " + a)
             sys.exit(1)
@@ -573,22 +581,40 @@ def main():
         else:
             args.append(a)
 
-    expected_num_args = 2 if only_samples else 4
-    if need_help or len(args) != expected_num_args:
+    expected_num_args = 5 + (0 if only_samples else 2)
+    if (
+        need_help
+        or len(args) != expected_num_args
+        or (shindou_headers and len(shindou_headers) != 4)
+    ):
         print(
             "Usage: {}"
-            " <.ctl file> <.tbl file>"
+            " <.z64 rom> <ctl offset> <ctl size> <tbl offset> <tbl size>"
+            " [--shindou-headers <ctl header offset> <ctl header size>"
+            " <tbl header offset> <tbl header size>]"
             " (<samples outdir> <sound bank outdir> |"
             " --only-samples file:index ...)".format(sys.argv[0])
         )
         sys.exit(0 if need_help else 1)
 
-    ctl_data = open(args[0], "rb").read()
-    tbl_data = open(args[1], "rb").read()
+    rom_file = open(args[0], "rb")
+
+    def read_at(offset, size):
+        rom_file.seek(int(offset))
+        return rom_file.read(int(size))
+
+    ctl_data = read_at(args[1], args[2])
+    tbl_data = read_at(args[3], args[4])
+
+    ctl_header_data = None
+    tbl_header_data = None
+    if shindou_headers:
+        ctl_header_data = read_at(shindou_headers[0], shindou_headers[1])
+        tbl_header_data = read_at(shindou_headers[2], shindou_headers[3])
 
     if not only_samples:
-        samples_out_dir = args[2]
-        banks_out_dir = args[3]
+        samples_out_dir = args[5]
+        banks_out_dir = args[6]
 
     ctl_entries = parse_seqfile(ctl_data, TYPE_CTL)
     tbl_entries = parse_seqfile(tbl_data, TYPE_TBL)
@@ -601,7 +627,6 @@ def main():
         ctl_entries, tbls, range(len(ctl_entries))
     ):
         sample_bank = sample_bank_map[sample_bank_name]
-        print(offset, length)
         entry = ctl_data[offset : offset + length]
         banks.append(parse_ctl(entry[:16], entry[16:], sample_bank, index))
 
@@ -625,7 +650,11 @@ def main():
                     if dir not in created_dirs:
                         os.makedirs(dir, exist_ok=True)
                         created_dirs.add(dir)
-                    write_aiff(entry, filename)
+                    if filename.endswith("aifc"):
+                        with open(filename, "wb") as f:
+                            write_aifc(entry, f)
+                    else:
+                        write_aiff(entry, filename)
         return
 
     # Generate aiff files

@@ -115,7 +115,7 @@ def main():
                 block_offset = None
             elif pos[0] == "@sound":
                 rom_offset = pos[0]
-                block_offset = None
+                block_offset = pos[1]
             else:
                 rom_offset = int(pos[0], 0)
                 block_offset = int(pos[1], 0)
@@ -161,8 +161,8 @@ def main():
                 asset = asset_map["@sound " + key + " " + sound_ver]
                 offset = asset["offsets"][lang][0]
                 size = asset["meta"]["size"]
-                args.append(offset)
-                args.append(size)
+                args.append(str(int(offset, 16)))
+                args.append(str(int(size, 16)))
             append_args("ctl")
             append_args("tbl")
             if lang in ("sh", "cn"):
