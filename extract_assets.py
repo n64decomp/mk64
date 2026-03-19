@@ -47,7 +47,7 @@ def clean_assets(local_asset_file):
 def main():
     # In case we ever need to change formats of generated files, we keep a
     # revision ID in the local asset file.
-    new_version = 1
+    new_version = 7
 
     try:
         local_asset_file = open(".assets-local.txt")
@@ -113,6 +113,9 @@ def main():
             if len(pos) == 1:
                 rom_offset = None
                 block_offset = None
+            elif pos[0] == "@sound":
+                rom_offset = pos[0]
+                block_offset = pos[1]
             else:
                 rom_offset = int(pos[0], 0)
                 block_offset = int(pos[1], 0)
@@ -145,6 +148,33 @@ def main():
     for key in keys:
         assets = todo[key]
         lang, rom_offset = key
+
+        if rom_offset == "@sound":
+            rom = roms[lang]
+            args = [
+                "python3",
+                "tools/disassemble_sound.py",
+                "baserom." + lang + ".z64",
+            ]
+            def append_args(key):
+                sound_ver = "sh" if lang == "cn" else lang
+                asset = asset_map["@sound " + key + " " + sound_ver]
+                offset = asset["offsets"][lang][0]
+                size = asset["meta"]["size"]
+                args.append(str(int(offset, 16)))
+                args.append(str(int(size, 16)))
+            append_args("ctl")
+            append_args("tbl")
+            if lang in ("sh", "cn"):
+                args.append("--shindou-headers")
+                append_args("ctl header")
+                append_args("tbl header")
+            args.append("--only-samples")
+            for (asset, pos, meta) in assets:
+                print("extracting", asset)
+                args.append(asset + ":" + str(pos))
+            subprocess.run(args, check=True)
+            continue
 
         if rom_offset is not None:
             magic = roms[lang][rom_offset:rom_offset + 4]
