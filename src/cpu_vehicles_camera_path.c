@@ -3508,19 +3508,20 @@ void func_80019B50(s32 cameraIndex, u16 arg1) {
     D_801646C0[cameraIndex] = (s16) var_v0;
 }
 
+// plays respective camera zoom in/out sound; sounds have been disabled
 void func_80019C50(s32 playerIndex) {
     switch (D_80164678[playerIndex]) {
         case 0:
             if (D_80164608[playerIndex] == 1) {
                 D_80164678[playerIndex] = 1;
-                func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x4F));
+                // func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x4F));
                 D_80164670[playerIndex] = D_80164678[playerIndex];
             }
             break;
         case 1:
             if (D_80164608[playerIndex] == 1) {
                 D_80164678[playerIndex] = 0;
-                func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x50));
+                // func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x50));
                 D_80164670[playerIndex] = D_80164678[playerIndex];
             }
             break;
@@ -3615,6 +3616,7 @@ void func_80019FB4(s32 cameraId) {
     }
 }
 
+// calls functions that zoom in/out camera, playing sound
 void func_8001A0A4(UNUSED u16* arg0, UNUSED Camera* arg1, UNUSED Player* arg2, UNUSED s8 arg3, s32 arg4) {
     func_80019FB4(arg4);
     func_80019C50(arg4);
