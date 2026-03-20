@@ -1559,7 +1559,8 @@ void func_8005A3C0(void) {
                 break;
         }
         if (b) {
-            func_8006F824(1);
+            // this the sound for the progress view toggle
+            // func_8006F824(1);
         }
     }
 }
