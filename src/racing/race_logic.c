@@ -819,6 +819,7 @@ void func_8028F914(void) {
 
 void func_8028F970(void) {
     s32 i;
+    static u16 sPauseHoldCounter[4];
 
     if (D_8015F890) {
         return;
@@ -849,13 +850,15 @@ void func_8028F970(void) {
                 func_800029B0();
             }
         }
-        if ((controller->buttonPressed & START_BUTTON) && (!(controller->button & R_TRIG)) &&
-            (!(controller->button & L_TRIG))) {
+        // pausing is gated by sPauseHoldCounter, which increments every frame player i holds start
+        if ((controller->button & START_BUTTON) && (!(controller->button & R_TRIG)) &&
+            (!(controller->button & L_TRIG)) && (sPauseHoldCounter[i] >= 60)) {
             func_8028DF00();
             gIsGamePaused = (controller - gControllerOne) + 1;
             controller->buttonPressed = 0;
             func_800C9F90(1);
             gPauseTriggered = 1;
+            sPauseHoldCounter[i] = 0;
             if (gModeSelection == TIME_TRIALS) {
                 if (gPlayerOne->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
                     func_80005AE8(gPlayerOne);
@@ -868,6 +871,15 @@ void func_8028F970(void) {
                 }
             }
             return;
+        }
+        // increment pause counter for player i
+        if ((controller->button & START_BUTTON) && (!(controller->button & R_TRIG)) &&
+            (!(controller->button & L_TRIG)) && (sPauseHoldCounter[i] < 60)) {
+            ++sPauseHoldCounter[i];
+        }
+        // reset pause counter if player i is not holding down start
+        if (!(controller->button & START_BUTTON)) {
+            sPauseHoldCounter[i] = 0;
         }
     }
 
