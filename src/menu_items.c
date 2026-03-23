@@ -2410,12 +2410,12 @@ void setup_menus(void) {
                 add_menu_item(MENU_ITEM_TYPE_0D9, 0, 0, MENU_ITEM_PRIORITY_A);
                 break;
             case START_MENU:
-                // maybe remove background from start menu
-                // add_menu_item(MENU_ITEM_UI_LOGO_AND_COPYRIGHT, 0, 0, MENU_ITEM_PRIORITY_4);
-                // add_menu_item(MENU_ITEM_UI_START_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_0);
-                // add_menu_item(START_MENU_FLAG, 0, 0, MENU_ITEM_PRIORITY_0);
+                // comment to remove background from start menu
+                add_menu_item(MENU_ITEM_UI_LOGO_AND_COPYRIGHT, 0, 0, MENU_ITEM_PRIORITY_4);
+                add_menu_item(MENU_ITEM_UI_START_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_0);
+                add_menu_item(START_MENU_FLAG, 0, 0, MENU_ITEM_PRIORITY_0);
                 if (gControllerBits & 1) {
-                    add_menu_item(MENU_ITEM_UI_PUSH_START_BUTTON, 0, 0, MENU_ITEM_PRIORITY_2);
+                    // add_menu_item(MENU_ITEM_UI_PUSH_START_BUTTON, 0, 0, MENU_ITEM_PRIORITY_2);
                 } else {
                     add_menu_item(MENU_ITEM_UI_NO_CONTROLLER, 0, 0, MENU_ITEM_PRIORITY_2);
                 }
@@ -5839,8 +5839,8 @@ void render_custom_overlay(void) {
 
     set_text_color(TEXT_YELLOW);
 
-    // title (centered) - smaller
-    print_text1_center_mode_1(x, y - 0x30, "WEATHERTON  ABNEY  CLIMATEE", 0, 0.80f, 0.80f);
+    // title (centered)
+    print_text1_center_mode_1(x, y - 0x30, "WEATHERTON  ABNEY  CLIMATEE  ZSERF", 0, 0.80f, 0.80f);
 
     // /* use debug font helper */
     // x1 = 0;
@@ -5848,7 +5848,7 @@ void render_custom_overlay(void) {
     // func_800579B8(x1, y1, "WEATHERTON  ABNEY  CLIMATEE");
 
     // version / date (smaller) - left-aligned to start under 'KART'
-    print_text1_left(x + 0x5A, y + 0x06, "TE V2026-02-22", 0, 0.65f, 0.65f);
+    print_text1_left(x + 0x5A, y + 0x06, "TE V2026-03-23", 0, 0.65f, 0.65f);
 
     // option name placeholders (second column) and values (third column)
     for (i = 0; i < CUSTOM_MENU_ROWS; i++) {
@@ -5871,6 +5871,7 @@ void render_custom_overlay(void) {
 
         /* second column: option name (single line) */
         if (customModifierNames[i][0] != '\0') {
+            text_rainbow_effect(gCustomMenuSelection, i, TEXT_YELLOW);
             print_text_mode_1(x - 0x30, rowY, (char*)customModifierNames[i], 0, 0.6f, 0.6f);
         } else {
             /* Build "Modifier N" manually to avoid linking snprintf */
@@ -5889,6 +5890,7 @@ void render_custom_overlay(void) {
             }
             nameBuf[pos] = '\0';
             // default case i guess
+            text_rainbow_effect(gCustomMenuSelection, i, TEXT_YELLOW);
             print_text_mode_1(x - 0x30, rowY, nameBuf, 0, 0.6f, 0.6f);
         }
 
@@ -6085,6 +6087,12 @@ void render_menus(MenuItem* arg0) {
                 render_game_logo((arg0->column + 0xA0), (arg0->row + 0x47));
                 gDisplayListHead =
                     render_menu_textures(gDisplayListHead, seg2_copyright_1996_texture, arg0->column, arg0->row);
+                // Full-screen dimmer (black with alpha)
+                gDisplayListHead = draw_box(
+                                   gDisplayListHead,
+                                   0, 0, 320, 240,
+                                   0, 0, 0, 120
+                );
                 break;
             case MENU_ITEM_UI_PUSH_START_BUTTON: /* switch 6 */
                 if (((gGlobalTimer / 8) % 3) != 0) {
