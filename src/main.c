@@ -754,7 +754,7 @@ void race_logic_loop(void) {
                     case COURSE_MOO_MOO_FARM:
                     case COURSE_SKYSCRAPER:
                     case COURSE_DK_JUNGLE:
-                        gTickSpeed = 3;
+                        gTickSpeed = 3; // change to 2 for emu
                         break;
                     default:
                         gTickSpeed = 2;
@@ -769,10 +769,10 @@ void race_logic_loop(void) {
                         gTickSpeed = 2;
                         break;
                     case COURSE_DK_JUNGLE:
-                        gTickSpeed = 4;
+                        gTickSpeed = 4; // change to 2 for emu
                         break;
                     default:
-                        gTickSpeed = 3;
+                        gTickSpeed = 3; // change to 2 for emu
                         break;
                 }
             }
