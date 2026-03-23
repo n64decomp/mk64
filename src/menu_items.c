@@ -5808,34 +5808,34 @@ void render_custom_overlay(void) {
     /* Menu items; if an entry is empty, fallback to "Modifier N" */
     static const char* customModifierNames[CUSTOM_MENU_ROWS] = {
         "tracks",
+        "stats",
         "scaling",
         "widescreen",
         "mp music",
-        "mp train",
-        "mp boat",
-        "",
+        "mp train boat",
+        "AA",
+        "shell limit",
         "vs timer",
-        "stats",
-        "",
-        "tie logic",
-        "mirror",
-        "" /* keep last empty if CUSTOM_MENU_ROWS > 12 */
+        "trophy",
+        "practice",
+        "extra",
+        "reverse" /* keep last empty if CUSTOM_MENU_ROWS > 12 */
     };
 
     /* per-option label arrays */
     static const char* tracks_labels[] = {"VA", "kalliera", "kalliera mmf"};
+    static const char* stats_labels[] = {"all yoshi", "default"};
     static const char* scaling_labels[] = {"default", "30fps", "60fps"};
     static const char* widescreen_labels[] = {"default", "enabled"};
     static const char* mpMusic_labels[] = {"default", "enabled"};
-    static const char* mpTrain_labels[] = {"default", "full"};
-    static const char* mpBoat_labels[] = {"default", "enabled"};
-    static const char* opt6_labels[] = {"1"};
+    static const char* mpTrainBoat_labels[] = {"default", "enabled", "train", "boat"};
+    static const char* AA_labels[] = {"default", "disabled"};
+    static const char* shell_labels[] = {"default", "100"};
     static const char* timer_labels[] = {"default", "enabled"};
-    static const char* stats_labels[] = {"all yoshi", "default"};
-    static const char* opt10_labels[] = {"1"};
-    static const char* tieLogic_labels[] = {"timer", "port"};
-    static const char* mirror_labels[] = {"default", "enabled"};
-    static const char* opt13_labels[] = {"1"};
+    static const char* trophy_labels[] = {"default", "enabled"};
+    static const char* practice_labels[] = {"default", "enabled"};
+    static const char* extra_labels[] = {"default", "enabled"};
+    static const char* reverse_labels[] = {"default", "enabled"};
 
     set_text_color(TEXT_YELLOW);
 
@@ -5863,7 +5863,6 @@ void render_custom_overlay(void) {
             cursorItem.paramf = 2.0f;      /* start scale/rotation multiplier */
             cursorItem.subState = 1;       /* small non-zero rotation driver */
             func_800A66A8(&cursorItem, &sp84);
-            //print_text_mode_1(x - 0x40, rowY, "X", 0, 0.6f, 0.6f);
         } else {
             /* draw empty space to keep alignment */
             print_text1_left(x - 0x30, rowY, " ", 0, 0.6f, 0.6f);
@@ -5891,7 +5890,7 @@ void render_custom_overlay(void) {
             nameBuf[pos] = '\0';
             // default case i guess
             text_rainbow_effect(gCustomMenuSelection, i, TEXT_YELLOW);
-            print_text_mode_1(x - 0x30, rowY, nameBuf, 0, 0.6f, 0.6f);
+            print_text_mode_1(x - 0x20, rowY, nameBuf, 0, 0.6f, 0.6f);
         }
 
         /* third column: current value for this row */
@@ -5901,92 +5900,92 @@ void render_custom_overlay(void) {
             idx = gCustomMenuOptionValues[i];
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(tracks_labels) / sizeof(tracks_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)tracks_labels[idx], 0, 0.6f, 0.6f);
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)tracks_labels[idx], 0, 0.6f, 0.6f);
             gTournamentCourseMode = idx; // set track order
             break;
         case 1:
-            /* scaling: labels (default, 30fps, 60fps) */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(scaling_labels) / sizeof(scaling_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)scaling_labels[idx], 0, 0.6f, 0.6f);
-            break;
-        case 2:
-            /* widescreen: labels (default, enabled) */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(widescreen_labels) / sizeof(widescreen_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)widescreen_labels[idx], 0, 0.6f, 0.6f);
-            break;
-        case 3:
-            /* mp music: labels (default, enabled) */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(mpMusic_labels) / sizeof(mpMusic_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)mpMusic_labels[idx], 0, 0.6f, 0.6f);
-            break;
-        case 4:
-            /* mp train: labels (default, full) */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(mpTrain_labels) / sizeof(mpTrain_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)mpTrain_labels[idx], 0, 0.6f, 0.6f);
-            break;
-        case 5:
-            /* mp boat: labels (default, enabled) */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(mpBoat_labels) / sizeof(mpBoat_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)mpBoat_labels[idx], 0, 0.6f, 0.6f);
-            break;
-        case 6:
-            /*  */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(opt6_labels) / sizeof(opt6_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)opt6_labels[idx], 0, 0.6f, 0.6f);
-            break;
-        case 7:
-            /* vs timer: labels (default, enabled) */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(timer_labels) / sizeof(timer_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)timer_labels[idx], 0, 0.6f, 0.6f);
-            break;
-        case 8:
             /* stats: labels (default, all yoshi) */
             idx = gCustomMenuOptionValues[i];
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(stats_labels) / sizeof(stats_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)stats_labels[idx], 0, 0.6f, 0.6f);
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)stats_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 2:
+            /* scaling: labels (default, 30fps, 60fps) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(scaling_labels) / sizeof(scaling_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)scaling_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 3:
+            /* widescreen: labels (default, enabled) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(widescreen_labels) / sizeof(widescreen_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)widescreen_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 4:
+            /* mp music: labels (default, enabled) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(mpMusic_labels) / sizeof(mpMusic_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)mpMusic_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 5:
+            /* mp train boat: labels (default, both, train, boat) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(mpTrainBoat_labels) / sizeof(mpTrainBoat_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)mpTrainBoat_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 6:
+            /* AA */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(AA_labels) / sizeof(AA_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)AA_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 7:
+            /* shell limit: labels (default, 100) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(shell_labels) / sizeof(shell_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)shell_labels[idx], 0, 0.6f, 0.6f);
+            break;
+        case 8:
+            /* vs timer: labels (default, enabled) */
+            idx = gCustomMenuOptionValues[i];
+            if (idx < 0) idx = 0;
+            if (idx >= (int)(sizeof(timer_labels) / sizeof(timer_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)timer_labels[idx], 0, 0.6f, 0.6f);
             break;
         case 9:
-            /* */
+            /* trophy ceremony: labels (default, enabled) */
             idx = gCustomMenuOptionValues[i];
             if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(opt10_labels) / sizeof(opt10_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)opt10_labels[idx], 0, 0.6f, 0.6f);
+            if (idx >= (int)(sizeof(trophy_labels) / sizeof(trophy_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)trophy_labels[idx], 0, 0.6f, 0.6f);
             break;    
         case 10:
-            /* tie logic: labels (timer, port) */
+            /* practice mode: labels (default, enabled) */
             idx = gCustomMenuOptionValues[i];
             if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(tieLogic_labels) / sizeof(tieLogic_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)tieLogic_labels[idx], 0, 0.6f, 0.6f);
+            if (idx >= (int)(sizeof(practice_labels) / sizeof(practice_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)practice_labels[idx], 0, 0.6f, 0.6f);
             break;
         case 11:
-            /* mirror: labels (default, enabled) */
+            /* extra: labels (default, enabled) */
             idx = gCustomMenuOptionValues[i];
             if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(mirror_labels) / sizeof(mirror_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)mirror_labels[idx], 0, 0.6f, 0.6f);
+            if (idx >= (int)(sizeof(extra_labels) / sizeof(extra_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)extra_labels[idx], 0, 0.6f, 0.6f);
             break;
         case 12:
-            /* */
+            /* reverse: labels (default, enabled) */
             idx = gCustomMenuOptionValues[i];
             if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(opt13_labels) / sizeof(opt13_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x40, rowY, (char*)opt13_labels[idx], 0, 0.6f, 0.6f);
+            if (idx >= (int)(sizeof(reverse_labels) / sizeof(reverse_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)reverse_labels[idx], 0, 0.6f, 0.6f);
             break;  
         }
     }

@@ -247,7 +247,9 @@ s8 gCustomMenuSelection = 0;
 s8 gCustomMenuOptionValues[CUSTOM_MENU_ROWS] = { 0 };
 
 // Per-row number of selectable values (matches label arrays in render_custom_overlay)
-static const s8 gCustomMenuValueCounts[CUSTOM_MENU_ROWS] = { 3, 3, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 1 };
+// tracks, stats, scaling, widescreen, mp music, mp train boat, AA, shell limit,
+// vs timer, trophy, practice, extra, reverse
+static const s8 gCustomMenuValueCounts[CUSTOM_MENU_ROWS] = { 3, 2, 3, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2 };
 
 // end of new var init
 
@@ -1146,7 +1148,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if (gCustomMenuSelection == 0) {
                     gOptions.tracks = (gCustomMenuOptionValues[0] == 2) ? TRACKS_RANDOM : TRACKS_DEFAULT;
                 }
-                play_sound2(SOUND_MENU_OK);
+                play_sound2(SOUND_MENU_SELECT);
             }
             // go backwards one if press left dpad and not at first index
             else if (btnAndStick & L_JPAD && (gCustomMenuOptionValues[gCustomMenuSelection] != 0) ) {
@@ -1155,7 +1157,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if (gCustomMenuSelection == 0) {
                     gOptions.tracks = (gCustomMenuOptionValues[0] == 2) ? TRACKS_RANDOM : TRACKS_DEFAULT;
                 }
-                play_sound2(SOUND_MENU_OK);
+                play_sound2(SOUND_MENU_SELECT);
             }
             // go to end if press left dpad at first index
             else if (btnAndStick & L_JPAD && (gCustomMenuOptionValues[gCustomMenuSelection] == 0) ) {
@@ -1165,7 +1167,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if (gCustomMenuSelection == 0) {
                     gOptions.tracks = (gCustomMenuOptionValues[0] == 2) ? TRACKS_RANDOM : TRACKS_DEFAULT;
                 }
-                play_sound2(SOUND_MENU_OK);
+                play_sound2(SOUND_MENU_SELECT);
             }
         }
         switch (gDebugMenuSelection) {
