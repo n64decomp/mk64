@@ -358,8 +358,20 @@ s8 gCupSelectionByCourseId[] = {
 #include "assets/course_metadata/gCupSelectionByCourseId.inc.c"
 };
 
-// Tournament course sequence mode: 0 = VA, 1 = KA, 2 = KA_MMF
 s8 gTournamentCourseMode = 0;
+s8 gTournamentCharacterStats = 0;
+s8 gTournamentScaling = 0;
+s8 gTournamentWidescreen = 0;
+s8 gTournamentMusic = 0;
+s8 gTournamentTrainBoat = 0;
+s8 gTournamentAA = 0;
+s8 gTournamentShellLimit = 0;
+s8 gTournamentTimer = 0;
+s8 gTournamentTrophy = 0;
+s8 gPracticeMode = 0;
+s8 gTournamentExtraMode = 0;
+s8 gTournamentReverseMode = 0;
+
 
 // Course name abbreviations for each tournament mode
 char* gCourseNamesVA[] = {
@@ -5909,6 +5921,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(stats_labels) / sizeof(stats_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)stats_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentCharacterStats = idx;
             break;
         case 2:
             /* scaling: labels (default, 30fps, 60fps) */
@@ -5916,6 +5929,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(scaling_labels) / sizeof(scaling_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)scaling_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentScaling = idx;
             break;
         case 3:
             /* widescreen: labels (default, enabled) */
@@ -5923,6 +5937,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(widescreen_labels) / sizeof(widescreen_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)widescreen_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentWidescreen = idx;
             break;
         case 4:
             /* mp music: labels (default, enabled) */
@@ -5930,6 +5945,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(mpMusic_labels) / sizeof(mpMusic_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)mpMusic_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentMusic = idx;
             break;
         case 5:
             /* mp train boat: labels (default, both, train, boat) */
@@ -5937,6 +5953,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(mpTrainBoat_labels) / sizeof(mpTrainBoat_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)mpTrainBoat_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentTrainBoat = idx;
             break;
         case 6:
             /* AA */
@@ -5944,6 +5961,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(AA_labels) / sizeof(AA_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)AA_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentAA = idx;
             break;
         case 7:
             /* shell limit: labels (default, 100) */
@@ -5951,6 +5969,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(shell_labels) / sizeof(shell_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)shell_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentShellLimit = idx;
             break;
         case 8:
             /* vs timer: labels (default, enabled) */
@@ -5958,6 +5977,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(timer_labels) / sizeof(timer_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)timer_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentTimer = idx;
             break;
         case 9:
             /* trophy ceremony: labels (default, enabled) */
@@ -5965,6 +5985,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(trophy_labels) / sizeof(trophy_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)trophy_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentTrophy = idx;
             break;    
         case 10:
             /* practice mode: labels (default, enabled) */
@@ -5972,6 +5993,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(practice_labels) / sizeof(practice_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)practice_labels[idx], 0, 0.6f, 0.6f);
+            gPracticeMode = idx;
             break;
         case 11:
             /* extra: labels (default, enabled) */
@@ -5979,6 +6001,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(extra_labels) / sizeof(extra_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)extra_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentExtraMode = idx;
             break;
         case 12:
             /* reverse: labels (default, enabled) */
@@ -5986,6 +6009,7 @@ void render_custom_overlay(void) {
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(reverse_labels) / sizeof(reverse_labels[0]))) idx = 0;
             print_text1_center_mode_1(x + 0x50, rowY, (char*)reverse_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentReverseMode = idx;
             break;  
         }
     }

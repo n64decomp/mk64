@@ -469,7 +469,13 @@ void display_and_vsync(void) {
     osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     osViSwapBuffer((void*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
     profiler_log_thread5_time(THREAD5_END);
-    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+
+    // Keep original 30 FPS sync outside of race gameplay (menus/credits/etc).
+    // Only skip the second vblank during racing when 60 FPS mode is selected.
+    if (!(gTournamentScaling == 2 && gGamestate == RACING)) {
+        osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+    }
+
     crash_screen_set_framebuffer(gPhysicalFramebuffers[sRenderedFramebuffer]);
 
     if (++sRenderedFramebuffer == 3) {
@@ -478,6 +484,7 @@ void display_and_vsync(void) {
     if (++sRenderingFramebuffer == 3) {
         sRenderingFramebuffer = 0;
     }
+
     gGlobalTimer++;
 }
 
@@ -598,7 +605,14 @@ void race_logic_loop(void) {
 
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
+        // 60fps 
+        if (gTournamentScaling == 2) {
+            gTickSpeed = 1;
+        }
+        // 30fps
+        else {
             gTickSpeed = 2;
+        }
             replays_loop();
             if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
@@ -657,11 +671,22 @@ void race_logic_loop(void) {
             break;
 
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+        // default
+        if (gTournamentScaling == 0) {
             if (gCurrentCourseId == COURSE_DK_JUNGLE) {
                 gTickSpeed = 3;
             } else {
                 gTickSpeed = 2;
             }
+        }
+        // 30 fps no lag
+        else if (gTournamentScaling == 1) {
+                gTickSpeed = 2;
+        }
+        // 60 fps
+        else if (gTournamentScaling == 2) {
+                gTickSpeed = 1;
+        }
             if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E != 0) {
@@ -702,11 +727,22 @@ void race_logic_loop(void) {
 
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
 
+        // default
+        if (gTournamentScaling == 0) {
             if (gCurrentCourseId == COURSE_DK_JUNGLE) {
                 gTickSpeed = 3;
             } else {
                 gTickSpeed = 2;
             }
+        }
+        // 30 fps no lag
+        else if (gTournamentScaling == 1) {
+                gTickSpeed = 2;
+        }
+        // 60 fps
+        else if (gTournamentScaling == 2) {
+                gTickSpeed = 1;
+        }
 
             if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
@@ -754,11 +790,37 @@ void race_logic_loop(void) {
                     case COURSE_MOO_MOO_FARM:
                     case COURSE_SKYSCRAPER:
                     case COURSE_DK_JUNGLE:
-                        gTickSpeed = 3; // change to 2 for emu
-                        break;
-                    default:
+                    // 30 fps scaling (no lag)
+                    if (gTournamentScaling == 1) {
                         gTickSpeed = 2;
                         break;
+                    }
+                    // default scaling
+                    else if (gTournamentScaling == 0) {
+                        gTickSpeed = 3;
+                        break;
+                    }
+                    else if (gTournamentScaling == 2) {
+                        gTickSpeed = 1;
+                        break;     
+                    }
+                    default:
+                    // 30 fps scaling (no lag)
+                    if (gTournamentScaling == 1) {
+                        gTickSpeed = 2;
+                        break;
+                    }
+                    // default
+                    else if (gTournamentScaling == 0) {
+                        gTickSpeed = 2;
+                        break;
+                    }
+                    // 60fps
+                    else if (gTournamentScaling == 2) {
+                        gTickSpeed = 1;
+                        break;
+                    }
+
                 }
             } else {
                 // Four players
@@ -766,14 +828,46 @@ void race_logic_loop(void) {
                     case COURSE_BLOCK_FORT:
                     case COURSE_DOUBLE_DECK:
                     case COURSE_BIG_DONUT:
+                    if (gTournamentScaling == 2) {
+                        gTickSpeed = 1;
+                        break;
+                    }
+                    else {
                         gTickSpeed = 2;
                         break;
+                    }
                     case COURSE_DK_JUNGLE:
-                        gTickSpeed = 4; // change to 2 for emu
-                        break;
+                        // 30 fps scaling (no lag)
+                        if (gTournamentScaling == 1) {
+                            gTickSpeed = 2;
+                            break;
+                        }
+                        // default scaling
+                        else if (gTournamentScaling == 0) {
+                            gTickSpeed = 4;
+                            break;
+                        }
+                        // 60 fps 
+                        else if (gTournamentScaling == 2) {
+                            gTickSpeed = 1;
+                            break;     
+                        }
                     default:
-                        gTickSpeed = 3; // change to 2 for emu
-                        break;
+                        // 30 fps scaling (no lag)
+                        if (gTournamentScaling == 1) {
+                            gTickSpeed = 2;
+                            break;
+                        }
+                        // default scaling
+                        else if (gTournamentScaling == 0) {
+                            gTickSpeed = 3; 
+                            break;
+                        }
+                        // 60 fps
+                        else if (gTournamentScaling == 2) {
+                            gTickSpeed = 1; 
+                            break;     
+                        }
                 }
             }
             if (gIsGamePaused == 0) {

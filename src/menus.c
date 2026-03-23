@@ -1111,7 +1111,7 @@ void controller_pak_menu_act(struct Controller* controller, UNUSED u16 controlle
 
 /**
  * Navigation of the main splash start screen menu
- * Also handles debug menu options
+ * Also handles debug menu options and custom menu
  */
 void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
     u16 btnAndStick;
