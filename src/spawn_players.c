@@ -77,39 +77,39 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
                   u16 characterId, s16 playerType) {
     f32 ret;
     s8 idx;
+    s32 statsCharacterId;
+    s32 statsCCIndex;
 
     player->type = PLAYER_INACTIVE;
     player->unk_08C = 0;
     player->characterId = characterId;
     player->unk_0B6 = 0;
-    player->kartFriction = gKartFrictionTable[player->characterId];
-    player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
-    player->kartGravity = gKartGravityTable[player->characterId];
+    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : player->characterId;
+    player->kartFriction = gKartFrictionTable[statsCharacterId];
+    player->boundingBoxSize = gKartBoundingBoxSizeTable[statsCharacterId];
+    player->kartGravity = gKartGravityTable[statsCharacterId];
 
     switch (gModeSelection) {
         case GRAND_PRIX:
         case VERSUS:
-            player->unk_084 = D_800E2400[gCCSelection][player->characterId];
-            player->unk_088 = D_800E24B4[gCCSelection][player->characterId];
-            player->unk_210 = D_800E2568[gCCSelection][player->characterId];
-            player->topSpeed = gTopSpeedTable[gCCSelection][player->characterId];
+            statsCCIndex = gCCSelection;
             break;
-
         // Uses 100CC values
         case TIME_TRIALS:
-            player->unk_084 = D_800E2400[CC_100][player->characterId];
-            player->unk_088 = D_800E24B4[CC_100][player->characterId];
-            player->unk_210 = D_800E2568[CC_100][player->characterId];
-            player->topSpeed = gTopSpeedTable[CC_100][player->characterId];
+            statsCCIndex = CC_100;
             break;
-
         case BATTLE:
-            player->unk_084 = D_800E2400[CC_BATTLE][player->characterId];
-            player->unk_088 = D_800E24B4[CC_BATTLE][player->characterId];
-            player->unk_210 = D_800E2568[CC_BATTLE][player->characterId];
-            player->topSpeed = gTopSpeedTable[CC_BATTLE][player->characterId];
+            statsCCIndex = CC_BATTLE;
+            break;
+        default:
+            statsCCIndex = CC_100;
             break;
     }
+
+    player->unk_084 = D_800E2400[statsCCIndex][statsCharacterId];
+    player->unk_088 = D_800E24B4[statsCCIndex][statsCharacterId];
+    player->unk_210 = D_800E2568[statsCCIndex][statsCharacterId];
+    player->topSpeed = gTopSpeedTable[statsCCIndex][statsCharacterId];
 
     player->pos[0] = startingRow;
     ret = get_surface_height(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;

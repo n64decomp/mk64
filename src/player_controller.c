@@ -21,6 +21,9 @@
 #include "code_80057C60.h"
 #include "cpu_vehicles_camera_path.h"
 #include "sounds.h"
+#include "menu_items.h"
+
+#define PLAYER_STATS_CHARACTER_ID(player) ((gTournamentCharacterStats == 0) ? YOSHI : (player)->characterId)
 
 extern s32 D_8018D168;
 
@@ -1181,9 +1184,9 @@ void func_8002A8A4(Player* player, s8 playerIndex) {
 }
 
 void kart_hop(Player* player) {
-    player->kartHopJerk = gKartHopJerkTable[player->characterId];
+    player->kartHopJerk = gKartHopJerkTable[PLAYER_STATS_CHARACTER_ID(player)];
     player->kartHopAcceleration = 0.0f;
-    player->kartHopVelocity = gKartHopInitialVelocityTable[player->characterId];
+    player->kartHopVelocity = gKartHopInitialVelocityTable[PLAYER_STATS_CHARACTER_ID(player)];
     player->effects |= HOP_EFFECT;
     player->unk_DAC = 3.0f;
     player->kartGravity = 500.0f;
@@ -1237,14 +1240,14 @@ void func_8002AB70(Player* player) {
             move_f32_towards(&player->kartGravity, 500.0f, 1.0f);
             move_f32_towards(&player->unk_DAC, 3.0f, 0.05f);
         } else {
-            move_f32_towards(&player->kartGravity, gKartGravityTable[player->characterId], 0.1f);
+            move_f32_towards(&player->kartGravity, gKartGravityTable[PLAYER_STATS_CHARACTER_ID(player)], 0.1f);
             move_f32_towards(&player->unk_DAC, 1.0f, 0.07f);
         }
     } else {
         if (player->collision.surfaceDistance[2] >= 50.0f) {
             player->unk_DAC = 2.0f;
         }
-        move_f32_towards(&player->kartGravity, gKartGravityTable[player->characterId], 0.02f);
+        move_f32_towards(&player->kartGravity, gKartGravityTable[PLAYER_STATS_CHARACTER_ID(player)], 0.02f);
         if ((player->effects & HOP_EFFECT) == HOP_EFFECT) {
             move_f32_towards(&player->unk_DAC, 1.0f, 0.07f);
         } else {
@@ -2382,12 +2385,12 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     gPlayerLastVelocity[playerId][1] = newVelocity[1];
     gPlayerLastVelocity[playerId][2] = newVelocity[2];
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-        if (gKartTopSpeedTable[player->characterId] < player->speed) {
-            temp = gKartTopSpeedTable[player->characterId] / player->speed;
+        if (gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)] < player->speed) {
+            temp = gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)] / player->speed;
             player->velocity[0] *= temp;
             player->velocity[1] *= temp;
             player->velocity[2] *= temp;
-            player->speed = gKartTopSpeedTable[player->characterId];
+            player->speed = gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)];
         }
     }
     if ((player->unk_044 & 1) == 1) {
@@ -2663,12 +2666,12 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     player->velocity[1] = newVelocity[1];
     player->velocity[2] = newVelocity[2];
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-        if (gKartTopSpeedTable[player->characterId] < player->speed) {
-            topSpeedMultiplier = gKartTopSpeedTable[player->characterId] / player->speed;
+        if (gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)] < player->speed) {
+            topSpeedMultiplier = gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)] / player->speed;
             player->velocity[0] *= topSpeedMultiplier;
             player->velocity[1] *= topSpeedMultiplier;
             player->velocity[2] *= topSpeedMultiplier;
-            player->speed = gKartTopSpeedTable[player->characterId];
+            player->speed = gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)];
         }
     }
     func_8002C4F8(player, playerId);
@@ -2741,12 +2744,12 @@ void control_cpu_movement(Player* player, UNUSED Camera* camera, s8 screenId, s8
     gPlayerLastVelocity[playerId][0] = newVelocity[0];
     gPlayerLastVelocity[playerId][1] = newVelocity[1];
     gPlayerLastVelocity[playerId][2] = newVelocity[2];
-    if (gKartTopSpeedTable[player->characterId] < player->speed) {
-        topSpeedMultiplier = gKartTopSpeedTable[player->characterId] / player->speed;
+    if (gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)] < player->speed) {
+        topSpeedMultiplier = gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)] / player->speed;
         player->velocity[0] *= topSpeedMultiplier;
         player->velocity[1] *= topSpeedMultiplier;
         player->velocity[2] *= topSpeedMultiplier;
-        player->speed = gKartTopSpeedTable[player->characterId];
+        player->speed = gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)];
     }
 }
 
@@ -2851,12 +2854,12 @@ void func_8002F730(Player* player, UNUSED Camera* camera, UNUSED s8 screenId, s8
     gPlayerLastVelocity[playerId][2] = newVelocity[2];
 
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-        if (gKartTopSpeedTable[player->characterId] < player->speed) {
-            topSpeedMultiplier = gKartTopSpeedTable[player->characterId] / player->speed;
+        if (gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)] < player->speed) {
+            topSpeedMultiplier = gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)] / player->speed;
             player->velocity[0] *= topSpeedMultiplier;
             player->velocity[1] *= topSpeedMultiplier;
             player->velocity[2] *= topSpeedMultiplier;
-            player->speed = gKartTopSpeedTable[player->characterId];
+            player->speed = gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)];
         }
     }
 }
@@ -2870,16 +2873,16 @@ void func_8002FCA8(Player* player, s8 playerIndex) {
     var_f0 = 0.0f;
     if ((player->effects & STAR_EFFECT) != STAR_EFFECT) {
         if ((s32) player->tyres[BACK_RIGHT].surfaceType < 0xF) {
-            var_f0 += D_800E2A90[player->characterId][player->tyres[BACK_RIGHT].surfaceType];
+            var_f0 += D_800E2A90[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_RIGHT].surfaceType];
         }
         if ((s32) player->tyres[BACK_LEFT].surfaceType < 0xF) {
-            var_f0 += D_800E2A90[player->characterId][player->tyres[BACK_LEFT].surfaceType];
+            var_f0 += D_800E2A90[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_LEFT].surfaceType];
         }
         if ((s32) player->tyres[FRONT_RIGHT].surfaceType < 0xF) {
-            var_f0 += D_800E2AB0[player->characterId][player->tyres[FRONT_RIGHT].surfaceType];
+            var_f0 += D_800E2AB0[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[FRONT_RIGHT].surfaceType];
         }
         if ((s32) player->tyres[FRONT_LEFT].surfaceType < 0xF) {
-            var_f0 += D_800E2AB0[player->characterId][player->tyres[FRONT_LEFT].surfaceType];
+            var_f0 += D_800E2AB0[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[FRONT_LEFT].surfaceType];
         }
     }
     if (D_801652C0[playerIndex] & 4) {
@@ -2932,12 +2935,12 @@ void func_8002FE84(Player* player, f32 arg1) {
     }
     player->unk_098 = arg1 * (1.0f - var_f0);
     if (player->tyres[BACK_RIGHT].surfaceType == GRASS) {
-        var_f0 += D_800E2E90[player->characterId][player->tyres[BACK_RIGHT].surfaceType] * 0.7;
+        var_f0 += D_800E2E90[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_RIGHT].surfaceType] * 0.7;
     }
     if (player->tyres[BACK_LEFT].surfaceType == GRASS) {
         // The unecessary "* 1.0" here is to force the compiler to save this 0.7 as a separate RO value from the 0.7
         // just above this comment
-        var_f0 += D_800E2E90[player->characterId][player->tyres[BACK_LEFT].surfaceType] * (0.7 * 1.0);
+        var_f0 += D_800E2E90[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_LEFT].surfaceType] * (0.7 * 1.0);
     }
     test = player->unk_0C0 / 182;
     if (test < 0) {
@@ -2966,19 +2969,19 @@ f32 func_80030150(Player* player, s8 playerIndex) {
                 // ???????
                 if (1) {}
             } else {
-                var_f0 += D_800E2E90[player->characterId][player->tyres[BACK_RIGHT].surfaceType];
+                var_f0 += D_800E2E90[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_RIGHT].surfaceType];
             }
 
             if ((s32) player->tyres[BACK_LEFT].surfaceType < 0xF) {
-                var_f0 += D_800E2E90[player->characterId][player->tyres[BACK_LEFT].surfaceType];
+                var_f0 += D_800E2E90[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_LEFT].surfaceType];
             }
 
             if ((s32) player->tyres[FRONT_RIGHT].surfaceType < 0xF) {
-                var_f0 += D_800E2EB0[player->characterId][player->tyres[FRONT_RIGHT].surfaceType];
+                var_f0 += D_800E2EB0[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[FRONT_RIGHT].surfaceType];
             }
 
             if ((s32) player->tyres[FRONT_LEFT].surfaceType < 0xF) {
-                var_f0 += D_800E2E90[player->characterId][player->tyres[FRONT_LEFT].surfaceType];
+                var_f0 += D_800E2E90[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[FRONT_LEFT].surfaceType];
             }
         }
         if (((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) && ((player->unk_0CA & 2) != 2)) {
@@ -3005,9 +3008,9 @@ f32 func_80030150(Player* player, s8 playerIndex) {
             } else {
                 var_v0 = (s16) player->unk_0C0 / 182;
                 if (var_v0 < 0) {
-                    var_f0 += -var_v0 * (0.01 + gKartTurnSpeedReductionTable0[player->characterId]);
+                    var_f0 += -var_v0 * (0.01 + gKartTurnSpeedReductionTable0[PLAYER_STATS_CHARACTER_ID(player)]);
                 } else {
-                    var_f0 += var_v0 * (0.01 + gKartTurnSpeedReductionTable0[player->characterId]);
+                    var_f0 += var_v0 * (0.01 + gKartTurnSpeedReductionTable0[PLAYER_STATS_CHARACTER_ID(player)]);
                 }
             }
             if (((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) && (player->unk_228 < 0xA)) {
@@ -3067,7 +3070,7 @@ f32 func_80030150(Player* player, s8 playerIndex) {
             move_f32_towards(&player->unk_0E4, 0.0f, 0.01f);
         }
     }
-    move_f32_towards(&player->unk_104, var_f0, gKartTurnSpeedReductionTable1[player->characterId] + 0.05);
+    move_f32_towards(&player->unk_104, var_f0, gKartTurnSpeedReductionTable1[PLAYER_STATS_CHARACTER_ID(player)] + 0.05);
     var_f2 = (player->unk_08C + player->unk_0E8 + player->boostPower + player->unk_0E4) - player->unk_0A0;
     if (var_f2 < 0.0f) {
         var_f2 = 0.0f;
@@ -3263,99 +3266,101 @@ void detect_triple_a_combo_a_pressed(Player* player) {
 
 void player_accelerate_alternative(Player* player) {
     s32 player_index;
+    s32 statsCharacterId;
 
     player_index = get_player_index_for_player(player);
+    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : player->characterId;
     if (gIsPlayerTripleAButtonCombo[player_index] == false) {
         if ((0.0 <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][0] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[statsCharacterId][0] + (0.05 * (player->slopeAccel / 182));
         }
         if (((player->topSpeed * 0.1) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.2))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][1] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[statsCharacterId][1] + (0.05 * (player->slopeAccel / 182));
         }
         if (((player->topSpeed * 0.2) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.3))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][2] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[statsCharacterId][2] + (0.05 * (player->slopeAccel / 182));
         }
         if (((player->topSpeed * 0.3) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.4))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][3] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[statsCharacterId][3] + (0.05 * (player->slopeAccel / 182));
         }
         if (((player->topSpeed * 0.4) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.5))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][4] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[statsCharacterId][4] + (0.05 * (player->slopeAccel / 182));
         }
         if (((player->topSpeed * 0.5) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.6))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][5] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[statsCharacterId][5] + (0.05 * (player->slopeAccel / 182));
         }
         if (((player->topSpeed * 0.6) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.7))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][6] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[statsCharacterId][6] + (0.05 * (player->slopeAccel / 182));
         }
         if (((player->topSpeed * 0.7) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.8))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][7] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[statsCharacterId][7] + (0.05 * (player->slopeAccel / 182));
         }
         if (((player->topSpeed * 0.8) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.9))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][8] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[statsCharacterId][8] + (0.05 * (player->slopeAccel / 182));
         }
         if (((player->topSpeed * 0.9) <= player->currentSpeed) && (player->currentSpeed <= (player->topSpeed * 1.0))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][9] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[statsCharacterId][9] + (0.05 * (player->slopeAccel / 182));
         }
     } else {
         if ((0.0 <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][0] + (0.05 * (player->slopeAccel / 182))) *
-                gKartTripleABoost[player->characterId];
+                (gKartAccelerationTables[statsCharacterId][0] + (0.05 * (player->slopeAccel / 182))) *
+                gKartTripleABoost[statsCharacterId];
         }
         if (((player->topSpeed * 0.1) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.2))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][1] + (0.05 * (player->slopeAccel / 182))) *
-                gKartTripleABoost[player->characterId];
+                (gKartAccelerationTables[statsCharacterId][1] + (0.05 * (player->slopeAccel / 182))) *
+                gKartTripleABoost[statsCharacterId];
         }
         if (((player->topSpeed * 0.2) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.3))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][2] + (0.05 * (player->slopeAccel / 182))) *
-                gKartTripleABoost[player->characterId];
+                (gKartAccelerationTables[statsCharacterId][2] + (0.05 * (player->slopeAccel / 182))) *
+                gKartTripleABoost[statsCharacterId];
         }
         if (((player->topSpeed * 0.3) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.4))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][3] + (0.05 * (player->slopeAccel / 182))) *
-                gKartTripleABoost[player->characterId];
+                (gKartAccelerationTables[statsCharacterId][3] + (0.05 * (player->slopeAccel / 182))) *
+                gKartTripleABoost[statsCharacterId];
         }
         if (((player->topSpeed * 0.4) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.5))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][4] + (0.05 * (player->slopeAccel / 182))) *
-                gKartTripleABoost[player->characterId];
+                (gKartAccelerationTables[statsCharacterId][4] + (0.05 * (player->slopeAccel / 182))) *
+                gKartTripleABoost[statsCharacterId];
         }
         if (((player->topSpeed * 0.5) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.6))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][5] + (0.05 * (player->slopeAccel / 182))) *
-                gKartTripleABoost[player->characterId];
+                (gKartAccelerationTables[statsCharacterId][5] + (0.05 * (player->slopeAccel / 182))) *
+                gKartTripleABoost[statsCharacterId];
         }
         if (((player->topSpeed * 0.6) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.7))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][6] + (0.05 * (player->slopeAccel / 182))) *
-                gKartTripleABoost[player->characterId];
+                (gKartAccelerationTables[statsCharacterId][6] + (0.05 * (player->slopeAccel / 182))) *
+                gKartTripleABoost[statsCharacterId];
         }
         if (((player->topSpeed * 0.7) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.8))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][7] + (0.05 * (player->slopeAccel / 182))) *
-                gKartTripleABoost[player->characterId];
+                (gKartAccelerationTables[statsCharacterId][7] + (0.05 * (player->slopeAccel / 182))) *
+                gKartTripleABoost[statsCharacterId];
         }
         if (((player->topSpeed * 0.8) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.9))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][8] + (0.05 * (player->slopeAccel / 182))) *
-                gKartTripleABoost[player->characterId];
+                (gKartAccelerationTables[statsCharacterId][8] + (0.05 * (player->slopeAccel / 182))) *
+                gKartTripleABoost[statsCharacterId];
         }
         if (((player->topSpeed * 0.9) <= player->currentSpeed) && (player->currentSpeed <= (player->topSpeed * 1.0))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][9] + (0.05 * (player->slopeAccel / 182))) *
-                gKartTripleABoost[player->characterId];
+                (gKartAccelerationTables[statsCharacterId][9] + (0.05 * (player->slopeAccel / 182))) *
+                gKartTripleABoost[statsCharacterId];
         }
     }
     if (player->currentSpeed < 0.0f) {
@@ -3559,10 +3564,10 @@ void func_800323E4(Player* player) {
         player->unk_20C = var_f2;
     } else {
         if ((s32) player->tyres[BACK_RIGHT].surfaceType < 0xF) {
-            var_f2 += D_800E3210[player->characterId][player->tyres[BACK_RIGHT].surfaceType];
+            var_f2 += D_800E3210[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_RIGHT].surfaceType];
         }
         if ((s32) player->tyres[BACK_LEFT].surfaceType < 0xF) {
-            var_f2 += D_800E3210[player->characterId][player->tyres[BACK_LEFT].surfaceType];
+            var_f2 += D_800E3210[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_LEFT].surfaceType];
         }
         test = player->previousSpeed - player->speed;
         if (test <= 0.0f) {
@@ -3594,39 +3599,41 @@ void func_800323E4(Player* player) {
 
 void player_accelerate_during_start_sequence(Player* player) {
     s32 playerIndex;
+    s32 statsCharacterId;
     s32 var_v0;
     s32 time_delta;
 
     playerIndex = get_player_index_for_player(player);
+    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : player->characterId;
     if ((player->currentSpeed >= 0.0) && (player->currentSpeed < (player->topSpeed * 0.1))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][0] * 3.0;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][0] * 3.0;
     }
     if (((player->topSpeed * 0.1) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.2))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][1] * 3.0;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][1] * 3.0;
     }
     if (((player->topSpeed * 0.2) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.3))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][2] * 3.0;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][2] * 3.0;
     }
     if (((player->topSpeed * 0.3) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.4))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][3] * 3.0;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][3] * 3.0;
     }
     if (((player->topSpeed * 0.4) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.5))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][4] * 3.0;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][4] * 3.0;
     }
     if (((player->topSpeed * 0.5) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.6))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][5] * 3.0;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][5] * 3.0;
     }
     if (((player->topSpeed * 0.6) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.7))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][6] * 2.5;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][6] * 2.5;
     }
     if (((player->topSpeed * 0.7) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.8))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][7] * 2.5;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][7] * 2.5;
     }
     if (((player->topSpeed * 0.8) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.9))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][8] * 2.5;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][8] * 2.5;
     }
     if (((player->topSpeed * 0.9) <= player->currentSpeed) && (player->currentSpeed <= player->topSpeed * 1.0)) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][9] * 2.5;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][9] * 2.5;
     }
     if (D_801656F0 == 1) {
         time_delta = gRaceFrameCounter - D_801652E0[playerIndex];
@@ -3669,37 +3676,39 @@ void player_decelerate_during_start_sequence(Player* player, f32 speedReduction)
 
 void player_accelerate(Player* player) {
     UNUSED s32 player_index;
+    s32 statsCharacterId;
 
     player_index = get_player_index_for_player(player);
+    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : player->characterId;
     if ((0.0 <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][0] * 3.2;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][0] * 3.2;
     }
     if (((player->topSpeed * 0.1) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.2))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][1] * 3.2;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][1] * 3.2;
     }
     if (((player->topSpeed * 0.2) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.3))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][2] * 3.2;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][2] * 3.2;
     }
     if (((player->topSpeed * 0.3) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.4))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][3] * 3.2;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][3] * 3.2;
     }
     if (((player->topSpeed * 0.4) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.5))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][4] * 3.2;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][4] * 3.2;
     }
     if (((player->topSpeed * 0.5) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.6))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][5] * 3.2;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][5] * 3.2;
     }
     if (((player->topSpeed * 0.6) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.7))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][6] * 3.2;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][6] * 3.2;
     }
     if (((player->topSpeed * 0.7) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.8))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][7] * 2.8;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][7] * 2.8;
     }
     if (((player->topSpeed * 0.8) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.9))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][8] * 2.8;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][8] * 2.8;
     }
     if (((player->topSpeed * 0.9) <= player->currentSpeed) && (player->currentSpeed <= (player->topSpeed * 1.0))) {
-        player->currentSpeed += gKartAccelerationTables[player->characterId][9] * 2.8;
+        player->currentSpeed += gKartAccelerationTables[statsCharacterId][9] * 2.8;
     }
     if (player->currentSpeed < 0.0f) {
         player->currentSpeed = 0.0f;
@@ -3719,38 +3728,41 @@ void player_decelerate(Player* player, f32 speedReduction) {
 }
 
 void player_accelerate_global(Player* player, s32 playerIndex) {
+    s32 statsCharacterId;
+
+    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : player->characterId;
     if ((gPlayerCurrentSpeed[playerIndex] >= 0.0) && (gPlayerCurrentSpeed[playerIndex] < ((f64) player->topSpeed * 0.1))) {
-        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][0] * 3.2;
+        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[statsCharacterId][0] * 3.2;
     }
     if (((player->topSpeed * 0.1) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.2))) {
-        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][1] * 3.2;
+        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[statsCharacterId][1] * 3.2;
     }
     if (((player->topSpeed * 0.2) <= gPlayerCurrentSpeed[playerIndex]) &&
         (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.3))) {
-        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][2] * 3.2;
+        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[statsCharacterId][2] * 3.2;
     }
     if (((player->topSpeed * 0.3) <= gPlayerCurrentSpeed[playerIndex]) &&
         (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.4))) {
-        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][3] * 3.2;
+        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[statsCharacterId][3] * 3.2;
     }
     if (((player->topSpeed * 0.4) <= gPlayerCurrentSpeed[playerIndex]) &&
         (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.5))) {
-        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][4] * 3.2;
+        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[statsCharacterId][4] * 3.2;
     }
     if (((player->topSpeed * 0.5) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.6))) {
-        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][5] * 3.2;
+        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[statsCharacterId][5] * 3.2;
     }
     if (((player->topSpeed * 0.6) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.7))) {
-        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][6] * 3.2;
+        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[statsCharacterId][6] * 3.2;
     }
     if (((player->topSpeed * 0.7) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.8))) {
-        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][7] * 2.8;
+        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[statsCharacterId][7] * 2.8;
     }
     if (((player->topSpeed * 0.8) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.9))) {
-        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][8] * 2.8;
+        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[statsCharacterId][8] * 2.8;
     }
     if (((player->topSpeed * 0.9) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] <= (player->topSpeed * 1.0))) {
-        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][9] * 2.8;
+        gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[statsCharacterId][9] * 2.8;
     }
     player->unk_044 |= 0x20;
     if (gPlayerCurrentSpeed[playerIndex] < 0.0f) {
@@ -3918,10 +3930,10 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         }
     }
     if (((s32) player->tyres[BACK_RIGHT].surfaceType) < 0xF) {
-        var_f2 += D_800E3610[player->characterId][player->tyres[BACK_RIGHT].surfaceType];
+        var_f2 += D_800E3610[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_RIGHT].surfaceType];
     }
     if (((s32) player->tyres[BACK_LEFT].surfaceType) < 0xF) {
-        var_f2 += D_800E3610[player->characterId][player->tyres[BACK_LEFT].surfaceType];
+        var_f2 += D_800E3610[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_LEFT].surfaceType];
     }
     if ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) {
         sp2C8 = 10;
@@ -3937,9 +3949,9 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
             if ((player->unk_044 & 2) == 2) {
                 if ((sp2D0 < 36) && (sp2D0 >= 0)) {
                     sp2C8 =
-                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
+                        (gKartTable800E3650[PLAYER_STATS_CHARACTER_ID(player)] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
                     sp2CC =
-                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
+                        (gKartTable800E3650[PLAYER_STATS_CHARACTER_ID(player)] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
                 } else {
                     sp2C8 = (s32) (((f32) (var_a0 + 5)) * (1.0f + var_f2));
                     sp2CC = (s32) (((f32) (var_a0 + 9)) * (1.0f + var_f2));
@@ -3947,9 +3959,9 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
             } else if ((player->unk_044 & 4) == 4) {
                 if ((sp2D0 >= (-0x23)) && (sp2D0 <= 0)) {
                     sp2C8 =
-                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
+                        (gKartTable800E3650[PLAYER_STATS_CHARACTER_ID(player)] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
                     sp2CC =
-                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
+                        (gKartTable800E3650[PLAYER_STATS_CHARACTER_ID(player)] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
                 } else {
                     sp2C8 = (s32) (((f32) (var_a0 + 5)) * (1.0f + var_f2));
                     sp2CC = (s32) (((f32) (var_a0 + 9)) * (1.0f + var_f2));
@@ -4092,10 +4104,10 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
     if (((s32) player->tyres[BACK_RIGHT].surfaceType) > 0xE) {
         var_f12 = var_f12;
     } else {
-        var_f12 += D_800E3410[player->characterId][player->tyres[BACK_RIGHT].surfaceType];
+        var_f12 += D_800E3410[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_RIGHT].surfaceType];
     }
     if (((s32) player->tyres[BACK_LEFT].surfaceType) < 0xF) {
-        var_f12 += D_800E3410[player->characterId][player->tyres[BACK_LEFT].surfaceType];
+        var_f12 += D_800E3410[PLAYER_STATS_CHARACTER_ID(player)][player->tyres[BACK_LEFT].surfaceType];
     }
     if (((player->effects & HOP_EFFECT) != HOP_EFFECT) && ((player->effects & DRIFTING_EFFECT) != DRIFTING_EFFECT)) {
         if ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) {
@@ -4104,10 +4116,10 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
             if ((player->effects & BRAKING_EFFECT) != BRAKING_EFFECT) {
                 if (((player->unk_07C >> 16) >= 45) || ((player->unk_07C >> 16) <= (-45))) {
                     player->unk_078 = ((player->unk_07C >> 16) * (var_f2_2 + (var_f2_2 * var_f12))) *
-                                      (0.15 + gKartHandlingTable[player->characterId]);
+                                      (0.15 + gKartHandlingTable[PLAYER_STATS_CHARACTER_ID(player)]);
                 } else {
                     player->unk_078 = ((player->unk_07C >> 16) * (var_f2_2 + (var_f2_2 * var_f12))) *
-                                      gKartHandlingTable[player->characterId];
+                                      gKartHandlingTable[PLAYER_STATS_CHARACTER_ID(player)];
                 }
             } else {
                 if ((((player->speed / 18.0f) * 216.0f) >= 0.0f) && (((player->speed / 18.0f) * 216.0f) < 8.0f)) {
@@ -4220,7 +4232,7 @@ void apply_cpu_turn(Player* player, s16 targetAngle) {
                 if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
                     var_f0 = speedTurn[(s16) ((player->speed / 18.0f) * 216.0f)] * var_f0;
                 } else {
-                    var_f0 = speedTurn[(s16) ((player->speed / 18.0f) * 216.0f)] * characterTurn[player->characterId] *
+                    var_f0 = speedTurn[(s16) ((player->speed / 18.0f) * 216.0f)] * characterTurn[PLAYER_STATS_CHARACTER_ID(player)] *
                              var_f0;
                 }
                 player->unk_07C = sp304;
@@ -4997,12 +5009,12 @@ void func_80038C6C(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     gPlayerLastVelocity[playerId][2] = newVelocity[2];
 
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-        if (gKartTopSpeedTable[player->characterId] < player->speed) {
-            divOptimize = gKartTopSpeedTable[player->characterId] / player->speed;
+        if (gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)] < player->speed) {
+            divOptimize = gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)] / player->speed;
             player->velocity[0] *= divOptimize;
             player->velocity[1] *= divOptimize;
             player->velocity[2] *= divOptimize;
-            player->speed = gKartTopSpeedTable[player->characterId];
+            player->speed = gKartTopSpeedTable[PLAYER_STATS_CHARACTER_ID(player)];
         }
     }
     if ((player->unk_044 & 1) == 1) {
