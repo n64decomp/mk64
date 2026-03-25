@@ -419,6 +419,7 @@ UNUSED void func_8028EC38(s32 arg0) {
     gDemoTimer = 5;
 }
 
+// make edits here to enable mp music 
 void play_music_for_current_track(s32 track) {
 
     if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
