@@ -38,6 +38,8 @@ void init_camera_podium_ceremony(void) {
     cameras[0].up[1] = 1.0f;
     cameras[0].up[2] = 0.0f;
     gCameraZoom[0] = 40.0f;
+    // if 1.3333, change to 1.7474 for widescreen hack
+    // else if 2.66667, change to 3.51042 for widescreen hack
     gScreenAspect = 1.33333333f;
     gCourseNearPersp = 3.0f;
     gCourseFarPersp = 6800.0f;

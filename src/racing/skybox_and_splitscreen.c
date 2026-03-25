@@ -583,6 +583,8 @@ void set_perspective_and_aspect_ratio(void) {
                 break;
         }
     }
+    // if 1.3333, change to 1.7474 for widescreen hack
+    // else if 2.66667, change to 3.51042 for widescreen hack
     switch (gScreenModeSelection) { /* switch 1; irregular */
         case SCREEN_MODE_1P:        /* switch 1 */
             gScreenAspect = 1.33333334f;
