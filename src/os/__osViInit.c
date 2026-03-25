@@ -3,6 +3,7 @@
 
 extern u32 osTvType;
 
+// for no AA, change sViContexts[0, 1].features = 12822  
 OSViContext sViContexts[2] = { 0 };
 OSViContext* __osViCurr = &sViContexts[0];
 OSViContext* __osViNext = &sViContexts[1];

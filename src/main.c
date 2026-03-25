@@ -240,7 +240,7 @@ void thread1_idle(void* arg) {
     osStartThread(&gVideoThread);
     osSetThreadPri(NULL, 0);
 
-    // uncomment for lagfix 
+    // uncomment for lagfix (in osViData.c)
     // osViModeNtscLan1.comRegs.vSync = 3341;
     // Halt
     while (true) {

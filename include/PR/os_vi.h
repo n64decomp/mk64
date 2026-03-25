@@ -64,7 +64,7 @@ typedef struct {
     /* 0x20 */ u32 unk20;
     /* 0x24 */ f32 unk24;
     /* 0x28 */ u16 unk28;
-    /* 0x2c */ u32 unk2c;
+    /* 0x2c */ u32 unk2c; // 4 bytes, so 0x2C + 4 = 0x30 -> total size in bytes
 } OSViContext;
 
 void osCreateViManager(OSPri pri);
