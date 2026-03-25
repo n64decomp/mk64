@@ -213,6 +213,8 @@ void func_8028E438(void) {
             if (temp_v0->screenStartX == 160) {
                 phi_v1_4++;
             }
+            // if 1.3333, change to 1.7474 for widescreen hack
+            // else if 2.66667, change to 3.51042 for widescreen hack
             gScreenAspect = (f32) ((f32) temp_v0->screenWidth / (f32) temp_v0->screenHeight);
             if (phi_v1_4 == 4) {
                 D_8015F894 = 2;
@@ -293,7 +295,8 @@ void func_8028E678(void) {
                 D_800DC5F0->screenStartX = SCREEN_HEIGHT;
                 phi_a0_10++;
             }
-
+            // if 1.3333, change to 1.7474 for widescreen hack
+            // else if 2.66667, change to 3.51042 for widescreen hack
             gScreenAspect = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
             if (phi_a0_10 == 4) {
                 D_8015F894 = 3;
@@ -327,7 +330,8 @@ void func_8028E678(void) {
                 D_800DC5F0->screenStartY = 180;
                 phi_a0_10++;
             }
-
+            // if 1.3333, change to 1.7474 for widescreen hack
+            // else if 2.66667, change to 3.51042 for widescreen hack
             gScreenAspect = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
             if (phi_a0_10 == 4) {
                 D_8015F894 = 3;
@@ -351,6 +355,8 @@ void func_8028E678(void) {
                 D_800DC5F0->screenStartY = D_800DC5EC->screenStartY;
 
                 gActiveScreenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
+                // if 1.3333, change to 1.7474 for widescreen hack
+                // else if 2.66667, change to 3.51042 for widescreen hack
                 gScreenAspect = 1.33333337;
                 gPlayerCountSelection1 = 2;
                 func_8003DB5C();
