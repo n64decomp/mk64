@@ -1,5 +1,6 @@
 #include "libultra_internal.h"
 #include "hardware.h"
+#include "menu_items.h"
 
 extern OSViContext* __osViNext;
 extern OSViContext* __osViCurr;
@@ -54,7 +55,14 @@ void __osViSwapContext() {
     HW_REG(VI_INTR_REG, u32) = s0->fldRegs[field].vIntr;
     HW_REG(VI_X_SCALE_REG, u32) = s1->unk20;
     HW_REG(VI_Y_SCALE_REG, u32) = s1->unk2c;
-    HW_REG(VI_CONTROL_REG, u32) = s1->features;
+    // gameshark code no AA refactor
+    if (gTournamentAA) {
+        HW_REG(VI_CONTROL_REG, u32) = 12822;
+    }
+    // default behavior
+    else {
+        HW_REG(VI_CONTROL_REG, u32) = s1->features;
+    }
     __osViNext = __osViCurr;
     __osViCurr = s1;
     *__osViNext = *__osViCurr;
