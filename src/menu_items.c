@@ -5860,7 +5860,7 @@ void render_custom_overlay(void) {
     // func_800579B8(x1, y1, "WEATHERTON  ABNEY  CLIMATEE");
 
     // version / date (smaller) - left-aligned to start under 'KART'
-    print_text1_left(x + 0x5A, y + 0x06, "TE V2026-03-23", 0, 0.65f, 0.65f);
+    print_text1_left(x + 0x5A, y + 0x06, "TE V2026-03-26", 0, 0.65f, 0.65f);
 
     // option name placeholders (second column) and values (third column)
     for (i = 0; i < CUSTOM_MENU_ROWS; i++) {

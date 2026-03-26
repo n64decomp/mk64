@@ -1383,7 +1383,7 @@ void setup_selected_game_mode(void) {
         case VERSUS:
             gCCSelection = subMenuMode;
             gPlaceItemBoxes = 1;
-            gIsMirrorMode = (subMenuMode == CC_EXTRA) ? 1 : 0;
+            gIsMirrorMode = ((subMenuMode == CC_EXTRA) || (gTournamentExtraMode == 1)) ? 1 : 0;
             break;
         case BATTLE:
             gPlaceItemBoxes = 1;

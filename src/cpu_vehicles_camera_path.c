@@ -2186,7 +2186,7 @@ void init_players(void) {
     }
 
     gIsInExtra = false;
-    if (gCCSelection == CC_EXTRA) {
+    if (gCCSelection == CC_EXTRA || gTournamentExtraMode == 1) {
         gIsInExtra = true;
     }
 
