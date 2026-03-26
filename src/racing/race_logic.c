@@ -428,9 +428,14 @@ UNUSED void func_8028EC38(s32 arg0) {
 // make edits here to enable mp music 
 void play_music_for_current_track(s32 track) {
 
-    if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        return; // If 3P/4P splitscreen mode is currently on, don't play the music for the current track.
+    // run default case; no music in 3p/4p vs mode
+    // if gTournamentMusic == 1, dont run and proceed to load music for each track
+    if (!gTournamentMusic) {
+        if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
+            return; // If 3P/4P splitscreen mode is currently on, don't play the music for the current track.
+        }
     }
+
 
     func_800029B0();
 
