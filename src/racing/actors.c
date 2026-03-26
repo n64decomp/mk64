@@ -25,6 +25,7 @@
 #include "courses/all_course_data.h"
 #include "main.h"
 #include "data/other_textures.h"
+#include "menu_items.h"
 
 // Appears to be textures
 // or tluts
@@ -166,19 +167,39 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
             actor->unk_04 = 0;
             actor->boundingBoxSize = 4.0f;
             actor->flags = actor->flags | 0x4000 | 0x2000 | 0x1000;
-            if ((s32) gNumSpawnedShells >= 0x15) {
-                cleanup_red_and_green_shells((struct ShellActor*) actor);
+            // default behavior, default shell limit
+            if (!gTournamentShellLimit) {
+                if ((s32) gNumSpawnedShells >= 0x15) {
+                    cleanup_red_and_green_shells((struct ShellActor*) actor);
+                }
+                break;
             }
-            break;
+            // custom shell limit of 100
+            else {
+                if ((s32) gNumSpawnedShells >= 0x64) {
+                    cleanup_red_and_green_shells((struct ShellActor*) actor);
+                }
+                break;
+            }
         case ACTOR_RED_SHELL:
             gNumSpawnedShells += 1;
             actor->unk_04 = 0;
             actor->boundingBoxSize = 4.0f;
             actor->flags = actor->flags | 0x4000 | 0x2000 | 0x1000;
-            if ((s32) gNumSpawnedShells >= 0x15) {
-                cleanup_red_and_green_shells((struct ShellActor*) actor);
+            // default behavior, default shell limit
+            if (!gTournamentShellLimit) {
+                if ((s32) gNumSpawnedShells >= 0x15) {
+                    cleanup_red_and_green_shells((struct ShellActor*) actor);
+                }
+                break;
             }
-            break;
+            // custom shell limit of 100
+            else {
+                if ((s32) gNumSpawnedShells >= 0x64) {
+                    cleanup_red_and_green_shells((struct ShellActor*) actor);
+                }
+                break;
+            }
         case ACTOR_TREE_MARIO_RACEWAY:
             gNumSpawnedShells += 1;
             actor->flags |= 0x4000;
