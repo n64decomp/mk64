@@ -862,28 +862,57 @@ void func_8028F970(void) {
                 func_800029B0();
             }
         }
-        // pausing is gated by sPauseHoldCounter, which increments every frame player i holds start
-        if ((controller->button & START_BUTTON) && (!(controller->button & R_TRIG)) &&
-            (!(controller->button & L_TRIG)) && (sPauseHoldCounter[i] >= 60)) {
-            func_8028DF00();
-            gIsGamePaused = (controller - gControllerOne) + 1;
-            controller->buttonPressed = 0;
-            func_800C9F90(1);
-            gPauseTriggered = 1;
-            sPauseHoldCounter[i] = 0;
-            if (gModeSelection == TIME_TRIALS) {
-                if (gPlayerOne->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
-                    func_80005AE8(gPlayerOne);
+
+        // only run extended pause in VS mode
+        if (gModeSelection == VERSUS) {
+            // pausing is gated by sPauseHoldCounter, which increments every frame player i holds start
+            if ((controller->button & START_BUTTON) && (!(controller->button & R_TRIG)) &&
+                (!(controller->button & L_TRIG)) && (sPauseHoldCounter[i] >= 60)) {
+                func_8028DF00();
+                gIsGamePaused = (controller - gControllerOne) + 1;
+                controller->buttonPressed = 0;
+                func_800C9F90(1);
+                gPauseTriggered = 1;
+                sPauseHoldCounter[i] = 0;
+                if (gModeSelection == TIME_TRIALS) {
+                    if (gPlayerOne->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
+                        func_80005AE8(gPlayerOne);
+                    }
+                    if (gPlayerTwo->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
+                        func_80005AE8(gPlayerTwo);
+                    }
+                    if (gPlayerThree->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
+                        func_80005AE8(gPlayerThree);
+                    }
                 }
-                if (gPlayerTwo->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
-                    func_80005AE8(gPlayerTwo);
-                }
-                if (gPlayerThree->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
-                    func_80005AE8(gPlayerThree);
-                }
+                return;
             }
-            return;
         }
+        // run default logic in other modes
+        else {
+            if ((controller->buttonPressed & START_BUTTON) && (!(controller->button & R_TRIG)) &&
+                (!(controller->button & L_TRIG))) {
+                func_8028DF00();
+                gIsGamePaused = (controller - gControllerOne) + 1;
+                controller->buttonPressed = 0;
+                func_800C9F90(1);
+                gPauseTriggered = 1;
+                if (gModeSelection == TIME_TRIALS) {
+                    if (gPlayerOne->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
+                        func_80005AE8(gPlayerOne);
+                    }
+                    if (gPlayerTwo->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
+                        func_80005AE8(gPlayerTwo);
+                    }
+                    if (gPlayerThree->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
+                        func_80005AE8(gPlayerThree);
+                    }
+                }
+                return;
+            }
+        }
+
+
         // increment pause counter for player i
         if ((controller->button & START_BUTTON) && (!(controller->button & R_TRIG)) &&
             (!(controller->button & L_TRIG)) && (sPauseHoldCounter[i] < 60)) {
