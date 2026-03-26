@@ -587,16 +587,34 @@ void set_perspective_and_aspect_ratio(void) {
     // else if 2.66667, change to 3.51042 for widescreen hack
     switch (gScreenModeSelection) { /* switch 1; irregular */
         case SCREEN_MODE_1P:        /* switch 1 */
-            gScreenAspect = 1.33333334f;
+                // set widescreen in 1p
+                if (gTournamentWidescreen) {
+                    gScreenAspect = 1.7474f;
+                }
+                else {
+                    gScreenAspect = 1.33333334f;
+                }
             return;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL: /* switch 1 */
             gScreenAspect = 0.66666667f;
             return;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL: /* switch 1 */
-            gScreenAspect = 2.66666667f;
+                // set widescreen in 2p
+                if (gTournamentWidescreen) {
+                    gScreenAspect = 3.51042f;
+                }
+                else {
+                    gScreenAspect = 2.66666667f;
+                }
             return;
         case SCREEN_MODE_3P_4P_SPLITSCREEN: /* switch 1 */
-            gScreenAspect = 1.33333334f;
+                // set widescreen in 3p/4p
+                if (gTournamentWidescreen) {
+                    gScreenAspect = 1.7474f;
+                }
+                else {
+                    gScreenAspect = 1.33333334f;
+                }
             return;
     }
 }

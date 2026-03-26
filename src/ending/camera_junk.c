@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <course.h>
 #include <common_structs.h>
+#include <menu_items.h>
 
 #include "camera_junk.h"
 #include "camera.h"
@@ -38,9 +39,13 @@ void init_camera_podium_ceremony(void) {
     cameras[0].up[1] = 1.0f;
     cameras[0].up[2] = 0.0f;
     gCameraZoom[0] = 40.0f;
-    // if 1.3333, change to 1.7474 for widescreen hack
-    // else if 2.66667, change to 3.51042 for widescreen hack
-    gScreenAspect = 1.33333333f;
+    // change to 1.7474 for widescreen hack
+    if (gTournamentWidescreen) {
+        gScreenAspect = 1.7474f;
+    }
+    else {
+        gScreenAspect = 1.33333333f;
+    }
     gCourseNearPersp = 3.0f;
     gCourseFarPersp = 6800.0f;
     init_cinematic_camera();
