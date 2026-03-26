@@ -223,9 +223,41 @@ void init_vehicles_trains(void) {
         gTrainList[i].numCars = LOCOMOTIVE_ONLY;
     }
 
-    // Spawn all rolling stock in single player mode.
-    switch (gScreenModeSelection) {
-        case SCREEN_MODE_1P: // single player
+
+    // default behavior 
+    if (gTournamentTrainBoat == 0 || gTournamentTrainBoat == 3) {
+        // Spawn all rolling stock in single player mode.
+        switch (gScreenModeSelection) {
+            case SCREEN_MODE_1P: // single player
+                for (i = 0; i < NUM_TRAINS; i++) {
+                    gTrainList[i].tender.isActive = 1;
+
+                    // clang-format off
+                    // Same line required for matching...
+                    for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) { gTrainList[i].passengerCars[j].isActive = 1; }
+                    // clang-format on
+
+                    gTrainList[i].numCars = NUM_TENDERS + NUM_PASSENGER_CAR_ENTRIES;
+                }
+                break;
+
+            // Spawn locomotive, tender, and one passenger car in versus 2/3 player mode.
+            case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL: // multiplayer fall-through
+            case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+                if (gModeSelection != GRAND_PRIX) {
+                    for (i = 0; i < NUM_TRAINS; i++) {
+                        gTrainList[i].tender.isActive = 1;
+                        gTrainList[i].passengerCars[4].isActive = 1;
+                        gTrainList[i].numCars = NUM_TENDERS + NUM_2P_PASSENGER_CARS;
+                    }
+                }
+                break;
+        }
+    }
+        
+    // if train or both are selected
+    else if (gTournamentTrainBoat == 1 || gTournamentTrainBoat == 2){
+            // Spawn all rolling stock override in all modes
             for (i = 0; i < NUM_TRAINS; i++) {
                 gTrainList[i].tender.isActive = 1;
 
@@ -236,23 +268,10 @@ void init_vehicles_trains(void) {
 
                 gTrainList[i].numCars = NUM_TENDERS + NUM_PASSENGER_CAR_ENTRIES;
             }
-            break;
-
-        // Spawn locomotive, tender, and one passenger car in versus 2/3 player mode.
-        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL: // multiplayer fall-through
-        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            if (gModeSelection != GRAND_PRIX) {
-                for (i = 0; i < NUM_TRAINS; i++) {
-                    gTrainList[i].tender.isActive = 1;
-                    gTrainList[i].passengerCars[4].isActive = 1;
-                    gTrainList[i].numCars = NUM_TENDERS + NUM_2P_PASSENGER_CARS;
-                }
-            }
-            break;
+        }    
+        gTrainSmokeTimer = 0;
     }
 
-    gTrainSmokeTimer = 0;
-}
 /**
  * @brief sync the train components vehicle with the actor
  *
@@ -480,11 +499,28 @@ void init_vehicles_ferry(void) {
         paddleBoat->pathPointIndex = i * 0xB4;
         paddleBoat->actorIndex = -1;
 
-        if (gPlayerCount >= 3) {
-            paddleBoat->isActive = 0;
-        } else {
+        // default, or if just train is selected
+        if (gTournamentTrainBoat == 0 || gTournamentTrainBoat == 2) {
+            if (gPlayerCount >= 3) {
+                paddleBoat->isActive = 0;
+            } else {
+                paddleBoat->isActive = 1;
+            }
+        }
+        // force boat to spawn 
+        else if (gTournamentTrainBoat == 1 || gTournamentTrainBoat == 3) {
             paddleBoat->isActive = 1;
         }
+        // default case fallback
+        else {
+            if (gPlayerCount >= 3) {
+                paddleBoat->isActive = 0;
+            } else {
+                paddleBoat->isActive = 1;
+            }
+        }
+
+
         paddleBoat->velocity[0] = 0.0f;
         paddleBoat->velocity[1] = 0.0f;
         paddleBoat->velocity[2] = 0.0f;
