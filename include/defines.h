@@ -37,7 +37,7 @@
  * D-pad DOWN  = MARIO
  *
  */
-#if defined(GCC) || defined(DEBUG)
+#if /* defined(GCC) ||*/ defined(DEBUG)
 #define ENABLE_DEBUG_MODE 1
 #else
 #define ENABLE_DEBUG_MODE 0
