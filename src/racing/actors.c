@@ -201,7 +201,7 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
                 break;
             }
         case ACTOR_TREE_MARIO_RACEWAY:
-            gNumSpawnedShells += 1;
+            // gNumSpawnedShells += 1; 
             actor->flags |= 0x4000;
             actor->state = 0x0043;
             actor->boundingBoxSize = 3.0f;
