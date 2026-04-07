@@ -4,6 +4,7 @@
 #include <main.h>
 #include <actors_extended.h>
 #include <code_800029B0.h>
+#include "menu_items.h"
 
 void func_802B3B44(struct ShellActor* shell) {
     u16 currentPathPoint;
@@ -459,6 +460,10 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
             shell->pos[1] += shell->velocity[1];
             if (shell->someTimer == 0) {
                 destroy_actor((struct Actor*) shell);
+                // bugfix toggle for modified shell limit modes
+                if (gTournamentShellLimit != 0) {
+                    gNumSpawnedShells -= 1;
+                }
             }
             break;
         case BLUE_SHELL_LOCK_ON:

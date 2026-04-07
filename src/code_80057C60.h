@@ -60,6 +60,7 @@ void func_80059358(void);
 void render_hud_2p_horizontal_player_two_horizontal_player_one(void);
 void func_800593F0(void);
 void render_hud_2p_horizontal_player_two(void);
+void render_shell_count(void);
 void draw_simplified_hud(s32);
 void func_800594F0(void);
 void render_hud_2p_vertical_player_one(void);

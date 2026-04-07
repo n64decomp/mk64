@@ -5842,7 +5842,7 @@ void render_custom_overlay(void) {
     static const char* mpMusic_labels[] = {"default", "enabled"};
     static const char* mpTrainBoat_labels[] = {"default", "enabled", "train", "boat"};
     static const char* AA_labels[] = {"default", "disabled"};
-    static const char* shell_labels[] = {"default", "100"};
+    static const char* shell_labels[] = {"default", "30", "bugfix"};
     static const char* timer_labels[] = {"default", "enabled"};
     static const char* trophy_labels[] = {"default", "enabled"};
     static const char* practice_labels[] = {"default", "enabled"};
@@ -5964,7 +5964,7 @@ void render_custom_overlay(void) {
             gTournamentAA = idx;
             break;
         case 7:
-            /* shell limit: labels (default, 100) */
+            /* shell limit: labels (default, 30, bugfix) */
             idx = gCustomMenuOptionValues[i];
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(shell_labels) / sizeof(shell_labels[0]))) idx = 0;

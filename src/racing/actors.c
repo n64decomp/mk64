@@ -168,15 +168,15 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
             actor->boundingBoxSize = 4.0f;
             actor->flags = actor->flags | 0x4000 | 0x2000 | 0x1000;
             // default behavior, default shell limit
-            if (!gTournamentShellLimit) {
+            if (gTournamentShellLimit != 1) {
                 if ((s32) gNumSpawnedShells >= 0x15) {
                     cleanup_red_and_green_shells((struct ShellActor*) actor);
                 }
                 break;
             }
-            // custom shell limit of 100
+            // custom shell limit of 30
             else {
-                if ((s32) gNumSpawnedShells >= 0x64) {
+                if ((s32) gNumSpawnedShells >= 0x1F) {
                     cleanup_red_and_green_shells((struct ShellActor*) actor);
                 }
                 break;
@@ -187,21 +187,24 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
             actor->boundingBoxSize = 4.0f;
             actor->flags = actor->flags | 0x4000 | 0x2000 | 0x1000;
             // default behavior, default shell limit
-            if (!gTournamentShellLimit) {
+            if (gTournamentShellLimit != 1) {
                 if ((s32) gNumSpawnedShells >= 0x15) {
                     cleanup_red_and_green_shells((struct ShellActor*) actor);
                 }
                 break;
             }
-            // custom shell limit of 100
+            // custom shell limit of 30
             else {
-                if ((s32) gNumSpawnedShells >= 0x64) {
+                if ((s32) gNumSpawnedShells >= 0x1F) {
                     cleanup_red_and_green_shells((struct ShellActor*) actor);
                 }
                 break;
             }
         case ACTOR_TREE_MARIO_RACEWAY:
-            // gNumSpawnedShells += 1; 
+            // only run this bug if default shell behavior enabled
+            if (gTournamentShellLimit == 0) {
+                gNumSpawnedShells += 1; 
+            }
             actor->flags |= 0x4000;
             actor->state = 0x0043;
             actor->boundingBoxSize = 3.0f;
@@ -520,26 +523,54 @@ void render_cows(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
             arg1[3][0] = sp88[0];
             arg1[3][1] = sp88[1];
             arg1[3][2] = sp88[2];
-            if ((gMatrixObjectCount < MTX_OBJECT_POOL_SIZE) && (render_set_position(arg1, 0) != 0)) {
-                switch (var_s1->someId) {
-                    case 0:
-                        gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow1);
-                        break;
-                    case 1:
-                        gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow2);
-                        break;
-                    case 2:
-                        gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow3);
-                        break;
-                    case 3:
-                        gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow4);
-                        break;
-                    case 4:
-                        gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow5);
-                        break;
+
+            // use default value for pool size when default shell limit is enabled
+            if (gTournamentShellLimit != 1) {
+                if ((gMatrixObjectCount < MTX_OBJECT_POOL_SIZE) && (render_set_position(arg1, 0) != 0)) {
+                    switch (var_s1->someId) {
+                        case 0:
+                            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow1);
+                            break;
+                        case 1:
+                            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow2);
+                            break;
+                        case 2:
+                            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow3);
+                            break;
+                        case 3:
+                            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow4);
+                            break;
+                        case 4:
+                            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow5);
+                            break;
+                    }
+                } else {
+                    return;
                 }
-            } else {
-                return;
+            }
+            // use increased pool with increased shell limit
+            else {
+                if ((gMatrixObjectCount < MTX_OBJECT_POOL_SIZE_EXTRA) && (render_set_position(arg1, 0) != 0)) {
+                    switch (var_s1->someId) {
+                        case 0:
+                            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow1);
+                            break;
+                        case 1:
+                            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow2);
+                            break;
+                        case 2:
+                            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow3);
+                            break;
+                        case 3:
+                            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow4);
+                            break;
+                        case 4:
+                            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow5);
+                            break;
+                    }
+                } else {
+                    return;
+                }
             }
         }
         var_s1++;
@@ -662,8 +693,17 @@ void render_palm_trees(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
         test = (s16) test;
         if (test == 6) {
             mtxf_rotate_zxy_translate(sp90, spD4, sp88);
-            if (!(gMatrixObjectCount < MTX_OBJECT_POOL_SIZE)) {
-                break;
+            // use default object pool size for default shell behavior
+            if (gTournamentShellLimit != 1) {
+                if (!(gMatrixObjectCount < MTX_OBJECT_POOL_SIZE)) {
+                    break;
+                }
+            }
+             // use higher object pool size for higher shell limit
+            else {
+                if (!(gMatrixObjectCount < MTX_OBJECT_POOL_SIZE_EXTRA)) {
+                    break;
+                }
             }
             render_set_position(sp90, 0);
             goto dummylabel;
@@ -671,26 +711,53 @@ void render_palm_trees(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
             arg1[3][0] = spD4[0];
             arg1[3][1] = spD4[1];
             arg1[3][2] = spD4[2];
-            if (gMatrixObjectCount < MTX_OBJECT_POOL_SIZE) {
-                render_set_position(arg1, 0);
-            dummylabel:
-                gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-                switch (test) {
-                    case 0:
-                        gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree1);
-                        break;
-                    case 4:
-                        gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree2);
-                        break;
-                    case 5:
-                        gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree3);
-                        break;
-                    case 6:
-                        gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_palm_tree);
-                        break;
+
+            // use default behavior for default shell limit
+            if (gTournamentShellLimit != 1) {
+                if (gMatrixObjectCount < MTX_OBJECT_POOL_SIZE) {
+                    render_set_position(arg1, 0);
+                dummylabel:
+                    gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+                    switch (test) {
+                        case 0:
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree1);
+                            break;
+                        case 4:
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree2);
+                            break;
+                        case 5:
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree3);
+                            break;
+                        case 6:
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_palm_tree);
+                            break;
+                    }
+                } else {
+                    break;
                 }
-            } else {
-                break;
+            }
+            // use increased object pool size for increased shell limit
+            else {
+                if (gMatrixObjectCount < MTX_OBJECT_POOL_SIZE_EXTRA) {
+                    render_set_position(arg1, 0);
+                    gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+                    switch (test) {
+                        case 0:
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree1);
+                            break;
+                        case 4:
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree2);
+                            break;
+                        case 5:
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree3);
+                            break;
+                        case 6:
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_palm_tree);
+                            break;
+                    }
+                } else {
+                    break;
+                }  
             }
             var_s1++;
         }

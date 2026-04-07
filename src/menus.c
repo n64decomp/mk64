@@ -249,7 +249,7 @@ s8 gCustomMenuOptionValues[CUSTOM_MENU_ROWS] = { 0 };
 // Per-row number of selectable values (matches label arrays in render_custom_overlay)
 // tracks, stats, scaling, widescreen, mp music, mp train boat, AA, shell limit,
 // vs timer, trophy, practice, extra, reverse
-static const s8 gCustomMenuValueCounts[CUSTOM_MENU_ROWS] = { 3, 2, 3, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2 };
+static const s8 gCustomMenuValueCounts[CUSTOM_MENU_ROWS] = { 3, 2, 3, 2, 2, 4, 2, 3, 2, 2, 2, 2, 2 };
 
 // end of new var init
 
