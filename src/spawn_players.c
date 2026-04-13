@@ -130,12 +130,12 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->velocity[2] = 0.0f;
     player->rotation[1] = arg5;
     player->rotation[2] = 0;
-    player->unk_0FA = 0;
+    player->steerPositionDelta = 0;
     player->unk_002 = 0;
 
     player->effects = 0;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_07A = 0;
     player->unk_006 = 0;
     player->lapCount = -1;
@@ -191,7 +191,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_0E0 = 0;
     player->unk_0E2 = 0;
     player->unk_10C = 0;
-    player->unk_200 = 0;
+    player->steerChangeIncrement = 0;
     player->driftDuration = 0;
     player->nearestPathPointId = 0;
     player->unk_228 = 0;

@@ -85,10 +85,10 @@ void player_decelerate(Player*, f32);
 void player_accelerate_global(Player*, s32);
 void player_decelerate_global(Player*, f32, s32);
 void func_80033850(Player*, f32);
-void func_80033884(Player*, s32*, s32*, s32, s32, s32, s32);
+void update_steering_large(Player*, s32*, s32*, s32, s32, s32, s32);
 void func_80033940(Player*, s32*, s32, s32, f32);
 void func_800339C4(Player*, s32*, s32, s32, f32);
-void func_80033A40(Player*, s32*, s32*, s32, s32, s32, f32);
+void update_steering_small(Player*, s32*, s32*, s32, s32, s32, f32);
 void func_80033AE0(Player*, struct Controller*, s8);
 
 void apply_cpu_turn(Player*, s16);

@@ -1146,8 +1146,8 @@ void func_8002A79C(Player* player, s8 playerIndex) {
 }
 
 void func_8002A8A4(Player* player, s8 playerIndex) {
-    if (((s16) player->unk_0C0 / 182) > 0) {
-        if (((s32) player->unk_07C >> 0x10) < -9) {
+    if (((s16) player->unk_0C0 / DEGREES_CONVERSION_FACTOR) > 0) {
+        if (((s32) player->steerPosition >> 16) <= -10) {
             if (player->unk_228 < 0x65) {
                 player->unk_228++;
             }
@@ -1167,7 +1167,7 @@ void func_8002A8A4(Player* player, s8 playerIndex) {
                 player->driftState = 0;
             }
         }
-    } else if (((s32) player->unk_07C >> 0x10) >= 0xA) {
+    } else if (((s32) player->steerPosition >> 16) >= 10) {
         if (player->unk_228 < 0x65) {
             player->unk_228++;
         }
@@ -1310,7 +1310,7 @@ void func_8002AE38(Player* player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     if (((player->effects & BANANA_NEAR_SPINOUT_EFFECT) != BANANA_NEAR_SPINOUT_EFFECT) &&
         ((player->effects & DRIFTING_EFFECT) != DRIFTING_EFFECT) && !(player->kartProps & DRIVING_SPINOUT) &&
         ((((player->speed / 18.0f) * 216.0f) <= 8.0f) ||
-         (((player->unk_07C >> 0x10) < 5) && ((player->unk_07C >> 0x10) > -5)))) {
+         (((player->steerPosition >> 16) < 5) && ((player->steerPosition >> 16) > -5)))) {
         if ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) {
             player->unk_0C0 = (f32) (player->unk_0C0 - (player->unk_0C0 / 10));
         } else {
@@ -1333,8 +1333,8 @@ void func_8002AE38(Player* player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
             player->unk_0C0 = (atan2s(arg2 - arg4, arg3 - arg5) - atan2s(arg2 - sp28, arg3 - temp_f16)) * 2;
         }
         if (((player->effects & DRIFTING_EFFECT) != DRIFTING_EFFECT) &&
-            ((((player->unk_07C >> 0x10) > 0) && (player->unk_0C0 < 0)) ||
-             (((player->unk_07C >> 0x10) < 0) && (player->unk_0C0 > 0)))) {
+            ((((player->steerPosition >> 16) > 0) && (player->unk_0C0 < 0)) ||
+             (((player->steerPosition >> 16) < 0) && (player->unk_0C0 > 0)))) {
             if (player->unk_0C0 > 0) {
                 player->unk_0C0 = player->unk_078 * 0x14;
             }
@@ -1655,7 +1655,7 @@ void func_8002BB9C(Player* player, f32* arg1, f32* arg2, UNUSED s8 arg3, UNUSED 
         return;
     }
 
-    var_v0 = (player->unk_07C >> 0x10) / 6;
+    var_v0 = (player->steerPosition >> 16) / 6;
 
     if (var_v0 < 0) {
         var_v0 *= -1;
@@ -1665,7 +1665,7 @@ void func_8002BB9C(Player* player, f32* arg1, f32* arg2, UNUSED s8 arg3, UNUSED 
         var_v0 = 8;
     }
 
-    if ((player->unk_07C >> 0x10) < 0) {
+    if ((player->steerPosition >> 16) < 0) {
         player->rotation[1] -= sp30[var_v0];
     } else {
         player->rotation[1] += sp30[var_v0];
@@ -1673,32 +1673,32 @@ void func_8002BB9C(Player* player, f32* arg1, f32* arg2, UNUSED s8 arg3, UNUSED 
 }
 
 void func_8002BD58(Player* player) {
-    s32 sp2C[7] = { 0x002f0000, 0x00300000, 0x00310000, 0x00320000, 0x00320000, 0x00320000, 0x00320000 };
-    s32 spC[8] = { 0x00280000, 0x002c0000, 0x00300000, 0x00320000, 0x00320000, 0x00320000, 0x00320000, 0x00320000 };
+    s32 sp2C[7] = { 47 << 16, 48 << 16, 49 << 16, 50 << 16, 50 << 16, 50 << 16, 50 << 16 };
+    s32 spC[8] = { 40 << 16, 44 << 16, 48 << 16, 50 << 16, 50 << 16, 50 << 16, 50 << 16, 50 << 16 };
     s16 temp_t5;
 
     if (player->unk_234 >= 0) {
-        if ((player->unk_234 >= 5) && (player->unk_234 < 0x1E)) {
-            player->unk_07C = sp2C[player->unk_234 / 6];
+        if ((player->unk_234 >= 5) && (player->unk_234 < 30)) {
+            player->steerPosition = sp2C[player->unk_234 / 6];
         }
-        if ((player->unk_234 >= 0x1E) && (player->unk_234 < 0x50)) {
-            player->unk_07C = spC[(s32) (player->unk_234 - 0x1E) / 12];
+        if ((player->unk_234 >= 30) && (player->unk_234 < 80)) {
+            player->steerPosition = spC[(s32) (player->unk_234 - 30) / 12];
         }
-        if (((player->unk_234 < 0x50) || (player->unk_234 >= 0x5B)) && (player->unk_234 >= 0x5B) &&
-            (player->unk_234 < 0xA1)) {
-            player->unk_07C = spC[1];
+        if (((player->unk_234 < 80) || (player->unk_234 > 90)) && (player->unk_234 > 90) &&
+            (player->unk_234 <= 160)) {
+            player->steerPosition = spC[1];
         }
     } else {
         temp_t5 = -player->unk_234;
-        if ((player->unk_234 < -4) && (player->unk_234 >= -0x1E)) {
-            player->unk_07C = sp2C[temp_t5 / 6] * -1;
+        if ((player->unk_234 < -4) && (player->unk_234 >= -30)) {
+            player->steerPosition = sp2C[temp_t5 / 6] * -1;
         }
-        if ((player->unk_234 < -0x1E) && (player->unk_234 >= -0x50)) {
-            player->unk_07C = spC[(s32) (temp_t5 - 0x1E) / 12] * -1;
+        if ((player->unk_234 < -30) && (player->unk_234 >= -80)) {
+            player->steerPosition = spC[(s32) (temp_t5 - 30) / 12] * -1;
         }
-        if (((player->unk_234 >= -0x50) || (player->unk_234 < -0x5A)) && (player->unk_234 < -0x5A) &&
-            (player->unk_234 >= -0xA0)) {
-            player->unk_07C = spC[1] * -1;
+        if (((player->unk_234 >= -80) || (player->unk_234 < -90)) && (player->unk_234 < -90) &&
+            (player->unk_234 >= -160)) {
+            player->steerPosition = spC[1] * -1;
         }
     }
 }
@@ -2093,7 +2093,7 @@ void func_8002D028(Player* player, s8 playerIndex) {
         player->speed = 0;
         player->unk_104 = 0;
         player->tyreSpeed = 0;
-        player->unk_07C = 0;
+        player->steerPosition = 0;
         player->velocity[0] = 0;
         player->velocity[1] = 0;
         player->velocity[2] = 0;
@@ -2210,7 +2210,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     if (((player->unk_10C < 3) && (((s32) player->unk_256) < 3)) ||
         ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT)) {
 
-        if (((player->unk_07C >> 16) >= 0x28) || ((player->unk_07C >> 16) < (-0x27))) {
+        if (((player->steerPosition >> 16) >= 40) || ((player->steerPosition >> 16) <= -40)) {
 
             newVelocity[0] += (((((f64) ((sp184[0] + gravityX) + sp160[0])) -
                                  (newVelocity[0] * (0.12 * ((f64) player->kartFriction)))) /
@@ -3817,21 +3817,25 @@ void func_80033850(Player* arg0, f32 arg1) {
     }
 }
 
-void func_80033884(Player* player, s32* arg1, s32* arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6) {
-    s32 temp_v1;
+void update_steering_large(Player* player, s32* desired_steering_change, s32* current_steering, s32 desired_steering, s32 steering_change_threshold, s32 steering_change_minimum, s32 arg6) {
+    s32 current_steering_change_increment;
 
-    if ((*arg1 >= arg4) || (-arg4 >= *arg1)) {
-        temp_v1 = player->unk_200;
-        player->unk_200 -= 0x800;
-        if (player->unk_200 >= 0xF0000000) {
-            player->unk_200 = temp_v1;
+    // if (abs(desired_steering_change) >= steering_change_threshold)
+    if ((*desired_steering_change >= steering_change_threshold) || (-steering_change_threshold >= *desired_steering_change)) {
+        current_steering_change_increment = player->steerChangeIncrement;
+        player->steerChangeIncrement -= 1 << 11;
+        //signed vs unsigned weirdness, actually checking if negative
+        if (player->steerChangeIncrement >= 0xF0000000) {
+            player->steerChangeIncrement = current_steering_change_increment;
         }
-        if (arg5 >= (s32) player->unk_200) {
-            player->unk_200 = arg5;
+        if (steering_change_minimum >= (s32) player->steerChangeIncrement) {
+            player->steerChangeIncrement = steering_change_minimum;
         }
 
-        *arg2 = (arg3 < *arg2) ? *arg2 - player->unk_200 : *arg2 + player->unk_200;
+        // move current_steering toward desired_steering
+        *current_steering = (desired_steering < *current_steering) ? *current_steering - player->steerChangeIncrement : *current_steering + player->steerChangeIncrement;
 
+        //arg6 is always positive and unk_090 is 0 or negative, so this if statement is always true
         if (player->unk_090 < ((f32) arg6)) {
             player->unk_090 = (f32) -arg6;
         }
@@ -3841,70 +3845,73 @@ void func_80033884(Player* player, s32* arg1, s32* arg2, s32 arg3, s32 arg4, s32
 UNUSED void func_80033940(Player* player, s32* arg1, s32 arg2, s32 arg3, f32 arg4) {
     u32 temp_v1;
 
-    temp_v1 = player->unk_200;
-    player->unk_200 -= 0x800;
-    if (!(player->unk_200 < 0xF0000000)) {
-        player->unk_200 = temp_v1;
+    temp_v1 = player->steerChangeIncrement;
+    player->steerChangeIncrement -= 0x800;
+    if (!(player->steerChangeIncrement < 0xF0000000)) {
+        player->steerChangeIncrement = temp_v1;
     }
-    if (arg3 >= (s32) player->unk_200) {
-        player->unk_200 = arg3;
+    if (arg3 >= (s32) player->steerChangeIncrement) {
+        player->steerChangeIncrement = arg3;
     }
 
-    *arg1 = (arg2 < *arg1) ? *arg1 - player->unk_200 : *arg1 + player->unk_200;
+    *arg1 = (arg2 < *arg1) ? *arg1 - player->steerChangeIncrement : *arg1 + player->steerChangeIncrement;
 
     if (player->unk_090 < arg4) {
         player->unk_090 = (f32) -arg4;
     }
 }
 
-void func_800339C4(Player* player, s32* arg1, s32 arg2, s32 arg3, f32 arg4) {
+UNUSED void func_800339C4(Player* player, s32* arg1, s32 arg2, s32 arg3, f32 arg4) {
     s32 temp_v0;
 
-    temp_v0 = player->unk_200;
-    player->unk_200 -= 0x800;
-    if (player->unk_200 >= 0xF0000000) {
-        player->unk_200 = temp_v0;
+    temp_v0 = player->steerChangeIncrement;
+    player->steerChangeIncrement -= 0x800;
+    if (player->steerChangeIncrement >= 0xF0000000) {
+        player->steerChangeIncrement = temp_v0;
     }
-    if (arg3 >= (s32) player->unk_200) {
-        player->unk_200 = arg3;
+    if (arg3 >= (s32) player->steerChangeIncrement) {
+        player->steerChangeIncrement = arg3;
     }
 
-    *arg1 = (arg2 < *arg1) ? *arg1 - player->unk_200 : *arg1 + player->unk_200;
+    *arg1 = (arg2 < *arg1) ? *arg1 - player->steerChangeIncrement : *arg1 + player->steerChangeIncrement;
 
     func_80033850(player, arg4);
 }
 
-void func_80033A40(Player* player, s32* arg1, s32* arg2, s32 arg3, s32 arg4, s32 arg5, f32 arg6) {
-    s32 temp_v1;
+void update_steering_small(Player* player, s32* desired_steering_change, s32* current_steering, s32 desired_steering, s32 steering_change_threshold, s32 steering_change_minimum, f32 arg6) {
+    s32 current_steering_change_increment;
 
-    if ((*arg1 >= arg4) || (-arg4 >= *arg1)) {
-        temp_v1 = player->unk_200;
-        player->unk_200 -= 0x800;
-        if (player->unk_200 >= 0xF0000000) {
-            player->unk_200 = temp_v1;
+    if ((*desired_steering_change >= steering_change_threshold) || (-steering_change_threshold >= *desired_steering_change)) {
+        current_steering_change_increment = player->steerChangeIncrement;
+        player->steerChangeIncrement -= 1 << 11;
+        if (player->steerChangeIncrement >= 0xF0000000) {
+            player->steerChangeIncrement = current_steering_change_increment;
         }
-        if (arg5 >= (s32) player->unk_200) {
-            player->unk_200 = arg5;
+        if (steering_change_minimum >= (s32) player->steerChangeIncrement) {
+            player->steerChangeIncrement = steering_change_minimum;
         }
 
-        *arg2 = (arg3 < *arg2) ? *arg2 - player->unk_200 : *arg2 + player->unk_200;
+        *current_steering = (desired_steering < *current_steering) ? *current_steering - player->steerChangeIncrement : *current_steering + player->steerChangeIncrement;
+        // identical to update_steering_large before this point
 
+        // set player->unk_090 = min(0, player->unk_90 + arg6)
         func_80033850(player, arg6);
     }
 }
 
-void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
-    s32 sp2E4;
-    s32 temp_v0_3;
+//On or near ground
+void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex) {
+    s32 steer_position;
+    s32 clamped_x;
     UNUSED s32 pad[2];
     UNUSED s16 pad2;
     s16 var_s1_2;
-    s32 sp2D0;
-    s32 sp2CC;
-    s32 sp2C8;
+    s32 steer_position_delta;
+    s32 steer_resistance_small_turn;
+    s32 steer_resistance_large_turn;
     f32 var_f2_2;
     f32 var_f12 = 0.0f;
-    f32 var_f2 = 0;
+    f32 zero = 0;
     UNUSED s32 pad3;
     s32 var_a0;
     f32 sp44[156] = { 0.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
@@ -3927,28 +3934,28 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
     if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) < (-5)) {
         player->kartProps |= LEFT_TURN;
         player->kartProps &= ~RIGHT_TURN;
-        D_801652C0[arg2]++;
+        D_801652C0[playerIndex]++;
     } else if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) > 5) {
         player->kartProps |= RIGHT_TURN;
         player->kartProps &= ~LEFT_TURN;
-        D_801652C0[arg2]++;
+        D_801652C0[playerIndex]++;
     } else {
         player->kartProps &= ~(LEFT_TURN | RIGHT_TURN);
-        D_801652C0[arg2] = 0;
+        D_801652C0[playerIndex] = 0;
     }
     if (((player->effects & HOP_EFFECT) == HOP_EFFECT) || ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT)) {
         player->kartProps &= ~(LEFT_TURN | RIGHT_TURN);
     }
-    sp2E4 = player->unk_07C;
-    temp_v0_3 = get_clamped_stickX_with_deadzone(controller);
+    steer_position = player->steerPosition;
+    clamped_x = get_clamped_stickX_with_deadzone(controller);
     if (((player->kartProps & BACK_UP) == BACK_UP) || ((player->kartProps & MOVE_BACKWARDS) == MOVE_BACKWARDS)) {
-        temp_v0_3 = -temp_v0_3;
+        clamped_x = -clamped_x;
     }
-    player->unk_07C = (temp_v0_3 << 16) & 0xFFFF0000;
-    sp2D0 = sp2E4 - player->unk_07C;
-    sp2D0 = sp2D0 >> 16;
-    player->unk_0FA = (s16) sp2D0;
-    if (((sp2D0 >= 0x5A) || (sp2D0 < (-0x59))) && (!(player->kartProps & DRIVING_SPINOUT))) {
+    player->steerPosition = (clamped_x << 16) & 0xFFFF0000;
+    steer_position_delta = steer_position - player->steerPosition; // x change
+    steer_position_delta = steer_position_delta >> 16;
+    player->steerPositionDelta = (s16) steer_position_delta;
+    if (((steer_position_delta >= 90) || (steer_position_delta <= -90)) && (!(player->kartProps & DRIVING_SPINOUT))) {
         if ((((((!(player->effects & DRIFTING_EFFECT)) && (gCCSelection == CC_150)) && (gModeSelection != BATTLE)) &&
               (!(player->effects & MIDAIR_EFFECT))) &&
              (((player->speed / 18.0f) * 216.0f) >= 40.0f)) &&
@@ -3957,14 +3964,15 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         }
     }
     if (((s32) player->tyres[BACK_RIGHT].surfaceType) < 0xF) {
-        var_f2 += D_800E3610[player->characterId][player->tyres[BACK_RIGHT].surfaceType];
+        //this table is just zeros
+        zero += D_800E3610[player->characterId][player->tyres[BACK_RIGHT].surfaceType];
     }
     if (((s32) player->tyres[BACK_LEFT].surfaceType) < 0xF) {
-        var_f2 += D_800E3610[player->characterId][player->tyres[BACK_LEFT].surfaceType];
+        zero += D_800E3610[player->characterId][player->tyres[BACK_LEFT].surfaceType];
     }
     if ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) {
-        sp2C8 = 10;
-        sp2CC = 10;
+        steer_resistance_large_turn = 10;
+        steer_resistance_small_turn = 10;
     } else {
         if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) &&
             ((player->effects & HOP_EFFECT) != HOP_EFFECT)) {
@@ -3974,144 +3982,157 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         }
         if (((player->speed / 18.0f) * 216.0f) >= 15.0f) {
             if ((player->kartProps & RIGHT_TURN) == RIGHT_TURN) {
-                if ((sp2D0 < 36) && (sp2D0 >= 0)) {
-                    sp2C8 =
-                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
-                    sp2CC =
-                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
+                if ((steer_position_delta <= 35) && (steer_position_delta >= 0)) {
+                    //gKartTable800E3650 is always 0
+                    steer_resistance_large_turn =
+                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 15)) * (1.0f + zero)); //18 or 15
+                    steer_resistance_small_turn =
+                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 15)) * (1.0f + zero));
                 } else {
-                    sp2C8 = (s32) (((f32) (var_a0 + 5)) * (1.0f + var_f2));
-                    sp2CC = (s32) (((f32) (var_a0 + 9)) * (1.0f + var_f2));
+                    steer_resistance_large_turn = (s32) (((f32) (var_a0 + 5)) * (1.0f + zero)); // 8 or 5
+                    steer_resistance_small_turn = (s32) (((f32) (var_a0 + 9)) * (1.0f + zero)); //12 or 9
                 }
             } else if ((player->kartProps & LEFT_TURN) == LEFT_TURN) {
-                if ((sp2D0 >= (-0x23)) && (sp2D0 <= 0)) {
-                    sp2C8 =
-                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
-                    sp2CC =
-                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 0xF)) * (1.0f + var_f2));
+                if ((steer_position_delta >= -35) && (steer_position_delta <= 0)) {
+                    steer_resistance_large_turn =
+                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 15)) * (1.0f + zero)); // 18 or 15
+                    steer_resistance_small_turn =
+                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 15)) * (1.0f + zero));
                 } else {
-                    sp2C8 = (s32) (((f32) (var_a0 + 5)) * (1.0f + var_f2));
-                    sp2CC = (s32) (((f32) (var_a0 + 9)) * (1.0f + var_f2));
+                    steer_resistance_large_turn = (s32) (((f32) (var_a0 + 5)) * (1.0f + zero)); // 8 or 5
+                    steer_resistance_small_turn = (s32) (((f32) (var_a0 + 9)) * (1.0f + zero)); // 12 or 9
                 }
             } else {
-                sp2C8 = (s32) (((f32) (var_a0 + 3)) * (1.0f + var_f2));
-                sp2CC = (s32) (((f32) (var_a0 + 6)) * (1.0f + var_f2));
+                steer_resistance_large_turn = (s32) (((f32) (var_a0 + 3)) * (1.0f + zero)); // 6 or 3
+                steer_resistance_small_turn = (s32) (((f32) (var_a0 + 6)) * (1.0f + zero)); // 6 or 9
             }
         } else {
-            sp2C8 = 8;
-            sp2CC = 8;
+            steer_resistance_large_turn = 8;
+            steer_resistance_small_turn = 8;
         }
     }
     if ((player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) == UNDER_OOB_OR_FLUID_LEVEL) {
-        sp2C8 *= 1.5;
-        sp2CC *= 1.5;
+        steer_resistance_large_turn *= 1.5;
+        steer_resistance_small_turn *= 1.5;
     } else {
         if ((player->oobProps & PASS_OOB_OR_FLUID_LEVEL) == PASS_OOB_OR_FLUID_LEVEL) {
-            sp2C8 *= 1.2;
-            sp2CC *= 1.2;
+            steer_resistance_large_turn *= 1.2;
+            steer_resistance_small_turn *= 1.2;
         }
-        if ((((f64) (D_801652A0[arg2] - player->tyres[BACK_LEFT].baseHeight)) >= 3.5) ||
-            (((f64) (D_801652A0[arg2] - player->tyres[BACK_RIGHT].baseHeight)) >= 3.5)) {
-            sp2C8 *= 1.05;
-            sp2CC *= 1.05;
+        // Driving in water?
+        if ((((f64) (D_801652A0[playerIndex] - player->tyres[BACK_LEFT].baseHeight)) >= 3.5) ||
+            (((f64) (D_801652A0[playerIndex] - player->tyres[BACK_RIGHT].baseHeight)) >= 3.5)) {
+            steer_resistance_large_turn *= 1.05;
+            steer_resistance_small_turn *= 1.05;
         }
     }
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000005A, 0x78000 / sp2C8, 0x000001C2);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000059, 0x76000 / sp2C8, 0x000001B8);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000058, 0x74000 / sp2C8, 0x000001AE);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000057, 0x72000 / sp2C8, 0x000001A4);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000056, 0x70000 / sp2C8, 0x0000019A);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000055, 0x58000 / sp2C8, 0x00000190);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000054, 0x56000 / sp2C8, 0x0000018B);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000053, 0x50000 / sp2C8, 0x00000186);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000052, 0x4F000 / sp2C8, 0x00000186);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000051, 0x4E000 / sp2C8, 0x0000017C);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000050, 0x4D000 / sp2C8, 0x00000172);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004F, 0x4C000 / sp2C8, 0x00000168);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004E, 0x4C000 / sp2C8, 0x00000168);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004D, 0x4B000 / sp2C8, 0x0000015E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004C, 0x4A000 / sp2C8, 0x00000154);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004B, 0x49000 / sp2C8, 0x0000014A);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004A, 0x49000 / sp2C8, 0x0000014A);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000049, 0x49000 / sp2C8, 0x0000014A);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000048, 0x48000 / sp2C8, 0x00000140);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000047, 0x47000 / sp2C8, 0x0000013B);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000046, 0x47000 / sp2C8, 0x0000013B);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000045, 0x46000 / sp2C8, 0x00000131);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000044, 0x46000 / sp2C8, 0x00000131);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000043, 0x45000 / sp2C8, 0x00000118);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000042, 0x46000 / sp2C8, 0x0000010E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000041, 0x45000 / sp2C8, 0x0000010E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000040, 0x44000 / sp2C8, 0x00000104);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003F, 0x43000 / sp2C8, 0x000000FA);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003E, 0x43000 / sp2C8, 0x000000FA);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003D, 0x43000 / sp2C8, 0x000000FA);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003C, 0x3D000 / sp2C8, 0x000000F5);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003B, 0x3C000 / sp2C8, 0x000000F5);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003A, 0x3B000 / sp2C8, 0x000000F5);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000039, 0x3A000 / sp2C8, 0x000000F5);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000038, 0x38000 / sp2C8, 0x000000F5);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000037, 0x38000 / sp2C8, 0x000000E6);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000036, 0x38000 / sp2C8, 0x000000E6);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000035, 0x38000 / sp2C8, 0x000000E6);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000034, 0x38000 / sp2C8, 0x000000E6);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000033, 0x38000 / sp2C8, 0x000000E6);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000032, 0x32000 / sp2C8, 0x000000DC);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000031, 0x32000 / sp2C8, 0x000000DC);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000030, 0x32000 / sp2C8, 0x000000DC);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002F, 0x32000 / sp2C8, 0x000000DC);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002E, 0x32000 / sp2C8, 0x000000DC);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002D, 0x30000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002C, 0x2E000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002B, 0x2E000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002A, 0x2E000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000029, 0x2E000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000028, 0x2E000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000027, 0x2C000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000026, 0x28000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000025, 0x28000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000024, 0x24000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000023, 0x24000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000022, 0x22000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000020, 0x20000 / sp2C8, 0x00000064);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001F, 0x20000 / sp2C8, 0x00000064);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001E, 0x1F000 / sp2CC, 0.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001D, 0x1E000 / sp2CC, 0.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001C, 0x1D000 / sp2CC, 0.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001B, 0x1C000 / sp2CC, 0.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001A, 0x1B000 / sp2CC, 0.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000019, 0x1A000 / sp2CC, 1.0f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000018, 0x19000 / sp2CC, 1.0f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000017, 0x18000 / sp2CC, 1.0f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000016, 0x17000 / sp2CC, 1.0f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000015, 0x16000 / sp2CC, 1.0f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000014, 0x15000 / sp2CC, 1.05f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000013, 0x14000 / sp2CC, 1.05f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000012, 0x13000 / sp2CC, 1.05f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000011, 0x12000 / sp2CC, 1.05f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000010, 0x11000 / sp2CC, 1.05f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000F, 0x10000 / sp2CC, 1.2f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000E, 0xF000 / sp2CC, 1.2f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000D, 0xE000 / sp2CC, 1.2f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000C, 0xD000 / sp2CC, 1.2f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000B, 0xC000 / sp2CC, 1.2f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000A, 0xE000 / sp2CC, 1.6f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 9, 0xD000 / sp2CC, 1.6f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 8, 0xC000 / sp2CC, 1.6f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 7, 0xB000 / sp2CC, 1.6f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 6, 0xA000 / sp2CC, 1.6f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 5, 0x9000 / sp2CC, 1.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 4, 0x8000 / sp2CC, 1.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 3, 0x7000 / sp2CC, 1.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 2, 0x6000 / sp2CC, 1.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 1, 0x5000 / sp2CC, 1.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0, 0 / sp2CC, 1.9f);
+
+    /*
+    This big group of function calls does 2 things. 
+    First, when you steer it sets steer_position (which starts as just your x input) part way between your x input and your previous player->steerPosition
+    (basically, you cannot go from full left to right steering instantaneously)
+    Second, it sets the value of player->unk_090, which has to do with your karts sideways velocity. The code looks like it is intended
+    to set this to larger negative values when you have a large steer_position_delta. However, due to an apparent bug, update_steering_large
+    overwrites this too frequently. The end effect is that player->unk_090 ends up always getting set to -59.85 when steer_position_delta > 30
+    and set to 0 otherwise. -59.85 is -100 (the last value provided to update_steering_large) + the sum of the values provided to update_steering_small
+    */
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 90, (120 << 12) / steer_resistance_large_turn, 450);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 89, (118 << 12) / steer_resistance_large_turn, 440);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 88, (116 << 12) / steer_resistance_large_turn, 430);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 87, (114 << 12) / steer_resistance_large_turn, 420);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 86, (112 << 12) / steer_resistance_large_turn, 410);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 85,  (88 << 12) / steer_resistance_large_turn, 400);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 84,  (86 << 12) / steer_resistance_large_turn, 395);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 83,  (80 << 12) / steer_resistance_large_turn, 390);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 82,  (79 << 12) / steer_resistance_large_turn, 390);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 81,  (78 << 12) / steer_resistance_large_turn, 380);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 80,  (77 << 12) / steer_resistance_large_turn, 370);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 79,  (76 << 12) / steer_resistance_large_turn, 360);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 78,  (76 << 12) / steer_resistance_large_turn, 360);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 77,  (75 << 12) / steer_resistance_large_turn, 350);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 76,  (74 << 12) / steer_resistance_large_turn, 340);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 75,  (73 << 12) / steer_resistance_large_turn, 330);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 74,  (73 << 12) / steer_resistance_large_turn, 330);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 73,  (73 << 12) / steer_resistance_large_turn, 330);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 72,  (72 << 12) / steer_resistance_large_turn, 320);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 71,  (71 << 12) / steer_resistance_large_turn, 315);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 70,  (71 << 12) / steer_resistance_large_turn, 315);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 69,  (70 << 12) / steer_resistance_large_turn, 305);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 68,  (70 << 12) / steer_resistance_large_turn, 305);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 67,  (69 << 12) / steer_resistance_large_turn, 280);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 66,  (70 << 12) / steer_resistance_large_turn, 270);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 65,  (69 << 12) / steer_resistance_large_turn, 270);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 64,  (68 << 12) / steer_resistance_large_turn, 260);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 63,  (67 << 12) / steer_resistance_large_turn, 250);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 62,  (67 << 12) / steer_resistance_large_turn, 250);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 61,  (67 << 12) / steer_resistance_large_turn, 250);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 60,  (61 << 12) / steer_resistance_large_turn, 245);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 59,  (60 << 12) / steer_resistance_large_turn, 245);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 58,  (59 << 12) / steer_resistance_large_turn, 245);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 57,  (58 << 12) / steer_resistance_large_turn, 245);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 56,  (56 << 12) / steer_resistance_large_turn, 245);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 55,  (56 << 12) / steer_resistance_large_turn, 230);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 54,  (56 << 12) / steer_resistance_large_turn, 230);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 53,  (56 << 12) / steer_resistance_large_turn, 230);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 52,  (56 << 12) / steer_resistance_large_turn, 230);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 51,  (56 << 12) / steer_resistance_large_turn, 230);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 50,  (50 << 12) / steer_resistance_large_turn, 220);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 49,  (50 << 12) / steer_resistance_large_turn, 220);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 48,  (50 << 12) / steer_resistance_large_turn, 220);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 47,  (50 << 12) / steer_resistance_large_turn, 220);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 46,  (50 << 12) / steer_resistance_large_turn, 220);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 45,  (48 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 44,  (46 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 43,  (46 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 42,  (46 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 41,  (46 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 40,  (46 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 39,  (44 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 38,  (40 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 37,  (40 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 36,  (36 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 35,  (36 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 34,  (34 << 12) / steer_resistance_large_turn, 110); 
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 32,  (32 << 12) / steer_resistance_large_turn, 100); // this skips 33
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 31,  (32 << 12) / steer_resistance_large_turn, 100);
+
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 30,  (31 << 12) / steer_resistance_small_turn, 0.9f); // 0.9 * 5
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 29,  (30 << 12) / steer_resistance_small_turn, 0.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 28,  (29 << 12) / steer_resistance_small_turn, 0.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 27,  (28 << 12) / steer_resistance_small_turn, 0.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 26,  (27 << 12) / steer_resistance_small_turn, 0.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 25,  (26 << 12) / steer_resistance_small_turn, 1.0f); // 1.0 * 5
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 24,  (25 << 12) / steer_resistance_small_turn, 1.0f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 23,  (24 << 12) / steer_resistance_small_turn, 1.0f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 22,  (23 << 12) / steer_resistance_small_turn, 1.0f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 21,  (22 << 12) / steer_resistance_small_turn, 1.0f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 20,  (21 << 12) / steer_resistance_small_turn, 1.05f);// 1.05* 5
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 19,  (20 << 12) / steer_resistance_small_turn, 1.05f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 18,  (19 << 12) / steer_resistance_small_turn, 1.05f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 17,  (18 << 12) / steer_resistance_small_turn, 1.05f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 16,  (17 << 12) / steer_resistance_small_turn, 1.05f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 15,  (16 << 12) / steer_resistance_small_turn, 1.2f); // 1.2 * 5
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 14,  (15 << 12) / steer_resistance_small_turn, 1.2f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 13,  (14 << 12) / steer_resistance_small_turn, 1.2f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 12,  (13 << 12) / steer_resistance_small_turn, 1.2f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 11,  (12 << 12) / steer_resistance_small_turn, 1.2f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 10,  (14 << 12) / steer_resistance_small_turn, 1.6f); // 1.6 * 5
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  9,  (13 << 12) / steer_resistance_small_turn, 1.6f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  8,  (12 << 12) / steer_resistance_small_turn, 1.6f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  7,  (11 << 12) / steer_resistance_small_turn, 1.6f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  6,  (10 << 12) / steer_resistance_small_turn, 1.6f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  5,   (9 << 12) / steer_resistance_small_turn, 1.9f); // 1.9 * 6
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  4,   (8 << 12) / steer_resistance_small_turn, 1.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  3,   (7 << 12) / steer_resistance_small_turn, 1.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  2,   (6 << 12) / steer_resistance_small_turn, 1.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  1,   (5 << 12) / steer_resistance_small_turn, 1.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  0,           0 / steer_resistance_small_turn, 1.9f); // sum is 40.15
     if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
-        var_f2_2 = (f32) (((s32) (sp2E4 >> 16)) / 8);
+        var_f2_2 = (f32) ((steer_position >> 16) / 8);
     } else if (((player->speed / 18.0f) * 216.0f) <= 25.0f) {
-        var_f2_2 = (f32) ((sp2E4 >> 16) / 12);
+        var_f2_2 = (f32) ((steer_position >> 16) / 12);
     } else {
-        var_f2_2 = ((f32) (sp2E4 >> 0x10)) / (8.0f + (player->currentSpeed / 50.0f));
+        var_f2_2 = ((f32) (steer_position >> 16)) / (8.0f + (player->currentSpeed / 50.0f));
     }
     if (var_f2_2 < 0.0f) {
         var_f2_2 = -var_f2_2;
@@ -4123,7 +4144,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
     } else {
         var_f2_2 = var_f2_2 * (sp44[(s16) ((player->speed / 18.0f) * 216.0f)] * 1.5f);
     }
-    player->unk_07C = sp2E4;
+    player->steerPosition = steer_position;
     if (player->unk_10C != 0) {
         func_8002BD58(player);
     }
@@ -4138,25 +4159,25 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
     }
     if (((player->effects & HOP_EFFECT) != HOP_EFFECT) && ((player->effects & DRIFTING_EFFECT) != DRIFTING_EFFECT)) {
         if ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) {
-            player->unk_078 = (s16) ((s32) (((f32) ((((s32) player->unk_07C) >> 0x10) * 5)) * var_f2_2));
+            player->unk_078 = (player->steerPosition >> 16) * 5 * var_f2_2;
         } else {
             if ((player->effects & BRAKING_EFFECT) != BRAKING_EFFECT) {
-                if (((player->unk_07C >> 16) >= 45) || ((player->unk_07C >> 16) <= (-45))) {
-                    player->unk_078 = ((player->unk_07C >> 16) * (var_f2_2 + (var_f2_2 * var_f12))) *
+                if (((player->steerPosition >> 16) >= 45) || ((player->steerPosition >> 16) <= -45)) {
+                    player->unk_078 = ((player->steerPosition >> 16) * (var_f2_2 + (var_f2_2 * var_f12))) *
                                       (0.15 + gKartHandlingTable[player->characterId]);
                 } else {
-                    player->unk_078 = ((player->unk_07C >> 16) * (var_f2_2 + (var_f2_2 * var_f12))) *
+                    player->unk_078 = ((player->steerPosition >> 16) * (var_f2_2 + (var_f2_2 * var_f12))) *
                                       gKartHandlingTable[player->characterId];
                 }
             } else {
                 if ((((player->speed / 18.0f) * 216.0f) >= 0.0f) && (((player->speed / 18.0f) * 216.0f) < 8.0f)) {
-                    player->unk_078 = (player->unk_07C >> 16) * (var_f2_2 + (var_f2_2 * var_f12));
+                    player->unk_078 = (player->steerPosition >> 16) * (var_f2_2 + (var_f2_2 * var_f12));
                 }
                 if ((((player->speed / 18.0f) * 216.0f) >= 8.0f) && (((player->speed / 18.0f) * 216.0f) < 65.0f)) {
-                    player->unk_078 = (player->unk_07C >> 16) * ((var_f2_2 + 1.5) + (var_f2_2 * var_f12));
+                    player->unk_078 = (player->steerPosition >> 16) * ((var_f2_2 + 1.5) + (var_f2_2 * var_f12));
                 }
                 if (((player->speed / 18.0f) * 216.0f) >= 65.0f) {
-                    player->unk_078 = (player->unk_07C >> 16) * ((var_f2_2 + 1.6) + (var_f2_2 * var_f12));
+                    player->unk_078 = (player->steerPosition >> 16) * ((var_f2_2 + 1.6) + (var_f2_2 * var_f12));
                 }
             }
             player->unk_228 = 0;
@@ -4165,24 +4186,26 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
             }
         }
     } else if (((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) && ((player->effects & HOP_EFFECT) != HOP_EFFECT)) {
-        if ((((s16) player->unk_0C0) / 182) > 0) {
-            var_s1_2 = (((s32) (((player->unk_07C >> 0x10) * 0xD) + 0x2B1)) / 106) + 0x28;
-            if ((player->unk_07C >> 0x10) < (-0x27)) {
-                player->effects = player->effects | DRIFT_OUTSIDE_EFFECT;
-                if ((player->unk_07C >> 0x10) < (-0x31)) {
+        if ((((s16) player->unk_0C0) / DEGREES_CONVERSION_FACTOR) > 0) {
+            // linear map, sets -53 to 40 and 53 to 53
+            var_s1_2 = (((s32) (((player->steerPosition >> 16) * 13) + (13 * 53))) / (2 * 53)) + 40;
+            if ((player->steerPosition >> 16) <= -40) {
+                player->effects |= DRIFT_OUTSIDE_EFFECT;
+                if ((player->steerPosition >> 16) <= -50) { // always true, but has no effect
                     player->effects |= DRIFT_OUTSIDE_EFFECT;
                 }
             }
-            func_8002A8A4(player, arg2);
+            func_8002A8A4(player, playerIndex);
         } else {
-            var_s1_2 = (((s32) (((player->unk_07C >> 0x10) * 0xD) + 0x2B1)) / 106) - 0x35;
-            if ((player->unk_07C >> 0x10) >= 0x28) {
-                player->effects = player->effects | DRIFT_OUTSIDE_EFFECT;
-                if ((player->unk_07C >> 0x10) < (-0x31)) {
+            // linear map, sets -53 to -53 and 53 to -40
+            var_s1_2 = (((s32) (((player->steerPosition >> 16) * 13) + (13 * 53))) / (2 * 53)) - 53;
+            if ((player->steerPosition >> 16) >= 40) {
+                player->effects |= DRIFT_OUTSIDE_EFFECT;
+                if ((player->steerPosition >> 16) <= -50) { // never true, but would have no effect
                     player->effects |= DRIFT_OUTSIDE_EFFECT;
                 }
             }
-            func_8002A8A4(player, arg2);
+            func_8002A8A4(player, playerIndex);
         }
         if ((((player->speed / 18.0f) * 216.0f) >= 0.0f) && (((player->speed / 18.0f) * 216.0f) < 8.0f)) {
             player->unk_078 = (s16) ((s32) (var_s1_2 * ((var_f2_2 + 2.0f) + (var_f2_2 * var_f12))));
@@ -4199,8 +4222,8 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
             player->unk_078 *= 0.65;
         }
     } else {
-        var_s1_2 = (s16) (((s32) player->unk_07C) >> 16);
-        if (temp_v0_3 == 0) {
+        var_s1_2 = player->steerPosition >> 16;
+        if (clamped_x == 0) {
             var_s1_2 = 0;
         }
         if (((player->speed / 18.0f) * 216.0f) <= 5.0f) {
@@ -4243,7 +4266,7 @@ void apply_cpu_turn(Player* player, s16 targetAngle) {
             player->effects &= ~DRIFT_OUTSIDE_EFFECT;
             player->unk_228 = 0;
             if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT)) {
-                sp304 = (s32) player->unk_07C >> 0x10;
+                sp304 = (s32) player->steerPosition >> 16;
                 move_s32_towards(&sp304, (s32) targetAngle, 0.35f);
                 sp304 <<= 0x10;
                 if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
@@ -4262,24 +4285,24 @@ void apply_cpu_turn(Player* player, s16 targetAngle) {
                     var_f0 = speedTurn[(s16) ((player->speed / 18.0f) * 216.0f)] * characterTurn[player->characterId] *
                              var_f0;
                 }
-                player->unk_07C = sp304;
+                player->steerPosition = sp304;
                 if (((player->effects & HOP_EFFECT) != HOP_EFFECT) &&
                     ((player->effects & DRIFTING_EFFECT) != DRIFTING_EFFECT)) {
                     if ((player->effects & BRAKING_EFFECT) != BRAKING_EFFECT) {
-                        player->unk_078 = (player->unk_07C >> 0x10) * var_f0;
+                        player->unk_078 = (player->steerPosition >> 16) * var_f0;
                     } else {
-                        player->unk_078 = (player->unk_07C >> 0x10) * (var_f0 + 1.5);
+                        player->unk_078 = (player->steerPosition >> 16) * (var_f0 + 1.5);
                     }
                 } else if ((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) {
-                    if (((s16) player->unk_0C0 / 182) > 0) {
-                        var_v0 = player->unk_07C >> 0x10;
+                    if (((s16) player->unk_0C0 / DEGREES_CONVERSION_FACTOR) > 0) {
+                        var_v0 = player->steerPosition >> 16;
                     } else {
-                        var_v0 = player->unk_07C >> 0x10;
+                        var_v0 = player->steerPosition >> 16;
                     }
                     player->unk_078 = var_v0 * (var_f0 + 3.0);
                     player->unk_078 *= 0.8;
                 } else {
-                    var_v0 = (s16) ((s32) player->unk_07C >> 0x10);
+                    var_v0 = (s16) ((s32) player->steerPosition >> 16);
                     if (targetAngle == 0) {
                         var_v0 = 0;
                     }
@@ -4305,16 +4328,18 @@ void func_80036C5C(Player* player) {
 }
 
 void func_80036CB4(Player* player) {
-    s32 test;
+    s32 steer_position_new;
 
     if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
-        if ((player->unk_0C0 / 182) > 0) {
-            test = ((((player->unk_07C >> 0x10) * 0xD) + 0x2B1) / 106) + 0x28;
-            player->unk_07C = test << 0x10;
+        if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) > 0) {
+            // linear map, sets -53 to 40 and 53 to 53
+            steer_position_new = ((((player->steerPosition >> 16) * 13) + (13*53)) / (2*53)) + 40;
+            player->steerPosition = steer_position_new << 16;
         }
-        if ((player->unk_0C0 / 182) < 0) {
-            test = ((((player->unk_07C >> 0x10) * 0xD) + 0x2B1) / 106) - 0x35;
-            player->unk_07C = test << 0x10;
+        if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) < 0) {
+            // linear map, sets -53 to -53 and 53 to -40
+            steer_position_new = ((((player->steerPosition >> 16) * 13) + (13*53)) / (2*53)) - 53;
+            player->steerPosition = steer_position_new << 16;
         }
         player->effects &= ~DRIFTING_EFFECT;
     }
@@ -4324,11 +4349,11 @@ void func_80036CB4(Player* player) {
 }
 
 void func_80036DB4(Player* player, Vec3f arg1, Vec3f arg2) {
-    s16 thing;
+    s16 steer_position_delta;
     UNUSED s16 pad;
     f32 sp20;
     f32 var_f18;
-    s32 temp_t6;
+    s32 steer_position;
 
     if (((player->effects & LOST_RACE_EFFECT) == LOST_RACE_EFFECT) ||
         ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT)) {
@@ -4342,27 +4367,27 @@ void func_80036DB4(Player* player, Vec3f arg1, Vec3f arg2) {
             var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 10.0f);
             sp20 = player->unk_084 * 3.0f;
         } else if (!(player->effects & BANANA_NEAR_SPINOUT_EFFECT) && !(player->kartProps & DRIVING_SPINOUT)) {
-            thing = player->unk_0FA;
-            if (thing > 0) {
-                thing *= -1;
+            steer_position_delta = player->steerPositionDelta;
+            if (steer_position_delta > 0) {
+                steer_position_delta *= -1;
             }
-            temp_t6 = player->unk_07C >> 0x10;
-            if ((temp_t6 < 0x15) && (temp_t6 >= -0x14)) {
-                if (thing < 0x14) {
+            steer_position = player->steerPosition >> 16;
+            if ((steer_position <= 20) && (steer_position >= -20)) {
+                if (steer_position_delta < 20) {
                     var_f18 = (player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) +
                               (-player->currentSpeed * 0.02) + (-player->unk_20C * 50.0f);
                 } else {
                     var_f18 = (player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) +
-                              ((temp_t6 * 0.01) + (-player->currentSpeed * 0.05)) + (-player->unk_20C * 50.0f);
+                              ((steer_position * 0.01) + (-player->currentSpeed * 0.05)) + (-player->unk_20C * 50.0f);
                 }
             } else {
                 var_f18 = (player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) +
-                          ((temp_t6 * 0.1) + (-player->currentSpeed * 0.15)) + (-player->unk_20C * 50.0f);
+                          ((steer_position * 0.1) + (-player->currentSpeed * 0.15)) + (-player->unk_20C * 50.0f);
             }
             sp20 = player->unk_084;
         } else {
             var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) * 1.5) +
-                      (((player->unk_07C >> 0x10) * 0.1) + (-player->currentSpeed * 0.05)) + (-player->unk_20C * 50.0f);
+                      (((player->steerPosition >> 16) * 0.1) + (-player->currentSpeed * 0.05)) + (-player->unk_20C * 50.0f);
             sp20 = player->unk_084;
         }
         if ((player->effects & STAR_EFFECT) == STAR_EFFECT) {
@@ -4386,10 +4411,10 @@ void func_80036DB4(Player* player, Vec3f arg1, Vec3f arg2) {
 }
 
 void func_800371F4(Player* player, Vec3f arg1, Vec3f arg2) {
-    s16 var_v0;
+    s16 steer_position_delta;
     f32 sp20;
     f32 var_f18;
-    s32 temp_t6;
+    s32 steer_position;
 
     if (((player->effects & LOST_RACE_EFFECT) == LOST_RACE_EFFECT) ||
         ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT)) {
@@ -4403,29 +4428,29 @@ void func_800371F4(Player* player, Vec3f arg1, Vec3f arg2) {
             var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 50.0f);
             sp20 = player->unk_084 * 3.0f;
         } else if (!(player->effects & BANANA_NEAR_SPINOUT_EFFECT) && !(player->kartProps & DRIVING_SPINOUT)) {
-            var_v0 = player->unk_0FA;
-            if (var_v0 > 0) {
-                var_v0 *= -1;
+            steer_position_delta = player->steerPositionDelta;
+            if (steer_position_delta > 0) {
+                steer_position_delta *= -1;
             }
-            temp_t6 = (s32) player->unk_07C >> 0x10;
-            if ((temp_t6 < 0x15) && (temp_t6 >= -0x14)) {
-                if (var_v0 < 0x14) {
+            steer_position = (s32) player->steerPosition >> 16;
+            if ((steer_position <= 20) && (steer_position >= -20)) {
+                if (steer_position_delta < 20) {
                     var_f18 = (player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) +
                               (-player->currentSpeed * 0.02) + (-player->unk_20C * 50.0f);
                 } else {
                     var_f18 = ((player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) -
-                               ((temp_t6 * 0.01) + (player->currentSpeed * 0.05))) +
+                               ((steer_position * 0.01) + (player->currentSpeed * 0.05))) +
                               (-player->unk_20C * 50.0f);
                 }
             } else {
                 var_f18 = ((player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) -
-                           ((temp_t6 * 0.1) + (player->currentSpeed * 0.15))) +
+                           ((steer_position * 0.1) + (player->currentSpeed * 0.15))) +
                           (-player->unk_20C * 50.0f);
             }
             sp20 = player->unk_084;
         } else {
             var_f18 = ((player->unk_208 + ((f64) (-(player->speed / 18.0f) * 216.0f) * 1.5)) -
-                       (((player->unk_07C >> 0x10) * 0.1) + (player->currentSpeed * 0.05))) +
+                       (((player->steerPosition >> 0x10) * 0.1) + (player->currentSpeed * 0.05))) +
                       (-player->unk_20C * 50.0f);
             sp20 = player->unk_084;
         }

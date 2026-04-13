@@ -246,7 +246,7 @@ void func_8008C6D0(Player* player, s8 playerIndex) {
     player->effects = (s32) (player->effects & ~HIT_BY_GREEN_SHELL_EFFECT);
     player->unk_0A8 = 0;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_236 = 0;
     player->unk_078 = 0;
     player->currentSpeed = 0.0f;
@@ -271,7 +271,7 @@ void func_8008C73C(Player* player, s8 playerIndex) {
 
         player->kartGraphics |= WHIRRR;
         // clang-format off
-        player->unk_0C0 = 0; player->unk_07C = 0; player->unk_078 = 0; player->unk_0AE = player->rotation[1]; player->unk_0B2 = 2;
+        player->unk_0C0 = 0; player->steerPosition = 0; player->unk_078 = 0; player->unk_0AE = player->rotation[1]; player->unk_0B2 = 2;
         // clang-format on
         D_80165190[0][playerIndex] = 1;
         D_80165190[1][playerIndex] = 1;
@@ -298,7 +298,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
     player->effects &= ~DRIVING_SPINOUT_EFFECT;
     player->unk_0A8 = 0;
     player->rotation[1] = player->unk_0AE;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_0C0 = 0;
     player->effects &= ~BANANA_NEAR_SPINOUT_EFFECT;
 
@@ -381,7 +381,7 @@ void func_8008CDC0(Player* player, s8 playerIndex) {
     player->unk_0AC = 1;
     player->effects &= ~DRIFTING_EFFECT;
 
-    if (((player->unk_07C >> 0x10) >= 0x14) || ((player->unk_07C >> 0x10) < -0x13) ||
+    if (((player->steerPosition >> 16) >= 20) || ((player->steerPosition >> 16) <= -20) ||
         (((player->speed / 18.0f) * 216.0f) <= 30.0f) || ((player->effects & MIDAIR_EFFECT) != 0) ||
         (((player->type & PLAYER_HUMAN) == 0) && ((player->effects & LOST_RACE_EFFECT) == 0))) {
         func_8008C73C(player, playerIndex);
@@ -568,7 +568,7 @@ void func_8008D570(Player* player, s8 playerIndex) {
     player->kartHopVelocity = (f32) D_800E3710[player->characterId];
     player->unk_0B2 = 1;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_078 = 0;
     D_8018D920[playerIndex] = 0;
 
@@ -607,7 +607,7 @@ void func_8008D698(Player* player, s8 playerIndex) {
 
 void func_8008D760(Player* player) {
     player->unk_0A8 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_0C0 = 0;
     player->rotation[1] = player->unk_0AE;
     player->effects &= ~UNKNOWN_EFFECT_0x80000;
@@ -628,7 +628,7 @@ void func_8008D7B0(Player* player, s8 playerIndex) {
     D_8018D920[playerIndex] = 0;
     player->unk_0B2 = 4;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_078 = 0;
 
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
@@ -661,7 +661,7 @@ void func_8008D8B4(Player* player, s8 playerIndex) {
 
 void func_8008D97C(Player* player) {
     player->unk_0A8 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_0C0 = 0;
     player->rotation[1] = player->unk_0AE;
     player->effects &= ~UNKNOWN_EFFECT_0x800000;
@@ -725,7 +725,7 @@ void trigger_squish(Player* player, s8 playerIndex) {
 void apply_hit_effect(Player* player, s8 playerIndex) {
     player->unk_0C2 = 0;
     player->unk_0A8 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_0C0 = 0;
     player->unk_08C = 0.0f;
     player->currentSpeed = 0.0f;
@@ -843,7 +843,7 @@ void trigger_lightning_strike(Player* player, s8 playerIndex) {
     player->unk_0AE = player->rotation[1];
     player->unk_0B2 = 2;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_078 = 0;
 
     D_80165190[0][playerIndex] = 1;
@@ -870,7 +870,7 @@ void apply_lightning_effect(Player* player, s8 playerIndex) {
         ((player->effects & SQUISH_EFFECT) != SQUISH_EFFECT)) {
         player->effects &= ~LIGHTNING_STRIKE_EFFECT;
         player->unk_0A8 = 0;
-        player->unk_07C = 0;
+        player->steerPosition = 0;
         player->unk_0C0 = 0;
         player->rotation[1] = player->unk_0AE;
         remove_lightning_effect(player, playerIndex);
@@ -888,7 +888,7 @@ void apply_lightning_effect(Player* player, s8 playerIndex) {
             if (player->unk_0B2 <= 0) {
                 player->unk_0A8 = 0;
                 player->effects &= ~LIGHTNING_STRIKE_EFFECT;
-                player->unk_07C = 0;
+                player->steerPosition = 0;
                 player->unk_0C0 = 0;
                 player->rotation[1] = player->unk_0AE;
                 D_80165190[0][playerIndex] = 1;
@@ -939,7 +939,7 @@ void func_8008E4A4(Player* player, s8 playerIndex) {
     player->unk_206 = 0;
     player->slopeAccel = 0;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_0C2 = 0xF;
     player->unk_042 += 0xAAA;
     player->unk_08C = 0.0f;
@@ -1053,7 +1053,7 @@ void apply_hit_by_star_effect(Player* player, s8 playerIndex) {
     player->unk_206 = 0;
     player->slopeAccel = 0;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_0C2 = 0xF;
     player->unk_042 += 0xAAA;
     player->unk_08C /= 2;
@@ -1247,7 +1247,7 @@ void func_8008F104(Player* player, s8 playerIndex) {
     player->unk_0AE = player->rotation[1];
     player->unk_0B2 = 2;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->effects |= EARLY_START_SPINOUT_EFFECT;
     player->unk_078 = 0;
     D_8018D920[playerIndex] = -0x8000;
@@ -1314,7 +1314,7 @@ void func_8008F3E0(Player* player) {
 void func_8008F3F4(Player* player, UNUSED s8 arg1) {
     player->unk_0A8 += 0x80;
     player->unk_042 += 0x71C;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->currentSpeed = 0.0f;
     player->unk_08C /= 2;
     if (player->unk_0A8 >= 0x2000) {
@@ -1364,7 +1364,7 @@ void func_8008F5A4(Player* player, s8 playerIndex) {
     player->effects &= ~TERRAIN_TUMBLE_EFFECT;
     player->unk_0A8 = 0;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_236 = 0;
     player->unk_078 = 0;
     player->currentSpeed = 0.0f;
@@ -1772,7 +1772,7 @@ void func_80090778(Player* player) {
     s32 playerIndex = get_player_index_for_player(player);
 
     player->unk_078 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_0C0 = 0;
     player->lakituProps |= LAKITU_SCENE;
     player->effects &= ~DRIFTING_EFFECT;
@@ -1789,7 +1789,7 @@ void func_80090778(Player* player) {
         if ((player->effects & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT) {
             player->effects &= ~LIGHTNING_STRIKE_EFFECT;
             player->unk_0A8 = 0;
-            player->unk_07C = 0;
+            player->steerPosition = 0;
             player->unk_0C0 = 0;
             player->rotation[1] = player->unk_0AE;
         }
@@ -1802,7 +1802,7 @@ void func_80090868(Player* player) {
     s32 playerIndex;
 
     player->unk_078 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_0C0 = 0;
     player->unk_08C = 0.0f;
     playerIndex = get_player_index_for_player(player);
@@ -1842,7 +1842,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
 
     player->unk_0C2 = 0x000C;
     player->unk_078 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_0C0 = 0;
     player->unk_08C = 0.0f;
     clean_effect(player, playerId);
@@ -2032,7 +2032,7 @@ void func_800911B4(Player* player, s8 arg1) {
     player->kartHopVelocity = 2.6f;
     player->unk_0B2 = 2;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;
+    player->steerPosition = 0;
     player->unk_078 = 0;
     D_8018D920[arg1] = 0;
 
@@ -2088,7 +2088,7 @@ void func_80091298(Player* player, s8 arg1) {
                 player->pos[1] = (f32) ((f64) (spC[arg1] + player->boundingBoxSize) + 1.08);
                 player->unk_DB4.unk18 = 0;
                 player->unk_0A8 = 0;
-                player->unk_07C = 0;
+                player->steerPosition = 0;
                 player->unk_0C0 = 0;
                 player->unk_DB4.unkC = 3.0f;
                 player->kartProps &= ~UNUSED_0x800;

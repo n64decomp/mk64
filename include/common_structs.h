@@ -275,12 +275,12 @@ typedef struct {
     /* 0x0074 */ f32 unk_074;
     /* 0x0078 */ s16 unk_078;
     /* 0x007A */ s16 unk_07A;
-    /* 0x007C */ s32 unk_07C;
+    /* 0x007C */ s32 steerPosition; // Where the kart is steering, related to joystick position. Basically, in [-53 to 53], but shifted 16 bits left
     /* 0x0080 */ f32 boostPower;
     /* 0x0084 */ f32 unk_084;
     /* 0x0088 */ f32 unk_088;
     /* 0x008C */ f32 unk_08C;
-    /* 0x0090 */ f32 unk_090;
+    /* 0x0090 */ f32 unk_090; // related to sideways velocity (e.g. sliding while turning)
     /* 0x0094 */ f32 speed;
     /* 0x0098 */ f32 unk_098;
     /* 0x009C */ f32 currentSpeed;
@@ -314,7 +314,7 @@ typedef struct {
     /* 0x00F0 */ f32 kartHopJerk;
     /* 0x00F4 */ f32 kartHopAcceleration;
     /* 0x00F8 */ u16 surfaceType;
-    /* 0x00FA */ s16 unk_0FA;
+    /* 0x00FA */ s16 steerPositionDelta;
     /* 0x00FC */ f32 kartFriction;
     /* 0x0100 */ f32 kartGravity;
     /* 0x0104 */ f32 unk_104;
@@ -327,7 +327,7 @@ typedef struct {
     /* 0x0198 */ KartTyre tyres[4];
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
-    /* 0x0200 */ u32 unk_200; // May be s32. but less casting required if u32
+    /* 0x0200 */ u32 steerChangeIncrement; // May be s32. but less casting required if u32
     /* 0x0204 */ s16 driftDuration;
     /* 0x0206 */ s16 unk_206;
     /* 0x0208 */ f32 unk_208;
