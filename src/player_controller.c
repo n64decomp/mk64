@@ -4027,14 +4027,15 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
         }
     }
 
-    // This big group of function calls does 2 things. 
-    // First, when you steer it sets steer_position (which starts as just your x input) part way between your x input and your previous player->steerPosition
-    //   (basically, you cannot go from full left to right steering instantaneously)
-    // Second, it sets the value of player->unk_090, which has to do with your karts sideways velocity. The code looks like it is intended
-    //   to set this to larger negative values when you have a large steer_position_delta. However, due to an apparent bug, update_steering_large
-    //   overwrites this too frequently. The end effect is that player->unk_090 ends up always getting set to -59.85 when steer_position_delta > 30
-    //   and set to 0 otherwise. -59.85 is -100 (the last value provided to update_steering_large) + the sum of the values provided to 
-    //   update_steering_small
+    /*
+    This big group of function calls does 2 things. 
+    First, when you steer it sets steer_position (which starts as just your x input) part way between your x input and your previous player->steerPosition
+    (basically, you cannot go from full left to right steering instantaneously)
+    Second, it sets the value of player->unk_090, which has to do with your karts sideways velocity. The code looks like it is intended
+    to set this to larger negative values when you have a large steer_position_delta. However, due to an apparent bug, update_steering_large
+    overwrites this too frequently. The end effect is that player->unk_090 ends up always getting set to -59.85 when steer_position_delta > 30
+    and set to 0 otherwise. -59.85 is -100 (the last value provided to update_steering_large) + the sum of the values provided to update_steering_small
+    */
     update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 90, (120 << 12) / steer_resistance_large_turn, 450);
     update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 89, (118 << 12) / steer_resistance_large_turn, 440);
     update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 88, (116 << 12) / steer_resistance_large_turn, 430);
