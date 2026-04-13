@@ -48,7 +48,7 @@
 <script type="application/ecmascript">
 var viewWidth = 1621;
 var viewHeight = 221;
-var sectionId = 'dynsection-81';
+var sectionId = 'dynsection-78';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -84,7 +84,7 @@ var sectionId = 'dynsection-81';
 <!-- Node23 -->
 <g id="Node000023" class="node">
 <title>Node23</title>
-<g id="a_Node000023"><a xlink:href="player__controller_8c.html#a75d7b3a332f920a1c54722ce91d9eb74" target="_top" xlink:title=" ">
+<g id="a_Node000023"><a xlink:href="player__controller_8c.html#ac7facd4c09724bfff6c77a8d8b94f0b1" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1485,-101.28 1393,-101.28 1393,-82.28 1485,-82.28 1485,-101.28"/>
 <text text-anchor="middle" x="1439" y="-89.28" font-family="Helvetica,sans-Serif" font-size="10.00">func_80033AE0</text>
 </a>

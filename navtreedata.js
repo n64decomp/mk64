@@ -149,7 +149,7 @@ var NAVTREEINDEX =
 "os_8h.html#a7a14efd0da833f2359289e8e35d6efb9",
 "os__pi_8h.html#a91a42a19aea4fe76570fa16a35c86154",
 "piint_8h.html#a3453e3ea98325864fb95a11ea1714020",
-"player__controller_8c.html#aa6354bd4c17bd4e2dae3d73922df904b",
+"player__controller_8c.html#aa6313d01a88256c81fe5ce7517748918",
 "podium__ceremony__actors_8c.html#a6ba666cab4b88624cb2fa1731de9a118",
 "race__logic_8h.html#abe207ea8c493abfaa7e63d66ae57453e",
 "rainbow__road_2course__displaylists_8inc_8h.html#a0e579d5e5aaa8b066666d7cab5d2706c",

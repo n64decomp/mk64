@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 1575;
+var viewWidth = 1611;
 var viewHeight = 70;
 var sectionId = 'dynsection-73';
 </script>
@@ -58,17 +58,17 @@ var sectionId = 'dynsection-73';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title=" ">
-<polygon fill="#999999" stroke="#666666" points="1567,-42.5 1476,-42.5 1476,-23.5 1567,-23.5 1567,-42.5"/>
-<text text-anchor="middle" x="1521.5" y="-30.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_80033850</text>
+<polygon fill="#999999" stroke="#666666" points="1603,-42.5 1512,-42.5 1512,-23.5 1603,-23.5 1603,-42.5"/>
+<text text-anchor="middle" x="1557.5" y="-30.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_80033850</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="player__controller_8c.html#a1f4132008213b55261f026dfb35cc39e" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1440,-61.5 1348,-61.5 1348,-42.5 1440,-42.5 1440,-61.5"/>
-<text text-anchor="middle" x="1394" y="-49.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_800339C4</text>
+<g id="a_Node000002"><a xlink:href="player__controller_8c.html#a937dcdb368b7865b9a3f0521cc5916df" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1458,-61.5 1366,-61.5 1366,-42.5 1458,-42.5 1458,-61.5"/>
+<text text-anchor="middle" x="1412" y="-49.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_800339C4</text>
 </a>
 </g>
 </g>
@@ -76,17 +76,17 @@ var sectionId = 'dynsection-73';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1465.98,-41.25C1457.41,-42.55 1448.63,-43.88 1440.3,-45.14"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1466.54,-44.71 1475.9,-39.75 1465.49,-37.79 1466.54,-44.71"/>
+<path fill="none" stroke="#63b8ff" d="M1501.61,-40.27C1487.23,-42.17 1471.89,-44.2 1458.08,-46.03"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1502.43,-43.69 1511.88,-38.91 1501.51,-36.75 1502.43,-43.69"/>
 </a>
 </g>
 </g>
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="player__controller_8c.html#ab2c05a634e8227ce7a52e2b596b281b3" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1440,-24.5 1348,-24.5 1348,-5.5 1440,-5.5 1440,-24.5"/>
-<text text-anchor="middle" x="1394" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_80033A40</text>
+<g id="a_Node000003"><a xlink:href="player__controller_8c.html#a48c7e19bb37a2baff93f9f919b8b9688" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1476,-24.5 1348,-24.5 1348,-5.5 1476,-5.5 1476,-24.5"/>
+<text text-anchor="middle" x="1412" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">update_steering_small</text>
 </a>
 </g>
 </g>
@@ -94,15 +94,15 @@ var sectionId = 'dynsection-73';
 <g id="edge2_Node000001_Node000003" class="edge">
 <title>Node1&#45;&gt;Node3</title>
 <g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1465.98,-25.18C1457.41,-23.95 1448.63,-22.69 1440.3,-21.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1465.5,-28.65 1475.9,-26.6 1466.5,-21.72 1465.5,-28.65"/>
+<path fill="none" stroke="#63b8ff" d="M1501.8,-26.14C1493.38,-25.08 1484.62,-23.98 1476.03,-22.91"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1501.52,-29.63 1511.88,-27.4 1502.4,-22.69 1501.52,-29.63"/>
 </a>
 </g>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="player__controller_8c.html#a75d7b3a332f920a1c54722ce91d9eb74" target="_top" xlink:title=" ">
+<g id="a_Node000004"><a xlink:href="player__controller_8c.html#ac7facd4c09724bfff6c77a8d8b94f0b1" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1312,-24.5 1220,-24.5 1220,-5.5 1312,-5.5 1312,-24.5"/>
 <text text-anchor="middle" x="1266" y="-12.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_80033AE0</text>
 </a>
@@ -112,8 +112,8 @@ var sectionId = 'dynsection-73';
 <g id="edge3_Node000003_Node000004" class="edge">
 <title>Node3&#45;&gt;Node4</title>
 <g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1337.65,-15C1329.16,-15 1320.48,-15 1312.24,-15"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1337.87,-18.5 1347.87,-15 1337.87,-11.5 1337.87,-18.5"/>
+<path fill="none" stroke="#63b8ff" d="M1337.72,-15C1329.08,-15 1320.46,-15 1312.37,-15"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1337.84,-18.5 1347.84,-15 1337.84,-11.5 1337.84,-18.5"/>
 </a>
 </g>
 </g>
