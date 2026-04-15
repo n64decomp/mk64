@@ -177,11 +177,11 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_078 = 0;
     player->unk_0A8 = 0;
     player->unk_0AA = 0;
-    player->unk_0AC = 0;
+    player->swerveDirection = 0;
     player->unk_0AE = 0;
     player->unk_0B0 = 0;
     player->unk_0B2 = 0;
-    player->unk_0B4 = 0;
+    player->swerveTimer = 0;
     player->unk_0C0 = 0;
     player->unk_0C2 = 0;
     player->unk_0C8 = 0;
@@ -228,7 +228,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->currentSpeed = 0.0f;
     player->unk_0A0 = 0.0f;
     player->unk_0A4 = 0.0f;
-    player->unk_0B8 = 0.0f;
+    player->swerveAccelInit = 0.0f;
     player->unk_0E4 = 0.0f;
     player->unk_0E8 = 0.0f;
     player->kartHopVelocity = 0.0f;

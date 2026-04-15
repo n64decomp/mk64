@@ -2385,7 +2385,7 @@ void func_800C70A8(u8 playerId) {
             ((gPlayers[playerId].effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT) ||
             ((gPlayers[playerId].effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
             ((gPlayers[playerId].effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) ||
-            ((gPlayers[playerId].kartProps & DRIVING_SPINOUT) == DRIVING_SPINOUT)) {
+            ((gPlayers[playerId].kartProps & DRIVING_NEAR_SPINOUT) == DRIVING_NEAR_SPINOUT)) {
             D_800E9E74[playerId] = 0x00000012;
         }
         if ((((gPlayers[playerId].effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) &&
