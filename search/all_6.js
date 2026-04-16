@@ -8831,7 +8831,7 @@ var searchData=
   ['drifting_5feffect_8828',['DRIFTING_EFFECT',['../defines_8h.html#a3e226e3ad50d318aa0e7dfa1be372961',1,'defines.h']]],
   ['driftstate_8829',['driftState',['../structPlayer.html#ad8f9874cffe8666bc25078b0fdf648fd',1,'Player']]],
   ['driver_5fchange_8830',['DRIVER_CHANGE',['../menu__items_8h.html#a4d8bd027afc3c0a143597992067ad859a86e4e0b14d3f149e332d88792ae3936a',1,'menu_items.h']]],
-  ['driving_5fspinout_8831',['DRIVING_SPINOUT',['../defines_8h.html#af5faf913d40f69e530399823a48b5047',1,'defines.h']]],
+  ['driving_5fnear_5fspinout_8831',['DRIVING_NEAR_SPINOUT',['../defines_8h.html#a069a279748ca090ff3e73954ad64782f',1,'defines.h']]],
   ['driving_5fspinout_5feffect_8832',['DRIVING_SPINOUT_EFFECT',['../defines_8h.html#a49c6b424bbbde8727e6b64661cc66963',1,'defines.h']]],
   ['driving_5fspinout_5ftrigger_8833',['DRIVING_SPINOUT_TRIGGER',['../defines_8h.html#aafd5522730cfe2fac2e8c4ee75e38742',1,'defines.h']]],
   ['drop_5fbanana_5fin_5fbanana_5fbunch_8834',['drop_banana_in_banana_bunch',['../actors__extended_8c.html#a0910375b121b8c6bd510bbb81a369335',1,'actors_extended.c']]],

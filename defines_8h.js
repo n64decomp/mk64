@@ -66,7 +66,7 @@ var defines_8h =
     [ "DRAG_ITEM_EFFECT", "defines_8h.html#adc856e170e2775ef474d350e0179c09b", null ],
     [ "DRIFT_OUTSIDE_EFFECT", "defines_8h.html#a8781fa97e3e2ac35c91ea7c69532963f", null ],
     [ "DRIFTING_EFFECT", "defines_8h.html#a3e226e3ad50d318aa0e7dfa1be372961", null ],
-    [ "DRIVING_SPINOUT", "defines_8h.html#af5faf913d40f69e530399823a48b5047", null ],
+    [ "DRIVING_NEAR_SPINOUT", "defines_8h.html#a069a279748ca090ff3e73954ad64782f", null ],
     [ "DRIVING_SPINOUT_EFFECT", "defines_8h.html#a49c6b424bbbde8727e6b64661cc66963", null ],
     [ "DRIVING_SPINOUT_TRIGGER", "defines_8h.html#aafd5522730cfe2fac2e8c4ee75e38742", null ],
     [ "EARLY_SPINOUT_LEFT", "defines_8h.html#a545257591ea256dd156012b90a2b613e", null ],

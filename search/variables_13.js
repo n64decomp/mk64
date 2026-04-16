@@ -462,12 +462,15 @@ var searchData=
   ['svehiclesoundrendercounter_459',['sVehicleSoundRenderCounter',['../cpu__vehicles__camera__path_8c.html#ad3b0cc2efc74e7a4eec575ab8bb89fd0',1,'sVehicleSoundRenderCounter:&#160;cpu_vehicles_camera_path.c'],['../cpu__vehicles__camera__path_8h.html#ad3b0cc2efc74e7a4eec575ab8bb89fd0',1,'sVehicleSoundRenderCounter:&#160;cpu_vehicles_camera_path.c']]],
   ['svicontexts_460',['sViContexts',['../____osViInit_8c.html#af7427d1378a76794075db2b2822b258b',1,'__osViInit.c']]],
   ['svigammaoffditheron_461',['sVIGammaOffDitherOn',['../menus_8c.html#af2dc51c46bcac60ad844adf5b1397087',1,'menus.c']]],
-  ['synthesisaudiostring0_462',['synthesisAudioString0',['../synthesis_8c.html#a6e7a1a2460ba7da6f3f087e4d649d124',1,'synthesis.c']]],
-  ['synthesisaudiostring1_463',['synthesisAudioString1',['../synthesis_8c.html#a3dcffd88e7671a667e3fe58c03161919',1,'synthesis.c']]],
-  ['synthesisaudiostring2_464',['synthesisAudioString2',['../synthesis_8c.html#a58d0854d34c453a6a28c2fc499a59e11',1,'synthesis.c']]],
-  ['synthesisaudiostring3_465',['synthesisAudioString3',['../synthesis_8c.html#a8e93587f631d9b3e3bdbf3e3af2f83b1',1,'synthesis.c']]],
-  ['synthesisaudiostring4_466',['synthesisAudioString4',['../synthesis_8c.html#a1571fe691859656c7de7f8b8974381e0',1,'synthesis.c']]],
-  ['synthesisbuffers_467',['synthesisBuffers',['../structNoteSynthesisState.html#a170d62b265b5dfbbe7100c42d8e1d4ed',1,'NoteSynthesisState']]],
-  ['synthesisstate_468',['synthesisState',['../structNote.html#a962842df6352d781b95daa1d5ef52f77',1,'Note']]],
-  ['synthesisvolume_469',['synthesisVolume',['../structReverbInfo.html#a0b9115ec8fa910ec821556f81e270b02',1,'ReverbInfo']]]
+  ['swerveaccelinit_462',['swerveAccelInit',['../structPlayer.html#aa6f41917cb30966da4dfb2a446dbae0b',1,'Player']]],
+  ['swervedirection_463',['swerveDirection',['../structPlayer.html#abc5f8c3df4633b98d92046da3ba0bf8c',1,'Player']]],
+  ['swervetimer_464',['swerveTimer',['../structPlayer.html#acc44ebcb5bc3c5076e21efc6ce287f88',1,'Player']]],
+  ['synthesisaudiostring0_465',['synthesisAudioString0',['../synthesis_8c.html#a6e7a1a2460ba7da6f3f087e4d649d124',1,'synthesis.c']]],
+  ['synthesisaudiostring1_466',['synthesisAudioString1',['../synthesis_8c.html#a3dcffd88e7671a667e3fe58c03161919',1,'synthesis.c']]],
+  ['synthesisaudiostring2_467',['synthesisAudioString2',['../synthesis_8c.html#a58d0854d34c453a6a28c2fc499a59e11',1,'synthesis.c']]],
+  ['synthesisaudiostring3_468',['synthesisAudioString3',['../synthesis_8c.html#a8e93587f631d9b3e3bdbf3e3af2f83b1',1,'synthesis.c']]],
+  ['synthesisaudiostring4_469',['synthesisAudioString4',['../synthesis_8c.html#a1571fe691859656c7de7f8b8974381e0',1,'synthesis.c']]],
+  ['synthesisbuffers_470',['synthesisBuffers',['../structNoteSynthesisState.html#a170d62b265b5dfbbe7100c42d8e1d4ed',1,'NoteSynthesisState']]],
+  ['synthesisstate_471',['synthesisState',['../structNote.html#a962842df6352d781b95daa1d5ef52f77',1,'Note']]],
+  ['synthesisvolume_472',['synthesisVolume',['../structReverbInfo.html#a0b9115ec8fa910ec821556f81e270b02',1,'ReverbInfo']]]
 ];
