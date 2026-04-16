@@ -93,7 +93,7 @@ void func_80033AE0(Player*, struct Controller*, s8);
 
 void apply_cpu_turn(Player*, s16);
 void func_80036C5C(Player*);
-void func_80036CB4(Player*);
+void cancel_drift_effect(Player*);
 void func_80036DB4(Player*, Vec3f, Vec3f);
 
 void func_800371F4(Player*, Vec3f, Vec3f);
