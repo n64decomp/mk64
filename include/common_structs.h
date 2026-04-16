@@ -273,7 +273,7 @@ typedef struct {
     /* 0x0064 */ Vec3f unk_064;
     /* 0x0070 */ f32 boundingBoxSize;
     /* 0x0074 */ f32 unk_074;
-    /* 0x0078 */ s16 unk_078;
+    /* 0x0078 */ s16 unk_078; // One source of angular velocity (turning / swerving) 
     /* 0x007A */ s16 unk_07A;
     /* 0x007C */ s32 steerPosition; // Where the kart is steering, related to joystick position. Basically, in [-53 to 53], but shifted 16 bits left
     /* 0x0080 */ f32 boostPower;
@@ -288,13 +288,13 @@ typedef struct {
     /* 0x00A4 */ f32 unk_0A4;
     /* 0x00A8 */ s16 unk_0A8;
     /* 0x00AA */ s16 unk_0AA;
-    /* 0x00AC */ s16 unk_0AC;
-    /* 0x00AE */ s16 unk_0AE;
+    /* 0x00AC */ s16 swerveDirection;
+    /* 0x00AE */ s16 unk_0AE; // preserved rotation velocity? To restore after effects wear off
     /* 0x00B0 */ s16 unk_0B0;
     /* 0x00B2 */ s16 unk_0B2;
-    /* 0x00B4 */ u16 unk_0B4;
+    /* 0x00B4 */ u16 swerveTimer;
     /* 0x00B6 */ u16 kartGraphics;
-    /* 0x00B8 */ f32 unk_0B8;
+    /* 0x00B8 */ f32 swerveAccelInit;
     /* 0x00BC */ u32 effects;
     /* 0x00C0 */ s16 unk_0C0;
     /* 0x00C2 */ s16 unk_0C2;

@@ -152,13 +152,13 @@ void clean_effect(Player* player, s8 playerIndex) {
 
     if (((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
         (player->effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) {
-        func_8008C8C4(player, playerIndex);
+        remove_spinout_effects(player, playerIndex);
     }
     if ((player->effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT) {
-        func_8008D0E4(player, playerIndex);
+        remove_banana_near_spinout_effect(player, playerIndex);
     }
-    if ((player->kartProps & DRIVING_SPINOUT) != 0) {
-        func_8008D3B0(player, playerIndex);
+    if ((player->kartProps & DRIVING_NEAR_SPINOUT) != 0) {
+        remove_driving_near_spinout_effect(player, playerIndex);
     }
     if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
         remove_mushroom_effect(player);
@@ -257,13 +257,13 @@ void func_8008C6D0(Player* player, s8 playerIndex) {
     player->unk_042 = 0;
 }
 
-void func_8008C73C(Player* player, s8 playerIndex) {
+void add_spinout_effect(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
     if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) &&
         ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT)) {
         player->effects &= ~DRIFTING_EFFECT;
 
-        if ((player->unk_0C0 / 182) >= 0) {
+        if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) >= 0) {
             player->effects |= DRIVING_SPINOUT_EFFECT;
         } else {
             player->effects |= BANANA_SPINOUT_EFFECT;
@@ -293,7 +293,7 @@ void func_8008C73C(Player* player, s8 playerIndex) {
     }
 }
 
-void func_8008C8C4(Player* player, s8 playerId) {
+void remove_spinout_effects(Player* player, s8 playerId) {
     player->effects &= ~BANANA_SPINOUT_EFFECT;
     player->effects &= ~DRIVING_SPINOUT_EFFECT;
     player->unk_0A8 = 0;
@@ -347,7 +347,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
                 if (gModeSelection == BATTLE) {
                     pop_player_balloon(player, playerIndex);
                 }
-                func_8008C8C4(player, playerIndex);
+                remove_spinout_effects(player, playerIndex);
             }
         }
     } else {
@@ -357,7 +357,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
         if (stackPadding2 == 0) {
             player->unk_0B2--;
             if (player->unk_0B2 <= 0) {
-                func_8008C8C4(player, playerIndex);
+                remove_spinout_effects(player, playerIndex);
                 if (gModeSelection == BATTLE) {
                     pop_player_balloon(player, playerIndex);
                 }
@@ -372,141 +372,151 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
     }
 }
 
-void func_8008CDC0(Player* player, s8 playerIndex) {
+void trigger_hit_banana(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
 
     player->triggers &= ~HIT_BANANA_TRIGGER;
-    player->unk_0B4 = 0;
-    player->unk_0B8 = 3.0f;
-    player->unk_0AC = 1;
+    player->swerveTimer = 0;
+    player->swerveAccelInit = 3.0f;
+    player->swerveDirection = 1;
     player->effects &= ~DRIFTING_EFFECT;
 
     if (((player->steerPosition >> 16) >= 20) || ((player->steerPosition >> 16) <= -20) ||
         (((player->speed / 18.0f) * 216.0f) <= 30.0f) || ((player->effects & MIDAIR_EFFECT) != 0) ||
         (((player->type & PLAYER_HUMAN) == 0) && ((player->effects & LOST_RACE_EFFECT) == 0))) {
-        func_8008C73C(player, playerIndex);
+        add_spinout_effect(player, playerIndex);
     } else {
         player->effects |= BANANA_NEAR_SPINOUT_EFFECT;
     }
 }
 
-void func_8008CEB0(Player* player, s8 playerIndex) {
-    f32 var_f0;
-    s16 var_v1;
-    s16 var_a3;
-    s16 temp_f16;
+// almost identical to apply_driving_near_spinout_effect, see there for more documentation
+void apply_banana_near_spinout_effect(Player* player, s8 playerIndex) {
+    f32 swerve_accel_init;
+    s16 swerve_timer;
+    s16 swerve_direction;
+    s16 swerve_velo_current;
 
-    var_f0 = player->unk_0B8;
-    var_v1 = player->unk_0B4;
-    var_a3 = player->unk_0AC;
-    var_v1++;
-    temp_f16 = (var_v1 * var_f0) - (0.2 * (var_v1 * var_v1));
-    if ((var_v1 != 0) && (temp_f16 < 0)) {
-        var_v1 = 0;
-        var_a3 = -var_a3;
-        var_f0 *= 0.8;
+    swerve_accel_init = player->swerveAccelInit;
+    swerve_timer = player->swerveTimer;
+    swerve_direction = player->swerveDirection;
+    swerve_timer++;
+    swerve_velo_current = (swerve_timer * swerve_accel_init) - (0.2 * (swerve_timer * swerve_timer));
+    if ((swerve_timer != 0) && (swerve_velo_current < 0)) {
+        swerve_timer = 0;
+        swerve_direction = -swerve_direction;
+        swerve_accel_init *= 0.8;
+        // requires braking to recover. A driving spinout allows just releasing gas as well
         if ((player->effects & BRAKING_EFFECT) == BRAKING_EFFECT) {
             player->effects |= BANANA_SPINOUT_SAVE_EFFECT;
         }
-        if (var_f0 <= 1.0f) {
+        if (swerve_accel_init <= 1.0f) {
             player->effects &= ~BANANA_NEAR_SPINOUT_EFFECT;
             if ((player->effects & BANANA_SPINOUT_SAVE_EFFECT) != BANANA_SPINOUT_SAVE_EFFECT) {
-                func_8008C73C(player, playerIndex);
-                var_v1 = 0;
+                add_spinout_effect(player, playerIndex);
+                swerve_timer = 0;
             } else {
                 player->kartGraphics |= WHISTLE;
                 player->effects &= ~BANANA_SPINOUT_SAVE_EFFECT;
                 if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
                     func_800C90F4(playerIndex, (player->characterId * 0x10) + 0x29008008);
-                    var_v1 = 0;
+                    swerve_timer = 0;
                 }
             }
         }
     }
-    temp_f16 *= var_a3;
-    if ((temp_f16 <= 0) && (var_a3 == 1)) {
-        temp_f16 = 0;
+    swerve_velo_current *= swerve_direction;
+    if ((swerve_velo_current <= 0) && (swerve_direction == 1)) {
+        swerve_velo_current = 0;
     }
-    if ((temp_f16 >= 0) && (var_a3 == -1)) {
-        temp_f16 = 0;
+    if ((swerve_velo_current >= 0) && (swerve_direction == -1)) {
+        swerve_velo_current = 0;
     }
-    player->unk_078 += temp_f16 * 0x12;
-    player->unk_0B8 = var_f0;
-    player->unk_0B4 = var_v1;
-    player->unk_0AC = var_a3;
+    player->unk_078 += swerve_velo_current * 18;
+    player->swerveAccelInit = swerve_accel_init;
+    player->swerveTimer = swerve_timer;
+    player->swerveDirection = swerve_direction;
     if (player->effects & MIDAIR_EFFECT) {
-        func_8008C73C(player, playerIndex);
+        add_spinout_effect(player, playerIndex);
         player->effects &= ~BANANA_NEAR_SPINOUT_EFFECT;
     }
 }
 
-void func_8008D0E4(Player* player, UNUSED s8 playerIndex) {
+void remove_banana_near_spinout_effect(Player* player, UNUSED s8 playerIndex) {
     player->effects &= ~BANANA_NEAR_SPINOUT_EFFECT;
 }
 
-void func_8008D0FC(Player* player, s8 playerIndex) {
+void trigger_driving_spinout(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
 
     player->triggers &= ~DRIVING_SPINOUT_TRIGGER;
-    player->unk_0B4 = 0;
-    player->unk_0B8 = 2.0f;
-    player->unk_0AC = 1;
+    player->swerveTimer = 0;
+    player->swerveAccelInit = 2.0f;
+    player->swerveDirection = 1;
     player->effects &= ~DRIFTING_EFFECT;
-    player->kartProps |= DRIVING_SPINOUT;
+    player->kartProps |= DRIVING_NEAR_SPINOUT;
 }
 
-void func_8008D170(Player* player, s8 playerIndex) {
-    f32 var_f0;
-    s16 var_v1;
-    s16 var_a3;
-    s16 temp_f16;
+void apply_driving_near_spinout_effect(Player* player, s8 playerIndex) {
+    f32 swerve_accel_init;
+    s16 swerve_timer;
+    s16 swerve_direction;
+    s16 swerve_velo_current;
 
-    var_f0 = player->unk_0B8;
-    var_v1 = player->unk_0B4;
-    var_a3 = player->unk_0AC;
-    var_v1++;
-    temp_f16 = (var_v1 * var_f0) - (0.1 * (var_v1 * var_v1));
-    if ((var_v1 != 0) && (temp_f16 < 0)) {
-        var_v1 = 0;
-        var_a3 = -var_a3;
-        var_f0 *= 0.9;
+    // These properties are only used for swerving before spinouts
+    swerve_accel_init = player->swerveAccelInit;
+    swerve_timer = player->swerveTimer;
+    swerve_direction = player->swerveDirection;
+    swerve_timer++;
+
+    // Standard physics formula: Velo_current = velo_init + (accel_init * time) + (accel_jerk * time**2) / 2
+    swerve_velo_current = (swerve_accel_init * swerve_timer) - (0.1 * (swerve_timer * swerve_timer)); 
+
+    // Once one swerve finishes, setup to start a smaller one in the opposite direction
+    if ((swerve_timer != 0) && (swerve_velo_current < 0)) { // (10 * swerve_accel_init < swerve_timer))
+        swerve_timer = 0;
+        swerve_direction = -swerve_direction;
+        swerve_accel_init *= 0.9;
         if (((player->effects & BRAKING_EFFECT) == BRAKING_EFFECT) || !(player->kartProps & THROTTLE)) {
             player->effects |= BANANA_SPINOUT_SAVE_EFFECT;
         }
-        if (var_f0 <= 1.3) {
-            player->kartProps &= ~DRIVING_SPINOUT;
+        // stop swerving once they are small enough
+        if (swerve_accel_init <= 1.3) {
+            player->kartProps &= ~DRIVING_NEAR_SPINOUT;
             if ((player->effects & BANANA_SPINOUT_SAVE_EFFECT) != BANANA_SPINOUT_SAVE_EFFECT) {
-                func_8008C73C(player, playerIndex);
-                var_v1 = 0;
+                add_spinout_effect(player, playerIndex);
+                swerve_timer = 0;
             } else {
                 player->kartGraphics |= WHISTLE;
                 player->effects &= ~BANANA_SPINOUT_SAVE_EFFECT;
                 if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
                     func_800C90F4(playerIndex, (player->characterId * 0x10) + 0x29008008);
-                    var_v1 = 0;
+                    swerve_timer = 0;
                 }
             }
         }
     }
-    temp_f16 *= var_a3;
-    if ((temp_f16 <= 0) && (var_a3 == 1)) {
-        temp_f16 = 0;
+    swerve_velo_current *= swerve_direction;
+    if ((swerve_velo_current <= 0) && (swerve_direction == 1)) {
+        swerve_velo_current = 0;
     }
-    if ((temp_f16 >= 0) && (var_a3 == -1)) {
-        temp_f16 = 0;
+    if ((swerve_velo_current >= 0) && (swerve_direction == -1)) {
+        swerve_velo_current = 0;
     }
-    player->unk_078 += temp_f16 * 0x14;
-    player->unk_0B8 = var_f0;
-    player->unk_0B4 = var_v1;
-    player->unk_0AC = var_a3;
+    /* unk_078 contributes to rotational velocity (spin). It looks to be set each frame in steering code
+    (e.g. func_80033AE0), so it does not accumulate values from swerve_velo_current over multiple frames */
+    player->unk_078 += swerve_velo_current * 20;
+    player->swerveAccelInit = swerve_accel_init;
+    player->swerveTimer = swerve_timer;
+    player->swerveDirection = swerve_direction;
     if (player->effects & MIDAIR_EFFECT) {
-        func_8008C73C(player, playerIndex);
-        player->kartProps &= ~DRIVING_SPINOUT;
+        add_spinout_effect(player, playerIndex);
+        player->kartProps &= ~DRIVING_NEAR_SPINOUT;
     }
 }
 
-void func_8008D3B0(Player* player, UNUSED s8 playerIndex) {
-    player->kartProps &= ~DRIVING_SPINOUT;
+void remove_driving_near_spinout_effect(Player* player, UNUSED s8 playerIndex) {
+    player->kartProps &= ~DRIVING_NEAR_SPINOUT;
 }
 
 void trigger_shroom(Player* player, s8 playerIndex) {

@@ -395,7 +395,7 @@ player spins. Something  with avoding rollover of aniamation frame data? */
 #define UNUSED_0x1000      0x1000 // 0x1000 locked behind 0x400 (func_8002B830 -> func_800911B4)
 #define UNUSED_0x2000      0x2000 // 0x2000 locked behind 0x400 and 0x800 (func_8002B830 -> func_800911B4, apply_effect -> func_80091298,
                                   // func_80091440)
-#define DRIVING_SPINOUT    0x4000
+#define DRIVING_NEAR_SPINOUT 0x4000
 #define UNKNOWN_BATTLE_VAR 0x8000 // 0x8000 something battle related, unclear if ever set
 
 /*
