@@ -1145,8 +1145,7 @@ void func_8002A79C(Player* player, s8 playerIndex) {
     }
 }
 
-// update_drift_state_counter
-void func_8002A8A4(Player* player, s8 playerIndex) {
+void update_drift_state_counter(Player* player, s8 playerIndex) {
     if (((s16) player->unk_0C0 / DEGREES_CONVERSION_FACTOR) > 0) {
         if (((s32) player->steerPosition >> 16) <= -10) {
             if (player->driftStateCounter <= 100) {
@@ -4203,7 +4202,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
                     player->effects |= DRIFT_OUTSIDE_EFFECT;
                 }
             }
-            func_8002A8A4(player, playerIndex);
+            update_drift_state_counter(player, playerIndex);
         } else {
             // linear map, sets -53 to -53 and 53 to -40
             var_s1_2 = (((s32) (((player->steerPosition >> 16) * 13) + (13 * 53))) / (2 * 53)) - 53;
@@ -4213,7 +4212,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
                     player->effects |= DRIFT_OUTSIDE_EFFECT;
                 }
             }
-            func_8002A8A4(player, playerIndex);
+            update_drift_state_counter(player, playerIndex);
         }
         if ((((player->speed / 18.0f) * 216.0f) >= 0.0f) && (((player->speed / 18.0f) * 216.0f) < 8.0f)) {
             player->unk_078 = (s16) ((s32) (var_s1_2 * ((var_f2_2 + 2.0f) + (var_f2_2 * var_f12))));
