@@ -67,7 +67,7 @@ void update_actor_falling_rocks(struct FallingRock* rock) {
     if (rock->pos[1] < D_8015F8E4) {
         func_8029CF0C(d_course_choco_mountain_falling_rock_spawns, rock);
     }
-    rock->rot[0] += (s16) ((rock->velocity[2] * 5461.0f) / 20.0f);
+    rock->rot[0] += (s16) ((rock->velocity[2] * 5461.0f) / 20.0f); // DEGREES(30) is 5460
     rock->rot[2] += (s16) ((rock->velocity[0] * 5461.0f) / 20.0f);
     rock->velocity[1] -= 0.1;
     if (rock->velocity[1] < (-2.0f)) {

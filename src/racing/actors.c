@@ -708,7 +708,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     } else {
         phi_t3 = (uintptr_t) D_802BA050;
     }
-    temp_t8 = (u16) shell->rotVelocity / 4369; // Give a number between 0-15
+    temp_t8 = (u16) shell->rotVelocity / DEGREES(24); // Give a number between 0-15
     phi_t3 += sp58[temp_t8];                   // Select sprite
 
     matrix[3][0] = shell->pos[0];

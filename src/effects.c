@@ -321,7 +321,7 @@ void remove_spinout_effects(Player* player, s8 playerId) {
 void func_8008C9EC(Player* player, s8 playerIndex) {
     s16 stackPadding1;
     s16 stackPadding2;
-    s16 sp30[5] = { 1092, 1092, 2184, 1638, 1820 };
+    s16 sp30[5] = { DEGREES(6), DEGREES(6), DEGREES(12), DEGREES(9), DEGREES(10) };
 
     player->unk_206 = 0;
     player->slopeAccel = 0;
@@ -600,8 +600,8 @@ void func_8008D698(Player* player, s8 playerIndex) {
         player->rotation[1] = player->unk_0AE;
         temp = 0;
     } else {
-        player->rotation[1] -= 1820;
-        D_8018D920[playerIndex] -= 1820;
+        player->rotation[1] -= DEGREES(10);
+        D_8018D920[playerIndex] -= DEGREES(10);
         temp = ((u16) D_8018D920[playerIndex] / DEGREES(10));
     }
     if (temp == 0) {
@@ -654,8 +654,8 @@ void func_8008D8B4(Player* player, s8 playerIndex) {
         player->rotation[1] = player->unk_0AE;
         temp = 0;
     } else {
-        player->rotation[1] -= 1820;
-        D_8018D920[playerIndex] -= 1820;
+        player->rotation[1] -= DEGREES(10);
+        D_8018D920[playerIndex] -= DEGREES(10);
         temp = ((u16) (D_8018D920[playerIndex]) / DEGREES(10));
     }
     if (temp == 0) {
@@ -892,7 +892,7 @@ void apply_lightning_effect(Player* player, s8 playerIndex) {
     } else if ((player->effects & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT) {
         player->rotation[1] -= DEGREES(8);
         D_8018D920[playerIndex] -= DEGREES(8);
-        test = (u16) D_8018D920[playerIndex] / 1456;
+        test = (u16) D_8018D920[playerIndex] / DEGREES(8);
         if (test == 0) {
             player->unk_0B2--;
             if (player->unk_0B2 <= 0) {
@@ -1976,14 +1976,14 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
     }
     if (player->unk_D98 == 1) {
         player->unk_D9C += player->unk_DA0;
-        if (player->unk_D9C >= 1820.0f) {
+        if (player->unk_D9C >= (f32) DEGREES(10)) {
             player->unk_DA0 = 0.0f;
             player->unk_D98 *= -1;
         }
     }
     if (player->unk_D98 == -1) {
         player->unk_D9C -= player->unk_DA0;
-        if (player->unk_D9C <= -1820.0f) {
+        if (player->unk_D9C <= (f32) -DEGREES(10)) {
             player->unk_DA0 = 0.0f;
             player->unk_D98 *= -1;
         }
