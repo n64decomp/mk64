@@ -175,8 +175,8 @@ void update_actor_banana(struct BananaActor* banana) {
             }
             banana->pos[1] += banana->velocity[1];
             banana->rot[0] += DEGREES(2);
-            banana->rot[1] -= 0x5B0;
-            banana->rot[2] += 0x38E;
+            banana->rot[1] -= DEGREES(8);
+            banana->rot[2] += DEGREES(5);
             banana->unk_04 -= 1;
             if (banana->unk_04 == 0) {
                 destroy_actor((struct Actor*) banana);

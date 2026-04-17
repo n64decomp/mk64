@@ -21,7 +21,7 @@ void update_actor_item_box_hot_air_balloon(struct ItemBox* itemBox) {
             } else {
                 itemBox->someTimer++;
                 itemBox->rot[0] += DEGREES(6);
-                itemBox->rot[1] -= 0x2D8;
+                itemBox->rot[1] -= DEGREES(4);
                 itemBox->rot[2] += DEGREES(2);
             }
             break;
@@ -60,7 +60,7 @@ void update_actor_item_box(struct ItemBox* itemBox) {
             } else {
                 itemBox->someTimer++;
                 itemBox->rot[0] += DEGREES(6);
-                itemBox->rot[1] -= 0x2D8;
+                itemBox->rot[1] -= DEGREES(4);
                 itemBox->rot[2] += DEGREES(2);
             }
             break;

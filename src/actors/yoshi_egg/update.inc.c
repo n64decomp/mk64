@@ -20,7 +20,7 @@ void update_actor_yoshi_egg(struct YoshiValleyEgg* egg) {
             egg->pathCenter[1] = 0.0f;
             egg->flags &= ~(1 << 10);
         }
-        egg->eggRot -= 0x4FA;
+        egg->eggRot -= DEGREES(7);
     }
     egg->eggRot -= DEGREES(3);
 }

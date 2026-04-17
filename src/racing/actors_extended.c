@@ -427,7 +427,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
             if (parent->unk_08 > 0.0f) {
                 if (parent->shellIndices[0] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[0]];
-                    if ((shell->rotAngle < 0x38E) || (shell->rotAngle >= -0x38D)) {
+                    if ((shell->rotAngle < DEGREES(5)) || (shell->rotAngle > -DEGREES(5))) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
@@ -479,7 +479,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 }
                 if (parent->shellIndices[2] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[2]];
-                    if ((shell->rotAngle < -0x38E) || (shell->rotAngle >= -0x71B)) {
+                    if ((shell->rotAngle < -DEGREES(5)) || (shell->rotAngle >= -0x71B)) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
@@ -543,7 +543,7 @@ s32 use_triple_shell_item(Player* player, s16 tripleShellType) {
     }
     parent = (TripleShellParent*) &gActorList[actorIndex];
     parent->state = 0;
-    parent->rotVelocity = 0x05B0;
+    parent->rotVelocity = DEGREES(8);
     parent->rotAngle = -0x8000;
     parent->playerId = player - gPlayerOne;
     parent->shellsAvailable = 0;

@@ -186,7 +186,7 @@ void update_actor_green_shell(struct ShellActor* shell) {
             if (shell->velocity[1] < -5.0f) {
                 shell->velocity[1] = -5.0f;
             }
-            shell->rotAngle += 0x5B0;
+            shell->rotAngle += DEGREES(8);
             shell->someTimer -= 1;
             shell->pos[1] += shell->velocity[1];
             if (shell->someTimer == 0) {

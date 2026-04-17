@@ -698,7 +698,7 @@ void func_80029200(Player* player, s8 screenId) {
     if (((s32) player->slopeAccel < -0x4F9) && ((s32) player->slopeAccel >= -0x71B)) {
         player->animGroupSelector[screenId] = 1;
     }
-    if ((player->slopeAccel <= -DEGREES(3)) && (player->slopeAccel >= -0x4F9)) {
+    if ((player->slopeAccel <= -DEGREES(3)) && (player->slopeAccel > -DEGREES(7))) {
         player->animGroupSelector[screenId] = 2;
     }
     if ((player->slopeAccel <= -DEGREES(2)) && (player->slopeAccel > -DEGREES(3))) {
@@ -710,10 +710,10 @@ void func_80029200(Player* player, s8 screenId) {
     if ((player->slopeAccel >= DEGREES(2)) && (player->slopeAccel < DEGREES(3))) {
         player->animGroupSelector[screenId] = 5;
     }
-    if ((player->slopeAccel >= DEGREES(3)) && (player->slopeAccel < 0x4FA)) {
+    if ((player->slopeAccel >= DEGREES(3)) && (player->slopeAccel < DEGREES(7))) {
         player->animGroupSelector[screenId] = 6;
     }
-    if ((player->slopeAccel >= 0x4FA) && (player->slopeAccel < 0x71C)) {
+    if ((player->slopeAccel >= DEGREES(7)) && (player->slopeAccel < 0x71C)) {
         player->animGroupSelector[screenId] = 7;
     }
     if (player->slopeAccel >= 0x71C) {
@@ -1618,7 +1618,7 @@ void func_8002BB9C(Player* player, f32* arg1, f32* arg2, UNUSED s8 arg3, UNUSED 
     s16 var_v0;
     s16 t0;
     UNUSED s32 pad;
-    s16 sp30[10] = { 0, DEGREES(1), 0x016c, 3 * DEGREES(1), 0x02d8, 0x038e, 6 * DEGREES(1), 0x04fa, 0x05b0, 9 * DEGREES(1) };
+    s16 sp30[10] = { 0, DEGREES(1), DEGREES(2), DEGREES(3), DEGREES(4), DEGREES(5), DEGREES(6), DEGREES(7), DEGREES(8), DEGREES(9) };
 
     if (((u16) player->unk_256) <= 0) {
         return;
@@ -2085,7 +2085,7 @@ void func_8002D028(Player* player, s8 playerIndex) {
     temp_f18 = sqrtf((sp4C[0] - player->pos[0]) * (sp4C[0] - player->pos[0]) +
                      (sp4C[2] - player->pos[2]) * (sp4C[2] - player->pos[2]));
     if (temp_f18 <= 8.0f) {
-        adjust_angle(&player->rotation[1], -0x8000, 0x016C);
+        adjust_angle(&player->rotation[1], -0x8000, DEGREES(2));
         if ((player->rotation[1] < (-0x7F41)) || (player->rotation[1] > 0x7F41)) {
             player->type &= ~PLAYER_STAGING;
         }

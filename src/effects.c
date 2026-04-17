@@ -890,8 +890,8 @@ void apply_lightning_effect(Player* player, s8 playerIndex) {
         D_80165190[3][playerIndex] = 1;
         trigger_squish(player, playerIndex);
     } else if ((player->effects & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT) {
-        player->rotation[1] -= 0x5B0;
-        D_8018D920[playerIndex] -= 0x5B0;
+        player->rotation[1] -= DEGREES(8);
+        D_8018D920[playerIndex] -= DEGREES(8);
         test = (u16) D_8018D920[playerIndex] / 1456;
         if (test == 0) {
             player->unk_0B2--;

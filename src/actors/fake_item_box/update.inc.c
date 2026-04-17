@@ -82,7 +82,7 @@ void update_actor_fake_item_box(struct FakeItemBox* fake_item_box) {
             } else {
                 fake_item_box->someTimer++;
                 fake_item_box->rot[0] += DEGREES(6);
-                fake_item_box->rot[1] -= 0x2D8;
+                fake_item_box->rot[1] -= DEGREES(4);
                 fake_item_box->rot[2] += DEGREES(2);
             }
             break;
