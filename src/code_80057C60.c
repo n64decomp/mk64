@@ -3762,7 +3762,7 @@ void func_800615AC(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     f32 temp_f0;
-    f32 sp28[10] = { (f32) -DEGREES(1), (f32) DEGREES(1), (f32) DEGREES(2), (f32) -DEGREES(2), 546.0f, -546.0f, 728.0f, -728.0f, 910.0f, -910.0f };
+    f32 sp28[10] = { (f32) -DEGREES(1), (f32) DEGREES(1), (f32) DEGREES(2), (f32) -DEGREES(2), DEGREES(3), -DEGREES(3), DEGREES(4), -DEGREES(4), DEGREES(5), -DEGREES(5) };
 
     if (random_int(3U) == 2.0f) {
         player->particlePool3[arg1].isAlive = 1;
@@ -3858,7 +3858,7 @@ void func_80061D4C(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
-    f32 sp20[10] = { (f32) -DEGREES(1), (f32) DEGREES(1), (f32) DEGREES(2), (f32) -DEGREES(2), 546.0f, -546.0f, 728.0f, -728.0f, 910.0f, -910.0f };
+    f32 sp20[10] = { (f32) -DEGREES(1), (f32) DEGREES(1), (f32) DEGREES(2), (f32) -DEGREES(2), DEGREES(3), -DEGREES(3), DEGREES(4), -DEGREES(4), DEGREES(5), -DEGREES(5) };
 
     if (random_int(3U) == 2.0f) {
         player->particlePool3[arg1].isAlive = 1;

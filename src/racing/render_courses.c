@@ -89,9 +89,9 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC* arg1) {
             direction = SOUTH;
         } else if (rot < DEGREES(135)) {
             direction = WEST;
-        } else if (rot < (DEGREES_360 - DEGREES(135))) {
+        } else if (rot < DEGREES(225)) {
             direction = NORTH;
-        } else if (rot < (DEGREES_360 - DEGREES(45))) {
+        } else if (rot < DEGREES(315)) {
             direction = EAST;
         } else {
             direction = SOUTH;
@@ -102,9 +102,9 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC* arg1) {
             direction = SOUTH;
         } else if (rot < DEGREES(135)) {
             direction = EAST;
-        } else if (rot < (DEGREES_360 - DEGREES(135))) {
+        } else if (rot < DEGREES(225)) {
             direction = NORTH;
-        } else if (rot < (DEGREES_360 - DEGREES(45))) {
+        } else if (rot < DEGREES(315)) {
             direction = WEST;
         } else {
             direction = SOUTH;

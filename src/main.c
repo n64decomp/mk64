@@ -635,9 +635,9 @@ void race_logic_loop(void) {
                         func_80057A50(40, 100, "SOUTH  ", gDebugPathCount);
                     } else if (rotY < DEGREES(135)) {
                         func_80057A50(40, 100, "EAST   ", gDebugPathCount);
-                    } else if (rotY < (DEGREES_360 - DEGREES(135))) {
+                    } else if (rotY < DEGREES(225)) {
                         func_80057A50(40, 100, "NORTH  ", gDebugPathCount);
-                    } else if (rotY < (DEGREES_360 - DEGREES(45))) {
+                    } else if (rotY < DEGREES(315)) {
                         func_80057A50(40, 100, "WEST   ", gDebugPathCount);
                     } else {
                         func_80057A50(40, 100, "SOUTH  ", gDebugPathCount);
