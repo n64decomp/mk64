@@ -331,7 +331,7 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define MAX_TIME 0x927C0
 
 #define ONE_DEGREE (f32) 65536.0f / 360.0f
-#define DEGREES(degree) (s16) ((f32) degree * ONE_DEGREE)
+#define DEGREES(degree) ((u16) ((f32) degree * ONE_DEGREE))
 #define DEGREES_360 65536
 
 // player->unk_046

@@ -453,7 +453,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 }
                 if (parent->shellIndices[1] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[1]];
-                    if ((shell->rotAngle < 0xAA1) || (shell->rotAngle >= 0x38F)) {
+                    if ((shell->rotAngle < (DEGREES(15) - 9)) || (shell->rotAngle > DEGREES(5))) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
@@ -479,7 +479,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 }
                 if (parent->shellIndices[2] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[2]];
-                    if ((shell->rotAngle < -DEGREES(5)) || (shell->rotAngle >= -0x71B)) {
+                    if ((shell->rotAngle < -DEGREES(5)) || (shell->rotAngle > -DEGREES(10))) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
@@ -544,7 +544,7 @@ s32 use_triple_shell_item(Player* player, s16 tripleShellType) {
     parent = (TripleShellParent*) &gActorList[actorIndex];
     parent->state = 0;
     parent->rotVelocity = DEGREES(8);
-    parent->rotAngle = -0x8000;
+    parent->rotAngle = - DEGREES(180);
     parent->playerId = player - gPlayerOne;
     parent->shellsAvailable = 0;
     parent->unk_08 = 0.0f;
@@ -589,7 +589,7 @@ s32 init_triple_shell(TripleShellParent* parent, Player* player, s16 shellType, 
             break;
     }
     shell->rotVelocity = 0;
-    shell->rotAngle = -0x8000;
+    shell->rotAngle = -DEGREES(180);
     shell->playerId = player - gPlayerOne;
     shell->parentIndex = (struct Actor*) parent - gActorList;
     shell->shellId = shellId;
@@ -632,7 +632,7 @@ s32 use_green_shell_item(Player* player) {
     func_802B4E30((struct Actor*) shell);
     shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
-    shell->rotAngle = -0x8000;
+    shell->rotAngle = -DEGREES(180);
     shell->playerId = player - gPlayerOne;
     return actorIndex;
 }
@@ -672,7 +672,7 @@ s32 use_red_shell_item(Player* player) {
     func_802B4E30((struct Actor*) shell);
     shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
-    shell->rotAngle = player->rotation[1] - 0x8000;
+    shell->rotAngle = player->rotation[1] - DEGREES(180);
     shell->playerId = player - gPlayerOne;
     return actorIndex;
 }

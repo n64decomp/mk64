@@ -2480,9 +2480,9 @@ void draw_minimap_character(s32 arg0, s32 playerId, s32 characterId) {
         // huh?
         if (characterId != 8) {
             if ((gGPCurrentRaceRankByPlayerId[playerId] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
-                func_80046424(x, y, player->rotation[1] + 0x8000, 1.0f, (u8*)&common_texture_minimap_kart_mario[characterId * 64], common_vtx_player_minimap_icon, 8, 8, 8, 8);
+                func_80046424(x, y, player->rotation[1] + DEGREES(180), 1.0f, (u8*)&common_texture_minimap_kart_mario[characterId * 64], common_vtx_player_minimap_icon, 8, 8, 8, 8);
             } else {
-                func_800463B0(x, y, player->rotation[1] + 0x8000, 1.0f, (u8*)&common_texture_minimap_kart_mario[characterId * 64], common_vtx_player_minimap_icon, 8, 8, 8, 8);
+                func_800463B0(x, y, player->rotation[1] + DEGREES(180), 1.0f, (u8*)&common_texture_minimap_kart_mario[characterId * 64], common_vtx_player_minimap_icon, 8, 8, 8, 8);
             }
         } else {
             if (gGPCurrentRaceRankByPlayerId[playerId] == 0) {

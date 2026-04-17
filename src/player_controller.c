@@ -695,7 +695,7 @@ void func_80029200(Player* player, s8 screenId) {
     if ((s32) player->slopeAccel < -0x71B) {
         player->animGroupSelector[screenId] = 0;
     }
-    if (((s32) player->slopeAccel < -0x4F9) && ((s32) player->slopeAccel >= -0x71B)) {
+    if (((s32) player->slopeAccel < -0x4F9) && ((s32) player->slopeAccel > -DEGREES(10))) {
         player->animGroupSelector[screenId] = 1;
     }
     if ((player->slopeAccel <= -DEGREES(3)) && (player->slopeAccel > -DEGREES(7))) {
@@ -713,10 +713,10 @@ void func_80029200(Player* player, s8 screenId) {
     if ((player->slopeAccel >= DEGREES(3)) && (player->slopeAccel < DEGREES(7))) {
         player->animGroupSelector[screenId] = 6;
     }
-    if ((player->slopeAccel >= DEGREES(7)) && (player->slopeAccel < 0x71C)) {
+    if ((player->slopeAccel >= DEGREES(7)) && (player->slopeAccel < DEGREES(10))) {
         player->animGroupSelector[screenId] = 7;
     }
-    if (player->slopeAccel >= 0x71C) {
+    if (player->slopeAccel >= DEGREES(10)) {
         player->animGroupSelector[screenId] = 8;
     }
 }
@@ -2085,8 +2085,8 @@ void func_8002D028(Player* player, s8 playerIndex) {
     temp_f18 = sqrtf((sp4C[0] - player->pos[0]) * (sp4C[0] - player->pos[0]) +
                      (sp4C[2] - player->pos[2]) * (sp4C[2] - player->pos[2]));
     if (temp_f18 <= 8.0f) {
-        adjust_angle(&player->rotation[1], -0x8000, DEGREES(2));
-        if ((player->rotation[1] < (-0x7F41)) || (player->rotation[1] > 0x7F41)) {
+        adjust_angle(&player->rotation[1], -DEGREES(180), DEGREES(2));
+        if ((player->rotation[1] <= (-179 * DEGREES(1))) || (player->rotation[1] >= (179 * DEGREES(1)))) {
             player->type &= ~PLAYER_STAGING;
         }
         player->unk_08C = 0;
@@ -2285,7 +2285,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
                                      player->rotation[1]);
     } else {
         calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060,
-                                     player->rotation[1] + 0x8000);
+                                     player->rotation[1] + DEGREES(180));
     }
     player->effects |= MIDAIR_EFFECT;
     player->unk_0C2 += 1;

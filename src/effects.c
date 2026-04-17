@@ -225,7 +225,7 @@ void func_8008C62C(Player* player, s8 playerIndex) {
 
     player_decelerate_alternative(player, 5.0f);
     player->unk_0A8 += (s16) 0xA0;
-    player->unk_042 += (s16) 0x71C;
+    player->unk_042 += (s16) DEGREES(10);
     if (player->unk_0A8 >= 0x2000) {
         player->unk_0A8 = 0;
         player->unk_236 = (s16) (player->unk_236 - 1);
@@ -1323,7 +1323,7 @@ void func_8008F3E0(Player* player) {
 
 void func_8008F3F4(Player* player, UNUSED s8 arg1) {
     player->unk_0A8 += 0x80;
-    player->unk_042 += 0x71C;
+    player->unk_042 += DEGREES(10);
     player->steerPosition = 0;
     player->currentSpeed = 0.0f;
     player->unk_08C /= 2;
@@ -2083,9 +2083,9 @@ void func_80091298(Player* player, s8 arg1) {
     if (player->unk_0B2 == 0) {
         var_v1 = 0;
     } else {
-        player->rotation[1] -= 0xE38;
-        D_8018D920[arg1] -= 0xE38;
-        var_v1 = (u16) D_8018D920[arg1] / 3640;
+        player->rotation[1] -= DEGREES(20);
+        D_8018D920[arg1] -= DEGREES(20);
+        var_v1 = (u16) D_8018D920[arg1] / DEGREES(20);
     }
     if (((var_v1 == 9) && (player->unk_0B2 == 1)) || ((var_v1 == 0) && (player->unk_0B2 == 2)) ||
         (player->unk_0B2 == 0)) {

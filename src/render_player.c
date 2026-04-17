@@ -125,8 +125,8 @@ u16 check_player_camera_collision(Player* player, Camera* camera, f32 arg2, f32 
     sp58 = (arg2 * sins((camera->rot[1] - var_v0))) + camera->pos[0];
     sp48 = (arg2 * coss((camera->rot[1] + var_v0))) + camera->pos[2];
     sp54 = (arg2 * sins((camera->rot[1] + var_v0))) + camera->pos[0];
-    sp44 = (arg3 * coss((camera->rot[1] + 0x5FFA))) + camera->pos[2];
-    sp50 = (arg3 * sins((camera->rot[1] + 0x5FFA))) + camera->pos[0];
+    sp44 = (arg3 * coss((camera->rot[1] + (135 * DEGREES(1))))) + camera->pos[2];
+    sp50 = (arg3 * sins((camera->rot[1] + (135 * DEGREES(1))))) + camera->pos[0];
 
     sp64 = ((sp4C - player->pos[2]) * (sp54 - player->pos[0])) - ((sp48 - player->pos[2]) * (sp58 - player->pos[0]));
     sp60 = ((sp48 - player->pos[2]) * (sp50 - player->pos[0])) - ((sp44 - player->pos[2]) * (sp54 - player->pos[0]));
@@ -152,12 +152,12 @@ u16 func_8001FD78(Player* player, f32 posX, UNUSED f32 arg2, f32 posZ) {
 
     ret = false;
 
-    sp58 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) - 0x71C))) + player->pos[2];
-    sp64 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) - 0x71C))) + player->pos[0];
-    sp54 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) + 0x71C))) + player->pos[2];
-    sp60 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) + 0x71C))) + player->pos[0];
-    sp50 = (10.0f * coss(((player->unk_0C0 - player->rotation[1]) + 0x1C70))) + player->pos[2];
-    sp5c = (10.0f * sins(((player->unk_0C0 - player->rotation[1]) + 0x1C70))) + player->pos[0];
+    sp58 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) - DEGREES(10)))) + player->pos[2];
+    sp64 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) - DEGREES(10)))) + player->pos[0];
+    sp54 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) + DEGREES(10)))) + player->pos[2];
+    sp60 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) + DEGREES(10)))) + player->pos[0];
+    sp50 = (10.0f * coss(((player->unk_0C0 - player->rotation[1]) + (DEGREES(40) - 1)))) + player->pos[2];
+    sp5c = (10.0f * sins(((player->unk_0C0 - player->rotation[1]) + (DEGREES(40) - 1)))) + player->pos[0];
 
     temp_f14 = ((sp58 - posZ) * (sp60 - posX)) - ((sp54 - posZ) * (sp64 - posX));
     thing0 = ((sp54 - posZ) * (sp5c - posX)) - ((sp50 - posZ) * (sp60 - posX));
@@ -1445,7 +1445,7 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 flipOffset) {
         thing = (u16) (player->unk_048[arg2] + player->rotation[1] + player->unk_0C0);
         temp_v1 = player->unk_0CC[arg2] * sins(thing);
         if ((player->effects & MIDAIR_EFFECT) == MIDAIR_EFFECT) {
-            sp14C[0] = cameras[arg2].rot[0] - 0x4000;
+            sp14C[0] = cameras[arg2].rot[0] - DEGREES(90);
         } else {
             sp14C[0] = -temp_v1 * 0.8;
         }
@@ -1635,7 +1635,7 @@ void func_80025DE8(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     sp9C[0] = player->pos[0] + (sins(-player->rotation[1]) * -1.5);
     sp9C[1] = ((player->pos[1] - player->boundingBoxSize) + player->unk_108) + 0.1;
     sp9C[2] = player->pos[2] + (coss(-player->rotation[1]) * -1.5);
-    sp94[0] = DEGREES(-1);
+    sp94[0] = -DEGREES(1);
     sp94[1] = player->unk_048[screenId];
     sp94[2] = player->unk_050[screenId];
 

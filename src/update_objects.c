@@ -2583,7 +2583,7 @@ void func_80077F64(s32 objectIndex, Camera* camera) {
 
     switch (gObjectList[objectIndex].unk_0AE) { /* irregular */
         case 1:
-            gObjectList[objectIndex].direction_angle[1] = (camera->rot[1] + random_int(0x4000U)) - 0x2000;
+            gObjectList[objectIndex].direction_angle[1] = (camera->rot[1] + random_int(0x4000U)) - DEGREES(45);
             object_origin_pos_randomize_around_y(objectIndex, 0x00B4, 0x0014U);
             rand = random_int(0x0064U);
 
@@ -2856,8 +2856,8 @@ void course_update_clouds(s32 arg0) {
                 break;
         }
 
-        D_8018D208 = ((D_8018D200 / 2) * DEGREES(1)) + 0x71C;
-        D_8018D210 = (-(D_8018D200 / 2) * DEGREES(1)) - 0x71C;
+        D_8018D208 = ((D_8018D200 / 2) * DEGREES(1)) + DEGREES(10);
+        D_8018D210 = (-(D_8018D200 / 2) * DEGREES(1)) - DEGREES(10);
         D_8018D1E8 = 1.7578125 / D_8018D200;
         D_8018D218 = 0xA0;
 #if !ENABLE_CUSTOM_COURSE_ENGINE
@@ -4213,7 +4213,7 @@ void wrapper_update_boos(void) {
 // Updates the display status on an object based on its relative direction to the camera
 void func_8007C360(s32 objectIndex, Camera* camera) {
     u16 rot = camera->rot[1];
-    u16 temp = ((u16) (gObjectList[objectIndex].direction_angle[1] - rot + 0x8000) * 0x24) / 0x10000;
+    u16 temp = ((u16) (gObjectList[objectIndex].direction_angle[1] - rot + DEGREES(180)) * 0x24) / 0x10000; // can not use DEGREES(180)
 
     if (temp < 0x13) {
         set_object_flag_status_false(objectIndex, 0x80);
@@ -4551,7 +4551,7 @@ void func_8007D070(void) {
                 temp_s2 = random_int(0x012CU);
                 temp_s3 = random_int(0x1000U) - 0x800;
                 temp_t5 = random_int(0x000FU) - 5;
-                gObjectList[objectIndex].direction_angle[1] = D_8018CF1C->rotation[1] + 0x8000;
+                gObjectList[objectIndex].direction_angle[1] = D_8018CF1C->rotation[1] + DEGREES(180);
                 temp_t2 = (D_8018CF14->rot[1] + temp_s3);
                 gObjectList[objectIndex].origin_pos[0] = D_8018CF1C->pos[0] + (sins(temp_t2) * temp_s2);
                 gObjectList[objectIndex].origin_pos[1] = temp_t5;

@@ -85,26 +85,26 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC* arg1) {
     u16 rot;
     if (gIsMirrorMode) {
         rot = (u16) camera->rot[1];
-        if (rot < 0x2000) {
+        if (rot < DEGREES(45)) {
             direction = SOUTH;
-        } else if (rot < 0x6000) {
+        } else if (rot < DEGREES(135)) {
             direction = WEST;
-        } else if (rot < 0xA000) {
+        } else if (rot < (DEGREES_360 - DEGREES(135))) {
             direction = NORTH;
-        } else if (rot < 0xE000) {
+        } else if (rot < (DEGREES_360 - DEGREES(45))) {
             direction = EAST;
         } else {
             direction = SOUTH;
         }
     } else {
         rot = (u16) camera->rot[1];
-        if (rot < 0x2000) {
+        if (rot < DEGREES(45)) {
             direction = SOUTH;
-        } else if (rot < 0x6000) {
+        } else if (rot < DEGREES(135)) {
             direction = EAST;
-        } else if (rot < 0xA000) {
+        } else if (rot < (DEGREES_360 - DEGREES(135))) {
             direction = NORTH;
-        } else if (rot < 0xE000) {
+        } else if (rot < (DEGREES_360 - DEGREES(45))) {
             direction = WEST;
         } else {
             direction = SOUTH;
@@ -1510,7 +1510,7 @@ void course_generate_collision_mesh(void) {
             }
             parse_course_displaylists((uintptr_t) &d_course_choco_mountain_addr);
             // D_8015F590 is only used here, so this seems meaningless
-            vec_unit_z_rotX_rotY(0x238E, 0x31C7, D_8015F590);
+            vec_unit_z_rotX_rotY(DEGREES(50), DEGREES(70), D_8015F590);
             func_80295C6C();
             D_8015F8E4 = -80.0f;
             break;
