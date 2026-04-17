@@ -1723,7 +1723,7 @@ void func_8005AB60(void) {
             break;
         case 1:
             s16_step_towards(&playerHUD[PLAYER_ONE].speedometerX, 0x106, 0x10);
-            if (s16_step_towards(&playerHUD[PLAYER_ONE].speedometerY, 0xB6, 0x10) != 0) {
+            if (s16_step_towards(&playerHUD[PLAYER_ONE].speedometerY, 182, 0x10) != 0) {
                 playerHUD[PLAYER_ONE].unk_78++;
                 playerHUD[PLAYER_ONE].unk_79 = 1;
             }
@@ -1736,7 +1736,7 @@ void func_8005AB60(void) {
             break;
         case 3:
             s16_step_towards(&playerHUD[PLAYER_ONE].speedometerX, 0x106, 4);
-            if (s16_step_towards(&playerHUD[PLAYER_ONE].speedometerY, 0xB6, 4) != 0) {
+            if (s16_step_towards(&playerHUD[PLAYER_ONE].speedometerY, 182, 4) != 0) {
                 playerHUD[PLAYER_ONE].unk_78++;
             }
             break;
@@ -1748,7 +1748,7 @@ void func_8005AB60(void) {
             break;
         case 5:
             s16_step_towards(&playerHUD[PLAYER_ONE].speedometerX, 0x106, 4);
-            if (s16_step_towards(&playerHUD[PLAYER_ONE].speedometerY, 0xB6, 4) != 0) {
+            if (s16_step_towards(&playerHUD[PLAYER_ONE].speedometerY, 182, 4) != 0) {
                 playerHUD[PLAYER_ONE].unk_78++;
             }
             break;
@@ -1760,7 +1760,7 @@ void func_8005AB60(void) {
             break;
         case 7:
             s16_step_towards(&playerHUD[PLAYER_ONE].speedometerX, 0x106, 2);
-            if (s16_step_towards(&playerHUD[PLAYER_ONE].speedometerY, 0xB6, 2) != 0) {
+            if (s16_step_towards(&playerHUD[PLAYER_ONE].speedometerY, 182, 2) != 0) {
                 playerHUD[PLAYER_ONE].unk_78++;
             }
             break;
@@ -2859,7 +2859,7 @@ void set_drift_particles(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 ar
                       player->tyres[BACK_RIGHT].surfaceType, 0);
     }
 
-    temp_lo = player->unk_0C0 / 182;
+    temp_lo = player->unk_0C0 / DEGREES(1);
     if ((temp_lo >= 7) || (temp_lo < -6)) {
         init_particle_player(&player->particlePool1[arg1], DRIFT_PARTICLE, 0.35f);
         if (player->driftState == 0) {
@@ -3087,7 +3087,7 @@ void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UN
             if ((arg1 == 0) &&
                 ((player->particlePool1[arg2].timer > 0) || (player->particlePool1[arg2].isAlive == 0))) {
                 if (((((player->speed / 18.0f) * 216.0f) >= 30.0f) &&
-                     ((((player->unk_0C0 / 182) > 0x14) || ((player->unk_0C0 / 182) < (-0x14))))) ||
+                     ((((player->unk_0C0 / DEGREES(1)) > 0x14) || ((player->unk_0C0 / DEGREES(1)) < (-0x14))))) ||
                     ((player->previousSpeed - player->speed) >= 0.04)) {
                     set_particle_position_and_rotation(player, &player->particlePool1[arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType, (s8) var_t3);
                     init_particle_player(&player->particlePool1[arg1], GROUND_PARTICLE, 0.46f);
@@ -3096,7 +3096,7 @@ void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UN
                 }
             } else if ((player->particlePool1[arg2].timer > 0) &&
                        (((((player->speed / 18.0f) * 216.0f) >= 30.0f) &&
-                         (((player->unk_0C0 / 182) >= 0x15) || ((player->unk_0C0 / 182) < -0x14))) ||
+                         (((player->unk_0C0 / DEGREES(1)) >= 0x15) || ((player->unk_0C0 / DEGREES(1)) < -0x14))) ||
                         ((player->previousSpeed - player->speed) >= 0.04))) {
                 set_particle_position_and_rotation(player, &player->particlePool1[arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType, (s8) var_t3);
                 init_particle_player(&player->particlePool1[arg1], GROUND_PARTICLE, 0.46f);
@@ -3652,8 +3652,8 @@ void func_80060BCC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         set_particle_position_and_rotation(player, &player->particlePool1[arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
         init_particle_player(&player->particlePool1[arg1], 0x0B, 0.4f);
         set_particle_colour(&player->particlePool1[arg1], RGB32(0xFF, 0xFF, 0xFF), 0x00FF);
-        player->particlePool1[arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -1.8);
-        player->particlePool1[arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -1.8);
+        player->particlePool1[arg1].pos[2] = player->pos[2] + (coss(sp54 * DEGREES(1)) * -1.8);
+        player->particlePool1[arg1].pos[0] = player->pos[0] + (sins(sp54 * DEGREES(1)) * -1.8);
         player->particlePool1[arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
         player->particlePool1[arg1].unk_018 = sp44 + 1.0f;
         player->particlePool1[arg1].scale = (sp48 + 2.0f) / 10.0f;
@@ -3661,8 +3661,8 @@ void func_80060BCC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         set_particle_position_and_rotation(player, &player->particlePool1[arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
         init_particle_player(&player->particlePool1[arg1], 0x0B, 0.4f);
         set_particle_colour(&player->particlePool1[arg1], RGB32(0xFF, 0xFF, 0xFF), 0x00FF);
-        player->particlePool1[arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -1.8);
-        player->particlePool1[arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -1.8);
+        player->particlePool1[arg1].pos[2] = player->pos[2] + (coss(sp54 * DEGREES(1)) * -1.8);
+        player->particlePool1[arg1].pos[0] = player->pos[0] + (sins(sp54 * DEGREES(1)) * -1.8);
         player->particlePool1[arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
         player->particlePool1[arg1].unk_018 = sp44 + 1.0f;
         player->particlePool1[arg1].scale = (sp48 + 2.0f) / 10.0f;
@@ -3762,7 +3762,7 @@ void func_800615AC(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     f32 temp_f0;
-    f32 sp28[10] = { -182.0f, 182.0f, 364.0f, -364.0f, 546.0f, -546.0f, 728.0f, -728.0f, 910.0f, -910.0f };
+    f32 sp28[10] = { (f32) DEGREES(-1), (f32) DEGREES(1), (f32) DEGREES(2), (f32) -DEGREES(2), 546.0f, -546.0f, 728.0f, -728.0f, 910.0f, -910.0f };
 
     if (random_int(3U) == 2.0f) {
         player->particlePool3[arg1].isAlive = 1;
@@ -3808,8 +3808,8 @@ void func_80061754(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3, U
         player->particlePool3[arg1].green += temp_s1;
         player->particlePool3[arg1].blue += temp_s1;
     }
-    player->particlePool3[arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -5.0f);
-    player->particlePool3[arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -5.0f);
+    player->particlePool3[arg1].pos[2] = player->pos[2] + (coss(sp54 * DEGREES(1)) * -5.0f);
+    player->particlePool3[arg1].pos[0] = player->pos[0] + (sins(sp54 * DEGREES(1)) * -5.0f);
     player->particlePool3[arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
     player->particlePool3[arg1].unk_018 = sp44 + 1.0f;
     player->particlePool3[arg1].scale = sp48 + 1.0f;
@@ -3838,16 +3838,16 @@ void func_80061A34(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         set_particle_position_and_rotation(player, &player->particlePool3[arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
         init_particle_player(&player->particlePool3[arg1], 7, 1.0f);
         set_particle_colour(&player->particlePool3[arg1], RGB32(0xFF, 0xFF, 0xFF), 0x00FF);
-        player->particlePool3[arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -2.0);
-        player->particlePool3[arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -2.0);
+        player->particlePool3[arg1].pos[2] = player->pos[2] + (coss(sp54 * DEGREES(1)) * -2.0);
+        player->particlePool3[arg1].pos[0] = player->pos[0] + (sins(sp54 * DEGREES(1)) * -2.0);
         player->particlePool3[arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + sp4C + 2.0f;
         player->particlePool3[arg1].scale = (sp48 + 2.0f) / 10.0f;
     } else if (player->particlePool3[arg2].timer > 0) {
         set_particle_position_and_rotation(player, &player->particlePool3[arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
         init_particle_player(&player->particlePool3[arg1], 7, 1.0f);
         set_particle_colour(&player->particlePool3[arg1], RGB32(0xFF, 0xFF, 0xFF), 0x00FF);
-        player->particlePool3[arg1].pos[2] = player->pos[2] + (coss(sp54 * 0xB6) * -2.0);
-        player->particlePool3[arg1].pos[0] = player->pos[0] + (sins(sp54 * 0xB6) * -2.0);
+        player->particlePool3[arg1].pos[2] = player->pos[2] + (coss(sp54 * DEGREES(1)) * -2.0);
+        player->particlePool3[arg1].pos[0] = player->pos[0] + (sins(sp54 * DEGREES(1)) * -2.0);
         player->particlePool3[arg1].pos[1] = (player->pos[1] - player->boundingBoxSize) + (f32) sp4C + 2.0f;
         player->particlePool3[arg1].scale = (sp48 + 2.0f) / 10.0f;
     }
@@ -3858,7 +3858,7 @@ void func_80061D4C(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
-    f32 sp20[10] = { -182.0f, 182.0f, 364.0f, -364.0f, 546.0f, -546.0f, 728.0f, -728.0f, 910.0f, -910.0f };
+    f32 sp20[10] = { (f32) DEGREES(-1), (f32) DEGREES(1), (f32) DEGREES(2), (f32) -DEGREES(2), 546.0f, -546.0f, 728.0f, -728.0f, 910.0f, -910.0f };
 
     if (random_int(3U) == 2.0f) {
         player->particlePool3[arg1].isAlive = 1;
@@ -3904,9 +3904,9 @@ void func_80061EF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             set_particle_colour(&player->particlePool3[arg1], RGB32(0xFF, 0xFF, 0xFF), 0x0060);
             player->particlePool3[arg1].rotation = 0;
             if (player->particlePool3[arg1].unk_010 == 1) {
-                player->particlePool3[arg1].rotation += 0x888;
+                player->particlePool3[arg1].rotation += DEGREES(12);
             } else {
-                player->particlePool3[arg1].rotation -= 0x888;
+                player->particlePool3[arg1].rotation -= DEGREES(12);
             }
             player->particlePool3[arg1].pos[2] =
                 player->pos[2] +
@@ -3920,9 +3920,9 @@ void func_80061EF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             set_particle_colour(&player->particlePool3[arg1], RGB32(0xFF, 0xFF, 0xFF), 0x0060);
             player->particlePool3[arg1].rotation = 0;
             if (player->particlePool3[arg1].unk_010 == 1) {
-                player->particlePool3[arg1].rotation += 0x888;
+                player->particlePool3[arg1].rotation += DEGREES(12);
             } else {
-                player->particlePool3[arg1].rotation -= 0x888;
+                player->particlePool3[arg1].rotation -= DEGREES(12);
             }
             player->particlePool3[arg1].pos[2] =
                 player->pos[2] +
@@ -5870,7 +5870,7 @@ void update_player_one_balloon_position(Player* player, f32 arg1, f32 arg2, s8 p
             D_8018D710[playerId][balloonId] = 0.0f;
         }
         D_8018D620[playerId][balloonId] = -player->rotation[1] - player->unk_0C0;
-        move_s16_towards(&D_8018D890[playerId][balloonId], player->speed * 182.0f, 0.1f);
+        move_s16_towards(&D_8018D890[playerId][balloonId], player->speed * (f32) DEGREES(1), 0.1f);
     }
     if (D_8018D830[playerId][balloonId] == 1) {
         D_8018D770[playerId][balloonId] += D_8018D800[playerId][balloonId] - player->speed;

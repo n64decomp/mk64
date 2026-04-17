@@ -174,7 +174,7 @@ void update_actor_banana(struct BananaActor* banana) {
                 banana->velocity[1] = -5.0f;
             }
             banana->pos[1] += banana->velocity[1];
-            banana->rot[0] += 0x16C;
+            banana->rot[0] += DEGREES(2);
             banana->rot[1] -= 0x5B0;
             banana->rot[2] += 0x38E;
             banana->unk_04 -= 1;

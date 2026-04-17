@@ -1635,7 +1635,7 @@ void func_80025DE8(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     sp9C[0] = player->pos[0] + (sins(-player->rotation[1]) * -1.5);
     sp9C[1] = ((player->pos[1] - player->boundingBoxSize) + player->unk_108) + 0.1;
     sp9C[2] = player->pos[2] + (coss(-player->rotation[1]) * -1.5);
-    sp94[0] = -0x00B6;
+    sp94[0] = DEGREES(-1);
     sp94[1] = player->unk_048[screenId];
     sp94[2] = player->unk_050[screenId];
 

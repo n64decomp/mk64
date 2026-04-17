@@ -714,20 +714,20 @@ void func_8001E45C(Camera* camera, Player* player, s8 arg2) {
                 if ((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) {
                     move_s16_towards(&camera->unk_B0, -0x0B60, 0.1f);
                 } else {
-                    move_s16_towards(&camera->unk_B0, -0x0888, 0.1f);
+                    move_s16_towards(&camera->unk_B0, -DEGREES(12), 0.1f);
                 }
             } else {
                 var_a3 = (player->unk_078 / 2) + 0xA5;
                 if ((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) {
                     move_s16_towards(&camera->unk_B0, 0x0B60, 0.1f);
                 } else {
-                    move_s16_towards(&camera->unk_B0, 0x0888, 0.1f);
+                    move_s16_towards(&camera->unk_B0, DEGREES(12), 0.1f);
                 }
             }
         }
     } else {
         move_s16_towards(&camera->unk_B0, 0, 0.05f);
-        var_a3 = ((s16) camera->unk_2C / 182) - ((s16) player->rotation[1] / 182);
+        var_a3 = ((s16) camera->unk_2C / DEGREES(1)) - ((s16) player->rotation[1] / DEGREES(1));
         if (player->unk_078 == 0) {
             if ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) {
                 var_a3 = 0x02D8;
@@ -840,20 +840,20 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
                 if ((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) {
                     move_s16_towards(&camera->unk_B0, -0x0B60, 0.1f);
                 } else {
-                    move_s16_towards(&camera->unk_B0, -0x0888, 0.1f);
+                    move_s16_towards(&camera->unk_B0, -DEGREES(12), 0.1f);
                 }
             } else {
                 var_a3 = (player->unk_078 / 2) + 0xA5;
                 if ((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) {
                     move_s16_towards(&camera->unk_B0, 0x0B60, 0.1f);
                 } else {
-                    move_s16_towards(&camera->unk_B0, 0x0888, 0.1f);
+                    move_s16_towards(&camera->unk_B0, DEGREES(12), 0.1f);
                 }
             }
         }
     } else {
         move_s16_towards(&camera->unk_B0, 0, 0.05f);
-        var_a3 = ((s16) camera->unk_2C / 182) - ((s16) player->rotation[1] / 182);
+        var_a3 = ((s16) camera->unk_2C / DEGREES(1)) - ((s16) player->rotation[1] / DEGREES(1));
         if (player->unk_078 == 0) {
             if ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) {
                 var_a3 = 0x02D8;

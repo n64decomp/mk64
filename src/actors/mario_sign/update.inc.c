@@ -14,7 +14,7 @@ void update_actor_mario_sign(struct Actor* arg0) {
                 arg0->rot[1] += 1820;
             }
         } else {
-            arg0->rot[1] += 182;
+            arg0->rot[1] += DEGREES(1);
         }
     }
 }

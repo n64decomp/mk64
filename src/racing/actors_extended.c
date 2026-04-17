@@ -356,7 +356,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
             break;
         case SPAWN_SECOND_SHELL:
             if (parent->rotVelocity > 0) {
-                if (someRotAngle >= 0xD556) {
+                if (someRotAngle >= (DEGREES_360 - DEGREES(60))) {
                     if (init_triple_shell(parent, &gPlayers[playerId], shellType, 1U) != -1) {
                         func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                         parent->shellsAvailable += 1;
@@ -364,7 +364,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                     parent->state = SPAWN_THIRD_SHELL;
                 }
             } else {
-                if (someRotAngle < 0x2AAA) {
+                if (someRotAngle < DEGREES(60)) {
                     if (init_triple_shell(parent, &gPlayers[playerId], shellType, 1U) != -1) {
                         func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                         parent->shellsAvailable += 1;
@@ -375,14 +375,14 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
             break;
         case SPAWN_THIRD_SHELL:
             if (parent->rotVelocity > 0) {
-                if ((someRotAngle >= 0x2AAB) && (someRotAngle < 0x31C7)) {
+                if ((someRotAngle > DEGREES(60)) && (someRotAngle < DEGREES(70))) {
                     if (init_triple_shell(parent, &gPlayers[playerId], shellType, 2U) != -1) {
                         func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                         parent->shellsAvailable += 1;
                     }
                     parent->state = 3;
                 }
-            } else if ((someRotAngle < 0xD555) && (someRotAngle >= 0xCE39)) {
+            } else if ((someRotAngle < (DEGREES_360 - DEGREES(60) - 1)) && (someRotAngle >= (DEGREES_360 - DEGREES(70)))) {
                 if (init_triple_shell(parent, &gPlayers[playerId], shellType, 2U) != -1) {
                     func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                     parent->shellsAvailable += 1;

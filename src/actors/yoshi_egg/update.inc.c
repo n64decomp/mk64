@@ -22,5 +22,5 @@ void update_actor_yoshi_egg(struct YoshiValleyEgg* egg) {
         }
         egg->eggRot -= 0x4FA;
     }
-    egg->eggRot -= 0x222;
+    egg->eggRot -= DEGREES(3);
 }

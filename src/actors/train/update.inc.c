@@ -8,7 +8,7 @@
  * @param arg0
  */
 void update_actor_train_engine(struct TrainCar* arg0) {
-    arg0->wheelRot -= 0x666;
+    arg0->wheelRot -= DEGREES(9);
 
     if (arg0->unk_08 != 0.0f) {
         arg0->unk_08 = 0.0f;
@@ -34,5 +34,5 @@ void update_actor_train_tender(struct TrainCar* tender) {
  * @param arg0
  */
 void update_actor_train_passenger_car(struct TrainCar* arg0) {
-    arg0->wheelRot -= 0x666;
+    arg0->wheelRot -= DEGREES(9);
 }

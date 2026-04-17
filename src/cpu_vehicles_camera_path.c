@@ -680,8 +680,8 @@ void detect_wrong_player_direction(s32 playerId, Player* player) {
     pathIndex = (s16) gPathIndexByPlayerId[playerId];
     pathPoint = gNearestPathPointByPlayerId[playerId];
 
-    playerAngle = (s16) ((s16) player->rotation[1] / DEGREES_CONVERSION_FACTOR);
-    pathPointAngle = (s16) ((s16) gPathExpectedRotation[pathIndex][pathPoint] / DEGREES_CONVERSION_FACTOR);
+    playerAngle = (s16) ((s16) player->rotation[1] / DEGREES(1));
+    pathPointAngle = (s16) ((s16) gPathExpectedRotation[pathIndex][pathPoint] / DEGREES(1));
 
     rotationDifference = playerAngle - pathPointAngle;
 
@@ -1669,8 +1669,8 @@ void update_player(s32 playerId) {
                 gOffsetPosition[2] = (gPreviousPlayerAiOffsetZ[playerId] + gOffsetPosition[2]) * 0.5f; // average
                 gPreviousPlayerAiOffsetX[playerId] = gOffsetPosition[0];
                 gPreviousPlayerAiOffsetZ[playerId] = gOffsetPosition[2];
-                minAngle = onePointFive * 182.0f;
-                maxAngle = -onePointFive * 182.0f;
+                minAngle = onePointFive * (f32) DEGREES(1);
+                maxAngle = -onePointFive * (f32) DEGREES(1);
 
                 angle = -get_xz_angle_between_points(player->pos, gOffsetPosition);
                 angle -= (newAngle = player->rotation[1]);

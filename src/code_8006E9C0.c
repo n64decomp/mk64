@@ -1052,7 +1052,7 @@ void init_hud_one_player(void) {
     D_8018D3C4 = 0x00000032;
     D_8018D3BC = 0x0028;
     D_8018D3C0 = 0x00000050;
-    D_801657A2 = 0x0333;
+    D_801657A2 = (4.5f * DEGREES(1));
     switch (gModeSelection) { /* irregular */
         case 0:
             D_8018D158 = 8;
@@ -1121,7 +1121,7 @@ void init_hud_two_player_vertical(void) {
     D_8018D3C4 = 0x1E;
     D_8018D3BC = 0x18;
     D_8018D3C0 = 0x28;
-    D_801657A2 = 0x666;
+    D_801657A2 = DEGREES(9);
     switch (gModeSelection) { /* irregular */
         case GRAND_PRIX:
             D_8018D158 = 8;
@@ -1195,7 +1195,7 @@ void init_hud_two_player_horizontal() {
     D_8018D3C4 = 0x1E;
     D_8018D3BC = 0x18;
     D_8018D3C0 = 0x28;
-    D_801657A2 = 0x666;
+    D_801657A2 = DEGREES(9);
     switch (gModeSelection) { /* irregular */
         case GRAND_PRIX:
             D_8018D158 = 8;
@@ -1312,5 +1312,5 @@ void init_hud_three_four_player(void) {
     D_8018D3C4 = 0x00000014;
     D_8018D3BC = 0x00000010;
     D_8018D3C0 = 0x0000001E;
-    D_801657A2 = 0x0888;
+    D_801657A2 = DEGREES(12);
 }
