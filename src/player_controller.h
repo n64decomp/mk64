@@ -35,7 +35,7 @@ void func_8002A194(Player*, f32, f32, f32);
 void func_8002A5F4(Vec3f, f32, Vec3f, f32, f32);
 void func_8002A704(Player*, s8);
 void func_8002A79C(Player*, s8);
-void func_8002A8A4(Player*, s8);
+void update_drift_state_counter(Player*, s8);
 void kart_hop(Player*);
 void func_8002AAC0(Player*);
 void func_8002AB70(Player*);
@@ -93,7 +93,7 @@ void func_80033AE0(Player*, struct Controller*, s8);
 
 void apply_cpu_turn(Player*, s16);
 void func_80036C5C(Player*);
-void func_80036CB4(Player*);
+void cancel_drift_effect(Player*);
 void func_80036DB4(Player*, Vec3f, Vec3f);
 
 void func_800371F4(Player*, Vec3f, Vec3f);

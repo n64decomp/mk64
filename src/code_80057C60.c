@@ -5044,7 +5044,7 @@ void render_player_drift_particles(Player* player, UNUSED s8 playerIndex, s16 ar
     s16 envBlue;
     s32 sp8C[] = { 0x00ffffff, 0x00ffff00, 0x00ff9600 };
     if (player->particlePool1[arg2].isAlive == 1) {
-        if (player->driftDuration >= 0x32) {
+        if (player->driftDuration >= 50) {
             var_s0 = 1;
         } else {
             var_s0 = 0;
