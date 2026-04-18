@@ -89,7 +89,7 @@ var sectionId = 'dynsection-0';
 <text text-anchor="middle" x="65.96" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">currentRank</text>
 <text text-anchor="middle" x="65.96" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">driftDuration</text>
 <text text-anchor="middle" x="65.96" y="-135" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">driftState</text>
-<text text-anchor="middle" x="65.96" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">effects</text>
+<text text-anchor="middle" x="65.96" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">driftStateCounter</text>
 <text text-anchor="middle" x="65.96" y="-113" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">...</text>
 </g>
 <!-- Node11 -->

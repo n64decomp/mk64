@@ -556,9 +556,9 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="player__controller_8c.html#a1a5b5e02df20372c912e838a46bab65f" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="587.5,-690 495.5,-690 495.5,-671 587.5,-671 587.5,-690"/>
-<text text-anchor="middle" x="541.5" y="-678" font-family="Helvetica,sans-Serif" font-size="10.00">func_80036CB4</text>
+<g id="a_Node000004"><a xlink:href="player__controller_8c.html#afc74a4642723d81347b3ddb7aed70c0f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="594.5,-690 488.5,-690 488.5,-671 594.5,-671 594.5,-690"/>
+<text text-anchor="middle" x="541.5" y="-678" font-family="Helvetica,sans-Serif" font-size="10.00">cancel_drift_effect</text>
 </a>
 </g>
 </g>
@@ -566,8 +566,8 @@
 <g id="edge3_Node000003_Node000004" class="edge">
 <title>Node3&#45;&gt;Node4</title>
 <g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M390.24,-695.14C418.4,-692.4 454.97,-688.83 484.98,-685.91"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="485.68,-689.36 495.3,-684.9 485,-682.39 485.68,-689.36"/>
+<path fill="none" stroke="#63b8ff" d="M390.24,-695.14C416.27,-692.6 449.5,-689.37 478.08,-686.58"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="478.76,-690.03 488.38,-685.58 478.08,-683.07 478.76,-690.03"/>
 </a>
 </g>
 </g>

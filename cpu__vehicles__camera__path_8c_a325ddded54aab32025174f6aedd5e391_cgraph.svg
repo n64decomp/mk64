@@ -192,9 +192,9 @@ var sectionId = 'dynsection-97';
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="player__controller_8c.html#a1a5b5e02df20372c912e838a46bab65f" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="589.5,-781 497.5,-781 497.5,-762 589.5,-762 589.5,-781"/>
-<text text-anchor="middle" x="543.5" y="-769" font-family="Helvetica,sans-Serif" font-size="10.00">func_80036CB4</text>
+<g id="a_Node000005"><a xlink:href="player__controller_8c.html#afc74a4642723d81347b3ddb7aed70c0f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="596.5,-781 490.5,-781 490.5,-762 596.5,-762 596.5,-781"/>
+<text text-anchor="middle" x="543.5" y="-769" font-family="Helvetica,sans-Serif" font-size="10.00">cancel_drift_effect</text>
 </a>
 </g>
 </g>
@@ -202,8 +202,8 @@ var sectionId = 'dynsection-97';
 <g id="edge4_Node000004_Node000005" class="edge">
 <title>Node4&#45;&gt;Node5</title>
 <g id="a_edge4_Node000004_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M405.02,-799.45C429.94,-794.38 461.21,-788.03 487.63,-782.66"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="488.39,-786.07 497.49,-780.65 486.99,-779.21 488.39,-786.07"/>
+<path fill="none" stroke="#63b8ff" d="M405.02,-799.45C429.27,-794.52 459.54,-788.37 485.49,-783.09"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="486.48,-786.46 495.58,-781.04 485.08,-779.6 486.48,-786.46"/>
 </a>
 </g>
 </g>

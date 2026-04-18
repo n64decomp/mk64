@@ -504,7 +504,7 @@ var sectionId = 'dynsection-0';
 <text text-anchor="middle" x="287" y="-286.47" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">currentRank</text>
 <text text-anchor="middle" x="287" y="-275.47" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">driftDuration</text>
 <text text-anchor="middle" x="287" y="-264.47" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">driftState</text>
-<text text-anchor="middle" x="287" y="-253.47" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">effects</text>
+<text text-anchor="middle" x="287" y="-253.47" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">driftStateCounter</text>
 <text text-anchor="middle" x="287" y="-242.47" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">...</text>
 </g>
 <!-- Node10&#45;&gt;Node15 -->

@@ -8576,12 +8576,13 @@ var searchData=
   ['dramaddr_8573',['dramAddr',['../struct____OSBlockInfo.html#aa4171705f3d3633a9b23f38094531c05',1,'__OSBlockInfo::dramAddr'],['../structOSIoMesg.html#ad0797b3af59ea96f7675d0be10c26252',1,'OSIoMesg::dramAddr']]],
   ['driftduration_8574',['driftDuration',['../structPlayer.html#a4e2cb5ade3d98794d6a6387f16f4ec56',1,'Player']]],
   ['driftstate_8575',['driftState',['../structPlayer.html#ad8f9874cffe8666bc25078b0fdf648fd',1,'Player']]],
-  ['drums_8576',['drums',['../structAudioBank.html#a24a599791d5abf0ba92582f55d2e9149',1,'AudioBank::drums'],['../structCtlEntry.html#a1a231e06308eb84b0acf8757ba4e0cc0',1,'CtlEntry::drums']]],
-  ['dstaddr_8577',['dstAddr',['../structUnkEntry.html#aef0e777becde602f5c36c02e7146019f',1,'UnkEntry']]],
-  ['dummy_8578',['dummy',['../struct____OSContReadFormat.html#a4a0069791ce30d82145ae10c1edb936c',1,'__OSContReadFormat::dummy'],['../struct____OSContRequesFormat.html#ac985b2af423216dd556852044841e1df',1,'__OSContRequesFormat::dummy'],['../struct____OSContRamReadFormat.html#a75c88f8a5de1a5fc696b01053addee2a',1,'__OSContRamReadFormat::dummy']]],
-  ['dummy1_8579',['dummy1',['../struct____OSContRequesFormat.html#af67fa1b58e4d63b2d57338f7002de3ea',1,'__OSContRequesFormat']]],
-  ['duration_8580',['duration',['../structSequenceChannelLayer.html#a16047605637da65df5b360788dd80f53',1,'SequenceChannelLayer::duration'],['../structCutscene.html#adf71ab9b7e76c8a387d4934437caa7e2',1,'Cutscene::duration']]],
-  ['dx_8581',['dX',['../structMenuTexture.html#a50aaffcef2cdfba5469e2aea064b1bae',1,'MenuTexture']]],
-  ['dy_8582',['dY',['../structMenuTexture.html#a7672db2036937a0c928775cb102613ba',1,'MenuTexture']]],
-  ['dyntable_8583',['dynTable',['../structSequenceChannel.html#a2df4dd94b4ca99190ac1310b345a26e9',1,'SequenceChannel']]]
+  ['driftstatecounter_8576',['driftStateCounter',['../structPlayer.html#a6342038ae531d272ba6d195b4530197c',1,'Player']]],
+  ['drums_8577',['drums',['../structAudioBank.html#a24a599791d5abf0ba92582f55d2e9149',1,'AudioBank::drums'],['../structCtlEntry.html#a1a231e06308eb84b0acf8757ba4e0cc0',1,'CtlEntry::drums']]],
+  ['dstaddr_8578',['dstAddr',['../structUnkEntry.html#aef0e777becde602f5c36c02e7146019f',1,'UnkEntry']]],
+  ['dummy_8579',['dummy',['../struct____OSContReadFormat.html#a4a0069791ce30d82145ae10c1edb936c',1,'__OSContReadFormat::dummy'],['../struct____OSContRequesFormat.html#ac985b2af423216dd556852044841e1df',1,'__OSContRequesFormat::dummy'],['../struct____OSContRamReadFormat.html#a75c88f8a5de1a5fc696b01053addee2a',1,'__OSContRamReadFormat::dummy']]],
+  ['dummy1_8580',['dummy1',['../struct____OSContRequesFormat.html#af67fa1b58e4d63b2d57338f7002de3ea',1,'__OSContRequesFormat']]],
+  ['duration_8581',['duration',['../structSequenceChannelLayer.html#a16047605637da65df5b360788dd80f53',1,'SequenceChannelLayer::duration'],['../structCutscene.html#adf71ab9b7e76c8a387d4934437caa7e2',1,'Cutscene::duration']]],
+  ['dx_8582',['dX',['../structMenuTexture.html#a50aaffcef2cdfba5469e2aea064b1bae',1,'MenuTexture']]],
+  ['dy_8583',['dY',['../structMenuTexture.html#a7672db2036937a0c928775cb102613ba',1,'MenuTexture']]],
+  ['dyntable_8584',['dynTable',['../structSequenceChannel.html#a2df4dd94b4ca99190ac1310b345a26e9',1,'SequenceChannel']]]
 ];
