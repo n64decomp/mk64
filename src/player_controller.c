@@ -1126,7 +1126,7 @@ void func_8002A79C(Player* player, s8 playerIndex) {
         player->effects |= MINI_TURBO_EFFECT;
         player->unk_23A = 0;
         player->driftState = 0;
-        player->unk_228 = 0;
+        player->driftStateCounter = 0;
         if (D_8015F890 != 1) {
             if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
                 func_800C9250(playerIndex);
@@ -1140,50 +1140,50 @@ void func_8002A79C(Player* player, s8 playerIndex) {
             player->unk_23A = 0;
             player->effects &= ~MINI_TURBO_EFFECT;
             player->driftState = 0;
-            player->unk_228 = 0;
+            player->driftStateCounter = 0;
         }
     }
 }
 
-void func_8002A8A4(Player* player, s8 playerIndex) {
+void update_drift_state_counter(Player* player, s8 playerIndex) {
     if (((s16) player->unk_0C0 / DEGREES_CONVERSION_FACTOR) > 0) {
         if (((s32) player->steerPosition >> 16) <= -10) {
-            if (player->unk_228 < 0x65) {
-                player->unk_228++;
+            if (player->driftStateCounter <= 100) {
+                player->driftStateCounter++;
             }
-            if ((player->unk_228 == 0x0064) && (player->type & PLAYER_HUMAN)) {
+            if ((player->driftStateCounter == 100) && (player->type & PLAYER_HUMAN)) {
                 func_800C9060(playerIndex, 0x1900851EU);
             }
         } else {
-            if ((player->unk_228 >= 0x12) && (player->unk_228 < 0x64)) {
+            if ((player->driftStateCounter >= 18) && (player->driftStateCounter < 100)) {
                 if (player->driftState < 3) {
                     player->driftState++;
                 }
             }
-            if ((player->unk_228 >= 0xA) && (player->unk_228 < 0x64)) {
-                player->unk_228 = 0x000A;
+            if ((player->driftStateCounter >= 10) && (player->driftStateCounter < 100)) {
+                player->driftStateCounter = 10;
             } else {
-                player->unk_228 = 0;
+                player->driftStateCounter = 0;
                 player->driftState = 0;
             }
         }
     } else if (((s32) player->steerPosition >> 16) >= 10) {
-        if (player->unk_228 < 0x65) {
-            player->unk_228++;
+        if (player->driftStateCounter <= 100) {
+            player->driftStateCounter++;
         }
-        if ((player->unk_228 == 0x0064) && (player->type & PLAYER_HUMAN)) {
+        if ((player->driftStateCounter == 100) && (player->type & PLAYER_HUMAN)) {
             func_800C9060(playerIndex, 0x1900851EU);
         }
     } else {
-        if ((player->unk_228 >= 0x12) && (player->unk_228 < 0x64)) {
+        if ((player->driftStateCounter >= 18) && (player->driftStateCounter < 100)) {
             if (player->driftState < 3) {
                 player->driftState++;
             }
         }
-        if ((player->unk_228 >= 0xA) && (player->unk_228 < 0x64)) {
-            player->unk_228 = 0x000A;
+        if ((player->driftStateCounter >= 10) && (player->driftStateCounter < 100)) {
+            player->driftStateCounter = 10;
         } else {
-            player->unk_228 = 0;
+            player->driftStateCounter = 0;
             player->driftState = 0;
         }
     }
@@ -1755,7 +1755,7 @@ void func_8002BF4C(Player* player, s8 playerIndex) {
 void update_player_drift_duration(Player* player) {
     if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         player->driftDuration += 1;
-        if (player->driftDuration >= 101) {
+        if (player->driftDuration > 100) {
             player->driftDuration = 100;
         }
     } else {
@@ -2013,7 +2013,7 @@ void apply_effect(Player* player, s8 playerIndex, s8 arg2) {
     if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
         apply_boo_effect(player, playerIndex);
     }
-    if (((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) && (player->unk_228 >= 0x64)) {
+    if (((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) && (player->driftStateCounter >= 100)) {
         player_decelerate_alternative(player, 4.0f);
     }
     if (((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
@@ -2145,7 +2145,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
         func_8002BF4C(player, playerId);
     }
     apply_effect(player, playerId, screenId);
-    if (((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) && (player->unk_228 >= 0x64)) {
+    if (((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) && (player->driftStateCounter >= 100)) {
         sp7C = 2;
     }
     func_80037BB4(player, sp160);
@@ -3046,7 +3046,7 @@ f32 func_80030150(Player* player, s8 playerIndex) {
                     var_f0 += var_v0 * (0.01 + gKartTurnSpeedReductionTable0[player->characterId]);
                 }
             }
-            if (((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) && (player->unk_228 < 0xA)) {
+            if (((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) && (player->driftStateCounter < 10)) {
                 if (var_v0 < 0) {
                     var_f0 += -var_v0 * 0.008;
                 } else {
@@ -3924,13 +3924,20 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
                       0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
                       0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8 };
 
-    if (((((player->effects & HOP_EFFECT) != HOP_EFFECT) &&
-          ((((player->unk_0C0 / 182) <= 6) && ((player->unk_0C0 / 182) >= (-6))) ||
-           ((controller->button & R_TRIG) != R_TRIG))) ||
-         (((player->speed / 18.0f) * 216.0f) <= 20.0f)) ||
-        ((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT)) {
-        func_80036CB4(player);
+    if ( 
+         (
+           ((player->effects & HOP_EFFECT) != HOP_EFFECT) &&
+           (
+             ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR <= 6) && (player->unk_0C0 / DEGREES_CONVERSION_FACTOR >= -6)) ||
+             ((controller->button & R_TRIG) != R_TRIG)
+           )
+         ) ||
+         (((player->speed / 18.0f) * 216.0f) <= 20.0f) ||
+         ((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT)
+       ) {
+       cancel_drift_effect(player);
     }
+
     if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) < (-5)) {
         player->kartProps |= LEFT_TURN;
         player->kartProps &= ~RIGHT_TURN;
@@ -4180,7 +4187,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
                     player->unk_078 = (player->steerPosition >> 16) * ((var_f2_2 + 1.6) + (var_f2_2 * var_f12));
                 }
             }
-            player->unk_228 = 0;
+            player->driftStateCounter = 0;
             if (player->driftState < 2) {
                 player->driftState = 0;
             }
@@ -4195,7 +4202,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
                     player->effects |= DRIFT_OUTSIDE_EFFECT;
                 }
             }
-            func_8002A8A4(player, playerIndex);
+            update_drift_state_counter(player, playerIndex);
         } else {
             // linear map, sets -53 to -53 and 53 to -40
             var_s1_2 = (((s32) (((player->steerPosition >> 16) * 13) + (13 * 53))) / (2 * 53)) - 53;
@@ -4205,7 +4212,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
                     player->effects |= DRIFT_OUTSIDE_EFFECT;
                 }
             }
-            func_8002A8A4(player, playerIndex);
+            update_drift_state_counter(player, playerIndex);
         }
         if ((((player->speed / 18.0f) * 216.0f) >= 0.0f) && (((player->speed / 18.0f) * 216.0f) < 8.0f)) {
             player->unk_078 = (s16) ((s32) (var_s1_2 * ((var_f2_2 + 2.0f) + (var_f2_2 * var_f12))));
@@ -4264,7 +4271,7 @@ void apply_cpu_turn(Player* player, s16 targetAngle) {
           (player->effects & HIT_BY_STAR_EFFECT) || (player->effects & SQUISH_EFFECT))) {
         if (!(((player->speed / 18.0f) * 216.0f) >= 110.0f)) {
             player->effects &= ~DRIFT_OUTSIDE_EFFECT;
-            player->unk_228 = 0;
+            player->driftStateCounter = 0;
             if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT)) {
                 sp304 = (s32) player->steerPosition >> 16;
                 move_s32_towards(&sp304, (s32) targetAngle, 0.35f);
@@ -4308,11 +4315,10 @@ void apply_cpu_turn(Player* player, s16 targetAngle) {
                     }
                     player->unk_078 = var_v0 * var_f0;
                 }
-                if ((((player->effects & HOP_EFFECT) != HOP_EFFECT) && (player->unk_0C0 < 0x3D) &&
-                     (player->unk_0C0 > -0x3D)) ||
+                if ((((player->effects & HOP_EFFECT) != HOP_EFFECT) && (player->unk_0C0 <= 60) && (player->unk_0C0 >= -60)) ||
                     (((player->speed / 18.0f) * 216.0f) <= 20.0f) ||
                     ((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT)) {
-                    func_80036CB4(player);
+                    cancel_drift_effect(player);
                 }
             }
         }
@@ -4327,7 +4333,7 @@ void func_80036C5C(Player* player) {
     }
 }
 
-void func_80036CB4(Player* player) {
+void cancel_drift_effect(Player* player) {
     s32 steer_position_new;
 
     if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
@@ -4597,7 +4603,7 @@ void func_80037BB4(Player* player, Vec3f arg1) {
         arg1[2] = 0.0f;
     } else {
         if (player->unk_078 < 0) {
-            if (((player->effects & DRIFT_OUTSIDE_EFFECT) != DRIFT_OUTSIDE_EFFECT) || (player->unk_228 >= 0x64)) {
+            if (((player->effects & DRIFT_OUTSIDE_EFFECT) != DRIFT_OUTSIDE_EFFECT) || (player->driftStateCounter >= 100)) {
                 player->rotation[1] += player->unk_078;
             }
             if (!(player->type & PLAYER_CPU)) {
@@ -4610,7 +4616,7 @@ void func_80037BB4(Player* player, Vec3f arg1) {
                 func_80037614(player, sp20, arg1);
             }
         } else {
-            if (((player->effects & DRIFT_OUTSIDE_EFFECT) != DRIFT_OUTSIDE_EFFECT) || (player->unk_228 >= 0x64)) {
+            if (((player->effects & DRIFT_OUTSIDE_EFFECT) != DRIFT_OUTSIDE_EFFECT) || (player->driftStateCounter >= 100)) {
                 player->rotation[1] += player->unk_078;
             }
             if (!(player->type & PLAYER_CPU)) {
