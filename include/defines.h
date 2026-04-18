@@ -330,6 +330,12 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  */
 #define MAX_TIME 0x927C0
 
+/* The code often converts from a 16-bit representation of an angle to the number of degrees,
+   or adjusts a value by a specified number of degrees. Note that 2**16 / 360 is not an
+   integer. It has a value of ~182.04, but is rounded to 182 by the DEGREES function. There is
+   some inconsistency with how the codebase handles this. e.g. 70 degrees might be represented as
+   DEGREES(70) or 70 * DEGREES(1), which are slightly different values due to rounding. As a practical
+   matter, this rounding is less than 0.1 degrees in all cases */
 #define DEGREES(degree) ((u16) (degree * 65536.0f / 360.0f))
 
 // player->unk_046
