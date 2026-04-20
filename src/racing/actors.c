@@ -490,7 +490,7 @@ void render_cows(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
         sp88[1] = var_s1->pos[1];
         sp88[2] = var_s1->pos[2];
         temp_f0 =
-            distance_if_visible(camera->pos, sp88, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], 4000000.0f);
+            distance_if_visible(camera->pos, sp88, camera->rot[1], 0.0f, gCameraFOV[camera - camera1], 4000000.0f);
         if (temp_f0 > 0.0f) {
             if (temp_f0 < D_8015F704) {
                 D_8015F704 = temp_f0;
@@ -631,7 +631,7 @@ void render_palm_trees(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
         spD4[1] = var_s1->pos[1];
         spD4[2] = var_s1->pos[2];
 
-        if (distance_if_visible(camera->pos, spD4, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], var_f22) <
+        if (distance_if_visible(camera->pos, spD4, camera->rot[1], 0.0f, gCameraFOV[camera - camera1], var_f22) <
             0.0f) {
             var_s1++;
             continue;
@@ -692,7 +692,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     uintptr_t phi_t3;
 
     f32 temp_f0 =
-        distance_if_visible(camera->pos, shell->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 490000.0f);
+        distance_if_visible(camera->pos, shell->pos, camera->rot[1], 0, gCameraFOV[camera - camera1], 490000.0f);
     s32 maxObjectsReached;
     if (temp_f0 < 0.0f) {
         actor_not_rendered(camera, (struct Actor*) shell);
@@ -755,7 +755,7 @@ UNUSED void func_8029ABD4(f32* pos, s16 state) {
 }
 
 void func_8029AC18(Camera* camera, Mat4 arg1, struct Actor* arg2) {
-    if (distance_if_visible(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f) <
+    if (distance_if_visible(camera->pos, arg2->pos, camera->rot[1], 0, gCameraFOV[camera - camera1], 4000000.0f) <
         0) {
         return;
     }
@@ -2421,7 +2421,7 @@ void init_actor_hot_air_balloon_item_box(f32 x, f32 y, f32 z) {
 
 #include "actors/palm_tree/render.inc.c"
 
-void render_item_boxes(struct UnkStruct_800DC5EC* arg0) {
+void render_item_boxes(struct ScreenContext* arg0) {
     Camera* camera = arg0->camera;
     struct Actor* actor;
     s32 i;
@@ -2448,7 +2448,7 @@ void render_item_boxes(struct UnkStruct_800DC5EC* arg0) {
     }
 }
 
-void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
+void render_course_actors(struct ScreenContext* arg0) {
     Camera* camera = arg0->camera;
     u16 pathCounter = arg0->pathCounter;
     UNUSED s32 pad[12];

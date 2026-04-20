@@ -162,7 +162,7 @@ void func_8028E3A0(void) {
 }
 
 void func_8028E438(void) {
-    struct UnkStruct_800DC5EC* temp_v0 = &D_8015F480[gPlayerWinningIndex];
+    struct ScreenContext* temp_v0 = &gScreenContexts[gPlayerWinningIndex];
     s32 phi_v1_4;
 
     D_800DC5B0 = 1;
@@ -214,10 +214,10 @@ void func_8028E438(void) {
             if (phi_v1_4 == 4) {
                 D_8015F894 = 2;
                 gActiveScreenMode = SCREEN_MODE_1P;
-                D_800DC5EC->screenWidth = temp_v0->screenWidth;
-                D_800DC5EC->screenHeight = temp_v0->screenHeight;
-                D_800DC5EC->screenStartX = temp_v0->screenStartX;
-                D_800DC5EC->screenStartY = temp_v0->screenStartY;
+                gScreenOneCtx->screenWidth = temp_v0->screenWidth;
+                gScreenOneCtx->screenHeight = temp_v0->screenHeight;
+                gScreenOneCtx->screenStartX = temp_v0->screenStartX;
+                gScreenOneCtx->screenStartY = temp_v0->screenStartY;
                 if (gModeSelection == BATTLE) {
                     func_80092604();
                 } else if (gModeSelection == VERSUS) {
@@ -263,35 +263,35 @@ void func_8028E678(void) {
             }
             break;
         case 5:
-            D_800DC5EC->screenWidth -= 4;
+            gScreenOneCtx->screenWidth -= 4;
 
-            D_800DC5F0->screenWidth -= 4;
+            gScreenTwoCtx->screenWidth -= 4;
 
-            D_800DC5EC->screenStartX -= 2;
+            gScreenOneCtx->screenStartX -= 2;
 
-            D_800DC5F0->screenStartX += 2;
+            gScreenTwoCtx->screenStartX += 2;
 
-            if (D_800DC5EC->screenWidth < 160) {
-                D_800DC5EC->screenWidth = 160;
+            if (gScreenOneCtx->screenWidth < 160) {
+                gScreenOneCtx->screenWidth = 160;
                 phi_a0_10++;
             }
 
-            if (D_800DC5F0->screenWidth < 160) {
-                D_800DC5F0->screenWidth = 160;
+            if (gScreenTwoCtx->screenWidth < 160) {
+                gScreenTwoCtx->screenWidth = 160;
                 phi_a0_10++;
             }
 
-            if (D_800DC5EC->screenStartX < 80) {
-                D_800DC5EC->screenStartX = 80;
+            if (gScreenOneCtx->screenStartX < 80) {
+                gScreenOneCtx->screenStartX = 80;
                 phi_a0_10++;
             }
 
-            if (D_800DC5F0->screenStartX > SCREEN_HEIGHT) {
-                D_800DC5F0->screenStartX = SCREEN_HEIGHT;
+            if (gScreenTwoCtx->screenStartX > SCREEN_HEIGHT) {
+                gScreenTwoCtx->screenStartX = SCREEN_HEIGHT;
                 phi_a0_10++;
             }
 
-            gScreenAspect = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
+            gScreenAspect = (f32) ((f32) gScreenOneCtx->screenWidth / (f32) gScreenOneCtx->screenHeight);
             if (phi_a0_10 == 4) {
                 D_8015F894 = 3;
                 func_80092500();
@@ -300,32 +300,32 @@ void func_8028E678(void) {
             }
             break;
         case 6:
-            D_800DC5EC->screenHeight -= 4;
-            D_800DC5F0->screenHeight -= 4;
-            D_800DC5EC->screenStartY -= 2;
-            D_800DC5F0->screenStartY += 2;
+            gScreenOneCtx->screenHeight -= 4;
+            gScreenTwoCtx->screenHeight -= 4;
+            gScreenOneCtx->screenStartY -= 2;
+            gScreenTwoCtx->screenStartY += 2;
 
-            if (D_800DC5EC->screenHeight < 120) {
-                D_800DC5EC->screenHeight = 120;
+            if (gScreenOneCtx->screenHeight < 120) {
+                gScreenOneCtx->screenHeight = 120;
                 phi_a0_10++;
             }
 
-            if (D_800DC5F0->screenHeight < 120) {
-                D_800DC5F0->screenHeight = 120;
+            if (gScreenTwoCtx->screenHeight < 120) {
+                gScreenTwoCtx->screenHeight = 120;
                 phi_a0_10++;
             }
 
-            if (D_800DC5EC->screenStartY < 60) {
-                D_800DC5EC->screenStartY = 60;
+            if (gScreenOneCtx->screenStartY < 60) {
+                gScreenOneCtx->screenStartY = 60;
                 phi_a0_10++;
             }
 
-            if (D_800DC5F0->screenStartY > 180) {
-                D_800DC5F0->screenStartY = 180;
+            if (gScreenTwoCtx->screenStartY > 180) {
+                gScreenTwoCtx->screenStartY = 180;
                 phi_a0_10++;
             }
 
-            gScreenAspect = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
+            gScreenAspect = (f32) ((f32) gScreenOneCtx->screenWidth / (f32) gScreenOneCtx->screenHeight);
             if (phi_a0_10 == 4) {
                 D_8015F894 = 3;
                 func_80092500();
@@ -333,19 +333,19 @@ void func_8028E678(void) {
             }
             break;
         case 1:
-            D_800DC5EC->screenHeight -= 2;
-            D_800DC5EC->screenWidth = (D_800DC5EC->screenHeight * SCREEN_WIDTH) / SCREEN_HEIGHT;
+            gScreenOneCtx->screenHeight -= 2;
+            gScreenOneCtx->screenWidth = (gScreenOneCtx->screenHeight * SCREEN_WIDTH) / SCREEN_HEIGHT;
 
-            if (D_800DC5EC->screenHeight < 120) {
+            if (gScreenOneCtx->screenHeight < 120) {
 
-                D_800DC5EC->screenHeight = 120;
-                D_800DC5EC->screenWidth = (D_800DC5EC->screenHeight * SCREEN_WIDTH) / SCREEN_HEIGHT;
+                gScreenOneCtx->screenHeight = 120;
+                gScreenOneCtx->screenWidth = (gScreenOneCtx->screenHeight * SCREEN_WIDTH) / SCREEN_HEIGHT;
                 D_8015F894 = 2;
 
-                D_800DC5F0->screenWidth = D_800DC5EC->screenWidth;
-                D_800DC5F0->screenHeight = D_800DC5EC->screenHeight;
-                D_800DC5F0->screenStartX = D_800DC5EC->screenStartX;
-                D_800DC5F0->screenStartY = D_800DC5EC->screenStartY;
+                gScreenTwoCtx->screenWidth = gScreenOneCtx->screenWidth;
+                gScreenTwoCtx->screenHeight = gScreenOneCtx->screenHeight;
+                gScreenTwoCtx->screenStartX = gScreenOneCtx->screenStartX;
+                gScreenTwoCtx->screenStartY = gScreenOneCtx->screenStartY;
 
                 gActiveScreenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
                 gScreenAspect = 1.33333337;
@@ -355,28 +355,28 @@ void func_8028E678(void) {
             }
             break;
         case 2:
-            D_800DC5EC->screenStartX -= 4;
+            gScreenOneCtx->screenStartX -= 4;
 
-            D_800DC5EC->screenStartY -= 2;
+            gScreenOneCtx->screenStartY -= 2;
 
-            if (D_800DC5EC->screenStartX < 80) {
-                D_800DC5EC->screenStartX = 80;
+            if (gScreenOneCtx->screenStartX < 80) {
+                gScreenOneCtx->screenStartX = 80;
                 phi_a0_10++;
             }
 
-            if (D_800DC5EC->screenStartY < 60) {
-                D_800DC5EC->screenStartY = 60;
+            if (gScreenOneCtx->screenStartY < 60) {
+                gScreenOneCtx->screenStartY = 60;
                 phi_a0_10++;
             }
-            D_800DC5F0->screenStartX += 4;
-            D_800DC5F0->screenStartY += 2;
+            gScreenTwoCtx->screenStartX += 4;
+            gScreenTwoCtx->screenStartY += 2;
 
-            if (D_800DC5F0->screenStartX > SCREEN_HEIGHT) {
-                D_800DC5F0->screenStartX = SCREEN_HEIGHT;
+            if (gScreenTwoCtx->screenStartX > SCREEN_HEIGHT) {
+                gScreenTwoCtx->screenStartX = SCREEN_HEIGHT;
                 phi_a0_10++;
             }
-            if (D_800DC5F0->screenStartY > 180) {
-                D_800DC5F0->screenStartY = 180;
+            if (gScreenTwoCtx->screenStartY > 180) {
+                gScreenTwoCtx->screenStartY = 180;
                 phi_a0_10++;
             }
             if (phi_a0_10 == 4) {
@@ -709,12 +709,12 @@ void func_8028F588(void) {
             if (screenWidth < 0) {
                 screenWidth = 1;
             }
-            D_800DC5EC->screenWidth = screenWidth;
+            gScreenOneCtx->screenWidth = screenWidth;
             screenWidth = (s16) (s32) (240.0f * D_802BA034);
             if (screenWidth < 0) {
                 screenWidth = 1;
             }
-            D_800DC5EC->screenHeight = screenWidth;
+            gScreenOneCtx->screenHeight = screenWidth;
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             screenWidth = (s16) (s32) (160.0f * D_802BA034);
@@ -723,16 +723,16 @@ void func_8028F588(void) {
             } else if (screenWidth >= 0x140) {
                 screenWidth = 0x013C;
             }
-            D_800DC5EC->screenWidth = screenWidth;
-            D_800DC5F0->screenWidth = screenWidth;
+            gScreenOneCtx->screenWidth = screenWidth;
+            gScreenTwoCtx->screenWidth = screenWidth;
             screenWidth = (s16) (s32) (240.0f * D_802BA034);
             if (screenWidth <= 0) {
                 screenWidth = 1;
             } else if (screenWidth >= 0x1E0) {
                 screenWidth = 0x01DC;
             }
-            D_800DC5EC->screenHeight = screenWidth;
-            D_800DC5F0->screenHeight = screenWidth;
+            gScreenOneCtx->screenHeight = screenWidth;
+            gScreenTwoCtx->screenHeight = screenWidth;
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             screenWidth = (s16) (s32) (320.0f * D_802BA034);
@@ -741,16 +741,16 @@ void func_8028F588(void) {
             } else if (screenWidth >= 0x280) {
                 screenWidth = 0x027C;
             }
-            D_800DC5EC->screenWidth = screenWidth;
-            D_800DC5F0->screenWidth = screenWidth;
+            gScreenOneCtx->screenWidth = screenWidth;
+            gScreenTwoCtx->screenWidth = screenWidth;
             screenWidth = (s16) (s32) (120.0f * D_802BA034);
             if (screenWidth <= 0) {
                 screenWidth = 1;
             } else if (screenWidth >= 0xF0) {
                 screenWidth = 0x00EC;
             }
-            D_800DC5EC->screenHeight = screenWidth;
-            D_800DC5F0->screenHeight = screenWidth;
+            gScreenOneCtx->screenHeight = screenWidth;
+            gScreenTwoCtx->screenHeight = screenWidth;
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             screenWidth = (s16) (s32) (160.0f * D_802BA034);
@@ -759,20 +759,20 @@ void func_8028F588(void) {
             } else if (screenWidth >= 0x140) {
                 screenWidth = 0x013C;
             }
-            D_800DC5EC->screenWidth = screenWidth;
-            D_800DC5F0->screenWidth = screenWidth;
-            D_800DC5F4->screenWidth = screenWidth;
-            D_800DC5F8->screenWidth = screenWidth;
+            gScreenOneCtx->screenWidth = screenWidth;
+            gScreenTwoCtx->screenWidth = screenWidth;
+            gScreenThreeCtx->screenWidth = screenWidth;
+            gScreenFourCtx->screenWidth = screenWidth;
             screenWidth = (s16) (s32) (120.0f * D_802BA034);
             if (screenWidth <= 0) {
                 screenWidth = 1;
             } else if (screenWidth >= 0xF0) {
                 screenWidth = 0x00EC;
             }
-            D_800DC5EC->screenHeight = screenWidth;
-            D_800DC5F0->screenHeight = screenWidth;
-            D_800DC5F4->screenHeight = screenWidth;
-            D_800DC5F8->screenHeight = screenWidth;
+            gScreenOneCtx->screenHeight = screenWidth;
+            gScreenTwoCtx->screenHeight = screenWidth;
+            gScreenThreeCtx->screenHeight = screenWidth;
+            gScreenFourCtx->screenHeight = screenWidth;
             break;
     }
 }

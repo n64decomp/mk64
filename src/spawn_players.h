@@ -19,10 +19,10 @@ void spawn_players_3p_battle(f32*, f32*, f32);
 void func_8003B870(f32*, f32*, f32);
 void spawn_players_4p_battle(f32*, f32*, f32);
 void func_8003BE30(void);
-void func_8003C0F0(void);
+void spawn_and_set_player_spawns(void);
 void func_8003CD78(void);
 void func_8003CD98(Player*, Camera*, s8, s8);
-void func_8003D080(void);
+void spawn_players_and_cameras(void);
 void func_8003DB5C(void);
 
 extern f32 D_80165210[];

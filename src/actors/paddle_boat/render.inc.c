@@ -29,7 +29,7 @@ void render_actor_paddle_boat(Camera* arg0, struct PaddleWheelBoat* boat, UNUSED
     }
 
     temp =
-        distance_if_visible(arg0->pos, boat->pos, arg0->rot[1], 90000.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
+        distance_if_visible(arg0->pos, boat->pos, arg0->rot[1], 90000.0f, gCameraFOV[arg0 - camera1], 9000000.0f);
 
     if (temp < 0.0f) {
         return;

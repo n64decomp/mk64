@@ -116,7 +116,7 @@ s32 D_80150120;
 s32 gGotoMode;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
-f32 gCameraZoom[4]; // look like to be the fov of each character
+f32 gCameraFOV[NUM_CAMERAS]; // Field-of-view for each camera
 UNUSED s32 D_80150140;
 UNUSED s32 D_80150144;
 f32 gScreenAspect;
@@ -139,7 +139,7 @@ Mat4 D_801502C0;
 
 s32 padding[2048];
 
-u16 D_80152300[4];
+u16 gCameraMode[NUM_CAMERAS];
 u16 D_80152308;
 
 UNUSED OSThread paddingThread;
@@ -630,7 +630,7 @@ void race_logic_loop(void) {
                     }
 
                     rotY = camera1->rot[1];
-                    gDebugPathCount = D_800DC5EC->pathCounter;
+                    gDebugPathCount = gScreenOneCtx->pathCounter;
                     if (rotY < 0x2000) {
                         func_80057A50(40, 100, "SOUTH  ", gDebugPathCount);
                     } else if (rotY < 0x6000) {

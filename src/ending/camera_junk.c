@@ -37,7 +37,7 @@ void init_camera_podium_ceremony(void) {
     cameras[0].up[0] = 0.0f;
     cameras[0].up[1] = 1.0f;
     cameras[0].up[2] = 0.0f;
-    gCameraZoom[0] = 40.0f;
+    gCameraFOV[0] = 40.0f;
     gScreenAspect = 1.33333333f;
     gCourseNearPersp = 3.0f;
     gCourseFarPersp = 6800.0f;

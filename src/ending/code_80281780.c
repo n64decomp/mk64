@@ -96,11 +96,11 @@ void load_ceremony_cutscene(void) {
     set_perspective_and_aspect_ratio();
     func_802A74BC();
     camera->unk_B4 = 60.0f;
-    gCameraZoom[0] = 60.0f;
-    D_800DC5EC->screenWidth = SCREEN_WIDTH;
-    D_800DC5EC->screenHeight = SCREEN_HEIGHT;
-    D_800DC5EC->screenStartX = 160;
-    D_800DC5EC->screenStartY = 120;
+    gCameraFOV[0] = 60.0f;
+    gScreenOneCtx->screenWidth = SCREEN_WIDTH;
+    gScreenOneCtx->screenHeight = SCREEN_HEIGHT;
+    gScreenOneCtx->screenStartX = 160;
+    gScreenOneCtx->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
     gNextFreeMemoryAddress = (s32) gFreeMemoryResetAnchor;
     gActiveScreenMode = SCREEN_MODE_1P;
@@ -151,7 +151,7 @@ void load_ceremony_cutscene(void) {
     func_80295C6C();
     debug_switch_character_ceremony_cutscene();
     func_802818BC();
-    func_8003D080();
+    spawn_players_and_cameras();
     init_hud();
     func_8001C05C();
     balloons_and_fireworks_init();

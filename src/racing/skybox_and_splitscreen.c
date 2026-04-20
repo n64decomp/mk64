@@ -67,7 +67,7 @@ static Vtx sSkyboxP4[] = {
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-void func_802A3730(struct UnkStruct_800DC5EC* arg0) {
+void func_802A3730(struct ScreenContext* arg0) {
     s32 ulx;
     s32 uly;
     s32 lrx;
@@ -148,7 +148,7 @@ void func_802A38B4(void) {
     }
 }
 
-void func_802A39E0(struct UnkStruct_800DC5EC* arg0) {
+void func_802A39E0(struct ScreenContext* arg0) {
     s32 ulx = arg0->screenStartX - (arg0->screenWidth / 2);
     s32 uly = arg0->screenStartY - (arg0->screenHeight / 2);
     s32 lrx = arg0->screenStartX + (arg0->screenWidth / 2);
@@ -250,7 +250,7 @@ UNUSED void func_802A40DC(void) {
 }
 
 UNUSED s32 set_viewport2(void) {
-    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_800DC5EC->viewport));
+    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gScreenOneCtx->viewport));
     gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++,
                        G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH | G_CLIPPING);
@@ -444,7 +444,7 @@ void course_set_skybox_colours(Vtx* skybox) {
 }
 
 // Almost identical to end of render_skybox
-void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3,
+void func_802A487C(Vtx* arg0, UNUSED struct ScreenContext* arg1, UNUSED s32 arg2, UNUSED s32 arg3,
                    UNUSED f32* arg4) {
 
     init_rdp();
@@ -471,7 +471,7 @@ void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32
  * @param arg3 unused
  * @parma arg4 unused
  */
-void render_skybox(Vtx* skybox, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32* arg4) {
+void render_skybox(Vtx* skybox, struct ScreenContext* arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32* arg4) {
     Camera* camera = arg1->camera;
     s16 horizonRow;
     f32 homogFactor;
@@ -602,22 +602,22 @@ void set_perspective_and_aspect_ratio(void) {
 void func_802A4EF4(void) {
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            func_8001F394(gPlayerOne, &gCameraZoom[0]);
+            func_8001F394(gPlayerOne, &gCameraFOV[0]);
             break;
 
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            func_8001F394(gPlayerOne, &gCameraZoom[0]);
-            func_8001F394(gPlayerTwo, &gCameraZoom[1]);
+            func_8001F394(gPlayerOne, &gCameraFOV[0]);
+            func_8001F394(gPlayerTwo, &gCameraFOV[1]);
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            func_8001F394(gPlayerOne, &gCameraZoom[0]);
-            func_8001F394(gPlayerTwo, &gCameraZoom[1]);
+            func_8001F394(gPlayerOne, &gCameraFOV[0]);
+            func_8001F394(gPlayerTwo, &gCameraFOV[1]);
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            func_8001F394(gPlayerOne, &gCameraZoom[0]);
-            func_8001F394(gPlayerTwo, &gCameraZoom[1]);
-            func_8001F394(gPlayerThree, &gCameraZoom[2]);
-            func_8001F394(gPlayerFour, &gCameraZoom[3]);
+            func_8001F394(gPlayerOne, &gCameraFOV[0]);
+            func_8001F394(gPlayerTwo, &gCameraFOV[1]);
+            func_8001F394(gPlayerThree, &gCameraFOV[2]);
+            func_8001F394(gPlayerFour, &gCameraFOV[3]);
             break;
     }
 }
@@ -625,17 +625,17 @@ void func_802A4EF4(void) {
 void func_802A5004(void) {
 
     init_rdp();
-    func_802A3730(D_800DC5F0);
+    func_802A3730(gScreenTwoCtx);
 
     gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
-    func_802A39E0(D_800DC5F0);
+    func_802A39E0(gScreenTwoCtx);
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        render_skybox((Vtx*) sSkyboxP2, gScreenTwoCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[1]);
         func_80057FC4(2);
-        func_802A487C((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) sSkyboxP2, gScreenTwoCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[1]);
         func_80093A30(2);
     }
 }
@@ -643,16 +643,16 @@ void func_802A5004(void) {
 void func_802A50EC(void) {
 
     init_rdp();
-    func_802A3730(D_800DC5EC);
+    func_802A3730(gScreenOneCtx);
 
     gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
-    func_802A39E0(D_800DC5EC);
+    func_802A39E0(gScreenOneCtx);
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, gScreenOneCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[0]);
         func_80057FC4(1);
-        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, gScreenOneCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[0]);
         func_80093A30(1);
     }
 }
@@ -660,16 +660,16 @@ void func_802A50EC(void) {
 void func_802A51D4(void) {
 
     init_rdp();
-    func_802A39E0(D_800DC5EC);
-    func_802A3730(D_800DC5EC);
+    func_802A39E0(gScreenOneCtx);
+    func_802A3730(gScreenOneCtx);
 
     gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, gScreenOneCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[0]);
         func_80057FC4(3);
-        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, gScreenOneCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[0]);
         func_80093A30(3);
     }
 }
@@ -677,16 +677,16 @@ void func_802A51D4(void) {
 void func_802A52BC(void) {
 
     init_rdp();
-    func_802A39E0(D_800DC5F0);
-    func_802A3730(D_800DC5F0);
+    func_802A39E0(gScreenTwoCtx);
+    func_802A3730(gScreenTwoCtx);
 
     gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        render_skybox((Vtx*) sSkyboxP2, gScreenTwoCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[1]);
         func_80057FC4(4);
-        func_802A487C((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) sSkyboxP2, gScreenTwoCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[1]);
         func_80093A30(4);
     }
 }
@@ -695,7 +695,7 @@ void func_802A53A4(void) {
 
     move_segment_table_to_dmem();
     init_rdp();
-    func_802A3730(D_800DC5EC);
+    func_802A3730(gScreenOneCtx);
 
     gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
@@ -703,11 +703,11 @@ void func_802A53A4(void) {
     init_z_buffer();
     select_framebuffer();
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, gScreenOneCtx, 0x140, 0xF0, &gCameraFOV[0]);
         if (gGamestate != CREDITS_SEQUENCE) {
             func_80057FC4(0);
         }
-        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, gScreenOneCtx, 0x140, 0xF0, &gCameraFOV[0]);
         func_80093A30(0);
     }
 }
@@ -715,16 +715,16 @@ void func_802A53A4(void) {
 void func_802A54A8(void) {
 
     init_rdp();
-    func_802A39E0(D_800DC5EC);
-    func_802A3730(D_800DC5EC);
+    func_802A39E0(gScreenOneCtx);
+    func_802A3730(gScreenOneCtx);
 
     gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        render_skybox((Vtx*) sSkyboxP1, gScreenOneCtx, 0x140, 0xF0, &gCameraFOV[0]);
         func_80057FC4(8);
-        func_802A487C((Vtx*) sSkyboxP1, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A487C((Vtx*) sSkyboxP1, gScreenOneCtx, 0x140, 0xF0, &gCameraFOV[0]);
         func_80093A30(8);
     }
 }
@@ -732,16 +732,16 @@ void func_802A54A8(void) {
 void func_802A5590(void) {
 
     init_rdp();
-    func_802A39E0(D_800DC5F0);
-    func_802A3730(D_800DC5F0);
+    func_802A39E0(gScreenTwoCtx);
+    func_802A3730(gScreenTwoCtx);
 
     gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        render_skybox((Vtx*) sSkyboxP2, gScreenTwoCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[1]);
         func_80057FC4(9);
-        func_802A487C((Vtx*) sSkyboxP2, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) sSkyboxP2, gScreenTwoCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[1]);
         func_80093A30(9);
     }
 }
@@ -749,16 +749,16 @@ void func_802A5590(void) {
 void func_802A5678(void) {
 
     init_rdp();
-    func_802A39E0(D_800DC5F4);
-    func_802A3730(D_800DC5F4);
+    func_802A39E0(gScreenThreeCtx);
+    func_802A3730(gScreenThreeCtx);
 
     gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        render_skybox((Vtx*) sSkyboxP3, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
+        render_skybox((Vtx*) sSkyboxP3, gScreenThreeCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[2]);
         func_80057FC4(10);
-        func_802A487C((Vtx*) sSkyboxP3, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
+        func_802A487C((Vtx*) sSkyboxP3, gScreenThreeCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[2]);
         func_80093A30(10);
     }
 }
@@ -774,7 +774,7 @@ void func_802A5760(void) {
     if (gPlayerCountSelection1 == 3) {
 
         gDPPipeSync(gDisplayListHead++);
-        func_802A39E0(D_800DC5F8);
+        func_802A39E0(gScreenFourCtx);
         gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
         gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
                          VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
@@ -785,16 +785,16 @@ void func_802A5760(void) {
         gDPPipeSync(gDisplayListHead++);
         gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 
-        func_802A3730(D_800DC5F8);
+        func_802A3730(gScreenFourCtx);
 
     } else {
-        func_802A3730(D_800DC5F8);
-        func_802A39E0(D_800DC5F8);
+        func_802A3730(gScreenFourCtx);
+        func_802A39E0(gScreenFourCtx);
 
         if (D_800DC5B4 != 0) {
-            render_skybox(sSkyboxP4, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
+            render_skybox(sSkyboxP4, gScreenFourCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[3]);
             func_80057FC4(11);
-            func_802A487C(sSkyboxP4, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
+            func_802A487C(sSkyboxP4, gScreenFourCtx, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraFOV[3]);
             func_80093A30(11);
         }
     }
@@ -816,13 +816,13 @@ void render_player_one_1p_screen(void) {
 #endif
     func_802A53A4();
     init_rdp();
-    func_802A3730(D_800DC5EC);
+    func_802A3730(gScreenOneCtx);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraFOV[0], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraFOV[0], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
                   1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -840,19 +840,19 @@ void render_player_one_1p_screen(void) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
-    render_course(D_800DC5EC);
+    render_course(gScreenOneCtx);
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
                   G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
-    render_course_actors(D_800DC5EC);
+    render_course_actors(gScreenOneCtx);
     render_object(RENDER_SCREEN_MODE_1P_PLAYER_ONE);
     render_players_on_screen_one();
-    func_8029122C(D_800DC5EC, PLAYER_ONE);
+    func_8029122C(gScreenOneCtx, PLAYER_ONE);
     func_80021B0C();
-    render_item_boxes(D_800DC5EC);
+    render_item_boxes(gScreenOneCtx);
     render_player_snow_effect(RENDER_SCREEN_MODE_1P_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -880,12 +880,12 @@ void render_player_one_2p_screen_vertical(void) {
     sp9C = gScreenAspect * 1.2f;
 #endif
     init_rdp();
-    func_802A3730(D_800DC5EC);
+    func_802A3730(gScreenOneCtx);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraFOV[0], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraFOV[0], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
                   1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -904,7 +904,7 @@ void render_player_one_2p_screen_vertical(void) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
-    render_course(D_800DC5EC);
+    render_course(gScreenOneCtx);
     if (D_800DC5C8 == 1) {
 
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
@@ -913,12 +913,12 @@ void render_player_one_2p_screen_vertical(void) {
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
-    render_course_actors(D_800DC5EC);
+    render_course_actors(gScreenOneCtx);
     render_object(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE);
     render_players_on_screen_one();
-    func_8029122C(D_800DC5EC, PLAYER_ONE);
+    func_8029122C(gScreenOneCtx, PLAYER_ONE);
     func_80021B0C();
-    render_item_boxes(D_800DC5EC);
+    render_item_boxes(gScreenOneCtx);
     render_player_snow_effect(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -944,15 +944,15 @@ void render_player_two_2p_screen_vertical(void) {
 
     func_802A5004();
     init_rdp();
-    func_802A3730(D_800DC5F0);
+    func_802A3730(gScreenTwoCtx);
 #ifdef VERSION_EU
     sp9C = gScreenAspect * 1.2f;
 #endif
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraFOV[1], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraFOV[1], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
                   1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -970,19 +970,19 @@ void render_player_two_2p_screen_vertical(void) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
-    render_course(D_800DC5F0);
+    render_course(gScreenTwoCtx);
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
                   G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
-    render_course_actors(D_800DC5F0);
+    render_course_actors(gScreenTwoCtx);
     render_object(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO);
     render_players_on_screen_two();
-    func_8029122C(D_800DC5F0, PLAYER_TWO);
+    func_8029122C(gScreenTwoCtx, PLAYER_TWO);
     func_80021C78();
-    render_item_boxes(D_800DC5F0);
+    render_item_boxes(gScreenTwoCtx);
     func_80058BF4();
     render_player_snow_effect(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO);
     if (D_800DC5B8 != 0) {
@@ -1007,15 +1007,15 @@ void render_player_one_2p_screen_horizontal(void) {
     func_802A51D4();
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     init_rdp();
-    func_802A3730(D_800DC5EC);
+    func_802A3730(gScreenOneCtx);
 #ifdef VERSION_EU
     sp9C = gScreenAspect * 1.2f;
 #endif
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraFOV[0], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraFOV[0], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
                   1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -1034,19 +1034,19 @@ void render_player_one_2p_screen_horizontal(void) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
-    render_course(D_800DC5EC);
+    render_course(gScreenOneCtx);
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
                   G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
-    render_course_actors(D_800DC5EC);
+    render_course_actors(gScreenOneCtx);
     render_object(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE);
     render_players_on_screen_one();
-    func_8029122C(D_800DC5EC, PLAYER_ONE);
+    func_8029122C(gScreenOneCtx, PLAYER_ONE);
     func_80021B0C();
-    render_item_boxes(D_800DC5EC);
+    render_item_boxes(gScreenOneCtx);
     render_player_snow_effect(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -1071,15 +1071,15 @@ void render_player_two_2p_screen_horizontal(void) {
     func_802A52BC();
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     init_rdp();
-    func_802A3730(D_800DC5F0);
+    func_802A3730(gScreenTwoCtx);
 #ifdef VERSION_EU
     sp9C = gScreenAspect * 1.2f;
 #endif
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraFOV[1], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraFOV[1], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
                   1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -1097,19 +1097,19 @@ void render_player_two_2p_screen_horizontal(void) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
-    render_course(D_800DC5F0);
+    render_course(gScreenTwoCtx);
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
                   G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
-    render_course_actors(D_800DC5F0);
+    render_course_actors(gScreenTwoCtx);
     render_object(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO);
     render_players_on_screen_two();
-    func_8029122C(D_800DC5F0, PLAYER_TWO);
+    func_8029122C(gScreenTwoCtx, PLAYER_TWO);
     func_80021C78();
-    render_item_boxes(D_800DC5F0);
+    render_item_boxes(gScreenTwoCtx);
     render_player_snow_effect(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -1134,12 +1134,12 @@ void render_player_one_3p_4p_screen(void) {
 
     func_802A54A8();
     init_rdp();
-    func_802A3730(D_800DC5EC);
+    func_802A3730(gScreenOneCtx);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraFOV[0], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraFOV[0], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
                   1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -1157,19 +1157,19 @@ void render_player_one_3p_4p_screen(void) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
-    render_course(D_800DC5EC);
+    render_course(gScreenOneCtx);
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
                   G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
-    render_course_actors(D_800DC5EC);
+    render_course_actors(gScreenOneCtx);
     render_object(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE);
     render_players_on_screen_one();
-    func_8029122C(D_800DC5EC, PLAYER_ONE);
+    func_8029122C(gScreenOneCtx, PLAYER_ONE);
     func_80021B0C();
-    render_item_boxes(D_800DC5EC);
+    render_item_boxes(gScreenOneCtx);
     render_player_snow_effect(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -1194,12 +1194,12 @@ void render_player_two_3p_4p_screen(void) {
 
     func_802A5590();
     init_rdp();
-    func_802A3730(D_800DC5F0);
+    func_802A3730(gScreenTwoCtx);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraFOV[1], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraFOV[1], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
                   1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -1217,19 +1217,19 @@ void render_player_two_3p_4p_screen(void) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
-    render_course(D_800DC5F0);
+    render_course(gScreenTwoCtx);
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
                   G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
-    render_course_actors(D_800DC5F0);
+    render_course_actors(gScreenTwoCtx);
     render_object(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO);
     render_players_on_screen_two();
-    func_8029122C(D_800DC5F0, PLAYER_TWO);
+    func_8029122C(gScreenTwoCtx, PLAYER_TWO);
     func_80021C78();
-    render_item_boxes(D_800DC5F0);
+    render_item_boxes(gScreenTwoCtx);
     render_player_snow_effect(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -1254,13 +1254,13 @@ void render_player_three_3p_4p_screen(void) {
 
     func_802A5678();
     init_rdp();
-    func_802A3730(D_800DC5F4);
+    func_802A3730(gScreenThreeCtx);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[2], &perspNorm, gCameraZoom[2], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[2], &perspNorm, gCameraFOV[2], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[2], &perspNorm, gCameraZoom[2], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
+    guPerspective(&gGfxPool->mtxPersp[2], &perspNorm, gCameraFOV[2], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
                   1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -1278,19 +1278,19 @@ void render_player_three_3p_4p_screen(void) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
-    render_course(D_800DC5F4);
+    render_course(gScreenThreeCtx);
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]),
                   G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
-    render_course_actors(D_800DC5F4);
+    render_course_actors(gScreenThreeCtx);
     render_object(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE);
     render_players_on_screen_three();
-    func_8029122C(D_800DC5F4, PLAYER_THREE);
+    func_8029122C(gScreenThreeCtx, PLAYER_THREE);
     func_80021D40();
-    render_item_boxes(D_800DC5F4);
+    render_item_boxes(gScreenThreeCtx);
     render_player_snow_effect(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -1324,13 +1324,13 @@ void render_player_four_3p_4p_screen(void) {
     }
 
     init_rdp();
-    func_802A3730(D_800DC5F8);
+    func_802A3730(gScreenFourCtx);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[3], &perspNorm, gCameraZoom[3], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[3], &perspNorm, gCameraFOV[3], sp9C, gCourseNearPersp, gCourseFarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[3], &perspNorm, gCameraZoom[3], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
+    guPerspective(&gGfxPool->mtxPersp[3], &perspNorm, gCameraFOV[3], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
                   1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -1347,19 +1347,19 @@ void render_player_four_3p_4p_screen(void) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
-    render_course(D_800DC5F8);
+    render_course(gScreenFourCtx);
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]),
                   G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
-    render_course_actors(D_800DC5F8);
+    render_course_actors(gScreenFourCtx);
     render_object(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
     render_players_on_screen_four();
-    func_8029122C(D_800DC5F8, PLAYER_FOUR);
+    func_8029122C(gScreenFourCtx, PLAYER_FOUR);
     func_80021DA8();
-    render_item_boxes(D_800DC5F8);
+    render_item_boxes(gScreenFourCtx);
     render_player_snow_effect(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -1373,7 +1373,7 @@ void render_player_four_3p_4p_screen(void) {
 }
 
 void func_802A74BC(void) {
-    struct UnkStruct_800DC5EC* wrapper = &D_8015F480[0];
+    struct ScreenContext* wrapper = &gScreenContexts[0];
     Player* player = &gPlayers[0];
     Camera* camera = &cameras[0];
     struct Controller* controller = &gControllers[0];

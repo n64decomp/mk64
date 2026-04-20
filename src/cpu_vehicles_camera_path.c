@@ -179,21 +179,21 @@ s16* gPathExpectedRotation[4];
 s16* gTrackConsecutiveCurveCounts[4];
 u16 gPathIndexByPlayerId[12]; // D_801645B0
 u16 gPathCountByPathIndex[4]; // D_801645C8
-s32 D_801645D0[4];
+s32 D_801645D0[NUM_CAMERAS];
 s16* gCurrentTrackConsecutiveCurveCountsPath;
-s32 D_801645E8[4];
-f32 D_801645F8[4];
-s32 D_80164608[4];
-f32 D_80164618[4];
-s32 D_80164628[4];
-f32 D_80164638[4];
-f32 D_80164648[4];
-f32 D_80164658[4];
-s16 gNearestPathPointByCameraId[4];
-s16 D_80164670[4];
-s16 D_80164678[4];
-s16 D_80164680[4];
-f32 D_80164688[4];
+s32 D_801645E8[NUM_CAMERAS];
+f32 D_801645F8[NUM_CAMERAS];
+s32 D_80164608[NUM_CAMERAS];
+f32 D_80164618[NUM_CAMERAS];
+s32 D_80164628[NUM_CAMERAS];
+f32 D_80164638[NUM_CAMERAS];
+f32 D_80164648[NUM_CAMERAS];
+f32 D_80164658[NUM_CAMERAS];
+s16 gNearestPathPointByCameraId[NUM_CAMERAS];
+s16 D_80164670[NUM_CAMERAS];
+s16 D_80164678[NUM_CAMERAS];
+s16 D_80164680[NUM_CAMERAS];
+f32 D_80164688[NUM_CAMERAS];
 f32 D_80164698;
 f32 D_8016469C;
 f32 D_801646A0;
@@ -206,10 +206,10 @@ s32 D_801646B4;
 s32 D_801646B8;
 s32 D_801646BC;
 // end padding
-s16 D_801646C0[4];
+s16 D_801646C0[NUM_CAMERAS];
 u32 D_801646C8;
 u16 D_801646CC;
-UnkStruct_46D0 D_801646D0[4];
+UnkStruct_46D0 D_801646D0[NUM_CAMERAS];
 
 // Strings, presented by google translate!
 // Note that these are EUC-JP encoded, see:
@@ -1927,7 +1927,7 @@ void func_8000B140(s32 playerId) {
 
 void func_8000F0E0(void) {
     s32 i;
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < NUM_CAMERAS; i++) {
         D_80164670[i] = 0;
         D_80164678[i] = 0;
     }
@@ -2264,7 +2264,7 @@ void func_80014DE4(s32 cameraIndex) {
         D_80164678[cameraIndex] = 0;
     }
 
-    for (cameraId = 0; cameraId < 4; cameraId++) {
+    for (cameraId = 0; cameraId < NUM_CAMERAS; cameraId++) {
         gNearestPathPointByCameraId[cameraId] = 0;
     }
 }
@@ -3554,7 +3554,7 @@ void func_80019DF4(void) {
     s32 playerId = gGPCurrentRacePlayerIdByRank[0];
     // clang-format off
     // Has to be on a single line to match. Because IDO hates you :)
-    for (i = 0; i < 4; i++) { D_80164670[i] = D_80164678[i]; }
+    for (i = 0; i < NUM_CAMERAS; i++) { D_80164670[i] = D_80164678[i]; }
     // clang-format on
     camera1->playerId = playerId;
     D_80164678[0] = 1;
@@ -3575,7 +3575,7 @@ void func_80019E58(void) {
 void func_80019ED0(void) {
     s32 i;
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < NUM_CAMERAS; i++) {
         D_80164670[i] = D_80164678[i];
     }
 
@@ -3583,7 +3583,7 @@ void func_80019ED0(void) {
 
     camera1->playerId = (s16) gPlayerWinningIndex;
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < NUM_CAMERAS; i++) {
         D_80164680[i] = 0;
         func_80015314(gPlayerWinningIndex, 0, i);
         D_80164678[i] = 1;

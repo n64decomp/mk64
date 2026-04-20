@@ -15,7 +15,7 @@ void render_actor_car(Camera* arg0, struct Actor* arg1) {
     Mat4 spC8;
     UNUSED s32 pad2[32];
     f32 temp_f0 =
-        distance_if_visible(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
+        distance_if_visible(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, gCameraFOV[arg0 - camera1], 9000000.0f);
 
     if (!(temp_f0 < 0.0f)) {
 

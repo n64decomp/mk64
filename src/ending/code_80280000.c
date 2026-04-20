@@ -52,7 +52,7 @@ void func_80280038(void) {
     func_80057FC4(0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraFOV[0], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
                   1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
@@ -64,8 +64,8 @@ void func_80280038(void) {
     gCurrentCourseId = gCreditsCourseId;
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
-    render_course(D_800DC5EC);
-    render_course_actors(D_800DC5EC);
+    render_course(gScreenOneCtx);
+    render_course_actors(gScreenOneCtx);
     render_object(PLAYER_ONE + SCREEN_MODE_1P);
     render_player_snow_effect(PLAYER_ONE + SCREEN_MODE_1P);
     ceremony_transition_sliding_borders();
@@ -133,11 +133,11 @@ void load_credits(void) {
     set_perspective_and_aspect_ratio();
     func_802A74BC();
     camera->unk_B4 = 60.0f;
-    gCameraZoom[0] = 60.0f;
-    D_800DC5EC->screenWidth = SCREEN_WIDTH;
-    D_800DC5EC->screenHeight = SCREEN_HEIGHT;
-    D_800DC5EC->screenStartX = 160;
-    D_800DC5EC->screenStartY = 120;
+    gCameraFOV[0] = 60.0f;
+    gScreenOneCtx->screenWidth = SCREEN_WIDTH;
+    gScreenOneCtx->screenHeight = SCREEN_HEIGHT;
+    gScreenOneCtx->screenStartX = 160;
+    gScreenOneCtx->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
     gActiveScreenMode = SCREEN_MODE_1P;
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
@@ -173,7 +173,7 @@ void load_credits(void) {
     init_hud();
     func_80093E60();
     func_80092688();
-    if (D_800DC5EC) {}
+    if (gScreenOneCtx) {}
     D_801625F8 = ((s32) gHeapEndPtr - gNextFreeMemoryAddress);
     D_801625FC = ((f32) D_801625F8 / 1000.0f);
 }

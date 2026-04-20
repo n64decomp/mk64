@@ -21,7 +21,7 @@
 
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
-Camera cameras[4];
+Camera cameras[NUM_CAMERAS];
 Camera* camera1 = &cameras[0];
 Camera* camera2 = &cameras[1];
 Camera* camera3 = &cameras[2];
@@ -29,24 +29,24 @@ Camera* camera4 = &cameras[3];
 
 UNUSED s32 D_801649D0[2];
 
-f32 D_801649D8[4];
-f32 D_801649E8[4];
-f32 D_801649F8[4];
+f32 D_801649D8[NUM_CAMERAS];
+f32 D_801649E8[NUM_CAMERAS];
+f32 D_801649F8[NUM_CAMERAS];
 s32 D_80164A08[4];
-s32 D_80164A18[4];
+s32 D_80164A18[NUM_CAMERAS];
 s32 D_80164A28;
-s32 D_80164A2C;
+static s32 sStagingTimer;
 f32 D_80164A30;
 UNUSED f32 D_80164A34;
-f32 D_80164A38[4];
-f32 D_80164A48[4];
+f32 D_80164A38[NUM_CAMERAS];
+f32 D_80164A48[NUM_CAMERAS];
 UNUSED s32 D_80164A58[8];
-f32 D_80164A78[4];
+f32 D_80164A78[NUM_CAMERAS];
 s8 D_80164A88;
 s8 D_80164A89;
 // UNUSED s8 D_80164A8C[3];
-f32 D_80164A90[4];
-f32 D_80164AA0[4];
+f32 D_80164A90[NUM_CAMERAS];
+f32 D_80164AA0[NUM_CAMERAS];
 
 extern f32 D_80164498[];
 extern s16 D_80164678[];
@@ -55,7 +55,7 @@ void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cam
     Player* player = gPlayerOne;
     Camera* camera = &cameras[cameraId];
 
-    D_80152300[cameraId] = arg4;
+    gCameraMode[cameraId] = arg4;
     switch (arg4) {
         case 0:
         case 1:
@@ -81,7 +81,7 @@ void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cam
             D_801649D8[cameraId] = 20.0f;
             D_801649E8[cameraId] = 10.0f;
             D_801649F8[cameraId] = 7.0f;
-            D_80164A2C = 0;
+            sStagingTimer = 0;
             D_80164A30 = 30.0f;
             D_80164A38[cameraId] = 0.0f;
             D_80164A48[cameraId] = 0.0f;
@@ -158,27 +158,27 @@ void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cam
 
             if (D_80164678[cameraId] == 0) {
                 if (D_80164A28 == 1) {
-                    gCameraZoom[cameraId] = 80.0f;
+                    gCameraFOV[cameraId] = 80.0f;
                 } else {
-                    gCameraZoom[cameraId] = 40.0f;
+                    gCameraFOV[cameraId] = 40.0f;
                 }
-                camera->unk_B4 = gCameraZoom[cameraId];
+                camera->unk_B4 = gCameraFOV[cameraId];
             }
             if (D_80164678[cameraId] == 1) {
                 if (D_80164A28 == 1) {
-                    gCameraZoom[cameraId] = 100.0f;
+                    gCameraFOV[cameraId] = 100.0f;
                 } else {
-                    gCameraZoom[cameraId] = 60.0f;
+                    gCameraFOV[cameraId] = 60.0f;
                 }
-                camera->unk_B4 = gCameraZoom[cameraId];
+                camera->unk_B4 = gCameraFOV[cameraId];
             }
             if (D_80164678[cameraId] == 2) {
                 if (D_80164A28 == 1) {
-                    gCameraZoom[cameraId] = 100.0f;
+                    gCameraFOV[cameraId] = 100.0f;
                 } else {
-                    gCameraZoom[cameraId] = 60.0f;
+                    gCameraFOV[cameraId] = 60.0f;
                 }
-                camera->unk_B4 = gCameraZoom[cameraId];
+                camera->unk_B4 = gCameraFOV[cameraId];
                 D_80164A38[cameraId] = 20.0f;
                 D_80164A48[cameraId] = 1.5f;
                 D_80164A78[cameraId] = 1.0f;
@@ -924,13 +924,13 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
     switch (gModeSelection) {
         case GRAND_PRIX:
             // clang-format off
-            if (((player->type & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1)) { D_80152300[cameraIndex] = 3;
+            if (((player->type & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1)) { gCameraMode[cameraIndex] = 3;
             //             -->                 -->        Scroll right        -->      bit more     -->     ^ Required for matching
                 // clang-format on
             } else if (gIsGamePaused == 1) {
-                func_8001A0A4(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                func_8001A0A4(&gCameraMode[cameraIndex], camera, player, index, cameraIndex);
             } else {
-                func_8001A0DC(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                func_8001A0DC(&gCameraMode[cameraIndex], camera, player, index, cameraIndex);
             }
             break;
         case BATTLE:
@@ -939,53 +939,53 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
                     func_80019ED0();
                 }
                 D_80164A88 = 1;
-                D_80152300[0] = 3;
-                D_80152300[1] = 3;
-                D_80152300[2] = 3;
-                D_80152300[3] = 3;
+                gCameraMode[0] = 3;
+                gCameraMode[1] = 3;
+                gCameraMode[2] = 3;
+                gCameraMode[3] = 3;
             } else {
                 D_80164A88 = 0;
                 if (gIsGamePaused == 1) {
-                    func_8001A0A4(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0A4(&gCameraMode[cameraIndex], camera, player, index, cameraIndex);
                 } else {
-                    func_8001A0DC(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0DC(&gCameraMode[cameraIndex], camera, player, index, cameraIndex);
                 }
-                D_80152300[cameraIndex] = 9;
+                gCameraMode[cameraIndex] = 9;
             }
             break;
         case TIME_TRIALS:
             if (((gPlayerOne->type & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1)) {
-                D_80152300[0] = 3;
-                D_80152300[1] = 3;
-                D_80152300[2] = 3;
-                D_80152300[3] = 3;
+                gCameraMode[0] = 3;
+                gCameraMode[1] = 3;
+                gCameraMode[2] = 3;
+                gCameraMode[3] = 3;
             } else {
                 if (gIsGamePaused == 1) {
-                    func_8001A0A4(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0A4(&gCameraMode[cameraIndex], camera, player, index, cameraIndex);
                 } else {
-                    func_8001A0DC(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0DC(&gCameraMode[cameraIndex], camera, player, index, cameraIndex);
                 }
-                D_80152300[cameraIndex] = 1;
+                gCameraMode[cameraIndex] = 1;
             }
             break;
         case VERSUS:
             if (((player->type & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1) ||
                 (D_8015F894 == 2)) {
-                D_80152300[cameraIndex] = 3;
+                gCameraMode[cameraIndex] = 3;
             } else {
                 if (gIsGamePaused == 1) {
-                    func_8001A0A4(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0A4(&gCameraMode[cameraIndex], camera, player, index, cameraIndex);
                 } else {
-                    func_8001A0DC(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0DC(&gCameraMode[cameraIndex], camera, player, index, cameraIndex);
                 }
-                D_80152300[cameraIndex] = 1;
+                gCameraMode[cameraIndex] = 1;
             }
             break;
     }
     if (gIsGamePaused == 0) {
-        switch (D_80152300[cameraIndex]) {
+        switch (gCameraMode[cameraIndex]) {
             case 3:
-                func_8001A588(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                func_8001A588(&gCameraMode[cameraIndex], camera, player, index, cameraIndex);
                 break;
             case 1:
                 if (((player->lakituProps & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) ||
@@ -1144,26 +1144,26 @@ void func_8001F394(Player* player, f32* arg1) {
 }
 
 void func_8001F87C(s32 cameraId) {
-    s32 playerIndex;
+    s32 i;
     // Why?
     s32 id = cameraId;
 
     if (gPlayerOne) {}
     if (gActiveScreenMode == SCREEN_MODE_1P) {
         if (gModeSelection == GRAND_PRIX) {
-            for (playerIndex = 0; playerIndex < NUM_PLAYERS; playerIndex++) {
-                if ((gPlayerOne[playerIndex].type & PLAYER_STAGING) ||
-                    (gPlayerOne[playerIndex].type & PLAYER_UNKNOWN_0x80)) {
+            for (i = 0; i < NUM_PLAYERS; i++) {
+                if ((gPlayerOne[i].type & PLAYER_STAGING) ||
+                    (gPlayerOne[i].type & PLAYER_UNKNOWN_0x80)) {
                     break;
                 }
-                if (playerIndex == 7) {
-                    D_80164A2C += 1;
+                if (i == PLAYER_EIGHT) {
+                    sStagingTimer += 1;
                 }
-                if ((playerIndex == 7) && (D_80164A2C == 0x0000003C)) {
+                if ((i == PLAYER_EIGHT) && (sStagingTimer == 0x0000003C)) {
                     D_80164A28 = 2;
-                    D_80152300[id] = 1;
-                    cameras[id].rot[1] = gPlayerOne[playerIndex].rotation[1];
-                    cameras[id].unk_2C = gPlayerOne[playerIndex].rotation[1];
+                    gCameraMode[id] = 1;
+                    cameras[id].rot[1] = gPlayerOne[i].rotation[1];
+                    cameras[id].unk_2C = gPlayerOne[i].rotation[1];
                 }
             }
         }

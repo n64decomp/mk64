@@ -53,11 +53,11 @@ u16 D_800DC5E4 = 0;
 //! @todo gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
 s32 gPlayerWinningIndex = 0;
 
-ALIGNED16 struct UnkStruct_800DC5EC D_8015F480[4];
-struct UnkStruct_800DC5EC* D_800DC5EC = &D_8015F480[0];
-struct UnkStruct_800DC5EC* D_800DC5F0 = &D_8015F480[1];
-struct UnkStruct_800DC5EC* D_800DC5F4 = &D_8015F480[2];
-struct UnkStruct_800DC5EC* D_800DC5F8 = &D_8015F480[3];
+ALIGNED16 struct ScreenContext gScreenContexts[4];
+struct ScreenContext* gScreenOneCtx = &gScreenContexts[0];
+struct ScreenContext* gScreenTwoCtx = &gScreenContexts[1];
+struct ScreenContext* gScreenThreeCtx = &gScreenContexts[2];
+struct ScreenContext* gScreenFourCtx = &gScreenContexts[3];
 u16 gIsGamePaused = 0; // 1 if the game is paused and 0 if the game is not paused
 u8* pAppNmiBuffer = (u8*) &osAppNmiBuffer;
 
@@ -202,7 +202,7 @@ void setup_race(void) {
     }
     func_802969F8();
     func_80005310();
-    func_8003D080();
+    spawn_players_and_cameras();
     init_hud();
     D_800DC510 = 0;
     gNumSpawnedShells = 0;
