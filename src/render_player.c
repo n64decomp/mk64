@@ -152,12 +152,12 @@ u16 func_8001FD78(Player* player, f32 posX, UNUSED f32 arg2, f32 posZ) {
 
     ret = false;
 
-    sp58 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) - DEGREES(10)))) + player->pos[2];
-    sp64 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) - DEGREES(10)))) + player->pos[0];
-    sp54 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) + DEGREES(10)))) + player->pos[2];
-    sp60 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) + DEGREES(10)))) + player->pos[0];
-    sp50 = (10.0f * coss(((player->unk_0C0 - player->rotation[1]) + (DEGREES(40) - 1)))) + player->pos[2];
-    sp5c = (10.0f * sins(((player->unk_0C0 - player->rotation[1]) + (DEGREES(40) - 1)))) + player->pos[0];
+    sp58 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) - (10 * DEGREES(1))))) + player->pos[2];
+    sp64 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) - (10 * DEGREES(1))))) + player->pos[0];
+    sp54 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) + (10 * DEGREES(1))))) + player->pos[2];
+    sp60 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) + (10 * DEGREES(1))))) + player->pos[0];
+    sp50 = (10.0f * coss(((player->unk_0C0 - player->rotation[1]) + (40 * DEGREES(1))))) + player->pos[2];
+    sp5c = (10.0f * sins(((player->unk_0C0 - player->rotation[1]) + (40 * DEGREES(1))))) + player->pos[0];
 
     temp_f14 = ((sp58 - posZ) * (sp60 - posX)) - ((sp54 - posZ) * (sp64 - posX));
     thing0 = ((sp54 - posZ) * (sp5c - posX)) - ((sp50 - posZ) * (sp60 - posX));

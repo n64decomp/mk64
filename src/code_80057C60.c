@@ -3725,7 +3725,7 @@ void func_800612F8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     for (var_s2 = 0; var_s2 < 10; var_s2++) {
         player->particlePool3[var_s2].isAlive = 1;
         player->particlePool3[var_s2].unk_028 = player->pos[1] + 5.0f;
-        player->particlePool3[var_s2].rotation = ((DEGREES(40) - 1) * var_s2) - player->rotation[1];
+        player->particlePool3[var_s2].rotation = (40 * DEGREES(1) * var_s2) - player->rotation[1];
         player->particlePool3[var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;
         player->particlePool3[var_s2].green = 0;
         player->particlePool3[var_s2].type = 1;
@@ -3743,7 +3743,7 @@ void func_80061430(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     for (var_s2 = 0; var_s2 < 7; var_s2++) {
         player->particlePool3[var_s2].isAlive = 1;
         player->particlePool3[var_s2].unk_028 = player->pos[1] - 4.0f;
-        player->particlePool3[var_s2].rotation = ((DEGREES(40) - 1) * var_s2) - player->rotation[1];
+        player->particlePool3[var_s2].rotation = (40 * DEGREES(1) * var_s2) - player->rotation[1];
         // ???
         player->particlePool3[var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.9;
         player->particlePool3[var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;

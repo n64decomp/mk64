@@ -279,6 +279,7 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                 if (player->unk_0C0 > 0) {
                     shell->rotAngle = DEGREES(170);
                 } else {
+                    // The minus 1 is almost certainly just due to rounding the other way
                     shell->rotAngle = -DEGREES(170) - 1;
                 }
             }
