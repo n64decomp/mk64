@@ -225,7 +225,7 @@ void func_8008C62C(Player* player, s8 playerIndex) {
 
     player_decelerate_alternative(player, 5.0f);
     player->unk_0A8 += (s16) 0xA0;
-    player->unk_042 += (s16) 0x71C;
+    player->unk_042 += (s16) DEGREES(10);
     if (player->unk_0A8 >= 0x2000) {
         player->unk_0A8 = 0;
         player->unk_236 = (s16) (player->unk_236 - 1);
@@ -263,7 +263,7 @@ void add_spinout_effect(Player* player, s8 playerIndex) {
         ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT)) {
         player->effects &= ~DRIFTING_EFFECT;
 
-        if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) >= 0) {
+        if ((player->unk_0C0 / DEGREES(1)) >= 0) {
             player->effects |= DRIVING_SPINOUT_EFFECT;
         } else {
             player->effects |= BANANA_SPINOUT_EFFECT;
@@ -321,7 +321,7 @@ void remove_spinout_effects(Player* player, s8 playerId) {
 void func_8008C9EC(Player* player, s8 playerIndex) {
     s16 stackPadding1;
     s16 stackPadding2;
-    s16 sp30[5] = { 1092, 1092, 2184, 1638, 1820 };
+    s16 sp30[5] = { DEGREES(6), DEGREES(6), DEGREES(12), DEGREES(9), DEGREES(10) };
 
     player->unk_206 = 0;
     player->slopeAccel = 0;
@@ -340,7 +340,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
     if ((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) {
         player->rotation[1] -= sp30[player->unk_0B2];
         D_8018D920[playerIndex] -= sp30[player->unk_0B2];
-        stackPadding1 = (u16) D_8018D920[playerIndex] / (0x10000 / (0x168 / (sp30[player->unk_0B2] / 182)));
+        stackPadding1 = (u16) D_8018D920[playerIndex] / (0x10000 / (0x168 / (sp30[player->unk_0B2] / DEGREES(1))));
         if (stackPadding1 == 0) {
             player->unk_0B2--;
             if (player->unk_0B2 <= 0) {
@@ -353,7 +353,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
     } else {
         player->rotation[1] += sp30[player->unk_0B2];
         D_8018D920[playerIndex] -= sp30[player->unk_0B2];
-        stackPadding2 = (u16) D_8018D920[playerIndex] / (0x10000 / (0x168 / (sp30[player->unk_0B2] / 182)));
+        stackPadding2 = (u16) D_8018D920[playerIndex] / (0x10000 / (0x168 / (sp30[player->unk_0B2] / DEGREES(1))));
         if (stackPadding2 == 0) {
             player->unk_0B2--;
             if (player->unk_0B2 <= 0) {
@@ -600,9 +600,9 @@ void func_8008D698(Player* player, s8 playerIndex) {
         player->rotation[1] = player->unk_0AE;
         temp = 0;
     } else {
-        player->rotation[1] -= 1820;
-        D_8018D920[playerIndex] -= 1820;
-        temp = ((u16) D_8018D920[playerIndex] / 1820);
+        player->rotation[1] -= DEGREES(10);
+        D_8018D920[playerIndex] -= DEGREES(10);
+        temp = ((u16) D_8018D920[playerIndex] / DEGREES(10));
     }
     if (temp == 0) {
         --player->unk_0B2;
@@ -654,9 +654,9 @@ void func_8008D8B4(Player* player, s8 playerIndex) {
         player->rotation[1] = player->unk_0AE;
         temp = 0;
     } else {
-        player->rotation[1] -= 1820;
-        D_8018D920[playerIndex] -= 1820;
-        temp = ((u16) (D_8018D920[playerIndex]) / 1820);
+        player->rotation[1] -= DEGREES(10);
+        D_8018D920[playerIndex] -= DEGREES(10);
+        temp = ((u16) (D_8018D920[playerIndex]) / DEGREES(10));
     }
     if (temp == 0) {
         --player->unk_0B2;
@@ -890,9 +890,9 @@ void apply_lightning_effect(Player* player, s8 playerIndex) {
         D_80165190[3][playerIndex] = 1;
         trigger_squish(player, playerIndex);
     } else if ((player->effects & LIGHTNING_STRIKE_EFFECT) == LIGHTNING_STRIKE_EFFECT) {
-        player->rotation[1] -= 0x5B0;
-        D_8018D920[playerIndex] -= 0x5B0;
-        test = (u16) D_8018D920[playerIndex] / 1456;
+        player->rotation[1] -= DEGREES(8);
+        D_8018D920[playerIndex] -= DEGREES(8);
+        test = (u16) D_8018D920[playerIndex] / DEGREES(8);
         if (test == 0) {
             player->unk_0B2--;
             if (player->unk_0B2 <= 0) {
@@ -951,7 +951,7 @@ void func_8008E4A4(Player* player, s8 playerIndex) {
     player->unk_0C0 = 0;
     player->steerPosition = 0;
     player->unk_0C2 = 0xF;
-    player->unk_042 += 0xAAA;
+    player->unk_042 += DEGREES(15);
     player->unk_08C = 0.0f;
     player->currentSpeed = 0.0f;
     player->velocity[0] = 0.0f;
@@ -1065,7 +1065,7 @@ void apply_hit_by_star_effect(Player* player, s8 playerIndex) {
     player->unk_0C0 = 0;
     player->steerPosition = 0;
     player->unk_0C2 = 0xF;
-    player->unk_042 += 0xAAA;
+    player->unk_042 += DEGREES(15);
     player->unk_08C /= 2;
     player->currentSpeed = 0.0f;
     player->effects &= ~(BANANA_SPINOUT_EFFECT | DRIVING_SPINOUT_EFFECT);
@@ -1274,10 +1274,10 @@ void func_8008F1B8(Player* player, s8 arg1) {
     player->unk_08C = (player->unk_210 * 0.05);
     if (player->unk_0B2 < 0) {
         if ((player->kartProps & EARLY_SPINOUT_LEFT) == EARLY_SPINOUT_LEFT) {
-            player->rotation[1] += 182;
-            D_8018D920[arg1] += 182;
+            player->rotation[1] += DEGREES(1);
+            D_8018D920[arg1] += DEGREES(1);
 
-            temp = ((u16) D_8018D920[arg1] / 182);
+            temp = ((u16) D_8018D920[arg1] / DEGREES(1));
             if (temp == 180) {
                 player->effects &= ~EARLY_START_SPINOUT_EFFECT;
                 player->type &= ~PLAYER_UNKNOWN_0x80;
@@ -1285,9 +1285,9 @@ void func_8008F1B8(Player* player, s8 arg1) {
             }
         } else {
 
-            player->rotation[1] -= 182;
-            D_8018D920[arg1] -= 182;
-            temp = ((u16) D_8018D920[arg1] / 182);
+            player->rotation[1] -= DEGREES(1);
+            D_8018D920[arg1] -= DEGREES(1);
+            temp = ((u16) D_8018D920[arg1] / DEGREES(1));
             if (temp == 180) {
                 player->effects &= ~EARLY_START_SPINOUT_EFFECT;
                 player->type &= ~PLAYER_UNKNOWN_0x80;
@@ -1296,9 +1296,9 @@ void func_8008F1B8(Player* player, s8 arg1) {
         }
     } else {
         if ((player->unk_0B2 & 1) != 0) {
-            player->rotation[1] -= 364;
-            D_8018D920[arg1] -= 364;
-            temp = ((u16) D_8018D920[arg1] / 364);
+            player->rotation[1] -= DEGREES(2);
+            D_8018D920[arg1] -= DEGREES(2);
+            temp = ((u16) D_8018D920[arg1] / DEGREES(2));
             if (temp < 71) {
                 --player->unk_0B2;
             }
@@ -1306,9 +1306,9 @@ void func_8008F1B8(Player* player, s8 arg1) {
             player->kartProps &= ~EARLY_SPINOUT_RIGHT;
             return;
         }
-        player->rotation[1] += 364;
-        D_8018D920[arg1] += 364;
-        temp = ((u16) D_8018D920[arg1] / 364);
+        player->rotation[1] += DEGREES(2);
+        D_8018D920[arg1] += DEGREES(2);
+        temp = ((u16) D_8018D920[arg1] / DEGREES(2));
         if (temp >= 110) {
             --player->unk_0B2;
         }
@@ -1323,7 +1323,7 @@ void func_8008F3E0(Player* player) {
 
 void func_8008F3F4(Player* player, UNUSED s8 arg1) {
     player->unk_0A8 += 0x80;
-    player->unk_042 += 0x71C;
+    player->unk_042 += DEGREES(10);
     player->steerPosition = 0;
     player->currentSpeed = 0.0f;
     player->unk_08C /= 2;
@@ -1976,14 +1976,14 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
     }
     if (player->unk_D98 == 1) {
         player->unk_D9C += player->unk_DA0;
-        if (player->unk_D9C >= 1820.0f) {
+        if (player->unk_D9C >= (f32) DEGREES(10)) {
             player->unk_DA0 = 0.0f;
             player->unk_D98 *= -1;
         }
     }
     if (player->unk_D98 == -1) {
         player->unk_D9C -= player->unk_DA0;
-        if (player->unk_D9C <= -1820.0f) {
+        if (player->unk_D9C <= (f32) -DEGREES(10)) {
             player->unk_DA0 = 0.0f;
             player->unk_D98 *= -1;
         }
@@ -2083,9 +2083,9 @@ void func_80091298(Player* player, s8 arg1) {
     if (player->unk_0B2 == 0) {
         var_v1 = 0;
     } else {
-        player->rotation[1] -= 0xE38;
-        D_8018D920[arg1] -= 0xE38;
-        var_v1 = (u16) D_8018D920[arg1] / 3640;
+        player->rotation[1] -= DEGREES(20);
+        D_8018D920[arg1] -= DEGREES(20);
+        var_v1 = (u16) D_8018D920[arg1] / DEGREES(20);
     }
     if (((var_v1 == 9) && (player->unk_0B2 == 1)) || ((var_v1 == 0) && (player->unk_0B2 == 2)) ||
         (player->unk_0B2 == 0)) {

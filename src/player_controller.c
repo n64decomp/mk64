@@ -695,28 +695,28 @@ void func_80029200(Player* player, s8 screenId) {
     if ((s32) player->slopeAccel < -0x71B) {
         player->animGroupSelector[screenId] = 0;
     }
-    if (((s32) player->slopeAccel < -0x4F9) && ((s32) player->slopeAccel >= -0x71B)) {
+    if (((s32) player->slopeAccel < -0x4F9) && ((s32) player->slopeAccel > -DEGREES(10))) {
         player->animGroupSelector[screenId] = 1;
     }
-    if ((player->slopeAccel < -0x221) && (player->slopeAccel >= -0x4F9)) {
+    if ((player->slopeAccel <= -DEGREES(3)) && (player->slopeAccel > -DEGREES(7))) {
         player->animGroupSelector[screenId] = 2;
     }
-    if ((player->slopeAccel < -0x16B) && (player->slopeAccel >= -0x221)) {
+    if ((player->slopeAccel <= -DEGREES(2)) && (player->slopeAccel > -DEGREES(3))) {
         player->animGroupSelector[screenId] = 3;
     }
-    if ((player->slopeAccel < 0x16C) && (player->slopeAccel >= -0x16B)) {
+    if ((player->slopeAccel < DEGREES(2)) && (player->slopeAccel > -DEGREES(2))) {
         player->animGroupSelector[screenId] = 4;
     }
-    if ((player->slopeAccel >= 0x16C) && (player->slopeAccel < 0x222)) {
+    if ((player->slopeAccel >= DEGREES(2)) && (player->slopeAccel < DEGREES(3))) {
         player->animGroupSelector[screenId] = 5;
     }
-    if ((player->slopeAccel >= 0x222) && (player->slopeAccel < 0x4FA)) {
+    if ((player->slopeAccel >= DEGREES(3)) && (player->slopeAccel < DEGREES(7))) {
         player->animGroupSelector[screenId] = 6;
     }
-    if ((player->slopeAccel >= 0x4FA) && (player->slopeAccel < 0x71C)) {
+    if ((player->slopeAccel >= DEGREES(7)) && (player->slopeAccel < DEGREES(10))) {
         player->animGroupSelector[screenId] = 7;
     }
-    if (player->slopeAccel >= 0x71C) {
+    if (player->slopeAccel >= DEGREES(10)) {
         player->animGroupSelector[screenId] = 8;
     }
 }
@@ -783,11 +783,11 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
             var_a1 = 0x208;
             var_t0 = 0;
         } else {
-            var_a1 = 0x666;
+            var_a1 = DEGREES(9);
             var_t0 = 0xF;
         }
     } else {
-        var_a1 = 0x666;
+        var_a1 = DEGREES(9);
         var_t0 = 0;
     }
     if (((player->effects & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
@@ -1146,7 +1146,7 @@ void func_8002A79C(Player* player, s8 playerIndex) {
 }
 
 void update_drift_state_counter(Player* player, s8 playerIndex) {
-    if (((s16) player->unk_0C0 / DEGREES_CONVERSION_FACTOR) > 0) {
+    if (((s16) player->unk_0C0 / DEGREES(1)) > 0) {
         if (((s32) player->steerPosition >> 16) <= -10) {
             if (player->driftStateCounter <= 100) {
                 player->driftStateCounter++;
@@ -1241,7 +1241,7 @@ void func_8002AAC0(Player* player) {
 void func_8002AB70(Player* player) {
     UNUSED s32 pad[2];
     if (((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) && (player->unk_08C > 0.0f)) {
-        if (((player->slopeAccel / 182) < -1) && ((player->slopeAccel / 182) >= -0x14) &&
+        if (((player->slopeAccel / DEGREES(1)) < -1) && ((player->slopeAccel / DEGREES(1)) >= -0x14) &&
             (((player->speed / 18.0f) * 216.0f) >= 20.0f)) {
             move_f32_towards(&player->kartGravity, 500.0f, 1.0f);
             move_f32_towards(&player->unk_DAC, 3.0f, 0.05f);
@@ -1327,7 +1327,7 @@ void func_8002AE38(Player* player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
             var_v1 = 0;
         }
         if ((player->currentSpeed >= 200.0f) && (var_v1 == 2) &&
-            (((player->unk_0C0 / 182) >= 0x10) || ((player->unk_0C0 / 182) < -0xF))) {
+            (((player->unk_0C0 / DEGREES(1)) >= 0x10) || ((player->unk_0C0 / DEGREES(1)) < -0xF))) {
             player->unk_0C0 = atan2s(arg2 - arg4, arg3 - arg5) - atan2s(arg2 - sp28, arg3 - temp_f16);
         } else {
             player->unk_0C0 = (atan2s(arg2 - arg4, arg3 - arg5) - atan2s(arg2 - sp28, arg3 - temp_f16)) * 2;
@@ -1607,7 +1607,7 @@ void func_8002B9CC(Player* player, s8 playerIndex, UNUSED s32 arg2) {
         temp = (-(s16) get_xz_angle_between_points(player->pos, &player->oldPos[0]));
         temp2 = (player->rotation[1] - player->unk_0C0);
         temp = temp - temp2;
-        player->unk_234 = temp / 182;
+        player->unk_234 = temp / DEGREES(1);
     }
 }
 
@@ -1618,7 +1618,7 @@ void func_8002BB9C(Player* player, f32* arg1, f32* arg2, UNUSED s8 arg3, UNUSED 
     s16 var_v0;
     s16 t0;
     UNUSED s32 pad;
-    s16 sp30[10] = { 0x0000, 0x00b6, 0x016c, 0x0222, 0x02d8, 0x038e, 0x0444, 0x04fa, 0x05b0, 0x0666 };
+    s16 sp30[10] = { 0, DEGREES(1), DEGREES(2), DEGREES(3), DEGREES(4), DEGREES(5), DEGREES(6), DEGREES(7), DEGREES(8), DEGREES(9) };
 
     if (((u16) player->unk_256) <= 0) {
         return;
@@ -1649,7 +1649,7 @@ void func_8002BB9C(Player* player, f32* arg1, f32* arg2, UNUSED s8 arg3, UNUSED 
     var_v0 = -(s16) get_xz_angle_between_points(sp58, sp4C);
     t0 = player->rotation[1];
     var_v0 = 0x10000 + (t0 - var_v0);
-    var_v0 /= 182;
+    var_v0 /= DEGREES(1);
 
     if (var_v0 < 0x97 && (var_v0 > -0x97)) {
         return;
@@ -2071,22 +2071,22 @@ void func_8002D028(Player* player, s8 playerIndex) {
 
     thing0 = 8;
 
-    if (temp > ((s16) (thing0 * 182))) {
-        temp = (thing0 * 182);
+    if (temp > ((s16) (thing0 * DEGREES(1)))) {
+        temp = (thing0 * DEGREES(1));
     }
-    if (temp < ((s16) (-thing0 * 182))) {
-        temp = (-thing0 * 182);
+    if (temp < ((s16) (-thing0 * DEGREES(1)))) {
+        temp = (-thing0 * DEGREES(1));
     }
 
-    temp_t1 = (D_80165020[playerIndex] + ((s16) ((temp * 0x35) / (thing0 * 182)))) / 2;
+    temp_t1 = (D_80165020[playerIndex] + ((s16) ((temp * 0x35) / (thing0 * DEGREES(1))))) / 2;
     apply_cpu_turn(player, (s16) temp_t1);
     D_80165020[playerIndex] = (s16) temp_t1;
 
     temp_f18 = sqrtf((sp4C[0] - player->pos[0]) * (sp4C[0] - player->pos[0]) +
                      (sp4C[2] - player->pos[2]) * (sp4C[2] - player->pos[2]));
     if (temp_f18 <= 8.0f) {
-        adjust_angle(&player->rotation[1], -0x8000, 0x016C);
-        if ((player->rotation[1] < (-0x7F41)) || (player->rotation[1] > 0x7F41)) {
+        adjust_angle(&player->rotation[1], -DEGREES(180), DEGREES(2));
+        if ((player->rotation[1] <= (-179 * DEGREES(1))) || (player->rotation[1] >= (179 * DEGREES(1)))) {
             player->type &= ~PLAYER_STAGING;
         }
         player->unk_08C = 0;
@@ -2285,7 +2285,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
                                      player->rotation[1]);
     } else {
         calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060,
-                                     player->rotation[1] + 0x8000);
+                                     player->rotation[1] + DEGREES(180));
     }
     player->effects |= MIDAIR_EFFECT;
     player->unk_0C2 += 1;
@@ -2923,7 +2923,7 @@ void func_8002FCA8(Player* player, s8 playerIndex) {
         var_v1 = 0;
     }
     if ((player->currentSpeed >= 200.0f) && (var_v1 == 2)) {
-        temp_lo = (s16) player->unk_0C0 / 182;
+        temp_lo = (s16) player->unk_0C0 / DEGREES(1);
         if ((temp_lo > 0xF) || (temp_lo < -0xF)) {
             var_f0 += 1.0;
         }
@@ -2959,7 +2959,7 @@ void func_8002FE84(Player* player, f32 arg1) {
 
     var_f0 = 0.0f;
     player->unk_098 = arg1;
-    temp_lo = player->slopeAccel / 182;
+    temp_lo = player->slopeAccel / DEGREES(1);
     if ((temp_lo > 0x11) || (temp_lo < -0x11)) {
         var_f0 += (temp_lo * 0.0125) / 1.2;
     } else {
@@ -2974,7 +2974,7 @@ void func_8002FE84(Player* player, f32 arg1) {
         // just above this comment
         var_f0 += D_800E2E90[player->characterId][player->tyres[BACK_LEFT].surfaceType] * (0.7 * 1.0);
     }
-    test = player->unk_0C0 / 182;
+    test = player->unk_0C0 / DEGREES(1);
     if (test < 0) {
         var_f0 += -test * 0.004;
     } else {
@@ -3018,7 +3018,7 @@ f32 func_80030150(Player* player, s8 playerIndex) {
         }
         if (((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) &&
             ((player->lakituProps & HELD_BY_LAKITU) != HELD_BY_LAKITU)) {
-            temp_lo = player->slopeAccel / 182;
+            temp_lo = player->slopeAccel / DEGREES(1);
             if (var_f2 >= 20.0f) {
                 if ((temp_lo > 0x11) || (temp_lo < -0x11)) {
                     var_f0 -= ((temp_lo * 0.0126) / 3.0);
@@ -3032,14 +3032,14 @@ f32 func_80030150(Player* player, s8 playerIndex) {
                 }
             }
             if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) || (player->driftDuration > 0)) {
-                var_v0 = (s16) player->unk_0C0 / 182;
+                var_v0 = (s16) player->unk_0C0 / DEGREES(1);
                 if (var_v0 < 0) {
                     var_f0 += -var_v0 * 0.004;
                 } else {
                     var_f0 += var_v0 * 0.004;
                 }
             } else {
-                var_v0 = (s16) player->unk_0C0 / 182;
+                var_v0 = (s16) player->unk_0C0 / DEGREES(1);
                 if (var_v0 < 0) {
                     var_f0 += -var_v0 * (0.01 + gKartTurnSpeedReductionTable0[player->characterId]);
                 } else {
@@ -3076,7 +3076,7 @@ f32 func_80030150(Player* player, s8 playerIndex) {
     } else {
         player->unk_0A0 = 0.0f;
         player->unk_0E8 = 0.0f;
-        if (((s16) player->slopeAccel / 182) < 0) {
+        if (((s16) player->slopeAccel / DEGREES(1)) < 0) {
             var_f0 += -0.85;
             if (player->effects & LIGHTNING_EFFECT) {
                 var_f0 += -0.55;
@@ -3306,93 +3306,93 @@ void player_accelerate_alternative(Player* player) {
     if (gIsPlayerTripleAButtonCombo[player_index] == false) {
         if ((0.0 <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][0] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[player->characterId][0] + (0.05 * (player->slopeAccel / DEGREES(1)));
         }
         if (((player->topSpeed * 0.1) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.2))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][1] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[player->characterId][1] + (0.05 * (player->slopeAccel / DEGREES(1)));
         }
         if (((player->topSpeed * 0.2) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.3))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][2] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[player->characterId][2] + (0.05 * (player->slopeAccel / DEGREES(1)));
         }
         if (((player->topSpeed * 0.3) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.4))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][3] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[player->characterId][3] + (0.05 * (player->slopeAccel / DEGREES(1)));
         }
         if (((player->topSpeed * 0.4) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.5))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][4] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[player->characterId][4] + (0.05 * (player->slopeAccel / DEGREES(1)));
         }
         if (((player->topSpeed * 0.5) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.6))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][5] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[player->characterId][5] + (0.05 * (player->slopeAccel / DEGREES(1)));
         }
         if (((player->topSpeed * 0.6) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.7))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][6] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[player->characterId][6] + (0.05 * (player->slopeAccel / DEGREES(1)));
         }
         if (((player->topSpeed * 0.7) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.8))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][7] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[player->characterId][7] + (0.05 * (player->slopeAccel / DEGREES(1)));
         }
         if (((player->topSpeed * 0.8) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.9))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][8] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[player->characterId][8] + (0.05 * (player->slopeAccel / DEGREES(1)));
         }
         if (((player->topSpeed * 0.9) <= player->currentSpeed) && (player->currentSpeed <= (player->topSpeed * 1.0))) {
             player->currentSpeed +=
-                gKartAccelerationTables[player->characterId][9] + (0.05 * (player->slopeAccel / 182));
+                gKartAccelerationTables[player->characterId][9] + (0.05 * (player->slopeAccel / DEGREES(1)));
         }
     } else {
         if ((0.0 <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][0] + (0.05 * (player->slopeAccel / 182))) *
+                (gKartAccelerationTables[player->characterId][0] + (0.05 * (player->slopeAccel / DEGREES(1)))) *
                 gKartTripleABoost[player->characterId];
         }
         if (((player->topSpeed * 0.1) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.2))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][1] + (0.05 * (player->slopeAccel / 182))) *
+                (gKartAccelerationTables[player->characterId][1] + (0.05 * (player->slopeAccel / DEGREES(1)))) *
                 gKartTripleABoost[player->characterId];
         }
         if (((player->topSpeed * 0.2) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.3))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][2] + (0.05 * (player->slopeAccel / 182))) *
+                (gKartAccelerationTables[player->characterId][2] + (0.05 * (player->slopeAccel / DEGREES(1)))) *
                 gKartTripleABoost[player->characterId];
         }
         if (((player->topSpeed * 0.3) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.4))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][3] + (0.05 * (player->slopeAccel / 182))) *
+                (gKartAccelerationTables[player->characterId][3] + (0.05 * (player->slopeAccel / DEGREES(1)))) *
                 gKartTripleABoost[player->characterId];
         }
         if (((player->topSpeed * 0.4) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.5))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][4] + (0.05 * (player->slopeAccel / 182))) *
+                (gKartAccelerationTables[player->characterId][4] + (0.05 * (player->slopeAccel / DEGREES(1)))) *
                 gKartTripleABoost[player->characterId];
         }
         if (((player->topSpeed * 0.5) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.6))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][5] + (0.05 * (player->slopeAccel / 182))) *
+                (gKartAccelerationTables[player->characterId][5] + (0.05 * (player->slopeAccel / DEGREES(1)))) *
                 gKartTripleABoost[player->characterId];
         }
         if (((player->topSpeed * 0.6) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.7))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][6] + (0.05 * (player->slopeAccel / 182))) *
+                (gKartAccelerationTables[player->characterId][6] + (0.05 * (player->slopeAccel / DEGREES(1)))) *
                 gKartTripleABoost[player->characterId];
         }
         if (((player->topSpeed * 0.7) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.8))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][7] + (0.05 * (player->slopeAccel / 182))) *
+                (gKartAccelerationTables[player->characterId][7] + (0.05 * (player->slopeAccel / DEGREES(1)))) *
                 gKartTripleABoost[player->characterId];
         }
         if (((player->topSpeed * 0.8) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.9))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][8] + (0.05 * (player->slopeAccel / 182))) *
+                (gKartAccelerationTables[player->characterId][8] + (0.05 * (player->slopeAccel / DEGREES(1)))) *
                 gKartTripleABoost[player->characterId];
         }
         if (((player->topSpeed * 0.9) <= player->currentSpeed) && (player->currentSpeed <= (player->topSpeed * 1.0))) {
             player->currentSpeed +=
-                (gKartAccelerationTables[player->characterId][9] + (0.05 * (player->slopeAccel / 182))) *
+                (gKartAccelerationTables[player->characterId][9] + (0.05 * (player->slopeAccel / DEGREES(1)))) *
                 gKartTripleABoost[player->characterId];
         }
     }
@@ -3928,7 +3928,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
          (
            ((player->effects & HOP_EFFECT) != HOP_EFFECT) &&
            (
-             ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR <= 6) && (player->unk_0C0 / DEGREES_CONVERSION_FACTOR >= -6)) ||
+             ((player->unk_0C0 / DEGREES(1) <= 6) && (player->unk_0C0 / DEGREES(1) >= -6)) ||
              ((controller->button & R_TRIG) != R_TRIG)
            )
          ) ||
@@ -3937,12 +3937,11 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
        ) {
        cancel_drift_effect(player);
     }
-
-    if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) < (-5)) {
+    if ((player->unk_0C0 / DEGREES(1)) < (-5)) {
         player->kartProps |= LEFT_TURN;
         player->kartProps &= ~RIGHT_TURN;
         D_801652C0[playerIndex]++;
-    } else if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) > 5) {
+    } else if ((player->unk_0C0 / DEGREES(1)) > 5) {
         player->kartProps |= RIGHT_TURN;
         player->kartProps &= ~LEFT_TURN;
         D_801652C0[playerIndex]++;
@@ -4193,7 +4192,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
             }
         }
     } else if (((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) && ((player->effects & HOP_EFFECT) != HOP_EFFECT)) {
-        if ((((s16) player->unk_0C0) / DEGREES_CONVERSION_FACTOR) > 0) {
+        if ((((s16) player->unk_0C0) / DEGREES(1)) > 0) {
             // linear map, sets -53 to 40 and 53 to 53
             var_s1_2 = (((s32) (((player->steerPosition >> 16) * 13) + (13 * 53))) / (2 * 53)) + 40;
             if ((player->steerPosition >> 16) <= -40) {
@@ -4301,7 +4300,7 @@ void apply_cpu_turn(Player* player, s16 targetAngle) {
                         player->unk_078 = (player->steerPosition >> 16) * (var_f0 + 1.5);
                     }
                 } else if ((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) {
-                    if (((s16) player->unk_0C0 / DEGREES_CONVERSION_FACTOR) > 0) {
+                    if (((s16) player->unk_0C0 / DEGREES(1)) > 0) {
                         var_v0 = player->steerPosition >> 16;
                     } else {
                         var_v0 = player->steerPosition >> 16;
@@ -4337,12 +4336,12 @@ void cancel_drift_effect(Player* player) {
     s32 steer_position_new;
 
     if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
-        if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) > 0) {
+        if ((player->unk_0C0 / DEGREES(1)) > 0) {
             // linear map, sets -53 to 40 and 53 to 53
             steer_position_new = ((((player->steerPosition >> 16) * 13) + (13*53)) / (2*53)) + 40;
             player->steerPosition = steer_position_new << 16;
         }
-        if ((player->unk_0C0 / DEGREES_CONVERSION_FACTOR) < 0) {
+        if ((player->unk_0C0 / DEGREES(1)) < 0) {
             // linear map, sets -53 to -53 and 53 to -40
             steer_position_new = ((((player->steerPosition >> 16) * 13) + (13*53)) / (2*53)) - 53;
             player->steerPosition = steer_position_new << 16;

@@ -631,13 +631,13 @@ void race_logic_loop(void) {
 
                     rotY = camera1->rot[1];
                     gDebugPathCount = D_800DC5EC->pathCounter;
-                    if (rotY < 0x2000) {
+                    if (rotY < DEGREES(45)) {
                         func_80057A50(40, 100, "SOUTH  ", gDebugPathCount);
-                    } else if (rotY < 0x6000) {
+                    } else if (rotY < DEGREES(135)) {
                         func_80057A50(40, 100, "EAST   ", gDebugPathCount);
-                    } else if (rotY < 0xA000) {
+                    } else if (rotY < DEGREES(225)) {
                         func_80057A50(40, 100, "NORTH  ", gDebugPathCount);
-                    } else if (rotY < 0xE000) {
+                    } else if (rotY < DEGREES(315)) {
                         func_80057A50(40, 100, "WEST   ", gDebugPathCount);
                     } else {
                         func_80057A50(40, 100, "SOUTH  ", gDebugPathCount);

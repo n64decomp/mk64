@@ -356,7 +356,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
             break;
         case SPAWN_SECOND_SHELL:
             if (parent->rotVelocity > 0) {
-                if (someRotAngle >= 0xD556) {
+                if (someRotAngle > DEGREES(300)) {
                     if (init_triple_shell(parent, &gPlayers[playerId], shellType, 1U) != -1) {
                         func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                         parent->shellsAvailable += 1;
@@ -364,7 +364,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                     parent->state = SPAWN_THIRD_SHELL;
                 }
             } else {
-                if (someRotAngle < 0x2AAA) {
+                if (someRotAngle < DEGREES(60)) {
                     if (init_triple_shell(parent, &gPlayers[playerId], shellType, 1U) != -1) {
                         func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                         parent->shellsAvailable += 1;
@@ -375,14 +375,14 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
             break;
         case SPAWN_THIRD_SHELL:
             if (parent->rotVelocity > 0) {
-                if ((someRotAngle >= 0x2AAB) && (someRotAngle < 0x31C7)) {
+                if ((someRotAngle > DEGREES(60)) && (someRotAngle < DEGREES(70))) {
                     if (init_triple_shell(parent, &gPlayers[playerId], shellType, 2U) != -1) {
                         func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                         parent->shellsAvailable += 1;
                     }
                     parent->state = 3;
                 }
-            } else if ((someRotAngle < 0xD555) && (someRotAngle >= 0xCE39)) {
+            } else if ((someRotAngle < DEGREES(300)) && (someRotAngle > DEGREES(290))) {
                 if (init_triple_shell(parent, &gPlayers[playerId], shellType, 2U) != -1) {
                     func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                     parent->shellsAvailable += 1;
@@ -427,7 +427,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
             if (parent->unk_08 > 0.0f) {
                 if (parent->shellIndices[0] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[0]];
-                    if ((shell->rotAngle < 0x38E) || (shell->rotAngle >= -0x38D)) {
+                    if ((shell->rotAngle < DEGREES(5)) || (shell->rotAngle > -DEGREES(5))) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
@@ -453,7 +453,8 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 }
                 if (parent->shellIndices[1] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[1]];
-                    if ((shell->rotAngle < 0xAA1) || (shell->rotAngle >= 0x38F)) {
+                    // Unclear why it is 14.95 degrees instead of 15. Perhaps just a typo when entering the value as a s16.
+                    if ((shell->rotAngle < DEGREES(14.95)) || (shell->rotAngle > DEGREES(5))) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
@@ -479,7 +480,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 }
                 if (parent->shellIndices[2] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[2]];
-                    if ((shell->rotAngle < -0x38E) || (shell->rotAngle >= -0x71B)) {
+                    if ((shell->rotAngle < -DEGREES(5)) || (shell->rotAngle > -DEGREES(10))) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
                         someVelocity[2] = 8;
@@ -543,8 +544,8 @@ s32 use_triple_shell_item(Player* player, s16 tripleShellType) {
     }
     parent = (TripleShellParent*) &gActorList[actorIndex];
     parent->state = 0;
-    parent->rotVelocity = 0x05B0;
-    parent->rotAngle = -0x8000;
+    parent->rotVelocity = DEGREES(8);
+    parent->rotAngle = - DEGREES(180);
     parent->playerId = player - gPlayerOne;
     parent->shellsAvailable = 0;
     parent->unk_08 = 0.0f;
@@ -589,7 +590,7 @@ s32 init_triple_shell(TripleShellParent* parent, Player* player, s16 shellType, 
             break;
     }
     shell->rotVelocity = 0;
-    shell->rotAngle = -0x8000;
+    shell->rotAngle = -DEGREES(180);
     shell->playerId = player - gPlayerOne;
     shell->parentIndex = (struct Actor*) parent - gActorList;
     shell->shellId = shellId;
@@ -632,7 +633,7 @@ s32 use_green_shell_item(Player* player) {
     func_802B4E30((struct Actor*) shell);
     shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
-    shell->rotAngle = -0x8000;
+    shell->rotAngle = -DEGREES(180);
     shell->playerId = player - gPlayerOne;
     return actorIndex;
 }
@@ -672,7 +673,7 @@ s32 use_red_shell_item(Player* player) {
     func_802B4E30((struct Actor*) shell);
     shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
-    shell->rotAngle = player->rotation[1] - 0x8000;
+    shell->rotAngle = player->rotation[1] - DEGREES(180);
     shell->playerId = player - gPlayerOne;
     return actorIndex;
 }

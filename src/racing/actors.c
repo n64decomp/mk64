@@ -708,7 +708,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     } else {
         phi_t3 = (uintptr_t) D_802BA050;
     }
-    temp_t8 = (u16) shell->rotVelocity / 4369; // Give a number between 0-15
+    temp_t8 = (u16) shell->rotVelocity / DEGREES(24); // Give a number between 0-15
     phi_t3 += sp58[temp_t8];                   // Select sprite
 
     matrix[3][0] = shell->pos[0];
@@ -889,7 +889,7 @@ void spawn_foliage(struct ActorSpawnData* arg0) {
 
     var_s3 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     vec3f_set(velocity, 0.0f, 0.0f, 0.0f);
-    rotation[0] = 0x4000;
+    rotation[0] = DEGREES(90);
     rotation[1] = 0;
     rotation[2] = 0;
 
@@ -1125,7 +1125,7 @@ void spawn_course_actors(void) {
             rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
                                                                                     ACTOR_RAILROAD_CROSSING)];
             rrxing->crossingId = 1;
-            vec3s_set(rotation, 0, -0x2000, 0);
+            vec3s_set(rotation, 0, -DEGREES(45), 0);
             vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
             position[0] *= gCourseDirection;
             rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
@@ -2456,8 +2456,8 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
 
     struct Actor* actor;
     UNUSED Vec3f sp4C = { 0.0f, 5.0f, 10.0f };
-    f32 sp48 = sins(camera->rot[1] - 0x8000); // unk26;
-    f32 temp_f0 = coss(camera->rot[1] - 0x8000);
+    f32 sp48 = sins(camera->rot[1] - DEGREES(180)); // unk26;
+    f32 temp_f0 = coss(camera->rot[1] - DEGREES(180));
 
     D_801502C0[0][0] = temp_f0;
     D_801502C0[0][2] = -sp48;

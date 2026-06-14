@@ -71,13 +71,14 @@ void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
 
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            if ((item_box->rot[1] < 0xAA1) && (item_box->rot[1] > 0)) {
+            // unclear why it is 14.95 degrees instead of 15. Perhaps just a typo when entering the value as a s16.
+            if ((item_box->rot[1] < DEGREES(14.95f)) && (item_box->rot[1] > 0)) {
                 gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            } else if ((item_box->rot[1] >= 0x6AA5) && (item_box->rot[1] < 0x754E)) {
+            } else if ((item_box->rot[1] > (150 * DEGREES(1))) && (item_box->rot[1] < (165 * DEGREES(1)))) {
                 gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            } else if ((item_box->rot[1] >= 0x38E1) && (item_box->rot[1] < 0x438A)) {
+            } else if ((item_box->rot[1] > (80 * DEGREES(1))) && (item_box->rot[1] < (95 * DEGREES(1)))) {
                 gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            } else if ((item_box->rot[1] >= 0xC711) && (item_box->rot[1] < 0xD1BA)) {
+            } else if ((item_box->rot[1] > (280 * DEGREES(1))) && (item_box->rot[1] < (295 * DEGREES(1)))) {
                 gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
             } else {
                 gDPSetBlendMask(gDisplayListHead++, 0xFF);

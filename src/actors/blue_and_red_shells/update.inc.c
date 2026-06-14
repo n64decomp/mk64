@@ -242,7 +242,7 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
         destroy_destructable_actor((struct Actor*) shell);
     }
 
-    shell->rotVelocity += 0x71C;
+    shell->rotVelocity += DEGREES(10);
     switch (shell->state) {
         case HELD_SHELL:
             player = &gPlayers[shell->playerId];
@@ -277,16 +277,17 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                 controller->buttonDepressed &= ~Z_TRIG;
                 shell->state = RELEASED_SHELL;
                 if (player->unk_0C0 > 0) {
-                    shell->rotAngle = 0x78E3;
+                    shell->rotAngle = DEGREES(170);
                 } else {
-                    shell->rotAngle = -0x78E4;
+                    // The minus 1 is almost certainly just due to rounding the other way
+                    shell->rotAngle = -DEGREES(170) - 1;
                 }
             }
             break;
         case RELEASED_SHELL:
             player = &gPlayers[shell->playerId];
             if (shell->rotAngle > 0) {
-                shell->rotAngle -= 0x71C;
+                shell->rotAngle -= DEGREES(10);
                 if (shell->rotAngle < 0) {
                     shell->state = MOVING_SHELL;
                     func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
@@ -300,7 +301,7 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                     }
                 }
             } else {
-                shell->rotAngle += 0x71C;
+                shell->rotAngle += DEGREES(10);
                 if (shell->rotAngle > 0) {
                     shell->state = MOVING_SHELL;
                     func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
@@ -454,7 +455,7 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
             if (shell->velocity[1] < -5.0f) {
                 shell->velocity[1] = -5.0f;
             }
-            shell->rotAngle += 0x5B0;
+            shell->rotAngle += DEGREES(8);
             shell->someTimer -= 1;
             shell->pos[1] += shell->velocity[1];
             if (shell->someTimer == 0) {

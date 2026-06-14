@@ -6,7 +6,7 @@
  * @param egg
  */
 void update_actor_yoshi_egg(struct YoshiValleyEgg* egg) {
-    egg->pathRot += 0x5B;
+    egg->pathRot += 0x5B; // half a degree
     egg->pos[0] = egg->pathCenter[0] + (sins(egg->pathRot) * egg->pathRadius);
     egg->pos[2] = egg->pathCenter[2] + (coss(egg->pathRot) * egg->pathRadius);
     if ((egg->flags & 0x400) != 0) {
@@ -20,7 +20,7 @@ void update_actor_yoshi_egg(struct YoshiValleyEgg* egg) {
             egg->pathCenter[1] = 0.0f;
             egg->flags &= ~(1 << 10);
         }
-        egg->eggRot -= 0x4FA;
+        egg->eggRot -= DEGREES(7);
     }
-    egg->eggRot -= 0x222;
+    egg->eggRot -= DEGREES(3);
 }

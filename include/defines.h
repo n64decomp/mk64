@@ -329,7 +329,22 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  * @brief Max representable time, 100 minutes measured in centiseconds
  */
 #define MAX_TIME 0x927C0
-#define DEGREES_CONVERSION_FACTOR 182
+
+/* The codebase uses 16-bit representations of angles (either u16 or s16 depending on context). 
+   Thus, values of [0, 2**16 - 1] (for u16) or [-2**15, 2**15 - 1] (for s16) represent evenly 
+   spaced angles around a circle. (e.g. (u16) 0x8000 is 2**15, which represents half a circle, or 180 degrees)
+   
+   However, it is clear that the developers were thinking in terms of degrees and often worked
+   with values that corresponded to a specific number of degrees. The DEGREES macro converts
+   from the specified number of degrees to the 16-bit representation. This allows readers to
+   think in degrees while leaving the compiled machine code unaffected.
+
+   Note that 2**16 / 360 is not an integer. It has a value of ~182.04, but is rounded to 182 
+   by the DEGREES function. There is some inconsistency with how the codebase handles this. 
+   e.g. 70 degrees might be represented as DEGREES(70) or 70 * DEGREES(1), which are slightly
+   different values due to this rounding. As a practical matter, this rounding is less than
+   0.1 degrees in all cases */
+#define DEGREES(degree) ((u16) (degree * 65536.0f / 360.0f))
 
 // player->unk_046
 

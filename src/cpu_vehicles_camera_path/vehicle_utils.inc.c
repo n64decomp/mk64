@@ -44,7 +44,7 @@ void spawn_vehicle_on_road(VehicleStuff* vehicle) {
         func_8000D6D0(vehicle->position, (s16*) &vehicle->pathPointIndex, vehicle->speed,
                       vehicle->someMultiplierTheSequel, 0, 3);
         vehicle->rotation[0] = 0;
-        vehicle->rotation[1] = -0x8000;
+        vehicle->rotation[1] = -DEGREES(180);
         vehicle->rotation[2] = 0;
     } else {
         func_8000D940(vehicle->position, (s16*) &vehicle->pathPointIndex, vehicle->speed,

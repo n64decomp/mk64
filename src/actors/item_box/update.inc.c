@@ -10,9 +10,9 @@
 void update_actor_item_box_hot_air_balloon(struct ItemBox* itemBox) {
     switch (itemBox->state) {
         case 5:
-            itemBox->rot[0] += 0xB6;
-            itemBox->rot[1] -= 0x16C;
-            itemBox->rot[2] += 0xB6;
+            itemBox->rot[0] += DEGREES(1);
+            itemBox->rot[1] -= DEGREES(2);
+            itemBox->rot[2] += DEGREES(1);
             break;
         case 3:
             if (itemBox->someTimer == 0x14) {
@@ -20,9 +20,9 @@ void update_actor_item_box_hot_air_balloon(struct ItemBox* itemBox) {
                 itemBox->flags = -0x4000;
             } else {
                 itemBox->someTimer++;
-                itemBox->rot[0] += 0x444;
-                itemBox->rot[1] -= 0x2D8;
-                itemBox->rot[2] += 0x16C;
+                itemBox->rot[0] += DEGREES(6);
+                itemBox->rot[1] -= DEGREES(4);
+                itemBox->rot[2] += DEGREES(2);
             }
             break;
     }
@@ -48,9 +48,9 @@ void update_actor_item_box(struct ItemBox* itemBox) {
             }
             break;
         case 2:
-            itemBox->rot[0] += 0xB6;
-            itemBox->rot[1] -= 0x16C;
-            itemBox->rot[2] += 0xB6;
+            itemBox->rot[0] += DEGREES(1);
+            itemBox->rot[1] -= DEGREES(2);
+            itemBox->rot[2] += DEGREES(1);
             break;
         case 3:
             if (itemBox->someTimer == 20) {
@@ -59,9 +59,9 @@ void update_actor_item_box(struct ItemBox* itemBox) {
                 itemBox->flags = 0xC000;
             } else {
                 itemBox->someTimer++;
-                itemBox->rot[0] += 0x444;
-                itemBox->rot[1] -= 0x2D8;
-                itemBox->rot[2] += 0x16C;
+                itemBox->rot[0] += DEGREES(6);
+                itemBox->rot[1] -= DEGREES(4);
+                itemBox->rot[2] += DEGREES(2);
             }
             break;
     }

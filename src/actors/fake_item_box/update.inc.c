@@ -21,9 +21,9 @@ void update_actor_fake_item_box(struct FakeItemBox* fake_item_box) {
     switch (fake_item_box->state) {
         case 0:
             fake_item_box->boundingBoxSize = fake_item_box->sizeScaling * 5.5f;
-            fake_item_box->rot[0] -= 0xB6;
-            fake_item_box->rot[1] += 0x16C;
-            fake_item_box->rot[2] -= 0xB6;
+            fake_item_box->rot[0] -= DEGREES(1);
+            fake_item_box->rot[1] += DEGREES(2);
+            fake_item_box->rot[2] -= DEGREES(1);
 
             temp_f14 = temp_v0_4->pos[0] - fake_item_box->pos[0];
             temp_f16 = temp_v0_4->pos[1] - fake_item_box->pos[1];
@@ -71,9 +71,9 @@ void update_actor_fake_item_box(struct FakeItemBox* fake_item_box) {
                     fake_item_box->someTimer--;
                 }
             }
-            fake_item_box->rot[0] -= 0xB6;
-            fake_item_box->rot[1] += 0x16C;
-            fake_item_box->rot[2] -= 0xB6;
+            fake_item_box->rot[0] -= DEGREES(1);
+            fake_item_box->rot[1] += DEGREES(2);
+            fake_item_box->rot[2] -= DEGREES(1);
             break;
 
         case 2:
@@ -81,9 +81,9 @@ void update_actor_fake_item_box(struct FakeItemBox* fake_item_box) {
                 destroy_actor((struct Actor*) fake_item_box);
             } else {
                 fake_item_box->someTimer++;
-                fake_item_box->rot[0] += 0x444;
-                fake_item_box->rot[1] -= 0x2D8;
-                fake_item_box->rot[2] += 0x16C;
+                fake_item_box->rot[0] += DEGREES(6);
+                fake_item_box->rot[1] -= DEGREES(4);
+                fake_item_box->rot[2] += DEGREES(2);
             }
             break;
         default:

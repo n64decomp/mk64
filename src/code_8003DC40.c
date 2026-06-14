@@ -21,15 +21,15 @@ UNUSED void func_8003DC50(Player* player, Vec3f arg1) {
     if (player) {};
     if (player->unk_230 <= player->unk_23C) {
         if (player->collision.unk48[1] >= 0.1736) {
-            arg1[0] = (player->unk_206 / 182) * 0x78;
-            arg1[2] = -(player->slopeAccel / 182) * 0x78;
+            arg1[0] = (player->unk_206 / DEGREES(1)) * 0x78;
+            arg1[2] = -(player->slopeAccel / DEGREES(1)) * 0x78;
         } else {
             arg1[0] = thing1;
             arg1[2] = thing2;
         }
     } else if (player->collision.unk48[1] >= 0.1736) {
-        arg1[0] = (player->unk_206 / 182) * 0x78;
-        arg1[2] = -(player->slopeAccel / 182) * 0x78;
+        arg1[0] = (player->unk_206 / DEGREES(1)) * 0x78;
+        arg1[2] = -(player->slopeAccel / DEGREES(1)) * 0x78;
     } else {
         arg1[0] = thing1;
         arg1[2] = thing2;
@@ -45,15 +45,15 @@ UNUSED void func_8003DE4C(Player* player, Vec3f arg1) {
     if (player) {};
     if (player->unk_230 <= player->unk_23C) {
         if (player->collision.unk54[1] >= 0.1736) {
-            arg1[0] = (player->unk_206 / 182) * 0x78;
-            arg1[2] = -(player->slopeAccel / 182) * 0x78;
+            arg1[0] = (player->unk_206 / DEGREES(1)) * 0x78;
+            arg1[2] = -(player->slopeAccel / DEGREES(1)) * 0x78;
         } else {
             arg1[0] = thing1;
             arg1[2] = thing2;
         }
     } else if (player->collision.unk54[1] >= 0.1736) {
-        arg1[0] = (player->unk_206 / 182) * 0x78;
-        arg1[2] = -(player->slopeAccel / 182) * 0x78;
+        arg1[0] = (player->unk_206 / DEGREES(1)) * 0x78;
+        arg1[2] = -(player->slopeAccel / DEGREES(1)) * 0x78;
     } else {
         arg1[0] = thing1;
         arg1[2] = thing2;
@@ -69,8 +69,8 @@ void func_8003E048(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     *arg7 += arg1[2] * player->collision.surfaceDistance[2] * 1;
     func_8002A5F4(arg1, *arg4, arg2, 1, 2);
     if (player->collision.orientationVector[1] <= 0.8829f) {
-        arg3[0] = ((player->unk_206 / 182) * 0xB4);
-        arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
+        arg3[0] = ((player->unk_206 / DEGREES(1)) * 0xB4);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0xB4);
         player_decelerate_alternative(player, 4.0f);
         player->unk_DAC = 0.5f;
         if ((player->effects & MUSHROOM_EFFECT) != 0) {
@@ -80,11 +80,11 @@ void func_8003E048(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         }
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) ||
                ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
-        arg3[0] = ((player->unk_206 / 182) * 0x32);
-        arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
+        arg3[0] = ((player->unk_206 / DEGREES(1)) * 0x32);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x3C);
     } else {
         arg3[0] = 0.0f;
-        arg3[2] = (-(player->slopeAccel / 182) * 0x32);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x32);
     }
     arg3[1] = 0.0f;
     mtxf_transform_vec3f_mat3(arg3, player->orientationMatrix);
@@ -96,8 +96,8 @@ void func_8003E37C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     *arg7 += arg1[2] * player->collision.surfaceDistance[2] * 1;
     func_8002A5F4(arg1, *arg4, arg2, 0.5f, 2);
     if ((player->collision.orientationVector[1] <= 0.7318f) || (player->surfaceType == CLIFF)) {
-        arg3[0] = ((player->unk_206 / 182) * 0xB4);
-        arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
+        arg3[0] = ((player->unk_206 / DEGREES(1)) * 0xB4);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0xB4);
         if (((player->speed / 18.0f) * 216.0f) >= 8.0f) {
             player_decelerate_alternative(player, 5.0f);
         }
@@ -109,11 +109,11 @@ void func_8003E37C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         }
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) ||
                ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
-        arg3[0] = ((player->unk_206 / 182) * 0x32);
-        arg3[2] = (-(player->slopeAccel / 182) * 0x32);
+        arg3[0] = ((player->unk_206 / DEGREES(1)) * 0x32);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x32);
     } else {
         arg3[0] = 0.0f;
-        arg3[2] = (-(player->slopeAccel / 182) * 0x32);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x32);
     }
     arg3[1] = 0.0f;
     mtxf_transform_vec3f_mat3(arg3, player->orientationMatrix);
@@ -125,17 +125,17 @@ void func_8003E6EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     *arg7 += arg1[2] * player->collision.surfaceDistance[2] * 1;
     func_8002A5F4(arg1, *arg4, arg2, 0.5f, 2);
     if (player->collision.orientationVector[1] <= 0.8829f) {
-        arg3[0] = ((player->unk_206 / 182) * 0xB4);
-        arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
+        arg3[0] = ((player->unk_206 / DEGREES(1)) * 0xB4);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0xB4);
         player_decelerate_alternative(player, 4.0f);
         func_8003DC40(player);
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) ||
                ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
-        arg3[0] = ((player->unk_206 / 182) * 0x32);
-        arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
+        arg3[0] = ((player->unk_206 / DEGREES(1)) * 0x32);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x3C);
     } else {
         arg3[0] = 0.0f;
-        arg3[2] = (-(player->slopeAccel / 182) * 0x32);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x32);
     }
     arg3[1] = 0.0f;
     mtxf_transform_vec3f_mat3(arg3, player->orientationMatrix);
@@ -147,8 +147,8 @@ void func_8003E9EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     *arg7 += arg1[2] * player->collision.surfaceDistance[2] * 1;
     func_8002A5F4(arg1, *arg4, arg2, 1.2f, 2);
     if (player->collision.orientationVector[1] <= 0.8357f) {
-        arg3[0] = ((player->unk_206 / 182) * 0x78);
-        arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
+        arg3[0] = ((player->unk_206 / DEGREES(1)) * 0x78);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0xB4);
         player_decelerate_alternative(player, 4.0f);
         func_8003DC40(player);
     } else {
@@ -158,18 +158,18 @@ void func_8003E9EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
                 (player->tyres[BACK_RIGHT].surfaceType == ASPHALT) ||
                 (player->tyres[FRONT_RIGHT].surfaceType == ASPHALT) ||
                 (player->tyres[FRONT_LEFT].surfaceType == ASPHALT)) {
-                arg3[0] = ((player->unk_206 / 182) * 5);
+                arg3[0] = ((player->unk_206 / DEGREES(1)) * 5);
             } else {
-                arg3[0] = ((player->unk_206 / 182) * 0x28);
+                arg3[0] = ((player->unk_206 / DEGREES(1)) * 0x28);
             }
-            arg3[2] = (-(player->slopeAccel / 182) * 0x28);
+            arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x28);
         } else {
             arg3[0] = 0.0f;
-            arg3[2] = (-(player->slopeAccel / 182) * 0x32);
+            arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x32);
         }
         if ((player->effects & TERRAIN_TUMBLE_EFFECT) != 0) {
-            arg3[0] = ((player->unk_206 / 182) * 0x78);
-            arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
+            arg3[0] = ((player->unk_206 / DEGREES(1)) * 0x78);
+            arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0xB4);
         }
     }
     arg3[1] = 0.0f;
@@ -182,17 +182,17 @@ void func_8003EE2C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     *arg7 += arg1[2] * player->collision.surfaceDistance[2] * 1;
     func_8002A5F4(arg1, *arg4, arg2, 0.5f, 2);
     if (player->collision.orientationVector[1] <= 0.8357f) {
-        arg3[0] = ((player->unk_206 / 182) * 0x78);
-        arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
+        arg3[0] = ((player->unk_206 / DEGREES(1)) * 0x78);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0xB4);
         player_decelerate_alternative(player, 4.0f);
         func_8003DC40(player);
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) ||
                ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
-        arg3[0] = ((player->unk_206 / 182) * 0x32);
-        arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
+        arg3[0] = ((player->unk_206 / DEGREES(1)) * 0x32);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x3C);
     } else {
         arg3[0] = 0.0f;
-        arg3[2] = (-(player->slopeAccel / 182) * 0x32);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x32);
     }
     arg3[1] = 0.0f;
     mtxf_transform_vec3f_mat3(arg3, player->orientationMatrix);
@@ -207,19 +207,19 @@ void func_8003F138(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         player->kartProps &= ~BACK_UP;
     }
     if (player->collision.orientationVector[1] <= 0.8357f) {
-        arg3[0] = ((player->unk_206 / 182) * 0xC8);
-        arg3[2] = (-(player->slopeAccel / 182) * 0xC8);
+        arg3[0] = ((player->unk_206 / DEGREES(1)) * 0xC8);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0xC8);
         player_decelerate_alternative(player, 4.0f);
         player->unk_DAC = 0.5f;
         arg3[0] = 0;
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) ||
                ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT)) {
-        arg3[0] = ((player->unk_206 / 182) * 0x78);
-        arg3[2] = (-(player->slopeAccel / 182) * 0x78);
+        arg3[0] = ((player->unk_206 / DEGREES(1)) * 0x78);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x78);
         arg3[0] = 0;
     } else {
         arg3[0] = 0.0f;
-        arg3[2] = (-(player->slopeAccel / 182) * 0x32);
+        arg3[2] = (-(player->slopeAccel / DEGREES(1)) * 0x32);
     }
     arg3[1] = 0.0f;
     arg3[2] = 0.0f;

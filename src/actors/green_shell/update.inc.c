@@ -35,7 +35,7 @@ void update_actor_green_shell(struct ShellActor* shell) {
         (y < gCourseMinY)) {
         destroy_destructable_actor((struct Actor*) shell);
     }
-    shell->rotVelocity += 0x71C;
+    shell->rotVelocity += DEGREES(10);
     switch (shell->state) {
         case HELD_SHELL:
             player = &gPlayers[shell->playerId];
@@ -79,9 +79,10 @@ void update_actor_green_shell(struct ShellActor* shell) {
                     } else {
                         shell->state = 1;
                         if (player->unk_0C0 > 0) {
-                            shell->rotAngle = 0x78E3;
+                            shell->rotAngle = DEGREES(170);
                         } else {
-                            shell->rotAngle = -0x78E4;
+                            // The minus 1 is almost certainly just due to rounding the other way
+                            shell->rotAngle = -DEGREES(170) - 1;
                         }
                     }
                 }
@@ -90,7 +91,7 @@ void update_actor_green_shell(struct ShellActor* shell) {
         case RELEASED_SHELL:
             player = &gPlayers[shell->playerId];
             if (shell->rotAngle > 0) {
-                shell->rotAngle -= 0xE38;
+                shell->rotAngle -= DEGREES(20);
                 if (shell->rotAngle < 0) {
                     shell->state = 2;
                     shell->someTimer = 0x001E;
@@ -100,7 +101,7 @@ void update_actor_green_shell(struct ShellActor* shell) {
                     add_green_shell_in_unexpired_actor_list((struct Actor*) shell - gActorList);
                 }
             } else {
-                shell->rotAngle += 0xE38;
+                shell->rotAngle += DEGREES(20);
                 if (shell->rotAngle > 0) {
                     shell->state = 2;
                     shell->someTimer = 0x001E;
@@ -186,7 +187,7 @@ void update_actor_green_shell(struct ShellActor* shell) {
             if (shell->velocity[1] < -5.0f) {
                 shell->velocity[1] = -5.0f;
             }
-            shell->rotAngle += 0x5B0;
+            shell->rotAngle += DEGREES(8);
             shell->someTimer -= 1;
             shell->pos[1] += shell->velocity[1];
             if (shell->someTimer == 0) {
