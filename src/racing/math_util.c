@@ -1354,12 +1354,12 @@ s32 is_between_angle(u16 angleCCW, u16 angleCW, u16 angleToCheck) {
  * @param preloadDistanceSquared Consider an object within this distance of viweable area as renderable
  * @param fovDegrees             The field of view (FOV) of the camera (degrees).
  * @param maxDistanceSquared     The maximum render distance.
- * @return                       The xz-distance squared between the camera and the object if it's within render distance
-                                 of the camera's vision, or -1.0f if it exceeds the render distance.
+ * @return                       The xz-distance squared between the camera and the object if it's within render
+ distance of the camera's vision, or -1.0f if it exceeds the render distance.
  */
 
-f32 distance_if_visible(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 preloadDistanceSquared,
-                            f32 fovDegrees, f32 maxDistanceSquared) {
+f32 distance_if_visible(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 preloadDistanceSquared, f32 fovDegrees,
+                        f32 maxDistanceSquared) {
     u16 angleObject;
     UNUSED u16 pad;
     u16 preloadAngle;
