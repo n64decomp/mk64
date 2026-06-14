@@ -91,6 +91,9 @@ void crash_screen_draw_rect(s32 x, s32 y, s32 w, s32 h) {
 }
 
 static char* write_to_buf(char* buffer, const char* data, size_t size) {
+    if (size > 0x100) {
+        size = 0x100;
+    }
     return (char*) memcpy(buffer, data, size) + size;
 }
 
