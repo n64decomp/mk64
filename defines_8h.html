@@ -355,8 +355,8 @@ Macros</h2></td></tr>
 <tr class="memitem:a5320d4457a472d8888ec1905bc0e0a1c" id="r_a5320d4457a472d8888ec1905bc0e0a1c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5320d4457a472d8888ec1905bc0e0a1c">MAX_TIME</a>&#160;&#160;&#160;0x927C0</td></tr>
 <tr class="memdesc:a5320d4457a472d8888ec1905bc0e0a1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max representable time, 100 minutes measured in centiseconds.  <br /></td></tr>
 <tr class="separator:a5320d4457a472d8888ec1905bc0e0a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fe5c9e278625a540997d87c80f22208" id="r_a5fe5c9e278625a540997d87c80f22208"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fe5c9e278625a540997d87c80f22208">DEGREES_CONVERSION_FACTOR</a>&#160;&#160;&#160;182</td></tr>
-<tr class="separator:a5fe5c9e278625a540997d87c80f22208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29a687ccf66fa4e1e852ecfaca24a63b" id="r_a29a687ccf66fa4e1e852ecfaca24a63b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29a687ccf66fa4e1e852ecfaca24a63b">DEGREES</a>(degree)&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>) (degree * 65536.0f / 360.0f))</td></tr>
+<tr class="separator:a29a687ccf66fa4e1e852ecfaca24a63b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a833689b3e0bc04d2b19b9d1eafed0ea7" id="r_a833689b3e0bc04d2b19b9d1eafed0ea7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a833689b3e0bc04d2b19b9d1eafed0ea7">CRITTER_TOUCH</a>&#160;&#160;&#160;0x2</td></tr>
 <tr class="separator:a833689b3e0bc04d2b19b9d1eafed0ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aceca3d6acc1b6dabc20c4c2deff0b9ff" id="r_aceca3d6acc1b6dabc20c4c2deff0b9ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aceca3d6acc1b6dabc20c4c2deff0b9ff">CRITTER_TOUCH_GATE</a>&#160;&#160;&#160;0x4</td></tr>
@@ -1460,14 +1460,17 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="a5fe5c9e278625a540997d87c80f22208" name="a5fe5c9e278625a540997d87c80f22208"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5fe5c9e278625a540997d87c80f22208">&#9670;&#160;</a></span>DEGREES_CONVERSION_FACTOR</h2>
+<a id="a29a687ccf66fa4e1e852ecfaca24a63b" name="a29a687ccf66fa4e1e852ecfaca24a63b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29a687ccf66fa4e1e852ecfaca24a63b">&#9670;&#160;</a></span>DEGREES</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DEGREES_CONVERSION_FACTOR&#160;&#160;&#160;182</td>
+          <td class="memname">#define DEGREES</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>degree</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>) (degree * 65536.0f / 360.0f))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2075,12 +2078,12 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    (<a class="code hl_define" href="#a15e549a7354d98b70e7a1e82eab50f10">HIT_BY_STAR_TRIGGER</a> | <a class="code hl_define" href="#ab575c359be08cc32922e7f88b3634eb9">VERTICAL_TUMBLE_TRIGGER</a> | <a class="code hl_define" href="#a8b62c4d0ecf9ddbd6e3eabec5a06e74b">LIGHTNING_STRIKE_TRIGGER</a> | <a class="code hl_define" href="#a31213c9fb13bbc97f0ae1e30c1a6b1cf">LOW_TUMBLE_TRIGGER</a> | \</div>
 <div class="line">     <a class="code hl_define" href="#ae4226ebac8a87655f8b91957298e1269">HIGH_TUMBLE_TRIGGER</a> | <a class="code hl_define" href="#a1fbddaa042c08a422f361c906dde39ef">THWOMP_SQUISH_TRIGGER</a>)</div>
-<div class="ttc" id="adefines_8h_html_a15e549a7354d98b70e7a1e82eab50f10"><div class="ttname"><a href="#a15e549a7354d98b70e7a1e82eab50f10">HIT_BY_STAR_TRIGGER</a></div><div class="ttdeci">#define HIT_BY_STAR_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:421</div></div>
-<div class="ttc" id="adefines_8h_html_a1fbddaa042c08a422f361c906dde39ef"><div class="ttname"><a href="#a1fbddaa042c08a422f361c906dde39ef">THWOMP_SQUISH_TRIGGER</a></div><div class="ttdeci">#define THWOMP_SQUISH_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:407</div></div>
-<div class="ttc" id="adefines_8h_html_a31213c9fb13bbc97f0ae1e30c1a6b1cf"><div class="ttname"><a href="#a31213c9fb13bbc97f0ae1e30c1a6b1cf">LOW_TUMBLE_TRIGGER</a></div><div class="ttdeci">#define LOW_TUMBLE_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:405</div></div>
-<div class="ttc" id="adefines_8h_html_a8b62c4d0ecf9ddbd6e3eabec5a06e74b"><div class="ttname"><a href="#a8b62c4d0ecf9ddbd6e3eabec5a06e74b">LIGHTNING_STRIKE_TRIGGER</a></div><div class="ttdeci">#define LIGHTNING_STRIKE_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:412</div></div>
-<div class="ttc" id="adefines_8h_html_ab575c359be08cc32922e7f88b3634eb9"><div class="ttname"><a href="#ab575c359be08cc32922e7f88b3634eb9">VERTICAL_TUMBLE_TRIGGER</a></div><div class="ttdeci">#define VERTICAL_TUMBLE_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:419</div></div>
-<div class="ttc" id="adefines_8h_html_ae4226ebac8a87655f8b91957298e1269"><div class="ttname"><a href="#ae4226ebac8a87655f8b91957298e1269">HIGH_TUMBLE_TRIGGER</a></div><div class="ttdeci">#define HIGH_TUMBLE_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:404</div></div>
+<div class="ttc" id="adefines_8h_html_a15e549a7354d98b70e7a1e82eab50f10"><div class="ttname"><a href="#a15e549a7354d98b70e7a1e82eab50f10">HIT_BY_STAR_TRIGGER</a></div><div class="ttdeci">#define HIT_BY_STAR_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:436</div></div>
+<div class="ttc" id="adefines_8h_html_a1fbddaa042c08a422f361c906dde39ef"><div class="ttname"><a href="#a1fbddaa042c08a422f361c906dde39ef">THWOMP_SQUISH_TRIGGER</a></div><div class="ttdeci">#define THWOMP_SQUISH_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:422</div></div>
+<div class="ttc" id="adefines_8h_html_a31213c9fb13bbc97f0ae1e30c1a6b1cf"><div class="ttname"><a href="#a31213c9fb13bbc97f0ae1e30c1a6b1cf">LOW_TUMBLE_TRIGGER</a></div><div class="ttdeci">#define LOW_TUMBLE_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:420</div></div>
+<div class="ttc" id="adefines_8h_html_a8b62c4d0ecf9ddbd6e3eabec5a06e74b"><div class="ttname"><a href="#a8b62c4d0ecf9ddbd6e3eabec5a06e74b">LIGHTNING_STRIKE_TRIGGER</a></div><div class="ttdeci">#define LIGHTNING_STRIKE_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:427</div></div>
+<div class="ttc" id="adefines_8h_html_ab575c359be08cc32922e7f88b3634eb9"><div class="ttname"><a href="#ab575c359be08cc32922e7f88b3634eb9">VERTICAL_TUMBLE_TRIGGER</a></div><div class="ttdeci">#define VERTICAL_TUMBLE_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:434</div></div>
+<div class="ttc" id="adefines_8h_html_ae4226ebac8a87655f8b91957298e1269"><div class="ttname"><a href="#ae4226ebac8a87655f8b91957298e1269">HIGH_TUMBLE_TRIGGER</a></div><div class="ttdeci">#define HIGH_TUMBLE_TRIGGER</div><div class="ttdef"><b>Definition</b> defines.h:419</div></div>
 </div><!-- fragment -->
 </div>
 </div>

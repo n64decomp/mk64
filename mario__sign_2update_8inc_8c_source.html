@@ -117,15 +117,16 @@ $(function(){initNavTree('mario__sign_2update_8inc_8c_source.html',''); initResi
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>            arg0-&gt;<a class="code hl_variable" href="structActor.html#afa1455dbf1a4698584ed8c501439692f">pos</a>[1] += 4.0f;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>            <span class="keywordflow">if</span> (arg0-&gt;<a class="code hl_variable" href="structActor.html#afa1455dbf1a4698584ed8c501439692f">pos</a>[1] &gt; 800.0f) {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>                arg0-&gt;<a class="code hl_variable" href="structActor.html#af49bb0c1202a06dc594529a2e77249c6">flags</a> |= 0x800;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>                arg0-&gt;<a class="code hl_variable" href="structActor.html#aafc0746715101e8b4dd9afcd88a90ab9">rot</a>[1] += 1820;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>                arg0-&gt;<a class="code hl_variable" href="structActor.html#aafc0746715101e8b4dd9afcd88a90ab9">rot</a>[1] += <a class="code hl_define" href="defines_8h.html#a29a687ccf66fa4e1e852ecfaca24a63b">DEGREES</a>(10);</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            }</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            arg0-&gt;<a class="code hl_variable" href="structActor.html#aafc0746715101e8b4dd9afcd88a90ab9">rot</a>[1] += 182;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            arg0-&gt;<a class="code hl_variable" href="structActor.html#aafc0746715101e8b4dd9afcd88a90ab9">rot</a>[1] += <a class="code hl_define" href="defines_8h.html#a29a687ccf66fa4e1e852ecfaca24a63b">DEGREES</a>(1);</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        }</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    }</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
 </div>
 <div class="ttc" id="aactors_8h_html"><div class="ttname"><a href="actors_8h.html">actors.h</a></div></div>
+<div class="ttc" id="adefines_8h_html_a29a687ccf66fa4e1e852ecfaca24a63b"><div class="ttname"><a href="defines_8h.html#a29a687ccf66fa4e1e852ecfaca24a63b">DEGREES</a></div><div class="ttdeci">#define DEGREES(degree)</div><div class="ttdef"><b>Definition</b> defines.h:347</div></div>
 <div class="ttc" id="amario__sign_2update_8inc_8c_html_ac0ea6010ea017b0c0db4d5a7cff001a3"><div class="ttname"><a href="mario__sign_2update_8inc_8c.html#ac0ea6010ea017b0c0db4d5a7cff001a3">update_actor_mario_sign</a></div><div class="ttdeci">void update_actor_mario_sign(struct Actor *arg0)</div><div class="ttdoc">Updates the Mario sign actor.</div><div class="ttdef"><b>Definition</b> update.inc.c:8</div></div>
 <div class="ttc" id="astructActor_html"><div class="ttname"><a href="structActor.html">Actor</a></div><div class="ttdef"><b>Definition</b> actor_types.h:120</div></div>
 <div class="ttc" id="astructActor_html_aafc0746715101e8b4dd9afcd88a90ab9"><div class="ttname"><a href="structActor.html#aafc0746715101e8b4dd9afcd88a90ab9">Actor::rot</a></div><div class="ttdeci">Vec3s rot</div><div class="ttdef"><b>Definition</b> actor_types.h:127</div></div>

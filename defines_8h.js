@@ -52,7 +52,7 @@ var defines_8h =
     [ "CRITTER_TOUCH", "defines_8h.html#a833689b3e0bc04d2b19b9d1eafed0ea7", null ],
     [ "CRITTER_TOUCH_GATE", "defines_8h.html#aceca3d6acc1b6dabc20c4c2deff0b9ff", null ],
     [ "DATA_MENU", "defines_8h.html#a8158aa6dfe340352f5a9ce22c3295d31", null ],
-    [ "DEGREES_CONVERSION_FACTOR", "defines_8h.html#a5fe5c9e278625a540997d87c80f22208", null ],
+    [ "DEGREES", "defines_8h.html#a29a687ccf66fa4e1e852ecfaca24a63b", null ],
     [ "DEMO_FIVE", "defines_8h.html#a4d0cd80c1d8a9c1b8668c6bd4f8509de", null ],
     [ "DEMO_FOUR", "defines_8h.html#a718455dd2e94947933201e3718c5d87e", null ],
     [ "DEMO_MODE_ACTIVE", "defines_8h.html#a091671188899d1f6910c2c8a08d26697", null ],

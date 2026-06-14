@@ -64,7 +64,7 @@ var searchData=
   ['declare_5fkart_5ftumble_5ftable_61',['DECLARE_KART_TUMBLE_TABLE',['../kart__dma_8c.html#a9ce3390a2f0fbde77667e9ae510e9844',1,'kart_dma.c']]],
   ['default_5flen_5f1ch_62',['DEFAULT_LEN_1CH',['../synthesis_8h.html#a595997d04904dfb0bf3bcef45336e373',1,'synthesis.h']]],
   ['default_5flen_5f2ch_63',['DEFAULT_LEN_2CH',['../synthesis_8h.html#af8e8ccd276f35d9a4cee4a4a3d624373',1,'synthesis.h']]],
-  ['degrees_5fconversion_5ffactor_64',['DEGREES_CONVERSION_FACTOR',['../defines_8h.html#a5fe5c9e278625a540997d87c80f22208',1,'defines.h']]],
+  ['degrees_64',['DEGREES',['../defines_8h.html#a29a687ccf66fa4e1e852ecfaca24a63b',1,'defines.h']]],
   ['deleted_5fobject_5fid_65',['DELETED_OBJECT_ID',['../objects_8h.html#a5da8f460a22c441fb5bb00bd5b3bac2a',1,'objects.h']]],
   ['demo_5ffive_66',['DEMO_FIVE',['../defines_8h.html#a4d0cd80c1d8a9c1b8668c6bd4f8509de',1,'defines.h']]],
   ['demo_5ffour_67',['DEMO_FOUR',['../defines_8h.html#a718455dd2e94947933201e3718c5d87e',1,'defines.h']]],
