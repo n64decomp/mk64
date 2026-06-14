@@ -1,0 +1,164 @@
+{
+    "date": "1996-06-24",
+    "sample_bank": "sample_bank0",
+    "envelopes": {
+        "envelope0": [
+            [2, 32700],
+            [1, 32700],
+            [32700, 29430],
+            "hang"
+        ],
+        "envelope1": [
+            [2, 32700],
+            [1, 32700],
+            [32700, 29430],
+            "hang"
+        ],
+        "envelope2": [
+            [2, 32700],
+            [100, 32700],
+            [32700, 29430],
+            "hang"
+        ]
+    },
+    "instruments": {
+        "percussion": [
+            {"release_rate": 137, "pan": 64, "envelope": "envelope0", "sound": "7D"},
+            {"release_rate": 137, "pan": 66, "envelope": "envelope0", "sound": {"sample": "7E", "tuning": 1.0}},
+            {"release_rate": 137, "pan": 66, "envelope": "envelope0", "sound": {"sample": "7E", "tuning": 1.059463}},
+            {"release_rate": 137, "pan": 30, "envelope": "envelope0", "sound": {"sample": "A2", "tuning": 0.8227612}},
+            {"release_rate": 137, "pan": 89, "envelope": "envelope0", "sound": {"sample": "A3", "tuning": 1.0}},
+            {"release_rate": 137, "pan": 100, "envelope": "envelope0", "sound": {"sample": "A2", "tuning": 0.9784333}},
+            {"release_rate": 137, "pan": 32, "envelope": "envelope0", "sound": "7F"},
+            {"release_rate": 137, "pan": 26, "envelope": "envelope0", "sound": {"sample": "80", "tuning": 1.0}},
+            {"release_rate": 137, "pan": 43, "envelope": "envelope0", "sound": {"sample": "84", "tuning": 1.0}},
+            {"release_rate": 137, "pan": 26, "envelope": "envelope0", "sound": {"sample": "A3", "tuning": 1.059463}}
+        ],
+        "inst0": {
+            "release_rate": 199,
+            "normal_range_lo": 23,
+            "normal_range_hi": 24,
+            "envelope": "envelope1",
+            "sound_lo": "A4",
+            "sound": "A5",
+            "sound_hi": "A6"
+        },
+        "inst1": {
+            "release_rate": 199,
+            "envelope": "envelope1",
+            "sound": "86"
+        },
+        "inst2": {
+            "release_rate": 199,
+            "normal_range_lo": 36,
+            "normal_range_hi": 46,
+            "envelope": "envelope1",
+            "sound_lo": "8D",
+            "sound": "8E",
+            "sound_hi": "8B"
+        },
+        "inst3": {
+            "release_rate": 199,
+            "normal_range_hi": 63,
+            "envelope": "envelope1",
+            "sound": "8B",
+            "sound_hi": "8C"
+        },
+        "inst4": {
+            "release_rate": 199,
+            "normal_range_lo": 43,
+            "envelope": "envelope1",
+            "sound_lo": "89",
+            "sound": "8A"
+        },
+        "inst5": {
+            "release_rate": 104,
+            "envelope": "envelope2",
+            "sound": "A7"
+        },
+        "inst6": {
+            "release_rate": 104,
+            "envelope": "envelope2",
+            "sound": "A7"
+        }
+    },
+    "instrument_list": [
+        "inst1",
+        "inst2",
+        "inst3",
+        "inst4",
+        "inst5",
+        "inst6",
+        null,
+        null,
+        null,
+        null,
+        "inst0"
+    ],
+    "drum_list": [
+        "drum0",
+        "drum1",
+        "drum2",
+        "drum3",
+        "drum4",
+        "drum5",
+        "drum6",
+        "drum7",
+        "drum8",
+        "drum9",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ]
+}
