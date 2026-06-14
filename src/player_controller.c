@@ -1618,7 +1618,8 @@ void func_8002BB9C(Player* player, f32* arg1, f32* arg2, UNUSED s8 arg3, UNUSED 
     s16 var_v0;
     s16 t0;
     UNUSED s32 pad;
-    s16 sp30[10] = { 0, DEGREES(1), DEGREES(2), DEGREES(3), DEGREES(4), DEGREES(5), DEGREES(6), DEGREES(7), DEGREES(8), DEGREES(9) };
+    s16 sp30[10] = { 0,          DEGREES(1), DEGREES(2), DEGREES(3), DEGREES(4),
+                     DEGREES(5), DEGREES(6), DEGREES(7), DEGREES(8), DEGREES(9) };
 
     if (((u16) player->unk_256) <= 0) {
         return;
@@ -1684,8 +1685,7 @@ void func_8002BD58(Player* player) {
         if ((player->unk_234 >= 30) && (player->unk_234 < 80)) {
             player->steerPosition = spC[(s32) (player->unk_234 - 30) / 12];
         }
-        if (((player->unk_234 < 80) || (player->unk_234 > 90)) && (player->unk_234 > 90) &&
-            (player->unk_234 <= 160)) {
+        if (((player->unk_234 < 80) || (player->unk_234 > 90)) && (player->unk_234 > 90) && (player->unk_234 <= 160)) {
             player->steerPosition = spC[1];
         }
     } else {
@@ -2157,10 +2157,10 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     }
     if ((player->tyres[BACK_LEFT].surfaceType == ASPHALT) && (player->tyres[BACK_RIGHT].surfaceType == ASPHALT)) {
         gravityX = (-1 * (player->unk_064[0] + sp16C[0])) +
-               ((-player->collision.orientationVector[0] * player->kartGravity) * 0.925);
+                   ((-player->collision.orientationVector[0] * player->kartGravity) * 0.925);
         gravityY = (-player->collision.orientationVector[1] * player->kartGravity);
         gravityZ = (-1 * (player->unk_064[2] + sp16C[2])) +
-               ((-player->collision.orientationVector[2] * player->kartGravity) * 0.925);
+                   ((-player->collision.orientationVector[2] * player->kartGravity) * 0.925);
     } else {
         temp3 = (((player->speed / 18.0f) * 216.0f) / 10.0f);
         if (temp3 >= 10) {
@@ -3046,7 +3046,8 @@ f32 func_80030150(Player* player, s8 playerIndex) {
                     var_f0 += var_v0 * (0.01 + gKartTurnSpeedReductionTable0[player->characterId]);
                 }
             }
-            if (((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) && (player->driftStateCounter < 10)) {
+            if (((player->effects & DRIFT_OUTSIDE_EFFECT) == DRIFT_OUTSIDE_EFFECT) &&
+                (player->driftStateCounter < 10)) {
                 if (var_v0 < 0) {
                     var_f0 += -var_v0 * 0.008;
                 } else {
@@ -3757,7 +3758,8 @@ void player_decelerate(Player* player, f32 speedReduction) {
 }
 
 void player_accelerate_global(Player* player, s32 playerIndex) {
-    if ((gPlayerCurrentSpeed[playerIndex] >= 0.0) && (gPlayerCurrentSpeed[playerIndex] < ((f64) player->topSpeed * 0.1))) {
+    if ((gPlayerCurrentSpeed[playerIndex] >= 0.0) &&
+        (gPlayerCurrentSpeed[playerIndex] < ((f64) player->topSpeed * 0.1))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][0] * 3.2;
     }
     if (((player->topSpeed * 0.1) <= gPlayerCurrentSpeed[playerIndex]) &&
@@ -3776,19 +3778,24 @@ void player_accelerate_global(Player* player, s32 playerIndex) {
         (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.5))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][4] * 3.2;
     }
-    if (((player->topSpeed * 0.5) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.6))) {
+    if (((player->topSpeed * 0.5) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.6))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][5] * 3.2;
     }
-    if (((player->topSpeed * 0.6) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.7))) {
+    if (((player->topSpeed * 0.6) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.7))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][6] * 3.2;
     }
-    if (((player->topSpeed * 0.7) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.8))) {
+    if (((player->topSpeed * 0.7) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.8))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][7] * 2.8;
     }
-    if (((player->topSpeed * 0.8) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.9))) {
+    if (((player->topSpeed * 0.8) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] < (player->topSpeed * 0.9))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][8] * 2.8;
     }
-    if (((player->topSpeed * 0.9) <= gPlayerCurrentSpeed[playerIndex]) && (gPlayerCurrentSpeed[playerIndex] <= (player->topSpeed * 1.0))) {
+    if (((player->topSpeed * 0.9) <= gPlayerCurrentSpeed[playerIndex]) &&
+        (gPlayerCurrentSpeed[playerIndex] <= (player->topSpeed * 1.0))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[player->characterId][9] * 2.8;
     }
     player->kartProps |= THROTTLE;
@@ -3817,14 +3824,16 @@ void func_80033850(Player* arg0, f32 arg1) {
     }
 }
 
-void update_steering_large(Player* player, s32* desired_steering_change, s32* current_steering, s32 desired_steering, s32 steering_change_threshold, s32 steering_change_minimum, s32 arg6) {
+void update_steering_large(Player* player, s32* desired_steering_change, s32* current_steering, s32 desired_steering,
+                           s32 steering_change_threshold, s32 steering_change_minimum, s32 arg6) {
     s32 current_steering_change_increment;
 
     // if (abs(desired_steering_change) >= steering_change_threshold)
-    if ((*desired_steering_change >= steering_change_threshold) || (-steering_change_threshold >= *desired_steering_change)) {
+    if ((*desired_steering_change >= steering_change_threshold) ||
+        (-steering_change_threshold >= *desired_steering_change)) {
         current_steering_change_increment = player->steerChangeIncrement;
         player->steerChangeIncrement -= 1 << 11;
-        //signed vs unsigned weirdness, actually checking if negative
+        // signed vs unsigned weirdness, actually checking if negative
         if (player->steerChangeIncrement >= 0xF0000000) {
             player->steerChangeIncrement = current_steering_change_increment;
         }
@@ -3833,9 +3842,10 @@ void update_steering_large(Player* player, s32* desired_steering_change, s32* cu
         }
 
         // move current_steering toward desired_steering
-        *current_steering = (desired_steering < *current_steering) ? *current_steering - player->steerChangeIncrement : *current_steering + player->steerChangeIncrement;
+        *current_steering = (desired_steering < *current_steering) ? *current_steering - player->steerChangeIncrement
+                                                                   : *current_steering + player->steerChangeIncrement;
 
-        //arg6 is always positive and unk_090 is 0 or negative, so this if statement is always true
+        // arg6 is always positive and unk_090 is 0 or negative, so this if statement is always true
         if (player->unk_090 < ((f32) arg6)) {
             player->unk_090 = (f32) -arg6;
         }
@@ -3878,10 +3888,12 @@ UNUSED void func_800339C4(Player* player, s32* arg1, s32 arg2, s32 arg3, f32 arg
     func_80033850(player, arg4);
 }
 
-void update_steering_small(Player* player, s32* desired_steering_change, s32* current_steering, s32 desired_steering, s32 steering_change_threshold, s32 steering_change_minimum, f32 arg6) {
+void update_steering_small(Player* player, s32* desired_steering_change, s32* current_steering, s32 desired_steering,
+                           s32 steering_change_threshold, s32 steering_change_minimum, f32 arg6) {
     s32 current_steering_change_increment;
 
-    if ((*desired_steering_change >= steering_change_threshold) || (-steering_change_threshold >= *desired_steering_change)) {
+    if ((*desired_steering_change >= steering_change_threshold) ||
+        (-steering_change_threshold >= *desired_steering_change)) {
         current_steering_change_increment = player->steerChangeIncrement;
         player->steerChangeIncrement -= 1 << 11;
         if (player->steerChangeIncrement >= 0xF0000000) {
@@ -3891,7 +3903,8 @@ void update_steering_small(Player* player, s32* desired_steering_change, s32* cu
             player->steerChangeIncrement = steering_change_minimum;
         }
 
-        *current_steering = (desired_steering < *current_steering) ? *current_steering - player->steerChangeIncrement : *current_steering + player->steerChangeIncrement;
+        *current_steering = (desired_steering < *current_steering) ? *current_steering - player->steerChangeIncrement
+                                                                   : *current_steering + player->steerChangeIncrement;
         // identical to update_steering_large before this point
 
         // set player->unk_090 = min(0, player->unk_90 + arg6)
@@ -3899,7 +3912,7 @@ void update_steering_small(Player* player, s32* desired_steering_change, s32* cu
     }
 }
 
-//On or near ground
+// On or near ground
 void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex) {
     s32 steer_position;
     s32 clamped_x;
@@ -3924,18 +3937,11 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
                       0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
                       0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8 };
 
-    if ( 
-         (
-           ((player->effects & HOP_EFFECT) != HOP_EFFECT) &&
-           (
-             ((player->unk_0C0 / DEGREES(1) <= 6) && (player->unk_0C0 / DEGREES(1) >= -6)) ||
-             ((controller->button & R_TRIG) != R_TRIG)
-           )
-         ) ||
-         (((player->speed / 18.0f) * 216.0f) <= 20.0f) ||
-         ((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT)
-       ) {
-       cancel_drift_effect(player);
+    if ((((player->effects & HOP_EFFECT) != HOP_EFFECT) &&
+         (((player->unk_0C0 / DEGREES(1) <= 6) && (player->unk_0C0 / DEGREES(1) >= -6)) ||
+          ((controller->button & R_TRIG) != R_TRIG))) ||
+        (((player->speed / 18.0f) * 216.0f) <= 20.0f) || ((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT)) {
+        cancel_drift_effect(player);
     }
     if ((player->unk_0C0 / DEGREES(1)) < (-5)) {
         player->kartProps |= LEFT_TURN;
@@ -3961,7 +3967,8 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
     steer_position_delta = steer_position - player->steerPosition; // x change
     steer_position_delta = steer_position_delta >> 16;
     player->steerPositionDelta = (s16) steer_position_delta;
-    if (((steer_position_delta >= 90) || (steer_position_delta <= -90)) && (!(player->kartProps & DRIVING_NEAR_SPINOUT))) {
+    if (((steer_position_delta >= 90) || (steer_position_delta <= -90)) &&
+        (!(player->kartProps & DRIVING_NEAR_SPINOUT))) {
         if ((((((!(player->effects & DRIFTING_EFFECT)) && (gCCSelection == CC_150)) && (gModeSelection != BATTLE)) &&
               (!(player->effects & MIDAIR_EFFECT))) &&
              (((player->speed / 18.0f) * 216.0f) >= 40.0f)) &&
@@ -3970,7 +3977,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
         }
     }
     if (((s32) player->tyres[BACK_RIGHT].surfaceType) < 0xF) {
-        //this table is just zeros
+        // this table is just zeros
         zero += D_800E3610[player->characterId][player->tyres[BACK_RIGHT].surfaceType];
     }
     if (((s32) player->tyres[BACK_LEFT].surfaceType) < 0xF) {
@@ -3989,19 +3996,19 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
         if (((player->speed / 18.0f) * 216.0f) >= 15.0f) {
             if ((player->kartProps & RIGHT_TURN) == RIGHT_TURN) {
                 if ((steer_position_delta <= 35) && (steer_position_delta >= 0)) {
-                    //gKartTable800E3650 is always 0
-                    steer_resistance_large_turn =
-                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 15)) * (1.0f + zero)); //18 or 15
+                    // gKartTable800E3650 is always 0
+                    steer_resistance_large_turn = (gKartTable800E3650[player->characterId] + 1.0f) *
+                                                  (((f32) (var_a0 + 15)) * (1.0f + zero)); // 18 or 15
                     steer_resistance_small_turn =
                         (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 15)) * (1.0f + zero));
                 } else {
                     steer_resistance_large_turn = (s32) (((f32) (var_a0 + 5)) * (1.0f + zero)); // 8 or 5
-                    steer_resistance_small_turn = (s32) (((f32) (var_a0 + 9)) * (1.0f + zero)); //12 or 9
+                    steer_resistance_small_turn = (s32) (((f32) (var_a0 + 9)) * (1.0f + zero)); // 12 or 9
                 }
             } else if ((player->kartProps & LEFT_TURN) == LEFT_TURN) {
                 if ((steer_position_delta >= -35) && (steer_position_delta <= 0)) {
-                    steer_resistance_large_turn =
-                        (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 15)) * (1.0f + zero)); // 18 or 15
+                    steer_resistance_large_turn = (gKartTable800E3650[player->characterId] + 1.0f) *
+                                                  (((f32) (var_a0 + 15)) * (1.0f + zero)); // 18 or 15
                     steer_resistance_small_turn =
                         (gKartTable800E3650[player->characterId] + 1.0f) * (((f32) (var_a0 + 15)) * (1.0f + zero));
                 } else {
@@ -4034,105 +4041,196 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
     }
 
     /*
-    This big group of function calls does 2 things. 
-    First, when you steer it sets steer_position (which starts as just your x input) part way between your x input and your previous player->steerPosition
-    (basically, you cannot go from full left to right steering instantaneously)
-    Second, it sets the value of player->unk_090, which has to do with your karts sideways velocity. The code looks like it is intended
-    to set this to larger negative values when you have a large steer_position_delta. However, due to an apparent bug, update_steering_large
-    overwrites this too frequently. The end effect is that player->unk_090 ends up always getting set to -59.85 when steer_position_delta > 30
-    and set to 0 otherwise. -59.85 is -100 (the last value provided to update_steering_large) + the sum of the values provided to update_steering_small
+    This big group of function calls does 2 things.
+    First, when you steer it sets steer_position (which starts as just your x input) part way between your x input and
+    your previous player->steerPosition (basically, you cannot go from full left to right steering instantaneously)
+    Second, it sets the value of player->unk_090, which has to do with your karts sideways velocity. The code looks like
+    it is intended to set this to larger negative values when you have a large steer_position_delta. However, due to an
+    apparent bug, update_steering_large overwrites this too frequently. The end effect is that player->unk_090 ends up
+    always getting set to -59.85 when steer_position_delta > 30 and set to 0 otherwise. -59.85 is -100 (the last value
+    provided to update_steering_large) + the sum of the values provided to update_steering_small
     */
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 90, (120 << 12) / steer_resistance_large_turn, 450);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 89, (118 << 12) / steer_resistance_large_turn, 440);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 88, (116 << 12) / steer_resistance_large_turn, 430);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 87, (114 << 12) / steer_resistance_large_turn, 420);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 86, (112 << 12) / steer_resistance_large_turn, 410);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 85,  (88 << 12) / steer_resistance_large_turn, 400);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 84,  (86 << 12) / steer_resistance_large_turn, 395);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 83,  (80 << 12) / steer_resistance_large_turn, 390);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 82,  (79 << 12) / steer_resistance_large_turn, 390);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 81,  (78 << 12) / steer_resistance_large_turn, 380);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 80,  (77 << 12) / steer_resistance_large_turn, 370);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 79,  (76 << 12) / steer_resistance_large_turn, 360);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 78,  (76 << 12) / steer_resistance_large_turn, 360);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 77,  (75 << 12) / steer_resistance_large_turn, 350);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 76,  (74 << 12) / steer_resistance_large_turn, 340);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 75,  (73 << 12) / steer_resistance_large_turn, 330);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 74,  (73 << 12) / steer_resistance_large_turn, 330);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 73,  (73 << 12) / steer_resistance_large_turn, 330);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 72,  (72 << 12) / steer_resistance_large_turn, 320);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 71,  (71 << 12) / steer_resistance_large_turn, 315);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 70,  (71 << 12) / steer_resistance_large_turn, 315);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 69,  (70 << 12) / steer_resistance_large_turn, 305);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 68,  (70 << 12) / steer_resistance_large_turn, 305);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 67,  (69 << 12) / steer_resistance_large_turn, 280);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 66,  (70 << 12) / steer_resistance_large_turn, 270);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 65,  (69 << 12) / steer_resistance_large_turn, 270);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 64,  (68 << 12) / steer_resistance_large_turn, 260);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 63,  (67 << 12) / steer_resistance_large_turn, 250);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 62,  (67 << 12) / steer_resistance_large_turn, 250);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 61,  (67 << 12) / steer_resistance_large_turn, 250);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 60,  (61 << 12) / steer_resistance_large_turn, 245);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 59,  (60 << 12) / steer_resistance_large_turn, 245);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 58,  (59 << 12) / steer_resistance_large_turn, 245);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 57,  (58 << 12) / steer_resistance_large_turn, 245);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 56,  (56 << 12) / steer_resistance_large_turn, 245);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 55,  (56 << 12) / steer_resistance_large_turn, 230);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 54,  (56 << 12) / steer_resistance_large_turn, 230);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 53,  (56 << 12) / steer_resistance_large_turn, 230);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 52,  (56 << 12) / steer_resistance_large_turn, 230);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 51,  (56 << 12) / steer_resistance_large_turn, 230);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 50,  (50 << 12) / steer_resistance_large_turn, 220);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 49,  (50 << 12) / steer_resistance_large_turn, 220);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 48,  (50 << 12) / steer_resistance_large_turn, 220);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 47,  (50 << 12) / steer_resistance_large_turn, 220);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 46,  (50 << 12) / steer_resistance_large_turn, 220);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 45,  (48 << 12) / steer_resistance_large_turn, 110);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 44,  (46 << 12) / steer_resistance_large_turn, 110);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 43,  (46 << 12) / steer_resistance_large_turn, 110);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 42,  (46 << 12) / steer_resistance_large_turn, 110);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 41,  (46 << 12) / steer_resistance_large_turn, 110);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 40,  (46 << 12) / steer_resistance_large_turn, 110);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 39,  (44 << 12) / steer_resistance_large_turn, 110);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 38,  (40 << 12) / steer_resistance_large_turn, 110);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 37,  (40 << 12) / steer_resistance_large_turn, 110);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 36,  (36 << 12) / steer_resistance_large_turn, 110);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 35,  (36 << 12) / steer_resistance_large_turn, 110);
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 34,  (34 << 12) / steer_resistance_large_turn, 110); 
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 32,  (32 << 12) / steer_resistance_large_turn, 100); // this skips 33
-    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 31,  (32 << 12) / steer_resistance_large_turn, 100);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 90,
+                          (120 << 12) / steer_resistance_large_turn, 450);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 89,
+                          (118 << 12) / steer_resistance_large_turn, 440);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 88,
+                          (116 << 12) / steer_resistance_large_turn, 430);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 87,
+                          (114 << 12) / steer_resistance_large_turn, 420);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 86,
+                          (112 << 12) / steer_resistance_large_turn, 410);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 85,
+                          (88 << 12) / steer_resistance_large_turn, 400);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 84,
+                          (86 << 12) / steer_resistance_large_turn, 395);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 83,
+                          (80 << 12) / steer_resistance_large_turn, 390);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 82,
+                          (79 << 12) / steer_resistance_large_turn, 390);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 81,
+                          (78 << 12) / steer_resistance_large_turn, 380);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 80,
+                          (77 << 12) / steer_resistance_large_turn, 370);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 79,
+                          (76 << 12) / steer_resistance_large_turn, 360);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 78,
+                          (76 << 12) / steer_resistance_large_turn, 360);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 77,
+                          (75 << 12) / steer_resistance_large_turn, 350);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 76,
+                          (74 << 12) / steer_resistance_large_turn, 340);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 75,
+                          (73 << 12) / steer_resistance_large_turn, 330);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 74,
+                          (73 << 12) / steer_resistance_large_turn, 330);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 73,
+                          (73 << 12) / steer_resistance_large_turn, 330);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 72,
+                          (72 << 12) / steer_resistance_large_turn, 320);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 71,
+                          (71 << 12) / steer_resistance_large_turn, 315);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 70,
+                          (71 << 12) / steer_resistance_large_turn, 315);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 69,
+                          (70 << 12) / steer_resistance_large_turn, 305);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 68,
+                          (70 << 12) / steer_resistance_large_turn, 305);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 67,
+                          (69 << 12) / steer_resistance_large_turn, 280);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 66,
+                          (70 << 12) / steer_resistance_large_turn, 270);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 65,
+                          (69 << 12) / steer_resistance_large_turn, 270);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 64,
+                          (68 << 12) / steer_resistance_large_turn, 260);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 63,
+                          (67 << 12) / steer_resistance_large_turn, 250);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 62,
+                          (67 << 12) / steer_resistance_large_turn, 250);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 61,
+                          (67 << 12) / steer_resistance_large_turn, 250);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 60,
+                          (61 << 12) / steer_resistance_large_turn, 245);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 59,
+                          (60 << 12) / steer_resistance_large_turn, 245);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 58,
+                          (59 << 12) / steer_resistance_large_turn, 245);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 57,
+                          (58 << 12) / steer_resistance_large_turn, 245);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 56,
+                          (56 << 12) / steer_resistance_large_turn, 245);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 55,
+                          (56 << 12) / steer_resistance_large_turn, 230);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 54,
+                          (56 << 12) / steer_resistance_large_turn, 230);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 53,
+                          (56 << 12) / steer_resistance_large_turn, 230);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 52,
+                          (56 << 12) / steer_resistance_large_turn, 230);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 51,
+                          (56 << 12) / steer_resistance_large_turn, 230);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 50,
+                          (50 << 12) / steer_resistance_large_turn, 220);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 49,
+                          (50 << 12) / steer_resistance_large_turn, 220);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 48,
+                          (50 << 12) / steer_resistance_large_turn, 220);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 47,
+                          (50 << 12) / steer_resistance_large_turn, 220);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 46,
+                          (50 << 12) / steer_resistance_large_turn, 220);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 45,
+                          (48 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 44,
+                          (46 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 43,
+                          (46 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 42,
+                          (46 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 41,
+                          (46 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 40,
+                          (46 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 39,
+                          (44 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 38,
+                          (40 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 37,
+                          (40 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 36,
+                          (36 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 35,
+                          (36 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 34,
+                          (34 << 12) / steer_resistance_large_turn, 110);
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 32,
+                          (32 << 12) / steer_resistance_large_turn, 100); // this skips 33
+    update_steering_large(player, &steer_position_delta, &steer_position, player->steerPosition, 31,
+                          (32 << 12) / steer_resistance_large_turn, 100);
 
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 30,  (31 << 12) / steer_resistance_small_turn, 0.9f); // 0.9 * 5
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 29,  (30 << 12) / steer_resistance_small_turn, 0.9f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 28,  (29 << 12) / steer_resistance_small_turn, 0.9f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 27,  (28 << 12) / steer_resistance_small_turn, 0.9f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 26,  (27 << 12) / steer_resistance_small_turn, 0.9f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 25,  (26 << 12) / steer_resistance_small_turn, 1.0f); // 1.0 * 5
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 24,  (25 << 12) / steer_resistance_small_turn, 1.0f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 23,  (24 << 12) / steer_resistance_small_turn, 1.0f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 22,  (23 << 12) / steer_resistance_small_turn, 1.0f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 21,  (22 << 12) / steer_resistance_small_turn, 1.0f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 20,  (21 << 12) / steer_resistance_small_turn, 1.05f);// 1.05* 5
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 19,  (20 << 12) / steer_resistance_small_turn, 1.05f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 18,  (19 << 12) / steer_resistance_small_turn, 1.05f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 17,  (18 << 12) / steer_resistance_small_turn, 1.05f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 16,  (17 << 12) / steer_resistance_small_turn, 1.05f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 15,  (16 << 12) / steer_resistance_small_turn, 1.2f); // 1.2 * 5
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 14,  (15 << 12) / steer_resistance_small_turn, 1.2f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 13,  (14 << 12) / steer_resistance_small_turn, 1.2f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 12,  (13 << 12) / steer_resistance_small_turn, 1.2f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 11,  (12 << 12) / steer_resistance_small_turn, 1.2f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 10,  (14 << 12) / steer_resistance_small_turn, 1.6f); // 1.6 * 5
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  9,  (13 << 12) / steer_resistance_small_turn, 1.6f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  8,  (12 << 12) / steer_resistance_small_turn, 1.6f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  7,  (11 << 12) / steer_resistance_small_turn, 1.6f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  6,  (10 << 12) / steer_resistance_small_turn, 1.6f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  5,   (9 << 12) / steer_resistance_small_turn, 1.9f); // 1.9 * 6
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  4,   (8 << 12) / steer_resistance_small_turn, 1.9f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  3,   (7 << 12) / steer_resistance_small_turn, 1.9f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  2,   (6 << 12) / steer_resistance_small_turn, 1.9f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  1,   (5 << 12) / steer_resistance_small_turn, 1.9f);
-    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition,  0,           0 / steer_resistance_small_turn, 1.9f); // sum is 40.15
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 30,
+                          (31 << 12) / steer_resistance_small_turn, 0.9f); // 0.9 * 5
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 29,
+                          (30 << 12) / steer_resistance_small_turn, 0.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 28,
+                          (29 << 12) / steer_resistance_small_turn, 0.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 27,
+                          (28 << 12) / steer_resistance_small_turn, 0.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 26,
+                          (27 << 12) / steer_resistance_small_turn, 0.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 25,
+                          (26 << 12) / steer_resistance_small_turn, 1.0f); // 1.0 * 5
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 24,
+                          (25 << 12) / steer_resistance_small_turn, 1.0f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 23,
+                          (24 << 12) / steer_resistance_small_turn, 1.0f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 22,
+                          (23 << 12) / steer_resistance_small_turn, 1.0f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 21,
+                          (22 << 12) / steer_resistance_small_turn, 1.0f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 20,
+                          (21 << 12) / steer_resistance_small_turn, 1.05f); // 1.05* 5
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 19,
+                          (20 << 12) / steer_resistance_small_turn, 1.05f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 18,
+                          (19 << 12) / steer_resistance_small_turn, 1.05f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 17,
+                          (18 << 12) / steer_resistance_small_turn, 1.05f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 16,
+                          (17 << 12) / steer_resistance_small_turn, 1.05f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 15,
+                          (16 << 12) / steer_resistance_small_turn, 1.2f); // 1.2 * 5
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 14,
+                          (15 << 12) / steer_resistance_small_turn, 1.2f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 13,
+                          (14 << 12) / steer_resistance_small_turn, 1.2f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 12,
+                          (13 << 12) / steer_resistance_small_turn, 1.2f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 11,
+                          (12 << 12) / steer_resistance_small_turn, 1.2f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 10,
+                          (14 << 12) / steer_resistance_small_turn, 1.6f); // 1.6 * 5
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 9,
+                          (13 << 12) / steer_resistance_small_turn, 1.6f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 8,
+                          (12 << 12) / steer_resistance_small_turn, 1.6f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 7,
+                          (11 << 12) / steer_resistance_small_turn, 1.6f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 6,
+                          (10 << 12) / steer_resistance_small_turn, 1.6f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 5,
+                          (9 << 12) / steer_resistance_small_turn, 1.9f); // 1.9 * 6
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 4,
+                          (8 << 12) / steer_resistance_small_turn, 1.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 3,
+                          (7 << 12) / steer_resistance_small_turn, 1.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 2,
+                          (6 << 12) / steer_resistance_small_turn, 1.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 1,
+                          (5 << 12) / steer_resistance_small_turn, 1.9f);
+    update_steering_small(player, &steer_position_delta, &steer_position, player->steerPosition, 0,
+                          0 / steer_resistance_small_turn, 1.9f); // sum is 40.15
     if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         var_f2_2 = (f32) ((steer_position >> 16) / 8);
     } else if (((player->speed / 18.0f) * 216.0f) <= 25.0f) {
@@ -4314,7 +4412,8 @@ void apply_cpu_turn(Player* player, s16 targetAngle) {
                     }
                     player->unk_078 = var_v0 * var_f0;
                 }
-                if ((((player->effects & HOP_EFFECT) != HOP_EFFECT) && (player->unk_0C0 <= 60) && (player->unk_0C0 >= -60)) ||
+                if ((((player->effects & HOP_EFFECT) != HOP_EFFECT) && (player->unk_0C0 <= 60) &&
+                     (player->unk_0C0 >= -60)) ||
                     (((player->speed / 18.0f) * 216.0f) <= 20.0f) ||
                     ((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT)) {
                     cancel_drift_effect(player);
@@ -4338,12 +4437,12 @@ void cancel_drift_effect(Player* player) {
     if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
         if ((player->unk_0C0 / DEGREES(1)) > 0) {
             // linear map, sets -53 to 40 and 53 to 53
-            steer_position_new = ((((player->steerPosition >> 16) * 13) + (13*53)) / (2*53)) + 40;
+            steer_position_new = ((((player->steerPosition >> 16) * 13) + (13 * 53)) / (2 * 53)) + 40;
             player->steerPosition = steer_position_new << 16;
         }
         if ((player->unk_0C0 / DEGREES(1)) < 0) {
             // linear map, sets -53 to -53 and 53 to -40
-            steer_position_new = ((((player->steerPosition >> 16) * 13) + (13*53)) / (2*53)) - 53;
+            steer_position_new = ((((player->steerPosition >> 16) * 13) + (13 * 53)) / (2 * 53)) - 53;
             player->steerPosition = steer_position_new << 16;
         }
         player->effects &= ~DRIFTING_EFFECT;
@@ -4392,7 +4491,8 @@ void func_80036DB4(Player* player, Vec3f arg1, Vec3f arg2) {
             sp20 = player->unk_084;
         } else {
             var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) * 1.5) +
-                      (((player->steerPosition >> 16) * 0.1) + (-player->currentSpeed * 0.05)) + (-player->unk_20C * 50.0f);
+                      (((player->steerPosition >> 16) * 0.1) + (-player->currentSpeed * 0.05)) +
+                      (-player->unk_20C * 50.0f);
             sp20 = player->unk_084;
         }
         if ((player->effects & STAR_EFFECT) == STAR_EFFECT) {
@@ -4508,7 +4608,6 @@ void func_80037614(Player* player, Vec3f arg1, Vec3f arg2) {
     arg2[2] = arg1[2];
 }
 
-
 void func_8003777C(Player* player, Vec3f arg1, Vec3f arg2) {
     f32 var_f12;
     f32 var_f2;
@@ -4602,7 +4701,8 @@ void func_80037BB4(Player* player, Vec3f arg1) {
         arg1[2] = 0.0f;
     } else {
         if (player->unk_078 < 0) {
-            if (((player->effects & DRIFT_OUTSIDE_EFFECT) != DRIFT_OUTSIDE_EFFECT) || (player->driftStateCounter >= 100)) {
+            if (((player->effects & DRIFT_OUTSIDE_EFFECT) != DRIFT_OUTSIDE_EFFECT) ||
+                (player->driftStateCounter >= 100)) {
                 player->rotation[1] += player->unk_078;
             }
             if (!(player->type & PLAYER_CPU)) {
@@ -4615,7 +4715,8 @@ void func_80037BB4(Player* player, Vec3f arg1) {
                 func_80037614(player, sp20, arg1);
             }
         } else {
-            if (((player->effects & DRIFT_OUTSIDE_EFFECT) != DRIFT_OUTSIDE_EFFECT) || (player->driftStateCounter >= 100)) {
+            if (((player->effects & DRIFT_OUTSIDE_EFFECT) != DRIFT_OUTSIDE_EFFECT) ||
+                (player->driftStateCounter >= 100)) {
                 player->rotation[1] += player->unk_078;
             }
             if (!(player->type & PLAYER_CPU)) {
@@ -4692,7 +4793,8 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 playerIndex
             }
         }
         if ((!(player->effects & BOOST_RAMP_ASPHALT_EFFECT)) && (!(player->effects & BOOST_RAMP_WOOD_EFFECT))) {
-            if (((get_clamped_stickY_with_deadzone(controller) < (-0x31)) && (((player->speed / 18.0f) * 216.0f) <= 5.0f)) &&
+            if (((get_clamped_stickY_with_deadzone(controller) < (-0x31)) &&
+                 (((player->speed / 18.0f) * 216.0f) <= 5.0f)) &&
                 (controller->button & B_BUTTON)) {
                 player->currentSpeed = 140.0f;
                 player->kartProps |= BACK_UP;
@@ -4993,9 +5095,12 @@ void func_80038C6C(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     newVelocity[1] = player->velocity[1];
     newVelocity[2] = player->velocity[2];
 
-    newVelocity[0] += ((((((sp114[0] + spA4) + spF0[0])) - (newVelocity[0] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
-    newVelocity[2] += ((((((sp114[2] + sp9C) + spF0[2])) - (newVelocity[2] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
-    newVelocity[1] += ((((((sp114[1] + spA0) + spF0[1])) - (newVelocity[1] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
+    newVelocity[0] +=
+        ((((((sp114[0] + spA4) + spF0[0])) - (newVelocity[0] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
+    newVelocity[2] +=
+        ((((((sp114[2] + sp9C) + spF0[2])) - (newVelocity[2] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
+    newVelocity[1] +=
+        ((((((sp114[1] + spA0) + spF0[1])) - (newVelocity[1] * (0.12 * (player->kartFriction)))) / 6000.0) / 1);
     if ((player->kartProps & LOSE_GP_RACE) == LOSE_GP_RACE) {
         player->kartProps &= ~LOSE_GP_RACE;
     }
