@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: CC0-1.0
 #include <ultra64.h>
 #include <macros.h>
 #include <mk64.h>
