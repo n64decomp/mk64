@@ -191,6 +191,9 @@ extern OSThread gGameLoopThread;
 extern u8 gGameLoopThreadStack[];
 extern OSThread gAudioThread;
 extern u8 gAudioThreadStack[];
+#if ENABLE_RUMBLE
+extern u8 gRumbleThreadStack[];
+#endif
 
 extern u8 gGfxSPTaskYieldBuffer[];
 extern u32 gGfxSPTaskStack[];
