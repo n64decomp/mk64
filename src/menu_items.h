@@ -864,7 +864,8 @@ extern s8 gTournamentWidescreen;
 extern s8 gTournamentMusic;
 extern s8 gTournamentTrainBoat;
 extern s8 gTournamentAA;
-extern s8 gTournamentShellLimit;
+extern s8 gTournamentShellLimit; // unused
+extern s8 gTournamentForceMap;
 extern s8 gTournamentTimer;
 extern s8 gTournamentTrophy;
 extern s8 gPracticeMode;

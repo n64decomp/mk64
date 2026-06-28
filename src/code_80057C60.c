@@ -36,6 +36,7 @@
 #include "spawn_players.h"
 #include "sounds.h"
 #include "data/some_data.h"
+#include "menu_items.h"
 
 //! @warning this macro is undef'd at the end of this file
 #define MAKE_RGB(r, g, b) (((r) << 0x10) | ((g) << 0x08) | (b << 0x00))
@@ -149,17 +150,17 @@ UNUSED s8 D_801657E0;
 s8 D_801657E1;
 s8 D_801657E2;
 s8 D_801657E3;
-s8 D_801657E4;
+s8 D_801657E4; // shows character potraits when == 2 
 s8 D_801657E5;
 bool8 D_801657E6;
 u8 D_801657E7;
 bool8 D_801657E8;
 UNUSED s32 D_801657EC;
-bool8 D_801657F0;
+bool8 D_801657F0; // prog view
 UNUSED s32 D_801657F4;
-bool8 D_801657F8;
+bool8 D_801657F8; // lap count
 s32 D_801657FC;
-s8 D_80165800[2];
+s8 D_80165800[2]; // draw minimap 3/4p vs
 s32 D_80165804;
 s8 D_80165808;
 s32 D_8016580C;
@@ -1507,6 +1508,7 @@ void func_8005A3C0(void) {
     bool b = false;
     if ((gGamestate != ENDING) && (gGamestate != CREDITS_SEQUENCE) && !D_8018D204) {
         switch (gPlayerCountSelection1) {
+            // 1p
             case 1:
                 if (gControllerOne->buttonPressed & R_CBUTTONS) {
                     if (++D_801657E4 >= 3) {
@@ -1528,6 +1530,7 @@ void func_8005A3C0(void) {
                     b = true;
                 }
                 break;
+            // 2p
             case 2:
                 if (gModeSelection != BATTLE) {
                     if (gControllerOne->buttonPressed & R_CBUTTONS) {
@@ -1548,28 +1551,54 @@ void func_8005A3C0(void) {
                     }
                 }
                 break;
+            // 3p
             case 3:
-                if ((gControllerOne->buttonPressed & R_CBUTTONS) || (gControllerTwo->buttonPressed & R_CBUTTONS) ||
-                    (gControllerThree->buttonPressed & R_CBUTTONS)) {
-                    if (gModeSelection != BATTLE) {
-                        D_801657F0 = (D_801657F0 + 1) & 1;
+                    if ((gControllerOne->buttonPressed & R_CBUTTONS) || (gControllerTwo->buttonPressed & R_CBUTTONS) ||
+                        (gControllerThree->buttonPressed & R_CBUTTONS)) {
+                        if (gModeSelection != BATTLE) {
+                            D_801657F0 = (D_801657F0 + 1) & 1;
+                        }
+                        D_801657E4 = (D_801657E4 + 1) & 1;
+                        b = true;
                     }
-                    D_801657E4 = (D_801657E4 + 1) & 1;
-                    b = true;
-                }
-                break;
+                    break;
+                            
+            // 4p
             case 4:
-                if ((gControllerOne->buttonPressed & R_CBUTTONS) || (gControllerTwo->buttonPressed & R_CBUTTONS) ||
-                    (gControllerThree->buttonPressed & R_CBUTTONS) || (gControllerFour->buttonPressed & R_CBUTTONS)) {
-                    D_801657E4 = (D_801657E4 + 1) & 1;
-                    D_801657F8 = (D_801657F8 + 1) & 1;
-                    D_80165800[0] = (D_80165800[0] + 1) & 1;
-                    if (gModeSelection != BATTLE) {
-                        D_801657F0 = (D_801657F0 + 1) & 1;
+                // run default settings (togglable map/prog view) when forcemap = 0
+                if (gTournamentForceMap == 0) {
+                    if ((gControllerOne->buttonPressed & R_CBUTTONS) || (gControllerTwo->buttonPressed & R_CBUTTONS) ||
+                        (gControllerThree->buttonPressed & R_CBUTTONS) || (gControllerFour->buttonPressed & R_CBUTTONS)) {
+                        D_801657E4 = (D_801657E4 + 1) & 1;
+                        D_801657F8 = (D_801657F8 + 1) & 1;
+                        D_80165800[0] = (D_80165800[0] + 1) & 1;
+                        if (gModeSelection != BATTLE) {
+                            D_801657F0 = (D_801657F0 + 1) & 1;
+                        }
+                        b = true;
                     }
-                    b = true;
+                    break;
                 }
-                break;
+                // force progress view at all times (N/A in battle)
+                else if (gTournamentForceMap == 1) {
+                        D_801657E4 = 0;
+                        D_801657F8 = 1;
+                        D_80165800[0] = 0;
+                        if (gModeSelection != BATTLE) {
+                            D_801657F0 = 1;
+                        }
+                        b = true;
+                }
+                // force map view at all times
+                else {
+                        D_801657E4 = 0;
+                        D_801657F8 = 0;
+                        D_80165800[0] = 1;
+                        if (gModeSelection != BATTLE) {
+                            D_801657F0 = 0;
+                        }
+                        b = true;
+                }
         }
         if (b) {
             // this the sound for the progress view toggle

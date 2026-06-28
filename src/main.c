@@ -926,7 +926,7 @@ void race_logic_loop(void) {
                 render_player_three_3p_4p_screen();
                 render_player_four_3p_4p_screen();
             }
-            render_shell_count();
+            // render_shell_count();
             break;
     }
 

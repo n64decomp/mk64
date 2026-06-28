@@ -365,7 +365,8 @@ s8 gTournamentWidescreen = 0;
 s8 gTournamentMusic = 0;
 s8 gTournamentTrainBoat = 0;
 s8 gTournamentAA = 0;
-s8 gTournamentShellLimit = 0;
+s8 gTournamentForceMap = 0;
+s8 gTournamentShellLimit = 0; // not currently in menu
 s8 gTournamentTimer = 0;
 s8 gTournamentTrophy = 0;
 s8 gPracticeMode = 0;
@@ -5826,7 +5827,7 @@ void render_custom_overlay(void) {
         "mp music",
         "mp train boat",
         "AA",
-        "shell limit",
+        "force minimap",
         "vs timer",
         "trophy",
         "practice",
@@ -5842,7 +5843,7 @@ void render_custom_overlay(void) {
     static const char* mpMusic_labels[] = {"default", "enabled"};
     static const char* mpTrainBoat_labels[] = {"default", "enabled", "train", "boat"};
     static const char* AA_labels[] = {"default", "disabled"};
-    static const char* shell_labels[] = {"default", "30", "bugfix"};
+    static const char* minimap_labels[] = {"default", "prog view", "map"};
     static const char* timer_labels[] = {"default", "enabled"};
     static const char* trophy_labels[] = {"default", "enabled"};
     static const char* practice_labels[] = {"default", "enabled"};
@@ -5852,7 +5853,7 @@ void render_custom_overlay(void) {
     set_text_color(TEXT_YELLOW);
 
     // title (centered)
-    print_text1_center_mode_1(x, y - 0x30, "WEATHERTON  ABNEY  CLIMATEE  ZSERF", 0, 0.80f, 0.80f);
+    print_text1_center_mode_1(x, y - 0x28, "WEATHERTON  ABNEY  CLIMATEE  ZSERF", 0, 0.70f, 0.70f);
 
     // /* use debug font helper */
     // x1 = 0;
@@ -5860,30 +5861,30 @@ void render_custom_overlay(void) {
     // func_800579B8(x1, y1, "WEATHERTON  ABNEY  CLIMATEE");
 
     // version / date (smaller) - left-aligned to start under 'KART'
-    print_text1_left(x + 0x5A, y + 0x06, "TE V2026-03-26", 0, 0.65f, 0.65f);
+    print_text1_left(x + 0x5A, y + 0x06, "TE V2026-06-28", 0, 0.65f, 0.65f);
 
     // option name placeholders (second column) and values (third column)
     for (i = 0; i < CUSTOM_MENU_ROWS; i++) {
         /* standard row stride (single-line names) - reduced spacing */
-        rowY = y + 0x18 + (i * 0xC);
+        rowY = y + 0x14 + (i * 0xC);
 
         /* first column: selection pointer  */
         if (i == gCustomMenuSelection) {
             /* build a local MenuItem for the cursor effect and set the target position */
-            sp84.column = x - 0x40;
+            sp84.column = x - 0x50;
             sp84.row = rowY - 0x06;
             cursorItem.paramf = 2.0f;      /* start scale/rotation multiplier */
             cursorItem.subState = 1;       /* small non-zero rotation driver */
             func_800A66A8(&cursorItem, &sp84);
         } else {
             /* draw empty space to keep alignment */
-            print_text1_left(x - 0x30, rowY, " ", 0, 0.6f, 0.6f);
+            print_text1_left(x - 0x40, rowY, " ", 0, 0.6f, 0.6f);
         }
 
         /* second column: option name (single line) */
         if (customModifierNames[i][0] != '\0') {
             text_rainbow_effect(gCustomMenuSelection, i, TEXT_YELLOW);
-            print_text_mode_1(x - 0x30, rowY, (char*)customModifierNames[i], 0, 0.6f, 0.6f);
+            print_text_mode_1(x - 0x40, rowY, (char*)customModifierNames[i], 0, 0.6f, 0.6f);
         } else {
             /* Build "Modifier N" manually to avoid linking snprintf */
             const char* prefix = "Modifier ";
@@ -5964,12 +5965,12 @@ void render_custom_overlay(void) {
             gTournamentAA = idx;
             break;
         case 7:
-            /* shell limit: labels (default, 30, bugfix) */
+            /* force minimap: labels (default, progress view, map) */
             idx = gCustomMenuOptionValues[i];
             if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(shell_labels) / sizeof(shell_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x50, rowY, (char*)shell_labels[idx], 0, 0.6f, 0.6f);
-            gTournamentShellLimit = idx;
+            if (idx >= (int)(sizeof(minimap_labels) / sizeof(minimap_labels[0]))) idx = 0;
+            print_text1_center_mode_1(x + 0x50, rowY, (char*)minimap_labels[idx], 0, 0.6f, 0.6f);
+            gTournamentForceMap = idx;
             break;
         case 8:
             /* vs timer: labels (default, enabled) */
