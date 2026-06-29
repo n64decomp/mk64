@@ -1124,7 +1124,8 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
     if (is_screen_being_faded() == 0) {
         if (controllerIdx == PLAYER_ONE) {
             gMenuDelayTimer += 1;
-
+        }
+    
             // handles input to custom menu
             // navigation
             // works
@@ -1169,7 +1170,6 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 play_sound2(SOUND_MENU_SELECT);
             }
-        }
         switch (gDebugMenuSelection) {
             case DEBUG_MENU_DISABLED: {
                 isDebug = false;
