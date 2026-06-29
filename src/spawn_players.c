@@ -84,7 +84,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_08C = 0;
     player->characterId = characterId;
     player->unk_0B6 = 0;
-    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : player->characterId;
+    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : (gTournamentCharacterStats == 2) ? WARIO : player->characterId;
     player->kartFriction = gKartFrictionTable[statsCharacterId];
     player->boundingBoxSize = gKartBoundingBoxSizeTable[statsCharacterId];
     player->kartGravity = gKartGravityTable[statsCharacterId];

@@ -19,9 +19,9 @@
 #include "menu_items.h"
 #include <course.h>
 
-#define PLAYER_STATS_CHARACTER_ID(player) ((gTournamentCharacterStats == 0) ? YOSHI : (player)->characterId)
+#define PLAYER_STATS_CHARACTER_ID(player) ((gTournamentCharacterStats == 0) ? YOSHI : (gTournamentCharacterStats == 2) ? WARIO : (player)->characterId)
 
-s32 D_8018D900[8];
+s32 D_8018D900[8];  
 s16 D_8018D920[8];
 s32 gPlayerStarEffectStartTime[8];
 s32 gPlayerBooEffectStartTime[8];

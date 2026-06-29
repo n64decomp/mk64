@@ -23,7 +23,7 @@
 #include "sounds.h"
 #include "menu_items.h"
 
-#define PLAYER_STATS_CHARACTER_ID(player) ((gTournamentCharacterStats == 0) ? YOSHI : (player)->characterId)
+#define PLAYER_STATS_CHARACTER_ID(player) ((gTournamentCharacterStats == 0) ? YOSHI : (gTournamentCharacterStats == 2) ? WARIO : (player)->characterId)
 
 extern s32 D_8018D168;
 
@@ -3269,7 +3269,7 @@ void player_accelerate_alternative(Player* player) {
     s32 statsCharacterId;
 
     player_index = get_player_index_for_player(player);
-    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : player->characterId;
+    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : (gTournamentCharacterStats == 2) ? WARIO : player->characterId;
     if (gIsPlayerTripleAButtonCombo[player_index] == false) {
         if ((0.0 <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
             player->currentSpeed +=
@@ -3604,7 +3604,7 @@ void player_accelerate_during_start_sequence(Player* player) {
     s32 time_delta;
 
     playerIndex = get_player_index_for_player(player);
-    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : player->characterId;
+    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : (gTournamentCharacterStats == 2) ? WARIO : player->characterId;
     if ((player->currentSpeed >= 0.0) && (player->currentSpeed < (player->topSpeed * 0.1))) {
         player->currentSpeed += gKartAccelerationTables[statsCharacterId][0] * 3.0;
     }
@@ -3679,7 +3679,7 @@ void player_accelerate(Player* player) {
     s32 statsCharacterId;
 
     player_index = get_player_index_for_player(player);
-    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : player->characterId;
+    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : (gTournamentCharacterStats == 2) ? WARIO : player->characterId;
     if ((0.0 <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
         player->currentSpeed += gKartAccelerationTables[statsCharacterId][0] * 3.2;
     }
@@ -3730,7 +3730,7 @@ void player_decelerate(Player* player, f32 speedReduction) {
 void player_accelerate_global(Player* player, s32 playerIndex) {
     s32 statsCharacterId;
 
-    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : player->characterId;
+    statsCharacterId = (gTournamentCharacterStats == 0) ? YOSHI : (gTournamentCharacterStats == 2) ? WARIO : player->characterId;
     if ((gPlayerCurrentSpeed[playerIndex] >= 0.0) && (gPlayerCurrentSpeed[playerIndex] < ((f64) player->topSpeed * 0.1))) {
         gPlayerCurrentSpeed[playerIndex] += gKartAccelerationTables[statsCharacterId][0] * 3.2;
     }

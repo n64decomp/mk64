@@ -5837,7 +5837,7 @@ void render_custom_overlay(void) {
 
     /* per-option label arrays */
     static const char* tracks_labels[] = {"VA", "kalliera", "kalliera mmf"};
-    static const char* stats_labels[] = {"all yoshi", "default"};
+    static const char* stats_labels[] = {"all yoshi", "default", "all wario"};
     static const char* scaling_labels[] = {"default", "30fps", "60fps"};
     static const char* widescreen_labels[] = {"default", "enabled"};
     static const char* mpMusic_labels[] = {"default", "enabled"};
@@ -5917,7 +5917,7 @@ void render_custom_overlay(void) {
             gTournamentCourseMode = idx; // set track order
             break;
         case 1:
-            /* stats: labels (default, all yoshi) */
+            /* stats: labels (all yoshi, default, all wario) */
             idx = gCustomMenuOptionValues[i];
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(stats_labels) / sizeof(stats_labels[0]))) idx = 0;
