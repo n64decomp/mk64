@@ -118,9 +118,9 @@ extern u16 D_8015F892;
 extern u16 D_8015F894;
 extern f32 gTimePlayerLastTouchedFinishLine[];
 
-extern u8* gNmiUnknown1;
-extern u8* gNmiUnknown2;
-extern u8* gNmiUnknown3;
+extern u8* gVersusResults2P;
+extern u8* gVersusResults3P;
+extern u8* gVersusResults4P;
 extern u8* gNmiUnknown4;
 extern u8* gNmiUnknown5;
 extern u8* gNmiUnknown6;
