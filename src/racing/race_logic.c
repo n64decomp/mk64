@@ -538,52 +538,45 @@ f32 func_8028EE8C(s32 arg0) {
 }
 
 // set finish state
-void func_8028EEF0(s32 i) {
+void add_cinematic_mode(s32 i) {
     gPlayers[i].type |= PLAYER_CINEMATIC_MODE;
 }
 
-// synchronizes lap counts and awards race tallies
 void func_8028EF28(void) {
     s16 currentPosition;
-    s32 i; // player index
+    s32 playerId;
+    s32 playerIdLast;
 
-    for (i = 0; i < NUM_PLAYERS; i++) {
-        Player* player = &gPlayers[i];
+    for (playerId = 0; playerId < NUM_PLAYERS; playerId++) {
+        Player* player = &gPlayers[playerId];
 
         // skip slots that don't have active player
-        if ((gPlayers[i].type & PLAYER_EXISTS) == 0) {
+        if ((player->type & PLAYER_EXISTS) == 0) {
             continue;
         }
 
-        // skip finished players (players in cinematic mode)
-        // added condition to prevent double finishes/Wonn from cheating
-        if ((gPlayers[i].type & PLAYER_CINEMATIC_MODE) != 0) {
-            continue;
-        }
-       
         // handles increasing and decreasing lap count
         // two diff var for tracking lap counts
-        if (gLapCountByPlayerId[i] < gPlayers[i].lapCount) {
-            gPlayers[i].lapCount--;
-        } else if (gLapCountByPlayerId[i] > gPlayers[i].lapCount) {
-            gPlayers[i].lapCount++;
+        if (gLapCountByPlayerId[playerId] < player->lapCount) {
+            player->lapCount--;
+        } else if (gLapCountByPlayerId[playerId] > player->lapCount) {
+            player->lapCount++;
 
             // if slot has an active player 
-            if ((gPlayers[i].type & PLAYER_HUMAN) != 0) {
-                // if player i finishes (crosses into lap 4)
-                if (gPlayers[i].lapCount == 3) { // 3 = lap 4
-                    func_8028EEF0(i); // finish sequence
+            if ((player->type & PLAYER_HUMAN) != 0) {
+                // if player finishes (3 = starting 4th lap = finished)
+                if (player->lapCount == 3) {
+                    add_cinematic_mode(playerId);
 
-                    currentPosition = gPlayers[i].currentRank; // store rank as currentPosition 
-                    gPlayers[i].type |= PLAYER_CPU;            // cpu take over finishing player
+                    currentPosition = player->currentRank; // store rank as currentPosition 
+                    player->type |= PLAYER_CPU;            // cpu take over finishing player
 
-                    // sets flag after any player finishes lap 4
-                    if (currentPosition < 4) { 
+                    if (currentPosition < 4) {
                         D_80150120 = 1;
                     }
 
                     // ?
-                    func_800CA118((u8) i);
+                    func_800CA118((u8) playerId);
                     if ((D_802BA032 & PLAYER_EXISTS) == 0) {
                         D_802BA032 |= PLAYER_EXISTS;
                     }
@@ -591,8 +584,15 @@ void func_8028EF28(void) {
                     if (gModeSelection == GRAND_PRIX && gPlayerCountSelection1 == 2 && D_802BA048 == 0) {
                         D_802BA048 = 1;
                     }
-                    if ((gPlayers[i].type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
-                        D_800DC510 = 4;
+                    if ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
+                        // Inner if required for precise finish times.
+                        // Otherwise, higher port numbers can reset the state after a lower
+                        // port number finished 2nd to last, concluding the race
+                        if (D_800DC510 <= 4){
+                            // 4 means somebody has finished the race (or something similar)  
+                            // 5 means 2nd to last has finished, concluding the race
+                            D_800DC510 = 4;
+                        }
                     }
                     if (gModeSelection == TIME_TRIALS) {
                         func_80005AE8(player);
@@ -601,76 +601,79 @@ void func_8028EF28(void) {
                     if (gModeSelection == VERSUS) {
                         gDemoTimer = 180;
                         if (currentPosition == 0) { // winning player
-                            gPlayerWinningIndex = i;
+                            gPlayerWinningIndex = playerId;
                         }
                         switch (gPlayerCountSelection1) {
-                            // 2p vs
                             case 2:
-                                // currentPosition = position of player i when crossing finish line
-                                // 1st is 0, 2nd is 1, 3rd is 2, 4th is 3
+                                // currentPosition = position of player when crossing finish line (0 indexed)
+                                // 0 is 1st, 1 is 2nd, 2 is 3rd, 3 is 4th
                                 if (currentPosition == 0 ) { // when first finishes
-                                    *(gNmiUnknown1 + i) += 1; // add tally
-                                }
-                                if (*(gNmiUnknown1 + i) > 99) { // 99 tally limit?
-                                    *(gNmiUnknown1 + i) = 99;
-                                }
-                                D_800DC510 = 5;
-                                i = gPlayerPositionLUT[1];                 // get 2nd place player position
-                                gPlayers[i].triggers |= SPINOUT_TRIGGER;   // spin out 2nd place player
-                                gPlayers[i].type |= PLAYER_CPU;            // cpu control 2nd place player
-                                func_800CA118((u8) i);                     // call animation sequence, pass in losing player idx as parameter?
-                                break;
-                            // 3p
-                            case 3:
-                                if (currentPosition < 3 ) { // when any player finishes (all players get tallies)
-                                    *(gNmiUnknown2 + i * 3 + currentPosition) += 1;
-                                }
-                                if (*(gNmiUnknown2 + i * 3 + currentPosition) > 99) {
-                                    *(gNmiUnknown2 + i * 3 + currentPosition) = 99;
-                                }
-                                if (currentPosition == 1 ) { // when 2nd finishes
-                                    D_800DC510 = 5;
-                                    i = gPlayerPositionLUT[2]; // get 3rd place player position
-                                    *(gNmiUnknown2 + i * 3 + 2) += 1;
-                                    if (*(gNmiUnknown2 + i * 3 + 2) > 99) {
-                                        *(gNmiUnknown2 + i * 3 + 2) = 99;
+                                    *(gNmiUnknown1 + playerId) += 1; // add tally
+                                    if (*(gNmiUnknown1 + playerId) > 99) {
+                                        *(gNmiUnknown1 + playerId) = 99;
                                     }
-                                    gPlayers[i].triggers |= SPINOUT_TRIGGER; // spin out 3rd place player
-                                    gPlayers[i].type |= PLAYER_CPU;          // cpu control 3rd place
-                                    func_800CA118((u8) i);                   // call animation sequence, pass in losing player idx as parameter?
+                                    D_800DC510 = 5;
+                                    playerIdLast = gPlayerPositionLUT[1];                 // get 2nd place player position
+                                    gPlayers[playerIdLast].triggers |= SPINOUT_TRIGGER;   // spin out 2nd place player
+                                    gPlayers[playerIdLast].type |= PLAYER_CPU;            // cpu control 2nd place player
+                                    func_800CA118((u8) playerIdLast);                     // call animation sequence, pass in losing player idx as parameter?
                                 }
                                 break;
-                            // 4p
+                            case 3:
+                                if (currentPosition < 2) {
+                                    *(gNmiUnknown2 + playerId * 3 + currentPosition) += 1;
+                                
+                                    if (*(gNmiUnknown2 + playerId * 3 + currentPosition) > 99) {
+                                        *(gNmiUnknown2 + playerId * 3 + currentPosition) = 99;
+                                    }
+                                    /* Because the last player may not finish, their score must be updated when the 2nd
+                                       to last racer finishes. */
+                                    if (currentPosition == 1) {
+                                        D_800DC510 = 5; // triggers results screen
+
+                                        playerIdLast = gPlayerPositionLUT[2];
+                                        // update 3rd place (last) tally here because they may not cross finish line
+                                        *(gNmiUnknown2 + playerIdLast * 3 + 2) += 1;
+                                        if (*(gNmiUnknown2 + playerIdLast * 3 + 2) > 99) {
+                                            *(gNmiUnknown2 + playerIdLast * 3 + 2) = 99;
+                                        }
+                                        gPlayers[playerIdLast].triggers |= SPINOUT_TRIGGER; // spin out 3rd place player
+                                        gPlayers[playerIdLast].type |= PLAYER_CPU;          // cpu control 3rd place
+                                        func_800CA118((u8) playerIdLast);                   // call animation sequence, pass in losing player idx as parameter?
+                                    }
+                                }
+                                break;
                             case 4:
                                 // 4th place gets no tally
-                                if (currentPosition < 3 ) { // only when 1st, 2nd, 3rd finish
-                                    *(gNmiUnknown3 + i * 3 + currentPosition) += 1;
+                                if (currentPosition < 3) {
+                                    *(gNmiUnknown3 + playerId * 3 + currentPosition) += 1;
+                                    if (*(gNmiUnknown3 + playerId * 3 + currentPosition) > 99) {
+                                        *(gNmiUnknown3 + playerId * 3 + currentPosition) = 99;
+                                    }
                                 }
-                                if (*(gNmiUnknown3 + i * 3 + currentPosition) > 99) {
-                                    *(gNmiUnknown3 + i * 3 + currentPosition) = 99;
-                                }
-                                if (currentPosition == 2 ) { // when 3rd finishes
+                                // if 3rd has finished, race is over
+                                if (currentPosition == 2) {
                                     D_800DC510 = 5;
-                                    i = gPlayerPositionLUT[3];               // get 4th place player position
-                                    gPlayers[i].triggers |= SPINOUT_TRIGGER; // spin out 4th place
-                                    gPlayers[i].type |= PLAYER_CPU;          // cpu control 4th place
-                                    func_800CA118((u8) i);                   // call animation sequence, pass in losing player idx as parameter?
+                                    playerIdLast = gPlayerPositionLUT[3];               // get 4th place player position
+                                    gPlayers[playerIdLast].triggers |= SPINOUT_TRIGGER; // spin out 4th place
+                                    gPlayers[playerIdLast].type |= PLAYER_CPU;          // cpu control 4th place
+                                    func_800CA118((u8) playerIdLast);                   // call animation sequence, pass in losing player idx as parameter?
                                 }
                                 break;
                         }
                     }
 
-                } else if (gPlayers[i].lapCount == 2) {
-                    if ((gPlayers[i].type & 0x100) != 0) {
+                } else if (player->lapCount == 2) {
+                    if ((player->type & 0x100) != 0) {
                         return;
                     }
                     if ((D_802BA032 & 0x4000) == 0) {
                         D_802BA032 |= 0x4000;
-                        func_800CA49C((u8) i);
+                        func_800CA49C((u8) playerId);
                     }
                 }
-            } else if (gPlayers[i].lapCount == 3) {
-                func_8028EEF0(i);
+            } else if (player->lapCount == 3) {
+                add_cinematic_mode(playerId);
                 if (gModeSelection == TIME_TRIALS) {
                     func_80005AE8(player);
                 }
@@ -692,8 +695,7 @@ void update_race_position_data(void) {
     s16 position;
 
     for (i = 0; i < NUM_PLAYERS; i++) {
-        if (((gPlayers[i].type & PLAYER_EXISTS) != 0) && ((gPlayers[i].type & PLAYER_CINEMATIC_MODE) == 0) &&
-            ((gPlayers[i].type & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
+        if (((gPlayers[i].type & PLAYER_EXISTS) != 0)) {
             position = gGPCurrentRaceRankByPlayerId[i];
             gPlayers[i].currentRank = position;
             gPlayerPositionLUT[position] = i;

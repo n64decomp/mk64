@@ -213,11 +213,12 @@ Unk_D_800E70A0 D_800E7300[] = {
     { 0x18, 0x23, 0x00, 0x00 }, { 0x5d, 0x23, 0x00, 0x00 }, { 0xa2, 0x23, 0x00, 0x00 }, { 0xe7, 0x23, 0x00, 0x00 },
 };
 
+// Versus menu coordinates
 Unk_D_800E70A0 D_800E7360[] = {
-    { 0x61, 0xa7, 0x00, 0x00 },
     { 0x61, 0xb6, 0x00, 0x00 },
     { 0x61, 0xc5, 0x00, 0x00 },
     { 0x61, 0xd4, 0x00, 0x00 },
+    { 0x61, 0xe3, 0x00, 0x00 },
 };
 
 Unk_D_800E70A0 D_800E7380[] = {
@@ -8397,12 +8398,12 @@ void func_800A638C(MenuItem* arg0) {
             text_rainbow_effect(arg0->state - 0xA, var_s1, TEXT_GREEN);
             if ((var_s1 == 0) && (gModeSelection == VERSUS) && ((gPlayerCount == 3) || (gPlayerCount == 4))) {
                 continueText = "CONTINUE TO ";
-                print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), continueText, 0, 0.8f, 0.8f);
+                print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1) + 15, continueText, 0, 0.8f, 0.8f);
                 xOffset = (get_string_width(continueText) * 0.8f) + 1.0f;
-                print_text_mode_1((s32) (0x00000069 + xOffset), 0xAE + (0xF * var_s1), getNextCourseAbbrString(),
+                print_text_mode_1((s32) (0x00000069 + xOffset), 0xAE + (0xF * var_s1) + 15, getNextCourseAbbrString(),
                                   0, 0.8f, 0.8f);
             } else {
-                print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f,
+                print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1) + 15, gTextPauseButton[var_s1 + 1], 0, 0.8f,
                                   0.8f);
             }
         }
@@ -8471,27 +8472,29 @@ void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
 void func_800A69C8(UNUSED MenuItem* arg0) {
     Unk_D_800E70A0* thing;
     UNUSED s32 stackPadding1;
-    s32 var_s0;
+    s32 playerId;
     char sp74[5];
     s32 var_v1;
     char* temp_s3;
     u8* var_s4;
+    s32 finishTimeCopy;
+    char finishTimeText[8];
 
-    for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
+    for (playerId = 0; playerId < gPlayerCount; playerId++) {
         var_v1 = 0;
-        thing = &D_800E7300[var_s0];
+        thing = &D_800E7300[playerId];
         switch (gModeSelection) { /* irregular */
             case VERSUS:
-                if (gGPCurrentRaceRankByPlayerId[var_s0] != 0) {
+                if (gGPCurrentRaceRankByPlayerId[playerId] != 0) {
                     var_v1 = 1;
                 }
-                var_s4 = &gNmiUnknown1[var_s0];
+                var_s4 = &gNmiUnknown1[playerId];
                 break;
             case BATTLE:
-                if (var_s0 != gPlayerWinningIndex) {
+                if (playerId != gPlayerWinningIndex) {
                     var_v1 = 1;
                 }
-                var_s4 = &gNmiUnknown4[var_s0];
+                var_s4 = &gNmiUnknown4[playerId];
                 break;
         }
         temp_s3 = gWinLoseText[var_v1];
@@ -8501,12 +8504,35 @@ void func_800A69C8(UNUSED MenuItem* arg0) {
             set_text_color((s32) gGlobalTimer % 3);
         }
         func_800A79F4(var_s4[0], sp74);
-        text_draw(thing->column + 0x10, thing->row + 0x75, sp74, 0, 1.0f, 1.0f);
-        print_text1_center_mode_2(D_800E7380[var_s0].column, D_800E7380[var_s0].row, temp_s3, 0, 0.65f, 1.0f);
+        text_draw(thing->column + 0x10, thing->row + 0x75 + 15, sp74, 0, 1.0f, 1.0f);
+        print_text1_center_mode_2(D_800E7380[playerId].column, D_800E7380[playerId].row, temp_s3, 0, 0.65f, 1.0f);
+
+        // show finish time if finished
+        if (gFinished[playerId]){
+            // winner gets flashing timer
+            if (var_v1 != 1){
+                set_text_color(gGlobalTimer % 3);
+            }
+            else{
+                set_text_color(TEXT_YELLOW);
+            }
+            finishTimeCopy = (s32) (1000 * gFinishTime[playerId]);
+
+            // 48 is the offset from digits to ASCII code string representations
+            finishTimeText[0] = func_8004F674(&finishTimeCopy, 60000) + 48;
+            finishTimeText[1] = 39; // '
+            finishTimeText[2] = func_8004F674(&finishTimeCopy, 10000) + 48;
+            finishTimeText[3] = func_8004F674(&finishTimeCopy, 1000) + 48;
+            finishTimeText[4] = 34; // "
+            finishTimeText[5] = func_8004F674(&finishTimeCopy, 100) + 48;
+            finishTimeText[6] = func_8004F674(&finishTimeCopy, 10) + 48;
+            finishTimeText[7] = finishTimeCopy + 48;
+            text_draw(thing->column, thing->row + 0x75 - 25, finishTimeText, 0, 0.7f, 0.7f);
+        }
     }
     set_text_color(TEXT_BLUE);
     // Not a hyphen, that is an EUC-JP character
-    text_draw(0x0000009E, D_800E7300[0].row + 0x6D, "ー", 0, 1.0f, 1.0f);
+    text_draw(0x0000009E, D_800E7300[0].row + 0x6D + 15, "ー", 0, 1.0f, 1.0f);
 }
 
         /*Iterates over all players and, based on the current mode selection, 
@@ -8579,12 +8605,14 @@ void func_800A6D94(s32 arg0, s32 arg1, u8* arg2) {
 
  draws race finish tallies for versus races
  additionally draws vs scores for tournament edition*/
-void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
+void func_800A6E94(s32 playerCount, s32 playerId, u8* placeAry) {
     UNUSED s32 stackPadding0;
     u8* temp_v0;
     Unk_D_800E70A0* temp_s0;
     char sp40[3];
     s32 rank;
+    s32 finishTimeCopy;
+    char finishTimeText[8];
 
     // var for drawing scores
     s32 base_xPos_4p;
@@ -8601,7 +8629,7 @@ void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
     char pointsBuf[5]; 
 
     // Everything about this variable is bizarre
-    s32 sp38 = -1;
+    s32 rankIdx = -1;
 
     // base x and y position for drawing scores
     // x-coord increment will be different for 3p and 4p vs
@@ -8617,7 +8645,7 @@ void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
 
     // Only draw scores on the first player call to avoid overdraw
     // (func_800A6E94 is called once per player by func_800A6BEC/func_800A6CC0)
-    if (arg1 == 0) {
+    if (playerId == 0) {
         set_text_color(TEXT_YELLOW);
         while(i < gPlayerCountSelection1) {
             firsts  = tally[i * 3 + 0];
@@ -8646,33 +8674,56 @@ void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
         }
     }
 
-    temp_s0 = &D_800E7300[((arg0 - 2) * 4) + arg1];
-    rank = gGPCurrentRaceRankByPlayerId[arg1];
-    if (rank == ++sp38) {
+    temp_s0 = &D_800E7300[((playerCount - 2) * 4) + playerId];
+    rank = gGPCurrentRaceRankByPlayerId[playerId];
+    if (rank == ++rankIdx) {
         set_text_color(gGlobalTimer % 3);
     } else {
         set_text_color(TEXT_YELLOW);
     }
-    text_draw(temp_s0->column + 4, temp_s0->row + 0x5A, "1 ｓ ー", 0, 0.8f, 0.8f);
-    temp_v0 = arg2 + (arg1 * 3);
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x69, "1 ｓ ー", 0, 0.8f, 0.8f);
+    temp_v0 = placeAry + (playerId * 3);
     convert_number_to_ascii(temp_v0[0], sp40); // first place tally for each player
-    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x5A, sp40, 0, 0.8f, 0.8f);
-    if (rank == ++sp38) {
+    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x69, sp40, 0, 0.8f, 0.8f);
+    if (rank == ++rankIdx) {
         set_text_color(gGlobalTimer % 3);
     } else {
         set_text_color(TEXT_BLUE);
     }
-    text_draw(temp_s0->column + 4, temp_s0->row + 0x69, "2 ｎ ー", 0, 0.8f, 0.8f);
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x78, "2 ｎ ー", 0, 0.8f, 0.8f);
     convert_number_to_ascii(temp_v0[1], sp40); // second place tally for each player
-    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x69, sp40, 0, 0.8f, 0.8f);
-    if (++sp38 == rank) {
+    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x78, sp40, 0, 0.8f, 0.8f);
+    if (++rankIdx == rank) {
         set_text_color(gGlobalTimer % 3);
     } else {
         set_text_color(TEXT_RED);
     }
-    text_draw(temp_s0->column + 4, temp_s0->row + 0x78, "3 ｒ ー", 0, 0.8f, 0.8f);
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x87, "3 ｒ ー", 0, 0.8f, 0.8f);
     convert_number_to_ascii(temp_v0[2], sp40); // third place tally for each player
-    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x78, sp40, 0, 0.8f, 0.8f);
+    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x87, sp40, 0, 0.8f, 0.8f);
+
+    // show time if player has finished
+    if (gFinished[playerId]){
+        // flash timer for winner
+        if (rank == 0){
+            set_text_color(gGlobalTimer % 3);
+        }
+        else{
+            set_text_color(TEXT_YELLOW);
+        }
+        finishTimeCopy = (s32) (1000 * gFinishTime[playerId]);
+
+        // 48 is the offset from digits to ASCII code string representations
+        finishTimeText[0] = func_8004F674(&finishTimeCopy, 60000) + 48;
+        finishTimeText[1] = 39; // '
+        finishTimeText[2] = func_8004F674(&finishTimeCopy, 10000) + 48;
+        finishTimeText[3] = func_8004F674(&finishTimeCopy, 1000) + 48;
+        finishTimeText[4] = 34; // "
+        finishTimeText[5] = func_8004F674(&finishTimeCopy, 100) + 48;
+        finishTimeText[6] = func_8004F674(&finishTimeCopy, 10) + 48;
+        finishTimeText[7] = finishTimeCopy + 48;
+        text_draw(temp_s0->column + 4, temp_s0->row + 0x5A, finishTimeText, 0, 0.7f, 0.7f);
+    }
 }
 
 void func_800A70E8(MenuItem* arg0) {

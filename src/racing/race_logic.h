@@ -16,7 +16,7 @@ void func_8028EC38(s32);
 void play_music_for_current_track(s32);
 void start_race(void);
 f32 func_8028EE8C(s32);
-void func_8028EEF0(s32);
+void add_cinematic_mode(s32);
 void func_8028EF28(void);
 void func_8028F3E8(void);
 void update_race_position_data(void);
