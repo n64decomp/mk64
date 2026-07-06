@@ -267,7 +267,7 @@ extern s16 get_course_id_for_tournament_cursor(s32 cupSelection, s32 courseIndex
 // end of menus.c variables
 
 // start of custom menu var
-#define CUSTOM_MENU_ROWS 13
+#define CUSTOM_MENU_ROWS 9
 #define CUSTOM_MENU_VALUE_COUNT 3
 
 extern s8 gCustomMenuTitle;                         // tournament rom credits title

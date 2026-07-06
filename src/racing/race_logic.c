@@ -869,7 +869,7 @@ void func_8028F970(void) {
         if (gModeSelection == VERSUS) {
             // pausing is gated by sPauseHoldCounter, which increments every frame player i holds start
             if ((controller->button & START_BUTTON) && (!(controller->button & R_TRIG)) &&
-                (!(controller->button & L_TRIG)) && (sPauseHoldCounter[i] >= 60)) {
+                (!(controller->button & L_TRIG)) && (sPauseHoldCounter[i] >= 15)) {
                 func_8028DF00();
                 gIsGamePaused = (controller - gControllerOne) + 1;
                 controller->buttonPressed = 0;

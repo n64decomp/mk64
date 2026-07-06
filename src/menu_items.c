@@ -368,11 +368,8 @@ s8 gTournamentTrainBoat = 0;
 s8 gTournamentAA = 0;
 s8 gTournamentForceMap = 0;
 s8 gTournamentShellLimit = 0; // not currently in menu
-s8 gTournamentTimer = 0;
-s8 gTournamentTrophy = 0;
-s8 gPracticeMode = 0;
 s8 gTournamentExtraMode = 0;
-s8 gTournamentReverseMode = 0;
+
 
 
 // Course name abbreviations for each tournament mode
@@ -5813,11 +5810,7 @@ void render_custom_overlay(void) {
     char valBuf[4];
     MenuItem cursorItem;
     Unk_D_800E70A0 sp84;
-
-    // // temp var for debug font
-    // s32 x1;
-    // s32 y1;
-
+    
 
     /* Menu items; if an entry is empty, fallback to "Modifier N" */
     static const char* customModifierNames[CUSTOM_MENU_ROWS] = {
@@ -5829,11 +5822,8 @@ void render_custom_overlay(void) {
         "mp train boat",
         "AA",
         "force minimap",
-        "vs timer",
-        "trophy",
-        "practice",
-        "extra",
-        "reverse" /* keep last empty if CUSTOM_MENU_ROWS > 12 */
+        "extra"
+        /* keep last empty if CUSTOM_MENU_ROWS > 12 */
     };
 
     /* per-option label arrays */
@@ -5845,24 +5835,15 @@ void render_custom_overlay(void) {
     static const char* mpTrainBoat_labels[] = {"default", "enabled", "train", "boat"};
     static const char* AA_labels[] = {"default", "disabled"};
     static const char* minimap_labels[] = {"default", "prog view", "map"};
-    static const char* timer_labels[] = {"default", "enabled"};
-    static const char* trophy_labels[] = {"default", "enabled"};
-    static const char* practice_labels[] = {"default", "enabled"};
     static const char* extra_labels[] = {"default", "enabled"};
-    static const char* reverse_labels[] = {"default", "enabled"};
 
     set_text_color(TEXT_YELLOW);
 
     // title (centered)
     print_text1_center_mode_1(x, y - 0x28, "WEATHERTON  ABNEY  CLIMATEE  ZSERF", 0, 0.70f, 0.70f);
 
-    // /* use debug font helper */
-    // x1 = 0;
-    // y1 = 0;
-    // func_800579B8(x1, y1, "WEATHERTON  ABNEY  CLIMATEE");
-
     // version / date (smaller) - left-aligned to start under 'KART'
-    print_text1_left(x + 0x5A, y + 0x06, "TE V2026-06-28", 0, 0.65f, 0.65f);
+    print_text1_left(x + 0x78, y + 0x06, "TE V2026-07-06 BETA", 0, 0.65f, 0.65f);
 
     // option name placeholders (second column) and values (third column)
     for (i = 0; i < CUSTOM_MENU_ROWS; i++) {
@@ -5886,25 +5867,6 @@ void render_custom_overlay(void) {
         if (customModifierNames[i][0] != '\0') {
             text_rainbow_effect(gCustomMenuSelection, i, TEXT_YELLOW);
             print_text_mode_1(x - 0x40, rowY, (char*)customModifierNames[i], 0, 0.6f, 0.6f);
-        } else {
-            /* Build "Modifier N" manually to avoid linking snprintf */
-            const char* prefix = "Modifier ";
-            int num = i + 1;
-            int pos = 0;
-            const char* p = prefix;
-            while (*p && pos < (int)sizeof(nameBuf) - 1) {
-                nameBuf[pos++] = *p++;
-            }
-            if (num >= 10 && pos < (int)sizeof(nameBuf) - 2) {
-                nameBuf[pos++] = '0' + (num / 10);
-                nameBuf[pos++] = '0' + (num % 10);
-            } else if (pos < (int)sizeof(nameBuf) - 1) {
-                nameBuf[pos++] = '0' + (num % 10);
-            }
-            nameBuf[pos] = '\0';
-            // default case i guess
-            text_rainbow_effect(gCustomMenuSelection, i, TEXT_YELLOW);
-            print_text_mode_1(x - 0x20, rowY, nameBuf, 0, 0.6f, 0.6f);
         }
 
         /* third column: current value for this row */
@@ -5974,45 +5936,13 @@ void render_custom_overlay(void) {
             gTournamentForceMap = idx;
             break;
         case 8:
-            /* vs timer: labels (default, enabled) */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(timer_labels) / sizeof(timer_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x50, rowY, (char*)timer_labels[idx], 0, 0.6f, 0.6f);
-            gTournamentTimer = idx;
-            break;
-        case 9:
-            /* trophy ceremony: labels (default, enabled) */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(trophy_labels) / sizeof(trophy_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x50, rowY, (char*)trophy_labels[idx], 0, 0.6f, 0.6f);
-            gTournamentTrophy = idx;
-            break;    
-        case 10:
-            /* practice mode: labels (default, enabled) */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(practice_labels) / sizeof(practice_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x50, rowY, (char*)practice_labels[idx], 0, 0.6f, 0.6f);
-            gPracticeMode = idx;
-            break;
-        case 11:
             /* extra: labels (default, enabled) */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(extra_labels) / sizeof(extra_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x50, rowY, (char*)extra_labels[idx], 0, 0.6f, 0.6f);
-            gTournamentExtraMode = idx;
-            break;
-        case 12:
-            /* reverse: labels (default, enabled) */
-            idx = gCustomMenuOptionValues[i];
-            if (idx < 0) idx = 0;
-            if (idx >= (int)(sizeof(reverse_labels) / sizeof(reverse_labels[0]))) idx = 0;
-            print_text1_center_mode_1(x + 0x50, rowY, (char*)reverse_labels[idx], 0, 0.6f, 0.6f);
-            gTournamentReverseMode = idx;
-            break;  
+             idx = gCustomMenuOptionValues[i];
+             if (idx < 0) idx = 0;
+             if (idx >= (int)(sizeof(extra_labels) / sizeof(extra_labels[0]))) idx = 0;
+             print_text1_center_mode_1(x + 0x50, rowY, (char*)extra_labels[idx], 0, 0.6f, 0.6f);
+             gTournamentExtraMode = idx;
+             break;
         }
     }
 }

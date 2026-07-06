@@ -4793,6 +4793,7 @@ UNUSED void func_80057960(s32 arg0, s32 arg1, char* arg2, u32 arg3) {
     func_800573E4(arg0, arg1, D_800E5628[0x42]);
 }
 
+// use debug font to print string
 UNUSED void func_800579B8(s32 arg0, s32 arg1, char* arg2) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
