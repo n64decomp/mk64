@@ -550,8 +550,9 @@ void func_8028EF28(void) {
     for (playerId = 0; playerId < NUM_PLAYERS; playerId++) {
         Player* player = &gPlayers[playerId];
 
-        // skip slots that don't have active player
-        if ((player->type & PLAYER_EXISTS) == 0) {
+        // skip finished players (players in cinematic mode)
+        // added condition to prevent double finishes/Wonn from cheating
+        if ((gPlayers[playerId].type & PLAYER_CINEMATIC_MODE) != 0) {
             continue;
         }
 
