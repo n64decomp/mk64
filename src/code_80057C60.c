@@ -41,6 +41,8 @@
 //! @warning this macro is undef'd at the end of this file
 #define MAKE_RGB(r, g, b) (((r) << 0x10) | ((g) << 0x08) | (b << 0x00))
 
+bool gFinished[8];
+f32 gFinishTime[8];
 s32 D_80165590;
 s32 D_80165594;
 s32 D_80165598;

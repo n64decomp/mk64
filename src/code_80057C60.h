@@ -257,6 +257,8 @@ void func_8006E940(Player*, s8, s8);
 void func_80075CA8(void);
 void func_80085214();
 
+extern bool gFinished[];
+extern f32 gFinishTime[];
 extern s16 D_800E4730[];
 extern u8** D_800E4770[];
 extern u8** D_800E47A0[];

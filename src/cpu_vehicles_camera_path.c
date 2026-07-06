@@ -706,16 +706,17 @@ void detect_wrong_player_direction(s32 playerId, Player* player) {
     gPreviousLapProgressScore[playerId] = gNumPathPointsTraversed[playerId];
 }
 
-void set_places(void) {
-    s32 temp_s2;
-    f32 temp_f0;
-    s32 rankPlayer[8];
-    s32 a_really_cool_variable_name;
-    UNUSED s32 pad;
+void set_places(void){
+    s32 playerIdx;
+    s32 rankIdx;
+    s32 rankOld;
     s32 numPlayer;
-    s32 playerId;
-    s32 temp_a0;
-    s32 var_t1_3;
+    bool playerProcessed[8];
+    bool bestIsFinished;
+    f32 bestFinishTime;
+    f32 bestCourseCompletionPercent;
+    s32 bestPlayerIdx;
+    s32 playerIdByRank[8];
 
     switch (gModeSelection) {
         case BATTLE:
@@ -730,70 +731,61 @@ void set_places(void) {
             break;
     }
 
-    if (D_8016348C == 0) {
-        for (playerId = 0; playerId < numPlayer; playerId++) {
-            temp_a0 = gGPCurrentRacePlayerIdByRank[playerId];
-            rankPlayer[playerId] = temp_a0;
-            gCourseCompletionPercentByRank[playerId] = gCourseCompletionPercentByPlayerId[temp_a0];
-        }
-    } else {
-        for (playerId = 0; playerId < numPlayer; playerId++) {
-            temp_a0 = gGPCurrentRacePlayerIdByRank[playerId];
-            rankPlayer[playerId] = temp_a0;
-            gCourseCompletionPercentByRank[playerId] = -gTimePlayerLastTouchedFinishLine[temp_a0];
-        }
+    for (playerIdx = 0; playerIdx < numPlayer; playerIdx++){
+        playerProcessed[playerIdx] = false;
+        gPreviousGPCurrentRaceRankByPlayerId[playerIdx] = gGPCurrentRaceRankByPlayerId[playerIdx];
+        playerIdByRank[gGPCurrentRaceRankByPlayerId[playerIdx]] = playerIdx;
     }
 
-    for (playerId = 0; playerId < numPlayer - 1; playerId++) {
-        if ((gPlayers[gGPCurrentRacePlayerIdByRank[playerId]].type & 0x800)) {
-            continue;
-        }
+    // finds best player, puts them in 1st. 
+    // Best remaining player in 2nd...
+    for (rankIdx = 0; rankIdx < numPlayer; rankIdx++){
+        bestIsFinished = false;
+        // deliberately absurd value so that any player is better than it
+        bestFinishTime = 1000000;
+        bestCourseCompletionPercent = -1000000;
+        bestPlayerIdx = -1;
 
-        for (var_t1_3 = playerId + 1; var_t1_3 < numPlayer; var_t1_3++) {
-            if (gCourseCompletionPercentByRank[playerId] < gCourseCompletionPercentByRank[var_t1_3]) {
-                if (!(gPlayers[gGPCurrentRacePlayerIdByRank[var_t1_3]].type & 0x800)) {
-                    temp_s2 = rankPlayer[playerId];
-                    rankPlayer[playerId] = rankPlayer[var_t1_3];
-                    rankPlayer[var_t1_3] = temp_s2;
-                    temp_f0 = gCourseCompletionPercentByRank[playerId];
-                    gCourseCompletionPercentByRank[playerId] = gCourseCompletionPercentByRank[var_t1_3];
-                    gCourseCompletionPercentByRank[var_t1_3] = temp_f0;
+        /* uses previous ranks as tie-breaker. Only really relevant when
+           racers are not finished as they use course indexes, which is not very precise. 
+           Finish times are floating point, so it's almost impossible to get a true tie
+           among finished players */
+        for (rankOld = 0; rankOld < numPlayer; rankOld++){
+            playerIdx = playerIdByRank[rankOld];
+            if (playerProcessed[playerIdx]){
+                continue;
+            }
+            if (bestIsFinished){
+                if (gFinished[playerIdx] && gFinishTime[playerIdx] < bestFinishTime){
+                    bestFinishTime = gFinishTime[playerIdx];
+                    bestPlayerIdx = playerIdx;
+                }
+            } else {
+                if (gFinished[playerIdx]){
+                    bestIsFinished = true;
+                    bestFinishTime = gFinishTime[playerIdx];
+                    bestPlayerIdx = playerIdx;
+                } else {
+                    if (gCourseCompletionPercentByPlayerId[playerIdx] > bestCourseCompletionPercent){
+                        bestCourseCompletionPercent = gCourseCompletionPercentByPlayerId[playerIdx];
+                        bestPlayerIdx = playerIdx;
+                    }
                 }
             }
         }
-    }
+        playerProcessed[bestPlayerIdx] = true;
 
-    for (playerId = 0; playerId < NUM_PLAYERS; playerId++) {
-        gPreviousGPCurrentRaceRankByPlayerId[playerId] = gGPCurrentRaceRankByPlayerId[playerId];
-    }
-
-    for (playerId = 0; playerId < numPlayer; playerId++) {
-        gGPCurrentRacePlayerIdByRank[playerId] = rankPlayer[playerId];
-        gGPCurrentRaceRankByPlayerId[rankPlayer[playerId]] = playerId;
-    }
-
-    for (playerId = 0; playerId < numPlayer; playerId++) {
-        a_really_cool_variable_name = D_80164378[playerId];
-        rankPlayer[playerId] = a_really_cool_variable_name;
-        gCourseCompletionPercentByRank[playerId] = gCourseCompletionPercentByPlayerId[a_really_cool_variable_name];
-    }
-
-    for (playerId = 0; playerId < numPlayer - 1; playerId++) {
-        for (var_t1_3 = playerId + 1; var_t1_3 < numPlayer; var_t1_3++) {
-            if (gCourseCompletionPercentByRank[playerId] < gCourseCompletionPercentByRank[var_t1_3]) {
-                temp_s2 = rankPlayer[playerId];
-                rankPlayer[playerId] = rankPlayer[var_t1_3];
-                rankPlayer[var_t1_3] = temp_s2;
-                temp_f0 = gCourseCompletionPercentByRank[playerId];
-                gCourseCompletionPercentByRank[playerId] = gCourseCompletionPercentByRank[var_t1_3];
-                gCourseCompletionPercentByRank[var_t1_3] = temp_f0;
-            }
+        gGPCurrentRaceRankByPlayerId[bestPlayerIdx] = rankIdx;
+        gGPCurrentRacePlayerIdByRank[rankIdx] = bestPlayerIdx;
+        D_80164378[rankIdx] = gGPCurrentRacePlayerIdByRank[rankIdx];
+        gGPCurrentRaceRankByPlayerIdDup[rankIdx] = bestPlayerIdx;
+        // I am 90% sure this is unnecessary because gCourseCompletionPercentByRank is always reset when it is called,
+        // but I'm keeping it out of abundence of caution to be consistent with the old version of set_places
+        if (D_8016348C == 0) {
+            gCourseCompletionPercentByRank[rankIdx] = gCourseCompletionPercentByPlayerId[bestPlayerIdx];
+        } else {
+            gCourseCompletionPercentByRank[rankIdx] = -gTimePlayerLastTouchedFinishLine[bestPlayerIdx];
         }
-    }
-
-    for (playerId = 0; playerId < numPlayer; playerId++) {
-        gGPCurrentRaceRankByPlayerIdDup[rankPlayer[playerId]] = playerId;
-        D_80164378[playerId] = rankPlayer[playerId];
     }
 }
 
@@ -1200,11 +1192,12 @@ void update_cpu_path_completion(s32 playerId, Player* player) {
 
 /**
  * Helps calculate time since player last touched finishline.
+ * Assumes constant z-speed and subtracts portion of frame where the finish line was already crossed
  **/
-f32 func_80009258(UNUSED s32 playerId, f32 arg1, f32 arg2) {
-    f32 temp_f2 = gPathStartZ - arg2;
-    f32 temp_f12 = arg1 - gPathStartZ;
-    return gCourseTimer - ((COURSE_TIMER_ITER_f * temp_f2) / (temp_f2 + temp_f12));
+f32 func_80009258(UNUSED s32 playerId, f32 previousPlayerZ, f32 playerZ) {
+    f32 z_change_after_cross = gPathStartZ - playerZ;
+    f32 z_change_before_cross = previousPlayerZ - gPathStartZ;
+    return gCourseTimer - ((COURSE_TIMER_ITER_f * z_change_after_cross) / (z_change_after_cross + z_change_before_cross));
 }
 
 void update_player_path_completion(s32 playerId, Player* player) {
@@ -1269,6 +1262,10 @@ void update_player_path_completion(s32 playerId, Player* player) {
         if ((var_v1 != 0) && (playerZ <= gPathStartZ)) {
             if (gPathStartZ < previousPlayerZ) {
                 gLapCountByPlayerId[playerId]++;
+                if ((gLapCountByPlayerId[playerId] == 3) && !gFinished[playerId]){
+                    gFinished[playerId] = true;
+                    gFinishTime[playerId] = func_80009258(playerId, previousPlayerZ, playerZ);
+                }
                 if ((gModeSelection == GRAND_PRIX) && (gLapCountByPlayerId[playerId] == 5)) {
                     if (gGPCurrentRaceRankByPlayerIdDup[playerId] == 7) {
                         // clang-format off
@@ -1411,6 +1408,7 @@ void update_player(s32 playerId) {
     UNUSED s32 pad3[10];
     TrackPathPoint* pathPoint;
     f32 onePointFive = 1.5f;
+    s8 numPlayer;
 
     player = &gPlayers[playerId];
     if ((s32) GET_COURSE_AIMaximumSeparation >= 0) {
@@ -1460,7 +1458,22 @@ void update_player(s32 playerId) {
                 player->unk_044 &= ~0x0001;
             }
             update_player_path_completion(playerId, player);
-            if ((gCurrentCourseId != COURSE_AWARD_CEREMONY) && ((D_80163240[playerId] == 1) || (playerId == 0))) {
+
+            switch (gModeSelection) {
+                case BATTLE:
+                default:
+                    return; // HEY! returns, not breaks
+                case GRAND_PRIX:
+                case TIME_TRIALS:
+                    numPlayer = NUM_PLAYERS;
+                    break;
+                case VERSUS:
+                    numPlayer = gPlayerCount;
+                    break;
+            }
+
+            // checks on last player to ensure all players positions have been updated
+            if ((gCurrentCourseId != COURSE_AWARD_CEREMONY) && (playerId == (numPlayer - 1))) {
                 set_places();
             }
             if (player->type & PLAYER_CPU) {
@@ -2088,6 +2101,9 @@ void init_players(void) {
         gLapCountByPlayerId[i] = -1;
         gCourseCompletionPercentByPlayerId[i] = 0.0f;
         gTimePlayerLastTouchedFinishLine[i] = 0.0f;
+        gFinished[i] = false;
+        // arbitrary large number to be longer than any vs race
+        gFinishTime[i] = 1000000.0f;
         if (gModeSelection == GRAND_PRIX) {
             if (1) {};
             if (1) {}; // Maybe some debug code?
