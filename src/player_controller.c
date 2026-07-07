@@ -591,7 +591,7 @@ void func_80028C44(Player* player, Camera* camera, s8 playerId, s8 screenId) {
 }
 
 void func_80028D3C(Player* player, Camera* camera, s8 playerId, s8 screenId) {
-    if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (D_800DC510 != 5)) || (player->lakituProps & 2) != 0 ||
+    if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (gRaceState != RACE_DONE)) || (player->lakituProps & 2) != 0 ||
         (player->lakituProps & LAKITU_SCENE) != 0 ||
         (player->effects & (LIGHTNING_EFFECT | EXPLOSION_CRASH_EFFECT | HIT_BY_STAR_EFFECT | SQUISH_EFFECT |
                             POST_SQUISH_EFFECT | TERRAIN_TUMBLE_EFFECT | 0xC00 | 0xC0)) != 0) {
@@ -2039,7 +2039,7 @@ void apply_effect(Player* player, s8 playerIndex, s8 arg2) {
         func_8008D8B4(player, playerIndex);
         player_decelerate_alternative(player, 10.0f);
     }
-    if (D_800DC510 != 5) {
+    if (gRaceState != RACE_DONE) {
         if (player->triggers & LOSE_BATTLE_EFFECT) {
             func_8008FC64(player, playerIndex);
         }
