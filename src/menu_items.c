@@ -129,6 +129,7 @@ Unk_D_800E70A0 D_800E7108[][4] = {
     },
 };
 
+// not character potraits
 Unk_D_800E70A0 D_800E7148[] = {
     { 0x17, 0x3b, 0x00, 0x00 },
     { 0x5d, 0x3b, 0x00, 0x00 },
@@ -202,23 +203,24 @@ Unk_D_800E70A0 D_800E7278[] = {
     { 0xffc0, 0xf0, 0x00, 0x00 },   { 0x140, 0xf0, 0x00, 0x00 },
 };
 
-Unk_D_800E70A0 D_800E72F8 = { 0x140, 0x23, 0x00, 0x00 };
+Unk_D_800E70A0 D_800E72F8 = { 0x140, 0x1e, 0x00, 0x00 };
 
 // In a perfect world this would be `Unk_D_800E70A0 D_800E7300[][4]`
+// character potrait position tables; used in at least VS mode
 Unk_D_800E70A0 D_800E7300[] = {
-    { 0x50, 0x23, 0x00, 0x00 }, { 0xb0, 0x23, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
+    { 0x50, 0x1e, 0x00, 0x00 }, { 0xb0, 0x1e, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
 
-    { 0x32, 0x23, 0x00, 0x00 }, { 0x80, 0x23, 0x00, 0x00 }, { 0xce, 0x23, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
+    { 0x32, 0x1e, 0x00, 0x00 }, { 0x80, 0x1e, 0x00, 0x00 }, { 0xce, 0x1e, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
 
-    { 0x18, 0x23, 0x00, 0x00 }, { 0x5d, 0x23, 0x00, 0x00 }, { 0xa2, 0x23, 0x00, 0x00 }, { 0xe7, 0x23, 0x00, 0x00 },
+    { 0x18, 0x1e, 0x00, 0x00 }, { 0x5d, 0x1e, 0x00, 0x00 }, { 0xa2, 0x1e, 0x00, 0x00 }, { 0xe7, 0x1e, 0x00, 0x00 },
 };
 
-// Versus menu coordinates
+// Versus menu coordinates; used for cursor
 Unk_D_800E70A0 D_800E7360[] = {
-    { 0x61, 0xb6, 0x00, 0x00 },
-    { 0x61, 0xc5, 0x00, 0x00 },
-    { 0x61, 0xd4, 0x00, 0x00 },
-    { 0x61, 0xe3, 0x00, 0x00 },
+    { 0x61, 0xb1, 0x00, 0x00 },
+    { 0x61, 0xc0, 0x00, 0x00 },
+    { 0x61, 0xcf, 0x00, 0x00 },
+    { 0x61, 0xde, 0x00, 0x00 },
 };
 
 Unk_D_800E70A0 D_800E7380[] = {
@@ -8328,12 +8330,12 @@ void func_800A638C(MenuItem* arg0) {
             text_rainbow_effect(arg0->state - 0xA, var_s1, TEXT_GREEN);
             if ((var_s1 == 0) && (gModeSelection == VERSUS) && ((gPlayerCount == 3) || (gPlayerCount == 4))) {
                 continueText = "CONTINUE TO ";
-                print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1) + 15, continueText, 0, 0.8f, 0.8f);
+                print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1) + 10, continueText, 0, 0.8f, 0.8f);
                 xOffset = (get_string_width(continueText) * 0.8f) + 1.0f;
-                print_text_mode_1((s32) (0x00000069 + xOffset), 0xAE + (0xF * var_s1) + 15, getNextCourseAbbrString(),
+                print_text_mode_1((s32) (0x00000069 + xOffset), 0xAE + (0xF * var_s1) + 10, getNextCourseAbbrString(),
                                   0, 0.8f, 0.8f);
             } else {
-                print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1) + 15, gTextPauseButton[var_s1 + 1], 0, 0.8f,
+                print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1) + 10, gTextPauseButton[var_s1 + 1], 0, 0.8f,
                                   0.8f);
             }
         }
@@ -8434,7 +8436,7 @@ void func_800A69C8(UNUSED MenuItem* arg0) {
             set_text_color((s32) gGlobalTimer % 3);
         }
         func_800A79F4(var_s4[0], sp74);
-        text_draw(thing->column + 0x10, thing->row + 0x75 + 15, sp74, 0, 1.0f, 1.0f);
+        text_draw(thing->column + 0x10, thing->row + 0x75 + 10, sp74, 0, 1.0f, 1.0f);
         print_text1_center_mode_2(D_800E7380[playerId].column, D_800E7380[playerId].row, temp_s3, 0, 0.65f, 1.0f);
 
         // show finish time if finished
@@ -8565,7 +8567,7 @@ void func_800A6E94(s32 playerCount, s32 playerId, u8* placeAry) {
     // x-coord increment will be different for 3p and 4p vs
     base_xPos_4p = 0x1A; 
     base_xPos_3p = 0x34;
-    Y_pos = 0x20;
+    Y_pos = 0x1B;
     // i: player index
     i = 0;
 
