@@ -5829,7 +5829,7 @@ void render_custom_overlay(void) {
     };
 
     /* per-option label arrays */
-    static const char* tracks_labels[] = {"VA", "kalliera", "kalliera mmf"};
+    static const char* tracks_labels[] = {"VA", "kaillera", "kaillera mmf"};
     static const char* stats_labels[] = {"all yoshi", "default", "all wario"};
     static const char* scaling_labels[] = {"default", "30fps", "60fps"};
     static const char* widescreen_labels[] = {"default", "enabled"};
@@ -5874,7 +5874,7 @@ void render_custom_overlay(void) {
         /* third column: current value for this row */
         switch (i) {
         case 0:     
-            /* tracks: custom labels (TE, kalliera, random) */
+            /* tracks: custom labels (TE, kaillera, random) */
             idx = gCustomMenuOptionValues[i];
             if (idx < 0) idx = 0;
             if (idx >= (int)(sizeof(tracks_labels) / sizeof(tracks_labels[0]))) idx = 0;
