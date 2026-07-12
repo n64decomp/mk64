@@ -8185,7 +8185,7 @@ void func_800A69C8(UNUSED MenuItem* arg0) {
                 if (gGPCurrentRaceRankByPlayerId[var_s0] != 0) {
                     var_v1 = 1;
                 }
-                var_s4 = &gVersusResults2P[var_s0];
+                var_s4 = &nmi_gVersusResults2P[var_s0];
                 break;
             case BATTLE:
                 if (var_s0 != gPlayerWinningIndex) {
@@ -8215,7 +8215,7 @@ void func_800A6BEC(UNUSED MenuItem* arg0) {
     for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
         switch (gModeSelection) { /* irregular */
             case VERSUS:
-                func_800A6E94(3, var_s0, gVersusResults3P);
+                func_800A6E94(3, var_s0, nmi_gVersusResults3P);
                 break;
             case BATTLE:
                 func_800A6D94(3, var_s0, gNmiUnknown5);
@@ -8230,7 +8230,7 @@ void func_800A6CC0(UNUSED MenuItem* arg0) {
     for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
         switch (gModeSelection) { /* irregular */
             case VERSUS:
-                func_800A6E94(4, var_s0, gVersusResults4P);
+                func_800A6E94(4, var_s0, nmi_gVersusResults4P);
                 break;
             case BATTLE:
                 func_800A6D94(4, var_s0, gNmiUnknown6);

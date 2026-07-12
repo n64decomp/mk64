@@ -498,7 +498,7 @@ void start_race(void) {
     }
 
     if (gRaceState == RACE_STAGING) {
-        gRaceState = RACE_CURRENT;
+        gRaceState = RACE_IN_PROGRESS;
     }
 
     for (i = 0; i < NUM_PLAYERS; i++) {
@@ -562,7 +562,7 @@ void func_8028EF28(void) {
                         D_802BA048 = 1;
                     }
                     if ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
-                        gRaceState = RACE_HAS_HUMAN_FINISHER;
+                        gRaceState = RACE_HUMAN_FINISHED;
                     }
                     if (gModeSelection == TIME_TRIALS) {
                         func_80005AE8(player);
@@ -576,10 +576,10 @@ void func_8028EF28(void) {
                         switch (gPlayerCountSelection1) {
                             case 2:
                                 if (currentPosition == 0) {
-                                    *(gVersusResults2P + playerId) += 1;
+                                    *(nmi_gVersusResults2P + playerId) += 1;
                                 }
-                                if (*(gVersusResults2P + playerId) > 99) {
-                                    *(gVersusResults2P + playerId) = 99;
+                                if (*(nmi_gVersusResults2P + playerId) > 99) {
+                                    *(nmi_gVersusResults2P + playerId) = 99;
                                 }
                                 gRaceState = RACE_DONE;
                                 playerId = gPlayerPositionLUT[1];
@@ -589,10 +589,10 @@ void func_8028EF28(void) {
                                 break;
                             case 3:
                                 if (currentPosition < 3) {
-                                    *(gVersusResults3P + playerId * 3 + currentPosition) += 1;
+                                    *(nmi_gVersusResults3P + playerId * 3 + currentPosition) += 1;
                                 }
-                                if (*(gVersusResults3P + playerId * 3 + currentPosition) > 99) {
-                                    *(gVersusResults3P + playerId * 3 + currentPosition) = 99;
+                                if (*(nmi_gVersusResults3P + playerId * 3 + currentPosition) > 99) {
+                                    *(nmi_gVersusResults3P + playerId * 3 + currentPosition) = 99;
                                 }
                                 /* Because the last player may not finish, their score must be updated when the 2nd
                                    to last racer finishes. */
@@ -606,9 +606,9 @@ void func_8028EF28(void) {
                                     any player who finished this frame already had their lap count updated, so 
                                     nothing will happen */
                                     playerId = gPlayerPositionLUT[2];
-                                    *(gVersusResults3P + playerId * 3 + 2) += 1;
-                                    if (*(gVersusResults3P + playerId * 3 + 2) > 99) {
-                                        *(gVersusResults3P + playerId * 3 + 2) = 99;
+                                    *(nmi_gVersusResults3P + playerId * 3 + 2) += 1;
+                                    if (*(nmi_gVersusResults3P + playerId * 3 + 2) > 99) {
+                                        *(nmi_gVersusResults3P + playerId * 3 + 2) = 99;
                                     }
                                     gPlayers[playerId].triggers |= SPINOUT_TRIGGER;
                                     gPlayers[playerId].type |= PLAYER_CPU;
@@ -617,10 +617,10 @@ void func_8028EF28(void) {
                                 break;
                             case 4:
                                 if (currentPosition < 3) {
-                                    *(gVersusResults4P + playerId * 3 + currentPosition) += 1;
+                                    *(nmi_gVersusResults4P + playerId * 3 + currentPosition) += 1;
                                 }
-                                if (*(gVersusResults4P + playerId * 3 + currentPosition) > 99) {
-                                    *(gVersusResults4P + playerId * 3 + currentPosition) = 99;
+                                if (*(nmi_gVersusResults4P + playerId * 3 + currentPosition) > 99) {
+                                    *(nmi_gVersusResults4P + playerId * 3 + currentPosition) = 99;
                                 }
                                 // if second to last, race is over
                                 if (currentPosition == 2) {
@@ -679,8 +679,8 @@ void func_8028F474(void) {
     s32 i;
 
     switch (gRaceState) {
-        case RACE_CURRENT:
-        case RACE_HAS_HUMAN_FINISHER:
+        case RACE_IN_PROGRESS:
+        case RACE_HUMAN_FINISHED:
         case RACE_DONE:
         case RACE_QUADRANT_RESULTS:
             for (i = 0; i < NUM_PLAYERS; i++) {
@@ -998,7 +998,7 @@ void func_8028FCBC(void) {
             }
             func_8028F4E8();
             break;
-        case RACE_CURRENT:
+        case RACE_IN_PROGRESS:
             if (gModeSelection == BATTLE) {
                 update_player_battle_status();
             } else {
@@ -1008,7 +1008,7 @@ void func_8028FCBC(void) {
             func_8028F4E8();
             func_8028F970();
             break;
-        case RACE_HAS_HUMAN_FINISHER:
+        case RACE_HUMAN_FINISHED:
 
             switch (gModeSelection) {
                 case GRAND_PRIX:

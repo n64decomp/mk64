@@ -130,9 +130,9 @@ u16 D_8015F894;
 // Indexed by Player ID. Track time in seconds since player has last crossed the finish line
 f32 gTimePlayerLastTouchedFinishLine[8];
 
-u8* gVersusResults2P;
-u8* gVersusResults3P;
-u8* gVersusResults4P;
+u8* nmi_gVersusResults2P;
+u8* nmi_gVersusResults3P;
+u8* nmi_gVersusResults4P;
 u8* gNmiUnknown4;
 u8* gNmiUnknown5;
 u8* gNmiUnknown6;
