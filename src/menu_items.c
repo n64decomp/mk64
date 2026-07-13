@@ -5845,7 +5845,7 @@ void render_custom_overlay(void) {
     print_text1_center_mode_1(x, y - 0x28, "WEATHERTON  ABNEY  CLIMATEE  ZSERF", 0, 0.70f, 0.70f);
 
     // version / date (smaller) - left-aligned to start under 'KART'
-    print_text1_left(x + 0x78, y + 0x06, "TE V2026-07-06 BETA", 0, 0.65f, 0.65f);
+    print_text1_left(x + 0x78, y + 0x06, "TE V2026-07-13 BETA 4", 0, 0.65f, 0.65f);
 
     // option name placeholders (second column) and values (third column)
     for (i = 0; i < CUSTOM_MENU_ROWS; i++) {
