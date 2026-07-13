@@ -376,9 +376,9 @@ s8 gTournamentExtraMode = 0;
 
 // Course name abbreviations for each tournament mode
 char* gCourseNamesVA[] = {
-    "WS", "MMF", "KTB", "KD",
+    "LR", "MMF", "KTB", "KD",
     "DKJP", "YV", "BB", "RRd",
-    "LR", "SL", "RRy", "BC",
+    "WS", "SL", "RRy", "BC",
     "TT", "FS", "CM", "MR"
 };
 
