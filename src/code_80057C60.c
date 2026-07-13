@@ -1101,19 +1101,6 @@ void render_hud_2p_horizontal_player_two(void) {
     }
 }
 
-void render_shell_count(void) {
-    if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
-        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        set_matrix_hud_screen();
-        gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER);
-        load_debug_font();
-        print_str_num(0x0, 0x10, "shells ", gNumSpawnedShells);
-        func_80057778();
-        gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER);
-    }
-}
-
 void draw_simplified_hud(s32 playerId) {
     if ((gModeSelection != BATTLE) && (D_80165800[playerId] == 0) && (gIsHUDVisible != 0)) {
         render_hud_timer(playerId);
