@@ -7807,8 +7807,8 @@ void func_80085F74(s32 objectIndex) {
 
 void func_80086074(s32 objectIndex, s32 arg1) {
     set_obj_origin_pos(objectIndex, D_800E6734[arg1 * 3 + 0] * xOrientation, D_800E6734[arg1 * 3 + 1], D_800E6734[arg1 * 3 + 2]);
-    init_texture_object(objectIndex, (u8*) &d_course_rainbow_road_static_tluts[arg1 * 256],
-                        d_course_rainbow_road_static_textures[arg1], 64, 64);
+    init_texture_object(objectIndex, &d_course_rainbow_road_static_tluts[arg1 * 256],
+                        &d_course_rainbow_road_static_textures[arg1], 64, 64);
     func_80085BB4(objectIndex);
 }
 

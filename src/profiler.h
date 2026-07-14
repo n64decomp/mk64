@@ -31,7 +31,6 @@ void profiler_log_thread5_time(enum ProfilerGameEvent eventID);
 void profiler_log_thread4_time(void);
 void profiler_log_gfx_time(enum ProfilerGfxEvent eventID);
 void profiler_log_vblank_time(void);
-void profiler_get_last_gfx_times_ms(s32* rspMs, s32* rdpMs);
 void draw_profiler(void);
 void resource_display(void);
 
