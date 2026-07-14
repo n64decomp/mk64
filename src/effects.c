@@ -202,7 +202,7 @@ void func_8008C528(Player* player, s8 playerIndex) {
     s32 statsCharacterId;
     clean_effect(player, playerIndex);
     func_8008C310(player);
-    temp_v1 = player->characterId;
+    temp_v1 = (gTournamentCharacterStats == 0) ? YOSHI : (gTournamentCharacterStats == 2) ? WARIO : player->characterId;
     statsCharacterId = PLAYER_STATS_CHARACTER_ID(player);
     player->unk_0C2 = 0;
     player->kartHopJerk = D_800E37B0[statsCharacterId];
