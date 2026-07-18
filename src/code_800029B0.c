@@ -130,9 +130,9 @@ u16 D_8015F894;
 // Indexed by Player ID. Track time in seconds since player has last crossed the finish line
 f32 gTimePlayerLastTouchedFinishLine[8];
 
-u8* gNmiUnknown1;
-u8* gNmiUnknown2;
-u8* gNmiUnknown3;
+u8* nmi_gVersusResults2P;
+u8* nmi_gVersusResults3P;
+u8* nmi_gVersusResults4P;
 u8* gNmiUnknown4;
 u8* gNmiUnknown5;
 u8* gNmiUnknown6;
@@ -204,7 +204,7 @@ void setup_race(void) {
     func_80005310();
     func_8003D080();
     init_hud();
-    D_800DC510 = 0;
+    gRaceState = RACE_NONE;
     gNumSpawnedShells = 0;
     D_800DC5B8 = 0;
     D_80152308 = 0;

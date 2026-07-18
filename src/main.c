@@ -1,5 +1,5 @@
 #ifndef GCC
-#define D_800DC510_AS_U16
+#define gRaceState_AS_U16
 #endif
 #include <ultra64.h>
 #include <PR/os.h>
@@ -162,8 +162,8 @@ OSMesg gPIMesgBuf[32];
 OSMesgQueue gPIMesgQueue;
 
 s32 gGamestate = 0xFFFF;
-// D_800DC510 is externed as an s32 in other files. D_800DC514 is only used in main.c, likely a developer mistake.
-u16 D_800DC510 = 0;
+// gRaceState is externed as an s32 in other files. D_800DC514 is only used in main.c, likely a developer mistake.
+u16 gRaceState = RACE_NONE;
 u16 D_800DC514 = 0;
 u16 creditsRenderMode = 0; // Renders the whole track. Displays red if used in normal race mode.
 u16 gDemoMode = DEMO_MODE_INACTIVE;
@@ -1179,10 +1179,10 @@ void thread5_game_loop(UNUSED void* arg) {
     set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) OS_EVENT_SW2);
     // These variables track stats such as player wins.
     // In the event of a console reset, it remembers them.
-    gNmiUnknown1 = &pAppNmiBuffer[0]; // 2  u8's, tracks number of times player 1/2 won a VS race
-    gNmiUnknown2 =
+    nmi_gVersusResults2P = &pAppNmiBuffer[0]; // 2  u8's, tracks number of times player 1/2 won a VS race
+    nmi_gVersusResults3P =
         &pAppNmiBuffer[2]; // 9  u8's, 3x3, tracks number of times player 1/2/3   has placed in 1st/2nd/3rd in a VS race
-    gNmiUnknown3 = &pAppNmiBuffer[11]; // 12 u8's, 4x3, tracks number of times player 1/2/3/4 has placed in 1st/2nd/3rd
+    nmi_gVersusResults4P = &pAppNmiBuffer[11]; // 12 u8's, 4x3, tracks number of times player 1/2/3/4 has placed in 1st/2nd/3rd
                                        // in a VS race
     gNmiUnknown4 = &pAppNmiBuffer[23]; // 2  u8's, tracking number of Battle mode wins by player 1/2
     gNmiUnknown5 = &pAppNmiBuffer[25]; // 3  u8's, tracking number of Battle mode wins by player 1/2/3

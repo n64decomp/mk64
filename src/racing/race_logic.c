@@ -81,7 +81,7 @@ void func_8028E028(void) {
             break;
     }
     func_800CA118((u8) gPlayerWinningIndex);
-    D_800DC510 = 5;
+    gRaceState = RACE_DONE;
     gDemoTimer = 10;
 }
 
@@ -225,7 +225,7 @@ void func_8028E438(void) {
                     func_80019DF4();
                 } else {
                     func_80092564();
-                    D_800DC510 = 7;
+                    gRaceState = RACE_QUADRANT_RESULTS;
                 }
             }
             break;
@@ -399,7 +399,7 @@ void func_8028E678(void) {
         case 4:
             gIsInQuitToMenuTransition = 1;
             gQuitToMenuTransitionCounter = 5;
-            D_800DC510 = 7;
+            gRaceState = RACE_QUADRANT_RESULTS;
             func_8028E3A0();
             break;
     }
@@ -407,7 +407,7 @@ void func_8028E678(void) {
 
 UNUSED void func_8028EC38(s32 arg0) {
     gGotoMode = arg0;
-    D_800DC510 = 6;
+    gRaceState = RACE_QUITTING;
     func_800CA330(25);
     func_800CA388(25);
     D_800DC5B4 = 1;
@@ -497,8 +497,8 @@ void start_race(void) {
         play_music_for_current_track(gCurrentCourseId);
     }
 
-    if (D_800DC510 == 2) {
-        D_800DC510 = 3;
+    if (gRaceState == RACE_STAGING) {
+        gRaceState = RACE_IN_PROGRESS;
     }
 
     for (i = 0; i < NUM_PLAYERS; i++) {
@@ -522,38 +522,38 @@ f32 func_8028EE8C(s32 arg0) {
     return gCourseTimer - ((COURSE_TIMER_ITER_f * temp_f14) / (temp_f14 + temp_f16));
 }
 
-void func_8028EEF0(s32 i) {
+void add_cinematic_mode(s32 i) {
     gPlayers[i].type |= PLAYER_CINEMATIC_MODE;
 }
 
 void func_8028EF28(void) {
     s16 currentPosition;
-    s32 i;
+    s32 playerId;
 
-    for (i = 0; i < NUM_PLAYERS; i++) {
-        Player* player = &gPlayers[i];
+    for (playerId = 0; playerId < NUM_PLAYERS; playerId++) {
+        Player* player = &gPlayers[playerId];
 
-        if ((gPlayers[i].type & PLAYER_EXISTS) == 0) {
+        if ((player->type & PLAYER_EXISTS) == 0) {
             continue;
         }
 
-        if (gLapCountByPlayerId[i] < gPlayers[i].lapCount) {
-            gPlayers[i].lapCount--;
-        } else if (gLapCountByPlayerId[i] > gPlayers[i].lapCount) {
-            gPlayers[i].lapCount++;
+        if (gLapCountByPlayerId[playerId] < player->lapCount) {
+            player->lapCount--;
+        } else if (gLapCountByPlayerId[playerId] > player->lapCount) {
+            player->lapCount++;
+            if ((player->type & PLAYER_HUMAN) != 0) {
+                // When player finishes the race
+                if (player->lapCount == 3) {
+                    add_cinematic_mode(playerId);
 
-            if ((gPlayers[i].type & PLAYER_HUMAN) != 0) {
-                if (gPlayers[i].lapCount == 3) {
-                    func_8028EEF0(i);
-
-                    currentPosition = gPlayers[i].currentRank;
-                    gPlayers[i].type |= PLAYER_CPU;
+                    currentPosition = player->currentRank;
+                    player->type |= PLAYER_CPU;
 
                     if (currentPosition < 4) {
                         D_80150120 = 1;
                     }
 
-                    func_800CA118((u8) i);
+                    func_800CA118((u8) playerId);
                     if ((D_802BA032 & PLAYER_EXISTS) == 0) {
                         D_802BA032 |= PLAYER_EXISTS;
                     }
@@ -561,8 +561,8 @@ void func_8028EF28(void) {
                     if (gModeSelection == GRAND_PRIX && gPlayerCountSelection1 == 2 && D_802BA048 == 0) {
                         D_802BA048 = 1;
                     }
-                    if ((gPlayers[i].type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
-                        D_800DC510 = 4;
+                    if ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
+                        gRaceState = RACE_HUMAN_FINISHED;
                     }
                     if (gModeSelection == TIME_TRIALS) {
                         func_80005AE8(player);
@@ -571,70 +571,80 @@ void func_8028EF28(void) {
                     if (gModeSelection == VERSUS) {
                         gDemoTimer = 180;
                         if (currentPosition == 0) {
-                            gPlayerWinningIndex = i;
+                            gPlayerWinningIndex = playerId;
                         }
                         switch (gPlayerCountSelection1) {
                             case 2:
                                 if (currentPosition == 0) {
-                                    *(gNmiUnknown1 + i) += 1;
+                                    *(nmi_gVersusResults2P + playerId) += 1;
                                 }
-                                if (*(gNmiUnknown1 + i) > 99) {
-                                    *(gNmiUnknown1 + i) = 99;
+                                if (*(nmi_gVersusResults2P + playerId) > 99) {
+                                    *(nmi_gVersusResults2P + playerId) = 99;
                                 }
-                                D_800DC510 = 5;
-                                i = gPlayerPositionLUT[1];
-                                gPlayers[i].triggers |= SPINOUT_TRIGGER;
-                                gPlayers[i].type |= PLAYER_CPU;
-                                func_800CA118((u8) i);
+                                gRaceState = RACE_DONE;
+                                playerId = gPlayerPositionLUT[1];
+                                gPlayers[playerId].triggers |= SPINOUT_TRIGGER;
+                                gPlayers[playerId].type |= PLAYER_CPU;
+                                func_800CA118((u8) playerId);
                                 break;
                             case 3:
                                 if (currentPosition < 3) {
-                                    *(gNmiUnknown2 + i * 3 + currentPosition) += 1;
+                                    *(nmi_gVersusResults3P + playerId * 3 + currentPosition) += 1;
                                 }
-                                if (*(gNmiUnknown2 + i * 3 + currentPosition) > 99) {
-                                    *(gNmiUnknown2 + i * 3 + currentPosition) = 99;
+                                if (*(nmi_gVersusResults3P + playerId * 3 + currentPosition) > 99) {
+                                    *(nmi_gVersusResults3P + playerId * 3 + currentPosition) = 99;
                                 }
+                                /* Because the last player may not finish, their score must be updated when the 2nd
+                                   to last racer finishes. */
                                 if (currentPosition == 1) {
-                                    D_800DC510 = 5;
-                                    i = gPlayerPositionLUT[2];
-                                    *(gNmiUnknown2 + i * 3 + 2) += 1;
-                                    if (*(gNmiUnknown2 + i * 3 + 2) > 99) {
-                                        *(gNmiUnknown2 + i * 3 + 2) = 99;
+                                    gRaceState = RACE_DONE; // triggers results screen
+
+                                 /* This messes with the loop index by setting it to the index of the last player. 
+                                    But, because versus always gives the player with the lower slot/port number
+                                    the advantage if 2 players finish at the same time,  it can only skip finished
+                                    players who do not need more processing. It can run the same index twice, but
+                                    any player who finished this frame already had their lap count updated, so 
+                                    nothing will happen */
+                                    playerId = gPlayerPositionLUT[2];
+                                    *(nmi_gVersusResults3P + playerId * 3 + 2) += 1;
+                                    if (*(nmi_gVersusResults3P + playerId * 3 + 2) > 99) {
+                                        *(nmi_gVersusResults3P + playerId * 3 + 2) = 99;
                                     }
-                                    gPlayers[i].triggers |= SPINOUT_TRIGGER;
-                                    gPlayers[i].type |= PLAYER_CPU;
-                                    func_800CA118((u8) i);
+                                    gPlayers[playerId].triggers |= SPINOUT_TRIGGER;
+                                    gPlayers[playerId].type |= PLAYER_CPU;
+                                    func_800CA118((u8) playerId);
                                 }
                                 break;
                             case 4:
                                 if (currentPosition < 3) {
-                                    *(gNmiUnknown3 + i * 3 + currentPosition) += 1;
+                                    *(nmi_gVersusResults4P + playerId * 3 + currentPosition) += 1;
                                 }
-                                if (*(gNmiUnknown3 + i * 3 + currentPosition) > 99) {
-                                    *(gNmiUnknown3 + i * 3 + currentPosition) = 99;
+                                if (*(nmi_gVersusResults4P + playerId * 3 + currentPosition) > 99) {
+                                    *(nmi_gVersusResults4P + playerId * 3 + currentPosition) = 99;
                                 }
+                                // if second to last, race is over
                                 if (currentPosition == 2) {
-                                    D_800DC510 = 5;
-                                    i = gPlayerPositionLUT[3];
-                                    gPlayers[i].triggers |= SPINOUT_TRIGGER;
-                                    gPlayers[i].type |= PLAYER_CPU;
-                                    func_800CA118((u8) i);
+                                    gRaceState = RACE_DONE;
+                                    playerId = gPlayerPositionLUT[3];
+                                    gPlayers[playerId].triggers |= SPINOUT_TRIGGER;
+                                    gPlayers[playerId].type |= PLAYER_CPU;
+                                    func_800CA118((u8) playerId);
                                 }
                                 break;
                         }
                     }
 
-                } else if (gPlayers[i].lapCount == 2) {
-                    if ((gPlayers[i].type & 0x100) != 0) {
+                } else if (player->lapCount == 2) {
+                    if ((player->type & 0x100) != 0) {
                         return;
                     }
                     if ((D_802BA032 & 0x4000) == 0) {
                         D_802BA032 |= 0x4000;
-                        func_800CA49C((u8) i);
+                        func_800CA49C((u8) playerId);
                     }
                 }
-            } else if (gPlayers[i].lapCount == 3) {
-                func_8028EEF0(i);
+            } else if (player->lapCount == 3) {
+                add_cinematic_mode(playerId);
                 if (gModeSelection == TIME_TRIALS) {
                     func_80005AE8(player);
                 }
@@ -652,15 +662,15 @@ void func_8028F3E8(void) {
 
 // func_8028F3F0
 void update_race_position_data(void) {
-    s16 i;
+    s16 playerId;
     s16 position;
 
-    for (i = 0; i < NUM_PLAYERS; i++) {
-        if (((gPlayers[i].type & PLAYER_EXISTS) != 0) && ((gPlayers[i].type & PLAYER_CINEMATIC_MODE) == 0) &&
-            ((gPlayers[i].type & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
-            position = gGPCurrentRaceRankByPlayerId[i];
-            gPlayers[i].currentRank = position;
-            gPlayerPositionLUT[position] = i;
+    for (playerId = 0; playerId < NUM_PLAYERS; playerId++) {
+        if (((gPlayers[playerId].type & PLAYER_EXISTS) != 0) && ((gPlayers[playerId].type & PLAYER_CINEMATIC_MODE) == 0) &&
+            ((gPlayers[playerId].type & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
+            position = gGPCurrentRaceRankByPlayerId[playerId];
+            gPlayers[playerId].currentRank = position;
+            gPlayerPositionLUT[position] = playerId;
         }
     }
 }
@@ -668,16 +678,16 @@ void update_race_position_data(void) {
 void func_8028F474(void) {
     s32 i;
 
-    switch (D_800DC510) {
-        case 3:
-        case 4:
-        case 5:
-        case 7:
+    switch (gRaceState) {
+        case RACE_IN_PROGRESS:
+        case RACE_HUMAN_FINISHED:
+        case RACE_DONE:
+        case RACE_QUADRANT_RESULTS:
             for (i = 0; i < NUM_PLAYERS; i++) {
                 update_player(i);
             }
-        case 1:
-        case 2:
+        case RACE_PREP:
+        case RACE_STAGING:
             update_vehicles();
             break;
     }
@@ -691,7 +701,7 @@ void func_8028F4E8(void) {
             func_800CA330(0x19);
             func_800CA388(0x19);
             gGotoMode = START_MENU_FROM_QUIT;
-            D_800DC510 = 6;
+            gRaceState = RACE_QUITTING;
             D_800DC5B4 = 1;
             D_800DC5B0 = 1;
             D_800DC5B8 = 0;
@@ -874,7 +884,7 @@ void func_8028F970(void) {
 
 void func_8028FBD4(void) {
     gGotoMode = START_MENU_FROM_QUIT;
-    D_800DC510 = 6;
+    gRaceState = RACE_QUITTING;
     func_800CA330(25);
     func_800CA388(25);
     D_800DC5B4 = 1;
@@ -914,8 +924,8 @@ void func_8028FCBC(void) {
     if (gDemoUseController) {
         end_demo_update();
     }
-    switch (D_800DC510) {
-        case 0:
+    switch (gRaceState) {
+        case RACE_NONE:
             if (!gDemoMode) { // If we're not in the demo mode, play the starting fanfare for the current mode (Grand Prix / Time Trials / VS / Battle)
                 if (gModeSelection == GRAND_PRIX) {
                     play_sequence2(SEQ_EVENT_RACE_STARTING);
@@ -926,7 +936,7 @@ void func_8028FCBC(void) {
                 }
             }
             func_80002DAC();
-            D_800DC510 = 1;
+            gRaceState = RACE_PREP;
             D_80150118 = 3.0f;
             creditsRenderMode = 0;
             D_802BA032 = 0;
@@ -949,7 +959,7 @@ void func_8028FCBC(void) {
             }
             D_800DC5B8 = 1;
             break;
-        case 1:
+        case RACE_PREP:
             func_8028F914();
             if (D_802BA034 == 1.0f) {
                 if (gActiveScreenMode != SCREEN_MODE_1P) {
@@ -959,7 +969,7 @@ void func_8028FCBC(void) {
                         func_802A7728();
                     }
                 }
-                D_800DC510 = 2;
+                gRaceState = RACE_STAGING;
                 D_800DC5B0 = 0;
                 D_800DC5B8 = 1;
                 func_80078F64();
@@ -979,7 +989,7 @@ void func_8028FCBC(void) {
             }
             func_8028F4E8();
             break;
-        case 2:
+        case RACE_STAGING:
             if (gDemoMode) {
                 start_race();
             }
@@ -988,7 +998,7 @@ void func_8028FCBC(void) {
             }
             func_8028F4E8();
             break;
-        case 3:
+        case RACE_IN_PROGRESS:
             if (gModeSelection == BATTLE) {
                 update_player_battle_status();
             } else {
@@ -998,7 +1008,7 @@ void func_8028FCBC(void) {
             func_8028F4E8();
             func_8028F970();
             break;
-        case 4:
+        case RACE_HUMAN_FINISHED:
 
             switch (gModeSelection) {
                 case GRAND_PRIX:
@@ -1010,7 +1020,7 @@ void func_8028FCBC(void) {
                     switch (gScreenModeSelection) {
                         case SCREEN_MODE_1P:
                             gDemoTimer = 690;
-                            D_800DC510 = 5;
+                            gRaceState = RACE_DONE;
                             func_8028E298();
                             break;
                         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
@@ -1026,7 +1036,7 @@ void func_8028FCBC(void) {
 
                                 func_8028E298();
                                 gDemoTimer = 600;
-                                D_800DC510 = 5;
+                                gRaceState = RACE_DONE;
                             }
                             break;
                     }
@@ -1040,14 +1050,14 @@ void func_8028FCBC(void) {
                 case TIME_TRIALS:
                     gDemoTimer = 360;
                     if (D_8015F890 != 0) {
-                        D_800DC510 = 7;
+                        gRaceState = RACE_QUADRANT_RESULTS;
                     } else {
-                        D_800DC510 = 5;
+                        gRaceState = RACE_DONE;
                     }
                     break;
             }
             break;
-        case 5:
+        case RACE_DONE:
             if (gDemoTimer != 0) {
                 gDemoTimer--;
             } else {
@@ -1057,7 +1067,7 @@ void func_8028FCBC(void) {
                             func_8028E678();
                         } else if (gScreenModeSelection == SCREEN_MODE_1P) {
                             func_80092564();
-                            D_800DC510 = 7;
+                            gRaceState = RACE_QUADRANT_RESULTS;
                         } else {
                             func_8028E438();
                         }
@@ -1073,14 +1083,14 @@ void func_8028FCBC(void) {
             }
             func_8028F4E8();
             break;
-        case 6:
+        case RACE_QUITTING:
             func_8028F8BC();
             if (D_802BA034 <= 0) {
                 gIsInQuitToMenuTransition = 1;
                 gQuitToMenuTransitionCounter = 5;
             }
             break;
-        case 7:
+        case RACE_QUADRANT_RESULTS:
             break;
     }
 }

@@ -210,6 +210,7 @@ Unk_D_800E70A0 D_800E7300[] = {
     { 0x18, 0x23, 0x00, 0x00 }, { 0x5d, 0x23, 0x00, 0x00 }, { 0xa2, 0x23, 0x00, 0x00 }, { 0xe7, 0x23, 0x00, 0x00 },
 };
 
+// Versus menu coordinates
 Unk_D_800E70A0 D_800E7360[] = {
     { 0x61, 0xa7, 0x00, 0x00 },
     { 0x61, 0xb6, 0x00, 0x00 },
@@ -8118,7 +8119,7 @@ void func_800A638C(MenuItem* arg0) {
     if (arg0->state >= 10) {
         for (var_s1 = 0; var_s1 < 4; var_s1++) {
             text_rainbow_effect(arg0->state - 0xA, var_s1, TEXT_GREEN);
-            print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f, 0.8f);
+            print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f, 0.8f); // Where Retry, course change, etc printed
         }
         func_800A66A8(arg0, &D_800E7360[arg0->state - 10]);
     }
@@ -8184,7 +8185,7 @@ void func_800A69C8(UNUSED MenuItem* arg0) {
                 if (gGPCurrentRaceRankByPlayerId[var_s0] != 0) {
                     var_v1 = 1;
                 }
-                var_s4 = &gNmiUnknown1[var_s0];
+                var_s4 = &nmi_gVersusResults2P[var_s0];
                 break;
             case BATTLE:
                 if (var_s0 != gPlayerWinningIndex) {
@@ -8214,7 +8215,7 @@ void func_800A6BEC(UNUSED MenuItem* arg0) {
     for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
         switch (gModeSelection) { /* irregular */
             case VERSUS:
-                func_800A6E94(3, var_s0, gNmiUnknown2);
+                func_800A6E94(3, var_s0, nmi_gVersusResults3P);
                 break;
             case BATTLE:
                 func_800A6D94(3, var_s0, gNmiUnknown5);
@@ -8229,7 +8230,7 @@ void func_800A6CC0(UNUSED MenuItem* arg0) {
     for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
         switch (gModeSelection) { /* irregular */
             case VERSUS:
-                func_800A6E94(4, var_s0, gNmiUnknown3);
+                func_800A6E94(4, var_s0, nmi_gVersusResults4P);
                 break;
             case BATTLE:
                 func_800A6D94(4, var_s0, gNmiUnknown6);
@@ -8264,27 +8265,27 @@ void func_800A6D94(s32 arg0, s32 arg1, u8* arg2) {
 }
 
 // The ｓ/ｎ/ｒ/ー are not ASCII characters, they're EUC-JP characters
-void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
+void func_800A6E94(s32 playerCount, s32 playerId, u8* placeAry) {
     UNUSED s32 stackPadding0;
     u8* temp_v0;
     Unk_D_800E70A0* temp_s0;
     char sp40[3];
     s32 rank;
     // Everything about this variable is bizarre
-    s32 sp38 = -1;
+    s32 rankIdx = -1;
 
-    temp_s0 = &D_800E7300[((arg0 - 2) * 4) + arg1];
-    rank = gGPCurrentRaceRankByPlayerId[arg1];
-    if (rank == ++sp38) {
+    temp_s0 = &D_800E7300[((playerCount - 2) * 4) + playerId];
+    rank = gGPCurrentRaceRankByPlayerId[playerId];
+    if (rank == ++rankIdx) {
         set_text_color(gGlobalTimer % 3);
     } else {
         set_text_color(TEXT_YELLOW);
     }
     text_draw(temp_s0->column + 4, temp_s0->row + 0x5A, "1 ｓ ー", 0, 0.8f, 0.8f);
-    temp_v0 = arg2 + (arg1 * 3);
+    temp_v0 = placeAry + (playerId * 3);
     convert_number_to_ascii(temp_v0[0], sp40);
     text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x5A, sp40, 0, 0.8f, 0.8f);
-    if (rank == ++sp38) {
+    if (rank == ++rankIdx) {
         set_text_color(gGlobalTimer % 3);
     } else {
         set_text_color(TEXT_BLUE);
@@ -8292,7 +8293,7 @@ void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
     text_draw(temp_s0->column + 4, temp_s0->row + 0x69, "2 ｎ ー", 0, 0.8f, 0.8f);
     convert_number_to_ascii(temp_v0[1], sp40);
     text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x69, sp40, 0, 0.8f, 0.8f);
-    if (++sp38 == rank) {
+    if (++rankIdx == rank) {
         set_text_color(gGlobalTimer % 3);
     } else {
         set_text_color(TEXT_RED);

@@ -529,3 +529,14 @@ player spins. Something  with avoding rollover of aniamation frame data? */
 #define FACING_Y_AXIS 0x4000
 #define FACING_X_AXIS 0x8000
 #define FACING_Z_AXIS 0x2000
+
+// race states
+
+#define RACE_NONE 0
+#define RACE_PREP 1
+#define RACE_STAGING 2
+#define RACE_IN_PROGRESS 3
+#define RACE_HUMAN_FINISHED 4 // At least 1 human has finished
+#define RACE_DONE 5
+#define RACE_QUITTING 6
+#define RACE_QUADRANT_RESULTS 7 // The results screen in GP and Time trials mode
