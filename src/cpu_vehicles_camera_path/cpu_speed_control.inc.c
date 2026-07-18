@@ -119,7 +119,8 @@ void func_80007FA4(s32 playerId, Player* player, f32 arg2) {
             (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 6) : player_decelerate_alternative(player, 1.0f);
         } else if (D_80163410[playerId] == 0) {
             test = 35;
-            (arg2 < (((test ^ 0) * 18.0) / 216.0)) ? func_80038BE4(player, 2) : player_decelerate_alternative(player, 1.0f);
+            (arg2 < (((test ^ 0) * 18.0) / 216.0)) ? func_80038BE4(player, 2)
+                                                   : player_decelerate_alternative(player, 1.0f);
         } else {
             player_decelerate_alternative(player, 1.0f);
         }
