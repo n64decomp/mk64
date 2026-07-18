@@ -1,5 +1,13 @@
 var NAVTREEINDEX135 =
 {
+"update__objects_8c.html#aed54d391817f6974dee2ebb1ecd8261f":[8,0,3,63,59],
+"update__objects_8c.html#aed70b44d9de206620c9df591c9e8221e":[8,0,3,63,80],
+"update__objects_8c.html#aee48f5ac3342922cbf8cd98976679dad":[8,0,3,63,207],
+"update__objects_8c.html#af0ab4c6db09faab5759a6cc4c811eead":[8,0,3,63,330],
+"update__objects_8c.html#af180c278fb774f68d11af771896034ca":[8,0,3,63,219],
+"update__objects_8c.html#af20e3f3c403dd4fbea56e358997e515a":[8,0,3,63,343],
+"update__objects_8c.html#af214e5ebd86c8bf754b1a2ac747fb99e":[8,0,3,63,153],
+"update__objects_8c.html#af2ee51d08a070f0ec6d56e5077466493":[8,0,3,63,386],
 "update__objects_8c.html#af4fa2f756053d4e6bfe36e378c24a3b6":[8,0,3,63,86],
 "update__objects_8c.html#af6a634e5a07f3b79f745c7146b89e971":[8,0,3,63,18],
 "update__objects_8c.html#af6fa0450f99946e4318111b11373aef3":[8,0,3,63,180],
@@ -241,13 +249,5 @@ var NAVTREEINDEX135 =
 "wario__stadium_2course__data_8h.html#a1ed70cebe1107980e258b473f69ca74e":[8,0,0,18,1,25],
 "wario__stadium_2course__data_8h.html#a1f4704678d6eb9cc43424cf4db5e33dd":[8,0,0,18,1,34],
 "wario__stadium_2course__data_8h.html#a25af09b9cd924500a347a1ade224af2e":[8,0,0,18,1,53],
-"wario__stadium_2course__data_8h.html#a25cf27d6dcee6e8204d3009d74a4b297":[8,0,0,18,1,41],
-"wario__stadium_2course__data_8h.html#a25efda1180500f8b412d9f1e8ead4463":[8,0,0,18,1,121],
-"wario__stadium_2course__data_8h.html#a29b4182e9e0fa0b52c9aa745798d9d05":[8,0,0,18,1,100],
-"wario__stadium_2course__data_8h.html#a2a0a99aaf093b267d8ecd925da6fb67a":[8,0,0,18,1,76],
-"wario__stadium_2course__data_8h.html#a30a7d634cc65efd983b5c3fb792cfb69":[8,0,0,18,1,124],
-"wario__stadium_2course__data_8h.html#a329ce97789e24dec781065629eee1203":[8,0,0,18,1,96],
-"wario__stadium_2course__data_8h.html#a33ec148bec978033f94ed4ff8f67180b":[8,0,0,18,1,29],
-"wario__stadium_2course__data_8h.html#a3542e550863252940e9cea2b571dd1af":[8,0,0,18,1,60],
-"wario__stadium_2course__data_8h.html#a3bf2bf7ff926d9c488ff732dd0e58765":[8,0,0,18,1,97]
+"wario__stadium_2course__data_8h.html#a25cf27d6dcee6e8204d3009d74a4b297":[8,0,0,18,1,41]
 };

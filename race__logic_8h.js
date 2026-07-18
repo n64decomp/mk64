@@ -1,5 +1,6 @@
 var race__logic_8h =
 [
+    [ "add_cinematic_mode", "race__logic_8h.html#acde2bf81853f463ff886188545241203", null ],
     [ "end_demo_update", "race__logic_8h.html#a01b81b0761fe49ed9207567c7769ba94", null ],
     [ "func_8028DF00", "race__logic_8h.html#ae1563ce64a716f5d420505adc3e9b89d", null ],
     [ "func_8028DF38", "race__logic_8h.html#ad662382097107c855812aa65f2acbd49", null ],
@@ -10,7 +11,6 @@ var race__logic_8h =
     [ "func_8028E678", "race__logic_8h.html#aeb498a031d0fc8f31b5947bf329344f4", null ],
     [ "func_8028EC38", "race__logic_8h.html#a662efb47ae5df81910b914a0277db461", null ],
     [ "func_8028EE8C", "race__logic_8h.html#a5342111236f18d64631bffcd1d19268d", null ],
-    [ "func_8028EEF0", "race__logic_8h.html#a3e9f9e3af8403dbedd2e08adb6342fe7", null ],
     [ "func_8028EF28", "race__logic_8h.html#a2645116d52469ec9b45c668d694e98c4", null ],
     [ "func_8028F3E8", "race__logic_8h.html#a836d0734cc365cdfb4b35561107bfe4e", null ],
     [ "func_8028F474", "race__logic_8h.html#af3b28af56eee680540843d3bd6bd24ba", null ],

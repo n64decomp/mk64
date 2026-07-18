@@ -1,5 +1,13 @@
 var NAVTREEINDEX58 =
 {
+"kart__dma_8h.html#af81ded55c8c96008ba343c9e862fa85f":[8,0,3,39,1069],
+"kart__dma_8h.html#af828c533cc9093219a23c36d9f3ca94f":[8,0,3,39,525],
+"kart__dma_8h.html#af84e995205dcfe6e7a99360cb1bc61c6":[8,0,3,39,824],
+"kart__dma_8h.html#af85f798602f37e21bc229245754e9955":[8,0,3,39,319],
+"kart__dma_8h.html#af86cecee1d33af5696fd4aafe2cdb83d":[8,0,3,39,1342],
+"kart__dma_8h.html#af8e22e1db3612c245a4802eeb4264df1":[8,0,3,39,192],
+"kart__dma_8h.html#af8ee5ddb39dacd6596d75b512a4372f3":[8,0,3,39,1620],
+"kart__dma_8h.html#af8f844e79c97a53f427bfcd8d6216172":[8,0,3,39,1012],
 "kart__dma_8h.html#af920a0726bbe35d87320126ae1e79d62":[8,0,3,39,814],
 "kart__dma_8h.html#af961de425c2fbfc747545af4e9ada978":[8,0,3,39,2220],
 "kart__dma_8h.html#af969245d700e68e63aade40ee2f6f099":[8,0,3,39,829],
@@ -241,13 +249,5 @@ var NAVTREEINDEX58 =
 "koopa__troopa__beach_2course__data_8c.html#a80931bb943d3772c8524b934f5a1bb90":[8,0,0,9,0,219],
 "koopa__troopa__beach_2course__data_8c.html#a80cbfda2cbb0d7a83791569e745445f1":[8,0,0,9,0,89],
 "koopa__troopa__beach_2course__data_8c.html#a81f97bc5d5dd047fc789feb33a7d1331":[8,0,0,9,0,44],
-"koopa__troopa__beach_2course__data_8c.html#a81fcc6e6f967f3444908de1b9ed99479":[8,0,0,9,0,50],
-"koopa__troopa__beach_2course__data_8c.html#a8346caed07d231edf70170f19c6e4155":[8,0,0,9,0,193],
-"koopa__troopa__beach_2course__data_8c.html#a84d001ee00fe8d9347935ca3abf50407":[8,0,0,9,0,144],
-"koopa__troopa__beach_2course__data_8c.html#a85bfb1a53e5852224f5a03bcb9fac9be":[8,0,0,9,0,237],
-"koopa__troopa__beach_2course__data_8c.html#a867673eac70984a1ff94a2aa6ee01f1e":[8,0,0,9,0,15],
-"koopa__troopa__beach_2course__data_8c.html#a872eeff16234263a40f0db947e9abdba":[8,0,0,9,0,16],
-"koopa__troopa__beach_2course__data_8c.html#a87c1e1cd64f7096ea87d64246e543807":[8,0,0,9,0,68],
-"koopa__troopa__beach_2course__data_8c.html#a883ce19bac36c0c85741c4c3f34146fb":[8,0,0,9,0,35],
-"koopa__troopa__beach_2course__data_8c.html#a88a14261a26a834c318e020c9ebfdfa2":[8,0,0,9,0,185]
+"koopa__troopa__beach_2course__data_8c.html#a81fcc6e6f967f3444908de1b9ed99479":[8,0,0,9,0,50]
 };

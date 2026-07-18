@@ -244,10 +244,10 @@ var NAVTREEINDEX22 =
 "cpu__speed__control_8inc_8c.html#ad4df55240035a099df20cb3fddc355ca":[8,0,3,3,4,2],
 "cpu__speed__control_8inc_8c_source.html":[8,0,3,3,4],
 "cpu__vehicles__camera__path_8c.html":[8,0,3,30],
-"cpu__vehicles__camera__path_8c.html#a0056485e80d615faffaf2715a906c294":[8,0,3,30,61],
+"cpu__vehicles__camera__path_8c.html#a0056485e80d615faffaf2715a906c294":[8,0,3,30,60],
 "cpu__vehicles__camera__path_8c.html#a008d082dca107902c08d07fdbe8cbc8b":[8,0,3,30,244],
-"cpu__vehicles__camera__path_8c.html#a0097817f675c53b5b3f3372066cdc4b0":[8,0,3,30,390],
-"cpu__vehicles__camera__path_8c.html#a00c8da660b69ff3ed155f54b48c93c53":[8,0,3,30,312],
+"cpu__vehicles__camera__path_8c.html#a0097817f675c53b5b3f3372066cdc4b0":[8,0,3,30,389],
+"cpu__vehicles__camera__path_8c.html#a00c8da660b69ff3ed155f54b48c93c53":[8,0,3,30,311],
 "cpu__vehicles__camera__path_8c.html#a013e5be3540bb9a84d0fe3e792065d85":[8,0,3,30,285],
 "cpu__vehicles__camera__path_8c.html#a01cd7756c0ee2cce33b86693682a59af":[8,0,3,30,130]
 };

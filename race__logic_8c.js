@@ -1,6 +1,7 @@
 var race__logic_8c =
 [
     [ "gDemoTimer_SIZE", "race__logic_8c.html#a9c9d7e23e1e8bb86822d4a3afeae0fd9", null ],
+    [ "add_cinematic_mode", "race__logic_8c.html#aad3e9b44dadfdb847a128a25aa618de5", null ],
     [ "end_demo_update", "race__logic_8c.html#a01b81b0761fe49ed9207567c7769ba94", null ],
     [ "func_8028DF00", "race__logic_8c.html#ae1563ce64a716f5d420505adc3e9b89d", null ],
     [ "func_8028DF38", "race__logic_8c.html#ad662382097107c855812aa65f2acbd49", null ],
@@ -11,7 +12,6 @@ var race__logic_8c =
     [ "func_8028E678", "race__logic_8c.html#aeb498a031d0fc8f31b5947bf329344f4", null ],
     [ "func_8028EC38", "race__logic_8c.html#a267e17e7b20c9b502466a58e21e71a08", null ],
     [ "func_8028EE8C", "race__logic_8c.html#ac72458a1821d41e46b4017bc4ad752b7", null ],
-    [ "func_8028EEF0", "race__logic_8c.html#a1ea1efbd97d34c4f81c9184a4a029a26", null ],
     [ "func_8028EF28", "race__logic_8c.html#a2645116d52469ec9b45c668d694e98c4", null ],
     [ "func_8028F3E8", "race__logic_8c.html#a836d0734cc365cdfb4b35561107bfe4e", null ],
     [ "func_8028F474", "race__logic_8c.html#af3b28af56eee680540843d3bd6bd24ba", null ],

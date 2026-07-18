@@ -174,7 +174,7 @@ var menu__items_8c =
     [ "func_800A6BEC", "menu__items_8c.html#a68dbe30ffd4a4cb17d08d5c5bfa68822", null ],
     [ "func_800A6CC0", "menu__items_8c.html#af6ff5db272f5bc36175fa9373072270b", null ],
     [ "func_800A6D94", "menu__items_8c.html#ac55af2c937cfbd7129994274ff49f766", null ],
-    [ "func_800A6E94", "menu__items_8c.html#af2f6da2963f7cc24c5fad14aecd39c92", null ],
+    [ "func_800A6E94", "menu__items_8c.html#a491de5df0dffc5bed84260ec758d6612", null ],
     [ "func_800A70E8", "menu__items_8c.html#aea7c3b02ceca22a7c678ead768581d2f", null ],
     [ "func_800A7258", "menu__items_8c.html#a3b4201b700eccb446bdd4e90e3424550", null ],
     [ "func_800A72FC", "menu__items_8c.html#aac506b7518796c1513533f5dde849de7", null ],

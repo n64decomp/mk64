@@ -1,6 +1,6 @@
 var main_8c =
 [
-    [ "D_800DC510_AS_U16", "main_8c.html#acaba7d0fa7a83cbbbbd0ef8d1bd0cb20", null ],
+    [ "gRaceState_AS_U16", "main_8c.html#ac504576ef220a8f96be7c10425754e5c", null ],
     [ "audio_init", "main_8c.html#a780026a09284372732eeca5c1bdeda0b", null ],
     [ "clear_framebuffer", "main_8c.html#ac6df158ad2a863eb16f6b82e12ea26e4", null ],
     [ "config_gfx_pool", "main_8c.html#a9b253735194a23ab701e8ab9cdc7b128", null ],
@@ -48,7 +48,6 @@ var main_8c =
     [ "update_controller", "main_8c.html#acf938b165278cd36f3cb7cf6945d6917", null ],
     [ "update_gamestate", "main_8c.html#ad0625ed56ac663d3ec7ae8f1ba50c735", null ],
     [ "creditsRenderMode", "main_8c.html#aea300291beb411b4280a8c2829012298", null ],
-    [ "D_800DC510", "main_8c.html#a729fe3cc996858fd4436ed29f60aa49e", null ],
     [ "D_800DC514", "main_8c.html#a6440e484a206d7f3246aa868f363279d", null ],
     [ "D_800DC528", "main_8c.html#ac3c08ef9707efe8adc3f5da4aeeee210", null ],
     [ "D_800DC534", "main_8c.html#a6dc1ef2a3ddfe9dee977416c99f35d38", null ],
@@ -155,6 +154,7 @@ var main_8c =
     [ "gPlayerThreeCopy", "main_8c.html#acd3151bbe8f94ad8677583c8979b7bda", null ],
     [ "gPlayerTwo", "main_8c.html#a8d46561e10d019ff438d78c75101488b", null ],
     [ "gPlayerTwoCopy", "main_8c.html#a1bd4d5c53de2764bb2a85271d557d8a4", null ],
+    [ "gRaceState", "main_8c.html#a0549b76e168733ddf5b985d6b80ab594", null ],
     [ "gScreenAspect", "main_8c.html#a5ba352e44958486fef83d7a2ae5da53d", null ],
     [ "gScreenModeSelection", "main_8c.html#a7f3d645aaf496e2e632e1caadffd3810", null ],
     [ "gSegmentTable", "main_8c.html#af260f7f79b8f94f285772d0f5a7daecd", null ],

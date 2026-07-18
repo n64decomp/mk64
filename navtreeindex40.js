@@ -1,5 +1,13 @@
 var NAVTREEINDEX40 =
 {
+"hardware_8h.html#abd77576404ae668bbc1b5ca644cb4a22":[8,0,3,7,49,52],
+"hardware_8h.html#ac412383014e3cdbfffacb3781e10c4e6":[8,0,3,7,49,11],
+"hardware_8h.html#ac6ff858eef4719c8ea2c6d45e8064a67":[8,0,3,7,49,69],
+"hardware_8h.html#ac951068069c1b5c01854ba199072cff8":[8,0,3,7,49,48],
+"hardware_8h.html#acabc3dd7a7988f71b714ce9f9fde3267":[8,0,3,7,49,67],
+"hardware_8h.html#acbb4ca496bff03076a9f899ffa87f993":[8,0,3,7,49,53],
+"hardware_8h.html#ace9449529cf83b7331e5b9a08b2b0c51":[8,0,3,7,49,45],
+"hardware_8h.html#ad1062eb5b79c8719ec104d7ca9168c78":[8,0,3,7,49,60],
 "hardware_8h.html#ad16021b4d72e5c09e34004e81f562e52":[8,0,3,7,49,32],
 "hardware_8h.html#ad92df8715c06545824255c51ed469fe8":[8,0,3,7,49,27],
 "hardware_8h.html#ade98aa79e2445000c572b27d45836bb5":[8,0,3,7,49,16],
@@ -241,13 +249,5 @@ var NAVTREEINDEX40 =
 "kalimari__desert_2course__data_8c.html#a0c800f80a36af02c47a74e6a42c3f6f2":[8,0,0,8,0,102],
 "kalimari__desert_2course__data_8c.html#a0fdcdeef570f038aa567e1c1dd12582b":[8,0,0,8,0,200],
 "kalimari__desert_2course__data_8c.html#a12af07d05bbacd72910a73b94ae7b1f0":[8,0,0,8,0,98],
-"kalimari__desert_2course__data_8c.html#a12c75fb2105ce205f345a849fac1dd3c":[8,0,0,8,0,144],
-"kalimari__desert_2course__data_8c.html#a14a3775f0bf50c08bf67b5381de33bec":[8,0,0,8,0,11],
-"kalimari__desert_2course__data_8c.html#a14fa74b51aae41ead880d9ecc8f85695":[8,0,0,8,0,99],
-"kalimari__desert_2course__data_8c.html#a15616c9fca43a3c779bb8d3bba6213b6":[8,0,0,8,0,48],
-"kalimari__desert_2course__data_8c.html#a1681abd7c8cb58f6ca2119af1742204a":[8,0,0,8,0,308],
-"kalimari__desert_2course__data_8c.html#a173fd4e16661695b8197b8dc2fa3ec31":[8,0,0,8,0,230],
-"kalimari__desert_2course__data_8c.html#a1789340290f1fbfa67ff033cdde0fc03":[8,0,0,8,0,110],
-"kalimari__desert_2course__data_8c.html#a1795dda43c27e08f458b2c295b6b60f9":[8,0,0,8,0,155],
-"kalimari__desert_2course__data_8c.html#a18a151f28d7daf245bd3286448822aeb":[8,0,0,8,0,300]
+"kalimari__desert_2course__data_8c.html#a12c75fb2105ce205f345a849fac1dd3c":[8,0,0,8,0,144]
 };
