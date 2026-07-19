@@ -21,6 +21,7 @@
 #include "code_80057C60.h"
 #include "cpu_vehicles_camera_path.h"
 #include "sounds.h"
+#include "rumble_init.h"
 
 extern s32 D_8018D168;
 
@@ -1991,6 +1992,11 @@ void apply_effect(Player* player, s8 playerIndex, s8 arg2) {
     }
     if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
         apply_mushroom_effect(player);
+#if ENABLE_RUMBLE
+        if (playerIndex < 4 && (player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
+            queue_rumble_data(playerIndex, 60, 70);
+        }
+#endif
     }
     if ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) {
         apply_boost_ramp_asphalt_effect(player);
@@ -2000,9 +2006,19 @@ void apply_effect(Player* player, s8 playerIndex, s8 arg2) {
     }
     if ((s32) (player->effects & SQUISH_EFFECT) == SQUISH_EFFECT) {
         apply_hit_effect(player, playerIndex);
+#if ENABLE_RUMBLE
+        if (playerIndex < 4 && (player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
+            queue_rumble_data(playerIndex, 5, 80);
+        }
+#endif
     }
     if ((player->effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) {
         apply_lightning_effect(player, playerIndex);
+#if ENABLE_RUMBLE
+        if (playerIndex < 4 && (player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
+            queue_rumble_data(playerIndex, 70, 60);
+        }
+#endif
     }
     if ((player->effects & TERRAIN_TUMBLE_EFFECT) == TERRAIN_TUMBLE_EFFECT) {
         func_8008F3F4(player, playerIndex);
