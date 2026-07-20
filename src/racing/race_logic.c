@@ -1206,6 +1206,7 @@ void gotoNextTrack(void) {
     gGotoMode = RACING;
 }
 
+// has to do with collision when two players hit each other
 void func_802903D8(Player* playerOne, Player* playerTwo) {
     f32 sp70 = (playerOne->boundingBoxSize + playerTwo->boundingBoxSize) - 5.0f;
     f32 temp_f0;

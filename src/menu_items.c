@@ -8851,7 +8851,7 @@ void func_800A6E94(s32 playerCount, s32 playerId, u8* placeAry) {
             seconds = tally[i * 3 + 1];
             thirds  = tally[i * 3 + 2];
 
-            // custom point calculation; wraps around to 0 after hitting 49
+            // custom point calculation; wraps around to 0 after hitting 48
             points = (u8)((( (firsts * 3) + (seconds * 2) + (thirds * 1) + tally_overrides[i] ) % 49 + 49) % 49);
             
             // convert to ascii char
