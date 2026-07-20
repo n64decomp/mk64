@@ -5950,31 +5950,245 @@ void render_custom_overlay(void) {
 }
 
 
-// Get the next course ID based on current tournament mode
 s16 getNextCourseId(void) {
-    s32 linearCourseIndex = (gCupSelection * 4) + gCourseIndexInCup;
-    s32 nextLinearIndex = (linearCourseIndex + 1) & 0xF;
-    s32 nextCup = nextLinearIndex / 4;
-    s32 nextIndexInCup = nextLinearIndex % 4;
+    switch (gTournamentCourseMode) {
+        // va track order
+        case 0:
+            switch(gCurrentCourseId) {
+                case COURSE_LUIGI_RACEWAY:
+                    return COURSE_MOO_MOO_FARM;
+                case COURSE_MOO_MOO_FARM:
+                    return COURSE_KOOPA_BEACH;
+                case COURSE_KOOPA_BEACH:
+                    return COURSE_KALAMARI_DESERT;
+                case COURSE_KALAMARI_DESERT:
+                    return COURSE_DK_JUNGLE;
+                case COURSE_DK_JUNGLE:
+                    return COURSE_YOSHI_VALLEY;
+                case COURSE_YOSHI_VALLEY:
+                    return COURSE_BANSHEE_BOARDWALK;
+                case COURSE_BANSHEE_BOARDWALK:
+                    return COURSE_RAINBOW_ROAD;
+                case COURSE_RAINBOW_ROAD:
+                    return COURSE_WARIO_STADIUM;
+                case COURSE_WARIO_STADIUM:
+                    return COURSE_SHERBET_LAND;
+                case COURSE_SHERBET_LAND:
+                    return COURSE_ROYAL_RACEWAY;
+                case COURSE_ROYAL_RACEWAY:
+                    return COURSE_BOWSER_CASTLE;
+                case COURSE_BOWSER_CASTLE:
+                    return COURSE_TOADS_TURNPIKE;
+                case COURSE_TOADS_TURNPIKE:
+                    return COURSE_FRAPPE_SNOWLAND;
+                case COURSE_FRAPPE_SNOWLAND:
+                    return COURSE_CHOCO_MOUNTAIN;
+                case COURSE_CHOCO_MOUNTAIN:
+                    return COURSE_MARIO_RACEWAY;
+                case COURSE_MARIO_RACEWAY:
+                    return COURSE_LUIGI_RACEWAY;
+                default:
+                    break;
+            }
+        // kaillera track order
+        case 1:
+            switch(gCurrentCourseId) {
+                case COURSE_LUIGI_RACEWAY:
+                    return COURSE_MOO_MOO_FARM;
+                case COURSE_MOO_MOO_FARM:
+                    return COURSE_KOOPA_BEACH;
+                case COURSE_KOOPA_BEACH:
+                    return COURSE_KALAMARI_DESERT;
+                case COURSE_KALAMARI_DESERT:
+                    return COURSE_TOADS_TURNPIKE;
+                case COURSE_TOADS_TURNPIKE:
+                    return COURSE_FRAPPE_SNOWLAND;
+                case COURSE_FRAPPE_SNOWLAND:
+                    return COURSE_CHOCO_MOUNTAIN;
+                case COURSE_CHOCO_MOUNTAIN:
+                    return COURSE_MARIO_RACEWAY;
+                case COURSE_MARIO_RACEWAY:
+                    return COURSE_WARIO_STADIUM;
+                case COURSE_WARIO_STADIUM:
+                    return COURSE_SHERBET_LAND;
+                case COURSE_SHERBET_LAND:
+                    return COURSE_ROYAL_RACEWAY;
+                case COURSE_ROYAL_RACEWAY:
+                    return COURSE_BOWSER_CASTLE;
+                case COURSE_BOWSER_CASTLE:
+                    return COURSE_DK_JUNGLE;
+                case COURSE_DK_JUNGLE:
+                    return COURSE_YOSHI_VALLEY;
+                case COURSE_YOSHI_VALLEY:
+                    return COURSE_BANSHEE_BOARDWALK;
+                case COURSE_BANSHEE_BOARDWALK:
+                    return COURSE_RAINBOW_ROAD;
+                case COURSE_RAINBOW_ROAD:
+                    return COURSE_LUIGI_RACEWAY;
+                default:
+                    break;
+            }
+        // kaillera mmf track order
+        case 2:
+            switch(gCurrentCourseId) {
+                case COURSE_LUIGI_RACEWAY:
+                    return COURSE_MOO_MOO_FARM;
+                case COURSE_MOO_MOO_FARM:
+                    return COURSE_KOOPA_BEACH;
+                case COURSE_KOOPA_BEACH:
+                    return COURSE_KALAMARI_DESERT;
+                case COURSE_KALAMARI_DESERT:
+                    return COURSE_TOADS_TURNPIKE;
+                case COURSE_TOADS_TURNPIKE:
+                    return COURSE_FRAPPE_SNOWLAND;
+                case COURSE_FRAPPE_SNOWLAND:
+                    return COURSE_CHOCO_MOUNTAIN;
+                case COURSE_CHOCO_MOUNTAIN:
+                    return COURSE_MARIO_RACEWAY;
+                case COURSE_MARIO_RACEWAY:
+                    return COURSE_WARIO_STADIUM;
+                case COURSE_WARIO_STADIUM:
+                    return COURSE_SHERBET_LAND;
+                case COURSE_SHERBET_LAND:
+                    return COURSE_ROYAL_RACEWAY;
+                case COURSE_ROYAL_RACEWAY:
+                    return COURSE_BOWSER_CASTLE;
+                case COURSE_BOWSER_CASTLE:
+                    return COURSE_DK_JUNGLE;
+                case COURSE_DK_JUNGLE:
+                    return COURSE_YOSHI_VALLEY;
+                case COURSE_YOSHI_VALLEY:
+                    return COURSE_BANSHEE_BOARDWALK;
+                case COURSE_BANSHEE_BOARDWALK:
+                    return COURSE_MOO_MOO_FARM;
+                default:
+                    break;
+            }
+        default:
+            break;
+    }
 
-    return get_course_id_for_tournament_cursor(nextCup, nextIndexInCup);
 }
 
 // Get the course abbreviation string for the next course
 char* getNextCourseAbbrString(void) {
-    s32 linearCourseIndex = (gCupSelection * 4) + gCourseIndexInCup;
-    s32 nextLinearIndex = (linearCourseIndex + 1) & 0xF;
-
     switch (gTournamentCourseMode) {
-        case 0: // VA mode - use VA abbreviations
-            return gCourseNamesVA[nextLinearIndex];
-        case 1: // KA mode - use KA abbreviations
-            return gCourseNamesKA[nextLinearIndex];
-        case 2: // KA_MMF mode - use KA_MMF abbreviations
-            return gCourseNamesKA_MMF[nextLinearIndex];
+        // va track order
+        case 0:
+            switch(gCurrentCourseId) {
+                case COURSE_LUIGI_RACEWAY:
+                    return "MMF";
+                case COURSE_MOO_MOO_FARM:
+                    return "KTB";
+                case COURSE_KOOPA_BEACH:
+                    return "KD";
+                case COURSE_KALAMARI_DESERT:
+                    return "DKJP";
+                case COURSE_DK_JUNGLE:
+                    return "YV";
+                case COURSE_YOSHI_VALLEY:
+                    return "BB";
+                case COURSE_BANSHEE_BOARDWALK:
+                    return "RRd";
+                case COURSE_RAINBOW_ROAD:
+                    return "WS";
+                case COURSE_WARIO_STADIUM:
+                    return "SL";
+                case COURSE_SHERBET_LAND:
+                    return "RRy";
+                case COURSE_ROYAL_RACEWAY:
+                    return "BC";
+                case COURSE_BOWSER_CASTLE:
+                    return "TT";
+                case COURSE_TOADS_TURNPIKE:
+                    return "FS";
+                case COURSE_FRAPPE_SNOWLAND:
+                    return "CM";
+                case COURSE_CHOCO_MOUNTAIN:
+                    return "MR";
+                case COURSE_MARIO_RACEWAY:
+                    return "LR";
+                default:
+                    break;
+            }
+        // kaillera track order
+        case 1:
+            switch(gCurrentCourseId) {
+                case COURSE_LUIGI_RACEWAY:
+                    return "MMF";
+                case COURSE_MOO_MOO_FARM:
+                    return "KTB";
+                case COURSE_KOOPA_BEACH:
+                    return "KTB";
+                case COURSE_KALAMARI_DESERT:
+                    return "TT";
+                case COURSE_TOADS_TURNPIKE:
+                    return "FS";
+                case COURSE_FRAPPE_SNOWLAND:
+                    return "CM";
+                case COURSE_CHOCO_MOUNTAIN:
+                    return "MR";
+                case COURSE_MARIO_RACEWAY:
+                    return "WS";
+                case COURSE_WARIO_STADIUM:
+                    return "SL";
+                case COURSE_SHERBET_LAND:
+                    return "RRy";
+                case COURSE_ROYAL_RACEWAY:
+                    return "BC";
+                case COURSE_BOWSER_CASTLE:
+                    return "DKJP";
+                case COURSE_DK_JUNGLE:
+                    return "YV";
+                case COURSE_YOSHI_VALLEY:
+                    return "BB";
+                case COURSE_BANSHEE_BOARDWALK:
+                    return "RRd";
+                case COURSE_RAINBOW_ROAD:
+                    return "LR";
+                default:
+                    break;
+            }
+        // kaillera mmf track order
+        case 2:
+            switch(gCurrentCourseId) {
+                case COURSE_LUIGI_RACEWAY:
+                    return "MMF";
+                case COURSE_MOO_MOO_FARM:
+                    return "KTB";
+                case COURSE_KOOPA_BEACH:
+                    return "KD";
+                case COURSE_KALAMARI_DESERT:
+                    return "TT";
+                case COURSE_TOADS_TURNPIKE:
+                    return "FS";
+                case COURSE_FRAPPE_SNOWLAND:
+                    return "CM";
+                case COURSE_CHOCO_MOUNTAIN:
+                    return "MR";
+                case COURSE_MARIO_RACEWAY:
+                    return "WS";
+                case COURSE_WARIO_STADIUM:
+                    return "SL";
+                case COURSE_SHERBET_LAND:
+                    return "RRy";
+                case COURSE_ROYAL_RACEWAY:
+                    return "BC";
+                case COURSE_BOWSER_CASTLE:
+                    return "DKJP";
+                case COURSE_DK_JUNGLE:
+                    return "YV";
+                case COURSE_YOSHI_VALLEY:
+                    return "BB";
+                case COURSE_BANSHEE_BOARDWALK:
+                    return "MMF";
+                default:
+                    break;
+            }
         default:
-            return gCourseNamesDup[getNextCourseId()];
+            break;
     }
+
 }
 
 void render_menus(MenuItem* arg0) {
@@ -8558,10 +8772,16 @@ void func_800A6E94(s32 playerCount, s32 playerId, u8* placeAry) {
     s32 thirds;
     u8  i;
     s32 points;
-    char pointsBuf[5]; 
+    char pointsBuf[5];
+
+    // tally override initially zero
+    static s32 tally_overrides[4] = {0, 0, 0, 0};
 
     // Everything about this variable is bizarre
     s32 rankIdx = -1;
+
+    // flag that checks if manual point override is active
+    s32 isComboActive = 0;
 
     // base x and y position for drawing scores
     // x-coord increment will be different for 3p and 4p vs
@@ -8578,15 +8798,62 @@ void func_800A6E94(s32 playerCount, s32 playerId, u8* placeAry) {
     // Only draw scores on the first player call to avoid overdraw
     // (func_800A6E94 is called once per player by func_800A6BEC/func_800A6CC0)
     if (playerId == 0) {
+        if (gPlayerCountSelection1 == 3) {
+            if ((gControllerOne->button & L_TRIG) && (gControllerOne->button & R_TRIG) &&
+                (gControllerTwo->button & L_TRIG) && (gControllerTwo->button & R_TRIG) &&
+                (gControllerThree->button & L_TRIG) && (gControllerThree->button & R_TRIG)) {
+                isComboActive = 1;
+            }
+        } else if (gPlayerCountSelection1 == 4) {
+            if ((gControllerOne->button & L_TRIG) && (gControllerOne->button & R_TRIG) &&
+                (gControllerTwo->button & L_TRIG) && (gControllerTwo->button & R_TRIG) &&
+                (gControllerThree->button & L_TRIG) && (gControllerThree->button & R_TRIG) &&
+                (gControllerFour->button & L_TRIG) && (gControllerFour->button & R_TRIG)) {
+                isComboActive = 1;
+            }
+        }
+
+        if (isComboActive) {
+            // p1 adjust points                        
+            if (gControllerOne->buttonPressed & U_CBUTTONS) {
+                tally_overrides[0] += 1;
+            } else if (gControllerOne->buttonPressed & D_CBUTTONS) {
+                tally_overrides[0] -= 1;  
+            }
+
+            // p2 adjust points
+            if (gControllerTwo->buttonPressed & U_CBUTTONS) {
+                tally_overrides[1] += 1;
+            } else if (gControllerTwo->buttonPressed & D_CBUTTONS) {
+                tally_overrides[1] -= 1;  
+            }
+
+            // p3 adjust points
+            if (gControllerThree->buttonPressed & U_CBUTTONS) {
+                tally_overrides[2] += 1;
+            } else if (gControllerThree->buttonPressed & D_CBUTTONS) {
+                tally_overrides[2] -= 1;  
+            }
+
+            // p4 adjust points (check if in 4-player mode)
+            if (gPlayerCountSelection1 == 4) {
+                if (gControllerFour->buttonPressed & U_CBUTTONS) {
+                    tally_overrides[3] += 1;
+                } else if (gControllerFour->buttonPressed & D_CBUTTONS) {
+                    tally_overrides[3] -= 1;  
+                }
+            }
+        }
+
         set_text_color(TEXT_YELLOW);
         while(i < gPlayerCountSelection1) {
             firsts  = tally[i * 3 + 0];
             seconds = tally[i * 3 + 1];
             thirds  = tally[i * 3 + 2];
 
-            // custom point calculation
-            points = (firsts * 3) + (seconds * 2) + (thirds * 1);
-
+            // custom point calculation; wraps around to 0 after hitting 49
+            points = (u8)((( (firsts * 3) + (seconds * 2) + (thirds * 1) + tally_overrides[i] ) % 49 + 49) % 49);
+            
             // convert to ascii char
             convert_number_to_ascii(points, pointsBuf);
 
@@ -8603,8 +8870,8 @@ void func_800A6E94(s32 playerCount, s32 playerId, u8* placeAry) {
             draw_offset = (pointsBuf[0] == ' ') ? -0x5 : 0;
             text_draw(X_pos + draw_offset , Y_pos, pointsBuf, 0, 0.80f, 0.80f);
             i++;
-        }
     }
+}
 
     temp_s0 = &D_800E7300[((playerCount - 2) * 4) + playerId];
     rank = gGPCurrentRaceRankByPlayerId[playerId];

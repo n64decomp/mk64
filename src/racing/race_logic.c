@@ -1198,16 +1198,11 @@ void func_802903B0(void) {
 // proceed to next track in selection (vs mode only)
 void gotoNextTrack(void) {
     s16 nextCourse;
-    s32 nextLinearIndex;
 
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    nextLinearIndex = (((s32) gCupSelection * 4) + gCourseIndexInCup + 1) & 0xF;
     nextCourse = getNextCourseId();
     gCurrentCourseId = nextCourse;
-    gCupSelection = nextLinearIndex / 4;
-    D_800DC540 = gCupSelection;
-    gCourseIndexInCup = nextLinearIndex % 4;
     gGotoMode = RACING;
 }
 
