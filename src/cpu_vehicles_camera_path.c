@@ -1459,23 +1459,6 @@ void update_player(s32 playerId) {
             }
             update_player_path_completion(playerId, player);
 
-            switch (gModeSelection) {
-                case BATTLE:
-                default:
-                    return; // HEY! returns, not breaks
-                case GRAND_PRIX:
-                case TIME_TRIALS:
-                    numPlayer = NUM_PLAYERS;
-                    break;
-                case VERSUS:
-                    numPlayer = gPlayerCount;
-                    break;
-            }
-
-            // checks on last player to ensure all players positions have been updated
-            if ((gCurrentCourseId != COURSE_AWARD_CEREMONY) && (playerId == (numPlayer - 1))) {
-                set_places();
-            }
             if (player->type & PLAYER_CPU) {
                 if ((gIsPlayerNewPathPoint == true) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
                     cpu_behaviour(playerId);
@@ -1758,6 +1741,24 @@ void update_player(s32 playerId) {
                 check_ai_crossing_distance(playerId);
                 regulate_cpu_speed(playerId, gCurrentCpuTargetSpeed, player);
             }
+        }
+
+        switch (gModeSelection) {
+            case BATTLE:
+            default:
+                return; // HEY! returns, not breaks
+            case GRAND_PRIX:
+            case TIME_TRIALS:
+                numPlayer = NUM_PLAYERS;
+                break;
+            case VERSUS:
+                numPlayer = gPlayerCount;
+                break;
+        }
+
+        // checks on last player to ensure all players positions have been updated
+        if ((gCurrentCourseId != COURSE_AWARD_CEREMONY) && (playerId == (numPlayer - 1))) {
+            set_places();
         }
     }
 }
