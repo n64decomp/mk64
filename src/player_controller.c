@@ -591,7 +591,7 @@ void func_80028C44(Player* player, Camera* camera, s8 playerId, s8 screenId) {
 }
 
 void func_80028D3C(Player* player, Camera* camera, s8 playerId, s8 screenId) {
-    if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (D_800DC510 != 5)) || (player->unk_0CA & 2) != 0 ||
+    if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (gRaceState != 5)) || (player->unk_0CA & 2) != 0 ||
         (player->unk_0CA & 8) != 0 ||
         (player->effects & (LIGHTNING_EFFECT | EXPLOSION_CRASH_EFFECT | HIT_BY_STAR_EFFECT | SQUISH_EFFECT |
                             POST_SQUISH_EFFECT | TERRAIN_TUMBLE_EFFECT | 0xC00 | 0xC0)) != 0) {
@@ -1139,7 +1139,7 @@ void func_8002A79C(Player* player, s8 playerIndex) {
     }
 }
 
-void func_8002A8A4(Player* player, s8 playerIndex) {
+void update_drift_state_counter(Player* player, s8 playerIndex) {
     if (((s16) player->unk_0C0 / 182) > 0) {
         if (((s32) player->unk_07C >> 0x10) < -9) {
             if (player->unk_228 < 0x65) {
@@ -1378,7 +1378,7 @@ void apply_triggers(Player* player, s8 playerId, UNUSED s8 screenId) {
         func_8008C528(player, playerId);
     }
     if ((player->triggers & HIT_BANANA_TRIGGER) == HIT_BANANA_TRIGGER) {
-        func_8008CDC0(player, playerId);
+        trigger_hit_banana(player, playerId);
     }
     if ((player->triggers & SHROOM_TRIGGER) == SHROOM_TRIGGER) {
         trigger_shroom(player, playerId);
@@ -1399,7 +1399,7 @@ void apply_triggers(Player* player, s8 playerId, UNUSED s8 screenId) {
         trigger_lightning_strike(player, playerId);
     }
     if ((player->triggers & SPINOUT_TRIGGER) == SPINOUT_TRIGGER) {
-        func_8008C73C(player, playerId);
+        add_spinout_effect(player, playerId);
     }
     if ((player->triggers & VERTICAL_TUMBLE_TRIGGER) == VERTICAL_TUMBLE_TRIGGER) {
         trigger_vertical_tumble(player, playerId);
@@ -1420,7 +1420,7 @@ void apply_triggers(Player* player, s8 playerId, UNUSED s8 screenId) {
         trigger_boo(player, playerId);
     }
     if (player->triggers & DRIVING_SPINOUT_TRIGGER) {
-        func_8008D0FC(player, playerId);
+        trigger_driving_spinout(player, playerId);
     }
     if (player->triggers & HIT_PADDLE_BOAT_TRIGGER) {
         trigger_vertical_tumble(player, playerId);
@@ -1570,7 +1570,7 @@ void func_8002B9CC(Player* player, s8 playerIndex, UNUSED s32 arg2) {
             player->unk_08C /= 4;
             player->currentSpeed /= 4;
             if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT)) {
-                func_8008C73C(player, playerIndex);
+                add_spinout_effect(player, playerIndex);
             }
         }
     } else {
@@ -1581,7 +1581,7 @@ void func_8002B9CC(Player* player, s8 playerIndex, UNUSED s32 arg2) {
             player->unk_08C /= 4;
             player->currentSpeed /= 4;
             if (!(player->effects & BANANA_SPINOUT_EFFECT) && !(player->effects & DRIVING_SPINOUT_EFFECT)) {
-                func_8008C73C(player, playerIndex);
+                add_spinout_effect(player, playerIndex);
             }
         }
         temp = (-(s16) get_xz_angle_between_points(player->pos, &player->oldPos[0]));
@@ -1732,7 +1732,7 @@ void func_8002BF4C(Player* player, s8 playerIndex) {
     }
 }
 
-void func_8002C11C(Player* player) {
+void update_player_drift_duration(Player* player) {
     if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         player->unk_204 += 1;
         if (player->unk_204 >= 0x65) {
@@ -1961,10 +1961,10 @@ void apply_effect(Player* player, s8 playerIndex, s8 arg2) {
         func_80090970(player, playerIndex, arg2);
     }
     if ((player->effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT) {
-        func_8008CEB0(player, playerIndex);
+        apply_banana_near_spinout_effect(player, playerIndex);
     }
     if (player->unk_044 & 0x4000) {
-        func_8008D170(player, playerIndex);
+        apply_driving_near_spinout_effect(player, playerIndex);
     }
     if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
         apply_mushroom_effect(player);
@@ -2016,7 +2016,7 @@ void apply_effect(Player* player, s8 playerIndex, s8 arg2) {
         func_8008D8B4(player, playerIndex);
         player_decelerate_alternative(player, 10.0f);
     }
-    if (D_800DC510 != 5) {
+    if (gRaceState != 5) {
         if (player->triggers & LOSE_BATTLE_EFFECT) {
             func_8008FC64(player, playerIndex);
         }
@@ -2112,7 +2112,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     UNUSED s32 pad4[6];
 
     func_80027EDC(player, playerId);
-    func_8002C11C(player);
+    update_player_drift_duration(player);
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
         func_8002A79C(player, playerId);
     }
@@ -3790,7 +3790,7 @@ void func_80033850(Player* arg0, f32 arg1) {
     }
 }
 
-void func_80033884(Player* player, s32* arg1, s32* arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6) {
+void update_steering_large(Player* player, s32* arg1, s32* arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6) {
     s32 temp_v1;
 
     if ((*arg1 >= arg4) || (-arg4 >= *arg1)) {
@@ -3847,7 +3847,7 @@ void func_800339C4(Player* player, s32* arg1, s32 arg2, s32 arg3, f32 arg4) {
     func_80033850(player, arg4);
 }
 
-void func_80033A40(Player* player, s32* arg1, s32* arg2, s32 arg3, s32 arg4, s32 arg5, f32 arg6) {
+void update_steering_small(Player* player, s32* arg1, s32* arg2, s32 arg3, s32 arg4, s32 arg5, f32 arg6) {
     s32 temp_v1;
 
     if ((*arg1 >= arg4) || (-arg4 >= *arg1)) {
@@ -3895,7 +3895,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
            ((controller->button & R_TRIG) != R_TRIG))) ||
          (((player->speed / 18.0f) * 216.0f) <= 20.0f)) ||
         ((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT)) {
-        func_80036CB4(player);
+        cancel_drift_effect(player);
     }
     if ((player->unk_0C0 / 182) < (-5)) {
         player->unk_044 |= 4;
@@ -3989,96 +3989,96 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
             sp2CC *= 1.05;
         }
     }
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000005A, 0x78000 / sp2C8, 0x000001C2);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000059, 0x76000 / sp2C8, 0x000001B8);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000058, 0x74000 / sp2C8, 0x000001AE);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000057, 0x72000 / sp2C8, 0x000001A4);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000056, 0x70000 / sp2C8, 0x0000019A);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000055, 0x58000 / sp2C8, 0x00000190);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000054, 0x56000 / sp2C8, 0x0000018B);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000053, 0x50000 / sp2C8, 0x00000186);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000052, 0x4F000 / sp2C8, 0x00000186);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000051, 0x4E000 / sp2C8, 0x0000017C);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000050, 0x4D000 / sp2C8, 0x00000172);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004F, 0x4C000 / sp2C8, 0x00000168);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004E, 0x4C000 / sp2C8, 0x00000168);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004D, 0x4B000 / sp2C8, 0x0000015E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004C, 0x4A000 / sp2C8, 0x00000154);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004B, 0x49000 / sp2C8, 0x0000014A);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004A, 0x49000 / sp2C8, 0x0000014A);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000049, 0x49000 / sp2C8, 0x0000014A);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000048, 0x48000 / sp2C8, 0x00000140);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000047, 0x47000 / sp2C8, 0x0000013B);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000046, 0x47000 / sp2C8, 0x0000013B);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000045, 0x46000 / sp2C8, 0x00000131);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000044, 0x46000 / sp2C8, 0x00000131);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000043, 0x45000 / sp2C8, 0x00000118);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000042, 0x46000 / sp2C8, 0x0000010E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000041, 0x45000 / sp2C8, 0x0000010E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000040, 0x44000 / sp2C8, 0x00000104);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003F, 0x43000 / sp2C8, 0x000000FA);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003E, 0x43000 / sp2C8, 0x000000FA);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003D, 0x43000 / sp2C8, 0x000000FA);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003C, 0x3D000 / sp2C8, 0x000000F5);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003B, 0x3C000 / sp2C8, 0x000000F5);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003A, 0x3B000 / sp2C8, 0x000000F5);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000039, 0x3A000 / sp2C8, 0x000000F5);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000038, 0x38000 / sp2C8, 0x000000F5);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000037, 0x38000 / sp2C8, 0x000000E6);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000036, 0x38000 / sp2C8, 0x000000E6);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000035, 0x38000 / sp2C8, 0x000000E6);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000034, 0x38000 / sp2C8, 0x000000E6);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000033, 0x38000 / sp2C8, 0x000000E6);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000032, 0x32000 / sp2C8, 0x000000DC);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000031, 0x32000 / sp2C8, 0x000000DC);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000030, 0x32000 / sp2C8, 0x000000DC);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002F, 0x32000 / sp2C8, 0x000000DC);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002E, 0x32000 / sp2C8, 0x000000DC);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002D, 0x30000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002C, 0x2E000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002B, 0x2E000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002A, 0x2E000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000029, 0x2E000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000028, 0x2E000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000027, 0x2C000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000026, 0x28000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000025, 0x28000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000024, 0x24000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000023, 0x24000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000022, 0x22000 / sp2C8, 0x0000006E);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000020, 0x20000 / sp2C8, 0x00000064);
-    func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001F, 0x20000 / sp2C8, 0x00000064);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001E, 0x1F000 / sp2CC, 0.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001D, 0x1E000 / sp2CC, 0.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001C, 0x1D000 / sp2CC, 0.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001B, 0x1C000 / sp2CC, 0.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001A, 0x1B000 / sp2CC, 0.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000019, 0x1A000 / sp2CC, 1.0f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000018, 0x19000 / sp2CC, 1.0f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000017, 0x18000 / sp2CC, 1.0f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000016, 0x17000 / sp2CC, 1.0f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000015, 0x16000 / sp2CC, 1.0f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000014, 0x15000 / sp2CC, 1.05f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000013, 0x14000 / sp2CC, 1.05f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000012, 0x13000 / sp2CC, 1.05f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000011, 0x12000 / sp2CC, 1.05f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000010, 0x11000 / sp2CC, 1.05f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000F, 0x10000 / sp2CC, 1.2f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000E, 0xF000 / sp2CC, 1.2f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000D, 0xE000 / sp2CC, 1.2f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000C, 0xD000 / sp2CC, 1.2f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000B, 0xC000 / sp2CC, 1.2f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000A, 0xE000 / sp2CC, 1.6f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 9, 0xD000 / sp2CC, 1.6f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 8, 0xC000 / sp2CC, 1.6f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 7, 0xB000 / sp2CC, 1.6f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 6, 0xA000 / sp2CC, 1.6f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 5, 0x9000 / sp2CC, 1.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 4, 0x8000 / sp2CC, 1.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 3, 0x7000 / sp2CC, 1.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 2, 0x6000 / sp2CC, 1.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 1, 0x5000 / sp2CC, 1.9f);
-    func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0, 0 / sp2CC, 1.9f);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000005A, 0x78000 / sp2C8, 0x000001C2);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000059, 0x76000 / sp2C8, 0x000001B8);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000058, 0x74000 / sp2C8, 0x000001AE);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000057, 0x72000 / sp2C8, 0x000001A4);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000056, 0x70000 / sp2C8, 0x0000019A);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000055, 0x58000 / sp2C8, 0x00000190);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000054, 0x56000 / sp2C8, 0x0000018B);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000053, 0x50000 / sp2C8, 0x00000186);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000052, 0x4F000 / sp2C8, 0x00000186);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000051, 0x4E000 / sp2C8, 0x0000017C);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000050, 0x4D000 / sp2C8, 0x00000172);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004F, 0x4C000 / sp2C8, 0x00000168);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004E, 0x4C000 / sp2C8, 0x00000168);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004D, 0x4B000 / sp2C8, 0x0000015E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004C, 0x4A000 / sp2C8, 0x00000154);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004B, 0x49000 / sp2C8, 0x0000014A);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000004A, 0x49000 / sp2C8, 0x0000014A);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000049, 0x49000 / sp2C8, 0x0000014A);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000048, 0x48000 / sp2C8, 0x00000140);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000047, 0x47000 / sp2C8, 0x0000013B);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000046, 0x47000 / sp2C8, 0x0000013B);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000045, 0x46000 / sp2C8, 0x00000131);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000044, 0x46000 / sp2C8, 0x00000131);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000043, 0x45000 / sp2C8, 0x00000118);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000042, 0x46000 / sp2C8, 0x0000010E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000041, 0x45000 / sp2C8, 0x0000010E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000040, 0x44000 / sp2C8, 0x00000104);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003F, 0x43000 / sp2C8, 0x000000FA);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003E, 0x43000 / sp2C8, 0x000000FA);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003D, 0x43000 / sp2C8, 0x000000FA);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003C, 0x3D000 / sp2C8, 0x000000F5);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003B, 0x3C000 / sp2C8, 0x000000F5);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000003A, 0x3B000 / sp2C8, 0x000000F5);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000039, 0x3A000 / sp2C8, 0x000000F5);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000038, 0x38000 / sp2C8, 0x000000F5);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000037, 0x38000 / sp2C8, 0x000000E6);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000036, 0x38000 / sp2C8, 0x000000E6);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000035, 0x38000 / sp2C8, 0x000000E6);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000034, 0x38000 / sp2C8, 0x000000E6);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000033, 0x38000 / sp2C8, 0x000000E6);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000032, 0x32000 / sp2C8, 0x000000DC);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000031, 0x32000 / sp2C8, 0x000000DC);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000030, 0x32000 / sp2C8, 0x000000DC);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002F, 0x32000 / sp2C8, 0x000000DC);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002E, 0x32000 / sp2C8, 0x000000DC);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002D, 0x30000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002C, 0x2E000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002B, 0x2E000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000002A, 0x2E000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000029, 0x2E000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000028, 0x2E000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000027, 0x2C000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000026, 0x28000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000025, 0x28000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000024, 0x24000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000023, 0x24000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000022, 0x22000 / sp2C8, 0x0000006E);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000020, 0x20000 / sp2C8, 0x00000064);
+    update_steering_large(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001F, 0x20000 / sp2C8, 0x00000064);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001E, 0x1F000 / sp2CC, 0.9f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001D, 0x1E000 / sp2CC, 0.9f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001C, 0x1D000 / sp2CC, 0.9f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001B, 0x1C000 / sp2CC, 0.9f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000001A, 0x1B000 / sp2CC, 0.9f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000019, 0x1A000 / sp2CC, 1.0f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000018, 0x19000 / sp2CC, 1.0f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000017, 0x18000 / sp2CC, 1.0f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000016, 0x17000 / sp2CC, 1.0f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000015, 0x16000 / sp2CC, 1.0f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000014, 0x15000 / sp2CC, 1.05f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000013, 0x14000 / sp2CC, 1.05f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000012, 0x13000 / sp2CC, 1.05f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000011, 0x12000 / sp2CC, 1.05f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x00000010, 0x11000 / sp2CC, 1.05f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000F, 0x10000 / sp2CC, 1.2f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000E, 0xF000 / sp2CC, 1.2f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000D, 0xE000 / sp2CC, 1.2f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000C, 0xD000 / sp2CC, 1.2f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000B, 0xC000 / sp2CC, 1.2f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000000A, 0xE000 / sp2CC, 1.6f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 9, 0xD000 / sp2CC, 1.6f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 8, 0xC000 / sp2CC, 1.6f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 7, 0xB000 / sp2CC, 1.6f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 6, 0xA000 / sp2CC, 1.6f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 5, 0x9000 / sp2CC, 1.9f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 4, 0x8000 / sp2CC, 1.9f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 3, 0x7000 / sp2CC, 1.9f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 2, 0x6000 / sp2CC, 1.9f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 1, 0x5000 / sp2CC, 1.9f);
+    update_steering_small(player, &sp2D0, &sp2E4, player->unk_07C, 0, 0 / sp2CC, 1.9f);
     if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         var_f2_2 = (f32) (((s32) (sp2E4 >> 16)) / 8);
     } else if (((player->speed / 18.0f) * 216.0f) <= 25.0f) {
@@ -4146,7 +4146,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
                     player->effects |= DRIFT_OUTSIDE_EFFECT;
                 }
             }
-            func_8002A8A4(player, arg2);
+            update_drift_state_counter(player, arg2);
         } else {
             var_s1_2 = (((s32) (((player->unk_07C >> 0x10) * 0xD) + 0x2B1)) / 106) - 0x35;
             if ((player->unk_07C >> 0x10) >= 0x28) {
@@ -4155,7 +4155,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
                     player->effects |= DRIFT_OUTSIDE_EFFECT;
                 }
             }
-            func_8002A8A4(player, arg2);
+            update_drift_state_counter(player, arg2);
         }
         if ((((player->speed / 18.0f) * 216.0f) >= 0.0f) && (((player->speed / 18.0f) * 216.0f) < 8.0f)) {
             player->unk_078 = (s16) ((s32) (var_s1_2 * ((var_f2_2 + 2.0f) + (var_f2_2 * var_f12))));
@@ -4260,7 +4260,7 @@ void apply_cpu_turn(Player* player, s16 targetAngle) {
                 }
                 if ((((player->effects & HOP_EFFECT) != HOP_EFFECT) && (player->unk_0C0 < 0x3D) && (player->unk_0C0 > -0x3D)) ||
                     (((player->speed / 18.0f) * 216.0f) <= 20.0f) || ((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT)) {
-                    func_80036CB4(player);
+                    cancel_drift_effect(player);
                 }
             }
         }
@@ -4275,7 +4275,7 @@ void func_80036C5C(Player* player) {
     }
 }
 
-void func_80036CB4(Player* player) {
+void cancel_drift_effect(Player* player) {
     s32 test;
 
     if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {

@@ -3,14 +3,14 @@ GREENSHELL_DIR := assets/greenshell
 GREENSHELL_PALETTE := $(GREENSHELL_DIR)/common_tlut_green_shell.png
 
 GREENSHELL_FRAMES := \
-$(GREENSHELL_DIR)/gTextureGreenShell0.png \
-$(GREENSHELL_DIR)/gTextureGreenShell1.png \
-$(GREENSHELL_DIR)/gTextureGreenShell2.png \
-$(GREENSHELL_DIR)/gTextureGreenShell3.png \
-$(GREENSHELL_DIR)/gTextureGreenShell4.png \
-$(GREENSHELL_DIR)/gTextureGreenShell5.png \
-$(GREENSHELL_DIR)/gTextureGreenShell6.png \
-$(GREENSHELL_DIR)/gTextureGreenShell7.png
+$(GREENSHELL_DIR)/texture_green_shell_0.png \
+$(GREENSHELL_DIR)/texture_green_shell_1.png \
+$(GREENSHELL_DIR)/texture_green_shell_2.png \
+$(GREENSHELL_DIR)/texture_green_shell_3.png \
+$(GREENSHELL_DIR)/texture_green_shell_4.png \
+$(GREENSHELL_DIR)/texture_green_shell_5.png \
+$(GREENSHELL_DIR)/texture_green_shell_6.png \
+$(GREENSHELL_DIR)/texture_green_shell_7.png
 
 GREENSHELL_EXPORT_SENTINEL := $(GREENSHELL_DIR)/.export
 

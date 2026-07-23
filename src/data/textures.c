@@ -2045,7 +2045,7 @@ MkAnimation D_0200210C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200211C[2] = {
+MenuTexture seg2_textureFontLetterA[2] = {
     { 5, gTexture7F2094, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2054,7 +2054,7 @@ MenuTexture D_0200211C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002144[2] = {
+MenuTexture seg2_textureFontLetterB[2] = {
     { 5, gTexture7F2164, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2063,7 +2063,7 @@ MenuTexture D_02002144[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200216C[2] = {
+MenuTexture seg2_textureFontLetterC[2] = {
     { 5, gTexture7F2234, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2072,7 +2072,7 @@ MenuTexture D_0200216C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002194[2] = {
+MenuTexture seg2_textureFontLetterD[2] = {
     { 5, gTexture7F2304, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2081,7 +2081,7 @@ MenuTexture D_02002194[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020021BC[2] = {
+MenuTexture seg2_textureFontLetterE[2] = {
     { 5, gTexture7F23D4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2090,7 +2090,7 @@ MenuTexture D_020021BC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020021E4[2] = {
+MenuTexture seg2_textureFontLetterF[2] = {
     { 5, gTexture7F24A4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2099,7 +2099,7 @@ MenuTexture D_020021E4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200220C[2] = {
+MenuTexture seg2_textureFontLetterG[2] = {
     { 5, gTexture7F2574, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2108,7 +2108,7 @@ MenuTexture D_0200220C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002234[2] = {
+MenuTexture seg2_textureFontLetterH[2] = {
     { 5, gTexture7F2644, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2117,7 +2117,7 @@ MenuTexture D_02002234[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200225C[2] = {
+MenuTexture seg2_textureFontLetterI[2] = {
     { 5, gTexture7F2714, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2126,7 +2126,7 @@ MenuTexture D_0200225C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002284[2] = {
+MenuTexture seg2_textureFontLetterJ[2] = {
     { 5, gTexture7F27E4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2135,7 +2135,7 @@ MenuTexture D_02002284[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020022AC[2] = {
+MenuTexture seg2_textureFontLetterK[2] = {
     { 5, gTexture7F28B4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2144,7 +2144,7 @@ MenuTexture D_020022AC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020022D4[2] = {
+MenuTexture seg2_textureFontLetterL[2] = {
     { 5, gTexture7F2984, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2153,7 +2153,7 @@ MenuTexture D_020022D4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020022FC[2] = {
+MenuTexture seg2_textureFontLetterM[2] = {
     { 5, gTexture7F2A54, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2162,7 +2162,7 @@ MenuTexture D_020022FC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002324[2] = {
+MenuTexture seg2_textureFontLetterN[2] = {
     { 5, gTexture7F2B24, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2171,7 +2171,7 @@ MenuTexture D_02002324[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200234C[2] = {
+MenuTexture seg2_textureFontLetterO[2] = {
     { 5, gTexture7F2BF4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2180,7 +2180,7 @@ MenuTexture D_0200234C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002374[2] = {
+MenuTexture seg2_textureFontLetterP[2] = {
     { 5, gTexture7F2CC4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2189,7 +2189,7 @@ MenuTexture D_02002374[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200239C[2] = {
+MenuTexture seg2_textureFontLetterQ[2] = {
     { 5, gTexture7F2D94, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2198,7 +2198,7 @@ MenuTexture D_0200239C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020023C4[2] = {
+MenuTexture seg2_textureFontLetterR[2] = {
     { 5, gTexture7F2E64, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2207,7 +2207,7 @@ MenuTexture D_020023C4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020023EC[2] = {
+MenuTexture seg2_textureFontLetterS[2] = {
     { 5, gTexture7F2F34, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2216,7 +2216,7 @@ MenuTexture D_020023EC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002414[2] = {
+MenuTexture seg2_textureFontLetterT[2] = {
     { 5, gTexture7F3004, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2225,7 +2225,7 @@ MenuTexture D_02002414[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200243C[2] = {
+MenuTexture seg2_textureFontLetterU[2] = {
     { 5, gTexture7F30D4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2234,7 +2234,7 @@ MenuTexture D_0200243C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002464[2] = {
+MenuTexture seg2_textureFontLetterV[2] = {
     { 5, gTexture7F31A4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2243,7 +2243,7 @@ MenuTexture D_02002464[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200248C[2] = {
+MenuTexture seg2_textureFontLetterW[2] = {
     { 5, gTexture7F3274, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2252,7 +2252,7 @@ MenuTexture D_0200248C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020024B4[2] = {
+MenuTexture seg2_textureFontLetterX[2] = {
     { 5, gTexture7F3344, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2261,7 +2261,7 @@ MenuTexture D_020024B4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020024DC[2] = {
+MenuTexture seg2_textureFontLetterY[2] = {
     { 5, gTexture7F3414, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2270,7 +2270,7 @@ MenuTexture D_020024DC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002504[2] = {
+MenuTexture seg2_textureFontLetterZ[2] = {
     { 5, gTexture7F34E4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2279,7 +2279,7 @@ MenuTexture D_02002504[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200252C[2] = {
+MenuTexture seg2_textureFontExclamationMark[2] = {
     { 5, gTexture7F1394, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2288,7 +2288,7 @@ MenuTexture D_0200252C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002554[2] = {
+MenuTexture seg2_textureFontMinus[2] = {
     { 5, gTexture7F1464, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2297,7 +2297,7 @@ MenuTexture D_02002554[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200257C[2] = {
+MenuTexture seg2_textureFontInterogationMark[2] = {
     { 5, gTexture7F16D4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2306,7 +2306,7 @@ MenuTexture D_0200257C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020025A4[2] = {
+MenuTexture seg2_textureFontSimpleQuote[2] = {
     { 5, gTexture7F17A4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2315,7 +2315,7 @@ MenuTexture D_020025A4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020025CC[2] = {
+MenuTexture seg2_textureFontDoubleQuote[2] = {
     { 5, gTexture7F12C4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2324,7 +2324,7 @@ MenuTexture D_020025CC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020025F4[2] = {
+MenuTexture seg2_textureFontPlus[2] = {
     { 5, gTexture7F1604, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2333,7 +2333,7 @@ MenuTexture D_020025F4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200261C[2] = {
+MenuTexture seg2_textureFontDot[2] = {
     { 5, gTexture7F1534, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2342,7 +2342,7 @@ MenuTexture D_0200261C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002644[2] = {
+MenuTexture seg2_textureFontFourDote[2] = {
     { 5, gTexture7F1124, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2351,7 +2351,7 @@ MenuTexture D_02002644[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200266C[2] = {
+MenuTexture seg2_textureFontCC[2] = {
     { 5, gTexture7F11F4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2360,7 +2360,7 @@ MenuTexture D_0200266C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002694[2] = {
+MenuTexture seg2_textureFontNumberZero[2] = {
     { 5, gTexture7F1874, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2369,7 +2369,7 @@ MenuTexture D_02002694[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020026BC[2] = {
+MenuTexture seg2_textureFontNumberOne[2] = {
     { 5, gTexture7F1944, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2378,7 +2378,7 @@ MenuTexture D_020026BC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020026E4[2] = {
+MenuTexture seg2_textureFontNumberTwo[2] = {
     { 5, gTexture7F1A14, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2387,7 +2387,7 @@ MenuTexture D_020026E4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200270C[2] = {
+MenuTexture seg2_textureFontNumberThree[2] = {
     { 5, gTexture7F1AE4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2396,7 +2396,7 @@ MenuTexture D_0200270C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002734[2] = {
+MenuTexture seg2_textureFontNumberFour[2] = {
     { 5, gTexture7F1BB4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2405,7 +2405,7 @@ MenuTexture D_02002734[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200275C[2] = {
+MenuTexture seg2_textureFontNumberFive[2] = {
     { 5, gTexture7F1C84, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2414,7 +2414,7 @@ MenuTexture D_0200275C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02002784[2] = {
+MenuTexture seg2_textureFontNumberSix[2] = {
     { 5, gTexture7F1D54, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2423,7 +2423,7 @@ MenuTexture D_02002784[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020027AC[2] = {
+MenuTexture seg2_textureFontNumberSeven[2] = {
     { 5, gTexture7F1E24, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2432,7 +2432,7 @@ MenuTexture D_020027AC[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020027D4[2] = {
+MenuTexture seg2_textureFontNumberEight[2] = {
     { 5, gTexture7F1EF4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -2441,7 +2441,7 @@ MenuTexture D_020027D4[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020027FC[2] = {
+MenuTexture seg2_textureFontNumberNine[2] = {
     { 5, gTexture7F1FC4, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4071,7 +4071,7 @@ MenuTexture D_0200441C[2] = {
  *
  */
 MenuTexture D_02004444[2] = {
-    { 5, gTexture7FA044, 16, 16, 0, 0, 0x0, 0 },
+    { 5, font_apostrophe, 16, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4124,8 +4124,8 @@ MenuTexture D_0200450C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02004534[2] = {
-    { 5, gTexture7FA334, 16, 16, 0, 0, 0x0, 0 },
+MenuTexture seg2_textureFontComma[2] = {
+    { 5, font_comma, 16, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4142,7 +4142,7 @@ MenuTexture D_0200455C[2] = {
  * @brief unknown empty MenuTexture
  *
  */
-MenuTexture D_02004584[1] = {
+MenuTexture seg2_textureFontEmpty[1] = {
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4250,7 +4250,7 @@ MenuTexture seg2_menu_4p_column[4] = {
  *
  */
 MenuTexture D_020047DC[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4259,7 +4259,7 @@ MenuTexture D_020047DC[2] = {
  *
  */
 MenuTexture D_02004804[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4268,7 +4268,7 @@ MenuTexture D_02004804[2] = {
  *
  */
 MenuTexture D_0200482C[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4277,7 +4277,7 @@ MenuTexture D_0200482C[2] = {
  *
  */
 MenuTexture D_02004854[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4303,7 +4303,7 @@ MenuTexture D_020048A4[2] = {
  * @brief MenuTexture for Menu R Option
  *
  */
-MenuTexture D_020048CC[2] = {
+MenuTexture seg2_textureMenuRData[2] = {
     { 1, gTextureMenuRData, 58, 19, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };

@@ -115,7 +115,7 @@ void update_player_completion(s32);
 
 void yoshi_valley_cpu_path(s32);
 void update_cpu_path_completion(s32, Player*);
-f32 func_80009258(s32, f32, f32);
+f32 time_crossed_finish_line(s32, f32, f32);
 void update_player_path_completion(s32, Player*);
 void update_vehicles(void);
 void play_cpu_sound_effect(s32, Player*);
@@ -323,7 +323,7 @@ extern u16 D_801631F8[];
 extern f32 gCurrentCpuTargetSpeed;
 extern f32 gPreviousCpuTargetSpeed[];
 extern s32 D_80163238;
-extern u16 D_80163240[];
+extern u16 gCrossedFinishLine[];
 extern u16 gWrongDirectionCounter[];
 extern u16 gIsPlayerWrongDirection[];
 extern s32 gPreviousLapProgressScore[];
@@ -383,7 +383,7 @@ extern s16 D_80164358;
 extern s16 D_8016435A;
 extern s16 D_8016435C;
 extern s16 gGPCurrentRacePlayerIdByRank[]; // D_80164360
-extern s16 D_80164378[];
+extern s16 gPrevPlayerIdByRank[];
 extern s32 gLapCountByPlayerId[];          // D_80164390
 extern s32 gGPCurrentRaceRankByPlayerId[]; // D_801643B8
 extern s32 gPreviousGPCurrentRaceRankByPlayerId[];

@@ -822,7 +822,7 @@ glabel gTextureP4BorderGreen
 .incbin "textures/raw/p4_border_green.rgba16"
 
 .align 2, 0x00
-glabel gTextureSmallGreenTriangle
+glabel texture_small_green_triangle
 .incbin "textures/raw/small_green_triangle.rgba16"
 
 .align 2, 0x00
