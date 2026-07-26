@@ -185,6 +185,45 @@ static const s8 gCustomMenuValueCounts[CUSTOM_MENU_ROWS] = { 3, 3, 3, 2, 2, 4, 2
 
 /**************************/
 
+void checkPlayersAndSelectComputers(void) {
+    s32 i;
+    s32 allHumansReady = 1;
+
+    // 1. First, verify all HUMAN players have locked in their characters
+    for (i = 0; i < gPlayerCount; i++) {
+        // If the controller bit is set (1 << i checks bits 1, 2, 4, 8)
+        if ((gControllerBits & (1 << i)) != 0) {
+            // It's a human player. Have they picked a character?
+            if (!gCharacterGridIsSelected[i]) {
+                allHumansReady = 0;
+                break; // Stop checking, we are still waiting on a human
+            }
+        }
+    }
+
+    // 2. Once humans are done, fill the UNPLUGGED slots with bots
+    if (allHumansReady) {
+        for (i = 0; i < gPlayerCount; i++) {
+            // If the controller bit is 0 (Unplugged)
+            if ((gControllerBits & (1 << i)) == 0) {
+                
+                // If the bot hasn't been locked in yet
+                if (!gCharacterGridIsSelected[i]) {
+                    
+                    // 1. Assign the bot's choice to the grid cursor array
+                    gCharacterGridSelections[i] = (random_u16() % 8) +1;
+                    
+                    // 2. Lock it in (this perfectly mimics pressing the A button)
+                    gCharacterGridIsSelected[i] = true;
+                    
+                    // 3. Play the character's selection voice line
+                    func_800C90F4(i, ((sCharacterGridOrder - 1)[gCharacterGridSelections[i]] * 0x10) + 0x2900800E);
+                }
+            }
+        }
+    }
+}
+
 /**
  * General menu main handler
  * Includes opening logo and splash screens
@@ -246,6 +285,9 @@ void update_menus(void) {
                 case PLAYER_SELECT_MENU_FROM_QUIT:
                 case CHARACTER_SELECT_MENU:
                     player_select_menu_act(&gControllers[controllerIdx], controllerIdx);
+                    if (/*gPracticeMode &&*/ (gModeSelection == VERSUS)) {
+                        checkPlayersAndSelectComputers();
+                    }
                     break;
                 case COURSE_SELECT_MENU_FROM_QUIT:
                 case COURSE_SELECT_MENU:
@@ -1598,7 +1640,7 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                         play_sound2(SOUND_MENU_GO_BACK);
                     }
                 }
-            
+                // pressing A to select character on character select screen + playing character audio
                 if ((btnAndStick & A_BUTTON) && (gCharacterGridIsSelected[controllerIdx] == 0)) {
                     gCharacterGridIsSelected[controllerIdx] = true;
                     func_800C90F4(controllerIdx, ((sCharacterGridOrder - 1)[gCharacterGridSelections[controllerIdx]] * 0x10) + 0x2900800E);
@@ -1844,6 +1886,7 @@ void course_select_menu_act(struct Controller* arg0, u16 controllerIdx) {
                     play_sound2(SOUND_MENU_GO_BACK);
                     return;
                 }
+                // if all characters have been selected, any player can press A to continue to course select 
                 if ((btnAndStick & A_BUTTON) != 0) {
                     func_8009E1C0();
                     func_800CA330(0x19);
