@@ -851,13 +851,6 @@ extern f32 D_8018EDA8;
 extern f32 D_8018EDAC;
 
 extern s8 gTournamentCourseMode;
-extern const s16 gVACourseOrder[4][4];
-extern const s16 gKACourseOrder[4][4];
-extern const s16 gKAMMFCourseOrder[4][4];
-extern char* gCourseNamesVA[];
-extern char* gCourseNamesKA[];
-extern char* gCourseNamesKA_MMF[];
-
 extern s8 gTournamentCharacterStats;
 extern s8 gTournamentScaling;
 extern s8 gTournamentWidescreen;
@@ -867,5 +860,6 @@ extern s8 gTournamentAA;
 extern s8 gTournamentShellLimit; // unused
 extern s8 gTournamentForceMap;
 extern s8 gTournamentExtraMode;
+extern s8 gPracticeMode;
 
 #endif

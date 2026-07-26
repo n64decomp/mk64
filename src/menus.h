@@ -265,7 +265,7 @@ extern const s16 gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP];
 // end of menus.c variables
 
 // start of custom menu var
-#define CUSTOM_MENU_ROWS 9
+#define CUSTOM_MENU_ROWS 10
 #define CUSTOM_MENU_VALUE_COUNT 3
 
 extern s8 gCustomMenuTitle;                         // tournament rom credits title

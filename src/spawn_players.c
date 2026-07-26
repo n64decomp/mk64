@@ -72,6 +72,9 @@ s16 D_8016557E;
 s16 D_80165580;
 s16 D_80165582;
 
+extern u8 getLiveControllerBits(void);
+extern bool gPracticeCPU[4];
+
 // arg4 is height? Or something like that?
 void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingColumn, f32 arg4, f32 arg5,
                   u16 characterId, s16 playerType) {
@@ -80,6 +83,17 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     s32 statsCharacterId;
     s32 statsCCIndex;
 
+    /* empty-port human in VS -> spawn CPU in all versus modes */
+    if (gPracticeMode) {
+        if ((gModeSelection == VERSUS) && !gDemoMode
+            && (playerType & PLAYER_HUMAN)
+            && !(playerType & PLAYER_INVISIBLE_OR_BOMB)
+            && !(getLiveControllerBits() & (1 << playerIndex))) {
+                playerType = (playerType & ~PLAYER_HUMAN | PLAYER_CPU);
+                gPracticeCPU[playerIndex] = true; 
+            }
+        }
+        
     player->type = PLAYER_INACTIVE;
     player->unk_08C = 0;
     player->characterId = characterId;

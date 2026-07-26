@@ -24,6 +24,7 @@
 #include "math.h"
 #include "menus.h"
 #include "seq_ids.h"
+#include "spawn_players.h"
 
 #pragma intrinsic(sqrtf)
 
@@ -47,6 +48,8 @@ UNUSED s32 D_802BA03C;
 
 s16 D_802BA040[4];
 u16 D_802BA048;
+
+bool gPracticeCPU[4];
 
 void func_8028DF00(void) {
     struct Controller* controllers = &gControllers[0];
@@ -563,8 +566,8 @@ void func_8028EF28(void) {
         } else if (gLapCountByPlayerId[playerId] > player->lapCount) {
             player->lapCount++;
 
-            // if slot has an active player 
-            if ((player->type & PLAYER_HUMAN) != 0) {
+            // if slot has an active player or practice CPU
+            if ((player->type & PLAYER_HUMAN) || gPracticeCPU[playerId]) {
                 // if player finishes (3 = starting 4th lap = finished)
                 if (player->lapCount == 3) {
                     add_cinematic_mode(playerId);

@@ -145,6 +145,13 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
                 player->velocity[2] = 0.0f;
             }
         } else {
+            if (gPracticeMode) {
+                if ((gModeSelection == VERSUS) && (player->type & PLAYER_CPU)) {
+                    player->effects |= CPU_FAST_EFFECT;
+                    player_accelerate_alternative(player);
+                    return;
+                }
+            }
             var_f0 = 3.3333333f;
             switch (gCCSelection) { /* irregular */
                 case CC_100:

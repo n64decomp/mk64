@@ -178,21 +178,35 @@ s8 gCustomMenuOptionValues[CUSTOM_MENU_ROWS] = { 0 };
 
 // Per-row number of selectable values (matches label arrays in render_custom_overlay)
 // tracks, stats, scaling, widescreen, mp music, mp train boat, AA, force minimap,
-// extra
-static const s8 gCustomMenuValueCounts[CUSTOM_MENU_ROWS] = { 3, 3, 3, 2, 2, 4, 2, 3, 2 };
+// extra, practice mode
+static const s8 gCustomMenuValueCounts[CUSTOM_MENU_ROWS] = { 3, 3, 3, 2, 2, 4, 2, 3, 2, 2 };
 
 // end of new var init
 
 /**************************/
 
+extern OSContPad gControllerPads[4];
+
+u8 getLiveControllerBits(void) {
+    u8 bits = 0;
+    s32 i;
+    for (i=0; i<4; i++) {
+        if (gControllerPads[i].errno == 0) {
+            bits |= (1 << i);
+        }
+    }
+    return bits;
+}
+
 void checkPlayersAndSelectComputers(void) {
     s32 i;
     s32 allHumansReady = 1;
+    u8 physicalBits = getLiveControllerBits();
 
     // 1. First, verify all HUMAN players have locked in their characters
     for (i = 0; i < gPlayerCount; i++) {
         // If the controller bit is set (1 << i checks bits 1, 2, 4, 8)
-        if ((gControllerBits & (1 << i)) != 0) {
+        if ((physicalBits & (1 << i)) != 0) {
             // It's a human player. Have they picked a character?
             if (!gCharacterGridIsSelected[i]) {
                 allHumansReady = 0;
@@ -205,13 +219,13 @@ void checkPlayersAndSelectComputers(void) {
     if (allHumansReady) {
         for (i = 0; i < gPlayerCount; i++) {
             // If the controller bit is 0 (Unplugged)
-            if ((gControllerBits & (1 << i)) == 0) {
+            if ((physicalBits & (1 << i)) == 0) {
                 
                 // If the bot hasn't been locked in yet
                 if (!gCharacterGridIsSelected[i]) {
                     
                     // 1. Assign the bot's choice to the grid cursor array
-                    gCharacterGridSelections[i] = (random_u16() % 8) +1;
+                    gCharacterGridSelections[i] = (random_u16() % 8) + 1;
                     
                     // 2. Lock it in (this perfectly mimics pressing the A button)
                     gCharacterGridIsSelected[i] = true;
@@ -285,7 +299,7 @@ void update_menus(void) {
                 case PLAYER_SELECT_MENU_FROM_QUIT:
                 case CHARACTER_SELECT_MENU:
                     player_select_menu_act(&gControllers[controllerIdx], controllerIdx);
-                    if (/*gPracticeMode &&*/ (gModeSelection == VERSUS)) {
+                    if (gPracticeMode && (gModeSelection == VERSUS)) {
                         checkPlayersAndSelectComputers();
                     }
                     break;
