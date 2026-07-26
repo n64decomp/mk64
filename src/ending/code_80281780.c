@@ -94,7 +94,7 @@ void load_ceremony_cutscene(void) {
     gGotoMenu = 0xFFFF;
     D_80287554 = 0;
     set_perspective_and_aspect_ratio();
-    func_802A74BC();
+    set_screen();
     camera->unk_B4 = 60.0f;
     gCameraZoom[0] = 60.0f;
     D_800DC5EC->screenWidth = SCREEN_WIDTH;

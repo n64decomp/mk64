@@ -204,7 +204,7 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
             actor->boundingBoxSize = 3.0f;
             actor->unk_08 = 17.0f;
             break;
-        case 26:
+        case ACTOR_TREE_LUIGI_RACEWAY:
             actor->flags |= 0x4000;
             actor->state = 0x0043;
             actor->boundingBoxSize = 3.0f;
@@ -2185,8 +2185,8 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
         case ACTOR_TREE_ROYAL_RACEWAY:
         case ACTOR_TREE_MOO_MOO_FARM:
         case ACTOR_PALM_TREE:
-        case 26:
-        case ACTOR_TREE_BOWSERS_CASTLE:
+        case ACTOR_TREE_LUIGI_RACEWAY:
+        case ACTOR_TREE_PEACH_CASTLE:
         case ACTOR_TREE_FRAPPE_SNOWLAND:
         case ACTOR_CACTUS1_KALAMARI_DESERT:
         case ACTOR_CACTUS2_KALAMARI_DESERT:
@@ -2501,11 +2501,11 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
             case ACTOR_TREE_MOO_MOO_FARM:
                 render_actor_tree_moo_moo_farm(camera, D_801502C0, actor);
                 break;
-            case ACTOR_UNKNOWN_0x1A:
-                func_80299864(camera, D_801502C0, actor);
+            case ACTOR_TREE_LUIGI_RACEWAY:
+                render_actor_tree_luigi_raceway(camera, D_801502C0, actor);
                 break;
-            case ACTOR_TREE_BOWSERS_CASTLE:
-                render_actor_tree_bowser_castle(camera, D_801502C0, actor);
+            case ACTOR_TREE_PEACH_CASTLE:
+                render_actor_tree_peach_castle(camera, D_801502C0, actor);
                 break;
             case ACTOR_BUSH_BOWSERS_CASTLE:
                 render_actor_bush_bowser_castle(camera, D_801502C0, actor);
@@ -2676,9 +2676,9 @@ void update_course_actors(void) {
             case ACTOR_TREE_ROYAL_RACEWAY:
             case ACTOR_TREE_MOO_MOO_FARM:
             case ACTOR_PALM_TREE:
-            case ACTOR_UNKNOWN_0x1A: // A plant?
+            case ACTOR_TREE_LUIGI_RACEWAY: // A plant?
             case ACTOR_UNKNOWN_0x1B:
-            case ACTOR_TREE_BOWSERS_CASTLE:
+            case ACTOR_TREE_PEACH_CASTLE:
             case ACTOR_TREE_FRAPPE_SNOWLAND:
             case ACTOR_CACTUS1_KALAMARI_DESERT:
             case ACTOR_CACTUS2_KALAMARI_DESERT:
