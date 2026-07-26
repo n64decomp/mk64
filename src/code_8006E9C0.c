@@ -131,7 +131,7 @@ u8* dma_copy_base_misc_textures(u8* devAddr, u8* baseAddress, u32 size, u32 offs
 
 void load_mario_kart_64_logo(void) {
     gGameLogoAddress =
-        dma_copy_base_misc_textures((u8*) &gTextureLogoMarioKart64, (u8*) gMenuTextureBuffer, 0x79E1, 0x20000);
+        dma_copy_base_misc_textures((u8*) &logo_mario_kart_64, (u8*) gMenuTextureBuffer, 0x79E1, 0x20000);
 }
 
 // Some kind of initalization for the Item Window part of the HUD

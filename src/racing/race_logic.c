@@ -85,7 +85,7 @@ void func_8028E028(void) {
             break;
     }
     func_800CA118((u8) gPlayerWinningIndex);
-    D_800DC510 = 5;
+    gRaceState = 5;
     gDemoTimer = 10;
 }
 
@@ -230,7 +230,7 @@ void func_8028E438(void) {
                     func_80019DF4();
                 } else {
                     func_80092564();
-                    D_800DC510 = 7;
+                    gRaceState = 7;
                 }
             }
             break;
@@ -408,7 +408,7 @@ void func_8028E678(void) {
         case 4:
             gIsInQuitToMenuTransition = 1;
             gQuitToMenuTransitionCounter = 5;
-            D_800DC510 = 7;
+            gRaceState = 7;
             func_8028E3A0();
             break;
     }
@@ -416,7 +416,7 @@ void func_8028E678(void) {
 
 UNUSED void func_8028EC38(s32 arg0) {
     gGotoMode = arg0;
-    D_800DC510 = 6;
+    gRaceState = 6;
     func_800CA330(25);
     func_800CA388(25);
     D_800DC5B4 = 1;
@@ -512,8 +512,8 @@ void start_race(void) {
         play_music_for_current_track(gCurrentCourseId);
     }
 
-    if (D_800DC510 == 2) {
-        D_800DC510 = 3;
+    if (gRaceState == 2) {
+        gRaceState = 3;
     }
 
     for (i = 0; i < NUM_PLAYERS; i++) {
@@ -589,10 +589,10 @@ void func_8028EF28(void) {
                         // Inner if required for precise finish times.
                         // Otherwise, higher port numbers can reset the state after a lower
                         // port number finished 2nd to last, concluding the race
-                        if (D_800DC510 <= 4){
+                        if (gRaceState <= 4){
                             // 4 means somebody has finished the race (or something similar)  
                             // 5 means 2nd to last has finished, concluding the race
-                            D_800DC510 = 4;
+                            gRaceState = 4;
                         }
                     }
                     if (gModeSelection == TIME_TRIALS) {
@@ -609,11 +609,11 @@ void func_8028EF28(void) {
                                 // currentPosition = position of player when crossing finish line (0 indexed)
                                 // 0 is 1st, 1 is 2nd, 2 is 3rd, 3 is 4th
                                 if (currentPosition == 0 ) { // when first finishes
-                                    *(gNmiUnknown1 + playerId) += 1; // add tally
-                                    if (*(gNmiUnknown1 + playerId) > 99) {
-                                        *(gNmiUnknown1 + playerId) = 99;
+                                    *(nmi_gVersusResults2P + playerId) += 1; // add tally
+                                    if (*(nmi_gVersusResults2P + playerId) > 99) {
+                                        *(nmi_gVersusResults2P + playerId) = 99;
                                     }
-                                    D_800DC510 = 5;
+                                    gRaceState = 5;
                                     playerIdLast = gPlayerPositionLUT[1];                 // get 2nd place player position
                                     gPlayers[playerIdLast].triggers |= SPINOUT_TRIGGER;   // spin out 2nd place player
                                     gPlayers[playerIdLast].type |= PLAYER_CPU;            // cpu control 2nd place player
@@ -622,21 +622,21 @@ void func_8028EF28(void) {
                                 break;
                             case 3:
                                 if (currentPosition < 2) {
-                                    *(gNmiUnknown2 + playerId * 3 + currentPosition) += 1;
+                                    *(nmi_gVersusResults3P + playerId * 3 + currentPosition) += 1;
                                 
-                                    if (*(gNmiUnknown2 + playerId * 3 + currentPosition) > 99) {
-                                        *(gNmiUnknown2 + playerId * 3 + currentPosition) = 99;
+                                    if (*(nmi_gVersusResults3P + playerId * 3 + currentPosition) > 99) {
+                                        *(nmi_gVersusResults3P + playerId * 3 + currentPosition) = 99;
                                     }
                                     /* Because the last player may not finish, their score must be updated when the 2nd
                                        to last racer finishes. */
                                     if (currentPosition == 1) {
-                                        D_800DC510 = 5; // triggers results screen
+                                        gRaceState = 5; // triggers results screen
 
                                         playerIdLast = gPlayerPositionLUT[2];
                                         // update 3rd place (last) tally here because they may not cross finish line
-                                        *(gNmiUnknown2 + playerIdLast * 3 + 2) += 1;
-                                        if (*(gNmiUnknown2 + playerIdLast * 3 + 2) > 99) {
-                                            *(gNmiUnknown2 + playerIdLast * 3 + 2) = 99;
+                                        *(nmi_gVersusResults3P + playerIdLast * 3 + 2) += 1;
+                                        if (*(nmi_gVersusResults3P + playerIdLast * 3 + 2) > 99) {
+                                            *(nmi_gVersusResults3P + playerIdLast * 3 + 2) = 99;
                                         }
                                         gPlayers[playerIdLast].triggers |= SPINOUT_TRIGGER; // spin out 3rd place player
                                         gPlayers[playerIdLast].type |= PLAYER_CPU;          // cpu control 3rd place
@@ -647,14 +647,14 @@ void func_8028EF28(void) {
                             case 4:
                                 // 4th place gets no tally
                                 if (currentPosition < 3) {
-                                    *(gNmiUnknown3 + playerId * 3 + currentPosition) += 1;
-                                    if (*(gNmiUnknown3 + playerId * 3 + currentPosition) > 99) {
-                                        *(gNmiUnknown3 + playerId * 3 + currentPosition) = 99;
+                                    *(nmi_gVersusResults4P + playerId * 3 + currentPosition) += 1;
+                                    if (*(nmi_gVersusResults4P + playerId * 3 + currentPosition) > 99) {
+                                        *(nmi_gVersusResults4P + playerId * 3 + currentPosition) = 99;
                                     }
                                 }
                                 // if 3rd has finished, race is over
                                 if (currentPosition == 2) {
-                                    D_800DC510 = 5;
+                                    gRaceState = 5;
                                     playerIdLast = gPlayerPositionLUT[3];               // get 4th place player position
                                     gPlayers[playerIdLast].triggers |= SPINOUT_TRIGGER; // spin out 4th place
                                     gPlayers[playerIdLast].type |= PLAYER_CPU;          // cpu control 4th place
@@ -707,7 +707,7 @@ void update_race_position_data(void) {
 void func_8028F474(void) {
     s32 i;
 
-    switch (D_800DC510) {
+    switch (gRaceState) {
         case 3:
         case 4:
         case 5:
@@ -730,7 +730,7 @@ void func_8028F4E8(void) {
             func_800CA330(0x19);
             func_800CA388(0x19);
             gGotoMode = START_MENU_FROM_QUIT;
-            D_800DC510 = 6;
+            gRaceState = 6;
             D_800DC5B4 = 1;
             D_800DC5B0 = 1;
             D_800DC5B8 = 0;
@@ -954,7 +954,7 @@ void func_8028F970(void) {
 
 void func_8028FBD4(void) {
     gGotoMode = START_MENU_FROM_QUIT;
-    D_800DC510 = 6;
+    gRaceState = 6;
     func_800CA330(25);
     func_800CA388(25);
     D_800DC5B4 = 1;
@@ -994,7 +994,7 @@ void func_8028FCBC(void) {
     if (gDemoUseController) {
         end_demo_update();
     }
-    switch (D_800DC510) {
+    switch (gRaceState) {
         case 0:
             if (!gDemoMode) { // If we're not in the demo mode, play the starting fanfare for the current mode (Grand Prix / Time Trials / VS / Battle)
                 if (gModeSelection == GRAND_PRIX) {
@@ -1006,7 +1006,7 @@ void func_8028FCBC(void) {
                 }
             }
             func_80002DAC();
-            D_800DC510 = 1;
+            gRaceState = 1;
             D_80150118 = 3.0f;
             creditsRenderMode = 0;
             D_802BA032 = 0;
@@ -1039,7 +1039,7 @@ void func_8028FCBC(void) {
                         func_802A7728();
                     }
                 }
-                D_800DC510 = 2;
+                gRaceState = 2;
                 D_800DC5B0 = 0;
                 D_800DC5B8 = 1;
                 func_80078F64();
@@ -1090,7 +1090,7 @@ void func_8028FCBC(void) {
                     switch (gScreenModeSelection) {
                         case SCREEN_MODE_1P:
                             gDemoTimer = 690;
-                            D_800DC510 = 5;
+                            gRaceState = 5;
                             func_8028E298();
                             break;
                         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
@@ -1106,7 +1106,7 @@ void func_8028FCBC(void) {
 
                                 func_8028E298();
                                 gDemoTimer = 600;
-                                D_800DC510 = 5;
+                                gRaceState = 5;
                             }
                             break;
                     }
@@ -1120,9 +1120,9 @@ void func_8028FCBC(void) {
                 case TIME_TRIALS:
                     gDemoTimer = 360;
                     if (D_8015F890 != 0) {
-                        D_800DC510 = 7;
+                        gRaceState = 7;
                     } else {
-                        D_800DC510 = 5;
+                        gRaceState = 5;
                     }
                     break;
             }
@@ -1137,7 +1137,7 @@ void func_8028FCBC(void) {
                             func_8028E678();
                         } else if (gScreenModeSelection == SCREEN_MODE_1P) {
                             func_80092564();
-                            D_800DC510 = 7;
+                            gRaceState = 7;
                         } else {
                             func_8028E438();
                         }

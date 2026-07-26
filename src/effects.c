@@ -154,13 +154,13 @@ void clean_effect(Player* player, s8 playerIndex) {
 
     if (((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
         (player->effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) {
-        func_8008C8C4(player, playerIndex);
+        remove_spinout_effects(player, playerIndex);
     }
     if ((player->effects & BANANA_NEAR_SPINOUT_EFFECT) == BANANA_NEAR_SPINOUT_EFFECT) {
-        func_8008D0E4(player, playerIndex);
+        remove_banana_near_spinout_effect(player, playerIndex);
     }
     if ((player->unk_044 & 0x4000) != 0) {
-        func_8008D3B0(player, playerIndex);
+        remove_driving_near_spinout_effect(player, playerIndex);
     }
     if ((player->effects & MUSHROOM_EFFECT) == MUSHROOM_EFFECT) {
         remove_mushroom_effect(player);
@@ -261,7 +261,7 @@ void func_8008C6D0(Player* player, s8 playerIndex) {
     player->unk_042 = 0;
 }
 
-void func_8008C73C(Player* player, s8 playerIndex) {
+void add_spinout_effect(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
     if (((player->effects & BANANA_SPINOUT_EFFECT) != BANANA_SPINOUT_EFFECT) &&
         ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT)) {
@@ -297,7 +297,7 @@ void func_8008C73C(Player* player, s8 playerIndex) {
     }
 }
 
-void func_8008C8C4(Player* player, s8 playerId) {
+void remove_spinout_effects(Player* player, s8 playerId) {
     player->effects &= ~BANANA_SPINOUT_EFFECT;
     player->effects &= ~DRIVING_SPINOUT_EFFECT;
     player->unk_0A8 = 0;
@@ -351,7 +351,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
                 if (gModeSelection == BATTLE) {
                     pop_player_balloon(player, playerIndex);
                 }
-                func_8008C8C4(player, playerIndex);
+                remove_spinout_effects(player, playerIndex);
             }
         }
     } else {
@@ -361,7 +361,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
         if (stackPadding2 == 0) {
             player->unk_0B2--;
             if (player->unk_0B2 <= 0) {
-                func_8008C8C4(player, playerIndex);
+                remove_spinout_effects(player, playerIndex);
                 if (gModeSelection == BATTLE) {
                     pop_player_balloon(player, playerIndex);
                 }
@@ -376,7 +376,7 @@ void func_8008C9EC(Player* player, s8 playerIndex) {
     }
 }
 
-void func_8008CDC0(Player* player, s8 playerIndex) {
+void trigger_hit_banana(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
 
     player->triggers &= ~HIT_BANANA_TRIGGER;
@@ -388,13 +388,13 @@ void func_8008CDC0(Player* player, s8 playerIndex) {
     if (((player->unk_07C >> 0x10) >= 0x14) || ((player->unk_07C >> 0x10) < -0x13) ||
         (((player->speed / 18.0f) * 216.0f) <= 30.0f) || ((player->effects & MIDAIR_EFFECT) != 0) ||
         (((player->type & PLAYER_HUMAN) == 0) && ((player->effects & LOST_RACE_EFFECT) == 0))) {
-        func_8008C73C(player, playerIndex);
+        add_spinout_effect(player, playerIndex);
     } else {
         player->effects |= BANANA_NEAR_SPINOUT_EFFECT;
     }
 }
 
-void func_8008CEB0(Player* player, s8 playerIndex) {
+void apply_banana_near_spinout_effect(Player* player, s8 playerIndex) {
     f32 var_f0;
     s16 var_v1;
     s16 var_a3;
@@ -415,7 +415,7 @@ void func_8008CEB0(Player* player, s8 playerIndex) {
         if (var_f0 <= 1.0f) {
             player->effects &= ~BANANA_NEAR_SPINOUT_EFFECT;
             if ((player->effects & BANANA_SPINOUT_SAVE_EFFECT) != BANANA_SPINOUT_SAVE_EFFECT) {
-                func_8008C73C(player, playerIndex);
+                add_spinout_effect(player, playerIndex);
                 var_v1 = 0;
             } else {
                 player->unk_0B6 |= 0x20;
@@ -439,16 +439,16 @@ void func_8008CEB0(Player* player, s8 playerIndex) {
     player->unk_0B4 = var_v1;
     player->unk_0AC = var_a3;
     if (player->effects & MIDAIR_EFFECT) {
-        func_8008C73C(player, playerIndex);
+        add_spinout_effect(player, playerIndex);
         player->effects &= ~BANANA_NEAR_SPINOUT_EFFECT;
     }
 }
 
-void func_8008D0E4(Player* player, UNUSED s8 playerIndex) {
+void remove_banana_near_spinout_effect(Player* player, UNUSED s8 playerIndex) {
     player->effects &= ~BANANA_NEAR_SPINOUT_EFFECT;
 }
 
-void func_8008D0FC(Player* player, s8 playerIndex) {
+void trigger_driving_spinout(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
 
     player->triggers &= ~DRIVING_SPINOUT_TRIGGER;
@@ -459,7 +459,7 @@ void func_8008D0FC(Player* player, s8 playerIndex) {
     player->unk_044 |= 0x4000;
 }
 
-void func_8008D170(Player* player, s8 playerIndex) {
+void apply_driving_near_spinout_effect(Player* player, s8 playerIndex) {
     f32 var_f0;
     s16 var_v1;
     s16 var_a3;
@@ -480,7 +480,7 @@ void func_8008D170(Player* player, s8 playerIndex) {
         if (var_f0 <= 1.3) {
             player->unk_044 &= ~0x4000;
             if ((player->effects & BANANA_SPINOUT_SAVE_EFFECT) != BANANA_SPINOUT_SAVE_EFFECT) {
-                func_8008C73C(player, playerIndex);
+                add_spinout_effect(player, playerIndex);
                 var_v1 = 0;
             } else {
                 player->unk_0B6 |= 0x20;
@@ -504,12 +504,12 @@ void func_8008D170(Player* player, s8 playerIndex) {
     player->unk_0B4 = var_v1;
     player->unk_0AC = var_a3;
     if (player->effects & MIDAIR_EFFECT) {
-        func_8008C73C(player, playerIndex);
+        add_spinout_effect(player, playerIndex);
         player->unk_044 &= ~0x4000;
     }
 }
 
-void func_8008D3B0(Player* player, UNUSED s8 playerIndex) {
+void remove_driving_near_spinout_effect(Player* player, UNUSED s8 playerIndex) {
     player->unk_044 &= 0xBFFF;
 }
 

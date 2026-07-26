@@ -2847,7 +2847,7 @@ void func_800508C0(void) {
     u16 var_s2;
 
     if (gModeSelection == TIME_TRIALS) {
-        var_s0 = D_80164378[0];
+        var_s0 = gPrevPlayerIdByRank[0];
     } else {
         var_s0 = gGPCurrentRacePlayerIdByRank[0];
     }

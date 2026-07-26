@@ -88,7 +88,7 @@ u16 D_801631F8[10];
 f32 gCurrentCpuTargetSpeed;
 f32 gPreviousCpuTargetSpeed[10];
 s32 D_80163238;
-u16 D_80163240[12];
+u16 gCrossedFinishLine[12];
 u16 gWrongDirectionCounter[12];
 u16 gIsPlayerWrongDirection[12];
 s32 gPreviousLapProgressScore[10];
@@ -154,7 +154,7 @@ s16 D_80164358;
 s16 D_8016435A;
 s16 D_8016435C;
 s16 gGPCurrentRacePlayerIdByRank[12]; // D_80164360
-s16 D_80164378[12];
+s16 gPrevPlayerIdByRank[12];
 s32 gLapCountByPlayerId[10];          // D_80164390
 s32 gGPCurrentRaceRankByPlayerId[10]; // D_801643B8
 s32 gPreviousGPCurrentRaceRankByPlayerId[10];
@@ -777,7 +777,7 @@ void set_places(void){
 
         gGPCurrentRaceRankByPlayerId[bestPlayerIdx] = rankIdx;
         gGPCurrentRacePlayerIdByRank[rankIdx] = bestPlayerIdx;
-        D_80164378[rankIdx] = gGPCurrentRacePlayerIdByRank[rankIdx];
+        gPrevPlayerIdByRank[rankIdx] = gGPCurrentRacePlayerIdByRank[rankIdx];
         gGPCurrentRaceRankByPlayerIdDup[rankIdx] = bestPlayerIdx;
         // I am 90% sure this is unnecessary because gCourseCompletionPercentByRank is always reset when it is called,
         // but I'm keeping it out of abundence of caution to be consistent with the old version of set_places
@@ -984,7 +984,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
     if (arg2 == 0) {
         if (gDemoMode == 1) {
             STEMP_V0 = gNumPathPointsTraversed[playerId];
-            STEMP_V1 = gNumPathPointsTraversed[D_80164378[7]];
+            STEMP_V1 = gNumPathPointsTraversed[gPrevPlayerIdByRank[7]];
             progress = STEMP_V0 - STEMP_V1;
             if (progress < 0) {
                 progress = -progress;
@@ -1010,7 +1010,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
         rank = gGPCurrentRaceRankByPlayerId[gBestRankedHumanPlayer];
         if (((((gPathCountByPathIndex[0] * 2) / 3)) < progress) && ((rank) >= 6)) {
             STEMP_V0 = gNumPathPointsTraversed[playerId];
-            STEMP_V1 = temp = gNumPathPointsTraversed[D_80164378[rank - 1]];
+            STEMP_V1 = temp = gNumPathPointsTraversed[gPrevPlayerIdByRank[rank - 1]];
             progress = STEMP_V0 - STEMP_V1;
         }
         if (progress < 0) {
@@ -1194,7 +1194,7 @@ void update_cpu_path_completion(s32 playerId, Player* player) {
  * Helps calculate time since player last touched finishline.
  * Assumes constant z-speed and subtracts portion of frame where the finish line was already crossed
  **/
-f32 func_80009258(UNUSED s32 playerId, f32 previousPlayerZ, f32 playerZ) {
+f32 time_crossed_finish_line(UNUSED s32 playerId, f32 previousPlayerZ, f32 playerZ) {
     f32 z_change_after_cross = gPathStartZ - playerZ;
     f32 z_change_before_cross = previousPlayerZ - gPathStartZ;
     return gCourseTimer - ((COURSE_TIMER_ITER_f * z_change_after_cross) / (z_change_after_cross + z_change_before_cross));
@@ -1213,7 +1213,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
     playerZ = player->pos[2];
     previousPlayerZ = gPreviousPlayerZ[playerId];
     gIsPlayerNewPathPoint = false;
-    D_80163240[playerId] = 0;
+    gCrossedFinishLine[playerId] = 0;
     sSomeNearestPathPoint = update_player_path(playerX, playerY, playerZ, gNearestPathPointByPlayerId[playerId], player,
                                                playerId, gPlayerPathIndex);
     gCurrentNearestPathPoint = sSomeNearestPathPoint;
@@ -1264,7 +1264,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
                 gLapCountByPlayerId[playerId]++;
                 if ((gLapCountByPlayerId[playerId] == 3) && !gFinished[playerId]){
                     gFinished[playerId] = true;
-                    gFinishTime[playerId] = func_80009258(playerId, previousPlayerZ, playerZ);
+                    gFinishTime[playerId] = time_crossed_finish_line(playerId, previousPlayerZ, playerZ);
                 }
                 if ((gModeSelection == GRAND_PRIX) && (gLapCountByPlayerId[playerId] == 5)) {
                     if (gGPCurrentRaceRankByPlayerIdDup[playerId] == 7) {
@@ -1273,12 +1273,12 @@ void update_player_path_completion(s32 playerId, Player* player) {
                         // clang-format on
                     }
                 }
-                D_80163240[playerId] = 1;
+                gCrossedFinishLine[playerId] = 1;
                 update_player_completion(playerId);
                 reset_cpu_behaviour(playerId);
                 cpu_ItemStrategy[playerId].numItemUse = 0;
                 if ((D_8016348C == 0) && !(player->type & PLAYER_CINEMATIC_MODE)) {
-                    gTimePlayerLastTouchedFinishLine[playerId] = func_80009258(playerId, previousPlayerZ, playerZ);
+                    gTimePlayerLastTouchedFinishLine[playerId] = time_crossed_finish_line(playerId, previousPlayerZ, playerZ);
                 }
             }
         }
@@ -2116,7 +2116,7 @@ void init_players(void) {
         }
         temp_v0_3 = gGPCurrentRaceRankByPlayerId[i];
         gGPCurrentRacePlayerIdByRank[temp_v0_3] = (s16) i;
-        D_80164378[temp_v0_3] = (s16) i;
+        gPrevPlayerIdByRank[temp_v0_3] = (s16) i;
         gGPCurrentRaceRankByPlayerIdDup[i] = temp_v0_3;
         gWrongDirectionCounter[i] = 0;
         gIsPlayerWrongDirection[i] = 0;

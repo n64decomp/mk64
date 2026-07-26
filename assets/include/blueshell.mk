@@ -3,14 +3,14 @@ BLUESHELL_DIR := assets/blueshell
 BLUESHELL_PALETTE := $(BLUESHELL_DIR)/common_tlut_blue_shell.png
 
 BLUESHELL_FRAMES := \
-$(BLUESHELL_DIR)/gTextureBlueShell0.png \
-$(BLUESHELL_DIR)/gTextureBlueShell1.png \
-$(BLUESHELL_DIR)/gTextureBlueShell2.png \
-$(BLUESHELL_DIR)/gTextureBlueShell3.png \
-$(BLUESHELL_DIR)/gTextureBlueShell4.png \
-$(BLUESHELL_DIR)/gTextureBlueShell5.png \
-$(BLUESHELL_DIR)/gTextureBlueShell6.png \
-$(BLUESHELL_DIR)/gTextureBlueShell7.png
+$(BLUESHELL_DIR)/texture_blue_shell_0.png \
+$(BLUESHELL_DIR)/texture_blue_shell_1.png \
+$(BLUESHELL_DIR)/texture_blue_shell_2.png \
+$(BLUESHELL_DIR)/texture_blue_shell_3.png \
+$(BLUESHELL_DIR)/texture_blue_shell_4.png \
+$(BLUESHELL_DIR)/texture_blue_shell_5.png \
+$(BLUESHELL_DIR)/texture_blue_shell_6.png \
+$(BLUESHELL_DIR)/texture_blue_shell_7.png
 
 BLUESHELL_EXPORT_SENTINEL := $(BLUESHELL_DIR)/.export
 

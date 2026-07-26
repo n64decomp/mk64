@@ -1738,7 +1738,7 @@ glabel gTexture7F9FC4
 .incbin "textures/raw/7F9FC4.i4"
 
 .align 2, 0x00
-glabel gTexture7FA044
+glabel font_apostrophe
 .incbin "textures/raw/7FA044.i4"
 
 .align 2, 0x00
@@ -1754,5 +1754,5 @@ glabel gTexture7FA264
 .incbin "textures/raw/7FA264.i4"
 
 .align 2, 0x00
-glabel gTexture7FA334
+glabel font_comma
 .incbin "textures/raw/7FA334.i4"
