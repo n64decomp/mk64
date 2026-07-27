@@ -14,7 +14,7 @@
 .word  0x2E92DA52               /* Checksum 2 */
 .word  0x00000000               /* Unknown */
 .word  0x00000000               /* Unknown */
-.ascii "MARIOKART64         "   /* Internal ROM name */
+.ascii "MARIOKART64         "   /* Internal ROM name. Change to MK64 NETPLAY for netplay builds */
 .word  0x00000000               /* Unknown */
 .word  0x0000004E               /* Cartridge */
 .ascii "KT"                     /* Cartridge ID */
