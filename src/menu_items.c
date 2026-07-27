@@ -2618,7 +2618,18 @@ void func_80095574(void) {
     if (gMenuTimingCounter == 2) {
         play_sound2(SOUND_INTRO_WELCOME);
     }
+    /**
+     * @bug Pressing START in the last moments before the demo timeout plays the
+     * menu-enter chime but then drops into the demo with no music. The attract
+     * timer fires while the press-start fade is still in flight and overwrites
+     * the fade target, so the fade completes as a demo entry instead of the
+     * main menu. Roughly a 0.7 second window every attract cycle.
+     */
+#ifdef AVOID_UB
+    if ((gMenuTimingCounter > 300) && (is_screen_being_faded() == 0)) {
+#else
     if (gMenuTimingCounter > 300) {
+#endif
         func_8009E230();
         func_800CA0A0();
     }
