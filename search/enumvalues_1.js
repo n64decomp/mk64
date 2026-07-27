@@ -4,7 +4,7 @@ var searchData=
   ['balloon_1',['Balloon',['../podium__ceremony__actors_8h.html#a698a9866415b2f1874f87d9dfc960c67a89c90112ee446ec0618ac4c7b7e7c738',1,'podium_ceremony_actors.h']]],
   ['banana_5fbunch_5fbanana_2',['BANANA_BUNCH_BANANA',['../actor__types_8h.html#ac1412f2ed50826478acf5d826cb0e4bcaaee5a0b25beb6996b30fd0f218e0cae7',1,'actor_types.h']]],
   ['banana_5fon_5fground_3',['BANANA_ON_GROUND',['../actor__types_8h.html#ac1412f2ed50826478acf5d826cb0e4bca2d113b26b43fbe05724d6bdef40842a9',1,'actor_types.h']]],
-  ['battle_5fcup_4',['BATTLE_CUP',['../defines_8h.html#a7ff5f2dff38e7639981794c43dc9167bac92cb0afca1b2eb39ace61e1fa9cd730',1,'defines.h']]],
+  ['battle_5fcup_4',['BATTLE_CUP',['../defines_8h.html#a77867ab4129f63159b37bca3b652a798ac92cb0afca1b2eb39ace61e1fa9cd730',1,'defines.h']]],
   ['before_5fdisplay_5flists_5',['BEFORE_DISPLAY_LISTS',['../profiler_8h.html#a464075ec8b898dea3a20b3166dd123bfaef29dd7a1302a0c4489a4b4725dd198d',1,'profiler.h']]],
   ['behaviour_5f1_6',['BEHAVIOUR_1',['../defines_8h.html#aaed8d6b54476ff414af55dd4f0b397caaeb5f7b5b58ae8f68fa759763ae08f931',1,'defines.h']]],
   ['behaviour_5f10_7',['BEHAVIOUR_10',['../defines_8h.html#aaed8d6b54476ff414af55dd4f0b397caaeea56db11e4b7755a26abe628fcf4f2e',1,'defines.h']]],

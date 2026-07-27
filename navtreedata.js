@@ -82,7 +82,7 @@ var NAVTREEINDEX =
 "common__data_8h.html#a03672baf4ab19a8d66804d080a1f852d",
 "common__data_8h.html#abbbd31be4904d958d92460f6f2a0c179",
 "cosf_8c.html#aa5128078c1b944aee4d12ffc96e1ebc5",
-"cpu__vehicles__camera__path_8c.html#a049637c3409649f6821951395ba8f0cb",
+"cpu__vehicles__camera__path_8c.html#a04597eec92885142343602eb9cd67c8a",
 "cpu__vehicles__camera__path_8c.html#a9ca16bf08e61a2bf3c3e2bfe52dd606f",
 "cpu__vehicles__camera__path_8h.html#a391c39bae973fc9817fb092a11d68edf",
 "cpu__vehicles__camera__path_8h.html#af57e67da25ab96ad12852d4530711b8a",

@@ -446,7 +446,7 @@ var searchData=
   ['mtxscreen_443',['mtxScreen',['../structGfxPool.html#ad5847246ca49bf89413868fd6c21c46f',1,'GfxPool']]],
   ['mtxshadow_444',['mtxShadow',['../structGfxPool.html#ab6bc5412ee4f45f34352dad5a25272b1',1,'GfxPool']]],
   ['mtxunk_445',['mtxUnk',['../structGfxPool.html#acd57249fe31bc64d0f95e82440bc9b1a',1,'GfxPool']]],
-  ['mushroom_5fcup_446',['MUSHROOM_CUP',['../defines_8h.html#a7ff5f2dff38e7639981794c43dc9167bac857115cf77e541256d673b827f08f4f',1,'defines.h']]],
+  ['mushroom_5fcup_446',['MUSHROOM_CUP',['../defines_8h.html#a77867ab4129f63159b37bca3b652a798ac857115cf77e541256d673b827f08f4f',1,'defines.h']]],
   ['mushroom_5feffect_447',['MUSHROOM_EFFECT',['../defines_8h.html#a6da0e105aa2a59ccee9a9528a6c0f64f',1,'defines.h']]],
   ['mute_5fbehavior_5fsoften_448',['MUTE_BEHAVIOR_SOFTEN',['../internal_8h.html#a35c690ccd3e66e6e01bb2edc0781148d',1,'internal.h']]],
   ['mute_5fbehavior_5fstop_5fnotes_449',['MUTE_BEHAVIOR_STOP_NOTES',['../internal_8h.html#a4495c1f2cfa6cacd756f20e6024645be',1,'internal.h']]],
