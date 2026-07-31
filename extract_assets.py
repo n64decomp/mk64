@@ -47,15 +47,19 @@ def clean_assets(local_asset_file):
 def main():
     # In case we ever need to change formats of generated files, we keep a
     # revision ID in the local asset file.
-    new_version = 1
+    new_version = 2
 
     try:
         local_asset_file = open(".assets-local.txt")
         local_asset_file.readline()
         local_version = int(local_asset_file.readline().strip())
+        # Assets extract to one shared path regardless of version, so record
+        # which version's bytes the tree is holding.
+        local_langs = local_asset_file.readline().strip().split()
     except Exception:
         local_asset_file = None
         local_version = -1
+        local_langs = None
 
     langs = sys.argv[1:]
     if langs == ["--clean"]:
@@ -68,6 +72,11 @@ def main():
         print("Usage: " + sys.argv[0] + " " + langs_str)
         print("For each version, baserom.<version>.z64 must exist")
         sys.exit(1)
+
+    # A different version's bytes may be sitting at the shared asset paths, and
+    # those files look present and up to date. Re-extract rather than build the
+    # wrong version's assets into the ROM.
+    version_changed = local_langs is not None and local_langs != langs
 
     asset_map = read_asset_map()
     all_assets = []
@@ -82,7 +91,7 @@ def main():
             if not any_missing_assets and any(lang in data["offsets"] for lang in langs):
                 any_missing_assets = True
 
-    if not any_missing_assets and local_version == new_version:
+    if not any_missing_assets and local_version == new_version and not version_changed:
         # Nothing to do, no need to read a ROM. For efficiency we don't check
         # the list of old assets either.
         return
@@ -106,7 +115,7 @@ def main():
     todo = defaultdict(lambda: [])
     for (asset, data, exists) in all_assets:
         # Leave existing assets alone if they have a compatible version.
-        if exists and not asset_needs_update(asset, local_version):
+        if exists and not version_changed and not asset_needs_update(asset, local_version):
             continue
 
         for lang, pos in data["offsets"].items():
@@ -266,6 +275,7 @@ def main():
         [
             "# This file tracks the assets currently extracted by extract_assets.py.",
             str(new_version),
+            " ".join(langs),
             *sorted(list(new_assets)),
             "",
         ]
