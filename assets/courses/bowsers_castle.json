@@ -1,10 +1,10 @@
 {
-"gTextureThwompSide":  {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x6738", "width": 32, "height": 32, "type": "rgba16"},
-"gTLUTThwomp":         {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x6F38", "width": 16, "height": 16, "type": "rgba16"},
-"gTextureThwompFace1": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x7138", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp"},
-"gTextureThwompFace2": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x7538", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp"},
-"gTextureThwompFace3": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x7938", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp"},
-"gTextureThwompFace4": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x7D38", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp"},
-"gTextureThwompFace5": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x8138", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp"},
-"gTextureThwompFace6": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x8538", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp"}
+"gTextureThwompSide": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x6738", "width": 32, "height": 32, "type": "rgba16", "jp.v11": {"rom_offset": "0x82C840", "block_offset": "0x04BD8"}},
+"gTLUTThwomp": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x6F38", "width": 16, "height": 16, "type": "rgba16", "jp.v11": {"rom_offset": "0x82C840", "block_offset": "0x053D8"}},
+"gTextureThwompFace1": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x7138", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp", "jp.v11": {"rom_offset": "0x82C840", "block_offset": "0x055D8"}},
+"gTextureThwompFace2": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x7538", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp", "jp.v11": {"rom_offset": "0x82C840", "block_offset": "0x059D8"}},
+"gTextureThwompFace3": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x7938", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp", "jp.v11": {"rom_offset": "0x82C840", "block_offset": "0x05DD8"}},
+"gTextureThwompFace4": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x7D38", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp", "jp.v11": {"rom_offset": "0x82C840", "block_offset": "0x061D8"}},
+"gTextureThwompFace5": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x8138", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp", "jp.v11": {"rom_offset": "0x82C840", "block_offset": "0x065D8"}},
+"gTextureThwompFace6": {"output_dir": "bowsers_castle", "rom_offset": "0x82DF40", "block_offset": "0x8538", "width": 16, "height": 64, "type": "ci8", "tlut": "gTLUTThwomp", "jp.v11": {"rom_offset": "0x82C840", "block_offset": "0x069D8"}}
 }

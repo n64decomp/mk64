@@ -1,17 +1,17 @@
 {
-"gTLUTCrab":     {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x0D628", "width": 16, "height": 16, "type": "rgba16"},
-"gTextureCrab1": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x0D828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab"},
-"gTextureCrab2": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x0E828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab"},
-"gTextureCrab3": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x0F828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab"},
-"gTextureCrab4": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x10828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab"},
-"gTextureCrab5": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x11828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab"},
-"gTextureCrab6": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x12828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab"},
-"gTextureCrab7": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x13828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab"},
+"gTLUTCrab": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x0D628", "width": 16, "height": 16, "type": "rgba16", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x0ABA0"}},
+"gTextureCrab1": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x0D828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x0ADA0"}},
+"gTextureCrab2": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x0E828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x0BDA0"}},
+"gTextureCrab3": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x0F828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x0CDA0"}},
+"gTextureCrab4": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x10828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x0DDA0"}},
+"gTextureCrab5": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x11828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x0EDA0"}},
+"gTextureCrab6": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x12828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x0FDA0"}},
+"gTextureCrab7": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x13828", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTCrab", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x10DA0"}},
 
-"gTextureKoopaTroopaBirdWing": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x14C00", "width": 32, "height": 32, "type": "rgba16"},
-"gTextureKoopaTroopaBirdEye":  {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x15400", "width": 32, "height": 32, "type": "rgba16"},
-"gTextureKoopaTroopaBirdBeak": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x15C00", "width": 32, "height": 32, "type": "rgba16"},
+"gTextureKoopaTroopaBirdWing": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x14C00", "width": 32, "height": 32, "type": "rgba16", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x12178"}},
+"gTextureKoopaTroopaBirdEye": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x15400", "width": 32, "height": 32, "type": "rgba16", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x12978"}},
+"gTextureKoopaTroopaBirdBeak": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x15C00", "width": 32, "height": 32, "type": "rgba16", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x13178"}},
 
-"gTextureKoopaTroopaPalmFrond": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x16D20", "width": 64, "height": 32, "type": "rgba16"},
-"gTextureKoopaTroopaPalmTrunk": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x17D20", "width": 32, "height": 32, "type": "rgba16"}
+"gTextureKoopaTroopaPalmFrond": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x16D20", "width": 64, "height": 32, "type": "rgba16", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x14298"}},
+"gTextureKoopaTroopaPalmTrunk": {"output_dir": "koopa_troopa_beach", "rom_offset": "0x842E40", "block_offset": "0x17D20", "width": 32, "height": 32, "type": "rgba16", "jp.v11": {"rom_offset": "0x8415C0", "block_offset": "0x15298"}}
 }
