@@ -12,7 +12,7 @@ $(BLUELIGHT_DIR)/gTextureLakituBlueLight6.png \
 $(BLUELIGHT_DIR)/gTextureLakituBlueLight7.png \
 $(BLUELIGHT_DIR)/gTextureLakituBlueLight8.png
 
-BLUELIGHT_EXPORT_SENTINEL := $(BLUELIGHT_DIR)/.export.$(VERSION)
+BLUELIGHT_EXPORT_SENTINEL := $(BLUELIGHT_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(BLUELIGHT_FRAMES:%.png=%.bin)
 
@@ -26,10 +26,11 @@ $(BLUELIGHT_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(BLUELIGHT_FRAMES) $(BLUELIGHT_PALETTE): $(BLUELIGHT_EXPORT_SENTINEL) ;
+$(BLUELIGHT_FRAMES) $(BLUELIGHT_PALETTE): $(BLUELIGHT_EXPORT_SENTINEL)
+	@:
 
-$(BLUELIGHT_EXPORT_SENTINEL): assets/lakitu/bluelight.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(BLUELIGHT_EXPORT_SENTINEL): assets/lakitu/bluelight.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_lakitu_bluelight

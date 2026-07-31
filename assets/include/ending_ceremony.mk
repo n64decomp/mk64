@@ -10,7 +10,7 @@ $(ENDING_CEREMONY)/gTexturePodium1.png \
 $(ENDING_CEREMONY)/gTexturePodium2.png \
 $(ENDING_CEREMONY)/gTexturePodium3.png
 
-ENDING_CEREMONY_EXPORT_SENTINEL := $(ENDING_CEREMONY)/.export.$(VERSION)
+ENDING_CEREMONY_EXPORT_SENTINEL := $(ENDING_CEREMONY)/.export
 
 $(BUILD_DIR)/src/ending/ceremony_data.o: $(TROHPY_PNG:%.png=%.inc.c) $(PODIUM_PNG:%.png=%.inc.c)
 
@@ -18,10 +18,11 @@ $(TROHPY_PNG:%.png=%.inc.c) $(PODIUM_PNG:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(TROHPY_PNG) $(PODIUM_PNG): $(ENDING_CEREMONY_EXPORT_SENTINEL) ;
+$(TROHPY_PNG) $(PODIUM_PNG): $(ENDING_CEREMONY_EXPORT_SENTINEL)
+	@:
 
-$(ENDING_CEREMONY_EXPORT_SENTINEL): $(ASSET_DIR)/ending_ceremony.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(ENDING_CEREMONY_EXPORT_SENTINEL): $(ASSET_DIR)/ending_ceremony.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_ending_ceremony

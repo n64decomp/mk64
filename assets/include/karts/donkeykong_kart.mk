@@ -1482,7 +1482,7 @@ DONKEYKONG_KART_PALETTE_PNG := \
  $(DONKEYKONG_KART_DIR)/palettes/kart_288_wheel_3.png \
  $(DONKEYKONG_KART_DIR)/palettes/donkeykong_kart_palette.png
 
-DONKEYKONG_EXPORT_SENTINEL := $(DONKEYKONG_KART_DIR)/.export.$(VERSION)
+DONKEYKONG_EXPORT_SENTINEL := $(DONKEYKONG_KART_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/karts/donkeykong_kart.o: $(DONKEYKONG_KART_FRAME_PNG:%.png=%.mio0) $(DONKEYKONG_KART_PALETTE_PNG:%.png=%.bin)
 
@@ -1497,10 +1497,11 @@ $(DONKEYKONG_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(DONKEYKONG_KART_FRAME_PNG) $(DONKEYKONG_KART_PALETTE_PNG): $(DONKEYKONG_EXPORT_SENTINEL) ;
+$(DONKEYKONG_KART_FRAME_PNG) $(DONKEYKONG_KART_PALETTE_PNG): $(DONKEYKONG_EXPORT_SENTINEL)
+	@:
 
-$(DONKEYKONG_EXPORT_SENTINEL): $(ASSET_DIR)/karts/donkeykong_kart.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(DONKEYKONG_EXPORT_SENTINEL): $(ASSET_DIR)/karts/donkeykong_kart.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_donkeykong_kart

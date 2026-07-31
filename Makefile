@@ -249,6 +249,14 @@ ifneq ($(filter $(VERSION),eu.v10 eu.v11),)
   TORCH_VERSION := us
 endif
 ASSET_CODE_DIR := assets/code/$(TORCH_VERSION)
+
+# The group asset maps carry us and jp.v11 entries only: none of their 12,521
+# assets has an eu offset, because EU art is US-identical and merely relocated.
+# So EU extracts the US assets out of the US cart, exactly as TORCH_VERSION above
+# builds EU on the US Torch output, and for the same reason. Without this, EU
+# reads the EU cart at US offsets and gets garbage.
+ASSET_VERSION := $(TORCH_VERSION)
+ASSET_BASEROM := baserom.$(ASSET_VERSION).z64
 SRC_ASSETS_DIR := $(ASSET_CODE_DIR)/ceremony_data $(ASSET_CODE_DIR)/startup_logo $(ASSET_CODE_DIR)/data_800E45C0 $(ASSET_CODE_DIR)/data_segment2 $(ASSET_CODE_DIR)/data_800E8700 $(ASSET_CODE_DIR)/common_data
 SRC_DIRS       := src src/data src/buffers src/racing src/ending src/audio src/debug src/os src/os/math courses $(ASSET_CODE_DIR)/ceremony_data $(ASSET_CODE_DIR)/startup_logo $(SRC_ASSETS_DIR)
 ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
@@ -408,7 +416,7 @@ N64GRAPHICS           := $(TOOLS_DIR)/n64graphics
 DLPACKER              := $(TOOLS_DIR)/displaylist_packer
 BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
-ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py --version $(VERSION)
+ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py --version $(ASSET_VERSION)
 LINKONLY_GENERATOR    := $(PYTHON) $(TOOLS_DIR)/linkonly_generator.py
 TORCH                 := $(TOOLS_DIR)/torch/cmake-build-release/torch
 EMULATOR               = mupen64plus
@@ -519,6 +527,16 @@ $(BUILD_DIR)/%: %.png
 
 $(BUILD_DIR)/textures/%.mio0: $(BUILD_DIR)/textures/%
 	$(V)$(MIO0TOOL) -c $< $@
+
+# Assets extract to one shared path whatever the version is, and 194 of them hold
+# genuinely different bytes in jp.v11 rather than merely moving. The per-version
+# .export sentinel is not enough on its own: switching version leaves the other
+# version's images on disk, newer than their .json, so make sees them as current
+# and never builds the sentinel that would re-extract them. Depend on a stamp that
+# changes with VERSION, so the images themselves go out of date on a switch.
+ASSET_VERSION_STAMP := $(ASSET_DIR)/.version
+DUMMY_ASSET_VERSION != [ "$$(cat $(ASSET_VERSION_STAMP) 2>/dev/null)" = "$(ASSET_VERSION)" ] || \
+                       { mkdir -p $(dir $(ASSET_VERSION_STAMP)) && echo "$(ASSET_VERSION)" > $(ASSET_VERSION_STAMP); }
 
 ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name "*.mk")
 

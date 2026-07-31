@@ -29,7 +29,7 @@ SPECIAL_PORTRAIT_PNG := \
 $(PORTRAITS_DIR)/common_texture_portrait_bomb_kart.png \
 $(PORTRAITS_DIR)/common_texture_portrait_question_mark.png
 
-PORTRAIT_EXPORT_SENTINEL := $(PORTRAITS_DIR)/.export.$(VERSION)
+PORTRAIT_EXPORT_SENTINEL := $(PORTRAITS_DIR)/.export
 
 $(BUILD_DIR)/src/data/common_textures.o: $(PORTRAIT_PNG:%.png=%.inc.c) $(PORTRAIT_PALETTES:%.png=%.inc.c)
 $(BUILD_DIR)/src/data/common_textures.o: $(SPECIAL_PORTRAIT_PNG:%.png=%.inc.c) $(SPECIAL_PORTRAIT_PALETTE:%.png=%.inc.c)
@@ -50,10 +50,11 @@ $(SPECIAL_PORTRAIT_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(PORTRAIT_PNG) $(SPECIAL_PORTRAIT_PNG) $(PORTRAIT_PALETTES) $(SPECIAL_PORTRAIT_PALETTE): $(PORTRAIT_EXPORT_SENTINEL) ;
+$(PORTRAIT_PNG) $(SPECIAL_PORTRAIT_PNG) $(PORTRAIT_PALETTES) $(SPECIAL_PORTRAIT_PALETTE): $(PORTRAIT_EXPORT_SENTINEL)
+	@:
 
-$(PORTRAIT_EXPORT_SENTINEL): $(ASSET_DIR)/character_portraits.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(PORTRAIT_EXPORT_SENTINEL): $(ASSET_DIR)/character_portraits.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_character_portraits

@@ -8,7 +8,7 @@ $(FISHING_DIR)/gTextureLakituFishing2.png \
 $(FISHING_DIR)/gTextureLakituFishing3.png \
 $(FISHING_DIR)/gTextureLakituFishing4.png
 
-FISHING_EXPORT_SENTINEL := $(FISHING_DIR)/.export.$(VERSION)
+FISHING_EXPORT_SENTINEL := $(FISHING_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(FISHING_FRAMES:%.png=%.bin)
 
@@ -22,10 +22,11 @@ $(FISHING_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(FISHING_FRAMES) $(FISHING_PALETTE): $(FISHING_EXPORT_SENTINEL) ;
+$(FISHING_FRAMES) $(FISHING_PALETTE): $(FISHING_EXPORT_SENTINEL)
+	@:
 
-$(FISHING_EXPORT_SENTINEL): assets/lakitu/fishing.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(FISHING_EXPORT_SENTINEL): assets/lakitu/fishing.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_lakitu_fishing

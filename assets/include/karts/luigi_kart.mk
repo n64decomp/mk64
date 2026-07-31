@@ -1482,7 +1482,7 @@ LUIGI_KART_PALETTE_PNG := \
  $(LUIGI_KART_DIR)/palettes/kart_288_wheel_3.png \
  $(LUIGI_KART_DIR)/palettes/luigi_kart_palette.png
 
-LUIGI_EXPORT_SENTINEL := $(LUIGI_KART_DIR)/.export.$(VERSION)
+LUIGI_EXPORT_SENTINEL := $(LUIGI_KART_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/karts/luigi_kart.o: $(LUIGI_KART_FRAME_PNG:%.png=%.mio0) $(LUIGI_KART_PALETTE_PNG:%.png=%.bin)
 
@@ -1497,10 +1497,11 @@ $(LUIGI_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(LUIGI_KART_FRAME_PNG) $(LUIGI_KART_PALETTE_PNG): $(LUIGI_EXPORT_SENTINEL) ;
+$(LUIGI_KART_FRAME_PNG) $(LUIGI_KART_PALETTE_PNG): $(LUIGI_EXPORT_SENTINEL)
+	@:
 
-$(LUIGI_EXPORT_SENTINEL): $(ASSET_DIR)/karts/luigi_kart.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(LUIGI_EXPORT_SENTINEL): $(ASSET_DIR)/karts/luigi_kart.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_luigi_kart

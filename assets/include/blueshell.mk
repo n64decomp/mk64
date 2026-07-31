@@ -12,7 +12,7 @@ $(BLUESHELL_DIR)/texture_blue_shell_5.png \
 $(BLUESHELL_DIR)/texture_blue_shell_6.png \
 $(BLUESHELL_DIR)/texture_blue_shell_7.png
 
-BLUESHELL_EXPORT_SENTINEL := $(BLUESHELL_DIR)/.export.$(VERSION)
+BLUESHELL_EXPORT_SENTINEL := $(BLUESHELL_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(BLUESHELL_FRAMES:%.png=%.mio0)
 
@@ -29,10 +29,11 @@ $(BLUESHELL_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(BLUESHELL_FRAMES) $(BLUESHELL_PALETTE): $(BLUESHELL_EXPORT_SENTINEL) ;
+$(BLUESHELL_FRAMES) $(BLUESHELL_PALETTE): $(BLUESHELL_EXPORT_SENTINEL)
+	@:
 
-$(BLUESHELL_EXPORT_SENTINEL): $(ASSET_DIR)/blueshell.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(BLUESHELL_EXPORT_SENTINEL): $(ASSET_DIR)/blueshell.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_blueshell

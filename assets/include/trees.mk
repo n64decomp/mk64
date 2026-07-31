@@ -19,7 +19,7 @@ $(TREES_DIR)/gTextureTrees5Right.png \
 $(TREES_DIR)/gTextureTrees6.png      \
 $(TREES_DIR)/gTextureTrees7.png
 
-TREES_EXPORT_SENTINEL := $(TREES_DIR)/.export.$(VERSION)
+TREES_EXPORT_SENTINEL := $(TREES_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(TREES_PNG:%.png=%.mio0)
 
@@ -36,10 +36,11 @@ $(TREES_PALETTE:%.png=%.inc.c) $(TREES_PALETTE_IMPORT:%.png=%.inc.c): %.inc.c : 
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(TREES_PNG) $(TREES_PALETTE) $(TREES_PALETTE_IMPORT): $(TREES_EXPORT_SENTINEL) ;
+$(TREES_PNG) $(TREES_PALETTE) $(TREES_PALETTE_IMPORT): $(TREES_EXPORT_SENTINEL)
+	@:
 
-$(TREES_EXPORT_SENTINEL): $(ASSET_DIR)/trees.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(TREES_EXPORT_SENTINEL): $(ASSET_DIR)/trees.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_trees

@@ -18,7 +18,7 @@ $(KOOPA_TROOPA_BEACH_DIR)/gTextureKoopaTroopaBirdBeak.png \
 $(KOOPA_TROOPA_BEACH_DIR)/gTextureKoopaTroopaPalmFrond.png \
 $(KOOPA_TROOPA_BEACH_DIR)/gTextureKoopaTroopaPalmTrunk.png
 
-KOOPA_TROOPA_BEACH_EXPORT_SENTINEL := $(KOOPA_TROOPA_BEACH_DIR)/.export.$(VERSION)
+KOOPA_TROOPA_BEACH_EXPORT_SENTINEL := $(KOOPA_TROOPA_BEACH_DIR)/.export
 
 $(BUILD_DIR)/courses/koopa_troopa_beach/course_data.o: $(KOOPA_TROOPA_BEACH_CRAB_PALETTE:%.png=%.inc.c) $(KOOPA_TROOPA_BEACH_CRAB_FRAMES:%.png=%.inc.c)
 $(BUILD_DIR)/courses/koopa_troopa_beach/course_data.o: $(KOOPA_TROOPA_BEACH_PNG:%.png=%.inc.c)
@@ -31,10 +31,11 @@ $(KOOPA_TROOPA_BEACH_CRAB_PALETTE:%.png=%.inc.c) $(KOOPA_TROOPA_BEACH_PNG:%.png=
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(KOOPA_TROOPA_BEACH_CRAB_PALETTE) $(KOOPA_TROOPA_BEACH_CRAB_FRAMES) $(KOOPA_TROOPA_BEACH_PNG): $(KOOPA_TROOPA_BEACH_EXPORT_SENTINEL) ;
+$(KOOPA_TROOPA_BEACH_CRAB_PALETTE) $(KOOPA_TROOPA_BEACH_CRAB_FRAMES) $(KOOPA_TROOPA_BEACH_PNG): $(KOOPA_TROOPA_BEACH_EXPORT_SENTINEL)
+	@:
 
-$(KOOPA_TROOPA_BEACH_EXPORT_SENTINEL): $(ASSET_DIR)/courses/koopa_troopa_beach.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(KOOPA_TROOPA_BEACH_EXPORT_SENTINEL): $(ASSET_DIR)/courses/koopa_troopa_beach.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_koopa_troopa_beach

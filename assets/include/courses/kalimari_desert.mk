@@ -38,7 +38,7 @@ $(KALIMARI_DESERT_DIR)/gTextureCarriageDoor.png \
 $(KALIMARI_DESERT_DIR)/gTextureCarriageWindow.png \
 $(KALIMARI_DESERT_DIR)/gTextureLocomotiveBogie.png
 
-KALIMARI_DESERT_EXPORT_SENTINEL := $(KALIMARI_DESERT_DIR)/.export.$(VERSION)
+KALIMARI_DESERT_EXPORT_SENTINEL := $(KALIMARI_DESERT_DIR)/.export
 
 $(BUILD_DIR)/courses/kalimari_desert/course_data.o: $(KALIMARI_DESERT_PNG:%.png=%.inc.c) $(CACTUS_PALETTE_IMPORT:%.png=%.inc.c)
 
@@ -55,11 +55,13 @@ $(CACTUS_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(CACTUS_PALETTE)
 
-$(CACTUS_PALETTE) $(CACTUS_PALETTE_IMPORT) $(CACTUS_PNG): $(KALIMARI_DESERT_EXPORT_SENTINEL) ;
-$(KALIMARI_DESERT_PNG): $(KALIMARI_DESERT_EXPORT_SENTINEL) ;
+$(CACTUS_PALETTE) $(CACTUS_PALETTE_IMPORT) $(CACTUS_PNG): $(KALIMARI_DESERT_EXPORT_SENTINEL)
+	@:
+$(KALIMARI_DESERT_PNG): $(KALIMARI_DESERT_EXPORT_SENTINEL)
+	@:
 
-$(KALIMARI_DESERT_EXPORT_SENTINEL): $(ASSET_DIR)/courses/kalimari_desert.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(KALIMARI_DESERT_EXPORT_SENTINEL): $(ASSET_DIR)/courses/kalimari_desert.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_kalimari_desert

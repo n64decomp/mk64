@@ -19,7 +19,7 @@ $(YOSHI_SELECT_DIR)/yoshi_face_14.png \
 $(YOSHI_SELECT_DIR)/yoshi_face_15.png \
 $(YOSHI_SELECT_DIR)/yoshi_face_16.png
 
-YOSHI_SELECT_EXPORT_SENTINEL := $(YOSHI_SELECT_DIR)/.export.$(VERSION)
+YOSHI_SELECT_EXPORT_SENTINEL := $(YOSHI_SELECT_DIR)/.export
 
 $(BUILD_DIR)/data/course_player_selection.o: $(YOSHI_SELECT_PNG:%.png=%.mio0)
 
@@ -30,10 +30,11 @@ $(YOSHI_SELECT_PNG:%.png=%.bin) : %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(YOSHI_SELECT_PNG): $(YOSHI_SELECT_EXPORT_SENTINEL) ;
+$(YOSHI_SELECT_PNG): $(YOSHI_SELECT_EXPORT_SENTINEL)
+	@:
 
-$(YOSHI_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/yoshi_select.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(YOSHI_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/yoshi_select.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_yoshi_select

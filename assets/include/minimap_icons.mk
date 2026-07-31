@@ -12,7 +12,7 @@ $(MINIMAP_ICONS_DIR)/common_texture_minimap_kart_peach.png \
 $(MINIMAP_ICONS_DIR)/common_texture_minimap_kart_bowser.png \
 $(MINIMAP_ICONS_DIR)/common_texture_minimap_progress_dot.png
 
-MINIMAP_ICONS_EXPORT_SENTINEL := $(MINIMAP_ICONS_DIR)/.export.$(VERSION)
+MINIMAP_ICONS_EXPORT_SENTINEL := $(MINIMAP_ICONS_DIR)/.export
 
 $(BUILD_DIR)/src/data/common_textures.o: $(MINIMAP_ICONS_PNG:%.png=%.inc.c)
 
@@ -20,10 +20,11 @@ $(MINIMAP_ICONS_PNG:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(MINIMAP_ICONS_PNG): $(MINIMAP_ICONS_EXPORT_SENTINEL) ;
+$(MINIMAP_ICONS_PNG): $(MINIMAP_ICONS_EXPORT_SENTINEL)
+	@:
 
-$(MINIMAP_ICONS_EXPORT_SENTINEL): $(ASSET_DIR)/minimap_icons.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(MINIMAP_ICONS_EXPORT_SENTINEL): $(ASSET_DIR)/minimap_icons.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_minimap_icons

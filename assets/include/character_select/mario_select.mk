@@ -19,7 +19,7 @@ $(MARIO_SELECT_DIR)/mario_face_14.png \
 $(MARIO_SELECT_DIR)/mario_face_15.png \
 $(MARIO_SELECT_DIR)/mario_face_16.png
 
-MARIO_SELECT_EXPORT_SENTINEL := $(MARIO_SELECT_DIR)/.export.$(VERSION)
+MARIO_SELECT_EXPORT_SENTINEL := $(MARIO_SELECT_DIR)/.export
 
 $(BUILD_DIR)/data/course_player_selection.o: $(MARIO_SELECT_PNG:%.png=%.mio0)
 
@@ -30,10 +30,11 @@ $(MARIO_SELECT_PNG:%.png=%.bin) : %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(MARIO_SELECT_PNG): $(MARIO_SELECT_EXPORT_SENTINEL) ;
+$(MARIO_SELECT_PNG): $(MARIO_SELECT_EXPORT_SENTINEL)
+	@:
 
-$(MARIO_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/mario_select.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(MARIO_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/mario_select.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_mario_select

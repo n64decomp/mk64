@@ -20,7 +20,7 @@ $(REDLIGHTS_DIR)/gTextureLakituRedLights14.png \
 $(REDLIGHTS_DIR)/gTextureLakituRedLights15.png \
 $(REDLIGHTS_DIR)/gTextureLakituRedLights16.png
 
-REDLIGHTS_EXPORT_SENTINEL := $(REDLIGHTS_DIR)/.export.$(VERSION)
+REDLIGHTS_EXPORT_SENTINEL := $(REDLIGHTS_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(REDLIGHTS_FRAMES:%.png=%.bin)
 
@@ -34,10 +34,11 @@ $(REDLIGHTS_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(REDLIGHTS_FRAMES) $(REDLIGHTS_PALETTE): $(REDLIGHTS_EXPORT_SENTINEL) ;
+$(REDLIGHTS_FRAMES) $(REDLIGHTS_PALETTE): $(REDLIGHTS_EXPORT_SENTINEL)
+	@:
 
-$(REDLIGHTS_EXPORT_SENTINEL): assets/lakitu/redlights.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(REDLIGHTS_EXPORT_SENTINEL): assets/lakitu/redlights.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_lakitu_redlights

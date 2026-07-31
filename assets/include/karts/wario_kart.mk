@@ -1482,7 +1482,7 @@ WARIO_KART_PALETTE_PNG := \
  $(WARIO_KART_DIR)/palettes/kart_288_wheel_3.png \
  $(WARIO_KART_DIR)/palettes/wario_kart_palette.png
 
-WARIO_EXPORT_SENTINEL := $(WARIO_KART_DIR)/.export.$(VERSION)
+WARIO_EXPORT_SENTINEL := $(WARIO_KART_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/karts/wario_kart.o: $(WARIO_KART_FRAME_PNG:%.png=%.mio0) $(WARIO_KART_PALETTE_PNG:%.png=%.bin)
 
@@ -1497,10 +1497,11 @@ $(WARIO_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(WARIO_KART_FRAME_PNG) $(WARIO_KART_PALETTE_PNG): $(WARIO_EXPORT_SENTINEL) ;
+$(WARIO_KART_FRAME_PNG) $(WARIO_KART_PALETTE_PNG): $(WARIO_EXPORT_SENTINEL)
+	@:
 
-$(WARIO_EXPORT_SENTINEL): $(ASSET_DIR)/karts/wario_kart.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(WARIO_EXPORT_SENTINEL): $(ASSET_DIR)/karts/wario_kart.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_wario_kart

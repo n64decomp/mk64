@@ -20,7 +20,7 @@ $(SECONDLAP_DIR)/gTextureLakituSecondLap14.png \
 $(SECONDLAP_DIR)/gTextureLakituSecondLap15.png \
 $(SECONDLAP_DIR)/gTextureLakituSecondLap16.png
 
-SECONDLAP_EXPORT_SENTINEL := $(SECONDLAP_DIR)/.export.$(VERSION)
+SECONDLAP_EXPORT_SENTINEL := $(SECONDLAP_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(SECONDLAP_FRAMES:%.png=%.bin)
 
@@ -34,10 +34,11 @@ $(SECONDLAP_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(SECONDLAP_FRAMES) $(SECONDLAP_PALETTE): $(SECONDLAP_EXPORT_SENTINEL) ;
+$(SECONDLAP_FRAMES) $(SECONDLAP_PALETTE): $(SECONDLAP_EXPORT_SENTINEL)
+	@:
 
-$(SECONDLAP_EXPORT_SENTINEL): assets/lakitu/secondlap.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(SECONDLAP_EXPORT_SENTINEL): assets/lakitu/secondlap.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_lakitu_secondlap

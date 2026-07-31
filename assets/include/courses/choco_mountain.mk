@@ -4,7 +4,7 @@ CHOCO_MOUNTAIN_PNG := \
 $(CHOCO_MOUNTAIN_DIR)/gTextureChocoMountainWall.png \
 $(CHOCO_MOUNTAIN_DIR)/gTextureChocoMountainRock.png
 
-CHOCO_MOUNTAIN_EXPORT_SENTINEL := $(CHOCO_MOUNTAIN_DIR)/.export.$(VERSION)
+CHOCO_MOUNTAIN_EXPORT_SENTINEL := $(CHOCO_MOUNTAIN_DIR)/.export
 
 $(BUILD_DIR)/courses/choco_mountain/course_data.o: $(CHOCO_MOUNTAIN_PNG:%.png=%.inc.c)
 
@@ -12,10 +12,11 @@ $(CHOCO_MOUNTAIN_PNG:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(CHOCO_MOUNTAIN_PNG): $(CHOCO_MOUNTAIN_EXPORT_SENTINEL) ;
+$(CHOCO_MOUNTAIN_PNG): $(CHOCO_MOUNTAIN_EXPORT_SENTINEL)
+	@:
 
-$(CHOCO_MOUNTAIN_EXPORT_SENTINEL): $(ASSET_DIR)/courses/choco_mountain.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(CHOCO_MOUNTAIN_EXPORT_SENTINEL): $(ASSET_DIR)/courses/choco_mountain.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_choco_mountain

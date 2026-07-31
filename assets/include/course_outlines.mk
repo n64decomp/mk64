@@ -22,7 +22,7 @@ $(COURSE_OUTLINE_DIR)/minimap_double_deck.png \
 $(COURSE_OUTLINE_DIR)/minimap_dks_jungle_parkway.png \
 $(COURSE_OUTLINE_DIR)/minimap_big_donut.png
 
-COURSE_OUTLINE_EXPORT_SENTINEL := $(COURSE_OUTLINE_DIR)/.export.$(VERSION)
+COURSE_OUTLINE_EXPORT_SENTINEL := $(COURSE_OUTLINE_DIR)/.export
 
 $(BUILD_DIR)/data/other_textures.o: $(COURSE_OUTLINE_PNG:%.png=%.mio0)
 
@@ -33,10 +33,11 @@ $(COURSE_OUTLINE_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f i4
 
-$(COURSE_OUTLINE_PNG): $(COURSE_OUTLINE_EXPORT_SENTINEL) ;
+$(COURSE_OUTLINE_PNG): $(COURSE_OUTLINE_EXPORT_SENTINEL)
+	@:
 
-$(COURSE_OUTLINE_EXPORT_SENTINEL): $(ASSET_DIR)/course_outlines.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(COURSE_OUTLINE_EXPORT_SENTINEL): $(ASSET_DIR)/course_outlines.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_course_outlines

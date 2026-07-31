@@ -19,7 +19,7 @@ $(PEACH_SELECT_DIR)/peach_face_14.png \
 $(PEACH_SELECT_DIR)/peach_face_15.png \
 $(PEACH_SELECT_DIR)/peach_face_16.png
 
-PEACH_SELECT_EXPORT_SENTINEL := $(PEACH_SELECT_DIR)/.export.$(VERSION)
+PEACH_SELECT_EXPORT_SENTINEL := $(PEACH_SELECT_DIR)/.export
 
 $(BUILD_DIR)/data/course_player_selection.o: $(PEACH_SELECT_PNG:%.png=%.mio0)
 
@@ -30,10 +30,11 @@ $(PEACH_SELECT_PNG:%.png=%.bin) : %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(PEACH_SELECT_PNG): $(PEACH_SELECT_EXPORT_SENTINEL) ;
+$(PEACH_SELECT_PNG): $(PEACH_SELECT_EXPORT_SENTINEL)
+	@:
 
-$(PEACH_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/peach_select.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(PEACH_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/peach_select.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_peach_select

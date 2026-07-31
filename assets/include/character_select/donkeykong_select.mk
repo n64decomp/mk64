@@ -19,7 +19,7 @@ $(DONKEYKONG_SELECT_DIR)/donkeykong_face_14.png \
 $(DONKEYKONG_SELECT_DIR)/donkeykong_face_15.png \
 $(DONKEYKONG_SELECT_DIR)/donkeykong_face_16.png
 
-DONKEYKONG_SELECT_EXPORT_SENTINEL := $(DONKEYKONG_SELECT_DIR)/.export.$(VERSION)
+DONKEYKONG_SELECT_EXPORT_SENTINEL := $(DONKEYKONG_SELECT_DIR)/.export
 
 $(BUILD_DIR)/data/course_player_selection.o: $(DONKEYKONG_SELECT_PNG:%.png=%.mio0)
 
@@ -30,10 +30,11 @@ $(DONKEYKONG_SELECT_PNG:%.png=%.bin) : %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(DONKEYKONG_SELECT_PNG): $(DONKEYKONG_SELECT_EXPORT_SENTINEL) ;
+$(DONKEYKONG_SELECT_PNG): $(DONKEYKONG_SELECT_EXPORT_SENTINEL)
+	@:
 
-$(DONKEYKONG_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/donkeykong_select.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(DONKEYKONG_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/donkeykong_select.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_donkeykong_select

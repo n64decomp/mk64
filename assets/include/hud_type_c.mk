@@ -28,7 +28,7 @@ $(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_9.png
 
 HUD_TYPE_C_PORTRAIT_BORDER_PNG := $(HUD_TYPE_C_DIR)/common_texture_character_portrait_border.png
 
-HUD_TYPE_C_EXPORT_SENTINEL := $(HUD_TYPE_C_DIR)/.export.$(VERSION)
+HUD_TYPE_C_EXPORT_SENTINEL := $(HUD_TYPE_C_DIR)/.export
 
 $(BUILD_DIR)/src/data/common_textures.o: $(HUD_TYPE_C_FONT_PNG:%.png=%.inc.c) $(HUD_TYPE_C_FONT_PALETTE:%.png=%.inc.c)
 $(BUILD_DIR)/src/data/common_textures.o: $(HUD_TYPE_C_TINY_FONT_PNG:%.png=%.inc.c) $(HUD_TYPE_C_TINY_FONT_PALETTE:%.png=%.inc.c)
@@ -54,12 +54,15 @@ $(HUD_TYPE_C_PORTRAIT_BORDER_PNG:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f ia4
 
-$(HUD_TYPE_C_FONT_PNG) $(HUD_TYPE_C_FONT_PALETTE): $(HUD_TYPE_C_EXPORT_SENTINEL) ;
-$(HUD_TYPE_C_TINY_FONT_PNG) $(HUD_TYPE_C_TINY_FONT_PALETTE): $(HUD_TYPE_C_EXPORT_SENTINEL) ;
-$(HUD_TYPE_C_PORTRAIT_BORDER_PNG): $(HUD_TYPE_C_EXPORT_SENTINEL) ;
+$(HUD_TYPE_C_FONT_PNG) $(HUD_TYPE_C_FONT_PALETTE): $(HUD_TYPE_C_EXPORT_SENTINEL)
+	@:
+$(HUD_TYPE_C_TINY_FONT_PNG) $(HUD_TYPE_C_TINY_FONT_PALETTE): $(HUD_TYPE_C_EXPORT_SENTINEL)
+	@:
+$(HUD_TYPE_C_PORTRAIT_BORDER_PNG): $(HUD_TYPE_C_EXPORT_SENTINEL)
+	@:
 
-$(HUD_TYPE_C_EXPORT_SENTINEL): $(ASSET_DIR)/hud_type_c.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(HUD_TYPE_C_EXPORT_SENTINEL): $(ASSET_DIR)/hud_type_c.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_hud_type_c

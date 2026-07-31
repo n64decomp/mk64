@@ -12,7 +12,7 @@ $(GREENSHELL_DIR)/texture_green_shell_5.png \
 $(GREENSHELL_DIR)/texture_green_shell_6.png \
 $(GREENSHELL_DIR)/texture_green_shell_7.png
 
-GREENSHELL_EXPORT_SENTINEL := $(GREENSHELL_DIR)/.export.$(VERSION)
+GREENSHELL_EXPORT_SENTINEL := $(GREENSHELL_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(GREENSHELL_FRAMES:%.png=%.mio0)
 
@@ -29,10 +29,11 @@ $(GREENSHELL_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(GREENSHELL_FRAMES) $(GREENSHELL_PALETTE): $(GREENSHELL_EXPORT_SENTINEL) ;
+$(GREENSHELL_FRAMES) $(GREENSHELL_PALETTE): $(GREENSHELL_EXPORT_SENTINEL)
+	@:
 
-$(GREENSHELL_EXPORT_SENTINEL): $(ASSET_DIR)/greenshell.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(GREENSHELL_EXPORT_SENTINEL): $(ASSET_DIR)/greenshell.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_greenshell

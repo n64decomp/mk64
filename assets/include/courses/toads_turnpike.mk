@@ -36,7 +36,7 @@ $(TOADS_TURNPIKE_DIR)/gTextureToadsTurnpikeCarFrontLod1.png \
 $(TOADS_TURNPIKE_DIR)/gTextureToadsTurnpikeCarBackLod1.png \
 $(TOADS_TURNPIKE_DIR)/gTextureToadsTurnpikeCarSideLod1.png
 
-TOADS_TURNPIKE_EXPORT_SENTINEL := $(TOADS_TURNPIKE_DIR)/.export.$(VERSION)
+TOADS_TURNPIKE_EXPORT_SENTINEL := $(TOADS_TURNPIKE_DIR)/.export
 
 $(BUILD_DIR)/courses/toads_turnpike/course_data.o: $(TOADS_TURNPIKE_PNG:%.png=%.inc.c)
 
@@ -44,10 +44,11 @@ $(TOADS_TURNPIKE_PNG:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(TOADS_TURNPIKE_PNG): $(TOADS_TURNPIKE_EXPORT_SENTINEL) ;
+$(TOADS_TURNPIKE_PNG): $(TOADS_TURNPIKE_EXPORT_SENTINEL)
+	@:
 
-$(TOADS_TURNPIKE_EXPORT_SENTINEL): $(ASSET_DIR)/courses/toads_turnpike.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(TOADS_TURNPIKE_EXPORT_SENTINEL): $(ASSET_DIR)/courses/toads_turnpike.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_toads_turnpike

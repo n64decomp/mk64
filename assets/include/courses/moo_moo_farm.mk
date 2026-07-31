@@ -37,7 +37,7 @@ $(MOO_MOO_FARM_DIR)/gTextureMooMooFarmSignRight.png
 
 MOO_MOO_FARM_DIRT_PNG := $(MOO_MOO_FARM_DIR)/gTextureMooMooFarmDirt.png
 
-MOO_MOO_FARM_EXPORT_SENTINEL := $(MOO_MOO_FARM_DIR)/.export.$(VERSION)
+MOO_MOO_FARM_EXPORT_SENTINEL := $(MOO_MOO_FARM_DIR)/.export
 
 $(BUILD_DIR)/courses/moo_moo_farm/course_data.o: $(MOLE_PALETTE:%.png=%.inc.c) $(MOLE_FRAMES:%.png=%.inc.c)
 $(BUILD_DIR)/courses/moo_moo_farm/course_data.o: $(COW_PALETTE_IMPORT:%.png=%.inc.c)
@@ -71,14 +71,17 @@ $(COW_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(COW_PALETTE)
 
-$(MOLE_PALETTE) $(COW_PALETTE) $(COW_PALETTE_IMPORT): $(MOO_MOO_FARM_EXPORT_SENTINEL) ;
+$(MOLE_PALETTE) $(COW_PALETTE) $(COW_PALETTE_IMPORT): $(MOO_MOO_FARM_EXPORT_SENTINEL)
+	@:
 
-$(MOLE_FRAMES) $(COW_PNG): $(MOO_MOO_FARM_EXPORT_SENTINEL) ;
+$(MOLE_FRAMES) $(COW_PNG): $(MOO_MOO_FARM_EXPORT_SENTINEL)
+	@:
 
-$(MOO_MOO_FARM_SIGN_PNG) $(MOO_MOO_FARM_DIRT_PNG): $(MOO_MOO_FARM_EXPORT_SENTINEL) ;
+$(MOO_MOO_FARM_SIGN_PNG) $(MOO_MOO_FARM_DIRT_PNG): $(MOO_MOO_FARM_EXPORT_SENTINEL)
+	@:
 
-$(MOO_MOO_FARM_EXPORT_SENTINEL): $(ASSET_DIR)/courses/moo_moo_farm.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(MOO_MOO_FARM_EXPORT_SENTINEL): $(ASSET_DIR)/courses/moo_moo_farm.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_moo_moo_farm

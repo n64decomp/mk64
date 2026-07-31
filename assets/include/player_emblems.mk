@@ -8,7 +8,7 @@ $(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_2p.png \
 $(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_3p.png \
 $(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_4p.png
 
-PLAYER_EMBLEM_EXPORT_SENTINEL := $(PLAYER_EMBLEM_DIR)/.export.$(VERSION)
+PLAYER_EMBLEM_EXPORT_SENTINEL := $(PLAYER_EMBLEM_DIR)/.export
 
 $(BUILD_DIR)/src/data/common_textures.o: $(PLAYER_EMBLEM_PNGS:%.png=%.inc.c) $(PLAYER_EMBLEM_PALETTE:%.png=%.inc.c)
 
@@ -20,10 +20,11 @@ $(PLAYER_EMBLEM_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(PLAYER_EMBLEM_PNGS) $(PLAYER_EMBLEM_PALETTE): $(PLAYER_EMBLEM_EXPORT_SENTINEL) ;
+$(PLAYER_EMBLEM_PNGS) $(PLAYER_EMBLEM_PALETTE): $(PLAYER_EMBLEM_EXPORT_SENTINEL)
+	@:
 
-$(PLAYER_EMBLEM_EXPORT_SENTINEL): $(ASSET_DIR)/player_emblems.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(PLAYER_EMBLEM_EXPORT_SENTINEL): $(ASSET_DIR)/player_emblems.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_player_emblems

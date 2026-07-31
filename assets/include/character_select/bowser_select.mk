@@ -19,7 +19,7 @@ $(BOWSER_SELECT_DIR)/bowser_face_14.png \
 $(BOWSER_SELECT_DIR)/bowser_face_15.png \
 $(BOWSER_SELECT_DIR)/bowser_face_16.png
 
-BOWSER_SELECT_EXPORT_SENTINEL := $(BOWSER_SELECT_DIR)/.export.$(VERSION)
+BOWSER_SELECT_EXPORT_SENTINEL := $(BOWSER_SELECT_DIR)/.export
 
 $(BUILD_DIR)/data/course_player_selection.o: $(BOWSER_SELECT_PNG:%.png=%.mio0)
 
@@ -30,10 +30,11 @@ $(BOWSER_SELECT_PNG:%.png=%.bin) : %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(BOWSER_SELECT_PNG): $(BOWSER_SELECT_EXPORT_SENTINEL) ;
+$(BOWSER_SELECT_PNG): $(BOWSER_SELECT_EXPORT_SENTINEL)
+	@:
 
-$(BOWSER_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/bowser_select.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(BOWSER_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/bowser_select.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_bowser_select

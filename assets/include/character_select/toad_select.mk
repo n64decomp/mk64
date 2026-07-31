@@ -19,7 +19,7 @@ $(TOAD_SELECT_DIR)/toad_face_14.png \
 $(TOAD_SELECT_DIR)/toad_face_15.png \
 $(TOAD_SELECT_DIR)/toad_face_16.png
 
-TOAD_SELECT_EXPORT_SENTINEL := $(TOAD_SELECT_DIR)/.export.$(VERSION)
+TOAD_SELECT_EXPORT_SENTINEL := $(TOAD_SELECT_DIR)/.export
 
 $(BUILD_DIR)/data/course_player_selection.o: $(TOAD_SELECT_PNG:%.png=%.mio0)
 
@@ -30,10 +30,11 @@ $(TOAD_SELECT_PNG:%.png=%.bin) : %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(TOAD_SELECT_PNG): $(TOAD_SELECT_EXPORT_SENTINEL) ;
+$(TOAD_SELECT_PNG): $(TOAD_SELECT_EXPORT_SENTINEL)
+	@:
 
-$(TOAD_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/toad_select.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(TOAD_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/toad_select.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_toad_select

@@ -12,7 +12,7 @@ $(BOWSERS_CASTLE_DIR)/gTextureThwompFace6.png
 
 THOWMP_SIDE_PNG := $(BOWSERS_CASTLE_DIR)/gTextureThwompSide.png
 
-BOWSERS_CASTLE_EXPORT_SENTINEL := $(BOWSERS_CASTLE_DIR)/.export.$(VERSION)
+BOWSERS_CASTLE_EXPORT_SENTINEL := $(BOWSERS_CASTLE_DIR)/.export
 
 $(BUILD_DIR)/courses/bowsers_castle/course_data.o: $(THWOMP_FACE_FRAMES:%.png=%.inc.c) $(THWOMP_PALETTE:%.png=%.inc.c)
 $(BUILD_DIR)/courses/bowsers_castle/course_data.o: $(THOWMP_SIDE_PNG:%.png=%.inc.c)
@@ -25,10 +25,11 @@ $(THWOMP_FACE_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(THWOMP_PALETTE)
 
-$(THWOMP_PALETTE) $(THWOMP_FACE_FRAMES) $(THOWMP_SIDE_PNG): $(BOWSERS_CASTLE_EXPORT_SENTINEL) ;
+$(THWOMP_PALETTE) $(THWOMP_FACE_FRAMES) $(THOWMP_SIDE_PNG): $(BOWSERS_CASTLE_EXPORT_SENTINEL)
+	@:
 
-$(BOWSERS_CASTLE_EXPORT_SENTINEL): $(ASSET_DIR)/courses/bowsers_castle.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(BOWSERS_CASTLE_EXPORT_SENTINEL): $(ASSET_DIR)/courses/bowsers_castle.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_bowsers_castle
