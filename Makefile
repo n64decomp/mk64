@@ -198,7 +198,11 @@ endif
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
    # Make tools if out of date
-  DUMMY != make -C $(TOOLS_DIR)
+  # Not bare make: the tools makefile needs 3.82+, and macOS still ships 3.81 as
+  # `make`, which falls back to built-in rules and links the tools from only
+  # their first source file. This makefile already needs 4.0+ for !=, so
+  # $(MAKE) is always new enough.
+  DUMMY != $(MAKE) -C $(TOOLS_DIR)
   ifeq ($(DUMMY),FAIL)
     $(error Failed to build tools)
   endif
