@@ -15,7 +15,7 @@
 "gTextureDksJungleParkwayPalmTreeTop": {"output_dir": "dks_jungle_parkway", "rom_offset": "0x885A10", "block_offset": "0x13078", "width": 32, "height": 32, "type": "rgba16", "jp.v11": {"rom_offset": "0x883C00", "block_offset": "0x11248"}},
 "gTLUTDksJungleParkwayKiwanoFruit": {"output_dir": "dks_jungle_parkway", "rom_offset": "0x885A10", "block_offset": "0x13978", "width": 16, "height": 16, "type": "rgba16", "jp.v11": {"rom_offset": "0x883C00", "block_offset": "0x11B48"}},
 
-"gTextureDksJungleParkwayKiwanoFruit1": {"output_dir": "dks_jungle_parkway", "rom_offset": "0x699E24", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTDksJungleParkwayKiwanoFruit", "jp.v11": {"rom_offset": "0x6A4D04", "type": "bin", "compressed": true, "size": "0x400"}},
-"gTextureDksJungleParkwayKiwanoFruit2": {"output_dir": "dks_jungle_parkway", "rom_offset": "0x69A154", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTDksJungleParkwayKiwanoFruit", "jp.v11": {"rom_offset": "0x6A5034", "type": "bin", "compressed": true, "size": "0x400"}},
-"gTextureDksJungleParkwayKiwanoFruit3": {"output_dir": "dks_jungle_parkway", "rom_offset": "0x69A4C0", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTDksJungleParkwayKiwanoFruit", "jp.v11": {"rom_offset": "0x6A53A0", "type": "bin", "compressed": true, "size": "0x400"}}
+"gTextureDksJungleParkwayKiwanoFruit1": {"output_dir": "dks_jungle_parkway", "rom_offset": "0x699E24", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTDksJungleParkwayKiwanoFruit", "jp.v11": {"rom_offset": "0x6A4D04"}},
+"gTextureDksJungleParkwayKiwanoFruit2": {"output_dir": "dks_jungle_parkway", "rom_offset": "0x69A154", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTDksJungleParkwayKiwanoFruit", "jp.v11": {"rom_offset": "0x6A5034"}},
+"gTextureDksJungleParkwayKiwanoFruit3": {"output_dir": "dks_jungle_parkway", "rom_offset": "0x69A4C0", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTDksJungleParkwayKiwanoFruit", "jp.v11": {"rom_offset": "0x6A53A0"}}
 }

@@ -24,14 +24,9 @@ REDLIGHTS_EXPORT_SENTINEL := $(REDLIGHTS_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(REDLIGHTS_FRAMES:%.png=%.bin)
 
-# Extraction writes these raw for a version whose palette cannot round trip,
-# and removes the png with them. Depend on the extraction, and convert only
-# when a png is really there.
-$(REDLIGHTS_FRAMES:%.png=%.bin): %.bin : $(REDLIGHTS_EXPORT_SENTINEL)
-	$(V)if [ -f $*.png ]; then \
-	  $(PRINT) "$(GREEN)Converting:  $(BLUE) $*.png -> $@$(NO_COL)\n"; \
-	  $(N64GRAPHICS) -Z $@ -g $*.png -s raw -f ci8 -c rgba16 -p $(REDLIGHTS_PALETTE); \
-	fi
+$(REDLIGHTS_FRAMES:%.png=%.bin): %.bin : %.png
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(REDLIGHTS_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(REDLIGHTS_PALETTE:%.png=%.inc.c)
 
