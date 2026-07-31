@@ -23,6 +23,19 @@ def asset_needs_update(asset, version):
     return False
 
 
+def resolve_meta(meta, lang):
+    # An asset is usually described once and merely moves between versions, so a
+    # version that also changes its shape lists just the differing keys under
+    # "overrides". Nesting them keeps a version name from colliding with a real
+    # meta key.
+    override = meta.get("overrides", {}).get(lang)
+    if not override:
+        return meta
+    merged = {k: v for k, v in meta.items() if k != "overrides"}
+    merged.update(override)
+    return merged
+
+
 def remove_file(fname):
     os.remove(fname)
     print("deleting", fname)
@@ -66,7 +79,7 @@ def main():
         clean_assets(local_asset_file)
         sys.exit(0)
 
-    all_langs = ["us", "eu.v10", "eu.v11"]
+    all_langs = ["us", "eu.v10", "eu.v11", "jp.v11"]
     if not langs or not all(a in all_langs for a in langs):
         langs_str = " ".join("[" + lang + "]" for lang in all_langs)
         print("Usage: " + sys.argv[0] + " " + langs_str)
@@ -126,7 +139,8 @@ def main():
                 rom_offset = int(pos[0], 0)
                 block_offset = int(pos[1], 0)
             if lang in langs:
-                todo[(lang, rom_offset)].append((asset, block_offset, data["meta"]))
+                todo[(lang, rom_offset)].append(
+                    (asset, block_offset, resolve_meta(data["meta"], lang)))
                 break
 
     # Load ROMs
