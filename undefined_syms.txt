@@ -43,11 +43,11 @@ D_0B002A00 = 0x0B002A00;
    sStaticNoiseTexture in menu_items.c. */
 D_0B002900 = 0x0B002900;
 
-/* JP-only. Extra (mirror) mode shows a second credits table, which this points
-   into. Unlike gCreditsText in src/ending/credits.c its 165 strings are not
-   decompiled yet, so this is an address rather than source. It is the one place
-   the JP target is not yet built from the repo. */
-gCreditsTextExtra = 0x8028532C;
+/* JP-only. gCreditsText holds both credit sets in one table: the english names
+   in the first 63 entries, the japanese ones in the second 63. Mirror mode
+   shows the japanese half, which is this symbol - the same table entered at its
+   midpoint, not a second table. */
+gCreditsTextExtra = gCreditsText + 0xFC;
 
 D_A5000508 = 0xA5000508;
 D_A5000510 = 0xA5000510;
