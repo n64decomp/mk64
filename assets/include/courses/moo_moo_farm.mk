@@ -67,9 +67,15 @@ $(MOO_MOO_FARM_SIGN_PNG:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(COW_PNG:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
-	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(COW_PALETTE)
+# An asset extracted raw arrives as .bin and has no png to convert. Depend on
+# the extraction rather than on the png, and convert only when a png is
+# really there: otherwise n64graphics is handed a missing file and make
+# deletes the .bin extraction just wrote.
+$(COW_PNG:%.png=%.bin): %.bin : $(MOO_MOO_FARM_EXPORT_SENTINEL)
+	$(V)if [ -f $*.png ]; then \
+	  $(PRINT) "$(GREEN)Converting:  $(BLUE) $*.png -> $@$(NO_COL)\n"; \
+	  $(N64GRAPHICS) -Z $@ -g $*.png -s raw -f ci8 -c rgba16 -p $(COW_PALETTE); \
+	fi
 
 $(MOLE_PALETTE) $(COW_PALETTE) $(COW_PALETTE_IMPORT): $(MOO_MOO_FARM_EXPORT_SENTINEL)
 	@:

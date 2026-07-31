@@ -243,8 +243,18 @@ def export_bin(baserom, asset):
     os.makedirs(asset["output_dir"], exist_ok=True)
 
     with open(asset_filename, "wb") as asset_file:
-        baserom.seek(int(asset["rom_offset"], 16))
-        asset_data = baserom.read(int(asset["size"], 16))
+        if asset.get("compressed"):
+            # The bytes wanted sit inside a MIO0 block, so reading the ROM here
+            # would take the compressed form. Decompress and read from that. A
+            # ci8 image needs this when its palette repeats a colour: the png
+            # round trip remaps every colour to the first index holding it and
+            # rewrites the image, so the indices have to come out whole.
+            block = extract_mio0_block(baserom, asset)
+            block.seek(int(asset.get("block_offset", "0x0"), 16))
+            asset_data = block.read(int(asset["size"], 16))
+        else:
+            baserom.seek(int(asset["rom_offset"], 16))
+            asset_data = baserom.read(int(asset["size"], 16))
         asset_file.write(asset_data)
 
 # Versions that may appear as an override key on an asset. Keep in step with the

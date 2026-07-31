@@ -51,9 +51,15 @@ $(BUILD_DIR)/data/other_textures.o: $(CACTUS_PNG:%.png=%.mio0)
 $(CACTUS_PNG:%.png=%.mio0): %.mio0 : %.bin
 	$(V)$(MIO0TOOL) -c $< $@
 
-$(CACTUS_PNG:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
-	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(CACTUS_PALETTE)
+# An asset extracted raw arrives as .bin and has no png to convert. Depend on
+# the extraction rather than on the png, and convert only when a png is
+# really there: otherwise n64graphics is handed a missing file and make
+# deletes the .bin extraction just wrote.
+$(CACTUS_PNG:%.png=%.bin): %.bin : $(KALIMARI_DESERT_EXPORT_SENTINEL)
+	$(V)if [ -f $*.png ]; then \
+	  $(PRINT) "$(GREEN)Converting:  $(BLUE) $*.png -> $@$(NO_COL)\n"; \
+	  $(N64GRAPHICS) -Z $@ -g $*.png -s raw -f ci8 -c rgba16 -p $(CACTUS_PALETTE); \
+	fi
 
 $(CACTUS_PALETTE) $(CACTUS_PALETTE_IMPORT) $(CACTUS_PNG): $(KALIMARI_DESERT_EXPORT_SENTINEL)
 	@:
