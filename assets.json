@@ -61,9 +61,11 @@
 "bin/lib/PR/audio/aspMain_data.bin": {"meta":{"size":"0x300"}, "offsets":{"us":["0x0F5900","0x0"],"jp.v11":["0xf6ab0","0x0"]}},
 "bin/audiobanks.us.bin": {"meta":{"size": "0x13840"}, "offsets":{"us":["0x966260","0x0"],"eu.v11":["0x966380","0x0"]}},
 "bin/audiobanks.eu.bin": {"meta":{"size": "0x13840"}, "offsets":{"eu.v10":["0x966460","0x0"]}},
+"bin/audiobanks.jp.v11.bin": {"meta":{"size": "0x138C0"}, "offsets":{"jp.v11":["0x964470","0x0"]}},
 "bin/audiotables.bin": {"meta":{"size": "0x24C4C0"}, "offsets":{"us":["0x979AA0","0x0"]}},
+"bin/audiotables.jp.v11.bin": {"meta":{"size": "0x24C640"}, "offsets":{"jp.v11":["0x977D30","0x0"]}},
 
-"music/00_seq_00.m64":                    {"meta":{"size":"0x2830"}, "offsets": {"us":["0xBC6060", "0x0"]}},
+"music/00_seq_00.m64":                    {"meta":{"size":"0x2830", "overrides":{"jp.v11":{"size":"0x2880"}}}, "offsets": {"us":["0xBC6060", "0x0"], "jp.v11":["0xBC4470","0x0"]}},
 "music/01_title_screen.m64": {"meta":{"size":"0x1B30"}, "offsets":{"us":["0xBC8890","0x0"],"jp.v11":["0xbc6cf0","0x0"]}},
 "music/02_main_menu.m64": {"meta":{"size":"0x0D60"}, "offsets":{"us":["0xBCA3C0","0x0"],"jp.v11":["0xbc8820","0x0"]}},
 "music/03_racways_wario_stadium.m64": {"meta":{"size":"0x1A10"}, "offsets":{"us":["0xBCB120","0x0"],"jp.v11":["0xbc9580","0x0"]}},
