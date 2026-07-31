@@ -168,6 +168,7 @@ def main():
     for key in keys:
         assets = todo[key]
         lang, rom_offset = key
+        decoded = None
 
         if rom_offset is not None:
             magic = roms[lang][rom_offset:rom_offset + 4]
@@ -184,20 +185,26 @@ def main():
                     stdout=subprocess.PIPE,
                 ).stdout
             # TODO: binary assets in assets.json for TKMK00 until it is full understood
-            elif magic == b"TKMK" and assets[0][0].endswith(".png"):
-                (asset, pos, meta) = assets[0]
-                image = subprocess.run(
-                    [
-                        "./tools/tkmk00",
-                        "-d",
-                        "-o", str(rom_offset),
-                        "-a", meta["alpha"],
-                        "baserom." + lang + ".z64",
-                        "-",
-                    ],
-                    check=True,
-                    stdout=subprocess.PIPE,
-                ).stdout
+            elif magic == b"TKMK":
+                # A tkmk00 block is described twice at the same offset: the .tkmk00
+                # blob is the build input and wants the compressed bytes, while the
+                # .png beside it is a decoded copy. They need different bytes, so
+                # decode alongside rather than picking one for the whole group.
+                image = roms[lang][rom_offset:]
+                png = next((a for a in assets if a[0].endswith(".png")), None)
+                if png is not None:
+                    decoded = subprocess.run(
+                        [
+                            "./tools/tkmk00",
+                            "-d",
+                            "-o", str(rom_offset),
+                            "-a", png[2]["alpha"],
+                            "baserom." + lang + ".z64",
+                            "-",
+                        ],
+                        check=True,
+                        stdout=subprocess.PIPE,
+                    ).stdout
             else: # assume raw texture
                 # TODO: This grabs way more data than is necessary
                 image = roms[lang][rom_offset:]
@@ -227,7 +234,10 @@ def main():
                 elif fmt.endswith("8"): size = pixels
                 elif fmt.endswith("4"): size = math.ceil(pixels / 2)
                 elif fmt == "ia1": size = math.ceil(pixels / 8)
-            input = image[pos : pos + size]
+            # a decoded tkmk00 block is only for the .png; the blob keeps the
+            # compressed bytes the build actually assembles
+            source = decoded if (decoded is not None and asset.endswith(".png")) else image
+            input = source[pos : pos + size]
             os.makedirs(os.path.dirname(asset), exist_ok=True)
             if asset.endswith(".png"):
                 name_file = ""
