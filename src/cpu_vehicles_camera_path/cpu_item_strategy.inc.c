@@ -36,10 +36,20 @@ void cpu_decisions_branch_item(UNUSED s32 playerId, s16* branch, s32 itemId) {
         case ITEM_MUSHROOM:
             value = CPU_STRATEGY_ITEM_MUSHROOM;
             break;
+#ifdef VERSION_JP
+        // JP also gives CPUs a strategy for double/triple mushrooms
+        case ITEM_DOUBLE_MUSHROOM:
+            value = CPU_STRATEGY_ITEM_DOUBLE_MUSHROOM;
+            break;
+        case ITEM_TRIPLE_MUSHROOM:
+            value = CPU_STRATEGY_ITEM_TRIPLE_MUSHROOM;
+            break;
+#else
         case ITEM_DOUBLE_MUSHROOM:
             break;
         case ITEM_TRIPLE_MUSHROOM:
             break;
+#endif
         case ITEM_SUPER_MUSHROOM:
             break;
     }

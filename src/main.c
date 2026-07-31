@@ -80,7 +80,11 @@ Player* gPlayerTwoCopy = &gPlayers[1];
 UNUSED Player* gPlayerThreeCopy = &gPlayers[2];
 UNUSED Player* gPlayerFourCopy = &gPlayers[3];
 
+#ifdef VERSION_JP
+UNUSED s32 D_800FD850[1];
+#else
 UNUSED s32 D_800FD850[3];
+#endif
 struct GfxPool gGfxPools[2];
 struct GfxPool* gGfxPool;
 
@@ -219,6 +223,8 @@ void thread1_idle(void* arg) {
     osCreateViManager(OS_PRIORITY_VIMGR);
 #ifdef VERSION_EU
     osViSetMode(&osViModeTable[OS_VI_PAL_LAN1]);
+#elif VERSION_JP
+    osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
 #else // VERSION_US
     if (osTvType == TV_TYPE_NTSC) {
         osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);

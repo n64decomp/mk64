@@ -48,6 +48,16 @@ SECTIONS
       BUILD_DIR/src/main.o(.text*);
       BUILD_DIR/src/code_800029B0.o(.text*);
       BUILD_DIR/src/profiler.o(.text*);
+#ifdef VERSION_JP // TODO: Arrange these in data, rodata and bss
+      BUILD_DIR/src/replays.o(.text*);
+      BUILD_DIR/src/camera.o(.text*);
+      BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.text*);
+      BUILD_DIR/asm/unused/unused_jp_utils.o(.text*);
+      BUILD_DIR/src/animation.o(.text*);
+      BUILD_DIR/src/render_player.o(.text*);
+      BUILD_DIR/src/crash_screen.o(.text*);
+      BUILD_DIR/src/kart_dma.o(.text*);
+#else
       BUILD_DIR/src/crash_screen.o(.text*);
       BUILD_DIR/src/animation.o(.text*);
       BUILD_DIR/src/replays.o(.text*);
@@ -56,6 +66,7 @@ SECTIONS
       BUILD_DIR/src/camera.o(.text*);
       BUILD_DIR/src/render_player.o(.text*);
       BUILD_DIR/src/kart_dma.o(.text*);
+#endif
       BUILD_DIR/src/player_controller.o(.text*);
       BUILD_DIR/src/spawn_players.o(.text*);
       BUILD_DIR/src/code_8003DC40.o(.text*);
@@ -102,6 +113,10 @@ SECTIONS
       BUILD_DIR/src/os/osViBlack.o(.text*);
       BUILD_DIR/src/os/osViSetSpecialFeatures.o(.text*);
       BUILD_DIR/src/os/osCreatePiManager.o(.text*);
+      #ifdef VERSION_JP
+         /* real JP has 0x40 of zero padding here (verified: real 0xcd050-0xcd090) */
+         . += 0x40;
+      #endif
       BUILD_DIR/src/os/osSetThreadPri.o(.text*);
       BUILD_DIR/src/os/osCreateMesgQueue.o(.text*);
       BUILD_DIR/src/os/osViSetEvent.o(.text*);
@@ -124,8 +139,14 @@ SECTIONS
       #if GCC
          BUILD_DIR/asm/os/llmuldiv_gcc.o(.text);
       #endif
+      #ifdef VERSION_JP
+      /* JP links sqrtf before __osGetCurrFaultedThread (57 call sites agree) */
+      BUILD_DIR/asm/os/sqrtf.o(.text);
+      BUILD_DIR/src/os/__osGetCurrFaultedThread.o(.text*);
+      #else
       BUILD_DIR/src/os/__osGetCurrFaultedThread.o(.text*);
       BUILD_DIR/asm/os/sqrtf.o(.text);
+      #endif
       BUILD_DIR/src/os/guOrthoF.o(.text*);
       BUILD_DIR/src/os/osSetTime.o(.text*);
       BUILD_DIR/src/os/osEepromProbe.o(.text*);
@@ -214,14 +235,26 @@ SECTIONS
       BUILD_DIR/src/os/_Ldtob.o(.text*);
       BUILD_DIR/src/os/ldiv.o(.text*);
       BUILD_DIR/data/rsp.o(.text);
-      BUILD_DIR/src/main.o(.data*);
-      BUILD_DIR/src/code_800029B0.o(.data*);
-      BUILD_DIR/src/profiler.o(.data*);
-      BUILD_DIR/src/crash_screen.o(.data*);
-      BUILD_DIR/src/replays.o(.data*);
-      BUILD_DIR/src/data/path_spawn_metadata.o(.data*);
-      BUILD_DIR/src/camera.o(.data*);
-      BUILD_DIR/src/render_player.o(.data*);
+      #ifdef VERSION_JP
+         /* JP .data head order recovered by content-anchor scan vs real ROM */
+         BUILD_DIR/src/main.o(.data*);
+         BUILD_DIR/src/code_800029B0.o(.data*);
+         BUILD_DIR/src/profiler.o(.data*);
+         BUILD_DIR/src/replays.o(.data*);
+         BUILD_DIR/src/camera.o(.data*);
+         BUILD_DIR/src/data/path_spawn_metadata.o(.data*);
+         BUILD_DIR/src/render_player.o(.data*);
+         BUILD_DIR/src/crash_screen.o(.data*);
+      #else
+         BUILD_DIR/src/main.o(.data*);
+         BUILD_DIR/src/code_800029B0.o(.data*);
+         BUILD_DIR/src/profiler.o(.data*);
+         BUILD_DIR/src/crash_screen.o(.data*);
+         BUILD_DIR/src/replays.o(.data*);
+         BUILD_DIR/src/data/path_spawn_metadata.o(.data*);
+         BUILD_DIR/src/camera.o(.data*);
+         BUILD_DIR/src/render_player.o(.data*);
+      #endif
       BUILD_DIR/src/kart_dma.o(.data*);
       BUILD_DIR/src/data/kart_attributes.o(.data*);
       BUILD_DIR/src/player_controller.o(.data*);
@@ -236,6 +269,10 @@ SECTIONS
       BUILD_DIR/src/code_800AF9B0.o(.data*);
       BUILD_DIR/src/menus.o(.data*);
       BUILD_DIR/src/save.o(.data*);
+      #ifdef VERSION_JP
+         /* JP links the audio data tables before the 800E8700 assets */
+         BUILD_DIR/src/audio/data.o(.data*);
+      #endif
       BUILD_DIR/ASSET_CODE_DIR/data_800E8700/data_800E8700.o(.data*);
       BUILD_DIR/src/audio/synthesis.o(.data*);
       BUILD_DIR/src/audio/heap.o(.data*);
@@ -269,8 +306,14 @@ SECTIONS
       BUILD_DIR/src/main.o(.rodata*);
       BUILD_DIR/src/animation.o(.rodata*);
       BUILD_DIR/src/code_800029B0.o(.rodata*);
-      BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.rodata*);
-      BUILD_DIR/src/camera.o(.rodata*);
+      #ifdef VERSION_JP
+         /* JP orders camera.o rodata before the cpu_vehicles float pools */
+         BUILD_DIR/src/camera.o(.rodata*);
+         BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.rodata*);
+      #else
+         BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.rodata*);
+         BUILD_DIR/src/camera.o(.rodata*);
+      #endif
       BUILD_DIR/src/render_player.o(.rodata*);
       BUILD_DIR/src/player_controller.o(.rodata*);
       BUILD_DIR/src/spawn_players.o(.rodata*);
@@ -317,21 +360,37 @@ SECTIONS
       BUILD_DIR/asm/os/osSetIntMask.o(.rodata);
       BUILD_DIR/src/os/_Ldtob.o(.rodata*);
       BUILD_DIR/data/rsp.o(.data*);
+      #ifndef VERSION_JP
       BUILD_DIR/src/audio/data.o(.data*);
+      #endif
    }
    END_SEG(main)
 
    BEGIN_NOLOAD(main) {
       BUILD_DIR/src/main.o(.bss*);
-      BUILD_DIR/src/code_800029B0.o(.bss*);
-      BUILD_DIR/src/profiler.o(.bss*);
-      BUILD_DIR/src/crash_screen.o(.bss*);
-      BUILD_DIR/src/animation.o(.bss*);
-      BUILD_DIR/src/replays.o(.bss*);
-      BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.bss*);
-      BUILD_DIR/src/camera.o(.bss*);
-      BUILD_DIR/src/render_player.o(.bss*);
-      BUILD_DIR/src/spawn_players.o(.bss*);
+      #ifdef VERSION_JP
+         /* JP bss order recovered from code-reloc anchor mining vs real ROM */
+         BUILD_DIR/src/code_800029B0.o(.bss*);
+         BUILD_DIR/src/profiler.o(.bss*);
+         BUILD_DIR/src/replays.o(.bss*);
+         . += 0x10; /* real JP aligns cameras to 0x8015f000 */
+         BUILD_DIR/src/camera.o(.bss*);
+         BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.bss*);
+         BUILD_DIR/src/animation.o(.bss*);
+         BUILD_DIR/src/render_player.o(.bss*);
+         BUILD_DIR/src/crash_screen.o(.bss*);
+         BUILD_DIR/src/spawn_players.o(.bss*);
+      #else
+         BUILD_DIR/src/code_800029B0.o(.bss*);
+         BUILD_DIR/src/profiler.o(.bss*);
+         BUILD_DIR/src/crash_screen.o(.bss*);
+         BUILD_DIR/src/animation.o(.bss*);
+         BUILD_DIR/src/replays.o(.bss*);
+         BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.bss*);
+         BUILD_DIR/src/camera.o(.bss*);
+         BUILD_DIR/src/render_player.o(.bss*);
+         BUILD_DIR/src/spawn_players.o(.bss*);
+      #endif
       BUILD_DIR/src/code_80057C60.o(.bss*);
       BUILD_DIR/src/code_80057C60_var.o(.bss*);
       BUILD_DIR/src/effects.o(.bss*);
@@ -412,6 +471,13 @@ SECTIONS
       BUILD_DIR/src/racing/actors.o(.bss*);
       BUILD_DIR/src/racing/memory.o(.bss*);
       BUILD_DIR/src/buffers/random.o(.bss*);
+      #ifdef VERSION_JP
+      /* JP's racing overlay reserves 0x40 more bss than US. It cannot be in
+         ROM (racing's ROM size only differs by the 0x10 of unmatched code),
+         and no symbol past gActorHotAirBalloonItemBox is lui/lo16-referenced,
+         so the owning variable is not yet identified. */
+      . += 0x40;
+      #endif
       . = ALIGN(0x10);
    }
    END_NOLOAD(racing)
@@ -439,6 +505,21 @@ SECTIONS
       BUILD_DIR/src/ending/code_80281780.o(.text*);
       BUILD_DIR/src/ending/code_80281C40.o(.text*);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.text*);
+      #ifdef VERSION_JP
+      /* JP puts credits first in both .data and .rodata */
+      BUILD_DIR/src/ending/credits.jp.o(.data*);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.data*);
+      BUILD_DIR/src/ending/code_80281780.o(.data*);
+      BUILD_DIR/src/ending/dl_unk_80284EE0.o(.data*);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.data*);
+      BUILD_DIR/src/ending/code_80280000.o(.rodata*);
+      BUILD_DIR/src/ending/credits.jp.o(.rodata*);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.rodata*);
+      BUILD_DIR/src/ending/camera_junk.o(.rodata*);
+      BUILD_DIR/src/ending/code_80281780.o(.rodata*);
+      BUILD_DIR/src/ending/code_80281C40.o(.rodata*);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata*);
+      #else
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.data*);
       BUILD_DIR/src/ending/code_80281780.o(.data*);
       BUILD_DIR/src/ending/dl_unk_80284EE0.o(.data*);
@@ -451,6 +532,7 @@ SECTIONS
       BUILD_DIR/src/ending/code_80281C40.o(.rodata*);
       BUILD_DIR/src/ending/credits.jp.o(.rodata*);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata*);
+      #endif
    }
    END_SEG(ending)
 
@@ -481,6 +563,24 @@ SECTIONS
    }
    END_SEG(common_textures)
 
+   #ifdef VERSION_JP
+   /* JP packs ceremonyData + startupLogo before the kart band,
+      and trigTables directly after it (US keeps them later). */
+   BEGIN_SEG(ceremonyData, 0x0B000000)
+   {
+      BUILD_DIR/ASSET_CODE_DIR/ceremony_data/ceremony_data.mio0.o(.data);
+      . = ALIGN(0x10);
+   }
+   END_SEG(ceremonyData)
+
+   BEGIN_SEG(startupLogo, 0x06000000)
+   {
+      BUILD_DIR/ASSET_CODE_DIR/startup_logo/startup_logo.mio0.o(.data);
+      . = ALIGN(0x10);
+   }
+   END_SEG(startupLogo)
+   #endif
+
    /* 0x0F000000 145470-63E278 [4F8E08] */
    /* compressed kart textures and palettes */
    BEGIN_SEG(kart_textures, 0x0F000000) SUBALIGN(0x10)
@@ -497,6 +597,16 @@ SECTIONS
    }
    END_SEG(kart_textures)
 
+   #ifdef VERSION_JP
+   /* JP: trigTables sit between the kart band and other_textures */
+   BEGIN_SEG(trigTables, _buffersSegmentNoloadStart)
+   {
+        BUILD_DIR/src/buffers/trig_tables.o(.data);
+        . = ALIGN(0x10);
+   }
+   END_SEG(trigTables)
+   #endif
+
    /* 0x0F000000: 641F70-724220 */
    BEGIN_SEG(other_textures, 0x0F000000)
    {
@@ -505,6 +615,7 @@ SECTIONS
    }
    END_SEG(other_textures)
 
+   #ifndef VERSION_JP
    /* 0x802BA370 724220-729A30 [0x5810] */
    BEGIN_SEG(trigTables, _buffersSegmentNoloadStart)
    {
@@ -512,6 +623,7 @@ SECTIONS
         . = ALIGN(0x10);
    }
    END_SEG(trigTables)
+   #endif
 
    /* 0x0A000000 729A30-7E684F [BCE20] */
    BEGIN_SEG(textures_0a, 0x0A000000)
@@ -530,6 +642,7 @@ SECTIONS
    }
    END_SEG(textures_0b)
 
+   #ifndef VERSION_JP
    /* TODO: 0x825800 -> 0x8028B230 (0x100) ...
             0x828400 -> 0x8028DE30 (0xD0) */
    BEGIN_SEG(ceremonyData, 0x0B000000)
@@ -545,6 +658,7 @@ SECTIONS
       . = ALIGN(0x10);
    }
    END_SEG(startupLogo)
+   #endif
 
 
    /* Segment Six Course Data (Displaylists, models, textures, course paths, etc.) */
@@ -644,12 +758,22 @@ SECTIONS
       BUILD_DIR/data/sound_data/audiobanks.o(.data);
    }
    END_SEG(audio_banks)
+   /* JP's audiobanks blob is 0x80 larger and its sample bank 0x180 larger, so
+      both of these ROM-space bases move. */
+   #ifdef VERSION_JP
+   BEGIN_SEG(audio_tables, 0x138C0)
+   #else
    BEGIN_SEG(audio_tables, 0x13840)
+   #endif
    {
       BUILD_DIR/data/sound_data/audiotables.o(.data);
    }
    END_SEG(audio_tables)
+   #ifdef VERSION_JP
+   BEGIN_SEG(sequences, 0x25FF00)
+   #else
    BEGIN_SEG(sequences, 0x25FD00)
+   #endif
    {
       #ifdef VERSION_EU
       BUILD_DIR/data/sound_data/sequences_eu.o(.data);

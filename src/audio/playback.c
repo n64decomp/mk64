@@ -231,7 +231,7 @@ void process_notes(void) {
             }
 #endif
 
-#ifdef VERSION_EU_V10
+#if defined(VERSION_EU_V10) || defined(VERSION_JP)
             // Just threw these in here. They are probably wrong place and variables.
             stubbed_printf("----------------------Double-Error CH: %x %f\n", &note, note->parentLayer->seqChannel);
             stubbed_printf("----------------------Double-Error NT: %x\n", &note);

@@ -44,11 +44,19 @@ glabel music_sequence_table_end
 .align 4, 0x00
 
 glabel seq_00
+.ifdef VERSION_JP
+.incbin "music/00_seq_00.jp.v11.m64"
+.else
 .incbin "music/00_seq_00.m64"
+.endif
 glabel seq_00_end
 
 glabel seq_01
+.ifdef VERSION_JP
+.incbin "music/01_title_screen.jp.v11.m64"
+.else
 .incbin "music/01_title_screen.m64"
+.endif
 glabel seq_01_end
 
 glabel seq_02
@@ -60,11 +68,19 @@ glabel seq_03
 glabel seq_03_end
 
 glabel seq_04
+.ifdef VERSION_JP
+.incbin "music/04_moo_moo_fame_yoshi_valley.jp.v11.m64"
+.else
 .incbin "music/04_moo_moo_fame_yoshi_valley.m64"
+.endif
 glabel seq_04_end
 
 glabel seq_05
+.ifdef VERSION_JP
+.incbin "music/05_choco_mountain.jp.v11.m64"
+.else
 .incbin "music/05_choco_mountain.m64"
+.endif
 glabel seq_05_end
 
 glabel seq_06
@@ -76,7 +92,11 @@ glabel seq_07
 glabel seq_07_end
 
 glabel seq_08
+.ifdef VERSION_JP
+.incbin "music/08_seq_08.jp.v11.m64"
+.else
 .incbin "music/08_seq_08.m64"
+.endif
 glabel seq_08_end
 
 glabel seq_09

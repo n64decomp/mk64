@@ -404,8 +404,10 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
                     // d_course_dks_jungle_parkway_packed_dl_3F30
                     gSPDisplayList(gDisplayListHead++, 0x07003F30);
+#ifndef VERSION_JP
                     // d_course_dks_jungle_parkway_packed_dl_36A8
                     gSPDisplayList(gDisplayListHead++, 0x070036A8);
+#endif
                 }
             } else if (pathCounter == 24) {
                 if ((playerDirection == 0) || (playerDirection == 3)) {
@@ -856,6 +858,14 @@ void render_royal_raceway(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
+// JP gives the jumbo-television staging area its own slot in segment 5,
+// 0x9000 above the US address (the splitscreen staging moved the other way).
+#ifdef VERSION_JP
+#define JUMBOTRON_STAGING 0x18800
+#else
+#define JUMBOTRON_STAGING 0xF800
+#endif
+
 void render_luigi_raceway(struct UnkStruct_800DC5EC* arg0) {
 
     UNUSED s32 pad;
@@ -870,7 +880,13 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC* arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_luigi_raceway_packed_dl_9EC0
+#ifdef VERSION_JP
+        /* JP's luigi packed display lists diverge from US partway through, so
+           this sub-list sits 0x18 earlier. */
+        gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07009EA8));
+#else
         gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07009EC0));
+#endif
     }
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
@@ -910,36 +926,38 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC* arg0) {
             case 0:
                 copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32,
                                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]),
-                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
+                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + JUMBOTRON_STAGING));
                 break;
             case 1:
                 copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32,
                                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]),
-                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x10800));
+                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + JUMBOTRON_STAGING + 0x1000));
                 break;
             case 2:
                 copy_framebuffer(D_800DC5DC, D_800DC5E0 + 32, 64, 32,
                                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]),
-                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x11800));
+                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + JUMBOTRON_STAGING + 0x2000));
                 break;
             case 3:
                 copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32,
                                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]),
-                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x12800));
+                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + JUMBOTRON_STAGING + 0x3000));
                 break;
             case 4:
                 copy_framebuffer(D_800DC5DC, D_800DC5E0 + 64, 64, 32,
                                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]),
-                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x13800));
+                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + JUMBOTRON_STAGING + 0x4000));
                 break;
             case 5:
                 copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32,
                                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]),
-                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x14800));
+                                 (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + JUMBOTRON_STAGING + 0x5000));
                 break;
         }
     }
 }
+
+#undef JUMBOTRON_STAGING
 
 // Missing {} around if statements necessary for matching.
 void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {

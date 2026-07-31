@@ -31,6 +31,39 @@ extern u8 gTexture66D698[];
 extern u8 gTexture66EBF0[];
 extern u8 gTextureWheelSteamEngineReal[];
 
+#ifdef VERSION_JP  /* JP ships different sign textures, so their compressed sizes differ */
+const course_texture moo_moo_farm_textures[] = {
+    { gTextureWoodDoor0, 0x0294, 0x1000, 0x0 },
+    { gTextureGrass2, 0x0415, 0x0800, 0x0 },
+    { gTexture64AF50, 0x0140, 0x0800, 0x0 },
+    { gTexture64B090, 0x0365, 0x0800, 0x0 },
+    { gTexture64B54C, 0x038C, 0x0800, 0x0 },
+    { gTexture64B3F8, 0x0153, 0x0800, 0x0 },
+    { gTextureSignNintendo0, 0x0541, 0x1000, 0x0 },
+    { gTextureSignNintendo1, 0x0512, 0x1000, 0x0 },
+    { gTexture6684F8, 0x010D, 0x0800, 0x0 },
+    { gTextureSignLuigis0, 0x026A, 0x1000, 0x0 },
+    { gTextureSignLuigis1, 0x02CC, 0x1000, 0x0 },
+    { gTextureSignMarioStar0, 0x0349, 0x1000, 0x0 },
+    { gTextureSignMarioStar1, 0x02D7, 0x1000, 0x0 },
+    { gTexture674D58, 0x030C, 0x1000, 0x0 },
+    { gTexture675064, 0x01BB, 0x0800, 0x0 },
+    { gTexture675220, 0x0212, 0x0800, 0x0 },
+    { gTexture6775EC, 0x0233, 0x1000, 0x0 },
+    { gTexture683314, 0x02DC, 0x1000, 0x0 },
+    { gTexture68CDA0, 0x0110, 0x0800, 0x0 },
+    { gTexture6442D4, 0x0138, 0x0800, 0x0 },
+    { gTexture64440C, 0x029D, 0x1000, 0x0 },
+    { gTexture6446AC, 0x0116, 0x0800, 0x0 },
+    { gTextureMooMooFarmSignLeft, 0x0844, 0x1000, 0x0 },
+    { gTextureMooMooFarmSignRight, 0x07DD, 0x1000, 0x0 },
+    { gTexture64ACAC, 0x02A3, 0x0800, 0x0 },
+    { gTexture66D698, 0x0370, 0x0800, 0x0 },
+    { gTexture66EBF0, 0x0146, 0x0800, 0x0 },
+    { gTextureWheelSteamEngineReal, 0x022F, 0x1000, 0x0 },
+    { 0x00000000, 0x0000, 0x0000, 0x0 },
+};
+#else
 const course_texture moo_moo_farm_textures[] = {
     { gTextureWoodDoor0, 0x0294, 0x1000, 0x0 },
     { gTextureGrass2, 0x0415, 0x0800, 0x0 },
@@ -62,6 +95,7 @@ const course_texture moo_moo_farm_textures[] = {
     { gTextureWheelSteamEngineReal, 0x022F, 0x1000, 0x0 },
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
+#endif
 
 const Gfx* moo_moo_farm_dls[] = {
     d_course_moo_moo_farm_dl_88,   d_course_moo_moo_farm_dl_598,  d_course_moo_moo_farm_dl_338,

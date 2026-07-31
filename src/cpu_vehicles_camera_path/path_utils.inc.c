@@ -338,6 +338,51 @@ s16 update_path_index_with_track(f32 posX, f32 posY, f32 posZ, s16 pathPointInde
     return nearestPathPointIndex;
 }
 
+#ifdef VERSION_JP
+/**
+ * Finds the path point nearest to (posX, posY, posZ), seeded with the distance
+ * to pathPointIndex itself so it always returns a valid index. The US revision
+ * replaced its callers with the update_path_index recovery chains.
+ * Looks 3 path behind and 6 path ahead of pathPointIndex
+ **/
+s16 find_nearest_path_point(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 pathIndex) {
+    s16 nearestPathPointIndex;
+    s16 searchIndex;
+    s16 considerIndex;
+    s32 pathPathPointCount;
+    f32 x_dist;
+    f32 y_dist;
+    f32 z_dist;
+    f32 minimumDistance;
+    f32 squaredDistance;
+    TrackPathPoint* pathPathPoints;
+    TrackPathPoint* considerPathPoint;
+
+    nearestPathPointIndex = pathPointIndex;
+    pathPathPointCount = gPathCountByPathIndex[pathIndex];
+    pathPathPoints = gTrackPaths[pathIndex];
+    considerIndex = (pathPointIndex + pathPathPointCount) % pathPathPointCount;
+    considerPathPoint = &pathPathPoints[considerIndex];
+    x_dist = considerPathPoint->posX - posX;
+    y_dist = considerPathPoint->posY - posY;
+    z_dist = considerPathPoint->posZ - posZ;
+    minimumDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
+    for (searchIndex = pathPointIndex - 3; searchIndex < pathPointIndex + 7; searchIndex++) {
+        considerIndex = (searchIndex + pathPathPointCount) % pathPathPointCount;
+        considerPathPoint = &pathPathPoints[considerIndex];
+        x_dist = considerPathPoint->posX - posX;
+        y_dist = considerPathPoint->posY - posY;
+        z_dist = considerPathPoint->posZ - posZ;
+        squaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
+        if (squaredDistance < minimumDistance) {
+            minimumDistance = squaredDistance;
+            nearestPathPointIndex = considerIndex;
+        }
+    }
+    return nearestPathPointIndex;
+}
+#endif
+
 /**
  * Tries to find the path point nearest to (posX, posY, posZ)
  * Only considers path within 400 units of (posX, posY, posZ)
@@ -392,6 +437,29 @@ s16 update_path_index(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 path
     return nearestPathPointIndex;
 }
 
+#ifdef VERSION_JP
+void tweak_path_index_wario_stadium(f32 posX, f32 posY, f32 posZ, s16* pathPointIndex, UNUSED s32 arg4) {
+    s16 var_v0;
+
+    var_v0 = *pathPointIndex;
+    // JP also rescues CPUs that fall short of Choco Mountain's canyon jump (above 50cc)
+    switch (gCurrentCourseId) {
+        case COURSE_CHOCO_MOUNTAIN:
+            if (gCCSelection > 0) {
+                if ((var_v0 >= 0x1D7) && (var_v0 < 0x206) && (posY < 10.0f)) {
+                    var_v0 = func_8000BD94(posX, posY, posZ, 0);
+                }
+            }
+            break;
+        case COURSE_WARIO_STADIUM:
+            if ((var_v0 >= 0x475) && (var_v0 < 0x480) && (posY < 0.0f)) {
+                var_v0 = 0x0398;
+            }
+            break;
+    }
+    *pathPointIndex = var_v0;
+}
+#else
 void tweak_path_index_wario_stadium(UNUSED f32 posX, f32 posY, UNUSED f32 posZ, s16* pathPointIndex, UNUSED s32 arg4) {
     s16 var_v0;
 
@@ -401,6 +469,7 @@ void tweak_path_index_wario_stadium(UNUSED f32 posX, f32 posY, UNUSED f32 posZ, 
     }
     *pathPointIndex = var_v0;
 }
+#endif
 
 void adjust_path_at_start_line(UNUSED f32 posX, UNUSED f32 posY, f32 posZ, s16* pathPointIndex, s32 pathIndex) {
     s16 pathPoint;
@@ -442,6 +511,36 @@ s16 update_path_index_track_section(f32 posX, f32 posY, f32 posZ, Player* player
  * @param pathIndex Current track path index
  * @return New pathPoint index or -1 if invalid
  */
+#ifdef VERSION_JP
+s16 update_player_path(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, Player* player, s32 playerId, s32 pathIndex) {
+    s16 newPathPoint;
+    TrackPathPoint* temp_v1;
+
+    // Human player handling (non-AI controlled)
+    if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_CPU)) {
+        newPathPoint = update_path_index_with_track(posX, posY, posZ, pathPointIndex, pathIndex,
+                                                    (u16) get_track_section_id(player->collision.meshIndexZX));
+        if (newPathPoint == -1) {
+            newPathPoint = update_path_index_track_section(posX, posY, posZ, player, playerId, &pathIndex);
+        }
+    } else { // AI or special case player handling
+        if (D_801631E0[playerId] == true) {
+            if (player->lakituProps & LAKITU_RETRIEVAL) {
+                temp_v1 = &gTrackPaths[pathIndex][pathPointIndex];
+                player->pos[0] = (f32) temp_v1->posX;
+                player->pos[1] = (f32) temp_v1->posY;
+                player->pos[2] = (f32) temp_v1->posZ;
+                player->lakituProps &= ~LAKITU_RETRIEVAL;
+                return pathPointIndex;
+            }
+        }
+        newPathPoint = find_nearest_path_point(posX, posY, posZ, pathPointIndex, pathIndex);
+        tweak_path_index_wario_stadium(posX, posY, posZ, &newPathPoint, pathIndex);
+    }
+    adjust_path_at_start_line(posX, posY, posZ, &newPathPoint, pathIndex);
+    return newPathPoint;
+}
+#else
 s16 update_player_path(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, Player* player, s32 playerId, s32 pathIndex) {
     s16 newPathPoint;
     UNUSED s16 stackPadding0;
@@ -509,6 +608,8 @@ s16 update_player_path(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, Player*
     return newPathPoint;
 }
 
+#endif
+
 s16 find_closest_vehicles_path_point(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 pathPointIndex) {
     f32 xdiff;
     f32 zdiff;
@@ -542,6 +643,7 @@ s16 find_closest_vehicles_path_point(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 pa
     return minimumIndex;
 }
 
+#ifndef VERSION_JP
 s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32* pathIndex) {
     UNUSED s32 pad;
     Collision sp24;
@@ -549,7 +651,21 @@ s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32* pathIndex) {
     check_bounding_collision(&sp24, 10.0f, posX, posY, posZ);
     return find_closest_path_point_track_section(posX, posY, posZ, get_track_section_id(sp24.meshIndexZX), pathIndex);
 }
+#endif
 
+#ifdef VERSION_JP
+s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 pathIndex) {
+    s16 pathPoint;
+
+    pathPoint = find_nearest_path_point(posX, posY, posZ, pathPointIndex, pathIndex);
+    adjust_path_at_start_line(posX, posY, posZ, &pathPoint, pathIndex);
+    return pathPoint;
+}
+
+s16 func_8000D33C(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 pathIndex) {
+    return find_nearest_path_point(posX, posY, posZ, pathPointIndex, pathIndex);
+}
+#else
 s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 pathIndex) {
     s16 pathPoint;
 
@@ -570,6 +686,7 @@ s16 func_8000D33C(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 pathInde
     }
     return pathPoint;
 }
+#endif
 
 f32 cpu_track_position_factor(s32 playerId) {
     TrackPositionFactorInstruction* temp_v0;

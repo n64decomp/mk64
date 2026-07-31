@@ -182,7 +182,11 @@ Vtx gBalloonVertexPlane2[] = {
 };
 
 u8 D_800E52D0[] = {
+#ifdef VERSION_JP
+#include "assets/onomatopoeia/gTLUTOnomatopoeia.jp.inc.c"
+#else
 #include "assets/onomatopoeia/gTLUTOnomatopoeia.inc.c"
+#endif
 };
 
 u8* gCourseOutlineTextures[] = {

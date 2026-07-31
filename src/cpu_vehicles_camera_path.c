@@ -32,10 +32,18 @@
 #include "data/path_spawn_metadata.h"
 #include "math_util_2.h"
 
+#ifdef VERSION_JP
+s32 unk_cpu_vehicles_camera_path_pad[14];
+s16 D_801633E0[12];
+#else
 s32 unk_cpu_vehicles_camera_path_pad[24];
+#endif
 Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.
 s16 D_80162EB2; // possibly [3]
+#ifdef VERSION_JP
+s16 gTrainSmokeTimer;
+#endif
 
 CPUBehaviour* gCoursesCPUBehaviour[NUM_COURSES - 1];
 
@@ -49,9 +57,14 @@ s16 D_80162F50[30];
 s32 D_80162F90[4];
 
 Vec3f gOffsetPosition;
+#ifdef VERSION_JP
+s16 gFerrySmokeTimer;
+#endif
 Vec3f D_80162FB0;
 Vec3f D_80162FC0;
+#ifndef VERSION_JP
 s16 gTrainSmokeTimer;
+#endif
 s16 sSomeNearestPathPoint;
 s16 D_80162FD0;
 f32 gCourseCompletionPercentByRank[NUM_PLAYERS];
@@ -61,6 +74,9 @@ to be 8 entries long (enough for each player). But some are 10 or even 12 long.
 Its plausible that this is just some decompilation artifact?
 Or maybe at some point in development they had plans for more players?
 */
+#ifdef VERSION_JP
+s16 sVehicleSoundRenderCounter;
+#endif
 s16 D_80162FF8[12];
 s16 D_80163010[12];
 f32 cpu_TargetSpeed[10];
@@ -71,13 +87,17 @@ bool gIsPlayerInCurve[10];
 u16 gCurrentNearestPathPoint;
 s16 gIsPlayerNewPathPoint;
 s16 D_801630E8[10];
+#ifndef VERSION_JP
 s16 gFerrySmokeTimer;
+#endif
 s32 D_80163100[10];
 s32 D_80163128[10];
 s32 D_80163150[10];
 f32 gPreviousPlayerAiOffsetX[10];
 f32 gPreviousPlayerAiOffsetZ[10];
+#ifndef VERSION_JP
 s16 sVehicleSoundRenderCounter;
+#endif
 s32 D_801631CC;
 TrackPathPoint* gCurrentTrackLeftPath;
 TrackPathPoint* gCurrentTrackRightPath;
@@ -110,7 +130,9 @@ s16 gCurrentPlayerLookAhead[12];
 s16 D_80163398[12];
 s16 D_801633B0[12];
 s16 gPositionSwapTimer[12];
+#ifndef VERSION_JP
 s16 D_801633E0[12];
+#endif
 s16 D_801633F8[12];
 s16 D_80163410[4];
 f32 D_80163418[4];
@@ -131,6 +153,9 @@ s16 cpu_enteringPathIntersection[12];
 s16 cpu_exitingPathIntersection[12];
 s16 D_801634C0[12];
 s16 bStopAICrossing[10];
+#ifdef VERSION_JP
+s32 D_80163DD8[4];
+#endif
 s16 D_801634EC;
 s32 D_801634F0;
 s32 D_801634F4;
@@ -145,10 +170,17 @@ VehicleStuff gBoxTruckList[NUM_RACE_BOX_TRUCKS];
 VehicleStuff gSchoolBusList[NUM_RACE_SCHOOL_BUSES];
 VehicleStuff gTankerTruckList[NUM_RACE_TANKER_TRUCKS];
 VehicleStuff gCarList[NUM_RACE_CARS];
+#ifndef VERSION_JP
 s32 D_80163DD8[4];
+#endif
 BombKart gBombKarts[NUM_BOMB_KARTS_MAX];
 Collision D_80164038[NUM_BOMB_KARTS_MAX];
 struct unexpiredActors gUnexpiredActorsList[8];
+#ifdef VERSION_JP
+/* JP declares this BEFORE cpu_ItemStrategy; the array's 8-byte alignment then
+   supplies the 4 bytes of padding after it. */
+s32 D_8016448C;
+#endif
 CpuItemStrategyData cpu_ItemStrategy[NUM_PLAYERS];
 s16 D_80164358;
 s16 D_8016435A;
@@ -163,11 +195,23 @@ u16 gSelectedPathCount;
 u16 gNearestPathPointByPlayerId[12];
 s32 gNumPathPointsTraversed[10];
 s16 gGetPlayerByCharacterId[10];
+#ifndef VERSION_JP
 s32 D_8016448C;
+#endif
 TrackPathPoint* gCurrentTrackPath;
 f32 D_80164498[4];
+#ifdef VERSION_JP
+s32 D_801645D0[4];
+s32 D_801645E8[4];
+#endif
 f32 gLapCompletionPercentByPlayerId[10];    // D_801644A8
+#ifdef VERSION_JP
+s32 D_80164608[4];
+#endif
 f32 gCourseCompletionPercentByPlayerId[10]; // D_801644D0
+#ifdef VERSION_JP
+s32 D_80164628[4];
+#endif
 s16 bInMultiPathSection[12];
 f32 gPlayerPathY[10];
 s16 D_80164538[12];
@@ -179,13 +223,21 @@ s16* gPathExpectedRotation[4];
 s16* gTrackConsecutiveCurveCounts[4];
 u16 gPathIndexByPlayerId[12]; // D_801645B0
 u16 gPathCountByPathIndex[4]; // D_801645C8
+#ifndef VERSION_JP
 s32 D_801645D0[4];
+#endif
 s16* gCurrentTrackConsecutiveCurveCountsPath;
+#ifndef VERSION_JP
 s32 D_801645E8[4];
+#endif
 f32 D_801645F8[4];
+#ifndef VERSION_JP
 s32 D_80164608[4];
+#endif
 f32 D_80164618[4];
+#ifndef VERSION_JP
 s32 D_80164628[4];
+#endif
 f32 D_80164638[4];
 f32 D_80164648[4];
 f32 D_80164658[4];
@@ -209,7 +261,9 @@ s32 D_801646BC;
 s16 D_801646C0[4];
 u32 D_801646C8;
 u16 D_801646CC;
+
 UnkStruct_46D0 D_801646D0[4];
+
 
 // Strings, presented by google translate!
 // Note that these are EUC-JP encoded, see:
@@ -221,13 +275,19 @@ char* D_800EB710 = "ゴール直後の強制ソート\n";
 char* D_800EB728 = "2PGPで片方がゴール直後の強制ソート\n";
 // rank calculation error
 char* D_800EB74C = "順位計算エラー！！ (num %d) (rank %d) (e_rank %d)\n";
+#ifndef VERSION_JP
 // Bypass switching error!!!(num %d org_bipas %d bipas %d)
 char* D_800EB780 = "バイパス切り替え エラー!!!(num %d  org_bipas %d  bipas %d)\n";
+#endif
 char* D_800EB7BC = "(%d) rap %3d  rate_count_F %10.2f  rap_count_F %10.2f  area %5d \n";
+#ifdef VERSION_JP
+char* D_800EB800 = "MAP 4 enemy bipas No. change (%d: line %d)\n";
+#else
 // Enter the maze! enemy %d (%d --> %d)
 char* D_800EB800 = "迷路に突入！ enemy %d (%d --> %d)\n";
 // Out of the maze! enemy %d (%d --> %d)
 char* D_800EB824 = "迷路から出た！ enemy %d (%d --> %d)\n";
+#endif
 char* D_800EB84C = "enemy voice set (%d  slip_flag %x  weapon %x)\n";
 // Spin Voice! ! (%d , name %d)
 char* D_800EB87C = "スピンヴォイス！！(%d , name %d)\n";
@@ -250,10 +310,19 @@ char* D_800EB9DC = "get_oga_area_sub_BP() ... エリアが見つからないッ�
 // Status: (%d, %d, %d)
 char* D_800EBA20 = "  状況: (%d, %d, %d) \n";
 char* D_800EBA38 = "<%d> (%d, %d, %d) [%d] lng %f\n";
+#ifdef VERSION_JP
+// Choco Mountain misstep!!! (area %d, y %7.2f)
+char* D_800EBA3C = "チョコマウンテン踏み外し！！！ (area %d, y %7.2f)\n";
+#endif
 // Wario Stadium Jump failed! ! ! (area %d, y %7.2f)
 char* D_800EBA58 = "ワリオスタジアム  ジャンプ失敗！！！ (area %d, y %7.2f)\n";
+#ifdef VERSION_JP
+char* D_800EBA94 = "水に落ちた！！  センターラインに強制移動しました (num %d: area %d : kart %d) (%d,%d,%d)\n";
+#else
 // I fell in the water! ! Forced to centerline (num %d: area %d ) (%d,%d,%d)
 char* D_800EBA94 = "水に落ちた！！  センターラインに強制移動しました (num %d: area %d ) (%d,%d,%d)\n";
+#endif
+#ifndef VERSION_JP
 // Course match! ! (Slacking: with bump) Forced move to center line (num %d: area %d ==>%d) (group %d) (%d,%d,%d)
 char* D_800EBAE4 = "こーすあうと！！（手抜き中:バンプ有り）  センターラインに強制移動しました (num %d: area %d ==>%d) "
                    "(group %d) (%d,%d,%d)\n";
@@ -262,6 +331,7 @@ char* D_800EBB60 = "こーすあうと！！（手抜き中:バンプ無し）  
                    "(group %d) (%d,%d,%d)\n";
 // Course match! ! ! Recalculated area (num %d: area %d ==>%d)
 char* D_800EBBDC = "こーすあうと！！！    エリアを再計算しました (num %d: area %d ==>%d)\n";
+#endif
 // Direct BOM(%d) (%7.2f, %7.2f, %7.2f)
 char* D_800EBC24 = "直接指定のBOM(%d) (%7.2f, %7.2f, %7.2f) \n";
 char* D_800EBC50 = "BOM HIT CHECK\n";
@@ -548,7 +618,9 @@ char* D_800ECF30 = "道路に到着\n";
 char* D_800ECF3C = "４位の人終了\n";
 // OGA commendation move end
 char* D_800ECF4C = "OGA 表彰 move 終了\n";
+#ifndef VERSION_JP
 char* D_800ECF60 = "OGAWA DEBUG DRAW\n";
+#endif
 
 // utils function path, cpu, vehicle
 
@@ -1099,6 +1171,7 @@ void set_current_path(s32 pathIndex) {
     gSelectedPathCount = gPathCountByPathIndex[pathIndex];
 }
 
+#ifndef VERSION_JP
 s32 update_player_path_selection(s32 payerId, s32 pathIndex) {
     f32 posX;
     f32 posY;
@@ -1122,7 +1195,24 @@ s32 update_player_path_selection(s32 payerId, s32 pathIndex) {
     if (stackPadding) {};
     return pathIndex;
 }
+#endif
 
+#ifdef VERSION_JP
+void update_player_completion(s32 playerId) {
+    s32 lap;
+    u16 pathIndex = gPathIndexByPlayerId[playerId];
+
+    // calculate completion in percent
+    gLapCompletionPercentByPlayerId[playerId] =
+        (f32) gNearestPathPointByPlayerId[playerId] / (f32) gPathCountByPathIndex[pathIndex];
+    lap = gLapCountByPlayerId[playerId];
+
+    // arbitrary score calculation
+    gNumPathPointsTraversed[playerId] = (lap * gPathCountByPathIndex[0]) + gNearestPathPointByPlayerId[playerId];
+    gCourseCompletionPercentByPlayerId[playerId] =
+        ((f32) gNearestPathPointByPlayerId[playerId] / (f32) gPathCountByPathIndex[pathIndex]) + lap;
+}
+#else
 void update_player_completion(s32 playerId) {
     f32 percent;
 
@@ -1136,7 +1226,9 @@ void update_player_completion(s32 playerId) {
     gCourseCompletionPercentByPlayerId[playerId] = percent;
     gCourseCompletionPercentByPlayerId[playerId] += gLapCountByPlayerId[playerId];
 }
+#endif
 
+#ifndef VERSION_JP
 void yoshi_valley_cpu_path(s32 playerId) {
     s16 previous;
 
@@ -1198,6 +1290,7 @@ void update_cpu_path_completion(s32 playerId, Player* player) {
         cpu_exitingPathIntersection[playerId] = 0;
     }
 }
+#endif
 
 /**
  * Helps calculate time since player last touched finishline.
@@ -1293,12 +1386,14 @@ void update_player_path_completion(s32 playerId, Player* player) {
         }
     }
     gPreviousPlayerZ[playerId] = playerZ;
+#ifndef VERSION_JP
     if ((gCurrentCourseId == COURSE_YOSHI_VALLEY) && (gIsPlayerNewPathPoint == true)) {
         yoshi_valley_cpu_path(playerId);
         if (((player->type & PLAYER_HUMAN) == 0) || (player->type & PLAYER_CPU)) {
             update_cpu_path_completion(playerId, player);
         }
     }
+#endif
     if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_CPU)) {
         detect_wrong_player_direction(playerId, player);
         if ((gModeSelection == GRAND_PRIX) && (gPlayerCount == 2) && (playerId == 0)) {
@@ -1309,6 +1404,15 @@ void update_player_path_completion(s32 playerId, Player* player) {
             }
         }
     } else {
+#ifdef VERSION_JP
+        // JP randomizes the CPU path on Yoshi Valley at the finish line; the US
+        // revision replaced this with the yoshi_valley_cpu_path machinery.
+        if ((gCrossedFinishLine[playerId] == 1) && (gLapCountByPlayerId[playerId] >= 0) &&
+            (gCurrentCourseId == COURSE_YOSHI_VALLEY)) {
+            gPlayerPathIndex = random_int(4);
+            gPathIndexByPlayerId[playerId] = gPlayerPathIndex;
+        }
+#endif
         //????
     }
     update_player_position_factor(playerId, sSomeNearestPathPoint, gPlayerPathIndex);
@@ -1374,7 +1478,11 @@ void play_cpu_sound_effect(s32 arg0, Player* player) {
 void update_player_timer_sound(s32 playerId, UNUSED Player* unused) {
     s32 otherPlayerId;
 
+#ifdef VERSION_JP
+    if (gPositionSwapTimer[playerId] >= 0xC9) {
+#else
     if (gPositionSwapTimer[playerId] >= 0x65) {
+#endif
         for (otherPlayerId = 0; otherPlayerId < gPlayerCount; otherPlayerId++) {
             // detect swap of positions
             if ((gGPCurrentRaceRankByPlayerId[playerId] < gGPCurrentRaceRankByPlayerId[otherPlayerId]) &&
@@ -1398,8 +1506,15 @@ void update_player_timer_sound(s32 playerId, UNUSED Player* unused) {
 
 void update_player(s32 playerId) {
     UNUSED s32 pad[14];
+#ifdef VERSION_JP
+    /* JP declares these in the opposite order, which moves var_a0_2's slot to 0x94. */
+    s16 prevSteering;
+    s16 newAngle;
+    s16 var_a0_2;
+#else
     s16 var_a0_2;
     s16 newAngle;
+#endif
     u16 pathIndex;
 
     f32 distX;
@@ -1430,6 +1545,7 @@ void update_player(s32 playerId) {
             gLapCompletionPercentByPlayerId[playerId] = -1000.0f;
             return;
         }
+#ifndef VERSION_JP
         D_801633E0[playerId] = 0;
         // clang-format off
         if (player->pos[0] < gCourseMinX) {            D_801633E0[playerId] = 1;        }
@@ -1437,6 +1553,7 @@ void update_player(s32 playerId) {
         if (player->pos[2] < gCourseMinZ) {            D_801633E0[playerId] = 3;        }
         if (gCourseMaxZ < player->pos[2]) {            D_801633E0[playerId] = 4;        }
         // clang-format on
+#endif
 
         if (!(player->lakituProps & HELD_BY_LAKITU) && !(player->lakituProps & LAKITU_SCENE)) {
             gPlayerPathIndex = gPathIndexByPlayerId[playerId];
@@ -1471,7 +1588,11 @@ void update_player(s32 playerId) {
                 set_places();
             }
             if (player->type & PLAYER_CPU) {
+#ifdef VERSION_JP
+                if (gCurrentCourseId != COURSE_AWARD_CEREMONY) {
+#else
                 if ((gIsPlayerNewPathPoint == true) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
+#endif
                     cpu_behaviour(playerId);
                 }
                 // one update it try to use an item, the other it doesn't
@@ -1545,7 +1666,9 @@ void update_player(s32 playerId) {
                     } else {
                         gPreviousCpuTargetSpeed[playerId] = GET_COURSE_cpu_NormalTargetSpeed(gCCSelection);
                     }
+#ifndef VERSION_JP
                     check_ai_crossing_distance(playerId);
+#endif
                     cpu_track_position_factor(playerId);
                     determine_ideal_cpu_position_offset(playerId, gCurrentNearestPathPoint);
                     distX = gOffsetPosition[0] - player->pos[0];
@@ -1606,6 +1729,9 @@ void update_player(s32 playerId) {
                             if (steeringSensitivity > 5) {
                                 D_801630E8[playerId] = 0;
                                 player->effects &= ~DRIFTING_EFFECT;
+#ifdef VERSION_JP
+                                if (steeringSensitivity) {} // fake match
+#endif
                             }
                             break;
                         case 1:
@@ -1620,7 +1746,12 @@ void update_player(s32 playerId) {
                 }
 
                 if ((playerId & 1) != (gIncrementUpdatePlayer & 1)) {
+#ifdef VERSION_JP
+                    prevSteering = gPreviousAngleSteering[playerId];
+                    apply_cpu_turn(player, prevSteering);
+#else
                     apply_cpu_turn(player, gPreviousAngleSteering[playerId]);
+#endif
                     regulate_cpu_speed(playerId, gPreviousCpuTargetSpeed[playerId], player);
                     return;
                 }
@@ -1749,7 +1880,9 @@ void update_player(s32 playerId) {
                 gCurrentCpuTargetSpeed = cpu_TargetSpeed[playerId];
                 player->effects &= ~CPU_FAST_EFFECT;
                 gPreviousCpuTargetSpeed[playerId] = gCurrentCpuTargetSpeed;
+#ifndef VERSION_JP
                 check_ai_crossing_distance(playerId);
+#endif
                 regulate_cpu_speed(playerId, gCurrentCpuTargetSpeed, player);
             }
         }
@@ -3889,6 +4022,11 @@ void cpu_use_item_strategy(s32 playerId) {
     TrackPathPoint* pathPoint;
     bool isValidBanana1;
     bool isValidBanana2;
+#ifdef VERSION_JP
+    /* JP's frame is 8 bytes larger; the space is never addressed through sp,
+       so it is an unreferenced local rather than any change to the code. */
+    UNUSED s32 cpu_use_item_pad_jp[2];
+#endif
 
 // Only used in this function
 #define BANANA_ACTOR(actor) ((struct BananaActor*)(actor))
@@ -3951,7 +4089,12 @@ void cpu_use_item_strategy(s32 playerId) {
                 }
             } else if (cpuStrategy->branch == CPU_STRATEGY_ITEM_BANANA) {
                 cpuStrategy->actorIndex = use_banana_item(player);
+#ifdef VERSION_JP
+                if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100) &&
+                    (gTrackPositionFactor[playerId] > -1.0) && (gTrackPositionFactor[playerId] < 1.0)) {
+#else
                 if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
+#endif
                     player->triggers |= DRAG_ITEM_EFFECT;
                     cpuStrategy->branch = CPU_STRATEGY_HOLD_BANANA;
                     cpuStrategy->timer = 0;
@@ -4587,6 +4730,7 @@ void render_bomb_karts_wrap(s32 cameraId) {
 }
 
 UNUSED void func_8001C42C(void) {
+#ifndef VERSION_JP
     if (D_800DDB20 == 0) {
         if ((gControllerThree->buttonPressed & L_TRIG) != 0) {
             D_800DDB20 = 1;
@@ -4599,4 +4743,5 @@ UNUSED void func_8001C42C(void) {
         gSPDisplayList(gDisplayListHead++, D_0D0076F8);
         func_80057CE4();
     }
+#endif
 }

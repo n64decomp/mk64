@@ -1147,7 +1147,12 @@ glabel gTexture68DEC0
 glabel gTexture68E2D0
 .incbin "textures/standalone/texture_68E2D0.rgba16.mio0"
 
+/* JP aligns the green shell group to 16 (8 extra zero bytes here) */
+.ifdef VERSION_JP
+.balign 16, 0x00
+.else
 .balign 4, 0x00
+.endif
 glabel texture_green_shell_0
 .incbin "assets/greenshell/texture_green_shell_0.mio0"
 
