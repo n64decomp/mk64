@@ -36,7 +36,7 @@ $(CHECKEREDFLAG_DIR)/gTextureLakituCheckeredFlag30.png \
 $(CHECKEREDFLAG_DIR)/gTextureLakituCheckeredFlag31.png \
 $(CHECKEREDFLAG_DIR)/gTextureLakituCheckeredFlag32.png
 
-CHECKEREDFLAG_EXPORT_SENTINEL := $(CHECKEREDFLAG_DIR)/.export
+CHECKEREDFLAG_EXPORT_SENTINEL := $(CHECKEREDFLAG_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(CHECKEREDFLAG_FRAMES:%.png=%.bin)
 

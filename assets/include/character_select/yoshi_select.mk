@@ -19,7 +19,7 @@ $(YOSHI_SELECT_DIR)/yoshi_face_14.png \
 $(YOSHI_SELECT_DIR)/yoshi_face_15.png \
 $(YOSHI_SELECT_DIR)/yoshi_face_16.png
 
-YOSHI_SELECT_EXPORT_SENTINEL := $(YOSHI_SELECT_DIR)/.export
+YOSHI_SELECT_EXPORT_SENTINEL := $(YOSHI_SELECT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/data/course_player_selection.o: $(YOSHI_SELECT_PNG:%.png=%.mio0)
 

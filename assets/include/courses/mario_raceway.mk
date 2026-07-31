@@ -17,7 +17,7 @@ MARIO_RACEWAY_SIGN := \
 $(MARIO_RACEWAY_DIR)/gTextureMarioRacewaySignLeft.png \
 $(MARIO_RACEWAY_DIR)/gTextureMarioRacewaySignRight.png
 
-PIRANHA_PLANT_EXPORT_SENTINEL := $(MARIO_RACEWAY_DIR)/.export
+PIRANHA_PLANT_EXPORT_SENTINEL := $(MARIO_RACEWAY_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(PIRANHA_PLANT_FRAMES:%.png=%.mio0)
 

@@ -6,7 +6,7 @@ PENGUIN_PNG := \
 $(SHERBET_LAND_DIR)/gTexturePenguinBeak.png \
 $(SHERBET_LAND_DIR)/gTexturePenguinEye.png
 
-SHERBET_LAND_EXPORT_SENTINEL := $(SHERBET_LAND_DIR)/.export
+SHERBET_LAND_EXPORT_SENTINEL := $(SHERBET_LAND_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/courses/sherbet_land/course_data.o: $(SHERBET_LAND_ICE:%.png=%.inc.c) $(PENGUIN_PNG:%.png=%.inc.c)
 

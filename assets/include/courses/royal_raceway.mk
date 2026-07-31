@@ -2,7 +2,7 @@ ROYAL_RACEWAY_DIR := assets/courses/royal_raceway
 
 ROYAL_RACEWAY_PIRANHA_PLANT_PALETTE := $(ROYAL_RACEWAY_DIR)/gTLUTRoyalRacewayPiranhaPlant.png
 
-ROYAL_RACEWAY_EXPORT_SENTINEL := $(ROYAL_RACEWAY_DIR)/.export
+ROYAL_RACEWAY_EXPORT_SENTINEL := $(ROYAL_RACEWAY_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/courses/royal_raceway/course_data.o: $(ROYAL_RACEWAY_PIRANHA_PLANT_PALETTE:%.png=%.inc.c)
 

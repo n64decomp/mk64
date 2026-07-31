@@ -8,7 +8,7 @@ $(FISHING_DIR)/gTextureLakituFishing2.png \
 $(FISHING_DIR)/gTextureLakituFishing3.png \
 $(FISHING_DIR)/gTextureLakituFishing4.png
 
-FISHING_EXPORT_SENTINEL := $(FISHING_DIR)/.export
+FISHING_EXPORT_SENTINEL := $(FISHING_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(FISHING_FRAMES:%.png=%.bin)
 

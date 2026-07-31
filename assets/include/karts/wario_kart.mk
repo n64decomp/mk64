@@ -1482,7 +1482,7 @@ WARIO_KART_PALETTE_PNG := \
  $(WARIO_KART_DIR)/palettes/kart_288_wheel_3.png \
  $(WARIO_KART_DIR)/palettes/wario_kart_palette.png
 
-WARIO_EXPORT_SENTINEL := $(WARIO_KART_DIR)/.export
+WARIO_EXPORT_SENTINEL := $(WARIO_KART_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/karts/wario_kart.o: $(WARIO_KART_FRAME_PNG:%.png=%.mio0) $(WARIO_KART_PALETTE_PNG:%.png=%.bin)
 

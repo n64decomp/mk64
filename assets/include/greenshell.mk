@@ -12,7 +12,7 @@ $(GREENSHELL_DIR)/texture_green_shell_5.png \
 $(GREENSHELL_DIR)/texture_green_shell_6.png \
 $(GREENSHELL_DIR)/texture_green_shell_7.png
 
-GREENSHELL_EXPORT_SENTINEL := $(GREENSHELL_DIR)/.export
+GREENSHELL_EXPORT_SENTINEL := $(GREENSHELL_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(GREENSHELL_FRAMES:%.png=%.mio0)
 

@@ -1482,7 +1482,7 @@ YOSHI_KART_PALETTE_PNG := \
  $(YOSHI_KART_DIR)/palettes/kart_288_wheel_3.png \
  $(YOSHI_KART_DIR)/palettes/yoshi_kart_palette.png
 
-YOSHI_EXPORT_SENTINEL := $(YOSHI_KART_DIR)/.export
+YOSHI_EXPORT_SENTINEL := $(YOSHI_KART_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/karts/yoshi_kart.o: $(YOSHI_KART_FRAME_PNG:%.png=%.mio0) $(YOSHI_KART_PALETTE_PNG:%.png=%.bin)
 

@@ -12,7 +12,7 @@ $(BLUELIGHT_DIR)/gTextureLakituBlueLight6.png \
 $(BLUELIGHT_DIR)/gTextureLakituBlueLight7.png \
 $(BLUELIGHT_DIR)/gTextureLakituBlueLight8.png
 
-BLUELIGHT_EXPORT_SENTINEL := $(BLUELIGHT_DIR)/.export
+BLUELIGHT_EXPORT_SENTINEL := $(BLUELIGHT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(BLUELIGHT_FRAMES:%.png=%.bin)
 

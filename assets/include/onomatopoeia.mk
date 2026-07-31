@@ -12,7 +12,7 @@ $(ONOMATOPOEIA_DIR)/gTextureOnomatopoeiaPoomp2.png \
 $(ONOMATOPOEIA_DIR)/gTextureBalloon1.png \
 $(ONOMATOPOEIA_DIR)/gTextureBalloon2.png
 
-ONOMATOPOEIA_EXPORT_SENTINEL := $(ONOMATOPOEIA_DIR)/.export
+ONOMATOPOEIA_EXPORT_SENTINEL := $(ONOMATOPOEIA_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(ONOMATOPOEIA_PNG:%.png=%.mio0)
 $(BUILD_DIR)/src/data/some_data.o: $(ONOMATOPOEIA_PALETTE:%.png=%.inc.c)

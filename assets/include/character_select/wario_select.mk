@@ -19,7 +19,7 @@ $(WARIO_SELECT_DIR)/wario_face_14.png \
 $(WARIO_SELECT_DIR)/wario_face_15.png \
 $(WARIO_SELECT_DIR)/wario_face_16.png
 
-WARIO_SELECT_EXPORT_SENTINEL := $(WARIO_SELECT_DIR)/.export
+WARIO_SELECT_EXPORT_SENTINEL := $(WARIO_SELECT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/data/course_player_selection.o: $(WARIO_SELECT_PNG:%.png=%.mio0)
 

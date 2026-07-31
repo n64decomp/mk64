@@ -44,7 +44,7 @@ $(BANSHEE_BOARDWALK_DIR)/gTextureBansheeBoardwalkFishEyes.png \
 $(BANSHEE_BOARDWALK_DIR)/gTextureBansheBoardwalkA050.png \
 $(BANSHEE_BOARDWALK_DIR)/gTextureBansheBoardwalkAA78.png
 
-BANSHEE_BOARDWALK_EXPORT_SENTINEL := $(BANSHEE_BOARDWALK_DIR)/.export
+BANSHEE_BOARDWALK_EXPORT_SENTINEL := $(BANSHEE_BOARDWALK_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/data/other_textures.o: $(BANSHEE_BOARDWALK_DIR)/boo_frames.mio0
 

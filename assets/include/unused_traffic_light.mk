@@ -14,7 +14,7 @@ $(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_08.png \
 $(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_09.png \
 $(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_10.png
 
-UNUSED_TRAFFIC_LIGHT_EXPORT_SENTINEL := $(UNUSED_TRAFFIC_LIGHT_DIR)/.export
+UNUSED_TRAFFIC_LIGHT_EXPORT_SENTINEL := $(UNUSED_TRAFFIC_LIGHT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(UNUSED_TRAFFIC_LIGHT_PNG:%.png=%.inc.c) $(UNUSED_TRAFFIC_LIGHT_PALETTE:%.png=%.inc.c)
 

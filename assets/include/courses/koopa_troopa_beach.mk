@@ -18,7 +18,7 @@ $(KOOPA_TROOPA_BEACH_DIR)/gTextureKoopaTroopaBirdBeak.png \
 $(KOOPA_TROOPA_BEACH_DIR)/gTextureKoopaTroopaPalmFrond.png \
 $(KOOPA_TROOPA_BEACH_DIR)/gTextureKoopaTroopaPalmTrunk.png
 
-KOOPA_TROOPA_BEACH_EXPORT_SENTINEL := $(KOOPA_TROOPA_BEACH_DIR)/.export
+KOOPA_TROOPA_BEACH_EXPORT_SENTINEL := $(KOOPA_TROOPA_BEACH_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/courses/koopa_troopa_beach/course_data.o: $(KOOPA_TROOPA_BEACH_CRAB_PALETTE:%.png=%.inc.c) $(KOOPA_TROOPA_BEACH_CRAB_FRAMES:%.png=%.inc.c)
 $(BUILD_DIR)/courses/koopa_troopa_beach/course_data.o: $(KOOPA_TROOPA_BEACH_PNG:%.png=%.inc.c)

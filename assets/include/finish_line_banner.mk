@@ -12,7 +12,7 @@ $(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner6.png \
 $(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner7.png \
 $(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner8.png
 
-FINISH_LINE_BANNER_EXPORT_SENTINEL := $(FINISH_LINE_BANNER_DIR)/.export
+FINISH_LINE_BANNER_EXPORT_SENTINEL := $(FINISH_LINE_BANNER_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(FINISH_LINE_BANNER_PNG:%.png=%.mio0)
 

@@ -1482,7 +1482,7 @@ DONKEYKONG_KART_PALETTE_PNG := \
  $(DONKEYKONG_KART_DIR)/palettes/kart_288_wheel_3.png \
  $(DONKEYKONG_KART_DIR)/palettes/donkeykong_kart_palette.png
 
-DONKEYKONG_EXPORT_SENTINEL := $(DONKEYKONG_KART_DIR)/.export
+DONKEYKONG_EXPORT_SENTINEL := $(DONKEYKONG_KART_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/karts/donkeykong_kart.o: $(DONKEYKONG_KART_FRAME_PNG:%.png=%.mio0) $(DONKEYKONG_KART_PALETTE_PNG:%.png=%.bin)
 

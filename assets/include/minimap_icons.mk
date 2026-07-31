@@ -12,7 +12,7 @@ $(MINIMAP_ICONS_DIR)/common_texture_minimap_kart_peach.png \
 $(MINIMAP_ICONS_DIR)/common_texture_minimap_kart_bowser.png \
 $(MINIMAP_ICONS_DIR)/common_texture_minimap_progress_dot.png
 
-MINIMAP_ICONS_EXPORT_SENTINEL := $(MINIMAP_ICONS_DIR)/.export
+MINIMAP_ICONS_EXPORT_SENTINEL := $(MINIMAP_ICONS_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(MINIMAP_ICONS_PNG:%.png=%.inc.c)
 

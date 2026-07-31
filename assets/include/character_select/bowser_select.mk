@@ -19,7 +19,7 @@ $(BOWSER_SELECT_DIR)/bowser_face_14.png \
 $(BOWSER_SELECT_DIR)/bowser_face_15.png \
 $(BOWSER_SELECT_DIR)/bowser_face_16.png
 
-BOWSER_SELECT_EXPORT_SENTINEL := $(BOWSER_SELECT_DIR)/.export
+BOWSER_SELECT_EXPORT_SENTINEL := $(BOWSER_SELECT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/data/course_player_selection.o: $(BOWSER_SELECT_PNG:%.png=%.mio0)
 

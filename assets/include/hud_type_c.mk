@@ -28,7 +28,7 @@ $(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_9.png
 
 HUD_TYPE_C_PORTRAIT_BORDER_PNG := $(HUD_TYPE_C_DIR)/common_texture_character_portrait_border.png
 
-HUD_TYPE_C_EXPORT_SENTINEL := $(HUD_TYPE_C_DIR)/.export
+HUD_TYPE_C_EXPORT_SENTINEL := $(HUD_TYPE_C_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(HUD_TYPE_C_FONT_PNG:%.png=%.inc.c) $(HUD_TYPE_C_FONT_PALETTE:%.png=%.inc.c)
 $(BUILD_DIR)/src/data/common_textures.o: $(HUD_TYPE_C_TINY_FONT_PNG:%.png=%.inc.c) $(HUD_TYPE_C_TINY_FONT_PALETTE:%.png=%.inc.c)

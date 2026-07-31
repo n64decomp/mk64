@@ -12,7 +12,7 @@ $(NOLIGHTS_DIR)/gTextureLakituNoLights6.png \
 $(NOLIGHTS_DIR)/gTextureLakituNoLights7.png \
 $(NOLIGHTS_DIR)/gTextureLakituNoLights8.png
 
-NOLIGHTS_EXPORT_SENTINEL := $(NOLIGHTS_DIR)/.export
+NOLIGHTS_EXPORT_SENTINEL := $(NOLIGHTS_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(NOLIGHTS_FRAMES:%.png=%.bin)
 

@@ -12,7 +12,7 @@ $(BLUESHELL_DIR)/texture_blue_shell_5.png \
 $(BLUESHELL_DIR)/texture_blue_shell_6.png \
 $(BLUESHELL_DIR)/texture_blue_shell_7.png
 
-BLUESHELL_EXPORT_SENTINEL := $(BLUESHELL_DIR)/.export
+BLUESHELL_EXPORT_SENTINEL := $(BLUESHELL_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(BLUESHELL_FRAMES:%.png=%.mio0)
 

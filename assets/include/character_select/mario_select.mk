@@ -19,7 +19,7 @@ $(MARIO_SELECT_DIR)/mario_face_14.png \
 $(MARIO_SELECT_DIR)/mario_face_15.png \
 $(MARIO_SELECT_DIR)/mario_face_16.png
 
-MARIO_SELECT_EXPORT_SENTINEL := $(MARIO_SELECT_DIR)/.export
+MARIO_SELECT_EXPORT_SENTINEL := $(MARIO_SELECT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/data/course_player_selection.o: $(MARIO_SELECT_PNG:%.png=%.mio0)
 

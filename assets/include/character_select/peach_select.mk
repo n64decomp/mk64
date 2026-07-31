@@ -19,7 +19,7 @@ $(PEACH_SELECT_DIR)/peach_face_14.png \
 $(PEACH_SELECT_DIR)/peach_face_15.png \
 $(PEACH_SELECT_DIR)/peach_face_16.png
 
-PEACH_SELECT_EXPORT_SENTINEL := $(PEACH_SELECT_DIR)/.export
+PEACH_SELECT_EXPORT_SENTINEL := $(PEACH_SELECT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/data/course_player_selection.o: $(PEACH_SELECT_PNG:%.png=%.mio0)
 

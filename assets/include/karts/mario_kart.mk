@@ -1482,7 +1482,7 @@ MARIO_KART_PALETTE_PNG := \
  $(MARIO_KART_DIR)/palettes/kart_288_wheel_3.png \
  $(MARIO_KART_DIR)/palettes/mario_kart_palette.png
 
-MARIO_EXPORT_SENTINEL := $(MARIO_KART_DIR)/.export
+MARIO_EXPORT_SENTINEL := $(MARIO_KART_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/karts/mario_kart.o: $(MARIO_KART_FRAME_PNG:%.png=%.mio0) $(MARIO_KART_PALETTE_PNG:%.png=%.bin)
 

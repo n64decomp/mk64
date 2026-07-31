@@ -15,7 +15,7 @@ FRAPPE_SNOWLAND_TREE_PNG := \
 $(FRAPPE_SNOWLAND_DIR)/gTextureFrappeSnowlandTreeLeft.png \
 $(FRAPPE_SNOWLAND_DIR)/gTextureFrappeSnowlandTreeRight.png \
 
-FRAPPE_SNOWLAND_EXPORT_SENTINEL := $(FRAPPE_SNOWLAND_DIR)/.export
+FRAPPE_SNOWLAND_EXPORT_SENTINEL := $(FRAPPE_SNOWLAND_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/courses/frappe_snowland/course_data.o: $(FRAPPE_SNOWLAND_SNOWMAN_PNG:%.png=%.inc.c) $(FRAPPE_SNOWLAND_SNOW_PNG:%.png=%.inc.c)
 $(BUILD_DIR)/courses/frappe_snowland/course_data.o: $(FRAPPE_SNOWLAND_SNOWMAN_PALETTE:%.png=%.inc.c) $(FRAPPE_SNOWLAND_SNOW_PALETTE:%.png=%.inc.c)

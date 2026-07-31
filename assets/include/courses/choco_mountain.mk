@@ -4,7 +4,7 @@ CHOCO_MOUNTAIN_PNG := \
 $(CHOCO_MOUNTAIN_DIR)/gTextureChocoMountainWall.png \
 $(CHOCO_MOUNTAIN_DIR)/gTextureChocoMountainRock.png
 
-CHOCO_MOUNTAIN_EXPORT_SENTINEL := $(CHOCO_MOUNTAIN_DIR)/.export
+CHOCO_MOUNTAIN_EXPORT_SENTINEL := $(CHOCO_MOUNTAIN_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/courses/choco_mountain/course_data.o: $(CHOCO_MOUNTAIN_PNG:%.png=%.inc.c)
 

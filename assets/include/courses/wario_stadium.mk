@@ -6,7 +6,7 @@ $(WARIO_STADIUM_DIR)/gTextureWarioStadiumSignBottomLeft.png \
 $(WARIO_STADIUM_DIR)/gTextureWarioStadiumSignTopRight.png   \
 $(WARIO_STADIUM_DIR)/gTextureWarioStadiumSignBottomRight.png
 
-WARIO_STADIUM_EXPORT_SENTINEL := $(WARIO_STADIUM_DIR)/.export
+WARIO_STADIUM_EXPORT_SENTINEL := $(WARIO_STADIUM_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/courses/wario_stadium/course_data.o: $(WARIO_STADIUM_SIGN:%.png=%.inc.c)
 

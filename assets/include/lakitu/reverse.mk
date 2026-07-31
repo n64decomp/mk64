@@ -20,7 +20,7 @@ $(REVERSE_DIR)/gTextureLakituReverse14.png \
 $(REVERSE_DIR)/gTextureLakituReverse15.png \
 $(REVERSE_DIR)/gTextureLakituReverse16.png
 
-REVERSE_EXPORT_SENTINEL := $(REVERSE_DIR)/.export
+REVERSE_EXPORT_SENTINEL := $(REVERSE_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(REVERSE_FRAMES:%.png=%.bin)
 

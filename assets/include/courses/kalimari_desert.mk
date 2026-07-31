@@ -38,7 +38,7 @@ $(KALIMARI_DESERT_DIR)/gTextureCarriageDoor.png \
 $(KALIMARI_DESERT_DIR)/gTextureCarriageWindow.png \
 $(KALIMARI_DESERT_DIR)/gTextureLocomotiveBogie.png
 
-KALIMARI_DESERT_EXPORT_SENTINEL := $(KALIMARI_DESERT_DIR)/.export
+KALIMARI_DESERT_EXPORT_SENTINEL := $(KALIMARI_DESERT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/courses/kalimari_desert/course_data.o: $(KALIMARI_DESERT_PNG:%.png=%.inc.c) $(CACTUS_PALETTE_IMPORT:%.png=%.inc.c)
 

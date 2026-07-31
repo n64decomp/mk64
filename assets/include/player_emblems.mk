@@ -8,7 +8,7 @@ $(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_2p.png \
 $(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_3p.png \
 $(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_4p.png
 
-PLAYER_EMBLEM_EXPORT_SENTINEL := $(PLAYER_EMBLEM_DIR)/.export
+PLAYER_EMBLEM_EXPORT_SENTINEL := $(PLAYER_EMBLEM_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(PLAYER_EMBLEM_PNGS:%.png=%.inc.c) $(PLAYER_EMBLEM_PALETTE:%.png=%.inc.c)
 

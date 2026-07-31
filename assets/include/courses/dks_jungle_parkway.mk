@@ -22,7 +22,7 @@ $(DKS_JUNGLE_PARKWAY_DIR)/gTextureDksJungleParkwayKiwanoFruit1.png \
 $(DKS_JUNGLE_PARKWAY_DIR)/gTextureDksJungleParkwayKiwanoFruit2.png \
 $(DKS_JUNGLE_PARKWAY_DIR)/gTextureDksJungleParkwayKiwanoFruit3.png
 
-DKS_JUNGLE_PARKWAY_EXPORT_SENTINEL := $(DKS_JUNGLE_PARKWAY_DIR)/.export
+DKS_JUNGLE_PARKWAY_EXPORT_SENTINEL := $(DKS_JUNGLE_PARKWAY_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/data/other_textures.o: $(DKS_JUNGLE_PARKWAY_KIWANO_FRAMES:%.png=%.mio0)
 

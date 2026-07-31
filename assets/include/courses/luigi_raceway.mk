@@ -6,7 +6,7 @@ $(LUIGI_RACEWAY_DIR)/gTextureLuigiRacewaySignRight.png \
 $(LUIGI_RACEWAY_DIR)/gTextureLuigiRacewayBalloonBasket.png \
 $(LUIGI_RACEWAY_DIR)/gTextureLuigiRacewayBalloonRope.png
 
-LUIGI_RACEWAY_EXPORT_SENTINEL := $(LUIGI_RACEWAY_DIR)/.export
+LUIGI_RACEWAY_EXPORT_SENTINEL := $(LUIGI_RACEWAY_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/courses/luigi_raceway/course_data.o: $(LUIGI_RACEWAY_PNG:%.png=%.inc.c)
 

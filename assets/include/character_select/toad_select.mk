@@ -19,7 +19,7 @@ $(TOAD_SELECT_DIR)/toad_face_14.png \
 $(TOAD_SELECT_DIR)/toad_face_15.png \
 $(TOAD_SELECT_DIR)/toad_face_16.png
 
-TOAD_SELECT_EXPORT_SENTINEL := $(TOAD_SELECT_DIR)/.export
+TOAD_SELECT_EXPORT_SENTINEL := $(TOAD_SELECT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/data/course_player_selection.o: $(TOAD_SELECT_PNG:%.png=%.mio0)
 

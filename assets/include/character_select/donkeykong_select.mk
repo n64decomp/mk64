@@ -19,7 +19,7 @@ $(DONKEYKONG_SELECT_DIR)/donkeykong_face_14.png \
 $(DONKEYKONG_SELECT_DIR)/donkeykong_face_15.png \
 $(DONKEYKONG_SELECT_DIR)/donkeykong_face_16.png
 
-DONKEYKONG_SELECT_EXPORT_SENTINEL := $(DONKEYKONG_SELECT_DIR)/.export
+DONKEYKONG_SELECT_EXPORT_SENTINEL := $(DONKEYKONG_SELECT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/data/course_player_selection.o: $(DONKEYKONG_SELECT_PNG:%.png=%.mio0)
 

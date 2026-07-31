@@ -20,7 +20,7 @@ $(SECONDLAP_DIR)/gTextureLakituSecondLap14.png \
 $(SECONDLAP_DIR)/gTextureLakituSecondLap15.png \
 $(SECONDLAP_DIR)/gTextureLakituSecondLap16.png
 
-SECONDLAP_EXPORT_SENTINEL := $(SECONDLAP_DIR)/.export
+SECONDLAP_EXPORT_SENTINEL := $(SECONDLAP_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(SECONDLAP_FRAMES:%.png=%.bin)
 

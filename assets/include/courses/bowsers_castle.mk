@@ -12,7 +12,7 @@ $(BOWSERS_CASTLE_DIR)/gTextureThwompFace6.png
 
 THOWMP_SIDE_PNG := $(BOWSERS_CASTLE_DIR)/gTextureThwompSide.png
 
-BOWSERS_CASTLE_EXPORT_SENTINEL := $(BOWSERS_CASTLE_DIR)/.export
+BOWSERS_CASTLE_EXPORT_SENTINEL := $(BOWSERS_CASTLE_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/courses/bowsers_castle/course_data.o: $(THWOMP_FACE_FRAMES:%.png=%.inc.c) $(THWOMP_PALETTE:%.png=%.inc.c)
 $(BUILD_DIR)/courses/bowsers_castle/course_data.o: $(THOWMP_SIDE_PNG:%.png=%.inc.c)

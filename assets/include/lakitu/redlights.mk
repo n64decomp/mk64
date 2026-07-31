@@ -20,7 +20,7 @@ $(REDLIGHTS_DIR)/gTextureLakituRedLights14.png \
 $(REDLIGHTS_DIR)/gTextureLakituRedLights15.png \
 $(REDLIGHTS_DIR)/gTextureLakituRedLights16.png
 
-REDLIGHTS_EXPORT_SENTINEL := $(REDLIGHTS_DIR)/.export
+REDLIGHTS_EXPORT_SENTINEL := $(REDLIGHTS_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(REDLIGHTS_FRAMES:%.png=%.bin)
 

@@ -52,7 +52,7 @@ $(RAINBOW_ROAD_DIR)/gTextureRainbowRoadReflectionMapGold.png \
 $(RAINBOW_ROAD_DIR)/gTextureRainbowRoadChainChompTongue.png \
 $(RAINBOW_ROAD_DIR)/gTextureRainbowRoadChainChompEye.png
 
-RAINBOW_ROAD_EXPORT_SENTINEL := $(RAINBOW_ROAD_DIR)/.export
+RAINBOW_ROAD_EXPORT_SENTINEL := $(RAINBOW_ROAD_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/courses/rainbow_road/course_data.o: $(RAINBOW_ROAD_MUSHROOM_PNG:%.png=%.inc.c)
 $(BUILD_DIR)/courses/rainbow_road/course_data.o: $(RAINBOW_ROAD_MARIO_PNG:%.png=%.inc.c)

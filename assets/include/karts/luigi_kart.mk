@@ -1482,7 +1482,7 @@ LUIGI_KART_PALETTE_PNG := \
  $(LUIGI_KART_DIR)/palettes/kart_288_wheel_3.png \
  $(LUIGI_KART_DIR)/palettes/luigi_kart_palette.png
 
-LUIGI_EXPORT_SENTINEL := $(LUIGI_KART_DIR)/.export
+LUIGI_EXPORT_SENTINEL := $(LUIGI_KART_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/karts/luigi_kart.o: $(LUIGI_KART_FRAME_PNG:%.png=%.mio0) $(LUIGI_KART_PALETTE_PNG:%.png=%.bin)
 

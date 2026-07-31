@@ -22,7 +22,7 @@ $(COURSE_PREVIEW_DIR)/gTextureCoursePreviewDoubleDeck.png \
 $(COURSE_PREVIEW_DIR)/gTextureCoursePreviewDksJungleParkway.png \
 $(COURSE_PREVIEW_DIR)/gTextureCoursePreviewBigDonut.png
 
-COURSE_PREVIEW_EXPORT_SENTINEL := $(COURSE_PREVIEW_DIR)/.export
+COURSE_PREVIEW_EXPORT_SENTINEL := $(COURSE_PREVIEW_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/src/data/textures.o: $(COURSE_PREVIEW_PNG:%.png=%.mio0)
 

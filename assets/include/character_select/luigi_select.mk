@@ -19,7 +19,7 @@ $(LUIGI_SELECT_DIR)/luigi_face_14.png \
 $(LUIGI_SELECT_DIR)/luigi_face_15.png \
 $(LUIGI_SELECT_DIR)/luigi_face_16.png
 
-LUIGI_SELECT_EXPORT_SENTINEL := $(LUIGI_SELECT_DIR)/.export
+LUIGI_SELECT_EXPORT_SENTINEL := $(LUIGI_SELECT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/data/course_player_selection.o: $(LUIGI_SELECT_PNG:%.png=%.mio0)
 

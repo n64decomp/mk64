@@ -19,7 +19,7 @@ $(TREES_DIR)/gTextureTrees5Right.png \
 $(TREES_DIR)/gTextureTrees6.png      \
 $(TREES_DIR)/gTextureTrees7.png
 
-TREES_EXPORT_SENTINEL := $(TREES_DIR)/.export
+TREES_EXPORT_SENTINEL := $(TREES_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(TREES_PNG:%.png=%.mio0)
 

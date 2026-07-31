@@ -1482,7 +1482,7 @@ TOAD_KART_PALETTE_PNG := \
  $(TOAD_KART_DIR)/palettes/kart_288_wheel_3.png \
  $(TOAD_KART_DIR)/palettes/toad_kart_palette.png
 
-TOAD_EXPORT_SENTINEL := $(TOAD_KART_DIR)/.export
+TOAD_EXPORT_SENTINEL := $(TOAD_KART_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/karts/toad_kart.o: $(TOAD_KART_FRAME_PNG:%.png=%.mio0) $(TOAD_KART_PALETTE_PNG:%.png=%.bin)
 

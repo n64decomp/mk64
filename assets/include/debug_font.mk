@@ -4,7 +4,7 @@ DEBUG_FONT_PALETTE := $(DEBUG_FONT_DIR)/common_tlut_debug_font.png
 
 DEBUG_FONT_PNG := $(DEBUG_FONT_DIR)/common_texture_debug_font.png
 
-DEBUG_FONT_EXPORT_SENTINEL := $(DEBUG_FONT_DIR)/.export
+DEBUG_FONT_EXPORT_SENTINEL := $(DEBUG_FONT_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(DEBUG_FONT_PNG:%.png=%.inc.c) $(DEBUG_FONT_PALETTE:%.png=%.inc.c)
 

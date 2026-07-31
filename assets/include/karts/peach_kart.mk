@@ -1482,7 +1482,7 @@ PEACH_KART_PALETTE_PNG := \
  $(PEACH_KART_DIR)/palettes/kart_288_wheel_3.png \
  $(PEACH_KART_DIR)/palettes/peach_kart_palette.png
 
-PEACH_EXPORT_SENTINEL := $(PEACH_KART_DIR)/.export
+PEACH_EXPORT_SENTINEL := $(PEACH_KART_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/karts/peach_kart.o: $(PEACH_KART_FRAME_PNG:%.png=%.mio0) $(PEACH_KART_PALETTE_PNG:%.png=%.bin)
 

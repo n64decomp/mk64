@@ -36,7 +36,7 @@ $(ITEM_WINDOW_DIR)/common_texture_item_window_star.png \
 $(ITEM_WINDOW_DIR)/common_texture_item_window_thunder_bolt.png \
 $(ITEM_WINDOW_DIR)/common_texture_item_window_fake_item_box.png
 
-ITEM_WINDOW_EXPORT_SENTINEL := $(ITEM_WINDOW_DIR)/.export
+ITEM_WINDOW_EXPORT_SENTINEL := $(ITEM_WINDOW_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(ITEM_WINDOW_PNG:%.png=%.inc.c) $(ITEM_WINDOW_PALETTES:%.png=%.inc.c)
 

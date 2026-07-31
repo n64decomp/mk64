@@ -22,7 +22,7 @@ $(COURSE_OUTLINE_DIR)/minimap_double_deck.png \
 $(COURSE_OUTLINE_DIR)/minimap_dks_jungle_parkway.png \
 $(COURSE_OUTLINE_DIR)/minimap_big_donut.png
 
-COURSE_OUTLINE_EXPORT_SENTINEL := $(COURSE_OUTLINE_DIR)/.export
+COURSE_OUTLINE_EXPORT_SENTINEL := $(COURSE_OUTLINE_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/data/other_textures.o: $(COURSE_OUTLINE_PNG:%.png=%.mio0)
 

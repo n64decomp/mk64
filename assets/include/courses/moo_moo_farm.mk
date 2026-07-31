@@ -37,7 +37,7 @@ $(MOO_MOO_FARM_DIR)/gTextureMooMooFarmSignRight.png
 
 MOO_MOO_FARM_DIRT_PNG := $(MOO_MOO_FARM_DIR)/gTextureMooMooFarmDirt.png
 
-MOO_MOO_FARM_EXPORT_SENTINEL := $(MOO_MOO_FARM_DIR)/.export
+MOO_MOO_FARM_EXPORT_SENTINEL := $(MOO_MOO_FARM_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/courses/moo_moo_farm/course_data.o: $(MOLE_PALETTE:%.png=%.inc.c) $(MOLE_FRAMES:%.png=%.inc.c)
 $(BUILD_DIR)/courses/moo_moo_farm/course_data.o: $(COW_PALETTE_IMPORT:%.png=%.inc.c)

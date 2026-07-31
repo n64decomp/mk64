@@ -10,7 +10,7 @@ $(ENDING_CEREMONY)/gTexturePodium1.png \
 $(ENDING_CEREMONY)/gTexturePodium2.png \
 $(ENDING_CEREMONY)/gTexturePodium3.png
 
-ENDING_CEREMONY_EXPORT_SENTINEL := $(ENDING_CEREMONY)/.export
+ENDING_CEREMONY_EXPORT_SENTINEL := $(ENDING_CEREMONY)/.export.$(VERSION)
 
 $(BUILD_DIR)/src/ending/ceremony_data.o: $(TROHPY_PNG:%.png=%.inc.c) $(PODIUM_PNG:%.png=%.inc.c)
 

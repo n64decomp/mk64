@@ -8,7 +8,7 @@ $(BOMB_DIR)/common_texture_bomb_2.png \
 $(BOMB_DIR)/common_texture_bomb_3.png \
 $(BOMB_DIR)/common_texture_bomb_4.png
 
-BOMB_EXPORT_SENTINEL := $(BOMB_DIR)/.export
+BOMB_EXPORT_SENTINEL := $(BOMB_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(BOMB_FRAMES:%.png=%.inc.c) $(BOMB_PALETTE:%.png=%.inc.c)
 

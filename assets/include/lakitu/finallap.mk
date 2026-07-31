@@ -20,7 +20,7 @@ $(FINALLAP_DIR)/gTextureLakituFinalLap14.png \
 $(FINALLAP_DIR)/gTextureLakituFinalLap15.png \
 $(FINALLAP_DIR)/gTextureLakituFinalLap16.png
 
-FINALLAP_EXPORT_SENTINEL := $(FINALLAP_DIR)/.export
+FINALLAP_EXPORT_SENTINEL := $(FINALLAP_DIR)/.export.$(VERSION)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(FINALLAP_FRAMES:%.png=%.bin)
 
