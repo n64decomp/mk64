@@ -479,9 +479,12 @@ assets:
 	# skip regeneration and leave this version's output missing. Torch takes
 	# well under a second, so there is nothing to save by keeping the cache.
 	$(V)$(RM) -f torch.hash.yml
-	$(V)$(TORCH) code $(BASEROM)
-	$(V)$(TORCH) header $(BASEROM)
-	$(V)$(TORCH) modding export $(BASEROM)
+	# Not $(BASEROM): EU has no config.yml entry and builds on the us Torch
+	# output, exactly as ASSET_CODE_DIR and ASSET_VERSION already arrange. Handed
+	# the EU cart, Torch matches no sha1 and silently writes nothing.
+	$(V)$(TORCH) code $(ASSET_BASEROM)
+	$(V)$(TORCH) header $(ASSET_BASEROM)
+	$(V)$(TORCH) modding export $(ASSET_BASEROM)
 
 doc:
 	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py $(BUILD_DIR)/$(TARGET).map
