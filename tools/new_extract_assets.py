@@ -242,6 +242,14 @@ def export_bin(baserom, asset):
     asset_filename = os.path.join(asset["output_dir"], f'{asset["name"]}.{asset["type"]}')
     os.makedirs(asset["output_dir"], exist_ok=True)
 
+    # An asset is raw here only because the version being built cannot round trip
+    # it through a png. A png of the same name is therefore the other version's
+    # leftover, and the build rules convert whenever one is present, which would
+    # overwrite what this writes. Drop it.
+    stale_png = os.path.join(asset["output_dir"], f'{asset["name"]}.png')
+    if os.path.exists(stale_png):
+        os.remove(stale_png)
+
     with open(asset_filename, "wb") as asset_file:
         if asset.get("compressed"):
             # The bytes wanted sit inside a MIO0 block, so reading the ROM here

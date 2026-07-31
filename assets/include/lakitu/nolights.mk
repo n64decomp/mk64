@@ -16,9 +16,14 @@ NOLIGHTS_EXPORT_SENTINEL := $(NOLIGHTS_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(NOLIGHTS_FRAMES:%.png=%.bin)
 
-$(NOLIGHTS_FRAMES:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
-	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(NOLIGHTS_PALETTE)
+# Extraction writes these raw for a version whose palette cannot round trip,
+# and removes the png with them. Depend on the extraction, and convert only
+# when a png is really there.
+$(NOLIGHTS_FRAMES:%.png=%.bin): %.bin : $(NOLIGHTS_EXPORT_SENTINEL)
+	$(V)if [ -f $*.png ]; then \
+	  $(PRINT) "$(GREEN)Converting:  $(BLUE) $*.png -> $@$(NO_COL)\n"; \
+	  $(N64GRAPHICS) -Z $@ -g $*.png -s raw -f ci8 -c rgba16 -p $(NOLIGHTS_PALETTE); \
+	fi
 
 $(BUILD_DIR)/src/data/common_textures.o: $(NOLIGHTS_PALETTE:%.png=%.inc.c)
 
