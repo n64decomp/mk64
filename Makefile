@@ -232,8 +232,17 @@ DATA_DIR       := data
 INCLUDE_DIRS   := include
 
 # Directories containing source files
-SRC_ASSETS_DIR := assets/code/ceremony_data assets/code/startup_logo assets/code/data_800E45C0 assets/code/data_segment2 assets/code/data_800E8700 assets/code/common_data
-SRC_DIRS       := src src/data src/buffers src/racing src/ending src/audio src/debug src/os src/os/math courses assets/code/ceremony_data assets/code/startup_logo $(SRC_ASSETS_DIR)
+# Torch generates C into this tree, and its contents differ per version, so keep
+# each version's output apart instead of overwriting a shared directory. EU has
+# no entry in config.yml and is built on top of the US assets, so it reads the
+# US output rather than one of its own.
+TORCH_VERSION := $(VERSION)
+ifneq ($(filter $(VERSION),eu.v10 eu.v11),)
+  TORCH_VERSION := us
+endif
+ASSET_CODE_DIR := assets/code/$(TORCH_VERSION)
+SRC_ASSETS_DIR := $(ASSET_CODE_DIR)/ceremony_data $(ASSET_CODE_DIR)/startup_logo $(ASSET_CODE_DIR)/data_800E45C0 $(ASSET_CODE_DIR)/data_segment2 $(ASSET_CODE_DIR)/data_800E8700 $(ASSET_CODE_DIR)/common_data
+SRC_DIRS       := src src/data src/buffers src/racing src/ending src/audio src/debug src/os src/os/math courses $(ASSET_CODE_DIR)/ceremony_data $(ASSET_CODE_DIR)/startup_logo $(SRC_ASSETS_DIR)
 ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 
 
@@ -334,7 +343,7 @@ ifeq ($(TARGET_N64),1)
   CC_CFLAGS := -fno-builtin
 endif
 
-INCLUDE_DIRS := include $(BUILD_DIR) $(BUILD_DIR)/include src src/racing src/ending .
+INCLUDE_DIRS := include $(BUILD_DIR) $(BUILD_DIR)/include src src/racing src/ending . $(ASSET_CODE_DIR)
 ifeq ($(TARGET_N64),1)
   INCLUDE_DIRS += include/libc
 endif
@@ -450,6 +459,10 @@ endif
 
 assets:
 	@echo "Extracting torch assets..."
+	# torch.hash.yml is not version aware, so a version switch would otherwise
+	# skip regeneration and leave this version's output missing. Torch takes
+	# well under a second, so there is nothing to save by keeping the cache.
+	$(V)$(RM) -f torch.hash.yml
 	$(V)$(TORCH) code $(BASEROM)
 	$(V)$(TORCH) header $(BASEROM)
 	$(V)$(TORCH) modding export $(BASEROM)
@@ -547,7 +560,7 @@ $(TEXTURE_FILES_TLUT):
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(TEXTURE_FILES_TLUT))), ,$(TEXTURE_FILES_TLUT)))) -p $(BUILD_DIR)/$@.tlut.inc.c
 
 # common textures
-$(BUILD_DIR)/assets/code/common_data/common_data.o: assets/code/common_data/common_data.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
+$(BUILD_DIR)/$(ASSET_CODE_DIR)/common_data/common_data.o: $(ASSET_CODE_DIR)/common_data/common_data.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
 	@$(PRINT) "$(GREEN)Compiling Common Textures:  $(BLUE)$@ $(NO_COL)\n"
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
@@ -698,7 +711,7 @@ endif
 # Compile Trophy and Podium Models                                             #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.elf
+LDFLAGS += -R $(BUILD_DIR)/$(ASSET_CODE_DIR)/ceremony_data/ceremony_data.elf
 
 %/ceremony_data.elf: %/ceremony_data.o
 	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $@.map -o $@ $< --no-check-sections
@@ -718,7 +731,7 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.elf
 # Compile Startup Logo                                                         #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/assets/code/startup_logo/startup_logo.elf
+LDFLAGS += -R $(BUILD_DIR)/$(ASSET_CODE_DIR)/startup_logo/startup_logo.elf
 
 %/startup_logo.elf: %/startup_logo.o
 	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -o $@ $< --no-check-sections
@@ -737,7 +750,7 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/startup_logo/startup_logo.elf
 # Compile Common Textures                                                      #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/assets/code/common_data/common_data.elf
+LDFLAGS += -R $(BUILD_DIR)/$(ASSET_CODE_DIR)/common_data/common_data.elf
 
 %/common_data.elf: %/common_data.o
 	$(V)$(LD) -t -e 0 -Ttext=0D000000 -Map $@.map -o $@ $< --no-check-sections
@@ -761,10 +774,10 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/common_data/common_data.elf
 # Run linker script through the C preprocessor
 $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(call print,Preprocessing linker script:,$<,$@)
-	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
+	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -DASSET_CODE_DIR=$(ASSET_CODE_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/assets/code/startup_logo/startup_logo.mio0.o $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.mio0.o $(BUILD_DIR)/assets/code/common_data/common_data.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/$(ASSET_CODE_DIR)/startup_logo/startup_logo.mio0.o $(BUILD_DIR)/$(ASSET_CODE_DIR)/ceremony_data/ceremony_data.mio0.o $(BUILD_DIR)/$(ASSET_CODE_DIR)/common_data/common_data.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 
@@ -785,6 +798,10 @@ $(BUILD_DIR)/$(TARGET).objdump: $(ELF)
 .PHONY: all clean distclean distclean_assets default diff test load assets
 # with no prerequisites, .SECONDARY causes no intermediate target to be removed
 .SECONDARY:
+
+# Assets come out of the baserom, so a recipe that fails partway must not delete
+# one: make's usual cleanup would leave a tree that only re-extraction can repair.
+.PRECIOUS: %.png %.bin %.mio0 %.inc.c
 
 # Remove built-in rules, to improve performance
 MAKEFLAGS += --no-builtin-rules

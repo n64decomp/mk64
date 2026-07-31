@@ -227,7 +227,7 @@ SECTIONS
       BUILD_DIR/src/player_controller.o(.data*);
       BUILD_DIR/src/spawn_players.o(.data*);
       BUILD_DIR/src/update_objects.o(.data*);
-      BUILD_DIR/assets/code/data_800E45C0/data_800E45C0.o(.data*);
+      BUILD_DIR/ASSET_CODE_DIR/data_800E45C0/data_800E45C0.o(.data*);
       BUILD_DIR/src/code_80057C60.o(.data*);
       BUILD_DIR/src/data/some_data.o(.data*);
       BUILD_DIR/src/effects.o(.data*);
@@ -236,7 +236,7 @@ SECTIONS
       BUILD_DIR/src/code_800AF9B0.o(.data*);
       BUILD_DIR/src/menus.o(.data*);
       BUILD_DIR/src/save.o(.data*);
-      BUILD_DIR/assets/code/data_800E8700/data_800E8700.o(.data*);
+      BUILD_DIR/ASSET_CODE_DIR/data_800E8700/data_800E8700.o(.data*);
       BUILD_DIR/src/audio/synthesis.o(.data*);
       BUILD_DIR/src/audio/heap.o(.data*);
       BUILD_DIR/src/audio/load.o(.data*);
@@ -476,7 +476,7 @@ SECTIONS
    /* common textures, decompressed and set as segment 0x0D */
    BEGIN_SEG(common_textures, 0x0D000000)
    {
-      BUILD_DIR/assets/code/common_data/common_data.mio0.o(.data);
+      BUILD_DIR/ASSET_CODE_DIR/common_data/common_data.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(common_textures)
@@ -534,14 +534,14 @@ SECTIONS
             0x828400 -> 0x8028DE30 (0xD0) */
    BEGIN_SEG(ceremonyData, 0x0B000000)
    {
-      BUILD_DIR/assets/code/ceremony_data/ceremony_data.mio0.o(.data);
+      BUILD_DIR/ASSET_CODE_DIR/ceremony_data/ceremony_data.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(ceremonyData)
 
    BEGIN_SEG(startupLogo, 0x06000000)
    {
-      BUILD_DIR/assets/code/startup_logo/startup_logo.mio0.o(.data);
+      BUILD_DIR/ASSET_CODE_DIR/startup_logo/startup_logo.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(startupLogo)
