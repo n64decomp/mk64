@@ -48,7 +48,9 @@ SECTIONS
       BUILD_DIR/src/main.o(.text*);
       BUILD_DIR/src/code_800029B0.o(.text*);
       BUILD_DIR/src/profiler.o(.text*);
-#ifdef VERSION_JP // TODO: Arrange these in data, rodata and bss
+// JP links several translation units in a different order from us. The same
+// applies to the .data, .rodata and .bss blocks further down.
+#ifdef VERSION_JP
       BUILD_DIR/src/replays.o(.text*);
       BUILD_DIR/src/camera.o(.text*);
       BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.text*);
