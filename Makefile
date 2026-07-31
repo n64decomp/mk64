@@ -581,8 +581,18 @@ $(BUILD_DIR)/$(ASSET_CODE_DIR)/common_data/common_data.o: $(ASSET_CODE_DIR)/comm
 #==============================================================================#
 
 
-%/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.c
-	$(V)$(LINKONLY_GENERATOR) $(lastword $(subst /, ,$*))
+# These are generated to one shared path but their contents are version-specific,
+# because course_offsets.c may guard its texture table with #ifdef VERSION_JP and
+# the texture ORDER there decides the segment 5 layout. course_offsets.c does not
+# change when the built version does, so without a stamp make would keep the
+# previous version's layout and link the display lists against the wrong
+# addresses. Same failure the asset tree has; see .assets-local.txt.
+LINKONLY_STAMP := courses/.linkonly-version
+DUMMY_LINKONLY != [ "$$(cat $(LINKONLY_STAMP) 2>/dev/null)" = "$(VERSION)" ] || \
+                  { mkdir -p $(dir $(LINKONLY_STAMP)) && echo "$(VERSION)" > $(LINKONLY_STAMP); }
+
+%/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.c $(LINKONLY_STAMP)
+	$(V)$(LINKONLY_GENERATOR) $(lastword $(subst /, ,$*)) $(VERSION)
 
 # Its unclear why this is necessary. Everything I undesrtand about `make` says that just
 # `$(BUILD_DIR)/%/course_displaylists.inc.o: %/course_textures.linkonly.h`
