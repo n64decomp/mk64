@@ -97,8 +97,8 @@ char* gCreditsText[] = {
     "technical support", "takao sawano", "tsuyoshi takahashi", "hirohito yada", "progress management",
     "kimiyoshi fukui", "keizo kato", "special thanks", "yasuhiro sakai", "yoshitaka nishikawa", "hideki fujii",
 #ifdef VERSION_JP
-    "yusuke nakano", "wataru yamaguchi", "nintendo e.a.d.", "super mario club",
-    "rare ltd.", "the end", "mariokart64 staff",
+    "yusuke nakano", "wataru yamaguchi", "nintendo e.a.d.", "super mario club", "rare ltd.", "the end",
+    "mariokart64 staff",
 #else
     "yusuke nakano", "wataru yamaguchi", "phil sandhop", "super mario club",
     "Donkey Kong 3-D Model Provided Courtesy of Rare U.K.", "the end", "mariokart64 staff",
