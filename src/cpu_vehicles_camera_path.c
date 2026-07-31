@@ -264,7 +264,6 @@ u16 D_801646CC;
 
 UnkStruct_46D0 D_801646D0[4];
 
-
 // Strings, presented by google translate!
 // Note that these are EUC-JP encoded, see:
 // https://en.wikipedia.org/wiki/Extended_Unix_Code#EUC-JP

@@ -228,7 +228,7 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
                     } else if (D_80163330[playerId] == 1) {
                         func_80007D04(playerId, player);
                     } else if (func_800088D8(playerId, gLapCountByPlayerId[playerId],
-                                                gGPCurrentRaceRankByPlayerIdDup[playerId]) == true) {
+                                             gGPCurrentRaceRankByPlayerIdDup[playerId]) == true) {
                         player->effects |= CPU_FAST_EFFECT;
                         player_accelerate_alternative(player);
                     } else {
