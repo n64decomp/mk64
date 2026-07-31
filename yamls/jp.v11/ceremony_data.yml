@@ -133,12 +133,12 @@ gold_trophy_dl15:
 light1:
   symbol: light1
   type: lights
-  offset: 0x6BB8
+  offset: 0x6E98
 texture_podium1:
   symbol: gTexturePodium1
   type: texture
   ctype: u16
-  offset: 0x6BD0
+  offset: 0x6EB0
   size: 2048
   width: 32
   height: 32
@@ -146,28 +146,28 @@ texture_podium1:
 podium_dl:
   symbol: podium_dl
   type: gfx
-  offset: 0x7510
+  offset: 0x77F0
 podium_dl2:
   symbol: podium_dl2
   type: gfx
-  offset: 0x75E0
+  offset: 0x78C0
 podium_dl3:
   symbol: podium_dl3
   type: gfx
-  offset: 0x75F0
+  offset: 0x78D0
 podium_dl4:
   symbol: podium_dl4
   type: gfx
-  offset: 0x7600
+  offset: 0x78E0
 light2:
   symbol: light2
   type: lights
-  offset: 0x7748
+  offset: 0x7A28
 texture_podium2:
   symbol: gTexturePodium2
   type: texture
   ctype: u16
-  offset: 0x7760
+  offset: 0x7A40
   size: 2048
   width: 32
   height: 32
@@ -175,28 +175,28 @@ texture_podium2:
 podium2_dl:
   symbol: podium2_dl
   type: gfx
-  offset: 0x7F60
+  offset: 0x8240
 podium2_dl2:
   symbol: podium2_dl2
   type: gfx
-  offset: 0x8030
+  offset: 0x8310
 podium2_dl3:
   symbol: podium2_dl3
   type: gfx
-  offset: 0x8040
+  offset: 0x8320
 podium2_dl4:
   symbol: podium2_dl4
   type: gfx
-  offset: 0x8050
+  offset: 0x8330
 light3:
   symbol: light3
   type: lights
-  offset: 0x8058
+  offset: 0x8338
 texture_podium3:
   symbol: gTexturePodium3
   type: texture
   ctype: u16
-  offset: 0x8070
+  offset: 0x8350
   size: 2048
   width: 32
   height: 32
@@ -204,36 +204,36 @@ texture_podium3:
 podium3_dl:
   symbol: podium3_dl
   type: gfx
-  offset: 0x89B0
+  offset: 0x8C90
 podium3_dl2:
   symbol: podium3_dl2
   type: gfx
-  offset: 0x8A80
+  offset: 0x8D60
 podium3_dl3:
   symbol: podium3_dl3
   type: gfx
-  offset: 0x8A90
+  offset: 0x8D70
 podium3_dl4:
   symbol: podium3_dl4
   type: gfx
-  offset: 0x8AA0
+  offset: 0x8D80
 ending_sequence:
   symbol: podium_ceremony_path
   type: mk64:track_path
-  offset: 0x8AA8
+  offset: 0x6BB8
   count: 24
 ending_sequence2:
   symbol: podium_ceremony_path_2
   type: mk64:track_path
-  offset: 0x8B68
+  offset: 0x6C78
   count: 23
 ending_sequence3:
   symbol: podium_ceremony_path_3
   type: mk64:track_path
-  offset: 0x8C20
+  offset: 0x6D30
   count: 24
 ending_sequence4:
   symbol: podium_ceremony_path_4
   type: mk64:track_path
-  offset: 0x8CE0
+  offset: 0x6DF0
   count: 21
