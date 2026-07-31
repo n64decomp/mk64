@@ -58,10 +58,13 @@ def extract_asset(baserom:BufferedReader, asset):
         # This is silly
         asset_block = baserom
         asset_block.seek(rom_offset)
+        # The block IS the caller's baserom here. Closing it would break every
+        # later export_bin, which seeks that same handle.
+        return asset_from_block(asset_block, asset, close_block=False)
 
     return asset_from_block(asset_block, asset)
 
-def asset_from_block(asset_block, asset):
+def asset_from_block(asset_block, asset, close_block=True):
     if asset["type"] in { "ia1" }:
         asset_size = ((asset["width"] * asset["height"]) + 7) // 8
     elif asset["type"] in { "ci4", "ia4", "i4" }:
@@ -85,7 +88,8 @@ def asset_from_block(asset_block, asset):
     # For MIO0 and TKMK this should make no difference
     asset_block.seek(block_offset, os.SEEK_CUR)
     asset_data = asset_block.read(asset_size)
-    asset_block.close()
+    if close_block:
+        asset_block.close()
     asset_file = tempfile.NamedTemporaryFile(mode="wb", prefix="raw_asset_", delete=False)
     file_open.append(asset_file.name)
     asset_file.write(asset_data)
