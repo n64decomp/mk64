@@ -100,8 +100,6 @@ Gfx d_course_toads_turnpike_dl_1F8[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_33A8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3478),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3548),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_38E8),
@@ -144,8 +142,6 @@ Gfx d_course_toads_turnpike_dl_2D0[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5AE8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5C80),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_6030),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_6110),
@@ -435,8 +431,6 @@ Gfx d_course_toads_turnpike_dl_B88[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_160),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_dl_60),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_33A8),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3478),
@@ -459,8 +453,6 @@ Gfx d_course_toads_turnpike_dl_B88[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5270),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_6110),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_1BB8),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_1CB8),
@@ -854,8 +846,6 @@ Gfx d_course_toads_turnpike_dl_1708[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_41D0), gsSPDisplayList(d_course_toads_turnpike_packed_dl_42E8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_4E30),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5958),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5AE8), gsSPDisplayList(d_course_toads_turnpike_packed_dl_5360),
@@ -969,8 +959,6 @@ Gfx d_course_toads_turnpike_dl_1A60[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_4850),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_4E30),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5958),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5AE8),
@@ -1250,16 +1238,12 @@ Gfx d_course_toads_turnpike_dl_2440[] = {
     gsSPDisplayList(d_course_toads_turnpike_dl_60),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3118),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3638),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3AD0),
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3B58), gsSPDisplayList(d_course_toads_turnpike_packed_dl_3C28),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_42E8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_4850),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_4E30), gsSPDisplayList(d_course_toads_turnpike_packed_dl_4EF0),
@@ -1296,8 +1280,6 @@ Gfx d_course_toads_turnpike_dl_2530[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_EC0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_dl_60),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3118),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3638),
@@ -1307,8 +1289,6 @@ Gfx d_course_toads_turnpike_dl_2530[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3D00),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_42E8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_4850),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_4E30),
@@ -1317,8 +1297,6 @@ Gfx d_course_toads_turnpike_dl_2530[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5958),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5AE8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_56B0),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5D90),
@@ -1586,8 +1564,6 @@ Gfx d_course_toads_turnpike_dl_2CC0[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_C30),
 #ifdef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_dl_60),
-#endif
-#ifdef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_D88),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_940),
@@ -1728,8 +1704,6 @@ Gfx d_course_toads_turnpike_dl_3030[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_EC0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_AA8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_dl_60),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_39A8),
@@ -1747,8 +1721,6 @@ Gfx d_course_toads_turnpike_dl_3030[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5F78),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_6030),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_6110),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_2AF8),
@@ -2034,8 +2006,6 @@ Gfx d_course_toads_turnpike_dl_37F0[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_7E8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_A28),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_dl_60),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_32A0),
@@ -2051,8 +2021,6 @@ Gfx d_course_toads_turnpike_dl_37F0[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5AE8), gsSPDisplayList(d_course_toads_turnpike_packed_dl_5C80),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5E50),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5F78),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_6030), gsSPDisplayList(d_course_toads_turnpike_packed_dl_6110),
@@ -2121,8 +2089,6 @@ Gfx d_course_toads_turnpike_dl_39C8[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_32A0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_33A8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3478),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_3780), gsSPDisplayList(d_course_toads_turnpike_packed_dl_3850),
@@ -2135,11 +2101,7 @@ Gfx d_course_toads_turnpike_dl_39C8[] = {
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5880),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5958),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5AE8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5C80),
 #endif
     gsSPDisplayList(d_course_toads_turnpike_packed_dl_5E50), gsSPDisplayList(d_course_toads_turnpike_packed_dl_5F78),

@@ -81,8 +81,6 @@ Gfx d_course_yoshi_valley_dl_290[] = {
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_2CD0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_2EE0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_2DD0),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_6E20),
@@ -1040,8 +1038,6 @@ Gfx d_course_yoshi_valley_dl_25E8[] = {
     gsSPDisplayList(d_course_yoshi_valley_dl_20),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_78B0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7A08),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_75F0),
@@ -1117,11 +1113,7 @@ Gfx d_course_yoshi_valley_dl_2840[] = {
     gsSPDisplayList(d_course_yoshi_valley_dl_20),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_78B0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_75F0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7660),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_1F80),
@@ -1178,8 +1170,6 @@ Gfx d_course_yoshi_valley_dl_2978[] = {
     gsSPDisplayList(d_course_yoshi_valley_dl_20),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_75F0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7660),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_1F80),
@@ -1284,8 +1274,6 @@ Gfx d_course_yoshi_valley_dl_2D70[] = {
     gsSPDisplayList(d_course_yoshi_valley_dl_20),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_78B0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_75F0),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7660),
@@ -1366,8 +1354,6 @@ Gfx d_course_yoshi_valley_dl_3078[] = {
     gsSPDisplayList(d_course_yoshi_valley_dl_20),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_78B0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7998),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_6490),
@@ -1414,8 +1400,6 @@ Gfx d_course_yoshi_valley_dl_3258[] = {
     gsSPDisplayList(d_course_yoshi_valley_dl_20),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_78B0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7998),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_65C0),
@@ -1780,11 +1764,7 @@ Gfx d_course_yoshi_valley_dl_40B8[] = {
     gsSPDisplayList(d_course_yoshi_valley_dl_20),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7A70),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_76C8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7740),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_65C0),
@@ -1959,14 +1939,8 @@ Gfx d_course_yoshi_valley_dl_4718[] = {
     gsSPDisplayList(d_course_yoshi_valley_dl_20),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7A70),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7FC8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7DA8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_6560),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_1EB8),
@@ -1987,8 +1961,6 @@ Gfx d_course_yoshi_valley_dl_4718[] = {
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_2DD0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_28F8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_2868),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_3F10),
@@ -3219,8 +3191,6 @@ Gfx d_course_yoshi_valley_dl_7400[] = {
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_6560),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_64F8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_1DE8),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_1FF0),
@@ -3947,8 +3917,6 @@ Gfx d_course_yoshi_valley_dl_8D58[] = {
     gsSPDisplayList(d_course_yoshi_valley_dl_20),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_76C8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7740),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_1F80),
@@ -4159,8 +4127,6 @@ Gfx d_course_yoshi_valley_dl_9548[] = {
     gsSPDisplayList(d_course_yoshi_valley_dl_20),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7998),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7740),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_6490),
@@ -4441,8 +4407,6 @@ Gfx d_course_yoshi_valley_dl_9F70[] = {
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7928),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7998),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7A08),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_65C0),
@@ -4571,8 +4535,6 @@ Gfx d_course_yoshi_valley_dl_A518[] = {
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7A08),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7C50),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7CC0),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_6490),
@@ -4617,8 +4579,6 @@ Gfx d_course_yoshi_valley_dl_A6B8[] = {
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7A08),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7C50),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7CC0),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_65C0),
@@ -5305,8 +5265,6 @@ Gfx d_course_yoshi_valley_dl_C140[] = {
     gsSPDisplayList(d_course_yoshi_valley_dl_20),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7998),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7740),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_6490),
@@ -5569,11 +5527,7 @@ Gfx d_course_yoshi_valley_dl_CAD8[] = {
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7F58),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7FC8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7DA8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7B50),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_6490),
@@ -5635,8 +5589,6 @@ Gfx d_course_yoshi_valley_dl_CC80[] = {
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7FC8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7DA8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7B50),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7C50),
@@ -5644,8 +5596,6 @@ Gfx d_course_yoshi_valley_dl_CC80[] = {
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_6560),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_64F8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_6428),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_1FF0),
@@ -5703,17 +5653,9 @@ Gfx d_course_yoshi_valley_dl_CEC8[] = {
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_76C8), gsSPDisplayList(d_course_yoshi_valley_packed_dl_7740),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7FC8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7DA8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7B50),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_7BD0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_6560),
 #endif
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_1EB8),

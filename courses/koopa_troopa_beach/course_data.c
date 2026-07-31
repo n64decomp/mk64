@@ -666,8 +666,6 @@ Gfx d_course_koopa_troopa_beach_dl_1040[] = {
 Gfx d_course_koopa_troopa_beach_dl_10D0[] = {
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_2698),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_CC0),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_BD8),
@@ -690,8 +688,6 @@ Gfx d_course_koopa_troopa_beach_dl_10D0[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_6EB8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_6F30),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_8870),
 #endif
     gsSPEndDisplayList(),
@@ -740,8 +736,6 @@ Gfx d_course_koopa_troopa_beach_dl_1218[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_3DE0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_5C88),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_5D50),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_5EB0),
@@ -754,8 +748,6 @@ Gfx d_course_koopa_troopa_beach_dl_1218[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_8468),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_86B0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_6EB8),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_6F30),
@@ -940,8 +932,6 @@ Gfx d_course_koopa_troopa_beach_dl_1708[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_8468),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_86B0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_6EB8),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_6F30),
@@ -3029,8 +3019,6 @@ Gfx d_course_koopa_troopa_beach_dl_4E70[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_7A98),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_7DB0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_7E48),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_8510),
@@ -3133,8 +3121,6 @@ Gfx d_course_koopa_troopa_beach_dl_5120[] = {
 Gfx d_course_koopa_troopa_beach_dl_51C8[] = {
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_2398),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_858),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_928),
@@ -3149,8 +3135,6 @@ Gfx d_course_koopa_troopa_beach_dl_51C8[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_4490),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_6718),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_76C0),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_7A98),
@@ -4354,8 +4338,6 @@ Gfx d_course_koopa_troopa_beach_dl_71C8[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_4490),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_67A0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_6810),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_7A98),
@@ -4401,8 +4383,6 @@ Gfx d_course_koopa_troopa_beach_dl_7338[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_3ED8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_4770),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_47E0),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_4920),
@@ -4415,8 +4395,6 @@ Gfx d_course_koopa_troopa_beach_dl_7338[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_7A98),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_7DB0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_7E48),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_8D08),
@@ -5769,8 +5747,6 @@ Gfx d_course_koopa_troopa_beach_dl_9798[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_45C8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_80F8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_8200),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_86B0),
@@ -5936,8 +5912,6 @@ Gfx d_course_koopa_troopa_beach_dl_9C38[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_D70),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_2638),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_25C8),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_1590),
@@ -5954,14 +5928,8 @@ Gfx d_course_koopa_troopa_beach_dl_9C38[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_45C8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_7F70),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_8028),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_80F8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_8200),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_86B0),
@@ -6140,11 +6108,7 @@ Gfx d_course_koopa_troopa_beach_dl_A0D0[] = {
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_7F70),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_8028),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_80F8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_8200),
 #endif
     gsSPDisplayList(d_course_koopa_troopa_beach_packed_dl_86B0),

@@ -165,20 +165,10 @@ Gfx d_course_banshee_boardwalk_dl_358[] = {
 #endif
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_5278),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_52F8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_2100),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_21D8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_dl_38),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_dl_68),
 #endif
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_C98),
@@ -349,8 +339,6 @@ Gfx d_course_banshee_boardwalk_dl_7C0[] = {
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_930),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_1008),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_1108),
 #endif
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_11D8),
@@ -698,8 +686,6 @@ Gfx d_course_banshee_boardwalk_dl_1160[] = {
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_A50),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_AE8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_F80),
 #endif
     gsSPEndDisplayList(),
@@ -796,8 +782,6 @@ Gfx d_course_banshee_boardwalk_dl_13F0[] = {
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_A50),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_AE8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_F80),
 #endif
     gsSPEndDisplayList(),
@@ -982,8 +966,6 @@ Gfx d_course_banshee_boardwalk_dl_18D8[] = {
     gsSPDisplayList(d_course_banshee_boardwalk_dl_68),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_8A8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_930),
 #endif
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_A50),
@@ -1092,11 +1074,7 @@ Gfx d_course_banshee_boardwalk_dl_1BA0[] = {
     gsSPDisplayList(d_course_banshee_boardwalk_dl_68),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_BC8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_8A8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_930),
 #endif
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_9B8),
@@ -1367,14 +1345,8 @@ Gfx d_course_banshee_boardwalk_dl_22D8[] = {
 #endif
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_51E0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_2058),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_dl_38),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_dl_68),
 #endif
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_13E0),
@@ -2400,11 +2372,7 @@ Gfx d_course_banshee_boardwalk_dl_3EF0[] = {
     gsSPDisplayList(d_course_banshee_boardwalk_dl_68),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_C98),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_D30),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_DF0),
 #endif
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_1008),
@@ -2504,8 +2472,6 @@ Gfx d_course_banshee_boardwalk_dl_4188[] = {
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_C98),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_D30),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_DF0),
 #endif
     gsSPDisplayList(d_course_banshee_boardwalk_packed_dl_1108),

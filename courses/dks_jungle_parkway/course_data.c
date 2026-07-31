@@ -545,8 +545,6 @@ Gfx d_course_dks_jungle_parkway_dl_EF0[] = {
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7E0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_29F0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2788),
 #endif
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2E28),
@@ -742,8 +740,6 @@ Gfx d_course_dks_jungle_parkway_dl_1478[] = {
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7E0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_29F0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2788),
 #endif
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2E28),
@@ -938,8 +934,6 @@ Gfx d_course_dks_jungle_parkway_dl_1A00[] = {
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7E0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_29F0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2788),
 #endif
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2D60),
@@ -1521,8 +1515,6 @@ Gfx d_course_dks_jungle_parkway_dl_2AC0[] = {
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_B68),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_918),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_29F0),
 #endif
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2D00),
@@ -3401,8 +3393,6 @@ Gfx d_course_dks_jungle_parkway_dl_6048[] = {
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2788),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2570),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2E28),
 #endif
     gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_24B0),

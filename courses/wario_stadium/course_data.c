@@ -72,8 +72,6 @@ Gfx d_course_wario_stadium_dl_1B8[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_A248),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_59C0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5938),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5888),
@@ -135,14 +133,8 @@ Gfx d_course_wario_stadium_dl_440[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5888),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3BD0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_7530),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_75A8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_7630),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_8D28),
@@ -168,8 +160,6 @@ Gfx d_course_wario_stadium_dl_4C0[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_A248),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_59C0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5938),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5888),
@@ -245,8 +235,6 @@ Gfx d_course_wario_stadium_dl_798[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4378),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_A248),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3B08),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5938),
@@ -254,11 +242,7 @@ Gfx d_course_wario_stadium_dl_798[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_57F8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3BD0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_21D8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_75A8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_7630),
@@ -279,8 +263,6 @@ Gfx d_course_wario_stadium_dl_830[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4378), gsSPDisplayList(d_course_wario_stadium_packed_dl_A248),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3B08),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5938),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5888), gsSPDisplayList(d_course_wario_stadium_packed_dl_57F8),
@@ -417,14 +399,8 @@ Gfx d_course_wario_stadium_dl_D60[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_57F8), gsSPDisplayList(d_course_wario_stadium_packed_dl_5768),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_56E0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3B68),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3DE8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3D80),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_76E0), gsSPDisplayList(d_course_wario_stadium_packed_dl_77A8),
@@ -442,11 +418,7 @@ Gfx d_course_wario_stadium_dl_E30[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_56E0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3B68),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5D20),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5CB0),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_76E0), gsSPDisplayList(d_course_wario_stadium_packed_dl_77A8),
@@ -514,14 +486,8 @@ Gfx d_course_wario_stadium_dl_1068[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_39D0), gsSPDisplayList(d_course_wario_stadium_packed_dl_5768),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_56E0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5A38),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3DE8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3D80),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3C40), gsSPDisplayList(d_course_wario_stadium_packed_dl_77A8),
@@ -860,8 +826,6 @@ Gfx d_course_wario_stadium_dl_1CA8[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3F70),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4598),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_44E8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4438),
@@ -967,8 +931,6 @@ Gfx d_course_wario_stadium_dl_1FD8[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4098), gsSPDisplayList(d_course_wario_stadium_packed_dl_4038),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4598),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_44E8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4378),
@@ -1060,8 +1022,6 @@ Gfx d_course_wario_stadium_dl_2308[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_24D0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6198),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6418),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_64E8),
@@ -1079,8 +1039,6 @@ Gfx d_course_wario_stadium_dl_23B0[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_44E8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4438),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4378),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_A248),
@@ -1102,8 +1060,6 @@ Gfx d_course_wario_stadium_dl_2490[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4038), gsSPDisplayList(d_course_wario_stadium_packed_dl_3F70),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3EC0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_42C8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3AA8), gsSPDisplayList(d_course_wario_stadium_packed_dl_3A30),
@@ -1218,8 +1174,6 @@ Gfx d_course_wario_stadium_dl_2870[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4218),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_42C8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_46B8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4658),
@@ -1294,8 +1248,6 @@ Gfx d_course_wario_stadium_dl_2AB0[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4038), gsSPDisplayList(d_course_wario_stadium_packed_dl_3F70),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3EC0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_42C8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3A30), gsSPDisplayList(d_course_wario_stadium_packed_dl_39D0),
@@ -1332,8 +1284,6 @@ Gfx d_course_wario_stadium_dl_2C30[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4098),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4038),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4438),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4378),
@@ -1344,8 +1294,6 @@ Gfx d_course_wario_stadium_dl_2C30[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3A30),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_39D0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3C40),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3BD0),
@@ -1375,8 +1323,6 @@ Gfx d_course_wario_stadium_dl_2CE0[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_39D0), gsSPDisplayList(d_course_wario_stadium_packed_dl_3960),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3CA8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3C40),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_1F28), gsSPDisplayList(d_course_wario_stadium_packed_dl_7960),
@@ -1469,8 +1415,6 @@ Gfx d_course_wario_stadium_dl_2FB8[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3A30), gsSPDisplayList(d_course_wario_stadium_packed_dl_39D0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3CA8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3C40),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_8030), gsSPDisplayList(d_course_wario_stadium_packed_dl_80E8),
@@ -1515,8 +1459,6 @@ Gfx d_course_wario_stadium_dl_3098[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3DE8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3CA8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3C40),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_1F28),
@@ -1618,8 +1560,6 @@ Gfx d_course_wario_stadium_dl_3368[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6390),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6108),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6AE8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_34A0),
@@ -1804,8 +1744,6 @@ Gfx d_course_wario_stadium_dl_3A10[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4098),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4038),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_44E8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4438),
@@ -1832,8 +1770,6 @@ Gfx d_course_wario_stadium_dl_3A10[] = {
 Gfx d_course_wario_stadium_dl_3AD0[] = {
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4098),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4038),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3F70), gsSPDisplayList(d_course_wario_stadium_packed_dl_3EC0),
@@ -1846,8 +1782,6 @@ Gfx d_course_wario_stadium_dl_3AD0[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5BB8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5B38),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_80E8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_2BB0),
@@ -1880,8 +1814,6 @@ Gfx d_course_wario_stadium_dl_3BB0[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5C30),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5BB8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5B38),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3BD0),
@@ -1972,8 +1904,6 @@ Gfx d_course_wario_stadium_dl_3D90[] = {
 Gfx d_course_wario_stadium_dl_3E80[] = {
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4098),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4038),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3F70),
@@ -2029,8 +1959,6 @@ Gfx d_course_wario_stadium_dl_3F78[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5C30),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5BB8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3C40),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3BD0),
@@ -2070,11 +1998,7 @@ Gfx d_course_wario_stadium_dl_40F0[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4378), gsSPDisplayList(d_course_wario_stadium_packed_dl_A248),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3B68),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3DE8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5CB0),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5C30),
@@ -2146,11 +2070,7 @@ Gfx d_course_wario_stadium_dl_43E0[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_A248),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3B68),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5D20),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5CB0),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5C30), gsSPDisplayList(d_course_wario_stadium_packed_dl_3CA8),
@@ -2182,8 +2102,6 @@ Gfx d_course_wario_stadium_dl_4550[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_42C8), gsSPDisplayList(d_course_wario_stadium_packed_dl_46B8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4658),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4378),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3B08), gsSPDisplayList(d_course_wario_stadium_packed_dl_3AA8),
@@ -2192,8 +2110,6 @@ Gfx d_course_wario_stadium_dl_4550[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3B68), gsSPDisplayList(d_course_wario_stadium_packed_dl_3DE8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3D80),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3BD0),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_2108), gsSPDisplayList(d_course_wario_stadium_packed_dl_20A0),
@@ -2210,11 +2126,7 @@ Gfx d_course_wario_stadium_dl_4550[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6AE8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6C80),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6950),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6700),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6878), gsSPDisplayList(d_course_wario_stadium_packed_dl_1180),
@@ -2227,8 +2139,6 @@ Gfx d_course_wario_stadium_dl_4550[] = {
 Gfx d_course_wario_stadium_dl_46E0[] = {
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4218),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_46B8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4658), gsSPDisplayList(d_course_wario_stadium_packed_dl_4598),
@@ -2236,8 +2146,6 @@ Gfx d_course_wario_stadium_dl_46E0[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4378), gsSPDisplayList(d_course_wario_stadium_packed_dl_A248),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3B08),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3DE8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3D80), gsSPDisplayList(d_course_wario_stadium_packed_dl_3D10),
@@ -2247,8 +2155,6 @@ Gfx d_course_wario_stadium_dl_46E0[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_7B20), gsSPDisplayList(d_course_wario_stadium_packed_dl_7BE0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_7D00),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6A10),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_6BE0), gsSPDisplayList(d_course_wario_stadium_packed_dl_6C80),
@@ -2374,8 +2280,6 @@ Gfx d_course_wario_stadium_dl_4B30[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4218),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_46B8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4658),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4598),
@@ -2458,8 +2362,6 @@ Gfx d_course_wario_stadium_dl_4D40[] = {
 Gfx d_course_wario_stadium_dl_4E30[] = {
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_46B8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4658),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_4598), gsSPDisplayList(d_course_wario_stadium_packed_dl_44E8),
@@ -2620,8 +2522,6 @@ Gfx d_course_wario_stadium_dl_5338[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3D10),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5BB8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5B38),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_5AA8),
@@ -2699,8 +2599,6 @@ Gfx d_course_wario_stadium_dl_5588[] = {
     gsSPDisplayList(d_course_wario_stadium_packed_dl_A248),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_59C0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3AA8),
 #endif
     gsSPDisplayList(d_course_wario_stadium_packed_dl_3A30),

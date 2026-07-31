@@ -437,11 +437,7 @@ Gfx d_course_choco_mountain_dl_A28[] = {
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4970),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4618),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4690),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_46F0),
 #endif
     gsDPTileSync(),
@@ -461,11 +457,7 @@ Gfx d_course_choco_mountain_dl_A28[] = {
     gsSPDisplayList(d_course_choco_mountain_packed_dl_1A48),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_9B0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_17E0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_AF8),
 #endif
     gsSPEndDisplayList(),
@@ -935,11 +927,7 @@ Gfx d_course_choco_mountain_dl_15E8[] = {
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_DD0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_8F0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_1A48),
 #endif
     gsSPDisplayList(d_course_choco_mountain_packed_dl_9B0),
@@ -1620,8 +1608,6 @@ Gfx d_course_choco_mountain_dl_26D8[] = {
     gsSPDisplayList(d_course_choco_mountain_packed_dl_52C8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5148),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4E40),
 #endif
     gsDPTileSync(),
@@ -1654,8 +1640,6 @@ Gfx d_course_choco_mountain_dl_2780[] = {
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5338),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5148),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4E40),
 #endif
     gsDPTileSync(),
@@ -1687,8 +1671,6 @@ Gfx d_course_choco_mountain_dl_2840[] = {
     gsSPDisplayList(d_course_choco_mountain_packed_dl_52C8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5148),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4E40),
 #endif
     gsDPTileSync(),
@@ -1750,11 +1732,7 @@ Gfx d_course_choco_mountain_dl_29B8[] = {
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5338),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_53D8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5148),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4E40),
 #endif
     gsDPTileSync(),
@@ -1770,8 +1748,6 @@ Gfx d_course_choco_mountain_dl_29B8[] = {
     gsSPDisplayList(d_course_choco_mountain_packed_dl_3DD8),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_3CF0),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_1018),
 #endif
     gsSPDisplayList(d_course_choco_mountain_packed_dl_3A80),
@@ -1792,11 +1768,7 @@ Gfx d_course_choco_mountain_dl_2A88[] = {
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5338),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_53D8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5148),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4E40),
 #endif
     gsDPTileSync(),
@@ -2191,8 +2163,6 @@ Gfx d_course_choco_mountain_dl_3438[] = {
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4D90),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_51D8),
 #endif
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5258),
@@ -2203,8 +2173,6 @@ Gfx d_course_choco_mountain_dl_3438[] = {
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4EB0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4F30),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4FC0),
 #endif
     gsDPTileSync(),
@@ -2213,11 +2181,7 @@ Gfx d_course_choco_mountain_dl_3438[] = {
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_2AE8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_38B8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_F68),
 #endif
     gsSPDisplayList(d_course_choco_mountain_packed_dl_3670),
@@ -2346,15 +2310,11 @@ Gfx d_course_choco_mountain_dl_37D0[] = {
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4D90),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_51D8),
 #endif
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5258),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_52C8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5148),
 #endif
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4E40),
@@ -2368,14 +2328,8 @@ Gfx d_course_choco_mountain_dl_37D0[] = {
     gsSPDisplayList(d_course_choco_mountain_packed_dl_17E0),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_2AE8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_38B8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_F68),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_3670),
 #endif
     gsSPDisplayList(d_course_choco_mountain_packed_dl_35B0),
@@ -2435,8 +2389,6 @@ Gfx d_course_choco_mountain_dl_39A8[] = {
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5258),
 #ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_52C8),
-#endif
-#ifndef VERSION_JP
     gsSPDisplayList(d_course_choco_mountain_packed_dl_5148),
 #endif
     gsSPDisplayList(d_course_choco_mountain_packed_dl_4E40),
