@@ -636,9 +636,12 @@ $(COURSE_DISPLAYLIST_OFILES): $(BUILD_DIR)/%/course_data.o: %/course_textures.li
 #==============================================================================#
 # Source Code Generation                                                       #
 #==============================================================================#
+# Not iconv: macOS converts a backslash that follows Japanese text into the
+# fullwidth reverse solidus (0xA1C0) instead of leaving it as 0x5C, which
+# lengthens the string literals here and shifts the whole ROM.
 $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
-	$(V)iconv -t EUC-JP -f UTF-8 $< > $@
+	$(V)$(PYTHON) -c "import sys; open(sys.argv[2],'wb').write(open(sys.argv[1],encoding='utf-8').read().encode('euc_jp'))" $< $@
 
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
