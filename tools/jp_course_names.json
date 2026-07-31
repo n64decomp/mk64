@@ -1,0 +1,125 @@
+{
+ "_comment": "JP v1.1 course name tables; see tools/generate_jp_course_names.py.",
+ "courses": [
+  {
+   "us": "mario raceway",
+   "romaji": "mario circuit",
+   "name": "マリオサーキット",
+   "short": "マリオサーキット"
+  },
+  {
+   "us": "choco mountain",
+   "romaji": "choco mountain",
+   "name": "チョコマウンテン",
+   "short": "チョコマウンテン"
+  },
+  {
+   "us": "bowser's castle",
+   "romaji": "koopa castle",
+   "name": "クッパキャッスル",
+   "short": "クッパキャッスル"
+  },
+  {
+   "us": "banshee boardwalk",
+   "romaji": "hyuudoro lake",
+   "name": "ヒュ＾ドロいけ",
+   "short": "ヒュ＾ドロいけ"
+  },
+  {
+   "us": "yoshi valley",
+   "romaji": "yoshi valley",
+   "name": "ヨッシーバレー",
+   "short": "ヨッシーバレー"
+  },
+  {
+   "us": "frappe snowland",
+   "romaji": "frappe snowland",
+   "name": "フラッペスノーランド",
+   "short": "フラッペスノーランド"
+  },
+  {
+   "us": "koopa troopa beach",
+   "romaji": "noko noko beach",
+   "name": "ノコノコビーチ",
+   "short": "ノコノコビーチ"
+  },
+  {
+   "us": "royal raceway",
+   "romaji": "peach circuit",
+   "name": "ピーチサーキット",
+   "short": "ピーチサーキット"
+  },
+  {
+   "us": "luigi raceway",
+   "romaji": "luigi circuit",
+   "name": "ルイージサーキット",
+   "short": "ルイージサーキット"
+  },
+  {
+   "us": "moo moo farm",
+   "romaji": "moh moh farm",
+   "name": "モ＾モ＾ファーム",
+   "short": "モ＾モ＾ファーム"
+  },
+  {
+   "us": "toad's turnpike",
+   "romaji": "kinopio highway",
+   "name": "キノピオハイウェイ",
+   "short": "キノピオハイウェイ"
+  },
+  {
+   "us": "kalimari desert",
+   "romaji": "kara kara desert",
+   "name": "カラカラさばく",
+   "short": "カラカラさばく"
+  },
+  {
+   "us": "sherbet land",
+   "romaji": "sherbet land",
+   "name": "シャーベットランド",
+   "short": "シャーベットランド"
+  },
+  {
+   "us": "rainbow road",
+   "romaji": "rainbow road",
+   "name": "レインボーロード",
+   "short": "レインボーロード"
+  },
+  {
+   "us": "wario stadium",
+   "romaji": "wario stadium",
+   "name": "ワリオスタジアム",
+   "short": "ワリオスタジアム"
+  },
+  {
+   "us": "block fort",
+   "romaji": "block fortress",
+   "name": "ブロックとりで",
+   "short": "ブロックとりで"
+  },
+  {
+   "us": "skyscraper",
+   "romaji": "sky scraper",
+   "name": "まてんろう",
+   "short": "まてんろう"
+  },
+  {
+   "us": "double deck",
+   "romaji": "double deck",
+   "name": "ダブルデッキ",
+   "short": "ダブルデッキ"
+  },
+  {
+   "us": "d.k.'s jungle parkway",
+   "romaji": "donkey jungle park",
+   "name": "ドンキージャングルパーク",
+   "short": "ドンキージャングル"
+  },
+  {
+   "us": "big donut",
+   "romaji": "big doughnut",
+   "name": "ビッグドーナッツ",
+   "short": "ビッグドーナッツ"
+  }
+ ]
+}

@@ -538,6 +538,18 @@ ASSET_VERSION_STAMP := $(ASSET_DIR)/.version
 DUMMY_ASSET_VERSION != [ "$$(cat $(ASSET_VERSION_STAMP) 2>/dev/null)" = "$(ASSET_VERSION)" ] || \
                        { mkdir -p $(dir $(ASSET_VERSION_STAMP)) && echo "$(ASSET_VERSION)" > $(ASSET_VERSION_STAMP); }
 
+# JP shows three forms of each course name where US shows one, and Torch writes a
+# single names table per config entry. See tools/generate_jp_course_names.py.
+JP_COURSE_NAMES := $(foreach n,1 2 3,$(ASSET_DIR)/course_metadata/gCourseNames.jp$(n).inc.c)
+
+$(JP_COURSE_NAMES): $(TOOLS_DIR)/jp_course_names.json $(TOOLS_DIR)/generate_jp_course_names.py
+	$(call print,Generating:,$<,$(ASSET_DIR)/course_metadata)
+	$(V)$(PYTHON) $(TOOLS_DIR)/generate_jp_course_names.py $(ASSET_DIR)/course_metadata
+
+ifeq ($(VERSION),jp.v11)
+  $(BUILD_DIR)/src/menu_items.jp.o: $(JP_COURSE_NAMES)
+endif
+
 ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name "*.mk")
 
 $(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
