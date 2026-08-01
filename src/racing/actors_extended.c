@@ -427,6 +427,12 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
             if (parent->unk_08 > 0.0f) {
                 if (parent->shellIndices[0] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[0]];
+                    /**
+                     * This condition is broken and always evaluates to true.
+                     * If you fix the condition, when you fire a shell it continues being held by the player
+                     * until the shell is in-front of the player. This allows the shell to always shoot in a foward direction instead of straying sideways.
+                     * when fired at the wrong time
+                     */
                     if ((shell->rotAngle < DEGREES(5)) || (shell->rotAngle > -DEGREES(5))) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
