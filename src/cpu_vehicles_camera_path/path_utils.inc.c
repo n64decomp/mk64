@@ -341,8 +341,8 @@ s16 update_path_index_with_track(f32 posX, f32 posY, f32 posZ, s16 pathPointInde
 #ifdef VERSION_JP
 /**
  * Finds the path point nearest to (posX, posY, posZ), seeded with the distance
- * to pathPointIndex itself so it always returns a valid index. The US revision
- * replaced its callers with the update_path_index recovery chains.
+ * to pathPointIndex itself so it always returns a valid index. Only JP 1.1 has
+ * it; US uses the update_path_index recovery chains for the same callers.
  * Looks 3 path behind and 6 path ahead of pathPointIndex
  **/
 s16 find_nearest_path_point(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 pathIndex) {

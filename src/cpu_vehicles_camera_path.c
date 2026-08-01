@@ -1404,8 +1404,8 @@ void update_player_path_completion(s32 playerId, Player* player) {
         }
     } else {
 #ifdef VERSION_JP
-        // JP randomizes the CPU path on Yoshi Valley at the finish line; the US
-        // revision replaced this with the yoshi_valley_cpu_path machinery.
+        // JP 1.1 randomizes the CPU path on Yoshi Valley at the finish line,
+        // where US uses the yoshi_valley_cpu_path machinery instead.
         if ((gCrossedFinishLine[playerId] == 1) && (gLapCountByPlayerId[playerId] >= 0) &&
             (gCurrentCourseId == COURSE_YOSHI_VALLEY)) {
             gPlayerPathIndex = random_int(4);
