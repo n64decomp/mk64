@@ -1155,6 +1155,8 @@ void render_light_environment_on_player(Player* player, s8 playerIndex) {
                 ((gNearestPathPointByPlayerId[playerIndex] >= 0x216) && (gNearestPathPointByPlayerId[playerIndex] < 0x21D)) ||
                 ((gNearestPathPointByPlayerId[playerIndex] >= 0x230) && (gNearestPathPointByPlayerId[playerIndex] < 0x23A)) ||
                 ((gNearestPathPointByPlayerId[playerIndex] >= 0x24C) && (gNearestPathPointByPlayerId[playerIndex] < 0x256)) ||
+                // This is the second last lamp. This condition is bugged and it does not glow on the player.
+                // The value 0x228 was probably meant to be 0x25F.
                 ((gNearestPathPointByPlayerId[playerIndex] >= 0x288) && (gNearestPathPointByPlayerId[playerIndex] < 0x269)) ||
                 ((gNearestPathPointByPlayerId[playerIndex] >= 0x274) &&
                  (gNearestPathPointByPlayerId[playerIndex] < 0x27E))) { // under a lamp
