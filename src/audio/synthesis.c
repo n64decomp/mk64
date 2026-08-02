@@ -330,13 +330,13 @@ Acmd* synthesis_do_one_audio_update(s16* aiBuf, s32 bufLen, Acmd* acmd, s32 upda
 Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct NoteSynthesisState* synthesisState,
                              UNUSED s16* aiBuf, s32 inBuf, Acmd* cmd, s32 updateIndex) {
     s32 pad[3];
-    struct AudioBankSample *audioBookSample; // sp130
-    struct AdpcmLoop *loopInfo; // sp12C
-    s16 *curLoadedBook; // sp128
+    struct AudioBankSample* audioBookSample; // sp130
+    struct AdpcmLoop* loopInfo;              // sp12C
+    s16* curLoadedBook;                      // sp128
     s32 pad4;
     s32 nSamplesToLoad;
     s32 noteFinished; // sp11C
-    s32 restart; // sp118
+    s32 restart;      // sp118
     s32 flags;
     u16 resamplingRateFixedPoint; // sp112
     s32 pad2[1];
@@ -347,22 +347,22 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
     s32 pad3;
     s32 nAdpcmSamplesProcessed;
     s32 s4;
-    u8 *sampleAddr; // spEC
+    u8* sampleAddr; // spEC
     s32 s3;
     s32 samplesLenAdjusted; // spE4
     s32 leftRight;
-    s32 endPos; // spDC
+    s32 endPos;            // spDC
     s32 nSamplesToProcess; // spD8
     u32 samplesLenFixedPoint;
     s32 var_s6;
     s32 nSamplesInThisIteration;
     u32 var_t2;
-    u8 *var_a0_2;
+    u8* var_a0_2;
     s32 s5Aligned;
     s32 temp_t6;
     s32 aligned;
-    struct AudioBankSample *bankSample;
-    s32 nParts; // spB0
+    struct AudioBankSample* bankSample;
+    s32 nParts;  // spB0
     s32 curPart; // spAC
     s32 pad5;
     s16 addr;
@@ -371,7 +371,7 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
     s32 samplesRemaining;
     s32 s1;
     u32 nEntries;
-    struct Note *note;
+    struct Note* note;
 
     curLoadedBook = NULL;
     note = &gNotes[noteIndex];
@@ -420,7 +420,7 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
             if (curLoadedBook != (*bankSample->book).book) {
                 curLoadedBook = bankSample->book->book;
                 nEntries = (16 * bankSample->book->order) * bankSample->book->npredictors;
-                aLoadADPCM(cmd++, nEntries, VIRTUAL_TO_PHYSICAL2(noteSubEu->bookOffset+curLoadedBook));
+                aLoadADPCM(cmd++, nEntries, VIRTUAL_TO_PHYSICAL2(noteSubEu->bookOffset + curLoadedBook));
             }
             if (noteSubEu->bookOffset != 0) {
                 curLoadedBook = &gUnknownData_800F6290[0];
@@ -567,7 +567,8 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
         noteSubEu->needsInit = false;
     }
 
-    cmd = final_resample(cmd, synthesisState, inBuf * 2, resamplingRateFixedPoint, noteSamplesDmemAddrBeforeResampling, flags);
+    cmd = final_resample(cmd, synthesisState, inBuf * 2, resamplingRateFixedPoint, noteSamplesDmemAddrBeforeResampling,
+                         flags);
     headsetPanRight = noteSubEu->headsetPanRight;
     if ((headsetPanRight & 0xFFFF) || synthesisState->prevHeadsetPanRight) {
         leftRight = 1;
@@ -619,13 +620,13 @@ Acmd* func_800B86A0(Acmd* cmd, struct NoteSubEu* note, struct NoteSynthesisState
 
     sourceLeft = synthesisState->curVolLeft;
     sourceRight = synthesisState->curVolRight;
-    
+
     targetLeft = (note->targetVolLeft) << 4;
     targetRight = (note->targetVolRight) << 4;
 
-    rampLeft  = ((targetLeft  - sourceLeft)  / (nSamples >> 3));
+    rampLeft = ((targetLeft - sourceLeft) / (nSamples >> 3));
     rampRight = ((targetRight - sourceRight) / (nSamples >> 3));
-    targetLeft  = sourceLeft  + rampLeft  * (nSamples >> 3);
+    targetLeft = sourceLeft + rampLeft * (nSamples >> 3);
     targetRight = sourceRight + rampRight * (nSamples >> 3);
 
     synthesisState->curVolLeft = targetLeft;
@@ -633,52 +634,29 @@ Acmd* func_800B86A0(Acmd* cmd, struct NoteSubEu* note, struct NoteSynthesisState
 
     if (note->usesHeadsetPanEffects) {
         aClearBuffer(cmd++, DMEM_ADDR_NOTE_PAN_TEMP, DEFAULT_LEN_1CH);
-        aEnvSetup1Alt(cmd++, note->reverbVol, sourceLeft, sourceRight, (u32)rampLeft, (u32)rampRight);
+        aEnvSetup1Alt(cmd++, note->reverbVol, sourceLeft, sourceRight, (u32) rampLeft, (u32) rampRight);
         aEnvSetup2(cmd++, sourceLeft, sourceRight);
 
-        switch (headsetPanSettings) {;
+        switch (headsetPanSettings) {
+            ;
             case 1:
-                aEnvMixer(cmd++,
-                    inBuf, nSamples,
-                    0,
-                    note->stereoStrongRight, note->stereoStrongLeft,
-                    DMEM_ADDR_NOTE_PAN_TEMP,
-                    DMEM_ADDR_RIGHT_CH,
-                    DMEM_ADDR_WET_LEFT_CH,
-                    DMEM_ADDR_WET_RIGHT_CH);
+                aEnvMixer(cmd++, inBuf, nSamples, 0, note->stereoStrongRight, note->stereoStrongLeft,
+                          DMEM_ADDR_NOTE_PAN_TEMP, DMEM_ADDR_RIGHT_CH, DMEM_ADDR_WET_LEFT_CH, DMEM_ADDR_WET_RIGHT_CH);
                 break;
             case 2:
-                aEnvMixer(cmd++,
-                    inBuf, nSamples,
-                    0,
-                    note->stereoStrongRight, note->stereoStrongLeft,
-                    DMEM_ADDR_LEFT_CH,
-                    DMEM_ADDR_NOTE_PAN_TEMP,
-                    DMEM_ADDR_WET_LEFT_CH,
-                    DMEM_ADDR_WET_RIGHT_CH);
+                aEnvMixer(cmd++, inBuf, nSamples, 0, note->stereoStrongRight, note->stereoStrongLeft, DMEM_ADDR_LEFT_CH,
+                          DMEM_ADDR_NOTE_PAN_TEMP, DMEM_ADDR_WET_LEFT_CH, DMEM_ADDR_WET_RIGHT_CH);
                 break;
             default:
-                aEnvMixer(cmd++,
-                    inBuf, nSamples,
-                    0,
-                    note->stereoStrongRight, note->stereoStrongLeft,
-                    DMEM_ADDR_LEFT_CH,
-                    DMEM_ADDR_RIGHT_CH,
-                    DMEM_ADDR_WET_LEFT_CH,
-                    DMEM_ADDR_WET_RIGHT_CH);
+                aEnvMixer(cmd++, inBuf, nSamples, 0, note->stereoStrongRight, note->stereoStrongLeft, DMEM_ADDR_LEFT_CH,
+                          DMEM_ADDR_RIGHT_CH, DMEM_ADDR_WET_LEFT_CH, DMEM_ADDR_WET_RIGHT_CH);
                 break;
         }
     } else {
-        aEnvSetup1Alt(cmd++, note->reverbVol, sourceLeft, sourceRight, (u32)rampLeft, (u32)rampRight);
+        aEnvSetup1Alt(cmd++, note->reverbVol, sourceLeft, sourceRight, (u32) rampLeft, (u32) rampRight);
         aEnvSetup2(cmd++, sourceLeft, sourceRight);
-        aEnvMixer(cmd++,
-                inBuf, nSamples,
-                0,
-                note->stereoStrongRight, note->stereoStrongLeft,
-                DMEM_ADDR_LEFT_CH,
-                DMEM_ADDR_RIGHT_CH,
-                DMEM_ADDR_WET_LEFT_CH,
-                DMEM_ADDR_WET_RIGHT_CH);
+        aEnvMixer(cmd++, inBuf, nSamples, 0, note->stereoStrongRight, note->stereoStrongLeft, DMEM_ADDR_LEFT_CH,
+                  DMEM_ADDR_RIGHT_CH, DMEM_ADDR_WET_LEFT_CH, DMEM_ADDR_WET_RIGHT_CH);
     }
     return cmd;
 }

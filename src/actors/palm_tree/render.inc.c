@@ -20,8 +20,7 @@ void render_actor_palm_tree(Camera* arg0, UNUSED Mat4 arg1, struct PalmTree* arg
         return;
     }
 
-    temp_f0 =
-        distance_if_visible(arg0->pos, arg2->pos, arg0->rot[1], 0.0f, gCameraZoom[arg0 - camera1], 4000000.0f);
+    temp_f0 = distance_if_visible(arg0->pos, arg2->pos, arg0->rot[1], 0.0f, gCameraZoom[arg0 - camera1], 4000000.0f);
 
     if (!(temp_f0 < 0.0f)) {
         if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {

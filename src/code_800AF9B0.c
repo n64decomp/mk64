@@ -111,7 +111,7 @@ void func_800AFC54(Vtx* vtx, s32 a, s32 b, s32 c, Vec3s out) {
     dx = ((varB2 - varA2) * (varC4 - varB4)) - ((varB4 - varA4) * (varC2 - varB2));
     dy = ((varB4 - varA4) * (varC0 - varB0)) - ((varB0 - varA0) * (varC4 - varB4));
     dz = ((varB0 - varA0) * (varC2 - varB2)) - ((varB2 - varA2) * (varC0 - varB0));
-    
+
     length = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
 
     if (length < 0.001) {
@@ -163,7 +163,7 @@ void func_800AFF58(Vtx* arg0) {
 }
 
 void func_800B0004(void) {
-    Vtx *vtxs;
+    Vtx* vtxs;
     s32 res1;
     s32 res2;
     UNUSED u32 pad[0x4];
@@ -176,16 +176,17 @@ void func_800B0004(void) {
     gSPLight(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_800E8680), LIGHT_2);
     gSPNumLights(gDisplayListHead++, NUMLIGHTS_1);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH);
-    gDPSetCombineLERP(gDisplayListHead++, PRIMITIVE, 0, SHADE, 0, 0, 0, 0, SHADE, PRIMITIVE, 0, SHADE, 0, 0, 0, 0, SHADE);
+    gDPSetCombineLERP(gDisplayListHead++, PRIMITIVE, 0, SHADE, 0, 0, 0, 0, SHADE, PRIMITIVE, 0, SHADE, 0, 0, 0, 0,
+                      SHADE);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
     vtxs = (D_8018EDB4 % 2) ? (D_8018EDB8) : (D_8018EDBC);
     D_8018EDB2 = 0x9C0;
     for (i = 0; i < 10; i++) {
         for (k = 0, j = 0; j < 12; j++, k += 84) {
-        res1 = ((sins(D_8018EDB0 - (j * D_8018EDB2)) * 84.0f) * j) * 0.18f;
-        res2 = ((sins(D_8018EDB0 - ((j + 1) * D_8018EDB2)) * 84.0f) * (j + 1)) * 0.18f;
-        func_800AF9E4(&(&vtxs[j * idx])[i * 48], j, i, 84, res1, res2, k, 84);
+            res1 = ((sins(D_8018EDB0 - (j * D_8018EDB2)) * 84.0f) * j) * 0.18f;
+            res2 = ((sins(D_8018EDB0 - ((j + 1) * D_8018EDB2)) * 84.0f) * (j + 1)) * 0.18f;
+            func_800AF9E4(&(&vtxs[j * idx])[i * 48], j, i, 84, res1, res2, k, 84);
         }
     }
 

@@ -1182,8 +1182,8 @@ void thread5_game_loop(UNUSED void* arg) {
     nmi_gVersusResults2P = &pAppNmiBuffer[0]; // 2  u8's, tracks number of times player 1/2 won a VS race
     nmi_gVersusResults3P =
         &pAppNmiBuffer[2]; // 9  u8's, 3x3, tracks number of times player 1/2/3   has placed in 1st/2nd/3rd in a VS race
-    nmi_gVersusResults4P = &pAppNmiBuffer[11]; // 12 u8's, 4x3, tracks number of times player 1/2/3/4 has placed in 1st/2nd/3rd
-                                       // in a VS race
+    nmi_gVersusResults4P = &pAppNmiBuffer[11]; // 12 u8's, 4x3, tracks number of times player 1/2/3/4 has placed in
+                                               // 1st/2nd/3rd in a VS race
     gNmiUnknown4 = &pAppNmiBuffer[23]; // 2  u8's, tracking number of Battle mode wins by player 1/2
     gNmiUnknown5 = &pAppNmiBuffer[25]; // 3  u8's, tracking number of Battle mode wins by player 1/2/3
     gNmiUnknown6 = &pAppNmiBuffer[28]; // 4  u8's, tracking number of Battle mode wins by player 1/2/3/4
