@@ -460,8 +460,9 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 if (parent->shellIndices[1] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[1]];
                     /**
-                     * Forces shell 2 to fire inside a cone of 5 to 14.95 degrees (always evaluates to true, thus the feature is skipped)
-                     * Unclear why it is 14.95 degrees instead of 15. Perhaps just a typo when entering the value as a s16.
+                     * Forces shell 2 to fire inside a cone of 5 to 14.95 degrees (always evaluates to true, thus the
+                     * feature is skipped) Unclear why it is 14.95 degrees instead of 15. Perhaps just a typo when
+                     * entering the value as a s16.
                      */
                     if ((shell->rotAngle < DEGREES(14.95)) || (shell->rotAngle > DEGREES(5))) {
                         someVelocity[0] = 0;
@@ -560,7 +561,7 @@ s32 use_triple_shell_item(Player* player, s16 tripleShellType) {
     parent = (TripleShellParent*) &gActorList[actorIndex];
     parent->state = 0;
     parent->rotVelocity = DEGREES(8);
-    parent->rotAngle = - DEGREES(180);
+    parent->rotAngle = -DEGREES(180);
     parent->playerId = player - gPlayerOne;
     parent->shellsAvailable = 0;
     parent->unk_08 = 0.0f;

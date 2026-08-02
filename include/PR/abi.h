@@ -822,7 +822,13 @@ typedef short ENVMIX_STATE[40];
 /*
  * See aEnvMixer for more info.
  */
-#define aEnvSetup1Alt(pkt,initialVolReverb,rampReverbL,rampReverbR,rampLeft,rampRight) { Acmd *_a = (Acmd *)pkt; _a->words.w0 = (_SHIFTL(A_ENVSETUP1, 24, 8) | _SHIFTL(initialVolReverb, 16, 8) | (_SHIFTL(rampReverbL, 8, 8)) | _SHIFTL(rampReverbR, 0, 8)); _a->words.w1 = _SHIFTL(rampLeft, 16, 16) | _SHIFTL(rampRight, 0, 16); }
+#define aEnvSetup1Alt(pkt, initialVolReverb, rampReverbL, rampReverbR, rampLeft, rampRight) \
+    {                                                                                       \
+        Acmd* _a = (Acmd*) pkt;                                                             \
+        _a->words.w0 = (_SHIFTL(A_ENVSETUP1, 24, 8) | _SHIFTL(initialVolReverb, 16, 8) |    \
+                        (_SHIFTL(rampReverbL, 8, 8)) | _SHIFTL(rampReverbR, 0, 8));         \
+        _a->words.w1 = _SHIFTL(rampLeft, 16, 16) | _SHIFTL(rampRight, 0, 16);               \
+    }
 
 /*
  * See aEnvMixer for more info.

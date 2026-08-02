@@ -709,7 +709,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
         phi_t3 = (uintptr_t) D_802BA050;
     }
     temp_t8 = (u16) shell->rotVelocity / DEGREES(24); // Give a number between 0-15
-    phi_t3 += sp58[temp_t8];                   // Select sprite
+    phi_t3 += sp58[temp_t8];                          // Select sprite
 
     matrix[3][0] = shell->pos[0];
     matrix[3][1] = (shell->pos[1] - shell->boundingBoxSize) + 1.0f;
@@ -755,8 +755,7 @@ UNUSED void func_8029ABD4(f32* pos, s16 state) {
 }
 
 void func_8029AC18(Camera* camera, Mat4 arg1, struct Actor* arg2) {
-    if (distance_if_visible(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f) <
-        0) {
+    if (distance_if_visible(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f) < 0) {
         return;
     }
 

@@ -253,7 +253,7 @@ typedef struct {
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
-    /* 0x000C */ s32 triggers;    // Bitflag.
+    /* 0x000C */ s32 triggers;        // Bitflag.
     /* 0x0010 */ s16 currentItemCopy; // Has no effect on what item the players has, It is just a synced copy
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
@@ -273,9 +273,10 @@ typedef struct {
     /* 0x0064 */ Vec3f unk_064;
     /* 0x0070 */ f32 boundingBoxSize;
     /* 0x0074 */ f32 unk_074;
-    /* 0x0078 */ s16 unk_078; // One source of angular velocity (turning / swerving) 
+    /* 0x0078 */ s16 unk_078; // One source of angular velocity (turning / swerving)
     /* 0x007A */ s16 unk_07A;
-    /* 0x007C */ s32 steerPosition; // Where the kart is steering, related to joystick position. Basically, in [-53 to 53], but shifted 16 bits left
+    /* 0x007C */ s32 steerPosition; // Where the kart is steering, related to joystick position. Basically, in [-53 to
+                                    // 53], but shifted 16 bits left
     /* 0x0080 */ f32 boostPower;
     /* 0x0084 */ f32 unk_084;
     /* 0x0088 */ f32 unk_088;
@@ -328,7 +329,7 @@ typedef struct {
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
     /* 0x0200 */ u32 steerChangeIncrement; // May be s32. but less casting required if u32
-    /* 0x0204 */ s16 driftDuration; // charges up while drifting, primarily protects against driving spinouts
+    /* 0x0204 */ s16 driftDuration;        // charges up while drifting, primarily protects against driving spinouts
     /* 0x0206 */ s16 unk_206;
     /* 0x0208 */ f32 unk_208;
     /* 0x020C */ f32 unk_20C;
