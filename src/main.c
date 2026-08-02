@@ -39,6 +39,7 @@
 #include <debug.h>
 #include "crash_screen.h"
 #include "buffers/gfx_output_buffer.h"
+#include "rumble_init.h"
 
 void func_80091B78(void);
 void audio_init(void);
@@ -155,6 +156,9 @@ OSThread gAudioThread;
 ALIGNED8 u8 gAudioThreadStack[STACKSIZE];
 UNUSED OSThread D_8015CD30;
 UNUSED ALIGNED8 u8 D_8015CD30_Stack[STACKSIZE / 2];
+#if ENABLE_RUMBLE
+ALIGNED8 u8 gRumbleThreadStack[STACKSIZE];
+#endif
 
 ALIGNED8 u8 gGfxSPTaskYieldBuffer[4352];
 ALIGNED8 u32 gGfxSPTaskStack[256];
@@ -348,9 +352,15 @@ void update_controller(s32 index) {
 void read_controllers(void) {
     OSMesg msg;
 
+#if ENABLE_RUMBLE
+    block_until_rumble_pak_free();
+#endif
     osContStartReadData(&gSIEventMesgQueue);
     osRecvMesg(&gSIEventMesgQueue, &msg, OS_MESG_BLOCK);
     osContGetReadData(gControllerPads);
+#if ENABLE_RUMBLE
+    release_rumble_pak_control();
+#endif
     update_controller(0);
     update_controller(1);
     update_controller(2);
@@ -1171,10 +1181,19 @@ void update_gamestate(void) {
 void thread5_game_loop(UNUSED void* arg) {
     osCreateMesgQueue(&gGfxVblankQueue, gGfxMesgBuf, 1);
     osCreateMesgQueue(&gGameVblankQueue, &gGameMesgBuf, 1);
+    
+#if ENABLE_RUMBLE
+    init_rumble_pak_scheduler_queue();
+#endif
+    
     init_controllers();
     if (!wasSoftReset) {
         clear_nmi_buffer();
     }
+
+#if ENABLE_RUMBLE
+    create_thread_6();
+#endif
 
     set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) OS_EVENT_SW2);
     // These variables track stats such as player wins.
@@ -1192,6 +1211,10 @@ void thread5_game_loop(UNUSED void* arg) {
     func_800C5CB8();
 
     while (true) {
+#if ENABLE_RUMBLE
+        //block_until_rumble_pak_free();
+#endif
+
         func_800CB2C4();
 
         // Update the gamestate if it has changed (racing, menus, credits, etc.).

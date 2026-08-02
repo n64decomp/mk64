@@ -8,4 +8,5 @@
  *
  */
 #define ENABLE_CUSTOM_COURSE_ENGINE 0
+#define ENABLE_RUMBLE 0
 #endif

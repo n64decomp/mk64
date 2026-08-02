@@ -3,6 +3,8 @@
 
 OUTPUT_ARCH (mips)
 
+#include "config.h"
+
 #define LINKER_MAIN        0x80000400
 
 #define LINKER_ENDING      0x80280000
@@ -55,6 +57,9 @@ SECTIONS
       BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.text*);
       BUILD_DIR/src/camera.o(.text*);
       BUILD_DIR/src/render_player.o(.text*);
+      #if ENABLE_RUMBLE
+         BUILD_DIR/src/rumble_init.o(.text*);
+      #endif
       BUILD_DIR/src/kart_dma.o(.text*);
       BUILD_DIR/src/player_controller.o(.text*);
       BUILD_DIR/src/spawn_players.o(.text*);
@@ -129,6 +134,9 @@ SECTIONS
       BUILD_DIR/src/os/guOrthoF.o(.text*);
       BUILD_DIR/src/os/osSetTime.o(.text*);
       BUILD_DIR/src/os/osEepromProbe.o(.text*);
+      #if ENABLE_RUMBLE
+        BUILD_DIR/src/os/motor.o(.text);
+      #endif
       BUILD_DIR/src/os/osPfsIsPlug.o(.text*);
       BUILD_DIR/src/os/osPfsInit.o(.text*);
       BUILD_DIR/src/os/osPfsNumFiles.o(.text*);
@@ -222,6 +230,9 @@ SECTIONS
       BUILD_DIR/src/data/path_spawn_metadata.o(.data*);
       BUILD_DIR/src/camera.o(.data*);
       BUILD_DIR/src/render_player.o(.data*);
+      #if ENABLE_RUMBLE
+         BUILD_DIR/src/rumble_init.o(.data*);
+      #endif
       BUILD_DIR/src/kart_dma.o(.data*);
       BUILD_DIR/src/data/kart_attributes.o(.data*);
       BUILD_DIR/src/player_controller.o(.data*);
@@ -256,6 +267,9 @@ SECTIONS
       BUILD_DIR/src/os/osViTable.o(.data*);
       BUILD_DIR/src/os/osCreatePiManager.o(.data*);
       BUILD_DIR/src/os/osContInit.o(.data*);
+      #if ENABLE_RUMBLE
+         BUILD_DIR/src/os/motor.o(.data*);
+      #endif
       BUILD_DIR/src/os/osAiSetNextBuffer.o(.data*);
       BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.data*);
       BUILD_DIR/src/os/__osDequeueThread.o(.data*);
@@ -272,6 +286,9 @@ SECTIONS
       BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.rodata*);
       BUILD_DIR/src/camera.o(.rodata*);
       BUILD_DIR/src/render_player.o(.rodata*);
+      #if ENABLE_RUMBLE
+         BUILD_DIR/src/rumble_init.o(.rodata*);
+      #endif
       BUILD_DIR/src/player_controller.o(.rodata*);
       BUILD_DIR/src/spawn_players.o(.rodata*);
       BUILD_DIR/src/code_8003DC40.o(.rodata*);
@@ -331,6 +348,9 @@ SECTIONS
       BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.bss*);
       BUILD_DIR/src/camera.o(.bss*);
       BUILD_DIR/src/render_player.o(.bss*);
+      #if ENABLE_RUMBLE
+         BUILD_DIR/src/rumble_init.o(.bss*);
+      #endif
       BUILD_DIR/src/spawn_players.o(.bss*);
       BUILD_DIR/src/code_80057C60.o(.bss*);
       BUILD_DIR/src/code_80057C60_var.o(.bss*);
@@ -355,6 +375,9 @@ SECTIONS
       BUILD_DIR/src/os/osSpTaskLoadGo.o(.bss*);
       BUILD_DIR/src/os/osContStartReadData.o(.bss*);
       BUILD_DIR/src/os/osContInit.o(.bss*);
+      #if ENABLE_RUMBLE
+         BUILD_DIR/src/os/motor.o(.bss*);
+      #endif
       BUILD_DIR/src/os/osPfsIsPlug.o(.bss*);
       BUILD_DIR/src/os/guRotateF.o(.bss*);
       BUILD_DIR/src/os/__osLeoInterrupt.o(.bss*);
