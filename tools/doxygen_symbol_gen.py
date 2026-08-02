@@ -1,4 +1,5 @@
 # usr/bin/python3
+import os
 import sys
 
 def process_map_file(map_file_path):
@@ -52,10 +53,17 @@ def process_map_file(map_file_path):
 
 
 if __name__ == "__main__":
-    # Every version's ROM rule runs this, so take the map of the version being
-    # built. Hardcoding the us one means a fresh clone that builds any other
-    # version first fails here, after its ROM is already correct.
-    map_file_path = sys.argv[1] if len(sys.argv) > 1 else "build/us/mk64.us.map"
+    # Every version's ROM rule runs this, so the caller passes the map of the
+    # version being built. Hardcoding the us one meant a fresh clone that built
+    # any other version first failed here, after its ROM was already correct.
+    if len(sys.argv) != 2:
+        sys.exit(f"usage: {sys.argv[0]} build/<version>/mk64.<version>.map")
+
+    map_file_path = sys.argv[1]
+
+    if not os.path.isfile(map_file_path):
+        sys.exit(f"{sys.argv[0]}: no map file at {map_file_path}, build that version first")
+
     doxygen_formatted_content = process_map_file(map_file_path)
 
     # Specify the output file path
