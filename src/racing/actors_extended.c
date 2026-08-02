@@ -428,10 +428,10 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 if (parent->shellIndices[0] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[0]];
                     /**
-                     * This condition is broken and always evaluates to true.
-                     * If you fix the condition, when you fire a shell it continues being held by the player
-                     * until the shell is in-front of the player. This allows the shell to always shoot in a foward direction instead of straying sideways.
-                     * when fired at the wrong time
+                     * Forces shell 1 to only fire inside a cone of -5 to +5 degrees in-front of the player.
+                     * However, always evaluates to true, so the feature does not appear during gameplay.
+                     * If enabled, pressing Z would not immediately release the shell. Instead,
+                     * it waits until it's inside the cone. (See shell 2 and 3 farther down for same issue)
                      */
                     if ((shell->rotAngle < DEGREES(5)) || (shell->rotAngle > -DEGREES(5))) {
                         someVelocity[0] = 0;
@@ -459,7 +459,10 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 }
                 if (parent->shellIndices[1] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[1]];
-                    // Unclear why it is 14.95 degrees instead of 15. Perhaps just a typo when entering the value as a s16.
+                    /**
+                     * Forces shell 2 to fire inside a cone of 5 to 14.95 degrees (always evaluates to true, thus the feature is skipped)
+                     * Unclear why it is 14.95 degrees instead of 15. Perhaps just a typo when entering the value as a s16.
+                     */
                     if ((shell->rotAngle < DEGREES(14.95)) || (shell->rotAngle > DEGREES(5))) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
@@ -486,6 +489,12 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 }
                 if (parent->shellIndices[2] > 0.0f) {
                     shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[2]];
+                    /**
+                     * Forces shell 3 to fire inside a cone of -5 to -10 degrees.
+                     * However, after testing, 10 should probably be replaced with 14.95 because
+                     * the shell does multiple loops before it fires.
+                     * Always evaluates to true, thus this feature is skipped.
+                     */
                     if ((shell->rotAngle < -DEGREES(5)) || (shell->rotAngle > -DEGREES(10))) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
