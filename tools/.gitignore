@@ -1,3 +1,5 @@
+/aifc_decode
+/aiff_extract_codebook
 /iplfontutil
 /mio0
 /n64cksum
@@ -6,5 +8,7 @@
 /tkmk00
 /extract_data_for_mio
 /torch/cmake-build-release/*
+/tabledesign
+/vadpcm_enc
 __pycache__
 *.pyc

@@ -5,5 +5,5 @@
 
 .section .data
 
-.incbin "bin/audiotables.bin" # Audiotables and data
+.incbin "sound/sound_data.tbl" # Audiotables and data
 
