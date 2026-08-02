@@ -373,6 +373,109 @@ s8 gTournamentShellLimit = 0; // not currently in menu
 s8 gTournamentExtraMode = 0;
 s8 gPracticeMode = 0;
 
+static const COURSES rand_courses[] = {
+    COURSE_MARIO_RACEWAY,     // 0x00
+    COURSE_CHOCO_MOUNTAIN,   // 0x01
+    COURSE_BOWSER_CASTLE,    // 0x02
+    COURSE_BANSHEE_BOARDWALK,// 0x03
+    COURSE_YOSHI_VALLEY,     // 0x04
+    COURSE_FRAPPE_SNOWLAND,  // 0x05
+    COURSE_KOOPA_BEACH,      // 0x06
+    COURSE_ROYAL_RACEWAY,    // 0x07
+    COURSE_LUIGI_RACEWAY,    // 0x08
+    COURSE_MOO_MOO_FARM,     // 0x09
+    COURSE_TOADS_TURNPIKE,   // 0x0A
+    COURSE_KALAMARI_DESERT,  // 0x0B
+    COURSE_SHERBET_LAND,     // 0x0C
+    COURSE_RAINBOW_ROAD,     // 0x0D
+    COURSE_DK_JUNGLE,        // 0x12
+    COURSE_WARIO_STADIUM     // 0x0E  
+};
+
+static COURSES sRandomTrackOrder[16];
+static s32 sRandomTrackOrderInitialized;
+static s8 sRandomTrackOrderMode;
+
+void shuffle_tracks(COURSES *track_order);
+
+static char* getCourseAbbrFromId(COURSES courseId) {
+    switch (courseId) {
+        case COURSE_LUIGI_RACEWAY:
+            return "LR";
+        case COURSE_MOO_MOO_FARM:
+            return "MMF";
+        case COURSE_KOOPA_BEACH:
+            return "KTB";
+        case COURSE_KALAMARI_DESERT:
+            return "KD";
+        case COURSE_DK_JUNGLE:
+            return "DKJP";
+        case COURSE_YOSHI_VALLEY:
+            return "YV";
+        case COURSE_BANSHEE_BOARDWALK:
+            return "BB";
+        case COURSE_RAINBOW_ROAD:
+            return "RRd";
+        case COURSE_WARIO_STADIUM:
+            return "WS";
+        case COURSE_SHERBET_LAND:
+            return "SL";
+        case COURSE_ROYAL_RACEWAY:
+            return "RRy";
+        case COURSE_BOWSER_CASTLE:
+            return "BC";
+        case COURSE_TOADS_TURNPIKE:
+            return "TT";
+        case COURSE_FRAPPE_SNOWLAND:
+            return "FS";
+        case COURSE_CHOCO_MOUNTAIN:
+            return "CM";
+        case COURSE_MARIO_RACEWAY:
+            return "MR";
+        default:
+            return "";
+    }
+}
+
+static void initRandomTrackOrder(void) {
+    int i;
+
+    for (i = 0; i < 16; i++) {
+        sRandomTrackOrder[i] = rand_courses[i];
+    }
+    shuffle_tracks(sRandomTrackOrder);
+    sRandomTrackOrderInitialized = 1;
+    sRandomTrackOrderMode = gTournamentCourseMode;
+}
+
+static s32 getRandomTrackOrderIndex(COURSES courseId) {
+    s32 i;
+
+    for (i = 0; i < 16; i++) {
+        if (sRandomTrackOrder[i] == courseId) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+static COURSES getRandomNextCourseId(void) {
+    s32 currentIndex;
+
+    if (!sRandomTrackOrderInitialized || (sRandomTrackOrderMode != gTournamentCourseMode)) {
+        initRandomTrackOrder();
+    }
+
+    currentIndex = getRandomTrackOrderIndex(gCurrentCourseId);
+    if (currentIndex < 0) {
+        return sRandomTrackOrder[0];
+    }
+
+    return sRandomTrackOrder[(currentIndex + 1) % 16];
+}
+
+
 char* gCupText[] = {
     "none",
     "bronze",
@@ -1095,6 +1198,21 @@ Unk_D_800E70A0 D_800E8600[] = {
 
     { 0x28, 0x28, 0x00, 0x00 }, { 0xb2, 0x28, 0x00, 0x00 }, { 0x28, 0xa0, 0x00, 0x00 }, { 0xb2, 0xa0, 0x00, 0x00 },
 };
+
+void shuffle_tracks(COURSES *track_order) {
+    int i;
+    int j;
+    COURSES temp;
+
+    // Fisher-Yates shuffle on the pool
+    for (i = 16 - 1; i > 0; i--) {
+        j = random_u16() % (i + 1);
+        temp = track_order[i];
+        track_order[i] = track_order[j];
+        track_order[j] = temp;
+
+    }
+}
 
 f64 exponent_by_squaring(f64 base, s32 exponent) {
     s32 positive_exponent;
@@ -5807,7 +5925,7 @@ void render_custom_overlay(void) {
     };
 
     /* per-option label arrays */
-    static const char* tracks_labels[] = {"VA", "kaillera", "kaillera mmf"};
+    static const char* tracks_labels[] = {"VA", "kaillera", "kaillera mmf", "random"};
     static const char* stats_labels[] = {"all yoshi", "default", "all wario"};
     static const char* scaling_labels[] = {"default", "30fps", "60fps"};
     static const char* widescreen_labels[] = {"default", "enabled"};
@@ -5824,7 +5942,7 @@ void render_custom_overlay(void) {
     print_text1_center_mode_1(x, y - 0x28, "WEATHERTON  ABNEY  CLIMATEE  ZSERF  DNTN31", 0, 0.60f, 0.60f);
 
     // version / date (smaller) - left-aligned to start under 'KART'
-    print_text1_left(x + 0x78, y + 0x06, "TE V2026-07-26 RELEASE 1.1b", 0, 0.65f, 0.65f);
+    print_text1_left(x + 0x78, y + 0x06, "TE V2026-08-02 RELEASE 1.2b", 0, 0.65f, 0.65f);
 
     // option name placeholders (second column) and values (third column)
     for (i = 0; i < CUSTOM_MENU_ROWS; i++) {
@@ -6051,6 +6169,9 @@ s16 getNextCourseId(void) {
                 default:
                     break;
             }
+        // randomized track order
+        case 3:
+            return getRandomNextCourseId();
         default:
             break;
     }
@@ -6172,9 +6293,13 @@ char* getNextCourseAbbrString(void) {
                 default:
                     break;
             }
+        case 3:
+            return getCourseAbbrFromId(getRandomNextCourseId());
         default:
             break;
     }
+
+    return "";
 
 }
 
