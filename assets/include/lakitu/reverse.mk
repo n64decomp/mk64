@@ -34,10 +34,11 @@ $(REVERSE_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(REVERSE_FRAMES) $(REVERSE_PALETTE): $(REVERSE_EXPORT_SENTINEL) ;
+$(REVERSE_FRAMES) $(REVERSE_PALETTE): $(REVERSE_EXPORT_SENTINEL)
+	@:
 
-$(REVERSE_EXPORT_SENTINEL): assets/lakitu/reverse.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(REVERSE_EXPORT_SENTINEL): assets/lakitu/reverse.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_lakitu_reverse

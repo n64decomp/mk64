@@ -1,13 +1,13 @@
 {
-"common_tlut_trees_import": {"output_dir": "trees", "rom_offset": "0x132B50", "block_offset": "0x04C68", "width": 8,  "height": 29, "type": "rgba16"},
-"gTLUTTrees":       {"output_dir": "trees", "rom_offset": "0x132B50", "block_offset": "0x04C68", "width": 16, "height": 16, "type": "rgba16"},
-"gTextureTrees1":      {"output_dir": "trees", "rom_offset": "0x6913CC", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees"},
-"gTextureTrees2":      {"output_dir": "trees", "rom_offset": "0x691714", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees"},
-"gTextureTrees3":      {"output_dir": "trees", "rom_offset": "0x691AAC", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees"},
-"gTextureTrees4Left":  {"output_dir": "trees", "rom_offset": "0x691D98", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees"},
-"gTextureTrees4Right": {"output_dir": "trees", "rom_offset": "0x692088", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees"},
-"gTextureTrees5Left":  {"output_dir": "trees", "rom_offset": "0x6923D8", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees"},
-"gTextureTrees5Right": {"output_dir": "trees", "rom_offset": "0x6925E8", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees"},
-"gTextureTrees6":      {"output_dir": "trees", "rom_offset": "0x692888", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees"},
-"gTextureTrees7":      {"output_dir": "trees", "rom_offset": "0x692CC0", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees"}
+"common_tlut_trees_import": {"output_dir": "trees", "rom_offset": "0x132B50", "block_offset": "0x04C68", "width": 8, "height": 29, "type": "rgba16", "jp.v11": {"rom_offset": "0x1323A0"}},
+"gTLUTTrees": {"output_dir": "trees", "rom_offset": "0x132B50", "block_offset": "0x04C68", "width": 16, "height": 16, "type": "rgba16", "jp.v11": {"rom_offset": "0x1323A0"}},
+"gTextureTrees1": {"output_dir": "trees", "rom_offset": "0x6913CC", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees", "jp.v11": {"rom_offset": "0x69C2AC"}},
+"gTextureTrees2": {"output_dir": "trees", "rom_offset": "0x691714", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees", "jp.v11": {"rom_offset": "0x69C5F4"}},
+"gTextureTrees3": {"output_dir": "trees", "rom_offset": "0x691AAC", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees", "jp.v11": {"rom_offset": "0x69C98C"}},
+"gTextureTrees4Left": {"output_dir": "trees", "rom_offset": "0x691D98", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees", "jp.v11": {"rom_offset": "0x69CC78"}},
+"gTextureTrees4Right": {"output_dir": "trees", "rom_offset": "0x692088", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees", "jp.v11": {"rom_offset": "0x69CF68"}},
+"gTextureTrees5Left": {"output_dir": "trees", "rom_offset": "0x6923D8", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees", "jp.v11": {"rom_offset": "0x69D2B8"}},
+"gTextureTrees5Right": {"output_dir": "trees", "rom_offset": "0x6925E8", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees", "jp.v11": {"rom_offset": "0x69D4C8"}},
+"gTextureTrees6": {"output_dir": "trees", "rom_offset": "0x692888", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees", "jp.v11": {"rom_offset": "0x69D768"}},
+"gTextureTrees7": {"output_dir": "trees", "rom_offset": "0x692CC0", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees", "jp.v11": {"rom_offset": "0x69DBA0"}}
 }

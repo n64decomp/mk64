@@ -20,10 +20,11 @@ $(MINIMAP_ICONS_PNG:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(MINIMAP_ICONS_PNG): $(MINIMAP_ICONS_EXPORT_SENTINEL) ;
+$(MINIMAP_ICONS_PNG): $(MINIMAP_ICONS_EXPORT_SENTINEL)
+	@:
 
-$(MINIMAP_ICONS_EXPORT_SENTINEL): $(ASSET_DIR)/minimap_icons.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(MINIMAP_ICONS_EXPORT_SENTINEL): $(ASSET_DIR)/minimap_icons.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_minimap_icons

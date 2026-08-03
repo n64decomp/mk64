@@ -6,6 +6,9 @@
 #include "course_displaylists.inc.h"
 #include "course_textures.linkonly.h"
 
+#ifdef VERSION_JP
+#include "course_displaylists.jp.v11.inc.c"
+#else
 Gfx d_course_luigi_raceway_packed_dl_0[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPTileSync(),
@@ -8113,3 +8116,4 @@ Gfx d_course_luigi_raceway_packed_dl_C730[] = {
     gsSPDisplayList(d_course_luigi_raceway_packed_dl_C668),
     gsSPEndDisplayList(),
 };
+#endif

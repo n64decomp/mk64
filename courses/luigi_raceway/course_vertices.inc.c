@@ -1,6 +1,9 @@
 #include <mk64.h>
 #include <common_structs.h>
 
+#ifdef VERSION_JP
+#include "course_vertices.jp.v11.inc.c"
+#else
 CourseVtx d_course_luigi_raceway_vertex[] = {
     { { 175, 107, -448 }, { 0, 74 }, { MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 4), 0x00 } },
     { { 177, 73, -448 }, { 0, 1024 }, { MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 4), 0x00 } },
@@ -5940,3 +5943,4 @@ CourseVtx d_course_luigi_raceway_vertex[] = {
     { { -394, -108, -49 }, { -3799, -179 }, { MACRO_COLOR_FLAG(0x64, 0x64, 0x64, 0), 0x00 } },
 
 };
+#endif

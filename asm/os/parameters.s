@@ -1,5 +1,12 @@
 
 .ifdef VERSION_EU
+.set NO_PARAM_NOPS, 1
+.endif
+.ifdef VERSION_JP
+.set NO_PARAM_NOPS, 1
+.endif
+
+.ifdef NO_PARAM_NOPS
 .macro gsymbol sym addr
 .global \sym
 .set \sym, \addr

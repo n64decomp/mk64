@@ -58,10 +58,13 @@ def extract_asset(baserom:BufferedReader, asset):
         # This is silly
         asset_block = baserom
         asset_block.seek(rom_offset)
+        # The block IS the caller's baserom here. Closing it would break every
+        # later export_bin, which seeks that same handle.
+        return asset_from_block(asset_block, asset, close_block=False)
 
     return asset_from_block(asset_block, asset)
 
-def asset_from_block(asset_block, asset):
+def asset_from_block(asset_block, asset, close_block=True):
     if asset["type"] in { "ia1" }:
         asset_size = ((asset["width"] * asset["height"]) + 7) // 8
     elif asset["type"] in { "ci4", "ia4", "i4" }:
@@ -85,7 +88,8 @@ def asset_from_block(asset_block, asset):
     # For MIO0 and TKMK this should make no difference
     asset_block.seek(block_offset, os.SEEK_CUR)
     asset_data = asset_block.read(asset_size)
-    asset_block.close()
+    if close_block:
+        asset_block.close()
     asset_file = tempfile.NamedTemporaryFile(mode="wb", prefix="raw_asset_", delete=False)
     file_open.append(asset_file.name)
     asset_file.write(asset_data)
@@ -238,15 +242,42 @@ def export_bin(baserom, asset):
     asset_filename = os.path.join(asset["output_dir"], f'{asset["name"]}.{asset["type"]}')
     os.makedirs(asset["output_dir"], exist_ok=True)
 
+    # An asset is raw here only because the version being built cannot round trip
+    # it through a png. A png of the same name is therefore the other version's
+    # leftover, and the build rules convert whenever one is present, which would
+    # overwrite what this writes. Drop it.
+    stale_png = os.path.join(asset["output_dir"], f'{asset["name"]}.png')
+    if os.path.exists(stale_png):
+        os.remove(stale_png)
+
     with open(asset_filename, "wb") as asset_file:
-        baserom.seek(int(asset["rom_offset"], 16))
-        asset_data = baserom.read(int(asset["size"], 16))
+        if asset.get("compressed"):
+            # The bytes wanted sit inside a MIO0 block, so reading the ROM here
+            # would take the compressed form. Decompress and read from that. A
+            # ci8 image needs this when its palette repeats a colour: the png
+            # round trip remaps every colour to the first index holding it and
+            # rewrites the image, so the indices have to come out whole.
+            block = extract_mio0_block(baserom, asset)
+            block.seek(int(asset.get("block_offset", "0x0"), 16))
+            asset_data = block.read(int(asset["size"], 16))
+        else:
+            baserom.seek(int(asset["rom_offset"], 16))
+            asset_data = baserom.read(int(asset["size"], 16))
         asset_file.write(asset_data)
 
+# Versions that may appear as an override key on an asset. Keep in step with the
+# VERSION option in the Makefile.
+ALL_VERSIONS = ("us", "eu.v10", "eu.v11", "jp.v11")
+
 # TODO: use a proper argument parser
-baserom_name = sys.argv[1]
+argv = sys.argv[1:]
+version = "us"
+if argv[:1] == ["--version"]:
+    version = argv[1]
+    argv = argv[2:]
+baserom_name = argv[0]
 # really, this should be a list of json files, that way we can just do $< in the Makefile
-assest_json_file = sys.argv[2]
+assest_json_file = argv[1]
 
 image_types = { "rgba16", "rgba32", "ci4", "ci8", "i4", "i8", "ia4", "ia8", "ia16", "ia1" }
 # Types that extracted as-is from the ROM. No decompression or converting, just rip the bytes out of the ROM
@@ -258,6 +289,15 @@ try:
         asset_list = json.load(json_file)
 
         for asset_name, asset in asset_list.items():
+            # Most assets only move between versions, so a version carries an
+            # override holding just the keys that differ. Fold it in before
+            # anything else reads the asset, and drop the versions we are not
+            # building so nothing downstream sees them.
+            override = asset.get(version)
+            for other in ALL_VERSIONS:
+                asset.pop(other, None)
+            if override is not None:
+                asset.update(override)
             # Kind of silly, but makes assets easier to work with
             asset["name"] = asset_name
             # All output directories are relative to the directory the json file resides in

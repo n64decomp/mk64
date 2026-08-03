@@ -1241,6 +1241,16 @@ MenuTexture D_020015A4[2] = {
  * @brief MenuTexture of select record ?
  *
  */
+#ifdef VERSION_JP
+/* The JP text graphics are different widths, so these are placed differently. */
+MenuTexture D_020015CC[5] = {
+    { 3, gTextureSelectRecord, 52, 10, 83, 74, 0x359, 0 },
+    { 3, gTextureTextEnd, 32, 10, 194, 74, 0x1f8, 0 },
+    { 3, gTextureTextErase, 20, 10, 100, 204, 0x160, 0 },
+    { 3, gTextureTextQuit, 32, 10, 194, 204, 0x1db, 0 },
+    { 0, NULL, 0, 0, 0, 0, 0, 0 },
+};
+#else
 MenuTexture D_020015CC[5] = {
     { 3, gTextureSelectRecord, 68, 10, 75, 74, 0x378, 0 },
     { 3, gTextureTextEnd, 20, 10, 200, 74, 0x12f, 0 },
@@ -1248,20 +1258,39 @@ MenuTexture D_020015CC[5] = {
     { 3, gTextureTextQuit, 24, 10, 198, 204, 0x149, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
+#endif
 
 /**
  * @brief MenuTexture of select record ?
  *
  */
+#ifdef VERSION_JP
+/* JP text graphics are different widths, so these are placed differently. */
+MenuTexture D_02001630[2] = {
+    { 3, gTextureTableOfContents, 88, 10, 116, 94, 0x33c, 0 },
+    { 0, NULL, 0, 0, 0, 0, 0, 0 },
+};
+#else
 MenuTexture D_02001630[2] = {
     { 3, gTextureTableOfContents, 88, 10, 116, 94, 0x42d, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
+#endif
 
 /**
  * @brief MenuTexture of select record ?
  *
  */
+#ifdef VERSION_JP
+/* JP text graphics are different widths, so these are placed differently. */
+MenuTexture D_02001658[5] = {
+    { 3, gTextureTextHash, 20, 10, 42, 108, 0x120, 0 },
+    { 3, gTextureTextGameData, 60, 10, 130, 108, 0x502, 0 },
+    { 3, gTextureTextPages, 32, 10, 252, 108, 0x144, 0 },
+    { 3, gTextureTextPagesFree, 20, 10, 150, 184, 0x14d, 0 },
+    { 0, NULL, 0, 0, 0, 0, 0, 0 },
+};
+#else
 MenuTexture D_02001658[5] = {
     { 3, gTextureTextHash, 8, 10, 48, 108, 0x07e, 0 },
     { 3, gTextureTextGameData, 56, 10, 132, 108, 0x2c4, 0 },
@@ -1269,6 +1298,7 @@ MenuTexture D_02001658[5] = {
     { 3, gTextureTextPagesFree, 56, 10, 132, 184, 0x2c2, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
+#endif
 
 /**
  * @brief MenuTexture of a small font texture of number 0
@@ -1383,7 +1413,11 @@ MenuTexture D_02001874[2] = {
  *
  */
 MenuTexture D_0200189C[2] = {
+#ifdef VERSION_JP
+    { 3, gTextureN64ControllerPakDataSelect, 180, 32, 70, 29, 0x116a, 0 },
+#else
     { 3, gTextureN64ControllerPakDataSelect, 180, 32, 70, 29, 0x1128, 0 },
+#endif
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1392,7 +1426,11 @@ MenuTexture D_0200189C[2] = {
  *
  */
 MenuTexture D_020018C4[2] = {
+#ifdef VERSION_JP
+    { 3, gTextureEraseDataRecordConfirmation, 180, 32, 70, 29, 0xfe6, 0 },
+#else
     { 3, gTextureEraseDataRecordConfirmation, 180, 32, 70, 29, 0xff4, 0 },
+#endif
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1401,7 +1439,11 @@ MenuTexture D_020018C4[2] = {
  *
  */
 MenuTexture D_020018EC[2] = {
+#ifdef VERSION_JP
+    { 3, gTextureRecordNotErased, 180, 32, 70, 29, 0xbf8, 0 },
+#else
     { 3, gTextureRecordNotErased, 180, 32, 70, 29, 0x8d1, 0 },
+#endif
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1410,7 +1452,11 @@ MenuTexture D_020018EC[2] = {
  *
  */
 MenuTexture D_02001914[2] = {
+#ifdef VERSION_JP
+    { 3, gTexturePlaceN64ControllerPakIntoController1, 180, 32, 70, 29, 0xaa3, 0 },
+#else
     { 3, gTexturePlaceN64ControllerPakIntoController1, 180, 32, 70, 29, 0xc4a, 0 },
+#endif
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1419,7 +1465,11 @@ MenuTexture D_02001914[2] = {
  *
  */
 MenuTexture D_0200193C[2] = {
+#ifdef VERSION_JP
+    { 3, gTexturePleaseReinsertOriginalN64ControllerPak, 180, 32, 70, 29, 0xb7d, 0 },
+#else
     { 3, gTexturePleaseReinsertOriginalN64ControllerPak, 180, 32, 70, 29, 0xcd6, 0 },
+#endif
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1428,7 +1478,11 @@ MenuTexture D_0200193C[2] = {
  *
  */
 MenuTexture D_02001964[2] = {
+#ifdef VERSION_JP
+    { 3, gTextureErasingSelectedRecord, 180, 32, 70, 29, 0xdd3, 0 },
+#else
     { 3, gTextureErasingSelectedRecord, 180, 32, 70, 29, 0xc02, 0 },
+#endif
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 

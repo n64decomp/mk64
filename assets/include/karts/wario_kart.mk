@@ -1497,10 +1497,11 @@ $(WARIO_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(WARIO_KART_FRAME_PNG) $(WARIO_KART_PALETTE_PNG): $(WARIO_EXPORT_SENTINEL) ;
+$(WARIO_KART_FRAME_PNG) $(WARIO_KART_PALETTE_PNG): $(WARIO_EXPORT_SENTINEL)
+	@:
 
-$(WARIO_EXPORT_SENTINEL): $(ASSET_DIR)/karts/wario_kart.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(WARIO_EXPORT_SENTINEL): $(ASSET_DIR)/karts/wario_kart.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_wario_kart

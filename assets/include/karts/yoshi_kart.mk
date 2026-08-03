@@ -1497,10 +1497,11 @@ $(YOSHI_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(YOSHI_KART_FRAME_PNG) $(YOSHI_KART_PALETTE_PNG): $(YOSHI_EXPORT_SENTINEL) ;
+$(YOSHI_KART_FRAME_PNG) $(YOSHI_KART_PALETTE_PNG): $(YOSHI_EXPORT_SENTINEL)
+	@:
 
-$(YOSHI_EXPORT_SENTINEL): $(ASSET_DIR)/karts/yoshi_kart.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(YOSHI_EXPORT_SENTINEL): $(ASSET_DIR)/karts/yoshi_kart.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_yoshi_kart

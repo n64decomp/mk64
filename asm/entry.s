@@ -12,9 +12,18 @@
 
 glabel entry_point
 /* 001000 80000400 3C08800F */  lui   $t0, %hi(_mainSegmentEnd) # $t0, 0x800f
+.ifdef VERSION_JP
+/* JP clears a smaller region */
+  lui   $t1, (0x0009DEF0 >> 16)
+.else
 /* 001004 80000404 3C09000A */  lui   $t1, (0x000A0FC0 >> 16) # lui $t1, 0xa
+.endif
 /* 001008 80000408 25086910 */  addiu $t0, %lo(_mainSegmentEnd) # addiu $t0, $t0, 0x6910
+.ifdef VERSION_JP
+  ori   $t1, (0x0009DEF0 & 0xFFFF)
+.else
 /* 00100C 8000040C 35290FC0 */  ori   $t1, (0x000A0FC0 & 0xFFFF) # ori $t1, $t1, 0xfc0
+.endif
 .L80000410:
 /* 001010 80000410 2129FFF8 */  addi  $t1, $t1, -8
 /* 001014 80000414 AD000000 */  sw    $zero, ($t0)

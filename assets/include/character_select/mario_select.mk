@@ -30,10 +30,11 @@ $(MARIO_SELECT_PNG:%.png=%.bin) : %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(MARIO_SELECT_PNG): $(MARIO_SELECT_EXPORT_SENTINEL) ;
+$(MARIO_SELECT_PNG): $(MARIO_SELECT_EXPORT_SENTINEL)
+	@:
 
-$(MARIO_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/mario_select.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(MARIO_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/mario_select.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_mario_select

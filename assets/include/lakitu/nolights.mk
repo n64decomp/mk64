@@ -26,10 +26,11 @@ $(NOLIGHTS_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(NOLIGHTS_FRAMES) $(NOLIGHTS_PALETTE): $(NOLIGHTS_EXPORT_SENTINEL) ;
+$(NOLIGHTS_FRAMES) $(NOLIGHTS_PALETTE): $(NOLIGHTS_EXPORT_SENTINEL)
+	@:
 
-$(NOLIGHTS_EXPORT_SENTINEL): assets/lakitu/nolights.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(NOLIGHTS_EXPORT_SENTINEL): assets/lakitu/nolights.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_lakitu_nolights

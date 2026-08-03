@@ -42,8 +42,9 @@ GCC ?= 0
 #  us     - builds the 1997 North American version
 #  eu.v10 - builds the 1997 1.0 PAL version
 #  eu.v11 - builds the 1997 1.1 PAL version
+#  jp.v11 - builds revision 1.1 of the original December 1996 Japanese release
 VERSION ?= us
-$(eval $(call validate-option,VERSION,us eu.v10 eu.v11))
+$(eval $(call validate-option,VERSION,us eu.v10 eu.v11 jp.v11))
 
 ifeq      ($(VERSION),us)
   DEFINES += VERSION_US=1
@@ -53,6 +54,9 @@ else ifeq ($(VERSION),eu.v10)
   GRUCODE   ?= f3dex_old
 else ifeq ($(VERSION),eu.v11)
   DEFINES += VERSION_EU=1 VERSION_EU_V11=1
+  GRUCODE   ?= f3dex_old
+else ifeq ($(VERSION),jp.v11)
+  DEFINES += VERSION_JP=1 VERSION_JP_V11=1
   GRUCODE   ?= f3dex_old
 endif
 
@@ -198,7 +202,11 @@ endif
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
    # Make tools if out of date
-  DUMMY != make -C $(TOOLS_DIR)
+  # Not bare make: the tools makefile needs 3.82+, and macOS still ships 3.81 as
+  # `make`, which falls back to built-in rules and links the tools from only
+  # their first source file. This makefile already needs 4.0+ for !=, so
+  # $(MAKE) is always new enough.
+  DUMMY != $(MAKE) -C $(TOOLS_DIR)
   ifeq ($(DUMMY),FAIL)
     $(error Failed to build tools)
   endif
@@ -232,8 +240,25 @@ DATA_DIR       := data
 INCLUDE_DIRS   := include
 
 # Directories containing source files
-SRC_ASSETS_DIR := assets/code/ceremony_data assets/code/startup_logo assets/code/data_800E45C0 assets/code/data_segment2 assets/code/data_800E8700 assets/code/common_data
-SRC_DIRS       := src src/data src/buffers src/racing src/ending src/audio src/debug src/os src/os/math courses assets/code/ceremony_data assets/code/startup_logo $(SRC_ASSETS_DIR)
+# Torch generates C into this tree, and its contents differ per version, so keep
+# each version's output apart instead of overwriting a shared directory. EU has
+# no entry in config.yml and is built on top of the US assets, so it reads the
+# US output rather than one of its own.
+TORCH_VERSION := $(VERSION)
+ifneq ($(filter $(VERSION),eu.v10 eu.v11),)
+  TORCH_VERSION := us
+endif
+ASSET_CODE_DIR := assets/code/$(TORCH_VERSION)
+
+# The group asset maps carry us and jp.v11 entries only: none of their 12,521
+# assets has an eu offset, because EU art is US-identical and merely relocated.
+# So EU extracts the US assets out of the US cart, exactly as TORCH_VERSION above
+# builds EU on the US Torch output, and for the same reason. Without this, EU
+# reads the EU cart at US offsets and gets garbage.
+ASSET_VERSION := $(TORCH_VERSION)
+ASSET_BASEROM := baserom.$(ASSET_VERSION).z64
+SRC_ASSETS_DIR := $(ASSET_CODE_DIR)/ceremony_data $(ASSET_CODE_DIR)/startup_logo $(ASSET_CODE_DIR)/data_800E45C0 $(ASSET_CODE_DIR)/data_segment2 $(ASSET_CODE_DIR)/data_800E8700 $(ASSET_CODE_DIR)/common_data
+SRC_DIRS       := src src/data src/buffers src/racing src/ending src/audio src/debug src/os src/os/math courses $(ASSET_CODE_DIR)/ceremony_data $(ASSET_CODE_DIR)/startup_logo $(SRC_ASSETS_DIR)
 ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 
 
@@ -334,7 +359,7 @@ ifeq ($(TARGET_N64),1)
   CC_CFLAGS := -fno-builtin
 endif
 
-INCLUDE_DIRS := include $(BUILD_DIR) $(BUILD_DIR)/include src src/racing src/ending .
+INCLUDE_DIRS := include $(BUILD_DIR) $(BUILD_DIR)/include src src/racing src/ending . $(ASSET_CODE_DIR)
 ifeq ($(TARGET_N64),1)
   INCLUDE_DIRS += include/libc
 endif
@@ -391,7 +416,7 @@ N64GRAPHICS           := $(TOOLS_DIR)/n64graphics
 DLPACKER              := $(TOOLS_DIR)/displaylist_packer
 BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
-ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
+ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py --version $(ASSET_VERSION)
 LINKONLY_GENERATOR    := $(PYTHON) $(TOOLS_DIR)/linkonly_generator.py
 TORCH                 := $(TOOLS_DIR)/torch/cmake-build-release/torch
 EMULATOR               = mupen64plus
@@ -450,12 +475,19 @@ endif
 
 assets:
 	@echo "Extracting torch assets..."
-	$(V)$(TORCH) code $(BASEROM)
-	$(V)$(TORCH) header $(BASEROM)
-	$(V)$(TORCH) modding export $(BASEROM)
+	# torch.hash.yml is not version aware, so a version switch would otherwise
+	# skip regeneration and leave this version's output missing. Torch takes
+	# well under a second, so there is nothing to save by keeping the cache.
+	$(V)$(RM) -f torch.hash.yml
+	# Not $(BASEROM): EU has no config.yml entry and builds on the us Torch
+	# output, exactly as ASSET_CODE_DIR and ASSET_VERSION already arrange. Handed
+	# the EU cart, Torch matches no sha1 and silently writes nothing.
+	$(V)$(TORCH) code $(ASSET_BASEROM)
+	$(V)$(TORCH) header $(ASSET_BASEROM)
+	$(V)$(TORCH) modding export $(ASSET_BASEROM)
 
 doc:
-	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
+	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py $(BUILD_DIR)/$(TARGET).map
 	doxygen
 	@$(PRINT) "$(GREEN)Documentation generated in docs/html$(NO_COL)\n"
 	@$(PRINT) "$(GREEN)Results can be viewed by opening docs/html/index.html in a web browser$(NO_COL)\n"
@@ -498,6 +530,28 @@ $(BUILD_DIR)/%: %.png
 
 $(BUILD_DIR)/textures/%.mio0: $(BUILD_DIR)/textures/%
 	$(V)$(MIO0TOOL) -c $< $@
+
+# Assets extract to one shared path whatever the version is, and 194 of them hold
+# genuinely different bytes in jp.v11 rather than merely moving. The per-version
+# .export sentinel is not enough on its own: switching version leaves the other
+# version's images on disk, newer than their .json, so make sees them as current
+# and never builds the sentinel that would re-extract them. Depend on a stamp that
+# changes with VERSION, so the images themselves go out of date on a switch.
+ASSET_VERSION_STAMP := $(ASSET_DIR)/.version
+DUMMY_ASSET_VERSION != [ "$$(cat $(ASSET_VERSION_STAMP) 2>/dev/null)" = "$(ASSET_VERSION)" ] || \
+                       { mkdir -p $(dir $(ASSET_VERSION_STAMP)) && echo "$(ASSET_VERSION)" > $(ASSET_VERSION_STAMP); }
+
+# JP shows three forms of each course name where US shows one, and Torch writes a
+# single names table per config entry. See tools/generate_jp_course_names.py.
+JP_COURSE_NAMES := $(foreach n,1 2 3,$(ASSET_DIR)/course_metadata/gCourseNames.jp$(n).inc.c)
+
+$(JP_COURSE_NAMES): $(TOOLS_DIR)/jp_course_names.json $(TOOLS_DIR)/generate_jp_course_names.py
+	$(call print,Generating:,$<,$(ASSET_DIR)/course_metadata)
+	$(V)$(PYTHON) $(TOOLS_DIR)/generate_jp_course_names.py $(ASSET_DIR)/course_metadata
+
+ifeq ($(VERSION),jp.v11)
+  $(BUILD_DIR)/src/menu_items.jp.o: $(JP_COURSE_NAMES)
+endif
 
 ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name "*.mk")
 
@@ -547,7 +601,7 @@ $(TEXTURE_FILES_TLUT):
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(TEXTURE_FILES_TLUT))), ,$(TEXTURE_FILES_TLUT)))) -p $(BUILD_DIR)/$@.tlut.inc.c
 
 # common textures
-$(BUILD_DIR)/assets/code/common_data/common_data.o: assets/code/common_data/common_data.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
+$(BUILD_DIR)/$(ASSET_CODE_DIR)/common_data/common_data.o: $(ASSET_CODE_DIR)/common_data/common_data.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
 	@$(PRINT) "$(GREEN)Compiling Common Textures:  $(BLUE)$@ $(NO_COL)\n"
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
@@ -560,8 +614,18 @@ $(BUILD_DIR)/assets/code/common_data/common_data.o: assets/code/common_data/comm
 #==============================================================================#
 
 
-%/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.c
-	$(V)$(LINKONLY_GENERATOR) $(lastword $(subst /, ,$*))
+# These are generated to one shared path but their contents are version-specific,
+# because course_offsets.c may guard its texture table with #ifdef VERSION_JP and
+# the texture ORDER there decides the segment 5 layout. course_offsets.c does not
+# change when the built version does, so without a stamp make would keep the
+# previous version's layout and link the display lists against the wrong
+# addresses. Same failure the asset tree has; see .assets-local.txt.
+LINKONLY_STAMP := courses/.linkonly-version
+DUMMY_LINKONLY != [ "$$(cat $(LINKONLY_STAMP) 2>/dev/null)" = "$(VERSION)" ] || \
+                  { mkdir -p $(dir $(LINKONLY_STAMP)) && echo "$(VERSION)" > $(LINKONLY_STAMP); }
+
+%/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.c $(LINKONLY_STAMP)
+	$(V)$(LINKONLY_GENERATOR) $(lastword $(subst /, ,$*)) $(VERSION)
 
 # Its unclear why this is necessary. Everything I undesrtand about `make` says that just
 # `$(BUILD_DIR)/%/course_displaylists.inc.o: %/course_textures.linkonly.h`
@@ -636,9 +700,12 @@ $(COURSE_DISPLAYLIST_OFILES): $(BUILD_DIR)/%/course_data.o: %/course_textures.li
 #==============================================================================#
 # Source Code Generation                                                       #
 #==============================================================================#
+# Not iconv: macOS converts a backslash that follows Japanese text into the
+# fullwidth reverse solidus (0xA1C0) instead of leaving it as 0x5C, which
+# lengthens the string literals here and shifts the whole ROM.
 $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
-	$(V)iconv -t EUC-JP -f UTF-8 $< > $@
+	$(V)$(PYTHON) -c "import sys; open(sys.argv[2],'wb').write(open(sys.argv[1],encoding='utf-8').read().encode('euc_jp'))" $< $@
 
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
@@ -695,7 +762,7 @@ endif
 # Compile Trophy and Podium Models                                             #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.elf
+LDFLAGS += -R $(BUILD_DIR)/$(ASSET_CODE_DIR)/ceremony_data/ceremony_data.elf
 
 %/ceremony_data.elf: %/ceremony_data.o
 	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $@.map -o $@ $< --no-check-sections
@@ -715,7 +782,7 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.elf
 # Compile Startup Logo                                                         #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/assets/code/startup_logo/startup_logo.elf
+LDFLAGS += -R $(BUILD_DIR)/$(ASSET_CODE_DIR)/startup_logo/startup_logo.elf
 
 %/startup_logo.elf: %/startup_logo.o
 	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -o $@ $< --no-check-sections
@@ -734,7 +801,7 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/startup_logo/startup_logo.elf
 # Compile Common Textures                                                      #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/assets/code/common_data/common_data.elf
+LDFLAGS += -R $(BUILD_DIR)/$(ASSET_CODE_DIR)/common_data/common_data.elf
 
 %/common_data.elf: %/common_data.o
 	$(V)$(LD) -t -e 0 -Ttext=0D000000 -Map $@.map -o $@ $< --no-check-sections
@@ -758,10 +825,10 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/common_data/common_data.elf
 # Run linker script through the C preprocessor
 $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(call print,Preprocessing linker script:,$<,$@)
-	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
+	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -DASSET_CODE_DIR=$(ASSET_CODE_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/assets/code/startup_logo/startup_logo.mio0.o $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.mio0.o $(BUILD_DIR)/assets/code/common_data/common_data.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/$(ASSET_CODE_DIR)/startup_logo/startup_logo.mio0.o $(BUILD_DIR)/$(ASSET_CODE_DIR)/ceremony_data/ceremony_data.mio0.o $(BUILD_DIR)/$(ASSET_CODE_DIR)/common_data/common_data.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 
@@ -770,7 +837,7 @@ $(ROM): $(ELF)
 	$(call print,Building ROM:,$<,$@)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $(@:.z64=.bin) -O binary
 	$(V)$(N64CKSUM) $(@:.z64=.bin) $@
-	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
+	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py $(BUILD_DIR)/$(TARGET).map
 
 $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
 	$(V)xxd $< > $@
@@ -782,6 +849,10 @@ $(BUILD_DIR)/$(TARGET).objdump: $(ELF)
 .PHONY: all clean distclean distclean_assets default diff test load assets
 # with no prerequisites, .SECONDARY causes no intermediate target to be removed
 .SECONDARY:
+
+# Assets come out of the baserom, so a recipe that fails partway must not delete
+# one: make's usual cleanup would leave a tree that only re-extraction can repair.
+.PRECIOUS: %.png %.bin %.mio0 %.inc.c
 
 # Remove built-in rules, to improve performance
 MAKEFLAGS += --no-builtin-rules

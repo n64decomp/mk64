@@ -48,10 +48,11 @@ $(ITEM_WINDOW_PALETTES:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(ITEM_WINDOW_PNG) $(ITEM_WINDOW_PALETTES): $(ITEM_WINDOW_EXPORT_SENTINEL) ;
+$(ITEM_WINDOW_PNG) $(ITEM_WINDOW_PALETTES): $(ITEM_WINDOW_EXPORT_SENTINEL)
+	@:
 
-$(ITEM_WINDOW_EXPORT_SENTINEL): $(ASSET_DIR)/item_window.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(ITEM_WINDOW_EXPORT_SENTINEL): $(ASSET_DIR)/item_window.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_item_window

@@ -1,0 +1,68 @@
+# This file is only used for compilation
+# Because u16 output is required.
+# The png output in assets/courses/ is from the identical .json extraction file
+# JP offsets are NOT the US ones: JP moves the path arrays to the end of the
+# block, so everything after them sits 0x3A30 lower.
+:config:
+  segments:
+    - [0x06, 0x870CF0]
+  header:
+    code:
+    - '#include <macros.h>'
+    - '#include <defines.h>'
+gTLUTRainbowRoadNeonPeach:
+  symbol: gTLUTRainbowRoadNeonPeach
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x037D0
+  format: rgba16
+gTLUTRainbowRoadNeonLuigi:
+  symbol: gTLUTRainbowRoadNeonLuigi
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x039D0
+  format: rgba16
+gTLUTRainbowRoadNeonDonkeyKong:
+  symbol: gTLUTRainbowRoadNeonDonkeyKong
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x03BD0
+  format: rgba16
+gTLUTRainbowRoadNeonYoshi:
+  symbol: gTLUTRainbowRoadNeonYoshi
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x03DD0
+  format: rgba16
+gTLUTRainbowRoadNeonBowser:
+  symbol: gTLUTRainbowRoadNeonBowser
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x03FD0
+  format: rgba16
+gTLUTRainbowRoadNeonWario:
+  symbol: gTLUTRainbowRoadNeonWario
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x041D0
+  format: rgba16
+gTLUTRainbowRoadNeonToad:
+  symbol: gTLUTRainbowRoadNeonToad
+  type: texture
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x043D0
+  format: rgba16

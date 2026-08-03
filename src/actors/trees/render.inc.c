@@ -173,7 +173,14 @@ void func_80299864(Camera* camera, Mat4 arg1, struct Actor* arg2) {
         // Based on the TLUT being loaded above, this ought to be be another
         // tree related DL, presumably one found in a course other than Moo Moo farm
         //                                 0x0600FC70
+#ifdef VERSION_JP
+        /* Segment 6 is per-course, so in US this address is BOTH symbols and the
+           choice was arbitrary. JP's luigi offsets moved, and the cart follows
+           the luigi symbol - so that is the one the original source named. */
+        gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FC70);
+#else
         gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_mole_tlut);
+#endif
     }
 }
 

@@ -117,8 +117,10 @@ void func_802A38B4(void) {
     init_rdp();
     select_framebuffer();
 
+#ifndef VERSION_JP
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
+#endif
 
     if (gQuitToMenuTransitionCounter != 0) {
         gQuitToMenuTransitionCounter--;
@@ -1500,21 +1502,29 @@ void func_802A7940(void) {
     } else if (temp_v0 > 2) {
         temp_v0 = 0;
     }
+    // JP moves the segment-5 framebuffer staging area 0x9000 up; the jumbo
+    // television in render_luigi_raceway uses the same base.
+#ifdef VERSION_JP
+#define SPLITSCREEN_STAGING 0x18800
+#else
+#define SPLITSCREEN_STAGING 0xF800
+#endif
     copy_framebuffer(D_800DC5DC, D_800DC5E0, 0x40, 0x20, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + SPLITSCREEN_STAGING));
     copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0, 0x40, 0x20,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x10800));
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + SPLITSCREEN_STAGING + 0x1000));
     copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x20, 0x40, 0x20,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x11800));
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + SPLITSCREEN_STAGING + 0x2000));
     copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x20, 0x40, 0x20,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x12800));
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + SPLITSCREEN_STAGING + 0x3000));
     copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x40, 0x40, 0x20,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x13800));
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + SPLITSCREEN_STAGING + 0x4000));
     copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x40, 0x40, 0x20,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x14800));
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + SPLITSCREEN_STAGING + 0x5000));
+#undef SPLITSCREEN_STAGING
 }

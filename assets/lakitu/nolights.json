@@ -1,11 +1,11 @@
 {
-"common_tlut_lakitu_no_lights":     {"output_dir": "nolights", "rom_offset": "0x132B50", "block_offset": "0x24ED8", "width": 16, "height": 16, "type": "rgba16"},
-"gTextureLakituNoLights1": {"output_dir": "nolights", "rom_offset": "0x6A0AC0", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights"},
-"gTextureLakituNoLights2": {"output_dir": "nolights", "rom_offset": "0x6A1A80", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights"},
-"gTextureLakituNoLights3": {"output_dir": "nolights", "rom_offset": "0x6A2A40", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights"},
-"gTextureLakituNoLights4": {"output_dir": "nolights", "rom_offset": "0x6A3A00", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights"},
-"gTextureLakituNoLights5": {"output_dir": "nolights", "rom_offset": "0x6A49C0", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights"},
-"gTextureLakituNoLights6": {"output_dir": "nolights", "rom_offset": "0x6A5980", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights"},
-"gTextureLakituNoLights7": {"output_dir": "nolights", "rom_offset": "0x6A6940", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights"},
-"gTextureLakituNoLights8": {"output_dir": "nolights", "rom_offset": "0x6A7900", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights"}
+"common_tlut_lakitu_no_lights": {"output_dir": "nolights", "rom_offset": "0x132B50", "block_offset": "0x24ED8", "width": 16, "height": 16, "type": "rgba16", "jp.v11": {"rom_offset": "0x1323A0", "block_offset": "0x24498"}},
+"gTextureLakituNoLights1": {"output_dir": "nolights", "rom_offset": "0x6A0AC0", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights", "jp.v11": {"rom_offset": "0x6AB9A0"}},
+"gTextureLakituNoLights2": {"output_dir": "nolights", "rom_offset": "0x6A1A80", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights", "jp.v11": {"rom_offset": "0x6AC960"}},
+"gTextureLakituNoLights3": {"output_dir": "nolights", "rom_offset": "0x6A2A40", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights", "jp.v11": {"rom_offset": "0x6AD920"}},
+"gTextureLakituNoLights4": {"output_dir": "nolights", "rom_offset": "0x6A3A00", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights", "jp.v11": {"rom_offset": "0x6AE8E0"}},
+"gTextureLakituNoLights5": {"output_dir": "nolights", "rom_offset": "0x6A49C0", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights", "jp.v11": {"rom_offset": "0x6AF8A0"}},
+"gTextureLakituNoLights6": {"output_dir": "nolights", "rom_offset": "0x6A5980", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights", "jp.v11": {"rom_offset": "0x6B0860"}},
+"gTextureLakituNoLights7": {"output_dir": "nolights", "rom_offset": "0x6A6940", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights", "jp.v11": {"rom_offset": "0x6B1820"}},
+"gTextureLakituNoLights8": {"output_dir": "nolights", "rom_offset": "0x6A7900", "width": 56, "height": 72, "type": "ci8", "tlut": "common_tlut_lakitu_no_lights", "jp.v11": {"rom_offset": "0x6B27E0"}}
 }

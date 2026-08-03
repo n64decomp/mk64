@@ -312,6 +312,26 @@ texture_map = {
 
 # Usage: linkonly_generator.py <course_name_here>
 course_name = sys.argv[1]
+# Optional second argument: the build version. course_offsets.c may use
+# #ifdef VERSION_JP, and the texture ORDER in that table decides the segment 5
+# layout, so the generator has to resolve the conditional the same way the
+# compiler will. Only VERSION_JP is understood; everything else takes the #else.
+version = sys.argv[2] if len(sys.argv) > 2 else ""
+
+def resolve_ifdefs(text, jp):
+    out, keep = [], [True]
+    for line in text.split("\n"):
+        st = line.strip()
+        if st.startswith("#ifdef VERSION_JP"):
+            keep.append(jp); continue
+        if st.startswith("#ifndef VERSION_JP"):
+            keep.append(not jp); continue
+        if st.startswith("#else") and len(keep) > 1:
+            keep[-1] = not keep[-1]; continue
+        if st.startswith("#endif") and len(keep) > 1:
+            keep.pop(); continue
+        if all(keep): out.append(line)
+    return "\n".join(out)
 
 # This depends on the texture lists in each courses/<course_name_here>/course_offsets.c
 # look like: `{gTexture6447C4, 0x0106, 0x0800, 0x0},`
@@ -328,7 +348,7 @@ with open(f"courses/{course_name}/course_offsets.c", "r") as offsets:
 
     c_string += f"#include \"courses/{course_name}/course_textures.linkonly.h\""
 
-    textures = texture_regex.findall(offsets.read())
+    textures = texture_regex.findall(resolve_ifdefs(offsets.read(), version == "jp.v11"))
 
     # Something wrong has occurred
     if not textures:

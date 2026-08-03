@@ -39,6 +39,15 @@ D_03008800 = 0x03008800;
 D_05FF8DB8 = 0x05FF8DB8;
 
 D_0B002A00 = 0x0B002A00;
+/* JP's copy of the same segment-0B texture sits 0x100 earlier; see
+   sStaticNoiseTexture in menu_items.c. */
+D_0B002900 = 0x0B002900;
+
+/* JP-only. gCreditsText holds both credit sets in one table: the english names
+   in the first 63 entries, the japanese ones in the second 63. Mirror mode
+   shows the japanese half, which is this symbol - the same table entered at its
+   midpoint, not a second table. */
+gCreditsTextExtra = gCreditsText + 0xFC;
 
 D_A5000508 = 0xA5000508;
 D_A5000510 = 0xA5000510;

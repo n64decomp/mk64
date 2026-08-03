@@ -23,5 +23,9 @@ typedef struct {
 
 extern CreditsRenderInfo gCreditsTextRenderInfo[]; // gCreditsTextRenderInfo
 extern char* gCreditsText[];
+#ifdef VERSION_JP
+// Extra (mirror) mode shows an alternate credits text table in JP
+extern char* gCreditsTextExtra[];
+#endif
 
 #endif

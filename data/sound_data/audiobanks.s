@@ -10,5 +10,9 @@
 .ifdef VERSION_EU_V10
     .incbin "bin/audiobanks.eu.bin"
 .else
+.ifdef VERSION_JP
+    .incbin "bin/audiobanks.jp.v11.bin"
+.else
     .incbin "bin/audiobanks.us.bin"
+.endif
 .endif

@@ -36,10 +36,11 @@ $(TREES_PALETTE:%.png=%.inc.c) $(TREES_PALETTE_IMPORT:%.png=%.inc.c): %.inc.c : 
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(TREES_PNG) $(TREES_PALETTE) $(TREES_PALETTE_IMPORT): $(TREES_EXPORT_SENTINEL) ;
+$(TREES_PNG) $(TREES_PALETTE) $(TREES_PALETTE_IMPORT): $(TREES_EXPORT_SENTINEL)
+	@:
 
-$(TREES_EXPORT_SENTINEL): $(ASSET_DIR)/trees.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(TREES_EXPORT_SENTINEL): $(ASSET_DIR)/trees.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_trees

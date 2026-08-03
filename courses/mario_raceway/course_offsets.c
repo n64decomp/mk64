@@ -33,6 +33,41 @@ extern u8 gTextureSignShellShot1[];
 extern u8 gTextureSignKoopaAir0[];
 extern u8 gTextureSignKoopaAir1[];
 
+#ifdef VERSION_JP  /* JP ships different sign textures, so their compressed sizes differ */
+const course_texture mario_raceway_textures[] = {
+    { gTextureCheckerboardYellowPink, 0x0149, 0x0800, 0x0 },
+    { gTexture64619C, 0x0124, 0x0800, 0x0 },
+    { gTextureGrass1, 0x0125, 0x0800, 0x0 },
+    { gTexture64BB60, 0x0169, 0x0800, 0x0 },
+    { gTextureGrass7, 0x05DE, 0x0800, 0x0 },
+    { gTextureGrass5, 0x023F, 0x0800, 0x0 },
+    { gTextureFlagRed, 0x019E, 0x0800, 0x0 },
+    { gTexture663F90, 0x0122, 0x0800, 0x0 },
+    { gTexture6642A4, 0x0162, 0x0800, 0x0 },
+    { gTexture6640B4, 0x01EF, 0x0800, 0x0 },
+    { gTextureGrass10, 0x01F8, 0x0800, 0x0 },
+    { gTexture6684F8, 0x010D, 0x0800, 0x0 },
+    { gTextureSignLuigis0, 0x026A, 0x1000, 0x0 },
+    { gTextureSignLuigis1, 0x02CC, 0x1000, 0x0 },
+    { gTextureSignMarioStar0, 0x0349, 0x1000, 0x0 },
+    { gTextureSignMarioStar1, 0x02D7, 0x1000, 0x0 },
+    { gTexture66C8F4, 0x01A1, 0x0800, 0x0 },
+    { gTextureSignNintendoRed0, 0x02E1, 0x1000, 0x0 },
+    { gTextureSignNintendoRed1, 0x034C, 0x1000, 0x0 },
+    { gTexture670AC8, 0x0FBF, 0x1000, 0x0 },
+    { gTexture674354, 0x046F, 0x0800, 0x0 },
+    { gTextureRoad0, 0x0300, 0x1000, 0x0 },
+    { gTextureRoadFinish0, 0x0338, 0x1000, 0x0 },
+    { gTexture67B9B0, 0x0225, 0x0800, 0x0 },
+    { gTextureSignYoshi, 0x0342, 0x1000, 0x0 },
+    { gTextureCheckerboardBlueGray, 0x027F, 0x1000, 0x0 },
+    { gTextureSignShellShot0, 0x038C, 0x1000, 0x0 },
+    { gTextureSignShellShot1, 0x0247, 0x1000, 0x0 },
+    { gTextureSignKoopaAir0, 0x03C2, 0x1000, 0x0 },
+    { gTextureSignKoopaAir1, 0x0319, 0x1000, 0x0 },
+    { 0x00000000, 0x0000, 0x0000, 0x0 },
+};
+#else
 const course_texture mario_raceway_textures[] = {
     { gTextureCheckerboardYellowPink, 0x0149, 0x0800, 0x0 },
     { gTexture64619C, 0x0124, 0x0800, 0x0 },
@@ -66,6 +101,7 @@ const course_texture mario_raceway_textures[] = {
     { gTextureSignKoopaAir1, 0x0304, 0x1000, 0x0 },
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
+#endif
 
 const Gfx* mario_raceway_dls[] = {
     d_course_mario_raceway_dl_0,    d_course_mario_raceway_dl_1D0,  d_course_mario_raceway_dl_E8,

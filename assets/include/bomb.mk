@@ -20,10 +20,11 @@ $(BOMB_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(BOMB_FRAMES) $(BOMB_PALETTE): $(BOMB_EXPORT_SENTINEL) ;
+$(BOMB_FRAMES) $(BOMB_PALETTE): $(BOMB_EXPORT_SENTINEL)
+	@:
 
-$(BOMB_EXPORT_SENTINEL): $(ASSET_DIR)/bomb.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(BOMB_EXPORT_SENTINEL): $(ASSET_DIR)/bomb.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_bomb

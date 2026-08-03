@@ -6,6 +6,7 @@
 #include "math_util.h"
 #include "collision.h"
 
+#ifndef VERSION_JP
 void func_800914A0(void) {
     D_80152308 = gPlayerOneCopy->unk_006 + 7;
     if ((s32) D_8015F6F8 < D_80152308) {
@@ -60,3 +61,4 @@ UNUSED void func_800914E0(void) {
     camera->rot[0] = atan2s(sqrtf((sp38 * sp38) + (sp30 * sp30)), sp34);
     camera->rot[2] = 0;
 }
+#endif

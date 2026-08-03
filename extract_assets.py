@@ -23,6 +23,19 @@ def asset_needs_update(asset, version):
     return False
 
 
+def resolve_meta(meta, lang):
+    # An asset is usually described once and merely moves between versions, so a
+    # version that also changes its shape lists just the differing keys under
+    # "overrides". Nesting them keeps a version name from colliding with a real
+    # meta key.
+    override = meta.get("overrides", {}).get(lang)
+    if not override:
+        return meta
+    merged = {k: v for k, v in meta.items() if k != "overrides"}
+    merged.update(override)
+    return merged
+
+
 def remove_file(fname):
     os.remove(fname)
     print("deleting", fname)
@@ -47,27 +60,36 @@ def clean_assets(local_asset_file):
 def main():
     # In case we ever need to change formats of generated files, we keep a
     # revision ID in the local asset file.
-    new_version = 1
+    new_version = 2
 
     try:
         local_asset_file = open(".assets-local.txt")
         local_asset_file.readline()
         local_version = int(local_asset_file.readline().strip())
+        # Assets extract to one shared path regardless of version, so record
+        # which version's bytes the tree is holding.
+        local_langs = local_asset_file.readline().strip().split()
     except Exception:
         local_asset_file = None
         local_version = -1
+        local_langs = None
 
     langs = sys.argv[1:]
     if langs == ["--clean"]:
         clean_assets(local_asset_file)
         sys.exit(0)
 
-    all_langs = ["us", "eu.v10", "eu.v11"]
+    all_langs = ["us", "eu.v10", "eu.v11", "jp.v11"]
     if not langs or not all(a in all_langs for a in langs):
         langs_str = " ".join("[" + lang + "]" for lang in all_langs)
         print("Usage: " + sys.argv[0] + " " + langs_str)
         print("For each version, baserom.<version>.z64 must exist")
         sys.exit(1)
+
+    # A different version's bytes may be sitting at the shared asset paths, and
+    # those files look present and up to date. Re-extract rather than build the
+    # wrong version's assets into the ROM.
+    version_changed = local_langs is not None and local_langs != langs
 
     asset_map = read_asset_map()
     all_assets = []
@@ -82,7 +104,7 @@ def main():
             if not any_missing_assets and any(lang in data["offsets"] for lang in langs):
                 any_missing_assets = True
 
-    if not any_missing_assets and local_version == new_version:
+    if not any_missing_assets and local_version == new_version and not version_changed:
         # Nothing to do, no need to read a ROM. For efficiency we don't check
         # the list of old assets either.
         return
@@ -106,7 +128,7 @@ def main():
     todo = defaultdict(lambda: [])
     for (asset, data, exists) in all_assets:
         # Leave existing assets alone if they have a compatible version.
-        if exists and not asset_needs_update(asset, local_version):
+        if exists and not version_changed and not asset_needs_update(asset, local_version):
             continue
 
         for lang, pos in data["offsets"].items():
@@ -117,7 +139,8 @@ def main():
                 rom_offset = int(pos[0], 0)
                 block_offset = int(pos[1], 0)
             if lang in langs:
-                todo[(lang, rom_offset)].append((asset, block_offset, data["meta"]))
+                todo[(lang, rom_offset)].append(
+                    (asset, block_offset, resolve_meta(data["meta"], lang)))
                 break
 
     # Load ROMs
@@ -145,6 +168,7 @@ def main():
     for key in keys:
         assets = todo[key]
         lang, rom_offset = key
+        decoded = None
 
         if rom_offset is not None:
             magic = roms[lang][rom_offset:rom_offset + 4]
@@ -161,20 +185,26 @@ def main():
                     stdout=subprocess.PIPE,
                 ).stdout
             # TODO: binary assets in assets.json for TKMK00 until it is full understood
-            elif magic == b"TKMK" and assets[0][0].endswith(".png"):
-                (asset, pos, meta) = assets[0]
-                image = subprocess.run(
-                    [
-                        "./tools/tkmk00",
-                        "-d",
-                        "-o", str(rom_offset),
-                        "-a", meta["alpha"],
-                        "baserom." + lang + ".z64",
-                        "-",
-                    ],
-                    check=True,
-                    stdout=subprocess.PIPE,
-                ).stdout
+            elif magic == b"TKMK":
+                # A tkmk00 block is described twice at the same offset: the .tkmk00
+                # blob is the build input and wants the compressed bytes, while the
+                # .png beside it is a decoded copy. They need different bytes, so
+                # decode alongside rather than picking one for the whole group.
+                image = roms[lang][rom_offset:]
+                png = next((a for a in assets if a[0].endswith(".png")), None)
+                if png is not None:
+                    decoded = subprocess.run(
+                        [
+                            "./tools/tkmk00",
+                            "-d",
+                            "-o", str(rom_offset),
+                            "-a", png[2]["alpha"],
+                            "baserom." + lang + ".z64",
+                            "-",
+                        ],
+                        check=True,
+                        stdout=subprocess.PIPE,
+                    ).stdout
             else: # assume raw texture
                 # TODO: This grabs way more data than is necessary
                 image = roms[lang][rom_offset:]
@@ -204,7 +234,10 @@ def main():
                 elif fmt.endswith("8"): size = pixels
                 elif fmt.endswith("4"): size = math.ceil(pixels / 2)
                 elif fmt == "ia1": size = math.ceil(pixels / 8)
-            input = image[pos : pos + size]
+            # a decoded tkmk00 block is only for the .png; the blob keeps the
+            # compressed bytes the build actually assembles
+            source = decoded if (decoded is not None and asset.endswith(".png")) else image
+            input = source[pos : pos + size]
             os.makedirs(os.path.dirname(asset), exist_ok=True)
             if asset.endswith(".png"):
                 name_file = ""
@@ -266,6 +299,7 @@ def main():
         [
             "# This file tracks the assets currently extracted by extract_assets.py.",
             str(new_version),
+            " ".join(langs),
             *sorted(list(new_assets)),
             "",
         ]

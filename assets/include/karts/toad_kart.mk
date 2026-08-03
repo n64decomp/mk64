@@ -1497,10 +1497,11 @@ $(TOAD_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(TOAD_KART_FRAME_PNG) $(TOAD_KART_PALETTE_PNG): $(TOAD_EXPORT_SENTINEL) ;
+$(TOAD_KART_FRAME_PNG) $(TOAD_KART_PALETTE_PNG): $(TOAD_EXPORT_SENTINEL)
+	@:
 
-$(TOAD_EXPORT_SENTINEL): $(ASSET_DIR)/karts/toad_kart.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(TOAD_EXPORT_SENTINEL): $(ASSET_DIR)/karts/toad_kart.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_toad_kart

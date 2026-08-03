@@ -1497,10 +1497,11 @@ $(LUIGI_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(LUIGI_KART_FRAME_PNG) $(LUIGI_KART_PALETTE_PNG): $(LUIGI_EXPORT_SENTINEL) ;
+$(LUIGI_KART_FRAME_PNG) $(LUIGI_KART_PALETTE_PNG): $(LUIGI_EXPORT_SENTINEL)
+	@:
 
-$(LUIGI_EXPORT_SENTINEL): $(ASSET_DIR)/karts/luigi_kart.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(LUIGI_EXPORT_SENTINEL): $(ASSET_DIR)/karts/luigi_kart.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_luigi_kart

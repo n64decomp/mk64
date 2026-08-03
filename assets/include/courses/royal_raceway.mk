@@ -10,10 +10,11 @@ $(ROYAL_RACEWAY_PIRANHA_PLANT_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(ROYAL_RACEWAY_PIRANHA_PLANT_PALETTE): $(ROYAL_RACEWAY_EXPORT_SENTINEL) ;
+$(ROYAL_RACEWAY_PIRANHA_PLANT_PALETTE): $(ROYAL_RACEWAY_EXPORT_SENTINEL)
+	@:
 
-$(ROYAL_RACEWAY_EXPORT_SENTINEL): $(ASSET_DIR)/courses/royal_raceway.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(ROYAL_RACEWAY_EXPORT_SENTINEL): $(ASSET_DIR)/courses/royal_raceway.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_royal_raceway

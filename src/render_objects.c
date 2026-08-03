@@ -2381,8 +2381,22 @@ void func_8004E998(s32 playerId) {
     }
 }
 
+#ifdef VERSION_JP
+// Draws the player's 1P/2P/3P/4P emblem next to their HUD; stubbed out in the
+// US revision. This is the reader of playerHUD unk_4A/unk_4C.
+void func_8004EB30(s32 playerId) {
+    hud_player* hud;
+
+    if (gDemoMode == 0) {
+        hud = &playerHUD[playerId];
+        func_8004E534(hud->unk_4A, hud->unk_4C, (u8*) common_tlut_player_emblem,
+                      common_texture_player_emblem[playerId]);
+    }
+}
+#else
 void func_8004EB30(UNUSED s32 arg0) {
 }
+#endif
 
 void func_8004EB38(s32 playerId) {
     hud_player* temp_s0;
