@@ -1542,6 +1542,27 @@ void func_8005A3C0(void) {
                 break;
             // 3p
             case 3:
+                // force progress view at all times (N/A in battle)
+                // 3p case adds the map as well 
+                if (gTournamentForceMap == 1) {
+                    if (gModeSelection != BATTLE) {
+                        D_801657F0 = 1;
+                    }
+                    D_801657E4 = 1;
+                    b = true;
+                    break;
+                }
+                // force map view at all times
+                if (gTournamentForceMap == 2) {
+                    if (gModeSelection != BATTLE) {
+                        D_801657F0 = 0;
+                    }
+                    D_801657E4 = 0;
+                    b = true;
+                    break;
+                }
+                // in 3p, the map and the prog view can be both on.
+                else {
                     if ((gControllerOne->buttonPressed & R_CBUTTONS) || (gControllerTwo->buttonPressed & R_CBUTTONS) ||
                         (gControllerThree->buttonPressed & R_CBUTTONS)) {
                         if (gModeSelection != BATTLE) {
@@ -1551,8 +1572,9 @@ void func_8005A3C0(void) {
                         b = true;
                     }
                     break;
-                            
+                }
             // 4p
+            // TODO: Clean up logic to be closer to 3P 
             case 4:
                 // run default settings (togglable map/prog view) when forcemap = 0
                 if (gTournamentForceMap == 0) {

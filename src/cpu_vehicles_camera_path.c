@@ -1756,9 +1756,17 @@ void update_player(s32 playerId) {
                 break;
         }
 
-        // checks on last player to ensure all players positions have been updated
-        if ((gCurrentCourseId != COURSE_AWARD_CEREMONY) && (playerId == (numPlayer - 1))) {
-            set_places();
+        if (gModeSelection == VERSUS) {
+            // checks on last player to ensure all players positions have been updated
+            if ((gCurrentCourseId != COURSE_AWARD_CEREMONY) && (playerId == (numPlayer - 1))) {
+                set_places();
+            }
+        }
+        // runs old placement logic; runs in gp mode (new logic is broken in GP mode)
+        else {
+            if ((gCurrentCourseId != COURSE_AWARD_CEREMONY) && ((gCrossedFinishLine[playerId] == 1) || (playerId == 0))) {
+                set_places();
+            }
         }
     }
 }
@@ -3531,14 +3539,18 @@ void func_80019C50(s32 playerIndex) {
         case 0:
             if (D_80164608[playerIndex] == 1) {
                 D_80164678[playerIndex] = 1;
-                // func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x4F));
+                if (gModeSelection != VERSUS) {
+                    func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x4F));
+                }
                 D_80164670[playerIndex] = D_80164678[playerIndex];
             }
             break;
         case 1:
             if (D_80164608[playerIndex] == 1) {
                 D_80164678[playerIndex] = 0;
-                // func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x50));
+                if (gModeSelection != VERSUS) {
+                    func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x50));
+                }
                 D_80164670[playerIndex] = D_80164678[playerIndex];
             }
             break;
