@@ -1326,6 +1326,8 @@ void update_vehicles(void) {
         return;
     }
 
+    // update_vehicles is ran twice per frame.
+    // This makes vehicles only tick once per frame.
     if (D_8016337C & 1) {
         if (gModeSelection == VERSUS) {
             for (i = 0; i < 7; i++) {
