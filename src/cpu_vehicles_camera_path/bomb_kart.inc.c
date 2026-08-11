@@ -56,7 +56,7 @@ void set_bomb_kart_spawn_positions(void) {
     }
 }
 
-void func_8000DF8C(s32 bombKartId) {
+void update_bomb_karts(s32 bombKartId) {
     UNUSED s32 stackPadding0;
     f32 sp118;
     f32 var_f18;

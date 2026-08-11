@@ -1321,7 +1321,7 @@ void update_vehicles(void) {
 
     if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
         for (i = 0; i < 7; i++) {
-            func_8000DF8C(i);
+            update_bomb_karts(i);
         }
         return;
     }
@@ -1331,7 +1331,7 @@ void update_vehicles(void) {
     if (D_8016337C & 1) {
         if (gModeSelection == VERSUS) {
             for (i = 0; i < 7; i++) {
-                func_8000DF8C(i);
+                update_bomb_karts(i);
             }
         }
 #if !ENABLE_CUSTOM_COURSE_ENGINE
