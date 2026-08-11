@@ -2039,9 +2039,9 @@ void init_course_path_point(void) {
         if (gSizePath[i] >= 2) {
             load_track_path(i);
             calculate_track_boundaries(i);
-            analize_track_section(i);
-            analyse_angle_path(i);
-            analisze_curved_path(i);
+            analyze_track_sections(i);
+            analyze_path_angle(i);
+            analyze_curved_path(i);
         }
     }
 

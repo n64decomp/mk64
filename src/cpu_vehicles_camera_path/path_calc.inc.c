@@ -173,7 +173,7 @@ f32 calculate_track_curvature(s32 pathIndex, u16 pathPointIndex) {
     return -((firstVectorZ * secondVectorX) - (firstVectorX * secondVectorZ)) / (secondLength * firstLength);
 }
 
-void analize_track_section(s32 pathIndex) {
+void analyze_track_sections(s32 pathIndex) {
     f64 sectionCurvature;
     UNUSED s32 pad;
     s32 k;
@@ -248,7 +248,7 @@ s16 calculate_angle_path(s32 pathIndex, s32 pathPointIndex) {
 }
 
 // Populates gPathExpectedRotation
-void analyse_angle_path(s32 pathIndex) {
+void analyze_path_angle(s32 pathIndex) {
     s32 pathPointIndex;
     u16* angle;
 
@@ -260,7 +260,7 @@ void analyse_angle_path(s32 pathIndex) {
     }
 }
 
-void analisze_curved_path(s32 pathIndex) {
+void analyze_curved_path(s32 pathIndex) {
     s16* trackCurveCount;
     s16 curveCount;
     s16 temp_t0;
