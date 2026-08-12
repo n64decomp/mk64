@@ -480,11 +480,11 @@ void play_music_for_current_track(s32 track) {
         case COURSE_BIG_DONUT:
             play_sequence(SEQ_TRACK_BATTLE);
             break;
-		
+
 #ifdef AVOID_UB
-		default: //! @BUG: No default case. Enable AVOID_UB for custom tracks.
-		    play_sequence(SEQ_TRACK_RACEWAY);
-			break;
+        default: //! @BUG: No default case. Enable AVOID_UB for custom tracks.
+            play_sequence(SEQ_TRACK_RACEWAY);
+            break;
 #endif
     }
 }
@@ -599,12 +599,12 @@ void func_8028EF28(void) {
                                 if (currentPosition == 1) {
                                     gRaceState = RACE_DONE; // triggers results screen
 
-                                 /* This messes with the loop index by setting it to the index of the last player. 
-                                    But, because versus always gives the player with the lower slot/port number
-                                    the advantage if 2 players finish at the same time,  it can only skip finished
-                                    players who do not need more processing. It can run the same index twice, but
-                                    any player who finished this frame already had their lap count updated, so 
-                                    nothing will happen */
+                                    /* This messes with the loop index by setting it to the index of the last player.
+                                       But, because versus always gives the player with the lower slot/port number
+                                       the advantage if 2 players finish at the same time,  it can only skip finished
+                                       players who do not need more processing. It can run the same index twice, but
+                                       any player who finished this frame already had their lap count updated, so
+                                       nothing will happen */
                                     playerId = gPlayerPositionLUT[2];
                                     *(nmi_gVersusResults3P + playerId * 3 + 2) += 1;
                                     if (*(nmi_gVersusResults3P + playerId * 3 + 2) > 99) {
@@ -666,7 +666,8 @@ void update_race_position_data(void) {
     s16 position;
 
     for (playerId = 0; playerId < NUM_PLAYERS; playerId++) {
-        if (((gPlayers[playerId].type & PLAYER_EXISTS) != 0) && ((gPlayers[playerId].type & PLAYER_CINEMATIC_MODE) == 0) &&
+        if (((gPlayers[playerId].type & PLAYER_EXISTS) != 0) &&
+            ((gPlayers[playerId].type & PLAYER_CINEMATIC_MODE) == 0) &&
             ((gPlayers[playerId].type & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
             position = gGPCurrentRaceRankByPlayerId[playerId];
             gPlayers[playerId].currentRank = position;
@@ -926,7 +927,8 @@ void func_8028FCBC(void) {
     }
     switch (gRaceState) {
         case RACE_NONE:
-            if (!gDemoMode) { // If we're not in the demo mode, play the starting fanfare for the current mode (Grand Prix / Time Trials / VS / Battle)
+            if (!gDemoMode) { // If we're not in the demo mode, play the starting fanfare for the current mode (Grand
+                              // Prix / Time Trials / VS / Battle)
                 if (gModeSelection == GRAND_PRIX) {
                     play_sequence2(SEQ_EVENT_RACE_STARTING);
                     play_sound2(SOUND_ACTION_REV_ENGINE);

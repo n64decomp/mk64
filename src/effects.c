@@ -470,7 +470,7 @@ void apply_driving_near_spinout_effect(Player* player, s8 playerIndex) {
     swerve_timer++;
 
     // Standard physics formula: Velo_current = velo_init + (accel_init * time) + (accel_jerk * time**2) / 2
-    swerve_velo_current = (swerve_accel_init * swerve_timer) - (0.1 * (swerve_timer * swerve_timer)); 
+    swerve_velo_current = (swerve_accel_init * swerve_timer) - (0.1 * (swerve_timer * swerve_timer));
 
     // Once one swerve finishes, setup to start a smaller one in the opposite direction
     if ((swerve_timer != 0) && (swerve_velo_current < 0)) { // (10 * swerve_accel_init < swerve_timer))
@@ -2029,7 +2029,7 @@ bool prevent_item_use(Player* player) {
     }
 }
 
-//UNUSED
+// UNUSED
 void func_800911B4(Player* player, s8 arg1) {
     s32 temp_v0;
 
