@@ -2399,11 +2399,12 @@ void func_800C70A8(u8 playerId) {
     }
 }
 
-/* 
-   Routine to tell the game which "finish" music to play depending on which mode the player is in (Grand Prix, Time Trials, etc),
-   whether the game is in multiplayer or not, and which position they ended up finishing in (1st, 2nd, 3rd, etc)
+/*
+   Routine to tell the game which "finish" music to play depending on which mode the player is in (Grand Prix, Time
+   Trials, etc), whether the game is in multiplayer or not, and which position they ended up finishing in (1st, 2nd,
+   3rd, etc)
 
-   Contains a LOT of inlined funcs. 
+   Contains a LOT of inlined funcs.
    Modify if you dare.
 */
 void func_800C76C0(u8 playerId) {
@@ -3577,18 +3578,23 @@ void begin_losing_ceremony_sequence() {
         D_800EA174++;
 
         if (D_800EA174 == 3) {
-            play_sequence(SEQ_EVENT_CEREMONY_PRESENTATION_PART1); // Begin with Part 1 of the ceremony presentation music --- "Everything seems normal..."
+            play_sequence(SEQ_EVENT_CEREMONY_PRESENTATION_PART1); // Begin with Part 1 of the ceremony presentation
+                                                                  // music --- "Everything seems normal..."
             func_800C3448(0x4000007F);
         }
 
         if (D_800EA174 == 300) {
-            play_sequence(SEQ_EVENT_CEREMONY_PRESENTATION_PART2_WIN); // Follow up with Part 2 of the winning ceremony presentation music --- "Looks like I won...?"
+            play_sequence(SEQ_EVENT_CEREMONY_PRESENTATION_PART2_WIN); // Follow up with Part 2 of the winning ceremony
+                                                                      // presentation music --- "Looks like I won...?"
             func_800C3448(0x4000007F);
-            play_sequence2(SEQ_EVENT_CEREMONY_PRESENTATION_PART2_LOSE); // Once it ends, begin the LOSING ceremony presentation music, which has a few notes changed to be off-tune --- "Uh oh..."
+            play_sequence2(SEQ_EVENT_CEREMONY_PRESENTATION_PART2_LOSE); // Once it ends, begin the LOSING ceremony
+                                                                        // presentation music, which has a few notes
+                                                                        // changed to be off-tune --- "Uh oh..."
             func_800C3448(0x41000000);
         }
 
-        if (D_800EA174 == 560) { // (Somewhere in this code it slows down the music, changes the pitch of it and completely breaks the music)
+        if (D_800EA174 == 560) { // (Somewhere in this code it slows down the music, changes the pitch of it and
+                                 // completely breaks the music)
             func_800C3448(0x40640000);
             func_800C3448(0xB0640073);
             func_800C3448(0x4150007F);
@@ -3608,11 +3614,13 @@ void begin_losing_ceremony_sequence() {
             func_800C3448(0x41320000);
         }
 
-        if (D_800EA174 == 1200) { // (Player gets hit by the bomb-omb car; play the "explosion" sound effect and the "hurt" voice for the current character)
+        if (D_800EA174 == 1200) { // (Player gets hit by the bomb-omb car; play the "explosion" sound effect and the
+                                  // "hurt" voice for the current character)
             func_800C3448(0x110100FF);
         }
 
-        if (D_800EA174 == 1230) { // Once the music is completely broken by this point, play the "No Trophy For You!" sequence --- "Aw man, I lost... :("
+        if (D_800EA174 == 1230) { // Once the music is completely broken by this point, play the "No Trophy For You!"
+                                  // sequence --- "Aw man, I lost... :("
             play_sequence(SEQ_EVENT_CEREMONY_TROPHY_LOSE);
             func_800C3448(0x4000007F); // (Play the "losing" voice for the current character, twice)
         }
