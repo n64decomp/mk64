@@ -659,7 +659,9 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This condition is broken and always evaluates to true. If you fix the condition, when you fire a shell it continues being held by the player until the shell is in-front of the player. This allows the shell to always shoot in a foward direction instead of straying sideways. when fired at the wrong time</p>
+<p>Forces shell 1 to only fire inside a cone of -5 to +5 degrees in-front of the player. However, always evaluates to true, so the feature does not appear during gameplay. If enabled, pressing Z would not immediately release the shell. Instead, it waits until it's inside the cone. (See shell 2 and 3 farther down for same issue)</p>
+<p>Forces shell 2 to fire inside a cone of 5 to 14.95 degrees (always evaluates to true, thus the feature is skipped) Unclear why it is 14.95 degrees instead of 15. Perhaps just a typo when entering the value as a s16.</p>
+<p>Forces shell 3 to fire inside a cone of -5 to -10 degrees. However, after testing, 10 should probably be replaced with 14.95 because the shell does multiple loops before it fires. Always evaluates to true, thus this feature is skipped.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
