@@ -455,7 +455,7 @@ assets:
 	$(V)$(TORCH) modding export $(BASEROM)
 
 doc:
-	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
+	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py $(BUILD_DIR)/$(TARGET).map
 	doxygen
 	@$(PRINT) "$(GREEN)Documentation generated in docs/html$(NO_COL)\n"
 	@$(PRINT) "$(GREEN)Results can be viewed by opening docs/html/index.html in a web browser$(NO_COL)\n"
@@ -770,7 +770,7 @@ $(ROM): $(ELF)
 	$(call print,Building ROM:,$<,$@)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $(@:.z64=.bin) -O binary
 	$(V)$(N64CKSUM) $(@:.z64=.bin) $@
-	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
+	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py $(BUILD_DIR)/$(TARGET).map
 
 $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
 	$(V)xxd $< > $@
