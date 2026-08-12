@@ -1,11 +1,11 @@
 {
-"common_tlut_blue_shell":     {"output_dir": "blueshell", "rom_offset": "0x132B50", "block_offset": "0x05038", "width": 16, "height": 16, "type": "rgba16"},
-"texture_blue_shell_0": {"output_dir": "blueshell", "rom_offset": "0x68FE20", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell"},
-"texture_blue_shell_1": {"output_dir": "blueshell", "rom_offset": "0x69004C", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell"},
-"texture_blue_shell_2": {"output_dir": "blueshell", "rom_offset": "0x690284", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell"},
-"texture_blue_shell_3": {"output_dir": "blueshell", "rom_offset": "0x6904C4", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell"},
-"texture_blue_shell_4": {"output_dir": "blueshell", "rom_offset": "0x690708", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell"},
-"texture_blue_shell_5": {"output_dir": "blueshell", "rom_offset": "0x690960", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell"},
-"texture_blue_shell_6": {"output_dir": "blueshell", "rom_offset": "0x690BBC", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell"},
-"texture_blue_shell_7": {"output_dir": "blueshell", "rom_offset": "0x690DF8", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell"}
+"common_tlut_blue_shell":     {"output_dir": "blueshell", "rom_offset": "0x132B50", "block_offset": "0x05038", "width": 16, "height": 16, "type": "rgba16", "jp.v11": {"rom_offset": "0x1323A0", "block_offset": "0x05038"}},
+"texture_blue_shell_0": {"output_dir": "blueshell", "rom_offset": "0x68FE20", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell", "jp.v11": {"rom_offset": "0x69AD00"}},
+"texture_blue_shell_1": {"output_dir": "blueshell", "rom_offset": "0x69004C", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell", "jp.v11": {"rom_offset": "0x69AF2C"}},
+"texture_blue_shell_2": {"output_dir": "blueshell", "rom_offset": "0x690284", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell", "jp.v11": {"rom_offset": "0x69B164"}},
+"texture_blue_shell_3": {"output_dir": "blueshell", "rom_offset": "0x6904C4", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell", "jp.v11": {"rom_offset": "0x69B3A4"}},
+"texture_blue_shell_4": {"output_dir": "blueshell", "rom_offset": "0x690708", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell", "jp.v11": {"rom_offset": "0x69B5E8"}},
+"texture_blue_shell_5": {"output_dir": "blueshell", "rom_offset": "0x690960", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell", "jp.v11": {"rom_offset": "0x69B840"}},
+"texture_blue_shell_6": {"output_dir": "blueshell", "rom_offset": "0x690BBC", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell", "jp.v11": {"rom_offset": "0x69BA9C"}},
+"texture_blue_shell_7": {"output_dir": "blueshell", "rom_offset": "0x690DF8", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_blue_shell", "jp.v11": {"rom_offset": "0x69BCD8"}}
 }

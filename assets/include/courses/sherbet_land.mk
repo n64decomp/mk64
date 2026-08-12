@@ -18,10 +18,11 @@ $(PENGUIN_PNG:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(SHERBET_LAND_PNG) $(PENGUIN_PNG) $(SHERBET_LAND_ICE): $(SHERBET_LAND_EXPORT_SENTINEL) ;
+$(SHERBET_LAND_PNG) $(PENGUIN_PNG) $(SHERBET_LAND_ICE): $(SHERBET_LAND_EXPORT_SENTINEL)
+	@:
 
-$(SHERBET_LAND_EXPORT_SENTINEL): $(ASSET_DIR)/courses/sherbet_land.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(SHERBET_LAND_EXPORT_SENTINEL): $(ASSET_DIR)/courses/sherbet_land.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_sherbet_land

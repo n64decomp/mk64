@@ -30,10 +30,11 @@ $(LUIGI_SELECT_PNG:%.png=%.bin) : %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(LUIGI_SELECT_PNG): $(LUIGI_SELECT_EXPORT_SENTINEL) ;
+$(LUIGI_SELECT_PNG): $(LUIGI_SELECT_EXPORT_SENTINEL)
+	@:
 
-$(LUIGI_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/luigi_select.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(LUIGI_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/luigi_select.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_luigi_select

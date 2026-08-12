@@ -5,5 +5,9 @@
 
 .section .data
 
+.ifdef VERSION_JP
+.incbin "bin/audiotables.jp.v11.bin" # JP sample bank (0x190 larger)
+.else
 .incbin "bin/audiotables.bin" # Audiotables and data
+.endif
 

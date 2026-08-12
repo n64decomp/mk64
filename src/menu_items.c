@@ -83,6 +83,12 @@ s8 gTextColor;
 s32 D_8018E864_pad;
 OSPfs gControllerPak1FileHandle;
 OSPfs gControllerPak2FileHandle;
+#ifdef VERSION_JP
+/* JP puts sIntroModelTimer at the head of this file's bss instead of next to
+   D_8018ED91, which is what moves func_800A66A8's statics down to 0x8018b55c. */
+s32 sIntroModelTimer;
+s32 menu_item_bss_padjp0;
+#endif
 OSPfsState pfsState[16];
 s32 pfsError[16]; // 0 = Ok, anything else = error.
 s32 gControllerPak1NumFilesUsed;
@@ -96,7 +102,9 @@ ALIGNED8 SaveData gSaveData;
 
 u8 D_8018ED90;
 u8 D_8018ED91;
+#ifndef VERSION_JP
 s32 sIntroModelTimer;
+#endif
 
 Unk_D_800E70A0 D_800E70A0[] = {
     { 0x3d, 0x11, 0x00, 0x00 }, { 0x15, 0x3e, 0x00, 0x00 }, { 0x5c, 0x3e, 0x00, 0x00 },
@@ -211,42 +219,84 @@ Unk_D_800E70A0 D_800E7300[] = {
 };
 
 // Versus menu coordinates
+#ifdef VERSION_JP
+Unk_D_800E70A0 D_800E7360[] = {
+    { 0x75, 0xa7, 0x00, 0x00 }, { 0x75, 0xb6, 0x00, 0x00 }, { 0x75, 0xc5, 0x00, 0x00 }, { 0x75, 0xd4, 0x00, 0x00 },
+};
+#else
 Unk_D_800E70A0 D_800E7360[] = {
     { 0x61, 0xa7, 0x00, 0x00 },
     { 0x61, 0xb6, 0x00, 0x00 },
     { 0x61, 0xc5, 0x00, 0x00 },
     { 0x61, 0xd4, 0x00, 0x00 },
 };
+#endif
 
+#ifdef VERSION_JP
+Unk_D_800E70A0 D_800E7380[] = {
+    { 0x23, 0x4b, 0x00, 0x00 },
+    { 0xf5, 0x4b, 0x00, 0x00 },
+};
+#else
 Unk_D_800E70A0 D_800E7380[] = {
     { 0x30, 0x4b, 0x00, 0x00 },
     { 0x109, 0x4b, 0x00, 0x00 },
 };
+#endif
 
+#ifdef VERSION_JP
+Unk_D_800E70A0 D_800E7390[] = {
+    { 0xb4, 0x8e, 0x00, 0x00 }, { 0xb4, 0x9b, 0x00, 0x00 }, { 0xb4, 0xa8, 0x00, 0x00 },
+    { 0xb4, 0xb5, 0x00, 0x00 }, { 0xb4, 0xc2, 0x00, 0x00 }, { 0xb4, 0xcf, 0x00, 0x00 },
+};
+#else
 Unk_D_800E70A0 D_800E7390[] = {
     { 0xad, 0x8d, 0x00, 0x00 }, { 0xad, 0x9a, 0x00, 0x00 }, { 0xad, 0xa7, 0x00, 0x00 },
     { 0xad, 0xb4, 0x00, 0x00 }, { 0xad, 0xc1, 0x00, 0x00 }, { 0xad, 0xce, 0x00, 0x00 },
 };
+#endif
 
+#ifdef VERSION_JP
+Unk_D_800E70A0 D_800E73C0[] = {
+    { 0xaf, 0xa4, 0x00, 0x00 },
+    { 0xaf, 0xc2, 0x00, 0x00 },
+};
+#else
 Unk_D_800E70A0 D_800E73C0[] = {
     { 0xac, 0xa5, 0x00, 0x00 },
     { 0xac, 0xc3, 0x00, 0x00 },
 };
+#endif
 
 Unk_D_800E70A0 D_800E73D0[] = {
     { 0xc0, 0xb3, 0x00, 0x00 },
     { 0xc0, 0xc2, 0x00, 0x00 },
 };
 
+#ifdef VERSION_JP
+Unk_D_800E70A0 D_800E73E0[] = {
+    { 0x6c, 0x94, 0x00, 0x00 }, { 0x6c, 0xa1, 0x00, 0x00 }, { 0x6c, 0xae, 0x00, 0x00 }, { 0x6c, 0xbb, 0x00, 0x00 },
+
+    { 0x6c, 0xc8, 0x00, 0x00 }, { 0x6c, 0xd5, 0x00, 0x00 },
+};
+#else
 Unk_D_800E70A0 D_800E73E0[] = {
     { 0x61, 0x94, 0x00, 0x00 }, { 0x61, 0xa1, 0x00, 0x00 }, { 0x61, 0xae, 0x00, 0x00 },
     { 0x61, 0xbb, 0x00, 0x00 }, { 0x61, 0xc8, 0x00, 0x00 }, { 0x61, 0xd5, 0x00, 0x00 },
 };
+#endif
 
+#ifdef VERSION_JP
+Unk_D_800E70A0 D_800E7410[] = {
+    { 0x66, 0x90, 0x00, 0x00 },
+    { 0x66, 0xa4, 0x00, 0x00 },
+};
+#else
 Unk_D_800E70A0 D_800E7410[] = {
     { 0x52, 0x90, 0x00, 0x00 },
     { 0x52, 0xa4, 0x00, 0x00 },
 };
+#endif
 
 Unk_D_800E70A0 D_800E7420[] = {
     { 0x76, 0x95, 0x00, 0x00 },
@@ -287,7 +337,11 @@ RGBA16 gBackgroundColor[] = {
 
 const s16 gGlyphDisplayWidth[] = {
     0x000c, 0x000d, 0x000b, 0x000b, 0x000a, 0x000b, 0x000b, 0x000d, 0x0007, 0x000a, 0x000c, 0x000a, 0x0012, 0x000d,
+#ifdef VERSION_JP
+    0x000c, 0x000c, 0x000c, 0x000c, 0x000b, 0x000d, 0x000c, 0x000c, 0x0012, 0x000c, 0x000c, 0x000c, 0x000a, 0x000a,
+#else
     0x000c, 0x000c, 0x000c, 0x000c, 0x000b, 0x000d, 0x000c, 0x000c, 0x0012, 0x000d, 0x000c, 0x000c, 0x000a, 0x000a,
+#endif
     0x000a, 0x0006, 0x001e, 0x0006, 0x000a, 0x0008, 0x000b, 0x000c, 0x000c, 0x000d, 0x000a, 0x000b, 0x000a, 0x000a,
     0x0008, 0x001c, 0x000a, 0x0010, 0x000f, 0x0010, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
     0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
@@ -306,33 +360,56 @@ const s16 gGlyphDisplayWidth[] = {
 };
 
 char* gCupNames[] = {
+#ifdef VERSION_JP
+    "kinoko cup",
+#else
     "mushroom cup",
+#endif
     "flower cup",
     "star cup",
     "special cup",
     "battle",
+#ifdef VERSION_JP
+    "キノコ カップ",
+    "フラワー カップ",
+    "スター カップ",
+    "スペシャル カップ",
+#else
     // ????
     "mushroom cup",
     "flower cup",
     "star cup",
     "special cup",
+#endif
 };
 
 #if !ENABLE_CUSTOM_COURSE_ENGINE
 // Displays at beginning of course
 char* gCourseNames[] = {
+#ifdef VERSION_JP
+#include "assets/course_metadata/gCourseNames.jp1.inc.c"
+#else
 #include "assets/course_metadata/gCourseNames.inc.c"
+#endif
 };
 
 char* gCourseNamesDup[] = {
+#ifdef VERSION_JP
+#include "assets/course_metadata/gCourseNames.jp2.inc.c"
+#else
 #include "assets/course_metadata/gCourseNames.inc.c"
+#endif
 };
 #else
 
 #endif
 
 char* gCourseNamesDup2[] = {
+#ifdef VERSION_JP
+#include "assets/course_metadata/gCourseNames.jp3.inc.c"
+#else
 #include "assets/course_metadata/gCourseNames.inc.c"
+#endif
 };
 
 #if !ENABLE_CUSTOM_COURSE_ENGINE
@@ -368,10 +445,29 @@ char* gDebugCharacterNames[] = {
 };
 
 char* D_800E76A8[] = {
+#ifdef VERSION_JP
+    "マリオ",   "ルイージ", "ヨッシー", "キノピオ", "Ｄ．コング", "ワリオ", "ピーチ", "クッパ",
+#else
     "MARIO",    "LUIGI", "YOSHI", "TOAD", "D.K.", "WARIO", "PEACH", "BOWSER",
+#endif
     "ーーーー", // NOT HYPHENS!!! These are EUC-JP characters (0xa1 0xbc)
 };
 
+#ifdef VERSION_JP
+char* D_800E76CC[] = {
+    "50(",
+    "100(",
+    "150(",
+    " おまけ",
+};
+
+char* D_800E76DC[] = {
+    "50(",
+    "100(",
+    "150(",
+    " おまけ",
+};
+#else
 char* D_800E76CC[] = {
     "50(",
     "100(",
@@ -385,6 +481,7 @@ char* D_800E76DC[] = {
     "150(",
     "extra",
 };
+#endif
 
 char* gDebugScreenModeNames[] = {
     "1p", "2players UD", "2players LR", "3players", "4players",
@@ -397,27 +494,58 @@ char* gDebugSoundModeNames[] = {
     "monaural",
 };
 
+#ifdef VERSION_JP
+char* gSoundModeNames[NUM_SOUND_MODES] = { "ステレオ", "ヘッドホン", "", "モノラル" };
+#else
 char* gSoundModeNames[NUM_SOUND_MODES] = { "STEREO", "HEADPHONE", "", "MONO" };
+#endif
 
+#ifdef VERSION_JP
+char* gWinLoseText[] = {
+    "かち！",
+    "まけ！",
+};
+#else
 char* gWinLoseText[] = {
     "WINNER!",
     "LOSER!",
 };
+#endif
 
+#ifdef VERSION_JP
+char* gBestTimeText[] = {
+    "ベストレコード",
+    "ベストラップ",
+};
+#else
 char* gBestTimeText[] = {
     "BEST RECORDS",
     "BEST LAP",
 };
+#endif
 
 // Might need a const?
+#ifdef VERSION_JP
+char* gLapTimeText = "ラップタイム";
+#else
 char* gLapTimeText = "LAP TIME";
+#endif
 
+#ifdef VERSION_JP
+char* gPrefixTimeText[] = {
+    "ラップ 1",
+    "ラップ 2",
+    "ラップ 3",
+    "トータル",
+};
+#else
 char* gPrefixTimeText[] = {
     "LAP 1",
     "LAP 2",
     "LAP 3",
     "TOTAL",
 };
+#endif
 
 char* D_800E7744[] = {
     // The s/n/r/t here are not ASCII, they are EUC-JP characters
@@ -425,79 +553,194 @@ char* D_800E7744[] = {
     "1 ｓ", "2 ｎ", "3 ｒ", "4 ｔ", "5 ｔ", " ",
 };
 
+#ifdef VERSION_JP
+char* gTextPauseButton[] = {
+    "ゲームをつづける", "リトライ", "コースチェンジ", "ドライバーチェンジ", "ゲームをやめる", "リプレイ", "ゴーストのセーブ",
+};
+#else
 char* gTextPauseButton[] = {
     "CONTINUE GAME", "RETRY", "COURSE CHANGE", "DRIVER CHANGE", "QUIT", "REPLAY", "SAVE GHOST",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7778[] = {
+    "ＶＳマッチ ランキング",
+    "バトル ランキング",
+};
+#else
 char* D_800E7778[] = {
     "VS MATCH RANKING",
     "BATTLE RANKING",
 };
+#endif
 
 // This is plain data, it should not end up in rodata
+#ifdef VERSION_JP
+char gTextMenuAnnounceGhost[] = "CHALLENGER COMES!!!";
+#else
 char gTextMenuAnnounceGhost[] = "NOW-MEET THE COURSE GHOST!!!";
+#endif
 
+#ifdef VERSION_JP
+char* gTextNoController[] = { "1P のコントローラをせつぞくして", "でんげんをいれなおしてください" };
+#else
 char* gTextNoController[] = { "CONNECT A CONTROLLER TO SOCKET 1,", "THEN POWER ON AGAIN" };
+#endif
 
+#ifdef VERSION_JP
+char* gTextBattleIntroduction[] = {
+    "バトルゲーム",
+    "たいせんプレイヤーのふうせんをとばそう",
+    "3つのふうせんがなくなったらマケ！",
+};
+#else
 char* gTextBattleIntroduction[] = {
     "BATTLE GAME",
     "POP OPPOSING PLAYER'S BALLOONS",
     "WHEN ALL 3 ARE GONE,THEY ARE OUT!",
 };
+#endif
 
 // This is plain data, it should not end up in rodata
+#ifdef VERSION_JP
+char gTextMenuData[] = "a ボタン*データをみる  B ボタン*もどる";
+#else
 char gTextMenuData[] = "a BUTTON*SEE DATA  B BUTTON*EXIT";
+#endif
 
 // This is plain data, it should not end up in rodata
+#ifdef VERSION_JP
+char gTextDistance[] = "ぜんちょう";
+#else
 char gTextDistance[] = "distance";
+#endif
 
 char* sCourseLengths[] = {
 #include "assets/course_metadata/sCourseLengths.inc.c"
 };
 
+#ifdef VERSION_JP
+char* gTextMenuOption[] = {
+    "メニューにもどる",
+    "このコースのきろくをけす",
+    "このコースのゴーストをけす",
+};
+#else
 char* gTextMenuOption[] = {
     "return to menu",
     "erase records for this course",
     "erase ghost from this course",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7840[] = {
+    "やめる",
+    "けす",
+};
+#else
 char* D_800E7840[] = {
     "quit",
     "erase",
 };
+#endif
 
 // Why oh why is this array flat? It should be gEraseBestGhostText[][3]
+#ifdef VERSION_JP
+char* gEraseBestGhostText[] = {
+    "このコースのベストレコードと",
+    "ベストラップがきえてしまいますが",
+    "よろしいですか?",
+    "このコースのゴーストの",
+    "データがきえてしまいますが",
+    "よろしいですか?",
+};
+#else
 char* gEraseBestGhostText[] = {
     "THE BEST RECORDS AND BEST", "LAP FOR THIS COURSE WILL BE", "ERASED.  IS THIS OK?",
 
     "GHOST DATA FOR THIS",       "COURSE WILL BE ERASED.",      "IS THIS OK?",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7860[] = {
+    "ゴーストをけすことが",
+    "できませんでした。",
+};
+#else
 char* D_800E7860[] = {
     "UNABLE TO ERASE ",
     "GHOST DATA",
 };
+#endif
 
+#ifdef VERSION_JP
+char* gTextOptionMenu[] = {
+    "ゲームセレクトにもどる",
+    "サウンドモード",
+    "コントローラパックのコピー",
+    "データをすべてけす",
+};
+#else
 char* gTextOptionMenu[] = {
     "RETURN TO GAME SELECT",
     "SOUND MODE",
     "COPY N64 CONTROLLER PAK",
     "ERASE ALL DATA",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7878[] = {
+    "カセットにセーブされている",
+    "すべてのデータがきえてしまいますが",
+    "ほんとうによろしいですか?",
+};
+#else
 char* D_800E7878[] = {
     "ALL SAVED DATA WILL BE",
     "PERMANENTLY ERASED.",
     "ARE YOU REALLY SURE?",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7884[] = {
+    "カセットにセーブされている",
+    "すべてのデータが",
+    "しょうきょされました",
+};
+#else
 char* D_800E7884[] = {
     "",
     "ALL SAVED DATA",
     "HAS BEEN NOW ERASED.",
 };
+#endif
 
 // In a perfect world this would be `char *D_800E7890[][4]`
+#ifdef VERSION_JP
+char* D_800E7890[] = {
+    "1P のコントローラパックが",
+    "セットされていません",
+    "",
+    "",
+    "1P のコントローラパックの",
+    "データをよみこめませんでした",
+    "",
+    "",
+    "1P のコントローラパックに",
+    "ゲームノートがつくれません",
+    "",
+    "",
+    "1P のコントローラパックの",
+    "のこりページがたりないので",
+    "ゴーストをコピーすることが",
+    "できません",
+};
+#else
 char* D_800E7890[] = {
     "CONTROLLER 1 DOES NOT HAVE ",
     "N64 CONTROLLER PAK",
@@ -519,8 +762,25 @@ char* D_800E7890[] = {
     "IN CONTROLLER 1 ",
     "N64 CONTROLLER PAK",
 };
+#endif
 
 // In a perfect world this would be `char *D_800E78D0[][3]`
+#ifdef VERSION_JP
+char* D_800E78D0[] = {
+    "2P のコントローラパックには",
+    "ゴーストデータはありません",
+    "",
+    "2P のコントローラパックには",
+    "マリオカート64 のゲームノートは",
+    "ありません",
+    "2P のコントローラパックが",
+    "セットされていません",
+    "",
+    "2P のコントローラパックの",
+    "データをよみこめませんでした",
+    "",
+};
+#else
 char* D_800E78D0[] = {
     "NO GHOST DATA ",         "IN CONTROLLER 2 ",         "N64 CONTROLLER PAK",
 
@@ -530,40 +790,105 @@ char* D_800E78D0[] = {
 
     "UNABLE TO READ DATA ",   "FROM CONTROLLER 2 ",       "N64 CONTROLLER PAK",
 };
+#endif
 
 // In a perfect world this would be `char *D_800E7900[][4]`
+#ifdef VERSION_JP
+char* D_800E7900[] = {
+    "1p のコントローラパックに",
+    "データをコピーできませんでした",
+    "2p のコントローラパックの",
+    "データをよみこめませんでした",
+};
+#else
 char* D_800E7900[] = {
     "UNABLE TO COPY DATA ", "FROM CONTROLLER 1 ", "N64 CONTROLLER PAK",
 
     "UNABLE TO READ DATA ", "FROM CONTROLLER 2 ", "N64 CONTROLLER PAK",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7918[] = {
+    "パック1",
+    "パック2",
+};
+#else
 char* D_800E7918[] = {
     "CONTROLLER 1",
     "CONTROLLER 2",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7920[] = {
+    "どのファイルをコピーしますか?",
+    "どのファイルにコピーしますか?",
+};
+#else
 char* D_800E7920[] = {
     "WHICH FILE DO YOU WANT TO MAKE A COPY OF?",
     "TO WHICH FILE DO YOU WANT TO COPY?",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7928[] = {
+    "まえのデータはきえてしまいますが",
+    "よろしいですか?",
+};
+#else
 char* D_800E7928[] = {
     "CURRENT DATA WILL BE ERASED,",
     "IS THIS OK?",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7930[] = {
+    "やめる",
+    "コピーする",
+};
+#else
 char* D_800E7930[] = {
     "QUIT",
     "COPY",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7938[] = {
+    "データをコピーちゅうです",
+    "データのコピーがおわりました",
+};
+#else
 char* D_800E7938[] = {
     "COPYING",
     "DATA COPY COMPLETED",
 };
+#endif
 
 // In a perfect world this would be `char *D_800E7940[][4]`
+#ifdef VERSION_JP
+char* D_800E7940[] = {
+    "コントローラパックがセットされていません。",
+    "ゴーストデータをセーブしたいときは,1P の",
+    "コントローラにパックをセットしてください。",
+    "",
+    "コントローラパックのデータを",
+    "よみこめませんでした。",
+    "",
+    "",
+    "コントローラパックのデータがこわれているので",
+    "ゴーストがでません。あたらしいゴーストを",
+    "セーブするか,データがめんでゴーストを",
+    "けしてください。",
+    "コントローラパックののこりページが",
+    "たりません。 このゲームのノートをつくるには",
+    "121 ページひつようです。 くわしくは,",
+    "せつめいしょをおよみください。",
+};
+#else
 char* D_800E7940[] = {
     "NO N64 CONTROLLER PAK DETECTED",
     "TO SAVE GHOST DATA, ",
@@ -585,15 +910,58 @@ char* D_800E7940[] = {
     "GAME DATA, PLEASE FREE 121 PAGES.",
     "SEE INSTRUCTION BOOKLET FOR DETAILS.",
 };
+#endif
 
 // Unused?
+#ifdef VERSION_JP
+char* D_800E7980[] = {
+    "ゴーストをセーブするためには",
+    "コントローラ1にコントローラパックを",
+    "セットしてください",
+};
+#else
 char* D_800E7980[] = {
     "TO SAVE GHOST DATA, ",
     "INSERT N64 CONTROLLER PAK ",
     "INTO CONTROLLER 1",
 };
+#endif
 
 // In a perfect world this would be `char *D_800E798C[][7]`
+#ifdef VERSION_JP
+char* D_800E798C[] = {
+    "コントローラパックが",
+    "セットされていないので",
+    "ゴーストを",
+    "セーブすることは",
+    "できません。",
+    "ゴーストのセーブが",
+    "できませんでした",
+    "",
+    "",
+    "",
+    "パックいじょう",
+    "",
+    "",
+    "",
+    "",
+    "コントローラパックの",
+    "のこりページが",
+    "たりないのでゴーストを",
+    "セーブすることが",
+    "できません。",
+    "ゲームノートが",
+    "つくれません。",
+    "",
+    "",
+    "",
+    "このゴーストは",
+    "すでに",
+    "セーブされています。",
+    "",
+    "",
+};
+#else
 char* D_800E798C[] = {
     "N64 CONTROLLER PAK ",
     "NOT DETECTED. ",
@@ -643,60 +1011,130 @@ char* D_800E798C[] = {
     "",
     "",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7A34[] = {
+    "このプレイデータは、",
+    "ゴーストには できません",
+};
+#else
 char* D_800E7A34[] = {
     "RACE DATA CANNOT ",
     "BE SAVED FOR GHOST",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7A3C[] = {
+    "セーブするファイルを",
+    "えらんでください",
+};
+#else
 char* D_800E7A3C[] = {
     "SELECT THE FILE ",
     "YOU WANT TO SAVE",
 };
+#endif
 
 // Might need a const?
 char* D_800E7A44 = "NO DATA";
 
+#ifdef VERSION_JP
+char* D_800E7A48[] = {
+    "MARIOKART64 の",
+    "ゲームノートを",
+    "つくっています",
+};
+#else
 char* D_800E7A48[] = {
     "CREATING ",
     "MARIO KART 64 ",
     "GAME DATA",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7A54[] = {
+    "ゲームノートが",
+    "つくれません",
+    "",
+};
+#else
 char* D_800E7A54[] = {
     "CANNOT CREATE GAME DATA",
     "",
     "",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7A60[] = {
+    "まえのデータは",
+    "きえてしまいますが",
+    "よろしいですか?",
+};
+#else
 char* D_800E7A60[] = {
     "THE PREVIOUS DATA ",
     "WILL BE ERASED, ",
     "IS THIS OK?",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7A6C[] = {
+    "やめる",
+    "セーブする",
+};
+#else
 char* D_800E7A6C[] = {
     "QUIT",
     "SAVE",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7A74[] = {
+    "ゴーストを",
+    "セーブしています",
+    "しばらくおまちください",
+};
+#else
 char* D_800E7A74[] = {
     "SAVING GHOST DATA",
     "",
     "PLEASE WAIT",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7A80[] = {
+    "ゴーストのセーブが",
+    "できませんでした",
+};
+#else
 char* D_800E7A80[] = {
     "UNABLE TO SAVE ",
     "THE GHOST",
 };
+#endif
 
+#ifdef VERSION_JP
+char* D_800E7A88[] = {
+    "YOU ARE AWARDED THE",
+    "GOLD CUP.",
+    "SILVER CUP.",
+    "BRONZE CUP.",
+};
+#else
 char* D_800E7A88[] = {
     "YOU ARE AWARDED THE",
     "GOLD CUP",
     "SILVER CUP",
     "BRONZE CUP",
 };
+#endif
 
 // Might need a const?
 char* D_800E7A98 = "MAYBE NEXT TIME!";
@@ -706,9 +1144,23 @@ char* D_800E7A9C[] = {
     "WHAT A PITY!",
 };
 
+#ifdef VERSION_JP
+char* gPlaceText[] = {
+    "YOU ARE IN",
+    "    st.",
+    "    nd.",
+    "    rd.",
+    "    th.",
+    "    th.",
+    "    th.",
+    "    th.",
+    "    th.",
+};
+#else
 char* gPlaceText[] = {
     "YOU PLACED", "    st", "    nd", "    rd", "    th", "    th", "    th", "    th", "    th",
 };
+#endif
 
 const s8 gGPPointRewards[] = { 9, 6, 3, 1 };
 const s8 D_800F0B1C[] = {
@@ -1123,9 +1575,24 @@ f32 sIntroModelMotionSpeed = 0.0f;
 // Speed of the intro logo model
 f32 sIntroModelSpeed = 3.0f;
 
+#ifdef VERSION_JP
+Unk_D_800E70A0 D_800E8538[] = { { 0x73, 0x9b, 0x00, 0x00 } };
+#else
 Unk_D_800E70A0 D_800E8538[] = { { 0x69, 0x9b, 0x00, 0x00 } };
+#endif
 
 // In a perfect world this would be `Unk_D_800E70A0 D_800E8540[][4]`
+#ifdef VERSION_JP
+Unk_D_800E70A0 D_800E8540[] = {
+    { 0x82, 0x64, 0x00, 0x00 }, { 0x82, 0x64, 0x00, 0x00 }, { 0x82, 0x64, 0x00, 0x00 }, { 0x82, 0x64, 0x00, 0x00 },
+
+    { 0x78, 0x28, 0x00, 0x00 }, { 0x78, 0xa0, 0x00, 0x00 }, { 0x78, 0x28, 0x00, 0x00 }, { 0x78, 0xa0, 0x00, 0x00 },
+
+    { 0x2b, 0x64, 0x00, 0x00 }, { 0xbc, 0x64, 0x00, 0x00 }, { 0x2b, 0x64, 0x00, 0x00 }, { 0xbc, 0x64, 0x00, 0x00 },
+
+    { 0x2b, 0x28, 0x00, 0x00 }, { 0xbc, 0x28, 0x00, 0x00 }, { 0x2b, 0xa0, 0x00, 0x00 }, { 0xbc, 0xa0, 0x00, 0x00 },
+};
+#else
 Unk_D_800E70A0 D_800E8540[] = {
     { 0x82, 0x64, 0x00, 0x00 }, { 0x82, 0x64, 0x00, 0x00 }, { 0x82, 0x64, 0x00, 0x00 }, { 0x82, 0x64, 0x00, 0x00 },
 
@@ -1135,15 +1602,35 @@ Unk_D_800E70A0 D_800E8540[] = {
 
     { 0x28, 0x28, 0x00, 0x00 }, { 0xb2, 0x28, 0x00, 0x00 }, { 0x28, 0xa0, 0x00, 0x00 }, { 0xb2, 0xa0, 0x00, 0x00 },
 };
+#endif
 
 // In a perfect world this would be `Unk_D_800E70A0 D_800E85C0[][4]`
+#ifdef VERSION_JP
+Unk_D_800E70A0 D_800E85C0[] = {
+    { 0x78, 0x8c, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 },
+
+    { 0x78, 0x55, 0x00, 0x00 }, { 0x78, 0xcd, 0x00, 0x00 }, { 0x78, 0x28, 0x00, 0x00 }, { 0x78, 0xa0, 0x00, 0x00 },
+};
+#else
 Unk_D_800E70A0 D_800E85C0[] = {
     { 0x69, 0x8c, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 },
 
     { 0x69, 0x55, 0x00, 0x00 }, { 0x69, 0xcd, 0x00, 0x00 }, { 0x78, 0x28, 0x00, 0x00 }, { 0x78, 0xa0, 0x00, 0x00 },
 };
+#endif
 
 // In a perfect world this would be `Unk_D_800E70A0 D_800E8600[][4]`
+#ifdef VERSION_JP
+Unk_D_800E70A0 D_800E8600[] = {
+    { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 },
+
+    { 0x78, 0x28, 0x00, 0x00 }, { 0x78, 0xa0, 0x00, 0x00 }, { 0x78, 0x28, 0x00, 0x00 }, { 0x78, 0xa0, 0x00, 0x00 },
+
+    { 0x2b, 0x64, 0x00, 0x00 }, { 0xbc, 0x64, 0x00, 0x00 }, { 0x2b, 0x64, 0x00, 0x00 }, { 0xbc, 0x64, 0x00, 0x00 },
+
+    { 0x2b, 0x28, 0x00, 0x00 }, { 0xbc, 0x28, 0x00, 0x00 }, { 0x2b, 0xa0, 0x00, 0x00 }, { 0xbc, 0xa0, 0x00, 0x00 },
+};
+#else
 Unk_D_800E70A0 D_800E8600[] = {
     { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 },
 
@@ -1153,6 +1640,7 @@ Unk_D_800E70A0 D_800E8600[] = {
 
     { 0x28, 0x28, 0x00, 0x00 }, { 0xb2, 0x28, 0x00, 0x00 }, { 0x28, 0xa0, 0x00, 0x00 }, { 0xb2, 0xa0, 0x00, 0x00 },
 };
+#endif
 
 f64 exponent_by_squaring(f64 base, s32 exponent) {
     s32 positive_exponent;
@@ -2211,7 +2699,9 @@ void func_80093C98(s32 arg0) {
     if (arg0 == 0) {
         func_800A54EC();
         func_8009CA6C(4);
+#ifndef VERSION_JP
         D_80165754 = gMatrixEffectCount;
+#endif
         gMatrixEffectCount = 0;
     }
 }
@@ -3001,7 +3491,14 @@ Gfx* func_800963F0(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, f32 arg4, 
     return displayListHead;
 }
 
+#ifdef VERSION_JP
+/* JP's copy of this segment-0B texture sits 0x100 earlier. */
+extern u8 D_0B002900[];
+#define sStaticNoiseTexture D_0B002900
+#else
 extern u8 D_0B002A00[];
+#define sStaticNoiseTexture D_0B002A00
+#endif
 /**
  *
  * This function is responsible for drawing a near unnoticeable static pattern
@@ -3089,7 +3586,7 @@ Gfx* func_80096CD8(Gfx* displayListHead, s32 xPos, s32 yPos, u32 width, u32 heig
             } else
                 rectXoffset = tileWidth;
 
-            gDPLoadTextureTile(displayListHead++, (D_0B002A00 + random_int(128) * 2), G_IM_FMT_IA, G_IM_SIZ_16b, width,
+            gDPLoadTextureTile(displayListHead++, (sStaticNoiseTexture + random_int(128) * 2), G_IM_FMT_IA, G_IM_SIZ_16b, width,
                                height, x, y, x + rectXoffset, y + rectYoffset, 0, G_TX_WRAP, G_TX_WRAP, masks, maskt,
                                G_TX_NOLOD, G_TX_NOLOD);
             gSPTextureRectangle(displayListHead++, x << 2, y << 2, (x + rectXoffset) << 2, (y + rectYoffset) << 2,
@@ -3175,7 +3672,7 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
             gDPLoadMultiTile(displayListHead++, argA, 0, G_TX_RENDERTILE, arg1, G_IM_SIZ_16b, argB, argC, var_a1_2,
                              var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0, G_TX_WRAP, G_TX_WRAP, sp68, sp64,
                              G_TX_NOLOD, G_TX_NOLOD);
-            gDPLoadMultiTile(displayListHead++, D_0B002A00 + random_int(128) * 2, 256, G_TX_RENDERTILE + 1, arg1,
+            gDPLoadMultiTile(displayListHead++, sStaticNoiseTexture + random_int(128) * 2, 256, G_TX_RENDERTILE + 1, arg1,
                              G_IM_SIZ_16b, argB, argC, var_a1_2, var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0,
                              G_TX_WRAP, G_TX_WRAP, sp68, sp64, G_TX_NOLOD, G_TX_NOLOD);
             gSPTextureRectangle(displayListHead++, arg8 * 4, arg9 * 4, (arg8 + var_s2) * 4, (arg9 + var_s4) * 4, 0,
@@ -5846,7 +6343,11 @@ void render_menus(MenuItem* arg0) {
     s32 temp_v1;
     UNUSED s32 pad2;
     char sp80[3];
+#ifdef VERSION_JP
+    f32 why = 0.8f;
+#else
     f32 why = 0.75f;
+#endif
     s32 one = 1;
     UNUSED s32 pad3;
 
@@ -5914,7 +6415,11 @@ void render_menus(MenuItem* arg0) {
                 gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - strWidth, 0x0000007B, strWidth + 0xA0, 0x000000A4,
                                             0, 0, 0, 0x00000096);
                 set_text_color(TEXT_GREEN);
+#ifdef VERSION_JP
+                print_text1_center_mode_1(0x000000A0, 0x0000008C, gCourseNamesDup[0], 0, 0.9f, 0.9f);
+#else
                 print_text1_center_mode_1(0x0000009B, 0x0000008C, gCourseNamesDup[0], 0, 0.9f, 0.9f);
+#endif
                 temp_v1 = func_800B4EB4(0, 7) & 0xFFFFF;
                 if (temp_v1 < 0x1EAA) {
                     set_text_color((s32) gGlobalTimer % 2);
@@ -5941,15 +6446,25 @@ void render_menus(MenuItem* arg0) {
                 if (strWidth < temp_v1) {
                     strWidth = temp_v1;
                 }
+#ifdef VERSION_JP
+                temp_t2 = (s32) ((strWidth + 30) * why) / 2;
+#else
                 temp_t2 = (s32) (strWidth * why) / 2;
+#endif
                 temp_t5 = (s32) (((why * 2) + 0.5) * 16.0) / 2;
                 gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - temp_t2, 0xB6 - temp_t5, temp_t2 + 0xA0,
                                             temp_t5 + 0xB6, 0, 0, 0, 0x00000096);
                 set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
                 for (strWidth = 0; strWidth < 2; strWidth++) {
+#ifdef VERSION_JP
+                    print_text1_center_mode_1(0xA0 * one - 3 * why,
+                                              (s32) (0xB4 * one + ((f32) (strWidth * 0x12) * why)),
+                                              gTextNoController[strWidth], 0, why, why);
+#else
                     print_text1_center_mode_1(0xA0 * one - 1 * why,
                                               (s32) (0xB4 * one + ((f32) (strWidth * 0x12) * why)),
                                               gTextNoController[strWidth], 0, why, why);
+#endif
                 }
                 break;
             }
@@ -6147,6 +6662,11 @@ void render_menus(MenuItem* arg0) {
                 break;
             case MENU_ITEM_TYPE_065: /* switch 6 */
             case MENU_ITEM_TYPE_066: {
+#ifdef VERSION_JP
+                func_800A86E8(arg0);
+                set_text_color(TEXT_YELLOW);
+                print_text_mode_1(arg0->column + 8, arg0->row + 0x10, gBestTimeText[arg0->type - 0x65], 0, 0.8f, 0.8f);
+#else
                 f32 scaleX;
                 if (arg0->type == MENU_ITEM_TYPE_065) {
                     scaleX = 0.6f;
@@ -6157,6 +6677,7 @@ void render_menus(MenuItem* arg0) {
                 set_text_color(TEXT_YELLOW);
                 print_text_mode_1(arg0->column + 8, arg0->row + 0x10, gBestTimeText[arg0->type - 0x65], 0, scaleX,
                                   0.8f);
+#endif
                 func_800A874C(arg0);
                 break;
             }
@@ -6200,7 +6721,11 @@ void render_menus(MenuItem* arg0) {
                 }
                 gDisplayListHead = render_menu_textures(gDisplayListHead, seg2_data_texture, arg0->column, arg0->row);
                 set_text_color(TEXT_YELLOW);
+#ifdef VERSION_JP
+                print_text1_left(0x00000128, 0x0000001C, gTextMenuData, 0, 0.65f, 0.65f);
+#else
                 print_text1_left(0x00000125, 0x0000001C, gTextMenuData, 0, 0.55f, 0.55f);
+#endif
                 break;
             case MENU_ITEM_TYPE_08D: /* switch 6 */
                 func_800A1780(arg0);
@@ -6401,9 +6926,12 @@ void func_800A08D8(u8 arg0, s32 column, s32 row) {
     if (arg0 >= 0x10) {
         arg0 -= 0x10;
         if (arg0 < 0x85) {
+#ifndef VERSION_JP
+            // JP's glyph table has all 0x85 entries; US clamps what it removed
             if (arg0 >= 0x32) {
                 arg0 = 0x2B;
             }
+#endif
             gDisplayListHead =
                 render_menu_textures(gDisplayListHead, segmented_to_virtual_dupe(D_800E7AF8[arg0]), column, row);
         }
@@ -6573,7 +7101,11 @@ void func_800A10CC(MenuItem* arg0) {
             set_text_color(TEXT_YELLOW);
             for (var_s1 = 0; var_s1 < 4; var_s1++) {
                 // In a perfect world this would be `D_800E7940[index][var_s1]`
+#ifdef VERSION_JP
+                print_text_mode_1(0x00000023, 0x41 + (0xD * var_s1), D_800E7940[(index * 4) + var_s1], 0, 0.75f, 0.75f);
+#else
                 print_text_mode_1(0x00000023, 0x41 + (0xD * var_s1), D_800E7940[(index * 4) + var_s1], 0, 0.65f, 0.65f);
+#endif
             }
             break;
         default:
@@ -6735,12 +7267,21 @@ void render_menu_item_data_course_info(MenuItem* arg0) {
     arg0->column = 0x14;
     // name of the course
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
+#ifdef VERSION_JP
+    print_text1_center_mode_1(0x5A, arg0->row + 0x19, gCourseNamesDup[courseId], 0, 0.75f, 0.75f);
+#else
     print_text1_center_mode_1(0x69, arg0->row + 0x19, gCourseNamesDup[courseId], 0, 0.75f, 0.75f);
+#endif
 
     // distance
     set_text_color(TEXT_RED);
+#ifdef VERSION_JP
+    print_text_mode_1(0x23, arg0->row + 0x28, (char*) &gTextDistance, 0, 0.75f, 0.75f);
+    print_text1_left(0x91, arg0->row + 0x28, sCourseLengths[courseId], 1, 0.75f, 0.75f);
+#else
     print_text_mode_1(0x2D, arg0->row + 0x28, (char*) &gTextDistance, 0, 0.75f, 0.75f);
     print_text1_left(0xA5, arg0->row + 0x28, sCourseLengths[courseId], 1, 0.75f, 0.75f);
+#endif
 
     // best lap record
     set_text_color(TEXT_YELLOW);
@@ -6793,14 +7334,27 @@ void menu_item_data_course_selectable(MenuItem* arg0) {
         if (var_s1 != 0) {
             set_text_color(TEXT_BLUE);
             gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, 0x96);
+#ifdef VERSION_JP
+            print_text_mode_2(0x00000025, 0x46 + (0xD * i), gTextMenuOption[i], 0, 0.75f, 0.75f);
+        } else {
+            set_text_color(var_s2);
+            print_text_mode_1(0x00000025, 0x46 + (0xD * i), gTextMenuOption[i], 0, 0.75f, 0.75f);
+        }
+#else
             print_text_mode_2(0x00000025, 0x3F + (0xD * i), gTextMenuOption[i], 0, 0.6f, 0.6f);
         } else {
             set_text_color(var_s2);
             print_text_mode_1(0x00000025, 0x3F + (0xD * i), gTextMenuOption[i], 0, 0.6f, 0.6f);
         }
+#endif
     }
+#ifdef VERSION_JP
+    sp78.column = 0x001D;
+    sp78.row = (gCourseRecordsMenuSelection * 0xD) + 0x3E;
+#else
     sp78.column = 0x001F;
     sp78.row = (gCourseRecordsMenuSelection * 0xD) + 0x3A;
+#endif
     func_800A66A8(arg0, (Unk_D_800E70A0*) &sp78);
 }
 
@@ -6820,8 +7374,13 @@ void func_800A1DE0(MenuItem* arg0) {
         // Removing `wut` introduces counter intuitive changes to how this loop is handled
         // Also, in a perfect world this would be `gEraseBestGhostText[gCourseRecordsMenuSelection - 1][var_s1]`
         wut = gEraseBestGhostText[(gCourseRecordsMenuSelection - 1) * 3 + var_s1];
+#ifdef VERSION_JP
+        print_text_mode_1(0x0000001B, 0x3C + (0xD * var_s1),
+                          gEraseBestGhostText[(gCourseRecordsMenuSelection - 1) * 3 + var_s1], 0, 0.75f, 0.75f);
+#else
         print_text_mode_1(0x0000001B, 0x3C + (0xD * var_s1),
                           gEraseBestGhostText[(gCourseRecordsMenuSelection - 1) * 3 + var_s1], 0, 0.65f, 0.65f);
+#endif
     }
 
     for (var_s1 = 0; var_s1 < ARRAY_COUNT(D_800E7840); var_s1++) {
@@ -6832,7 +7391,11 @@ void func_800A1DE0(MenuItem* arg0) {
             var_a0 = 1;
         }
         set_text_color(var_a0);
+#ifdef VERSION_JP
+        print_text_mode_1(0x00000043, 0x6E + (0xD * var_s1), D_800E7840[var_s1], 0, 0.75f, 0.75f);
+#else
         print_text_mode_1(0x00000043, 0x6E + (0xD * var_s1), D_800E7840[var_s1], 0, 0.65f, 0.65f);
+#endif
     }
 
     sp58.column = 0x003B;
@@ -6844,12 +7407,337 @@ void func_800A1F30(UNUSED MenuItem* unused) {
     s32 row;
     s32 text;
 
+#ifdef VERSION_JP
+    set_text_color(TEXT_GREEN);
+    for (row = 0x3C, text = 0; row < 0x56; row += 0xD, text++) {
+        print_text_mode_1(0x1B, row, D_800E7860[text], 0, 0.75f, 0.75f);
+    }
+#else
     set_text_color(TEXT_RED);
     for (row = 0x49, text = 0; row < 0x69; row += 0x10, text++) {
         print_text_mode_1(0x2A, row, D_800E7860[text], 0, 0.75f, 0.75f);
     }
+#endif
 }
 
+#ifdef VERSION_JP
+void func_800A1FB0(MenuItem* arg0) {
+    Unk_D_800E70A0 spE0;
+    s32 var_s1;
+#ifndef VERSION_JP  /* JP's frame is 0x10 smaller */
+#ifndef VERSION_JP  /* JP frame */
+    UNUSED s32 pad[2];
+#endif
+#endif
+    UNUSED s32 temp;
+#ifndef VERSION_JP  /* JP's frame is 0x10 smaller */
+#ifndef VERSION_JP  /* JP frame */
+    UNUSED s32 pad2[2];
+#endif
+#endif
+    /* Declaration order is the frame layout here: IDO hands out a stack slot per
+       declared local, downwards from the top, so pad4 belongs up here and sp98
+       down after baseY. */
+    char** promptText;
+    UNUSED s32 pad4[3];
+    s32 var_s5;
+    s32 var_s4;
+    s32 j;
+    char spB8[3];
+    UNUSED s32 pad3[2];
+    s32 i;
+    char spA8[3];
+    struct_8018EE10_entry* var_v1;
+    f32 someScale;
+#ifndef VERSION_JP
+    f32 someScale2;
+#endif
+    s32 baseY;
+    char sp98[3];
+    s32 promptCol;
+#ifndef VERSION_JP
+    f32 someScale3;
+#endif
+
+#ifndef VERSION_JP
+    someScale3 = 1.0f;
+#endif
+    gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x00000140, 0x000000F0, 0, 0, 0, 0x00000064);
+    switch (gSubMenuSelection) {
+        case SUB_MENU_OPTION_RETURN_GAME_SELECT:
+        case SUB_MENU_OPTION_SOUND_MODE:
+        case SUB_MENU_OPTION_COPY_CONTROLLER_PAK:
+        case SUB_MENU_OPTION_ERASE_ALL_DATA:
+            for (i = 0; i < ARRAY_COUNT(gTextOptionMenu); i++) {
+                set_text_color_rainbow_if_selected(gSubMenuSelection - SUB_MENU_OPTION_MIN, i, 3);
+                print_text_mode_1(0x00000046, 0x55 + (0x23 * i), gTextOptionMenu[i], 0, 1.0f, 1.0f);
+                if (i == (gSubMenuSelection - SUB_MENU_OPTION_MIN)) {
+                    spE0.column = 0x0046;
+                    spE0.row = 0x55 + (0x23 * i);
+                }
+            }
+            set_text_color(TEXT_GREEN);
+            print_text1_center_mode_1(0x000000E6, 0x55 + 0x23, gSoundModeNames[gSoundMode], 0, 1.0f, 1.0f);
+            break;
+        case SUB_MENU_ERASE_QUIT:
+        case SUB_MENU_ERASE_ERASE:
+            set_text_color(TEXT_YELLOW);
+            for (i = 0; i < ARRAY_COUNT(D_800E7878); i++) {
+                print_text_mode_1(0x0000001E, 0x55 + (0x14 * i), D_800E7878[i], 0, 1.0f, 1.0f);
+            }
+            for (i = 0; i < ARRAY_COUNT(D_800E7840); i++) {
+                set_text_color_rainbow_if_selected(gSubMenuSelection - SUB_MENU_ERASE_MIN, i, 1);
+                print_text_mode_1(0x00000096, 0x96 + (0x19 * i), D_800E7840[i], 0, 1.0f, 1.0f);
+                if (i == (gSubMenuSelection - SUB_MENU_ERASE_MIN)) {
+                    spE0.column = 0x0096;
+                    spE0.row = 0x96 + (0x19 * i);
+                }
+            }
+            break;
+        case SUB_MENU_SAVE_DATA_ERASED:
+            set_text_color(TEXT_YELLOW);
+            for (i = 0; i < ARRAY_COUNT(D_800E7884); i++) {
+                print_text_mode_1(0x00000032, 0x55 + (0x14 * i), D_800E7884[i], 0, 1.0f, 1.0f);
+            }
+            break;
+        case SUB_MENU_COPY_PAK_ERROR_NO_GHOST_DATA:
+        case SUB_MENU_COPY_PAK_ERROR_NO_GAME_DATA:
+        case SUB_MENU_COPY_PAK_ERROR_NO_PAK_2P:
+        case SUB_MENU_COPY_PAK_ERROR_BAD_READ_2P:
+            set_text_color(TEXT_RED);
+            someScale = 1.0f;
+            var_s1 = gSubMenuSelection - SUB_MENU_COPY_PAK_ERROR_2P_MIN;
+            for (i = 0; i < ARRAY_COUNT(D_800E78D0) / 4; i++) { // 12 / 4 = 3
+                print_text_mode_1(0x00000032, 0x55 + (0x14 * i), D_800E78D0[(var_s1 * 3) + i], 0, someScale, someScale);
+            }
+            break;
+        case SUB_MENU_COPY_PAK_ERROR_NO_PAK_1P:
+        case SUB_MENU_COPY_PAK_ERROR_BAD_READ_1P:
+        case SUB_MENU_COPY_PAK_ERROR_CANT_CREATE_1P:
+        case SUB_MENU_COPY_PAK_ERROR_NO_PAGES_1P:
+            j++;
+            j--; // FAKE
+            set_text_color(TEXT_RED);
+#ifdef VERSION_JP
+            someScale = 1.0f;
+#else
+            someScale = someScale3;
+#endif
+            var_s1 = gSubMenuSelection - SUB_MENU_COPY_PAK_ERROR_1P_MIN;
+            for (i = 0; i < ARRAY_COUNT(D_800E7890) / 4; i++) { // 16 / 4 = 4
+                print_text_mode_1(0x00000041, 0x55 + (i * 0x14), D_800E7890[(var_s1 * 4) + i], 0, someScale, someScale);
+            }
+            break;
+        case SUB_MENU_COPY_PAK_UNABLE_COPY_FROM_1P:
+        case SUB_MENU_COPY_PAK_UNABLE_READ_FROM_2P:
+            set_text_color(TEXT_RED);
+            someScale = 1.0f;
+            var_s1 = gSubMenuSelection - SUB_MENU_COPY_PAK_UNABLE_ERROR_MIN;
+            for (i = 0; i < 2; i++) {
+                print_text_mode_1(0x00000032, 0x55 + (0x14 * i), D_800E7900[(var_s1 * 2) + i], 0, someScale, someScale);
+            }
+            break;
+        case SUB_MENU_COPY_PAK_CREATE_GAME_DATA_INIT:
+#ifndef VERSION_JP
+            someScale3 = 0.6f;
+#endif
+        case SUB_MENU_COPY_PAK_CREATE_GAME_DATA_DONE:
+            set_text_color(TEXT_YELLOW);
+            for (i = 0; i < ARRAY_COUNT(D_800E7A48); i++) {
+                print_text_mode_1(0x00000050, 0x55 + (0x14 * i), D_800E7A48[i], 0, 1.0f, 1.0f);
+            }
+            break;
+        case SUB_MENU_COPY_PAK_FROM_GHOST1_1P:
+        case SUB_MENU_COPY_PAK_FROM_GHOST2_1P:
+        case SUB_MENU_COPY_PAK_TO_GHOST1_2P:
+        case SUB_MENU_COPY_PAK_TO_GHOST2_2P:
+            switch (gSubMenuSelection) {
+                case SUB_MENU_COPY_PAK_FROM_GHOST1_1P:
+                case SUB_MENU_COPY_PAK_FROM_GHOST2_1P:
+                    var_s5 = SUB_MENU_COPY_PAK_FROM_GHOST_MIN;
+                    var_s4 = 0;
+                    break;
+                case SUB_MENU_COPY_PAK_TO_GHOST1_2P:
+                case SUB_MENU_COPY_PAK_TO_GHOST2_2P:
+                    var_s5 = SUB_MENU_COPY_PAK_TO_GHOST_MIN;
+                    var_s4 = 1;
+                default:
+                    break;
+            }
+            temp = var_s4; // only semi-fake
+            set_text_color(temp + 1);
+            someScale = 1.0f;
+#ifndef VERSION_JP
+            someScale = 0.75f;
+#endif
+            baseY = 0x96;
+            print_text1_center_mode_1(0x000000A0, 0x00000055, D_800E7920[temp], 0, someScale, someScale);
+            for (i = 0; i < ARRAY_COUNT(D_800E7918); i++) {
+                set_text_color(TEXT_YELLOW);
+                print_text1_center_mode_1(0x64 + (0x78 * i), 0x0000007D, D_800E7918[i], 0, someScale, someScale);
+                for (j = 0; j < 2; j++) {
+                    if (i != temp) {
+                        text_rainbow_effect(gSubMenuSelection - var_s5, j, TEXT_GREEN);
+                        if (j == (gSubMenuSelection - var_s5)) {
+                            spE0.column = 0x23 + (0x87 * i);
+                            spE0.row = 0x96 + (0x1E * j);
+                        }
+                    } else if ((temp != 0) && (j == arg0->param2)) {
+                        set_text_color((s32) gGlobalTimer % 3);
+                    } else {
+                        set_text_color(TEXT_GREEN);
+                    }
+                    convert_number_to_ascii(j + 1, &spB8[0]);
+#ifdef VERSION_JP
+                    print_text_mode_1(0x23 + (0x87 * i), baseY + (0x1E * j), &spB8[1], 0, 0.75, 0.75);
+#else
+                    someScale2 = 0.75f;
+                    print_text_mode_1(0x23 + (0x87 * i), baseY + (0x1E * j), &spB8[1], 0, someScale2, someScale2);
+#endif
+                    if (i == 0) {
+                        var_v1 = &D_8018EE10[j];
+                    } else {
+                        var_v1 = &((struct_8018EE10_entry*) gSomeDLBuffer)[j];
+                    }
+                    if (var_v1->ghostDataSaved == 0) {
+                        print_text_mode_1(0x32 + (i * 0x87), baseY + (0x1E * j), D_800E7A44, 0, 0.75, 0.75);
+                    } else {
+                        print_text_mode_1(
+                            0x32 + (i * 0x87), baseY + (0x1E * j),
+                            gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0,
+                            0.75, 0.75);
+                    }
+                }
+            }
+            break;
+        case SUB_MENU_COPY_PAK_PROMPT_QUIT:
+        case SUB_MENU_COPY_PAK_PROMPT_COPY:
+            set_text_color(TEXT_RED);
+            someScale = 1.0f;
+            for (i = 0; i < ARRAY_COUNT(D_800E7928); i++) {
+                print_text1_center_mode_1(0x000000A0, 0x4D + (0x14 * i), D_800E7928[i], 0, someScale, someScale);
+            }
+            for (i = 0; i < ARRAY_COUNT(D_800E7918); i++) {
+                set_text_color(TEXT_YELLOW);
+                print_text1_center_mode_1(0x64 + (0x78 * i), 0x0000007D, D_800E7918[i], 0, someScale, someScale);
+                for (j = 0; j != 2; j++) {
+                    if (i == 0) {
+                        if (j == arg0->param1) {
+                            set_text_color((s32) gGlobalTimer % 3);
+                        } else {
+                            set_text_color(TEXT_GREEN);
+                        }
+                    } else if (j == arg0->param2) {
+                        set_text_color((s32) gGlobalTimer % 3);
+                    } else {
+                        set_text_color(TEXT_GREEN);
+                    }
+                    convert_number_to_ascii(j + 1, &spA8[0]);
+#ifdef VERSION_JP
+                    print_text_mode_1(0x23 + (0x87 * i), 0x96 + (0x1E * j), &spA8[1], 0, 0.75, 0.75);
+#else
+                    print_text_mode_1(0x23 + (0x87 * i), 0x96 + (0x1E * j), &spA8[1], 0, someScale3, someScale3);
+#endif
+                    if (i == 0) {
+                        do {
+                        } while (0); // FAKE
+                        var_v1 = &D_8018EE10[j];
+                    } else {
+                        var_v1 = &((struct_8018EE10_entry*) gSomeDLBuffer)[j];
+                    }
+                    if (var_v1->ghostDataSaved == 0) {
+                        print_text_mode_1(0x32 + (i * 0x87), 0x96 + (0x1E * j), D_800E7A44, 0, 0.75, 0.75);
+                    } else {
+                        print_text_mode_1(
+                            0x32 + (i * 0x87), 0x96 + (0x1E * j),
+                            gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0,
+                            0.75, 0.75);
+                    }
+                }
+            }
+            for (i = 0; i < ARRAY_COUNT(D_800E7930); i++) {
+                promptCol = 0x32 * i;
+                if (i == (gSubMenuSelection - SUB_MENU_COPY_PAK_PROMPT_MIN)) {
+                    spE0.column = 0x6E + promptCol;
+                    spE0.row = 0x00D2;
+                }
+                text_rainbow_effect((gSubMenuSelection - SUB_MENU_COPY_PAK_PROMPT_MIN), j, TEXT_YELLOW);
+#ifdef VERSION_JP
+                promptText = D_800E7930;
+                print_text_mode_1(0x6E + (0x32 * i), 0x000000D2, promptText[i], 0, 0.75, 0.75);
+#else
+                print_text_mode_1(0x6E + (0x32 * i), 0x000000D2, D_800E7930[i], 0, someScale, someScale);
+#endif
+            }
+            break;
+        case SUB_MENU_COPY_PAK_START:
+        case SUB_MENU_COPY_PAK_COPYING:
+        case SUB_MENU_COPY_PAK_COMPLETED:
+            var_s5 = (gSubMenuSelection - SUB_MENU_COPY_PAK_ACTION_MIN) / 2;
+            set_text_color(TEXT_RED);
+            someScale = 0.75f;
+            print_text1_center_mode_1(0x000000A0, 0x00000055, D_800E7938[var_s5], 0, 1.0f, 1.0f);
+            someScale = 1.0f;
+            for (i = 0; i < ARRAY_COUNT(D_800E7918); i++) {
+                set_text_color(TEXT_YELLOW);
+                print_text1_center_mode_1(0x64 + (0x78 * i), 0x0000007D, D_800E7918[i], 0, someScale, someScale);
+                for (j = 0; j < 2; j++) {
+                    if (i == 0) {
+                        if (j == arg0->param1) {
+                            if (var_s5 == 0) {
+                                set_text_color(TEXT_RED);
+                            } else {
+                                set_text_color(gGlobalTimer % 3);
+                            }
+                        } else {
+                            set_text_color(TEXT_GREEN);
+                        }
+                    } else if (j == arg0->param2) {
+                        set_text_color(TEXT_RED);
+                    } else {
+                        set_text_color(TEXT_GREEN);
+                    }
+                    convert_number_to_ascii(j + 1, &sp98[0]);
+#ifdef VERSION_JP
+                    print_text_mode_1(0x23 + (0x87 * i), 0x96 + (0x1E * j), &sp98[1], 0, 0.75, 0.75);
+#else
+                    print_text_mode_1(0x23 + (0x87 * i), 0x96 + (0x1E * j), &sp98[1], 0, someScale3, someScale3);
+#endif
+                    if (i == 0) {
+                        var_v1 = &D_8018EE10[j];
+                    } else {
+                        var_v1 = &((struct_8018EE10_entry*) gSomeDLBuffer)[j];
+                    }
+                    if (var_v1->ghostDataSaved == 0) {
+                        print_text_mode_1(0x32 + (i * 0x87), 0x96 + (0x1E * j), D_800E7A44, 0, 0.75, 0.75);
+                    } else {
+                        print_text_mode_1(
+                            0x32 + (i * 0x87), 0x96 + (0x1E * j),
+                            gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0,
+                            0.75, 0.75);
+                    }
+                }
+            }
+            break;
+    }
+    switch (gSubMenuSelection) {               /* switch 2 */
+        case SUB_MENU_COPY_PAK_FROM_GHOST1_1P: /* switch 2 */
+        case SUB_MENU_COPY_PAK_FROM_GHOST2_1P: /* switch 2 */
+        case SUB_MENU_COPY_PAK_TO_GHOST1_2P:   /* switch 2 */
+        case SUB_MENU_COPY_PAK_TO_GHOST2_2P:   /* switch 2 */
+        case SUB_MENU_COPY_PAK_PROMPT_QUIT:    /* switch 2 */
+        case SUB_MENU_COPY_PAK_PROMPT_COPY:    /* switch 2 */
+            spE0.column -= 5;
+            spE0.row -= 6;
+            break;
+        default: /* switch 2 */
+            spE0.column -= 0xA;
+            spE0.row -= 8;
+            break;
+    }
+    func_800A66A8(arg0, (Unk_D_800E70A0*) &spE0);
+}
+#else
 void func_800A1FB0(MenuItem* arg0) {
     Unk_D_800E70A0 spE0;
     s32 var_s1;
@@ -7105,7 +7993,7 @@ void func_800A1FB0(MenuItem* arg0) {
     }
     func_800A66A8(arg0, (Unk_D_800E70A0*) &spE0);
 }
-
+#endif
 void func_800A2D1C(MenuItem* arg0) {
     switch (D_80164A28) {
         case 1:
@@ -7150,7 +8038,11 @@ void func_800A2EB8(MenuItem* arg0) {
         sp70[var_s2] = gPlayers[gGPCurrentRacePlayerIdByRank[var_s2]].characterId;
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
+#ifdef VERSION_JP
+    print_text_mode_1(arg0->column + 0x25, arg0->row + 0x19, "result", 0, 1.0f, 1.0f);
+#else
     print_text_mode_1(arg0->column + 0x1E, arg0->row + 0x19, "results", 0, 1.0f, 1.0f);
+#endif
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
     print_text_mode_1(arg0->column + 0x2C, arg0->row + 0x28, "round", 0, 0.7f, 0.7f);
     convert_number_to_ascii(gCourseIndexInCup + 1, sp68);
@@ -7174,6 +8066,12 @@ void func_800A2EB8(MenuItem* arg0) {
         func_800A32B4(0xBE - arg0->column, arg0->row + (0x10 * var_s2) + 0x5A, sp70[var_s2], var_s2);
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
+#ifdef VERSION_JP
+    print_text_mode_1(0xC3 - arg0->column, arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.7f, 0.7f);
+    print_text_mode_1(0x113 - arg0->column, arg0->row + 0xE1,
+                      D_800E76CC[gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]], 0,
+                      0.7f, 0.7);
+#else
     temp_s0 = (s32) (((f32) (get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2);
     print_text1_center_mode_1(
         (-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5,
@@ -7181,6 +8079,7 @@ void func_800A2EB8(MenuItem* arg0) {
     print_text1_center_mode_1(
         (temp_s0 - arg0->column) + 0xF5, arg0->row + 0xE1,
         D_800E76CC[gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
+#endif
 }
 
 void func_800A32B4(s32 arg0, s32 arg1, s32 characterId, s32 rank) {
@@ -7197,7 +8096,11 @@ void func_800A32B4(s32 arg0, s32 arg1, s32 characterId, s32 rank) {
     sp3C[2] = '.';
     sp3C[3] = '\0';
     func_800939C8(arg0 - 1, arg1, &sp3C[1], -4, 0.7f, 0.7f);
+#ifdef VERSION_JP
+    print_text_mode_1(arg0 + 0xA, arg1, D_800E76A8[characterId], 0, 0.7f, 0.7f);
+#else
     print_text_mode_1(arg0 + 0xA, arg1, D_800E76A8[characterId], 0, 0.65f, 0.7f);
+#endif
     convert_number_to_ascii((s32) (sp50 / 60.0f), sp3C);
     func_800939C8(arg0 + 0x42, arg1, sp3C, 0, 0.7f, 0.7f);
     convert_number_to_ascii((s32) sp50 % 60, sp3C);
@@ -7208,6 +8111,102 @@ void func_800A32B4(s32 arg0, s32 arg1, s32 characterId, s32 rank) {
     func_800939C8(arg0 + 0x6A, arg1, sp3C, 0, 0.7f, 0.7f);
 }
 
+#ifdef VERSION_JP
+void func_800A34A8(MenuItem* arg0) {
+    s8 sp80[8];
+    UNUSED s32 stackPadding0;
+    char sp78[3];
+#ifndef VERSION_JP  /* JP's frame is 8 bytes smaller here */
+    UNUSED s32 stackPadding1;
+#endif
+    /* JP declares test here, which is what puts its spill slot at 0x58 not 0x5c. */
+    s32 test;
+    s32 var_a0;
+    s32 var_v0;
+    s32 var_v1;
+#ifndef VERSION_JP  /* JP's frame is 8 bytes smaller here */
+    UNUSED s32 stackPadding2;
+#endif
+    s32 rank;
+
+    if (arg0->state != 0) {
+        if (arg0->state < 9) {
+            for (rank = 0; rank < NUM_PLAYERS; rank++) {
+                sp80[rank] = gPlayers[gGPCurrentRacePlayerIdByRank[rank]].characterId;
+            }
+        } else {
+            func_800A3A10(sp80);
+            func_800A3A10(gCharacterIdByGPOverallRank);
+        }
+        set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
+        print_text_mode_1(arg0->column + 0x1E, 0x19 - arg0->row, "driver's point", 0, 0.8, 0.8);
+        set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
+        print_text_mode_1(arg0->column + 0x36, 0x28 - arg0->row, "round", 0, 0.7, 0.7);
+        convert_number_to_ascii(gCourseIndexInCup + 1, sp78);
+        print_text_mode_1(arg0->column + 0x61, (0x28 & 0xFFFFFFFF) - arg0->row, &sp78[1], 0, 0.7, 0.7);
+        for (rank = 0; rank < 4; rank++) {
+            test = arg0->state;
+            if ((test != 8) && (test != 9)) {
+                var_v0 = 0;
+            } else {
+                if ((rank * 5) < arg0->param1) {
+                    var_v0 = 1;
+                } else {
+                    var_v0 = 0;
+                }
+            }
+            if (var_v0 == 0) {
+                if (arg0->state < 9) {
+                    var_v0 = gGPCurrentRacePlayerIdByRank[rank];
+                    var_v1 = 0;
+                } else {
+                    var_v1 = 0x0000000D;
+                    var_v0 = gGetPlayerByCharacterId[sp80[rank]];
+                }
+                if (var_v0 < gPlayerCount) {
+                    var_a0 = (s32) gGlobalTimer % 3;
+                } else {
+                    var_a0 = 3;
+                }
+                set_text_color(var_a0);
+                func_800A3ADC(arg0, arg0->column + var_v1 + 0x1C, ((rank * 0x10) - arg0->row) + 0x38, sp80[rank], rank,
+                              sp80);
+            }
+        }
+        for (rank = 4; rank < NUM_PLAYERS; rank++) {
+            test = arg0->state;
+            if ((test != 8) && (test != 9)) {
+                var_v0 = 0;
+            } else {
+                if ((rank * 5) < arg0->param1) {
+                    var_v0 = 1;
+                } else {
+                    var_v0 = 0;
+                }
+            }
+            if (var_v0 == 0) {
+                if (arg0->state < 9) {
+                    var_v0 = gGPCurrentRacePlayerIdByRank[rank];
+                } else {
+                    var_v0 = gGetPlayerByCharacterId[sp80[rank]];
+                }
+                if (var_v0 < gPlayerCount) {
+                    var_a0 = (s32) gGlobalTimer % 3;
+                } else {
+                    var_a0 = 3;
+                }
+                set_text_color(var_a0);
+                func_800A3ADC(arg0, 0xBE - arg0->column, arg0->row + (rank * 0x10) + 0x5A, sp80[rank], rank, sp80);
+            }
+        }
+        set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
+        print_text_mode_1(0xAF - arg0->column, arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.7f, 0.7f);
+        print_text_mode_1(0x104 - arg0->column, arg0->row + 0xE1,
+                          D_800E76CC[gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]],
+                          0, 0.7, 0.7);
+    }
+}
+#else
 void func_800A34A8(MenuItem* arg0) {
     s8 sp80[8];
     UNUSED s32 stackPadding0;
@@ -7301,6 +8300,7 @@ void func_800A34A8(MenuItem* arg0) {
             D_800E76CC[gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
     }
 }
+#endif
 
 void func_800A3A10(s8* arg0) {
     s32 temp_a3;
@@ -7371,8 +8371,13 @@ void time_trials_finish_text_render(MenuItem* arg0) {
 
     // name of the course
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
+#ifdef VERSION_JP
+    print_text1_center_mode_1(arg0->column + 0x46, arg0->row + 0x19,
+                              gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 0.75f, 0.75f);
+#else
     print_text1_center_mode_1(arg0->column + 0x43, arg0->row + 0x19,
                               gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 0.6f, 0.6f);
+#endif
 
     // lap time text
     set_text_color(TEXT_YELLOW);
@@ -7397,6 +8402,202 @@ void time_trials_finish_text_render(MenuItem* arg0) {
     render_lap_times(TIME_TRIAL_1LAP_RECORD, 0xAA - arg0->column, arg0->row + 0xE1);
 }
 
+#ifdef VERSION_JP
+void func_800A3E60(MenuItem* arg0) {
+    UNUSED s32 stackPadding0;
+    Unk_D_800E70A0 sp84;
+#ifndef VERSION_JP  /* JP frame */
+    UNUSED s32 stackPadding1;
+#endif
+#ifndef VERSION_JP  /* JP frame */
+    UNUSED s32 stackPadding2;
+#endif
+#ifndef VERSION_JP  /* JP frame */
+    UNUSED s32 stackPadding3;
+#endif
+#ifndef VERSION_JP  /* JP frame */
+    UNUSED s32 stackPadding4;
+#endif
+    /* IDO gives every declared local a stack slot, handed out downwards from the
+       top of the frame in declaration order, so this order is what puts sp60 at
+       0x60 and var_v1 at 0x6c. */
+    s32 var_s1;
+    Unk_D_800E70A0* var_v0_5;
+    f32 someScale = 0.75f;
+    f32 someScale2;
+    f32 someScale3;
+    s32 var_v1;
+    s32* rowPtr;
+    s32 var_v0;
+    char sp60[3];
+
+    var_v0 = arg0->state;
+    if ((var_v0 == 0) || (var_v0 == 0x0000001F)) {
+        return;
+    }
+
+    someScale2 = someScale;
+    set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
+    print_text1_center_mode_1(arg0->column + 0x55, 0x19 - arg0->row,
+                              gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, someScale, someScale);
+    set_text_color(TEXT_YELLOW);
+    print_text1_center_mode_1(arg0->column + 0x55, 0x28 - arg0->row, gLapTimeText, 0, someScale, someScale);
+    for (var_s1 = 0; var_s1 < 4; var_s1++) {
+        render_lap_time(var_s1, arg0->column + 0x26, ((0xF * var_s1) - arg0->row) + 0x37);
+    }
+    switch (arg0->state) {
+        case 1:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+        case 30:
+            for (var_s1 = 0; var_s1 < 6; var_s1++) {
+                var_v1 = 0;
+                text_rainbow_effect(arg0->state - 5, var_s1, 1);
+                switch (var_s1) { /* switch 3; irregular */
+                    case 4:       /* switch 3 */
+                        if (gPostTimeTrialReplayCannotSave == 1) {
+                            var_v1 = 1;
+                        }
+                        break;
+                    case 5: /* switch 3 */
+                        if (bPlayerGhostDisabled != 0) {
+                            var_v1 = 2;
+                        }
+                        break;
+                }
+                if (var_v1 != 0) {
+                    set_text_color(TEXT_BLUE);
+                    gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, 0x96);
+#ifdef VERSION_JP
+                    rowPtr = &arg0->row;
+                    print_text_mode_2(0xB9 - arg0->column, *rowPtr + (0xD * var_s1) + 0x93,
+                                      gTextPauseButton[var_s1 + 1], 0, someScale, someScale);
+                } else {
+                    print_text_mode_1(0xB9 - arg0->column, arg0->row + (0xD * var_s1) + 0x93,
+                                      gTextPauseButton[var_s1 + 1], 0, someScale, someScale);
+                }
+#else
+                    print_text_mode_2(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93,
+                                      gTextPauseButton[var_s1 + 1], 0, someScale, someScale);
+                } else {
+                    print_text_mode_1(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93,
+                                      gTextPauseButton[var_s1 + 1], 0, someScale, someScale);
+                }
+#endif
+            }
+            break;
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+        case 15:
+        case 16:
+            set_text_color(TEXT_YELLOW);
+            var_v1 = arg0->state - 11;
+            for (var_s1 = 0; var_s1 < 5; var_s1++) {
+                print_text_mode_1(0x000000AA, 0x93 + (0xD * var_s1), D_800E798C[(var_v1 * 5) + var_s1], 0, someScale2,
+                                  someScale2);
+            }
+            break;
+        case 17:
+        case 18:
+            set_text_color(TEXT_GREEN);
+            for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                print_text_mode_1(0x000000AA, arg0->row + (0xD * var_s1) + 0x8C, D_800E7A3C[var_s1], 0, someScale,
+                                  someScale);
+            }
+            someScale3 = 0.7f;
+            for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                text_rainbow_effect(arg0->state - 0x11, var_s1, 1);
+                convert_number_to_ascii(var_s1 + 1, sp60);
+                print_text_mode_1(0xB4 - arg0->column, 0xAA + (0x1E * var_s1), &sp60[1], 0, someScale2, someScale2);
+                if (D_8018EE10[var_s1].ghostDataSaved == 0) {
+                    someScale2 = someScale;
+                    print_text_mode_1(0xC3 - arg0->column, 0xAA + (0x1E * var_s1), D_800E7A44, 0, someScale, someScale);
+                } else {
+                    someScale2 = someScale3;
+                    print_text_mode_1(0xC3 - arg0->column, 0xAA + (0x1E * var_s1),
+                                      gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
+                                                                      [D_8018EE10[var_s1].courseIndex % 4]],
+                                      0, someScale3, someScale3);
+                    goto skip_ghost_name; // fake
+                skip_ghost_name:;
+                }
+            }
+            break;
+        case 19:
+            set_text_color(TEXT_YELLOW);
+            for (var_s1 = 0; var_s1 < 3; var_s1++) {
+                print_text_mode_1(0x000000AA, (0xD * var_s1) + 0x93, D_800E7A48[var_s1], 0, someScale, someScale);
+            }
+            break;
+        case 20:
+        case 21:
+            if (var_s1 && var_s1) {}
+            set_text_color(TEXT_YELLOW);
+            for (var_s1 = 0; var_s1 < 3; var_s1++) {
+#ifdef VERSION_JP
+                print_text_mode_1(0x000000AF, arg0->row + (0xD * var_s1) + 0x8C, D_800E7A60[var_s1], 0, someScale2,
+                                  someScale2);
+#else
+                print_text_mode_1(0x000000A3, arg0->row + (0xD * var_s1) + 0x8C, D_800E7A60[var_s1], 0, someScale2,
+                                  someScale2);
+#endif
+            }
+            for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                text_rainbow_effect(arg0->state - 0x14, var_s1, 1);
+                print_text_mode_1(0xC8 - arg0->column, 0xB9 + (0xF * var_s1), D_800E7A6C[var_s1], 0, someScale, someScale);
+            }
+            break;
+        case 25:
+            set_text_color(TEXT_YELLOW);
+            for (var_s1 = 0; var_s1 < 3; var_s1++) {
+#ifdef VERSION_JP
+                print_text_mode_1(0x000000AA, (0xD * var_s1) + 0x93, D_800E7A74[var_s1], 0, someScale2, someScale2);
+#else
+                print_text_mode_1(0x000000A3, (0xD * var_s1) + 0x93, D_800E7A74[var_s1], 0, someScale2, someScale2);
+#endif
+            }
+            break;
+        case 26:
+            set_text_color(TEXT_YELLOW);
+            for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                print_text_mode_1(0x000000AA, (0xD * var_s1) + 0x93, D_800E7A80[var_s1], 0, someScale, someScale);
+            }
+            break;
+    }
+    switch (arg0->state) { /* switch 2 */
+        case 5:            /* switch 2 */
+        case 6:            /* switch 2 */
+        case 7:            /* switch 2 */
+        case 8:            /* switch 2 */
+        case 9:            /* switch 2 */
+        case 10:           /* switch 2 */
+            var_v0_5 = &D_800E7390[arg0->state - 5];
+            break;
+        case 17: /* switch 2 */
+        case 18: /* switch 2 */
+            var_v0_5 = &D_800E73C0[arg0->state - 17];
+            break;
+        case 20: /* switch 2 */
+        case 21: /* switch 2 */
+            var_v0_5 = &D_800E73D0[arg0->state - 20];
+            break;
+        case 30: /* switch 2 */
+            var_v0_5 = &D_800E7390[arg0->param1 - 5];
+            break;
+        default:
+            return;
+    }
+    sp84.column = var_v0_5->column - arg0->column;
+    sp84.row = var_v0_5->row + arg0->row;
+    func_800A66A8(arg0, &sp84);
+}
+#else
 void func_800A3E60(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     Unk_D_800E70A0 sp84;
@@ -7551,6 +8752,7 @@ void func_800A3E60(MenuItem* arg0) {
     sp84.row = var_v0_5->row + arg0->row;
     func_800A66A8(arg0, &sp84);
 }
+#endif
 
 void render_lap_time(s32 lapNumber, s32 column, s32 row) {
     UNUSED s32 stackPadding0;
@@ -7657,6 +8859,24 @@ void render_lap_times(s32 recordType, s32 column, s32 row) {
     print_text1_center_mode_1(column + 0x78, row, D_800E76A8[textColor], 0, 0.65f, 0.65f);
 }
 
+#ifdef VERSION_JP
+void render_menu_item_announce_ghost(MenuItem* arg0) {
+    UNUSED s32 stackPadding0;
+    s32 temp_t0;
+    s32 temp_t1;
+    s32 temp_t2;
+    f32 someMultiplier = 1.0f;
+    s32 thing = (someMultiplier + 0.5) * 16.0;
+
+    temp_t0 = 0x140 - arg0->column;
+    temp_t1 = arg0->row;
+    temp_t2 = (get_string_width(gTextMenuAnnounceGhost) + 30) / 2;
+    gDisplayListHead = draw_box(gDisplayListHead, temp_t0 - temp_t2, (temp_t1 - thing) + 4, temp_t2 + temp_t0,
+                                temp_t1 + 4, 0, 0, 0, 0x00000064);
+    set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
+    print_text1_center_mode_1(arg0->column - 3, arg0->row, gTextMenuAnnounceGhost, 0, 1.0f, 1.0f);
+}
+#else
 void render_menu_item_announce_ghost(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     s32 temp_t0;
@@ -7673,6 +8893,7 @@ void render_menu_item_announce_ghost(MenuItem* arg0) {
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     print_text1_center_mode_1(arg0->column - 3, arg0->row, gTextMenuAnnounceGhost, 0, 0.85f, 0.85f);
 }
+#endif
 
 void render_pause_menu(MenuItem* arg0) {
     if (gIsGamePaused != 0) {
@@ -7707,7 +8928,11 @@ void render_pause_menu_time_trials(MenuItem* arg0) {
     print_text1_center_mode_1(0x000000A0, 0x00000050,
                               gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 1.0f, 1.0f);
     set_text_color(TEXT_RED);
+#ifdef VERSION_JP
+    print_text1_center_mode_1(0x000000A0, 0x00000060, gBestTimeText[0], 0, 0.8f, 0.8f);
+#else
     print_text1_center_mode_1(0x0000009D, 0x00000060, gBestTimeText[0], 0, 0.8f, 0.8f);
+#endif
     temp_a0 = func_800B4E24(TIME_TRIAL_3LAP_RECORD_1);
     temp_a0 &= 0xFFFFF;
     get_time_record_minutes(temp_a0, sp68);
@@ -7718,7 +8943,11 @@ void render_pause_menu_time_trials(MenuItem* arg0) {
     print_text_mode_1(0x000000A7, 0x0000006D, "\"", 0, 0.8f, 0.8f);
     get_time_record_centiseconds(temp_a0, sp68);
     func_800939C8(0x000000B3, 0x0000006D, sp68, 0, 0.8f, 0.8f);
+#ifdef VERSION_JP
+    print_text1_center_mode_1(0x000000A0, 0x0000007C, gBestTimeText[1], 0, 0.8f, 0.8f);
+#else
     print_text1_center_mode_1(0x0000009D, 0x0000007C, gBestTimeText[1], 0, 0.8f, 0.8f);
+#endif
     temp_a0 = func_800B4F2C();
     temp_a0 &= 0xFFFFF;
     get_time_record_minutes(temp_a0, sp68);
@@ -7761,7 +8990,11 @@ void render_pause_menu_versus(MenuItem* arg0) {
             var_s1 = var_s0;
         }
         text_rainbow_effect(arg0->state - 0x15, var_s0, TEXT_YELLOW);
+#ifdef VERSION_JP
+        print_text_mode_1(temp_s3->column, temp_s3->row + (13 * var_s0), gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
+#else
         print_text_mode_1(temp_s3->column - 2, temp_s3->row + (13 * var_s0), gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
+#endif
     }
 }
 
@@ -7825,7 +9058,11 @@ void render_pause_battle(MenuItem* arg0) {
             var_s1 = var_a1;
         }
         text_rainbow_effect(arg0->state - 0x29, var_a1, TEXT_YELLOW);
+#ifdef VERSION_JP
+        print_text_mode_1(temp_s3->column, temp_s3->row + 13 * var_a1, gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
+#else
         print_text_mode_1(temp_s3->column - 2, temp_s3->row + 13 * var_a1, gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
+#endif
     }
 }
 
@@ -7870,6 +9107,358 @@ void func_800A54EC(void) {
     func_800A66A8(sp48, &sp50);
 }
 
+#ifdef VERSION_JP
+#ifdef VERSION_JP
+void render_menu_item_end_course_option(MenuItem* arg0) {
+    Unk_D_800E70A0 sp98;
+#ifndef VERSION_JP  /* JP frame */
+    UNUSED s32 stackPadding0;
+#endif
+    UNUSED s32 stackPadding1;
+    UNUSED s32 stackPadding2;
+    f32 why;
+    f32 someScale;
+    char sp84[3];
+#ifndef VERSION_JP  /* JP frame */
+    UNUSED s32 stackPadding3;
+#endif
+    UNUSED s32 stackPadding4;
+    s32 temp_a0;
+    UNUSED s32 var_v1;
+    s32 var_s1;
+    s32 var_s2;
+    s32 temp_v0;
+    s32 zero = 0;
+    Unk_D_800E70A0* var_v0_9;
+    /* JP hoists the seconds mark into a variable, which is what puts the
+       sp84/sp5C block 4 bytes lower in the frame. */
+    char* secondMark;
+    char sp5C[3];
+
+    if (arg0->state == 0) {
+        if ((arg0->param1 >= 0x1E) && ((gGlobalTimer / 16) % 2)) {
+            someScale = get_string_width(gTextPauseButton[REPLAY]) * 0.8f;
+            gDisplayListHead =
+                draw_box(gDisplayListHead, 0x000000C0, 0x00000022, (s32) (someScale) + 0xC6, 0x00000033, 0, 0, 0, 0x00000096);
+            set_text_color(TEXT_GREEN);
+            print_text_mode_1(0x000000C3, 0x00000030, gTextPauseButton[REPLAY], 0, 0.8f, 0.8f);
+        }
+    } else {
+        if (arg0->state == 1) {
+            var_s1 = arg0->param1;
+            var_s2 = (s32) (arg0->param1 * 0xFF) / 140;
+        } else {
+            var_s1 = 0x0000008C;
+            var_s2 = 0x000000FF;
+        }
+        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, var_s1);
+        gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, var_s2);
+        set_text_color(TEXT_YELLOW);
+        print_text1_center_mode_2(0x000000A0, 0x00000050,
+                                  gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 1.0f, 1.0f);
+        someScale = 0.8f;
+        why = someScale;
+        switch (arg0->state) {
+            case 1:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+                set_text_color(TEXT_RED);
+                print_text1_center_mode_2(0x000000A0, 0x00000060, gBestTimeText[0], 0, someScale, someScale);
+                temp_a0 = func_800B4E24(0);
+                temp_a0 &= 0xFFFFF;
+                get_time_record_minutes(temp_a0, sp84);
+                text_draw(0x0000007F, 0x0000006D, sp84, 0, someScale, someScale);
+                print_text_mode_2(0x0000008E, 0x0000006D, "'", 0, someScale, someScale);
+                secondMark = "\"";
+                get_time_record_seconds(temp_a0, sp84);
+                text_draw(0x00000098, 0x0000006D, sp84, 0, someScale, someScale);
+                print_text_mode_2(0x000000A7, 0x0000006D, secondMark, 0, someScale, someScale);
+                get_time_record_centiseconds(temp_a0, sp84);
+                text_draw(0x000000B3, 0x0000006D, sp84, 0, someScale, someScale);
+                print_text1_center_mode_2(0x000000A0, 0x0000007C, gBestTimeText[1], 0, someScale, someScale);
+                temp_a0 = func_800B4F2C();
+                temp_a0 &= 0xFFFFF;
+                get_time_record_minutes(temp_a0, sp84);
+                text_draw(0x0000007F, 0x00000089, sp84, 0, someScale, someScale);
+                print_text_mode_2(0x0000008E, 0x00000089, "'", 0, someScale, someScale);
+                get_time_record_seconds(temp_a0, sp84);
+                text_draw(0x00000098, 0x00000089, sp84, 0, someScale, someScale);
+                secondMark = "\"";
+                print_text_mode_2(0x000000A7, 0x00000089, secondMark, 0, someScale, someScale);
+                get_time_record_centiseconds(temp_a0, sp84);
+                text_draw(0x000000B3, 0x00000089, sp84, 0, someScale, someScale);
+                someScale = 0.75f;
+                for (var_s1 = 0; var_s1 < 6; var_s1++) {
+                    text_rainbow_effect(arg0->state - 0xB, var_s1, TEXT_GREEN);
+                    print_text_mode_2(D_800E8538[zero].column, D_800E8538[zero].row + (0xD * var_s1),
+                                      gTextPauseButton[var_s1 + 1], 0, someScale, someScale);
+                }
+                break;
+            case 21:
+            case 22:
+            case 23:
+            case 24:
+            case 25:
+            case 26:
+                set_text_color(TEXT_YELLOW);
+                temp_v0 = arg0->state - 0x15;
+                for (var_s1 = 0; var_s1 < 5; var_s1++) {
+                    print_text_mode_1(0x00000064, 0x6E + (0xD * var_s1), D_800E798C[(temp_v0 * 5) + var_s1], 0,
+                                      someScale, someScale);
+                }
+                break;
+            case 30:
+            case 31:
+                set_text_color(TEXT_GREEN);
+                for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                    print_text_mode_1(0x00000064, arg0->row + (0xD * var_s1) + 0x6E, D_800E7A3C[var_s1], 0, someScale,
+                                      someScale);
+                }
+                someScale = 0.75f;
+                for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                    text_rainbow_effect(arg0->state - 0x1E, var_s1, TEXT_GREEN);
+                    convert_number_to_ascii(var_s1 + 1, sp5C);
+                    print_text_mode_1(0x6E - arg0->column, (0x96 + (0x14 * var_s1)), &sp5C[1], 0, why, why);
+                    why = someScale;
+                    if (D_8018EE10[var_s1].ghostDataSaved == 0) {
+                        print_text_mode_1(0x7D - arg0->column, (0x96 + (0x14 * var_s1)), D_800E7A44, 0, someScale,
+                                          someScale);
+                    } else {
+                        print_text_mode_1(0x7D - arg0->column, (0x96 + (0x14 * var_s1)),
+                                          gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
+                                                                          [D_8018EE10[var_s1].courseIndex % 4]],
+                                          0, someScale, someScale);
+                    }
+                }
+                break;
+            case 32:
+                set_text_color(TEXT_YELLOW);
+                for (var_s1 = 0; var_s1 < 3; var_s1++) {
+                    print_text_mode_1(0x00000064, (0xD * var_s1) + 0x6E, D_800E7A48[var_s1], 0, someScale, someScale);
+                }
+                break;
+            case 35:
+            case 36:
+                set_text_color(TEXT_YELLOW);
+                for (var_s1 = 0; var_s1 < 3; var_s1++) {
+                    print_text_mode_1(0x00000064, arg0->row + (0xD * var_s1) + 0x6E, D_800E7A60[var_s1], 0, someScale, someScale);
+                }
+                for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                    text_rainbow_effect(arg0->state - 0x23, var_s1, TEXT_GREEN);
+                    print_text_mode_1(0x7D - arg0->column, 0x9B + (0xF * var_s1), D_800E7A6C[var_s1], 0, someScale, someScale);
+                }
+                break;
+            case 40:
+                set_text_color(TEXT_YELLOW);
+                for (var_s1 = 0; var_s1 < 3; var_s1++) {
+                    print_text_mode_1(0x00000064, (0xD * var_s1) + 0x6E, D_800E7A74[var_s1], 0, someScale, someScale);
+                }
+                break;
+            case 41:
+                set_text_color(TEXT_YELLOW);
+                for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                    print_text_mode_1(0x00000064, (0xD * var_s1) + 0x6E, D_800E7A80[var_s1], 0, someScale, someScale);
+                }
+                break;
+        }
+        switch (arg0->state) { /* switch 2 */
+            case 11:           /* switch 2 */
+            case 12:           /* switch 2 */
+            case 13:           /* switch 2 */
+            case 14:           /* switch 2 */
+            case 15:           /* switch 2 */
+            case 16:           /* switch 2 */
+                var_v0_9 = &D_800E73E0[arg0->state - 11];
+                break;
+            case 30: /* switch 2 */
+            case 31: /* switch 2 */
+                var_v0_9 = &D_800E7410[arg0->state - 30];
+                break;
+            case 35:      /* switch 2 */
+            case 36:      /* switch 2 */
+                if (0) {} // wtf?
+                var_v0_9 = &D_800E7420[arg0->state - 35];
+                break;
+            default:
+                return;
+        }
+        sp98.column = var_v0_9->column;
+        sp98.row = var_v0_9->row;
+        func_800A66A8(arg0, &sp98);
+    }
+}
+#else
+void render_menu_item_end_course_option(MenuItem* arg0) {
+    Unk_D_800E70A0 sp98;
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
+    UNUSED s32 stackPadding2;
+    f32 why;
+    char sp84[3];
+    UNUSED s32 stackPadding3;
+    UNUSED s32 stackPadding4;
+    s32 temp_a0;
+    UNUSED s32 var_v1;
+    s32 var_s1;
+    s32 var_s2;
+    s32 temp_v0;
+    s32 zero = 0;
+    Unk_D_800E70A0* var_v0_9;
+    char sp5C[3];
+
+    if (arg0->state == 0) {
+        if ((arg0->param1 >= 0x1E) && ((gGlobalTimer / 16) % 2)) {
+            why = get_string_width(gTextPauseButton[REPLAY]) * 0.8f;
+            gDisplayListHead =
+                draw_box(gDisplayListHead, 0x000000C0, 0x00000021, (s32) (why) + 0xC6, 0x00000032, 0, 0, 0, 0x00000096);
+            set_text_color(TEXT_GREEN);
+            print_text_mode_1(0x000000BF, 0x00000030, gTextPauseButton[REPLAY], 0, 0.8f, 0.8f);
+        }
+    } else {
+        if (arg0->state == 1) {
+            var_s1 = arg0->param1;
+            var_s2 = (s32) (arg0->param1 * 0xFF) / 140;
+        } else {
+            var_s1 = 0x0000008C;
+            var_s2 = 0x000000FF;
+        }
+        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, var_s1);
+        gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, var_s2);
+        set_text_color(TEXT_YELLOW);
+        print_text1_center_mode_2(0x000000A0, 0x00000050,
+                                  gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 1.0f, 1.0f);
+        switch (arg0->state) {
+            case 1:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+                set_text_color(TEXT_RED);
+                print_text1_center_mode_2(0x0000009D, 0x00000060, gBestTimeText[0], 0, 0.8f, 0.8f);
+                temp_a0 = func_800B4E24(0);
+                temp_a0 &= 0xFFFFF;
+                get_time_record_minutes(temp_a0, sp84);
+                text_draw(0x0000007F, 0x0000006D, sp84, 0, 0.8f, 0.8f);
+                print_text_mode_2(0x0000008E, 0x0000006D, "'", 0, 0.8f, 0.8f);
+                get_time_record_seconds(temp_a0, sp84);
+                text_draw(0x00000098, 0x0000006D, sp84, 0, 0.8f, 0.8f);
+                print_text_mode_2(0x000000A7, 0x0000006D, "\"", 0, 0.8f, 0.8f);
+                get_time_record_centiseconds(temp_a0, sp84);
+                text_draw(0x000000B3, 0x0000006D, sp84, 0, 0.8f, 0.8f);
+                print_text1_center_mode_2(0x0000009D, 0x0000007C, gBestTimeText[1], 0, 0.8f, 0.8f);
+                temp_a0 = func_800B4F2C();
+                temp_a0 &= 0xFFFFF;
+                get_time_record_minutes(temp_a0, sp84);
+                text_draw(0x0000007F, 0x00000089, sp84, 0, 0.8f, 0.8f);
+                print_text_mode_2(0x0000008E, 0x00000089, "'", 0, 0.8f, 0.8f);
+                get_time_record_seconds(temp_a0, sp84);
+                text_draw(0x00000098, 0x00000089, sp84, 0, 0.8f, 0.8f);
+                print_text_mode_2(0x000000A7, 0x00000089, "\"", 0, 0.8f, 0.8f);
+                get_time_record_centiseconds(temp_a0, sp84);
+                text_draw(0x000000B3, 0x00000089, sp84, 0, 0.8f, 0.8f);
+                for (var_s1 = 0; var_s1 < 6; var_s1++) {
+                    text_rainbow_effect(arg0->state - 0xB, var_s1, TEXT_GREEN);
+                    print_text_mode_2(D_800E8538[zero].column, D_800E8538[zero].row + (0xD * var_s1),
+                                      gTextPauseButton[var_s1 + 1], 0, 0.75f, 0.75f);
+                }
+                break;
+            case 21:
+            case 22:
+            case 23:
+            case 24:
+            case 25:
+            case 26:
+                set_text_color(TEXT_YELLOW);
+                temp_v0 = arg0->state - 0x15;
+                for (var_s1 = 0; var_s1 < 7; var_s1++) {
+                    print_text_mode_1(0x0000004D, 0x6E + (0xD * var_s1), D_800E798C[(temp_v0 * 7) + var_s1], 0, 0.8f,
+                                      0.8f);
+                }
+                break;
+            case 30:
+            case 31:
+                set_text_color(TEXT_GREEN);
+                for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                    print_text_mode_1(0x0000005A, arg0->row + (0xD * var_s1) + 0x6E, D_800E7A3C[var_s1], 0, 0.8f, 0.8f);
+                }
+                for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                    text_rainbow_effect(arg0->state - 0x1E, var_s1, TEXT_GREEN);
+                    convert_number_to_ascii(var_s1 + 1, sp5C);
+                    print_text_mode_1(0x5A - arg0->column, (0x96 + (0x14 * var_s1)), &sp5C[1], 0, 0.75f, 0.75f);
+                    if (D_8018EE10[var_s1].ghostDataSaved == 0) {
+                        print_text_mode_1(0x69 - arg0->column, (0x96 + (0x14 * var_s1)), D_800E7A44, 0, 0.75f, 0.75f);
+                    } else {
+                        print_text_mode_1(0x69 - arg0->column, (0x96 + (0x14 * var_s1)),
+                                          gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
+                                                                          [D_8018EE10[var_s1].courseIndex % 4]],
+                                          0, 0.75f, 0.75f);
+                    }
+                }
+                break;
+            case 32:
+                set_text_color(TEXT_YELLOW);
+                for (var_s1 = 0; var_s1 < 3; var_s1++) {
+                    print_text_mode_1(0x00000064, (0xD * var_s1) + 0x6E, D_800E7A48[var_s1], 0, 0.8f, 0.8f);
+                }
+                break;
+            case 35:
+            case 36:
+                set_text_color(TEXT_YELLOW);
+                for (var_s1 = 0; var_s1 < 3; var_s1++) {
+                    print_text_mode_1(0x00000055, arg0->row + (0xD * var_s1) + 0x6E, D_800E7A60[var_s1], 0, 0.8f, 0.8f);
+                }
+                for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                    text_rainbow_effect(arg0->state - 0x23, var_s1, TEXT_GREEN);
+                    print_text_mode_1(0x7D - arg0->column, 0x9B + (0xF * var_s1), D_800E7A6C[var_s1], 0, 0.8f, 0.8f);
+                }
+                break;
+            case 40:
+                set_text_color(TEXT_YELLOW);
+                for (var_s1 = 0; var_s1 < 3; var_s1++) {
+                    print_text_mode_1(0x00000055, (0xD * var_s1) + 0x6E, D_800E7A74[var_s1], 0, 0.8f, 0.8f);
+                }
+                break;
+            case 41:
+                set_text_color(TEXT_YELLOW);
+                for (var_s1 = 0; var_s1 < 2; var_s1++) {
+                    print_text_mode_1(0x0000005D, (0xD * var_s1) + 0x6E, D_800E7A80[var_s1], 0, 0.8f, 0.8f);
+                }
+                break;
+        }
+        switch (arg0->state) { /* switch 2 */
+            case 11:           /* switch 2 */
+            case 12:           /* switch 2 */
+            case 13:           /* switch 2 */
+            case 14:           /* switch 2 */
+            case 15:           /* switch 2 */
+            case 16:           /* switch 2 */
+                var_v0_9 = &D_800E73E0[arg0->state - 11];
+                break;
+            case 30: /* switch 2 */
+            case 31: /* switch 2 */
+                var_v0_9 = &D_800E7410[arg0->state - 30];
+                break;
+            case 35:      /* switch 2 */
+            case 36:      /* switch 2 */
+                if (0) {} // wtf?
+                var_v0_9 = &D_800E7420[arg0->state - 35];
+                break;
+            default:
+                return;
+        }
+        sp98.column = var_v0_9->column;
+        sp98.row = var_v0_9->row;
+        func_800A66A8(arg0, &sp98);
+    }
+}
+#endif
+#else
 void render_menu_item_end_course_option(MenuItem* arg0) {
     Unk_D_800E70A0 sp98;
     UNUSED s32 stackPadding0;
@@ -8036,6 +9625,29 @@ void render_menu_item_end_course_option(MenuItem* arg0) {
     }
 }
 
+#endif
+#ifdef VERSION_JP
+void func_800A6034(MenuItem* arg0) {
+    f64 divisor;
+    char* text;
+    s32 width;
+    f64 someMultiplier = 0.65;
+
+    if (D_801657E8 != true) {
+        gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, arg0->param1);
+        text = gCupNames[D_800DC540];
+        set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
+        width = get_string_width(text);
+        print_text_mode_2((arg0->column - (width / 2)) + 0x46, arg0->row + 0xA0, text, 0, 1.0f, 1.0f);
+        divisor = 2.0;
+        text = gCourseNames[gCurrentCourseId];
+        set_text_color((s32) gCurrentCourseId % 4);
+        width = get_string_width(text);
+        print_text_mode_2((arg0->column + 0x46) - ((width * someMultiplier) / divisor), arg0->row + 0xC3, text, 0,
+                          0.65f, 0.85f);
+    }
+}
+#else
 void func_800A6034(MenuItem* arg0) {
     char* text;
 
@@ -8049,6 +9661,7 @@ void func_800A6034(MenuItem* arg0) {
         print_text1_center_mode_2(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
     }
 }
+#endif
 
 void func_800A6154(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
@@ -8130,7 +9743,11 @@ void func_800A638C(MenuItem* arg0) {
     if (arg0->state >= 10) {
         for (var_s1 = 0; var_s1 < 4; var_s1++) {
             text_rainbow_effect(arg0->state - 0xA, var_s1, TEXT_GREEN);
+#ifdef VERSION_JP
+            print_text_mode_1(0x00000082, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f, 0.8f); // Where Retry, course change, etc printed
+#else
             print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f, 0.8f); // Where Retry, course change, etc printed
+#endif
         }
         func_800A66A8(arg0, &D_800E7360[arg0->state - 10]);
     }
@@ -8179,6 +9796,15 @@ void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     gSPDisplayList(gDisplayListHead++, D_0D003090);
 }
 
+#ifdef VERSION_JP
+/* Keeps this file's bss ending at 0x8018b580, where code_800AF9B0's begins.
+   Three scalars, not s32[3]: IDO 8-byte-aligns arrays, which would leave a
+   4-byte hole in front of the pad and push the whole tail out. */
+s32 menu_item_bss_padjp1;
+s32 menu_item_bss_padjp2;
+s32 menu_item_bss_padjp3;
+#endif
+
 void func_800A69C8(UNUSED MenuItem* arg0) {
     Unk_D_800E70A0* thing;
     UNUSED s32 stackPadding1;
@@ -8213,7 +9839,11 @@ void func_800A69C8(UNUSED MenuItem* arg0) {
         }
         func_800A79F4(var_s4[0], sp74);
         text_draw(thing->column + 0x10, thing->row + 0x75, sp74, 0, 1.0f, 1.0f);
+#ifdef VERSION_JP
+        print_text_mode_2(D_800E7380[var_s0].column, D_800E7380[var_s0].row, temp_s3, 0, 1.0f, 1.0f);
+#else
         print_text1_center_mode_2(D_800E7380[var_s0].column, D_800E7380[var_s0].row, temp_s3, 0, 0.65f, 1.0f);
+#endif
     }
     set_text_color(TEXT_BLUE);
     // Not a hyphen, that is an EUC-JP character
@@ -8322,8 +9952,13 @@ void func_800A70E8(MenuItem* arg0) {
     s32 stringIndex;
 
     if (arg0->state == 1) {
+#ifdef VERSION_JP
+        var_s0 = get_string_width(D_800E7A34[0]) * 0.5f;
+        temp_f6 = get_string_width(D_800E7A34[1]) * 0.5f;
+#else
         var_s0 = get_string_width(D_800E7A34[0]) * 0.45f;
         temp_f6 = get_string_width(D_800E7A34[1]) * 0.45f;
+#endif
         if (var_s0 < temp_f6) {
             var_s0 = temp_f6;
         }
@@ -8336,7 +9971,11 @@ void func_800A70E8(MenuItem* arg0) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, alpha);
         set_text_color(TEXT_RED);
         for (loopIndex = 0x2C, stringIndex = 0; loopIndex < 0x40; loopIndex += 0xA, stringIndex++) {
+#ifdef VERSION_JP
+            print_text_mode_2(0x000000C3, loopIndex, D_800E7A34[stringIndex], 0, 0.5f, 0.5f);
+#else
             print_text_mode_2(0x000000C0, loopIndex, D_800E7A34[stringIndex], 0, 0.45f, 0.45f);
+#endif
         }
     }
 }
@@ -8416,6 +10055,34 @@ void func_800A761C(MenuItem* arg0) {
     func_800939C8((arg0->column + sp48) - 0x18, arg0->row, &sp3C[1], 0, 2.0f, 2.0f);
 }
 
+#ifdef VERSION_JP
+void menu_item_credits_render(MenuItem* arg0) {
+    f32 someScaling;
+    s32 creditIndex;
+    char** textPtr;
+    /* No slideDirection local: it would take the slot info's spill needs. IDO
+       CSEs the two reads into the single lb the real ROM has. */
+    CreditsRenderInfo* info;
+
+    creditIndex = arg0->type - 0x190;
+    info = &gCreditsTextRenderInfo[creditIndex];
+    if (gCCSelection == CC_EXTRA) {
+        textPtr = &gCreditsTextExtra[creditIndex];
+    } else {
+        textPtr = &gCreditsText[creditIndex];
+    }
+    set_text_color(info->textColor);
+    if ((info->slideDirection == SLIDE_RIGHT) || (info->slideDirection != SLIDE_LEFT)) {
+        someScaling = info->textScaling;
+        print_text1_left(arg0->column, arg0->row, *textPtr, arg0->param1 * someScaling,
+                         arg0->paramf * someScaling, someScaling);
+    } else {
+        someScaling = info->textScaling;
+        print_text_mode_1(arg0->column, arg0->row, *textPtr, arg0->param1 * someScaling,
+                          arg0->paramf * someScaling, someScaling);
+    }
+}
+#else
 void menu_item_credits_render(MenuItem* arg0) {
     f32 someScaling;
     s32 creditIndex;
@@ -8434,6 +10101,7 @@ void menu_item_credits_render(MenuItem* arg0) {
                           arg0->paramf * someScaling, someScaling);
     }
 }
+#endif
 
 // Originally func_800A7894
 // Presumes that "number" is a 2 digit number. Convert it to a string
@@ -9038,7 +10706,11 @@ void func_800A874C(MenuItem* arg0) {
     get_time_record_centiseconds(temp_s1, buffer);
     text_draw(arg0->column + 0x29, arg0->row + 0x21, buffer, 0, 0.6f, 0.65f);
     var_s2 = (u32) temp_s1 < 0x927C0U ? var_s2 >> 0x14 : 8;
+#ifdef VERSION_JP
+    print_text1_left(arg0->column + 0x62, arg0->row + 0x21, D_800E76A8[var_s2], 0, 0.6f, 0.65f);
+#else
     print_text1_left(arg0->column + 0x60, arg0->row + 0x21, D_800E76A8[var_s2], 0, 0.6f, 0.65f);
+#endif
 }
 
 void func_800A890C(s32 arg0, MenuItem* arg1) {
@@ -9128,12 +10800,21 @@ void func_800A8CA4(MenuItem* arg0) {
     }
 }
 
+#ifdef VERSION_JP
+void render_battle_introduction(UNUSED MenuItem* arg0) {
+    set_text_color(TEXT_YELLOW);
+    print_text1_center_mode_1(0xA0, 0x44, gTextBattleIntroduction[0], 0, 1.0f, 1.0f);
+    print_text_mode_1(0x1A, 0x58, gTextBattleIntroduction[1], 0, 0.95f, 0.95f);
+    func_800939C8(0x1E, 0x6A, gTextBattleIntroduction[2], 4, 0.95f, 0.95f);
+}
+#else
 void render_battle_introduction(UNUSED MenuItem* arg0) {
     set_text_color(TEXT_YELLOW);
     print_text1_center_mode_1(0x98, 0x44, gTextBattleIntroduction[0], 0, 1.0f, 1.0f);
     print_text_mode_1(0x17, 0x58, gTextBattleIntroduction[1], 0, 0.7f, 0.8f);
     print_text_mode_1(0x17, 0x6A, gTextBattleIntroduction[2], 0, 0.7f, 0.8f);
 }
+#endif
 
 void func_800A8EC0(MenuItem* arg0) {
     if (arg0->param2 != 0) {
@@ -11918,9 +13599,12 @@ void func_800AEF74(MenuItem* arg0) {
             if (gPostTimeTrialReplayCannotSave == 1) {
                 arg0->state = 1;
                 arg0->param1 = 0;
-            } else if (playerHUD[PLAYER_ONE].raceCompleteBool == (s8) 1) {
+            }
+#ifndef VERSION_JP
+            else if (playerHUD[PLAYER_ONE].raceCompleteBool == (s8) 1) {
                 arg0->state = 2;
             }
+#endif
             break;
         case 2:
             break;
@@ -12070,18 +13754,34 @@ void func_800AF480(MenuItem* arg0) {
 }
 
 void func_800AF4DC(MenuItem* arg0) {
+#ifndef VERSION_JP  /* JP's textPtr already occupies the slot this pad reserves */
     UNUSED s32 pad;
+#endif
     s32 temp_v0;
     CreditsRenderInfo* temp_v1;
+#ifdef VERSION_JP
+    char** textPtr;
+#endif
 
     temp_v0 = arg0->type - 0x190;
+#ifdef VERSION_JP
+    if (gCCSelection == CC_EXTRA) {
+        textPtr = &gCreditsTextExtra[temp_v0];
+    } else {
+        textPtr = &gCreditsText[temp_v0];
+    }
+#endif
     temp_v1 = &gCreditsTextRenderInfo[temp_v0];
     arg0->row = temp_v1->row;
     switch (arg0->state) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->state = 1;
+            #ifdef VERSION_JP
+            arg0->param2 = temp_v1->columnExtra + (get_string_width(*textPtr) * temp_v1->textScaling / 2);
+#else
             arg0->param2 = temp_v1->columnExtra + (get_string_width(gCreditsText[temp_v0]) * temp_v1->textScaling / 2);
+#endif
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->param2);
@@ -12122,18 +13822,34 @@ void func_800AF4DC(MenuItem* arg0) {
 }
 
 void func_800AF740(MenuItem* arg0) {
+#ifndef VERSION_JP  /* JP's textPtr already occupies the slot this pad reserves */
     UNUSED s32 pad;
+#endif
     s32 temp_v0;
     CreditsRenderInfo* temp_v1;
+#ifdef VERSION_JP
+    char** textPtr;
+#endif
 
     temp_v0 = arg0->type - 0x190;
+#ifdef VERSION_JP
+    if (gCCSelection == CC_EXTRA) {
+        textPtr = &gCreditsTextExtra[temp_v0];
+    } else {
+        textPtr = &gCreditsText[temp_v0];
+    }
+#endif
     temp_v1 = &gCreditsTextRenderInfo[temp_v0];
     arg0->row = temp_v1->row;
     switch (arg0->state) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->state = 1;
+            #ifdef VERSION_JP
+            arg0->param2 = temp_v1->columnExtra - (get_string_width(*textPtr) * temp_v1->textScaling / 2);
+#else
             arg0->param2 = temp_v1->columnExtra - (get_string_width(gCreditsText[temp_v0]) * temp_v1->textScaling / 2);
+#endif
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->param2);

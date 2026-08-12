@@ -26,10 +26,11 @@ $(BLUELIGHT_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(BLUELIGHT_FRAMES) $(BLUELIGHT_PALETTE): $(BLUELIGHT_EXPORT_SENTINEL) ;
+$(BLUELIGHT_FRAMES) $(BLUELIGHT_PALETTE): $(BLUELIGHT_EXPORT_SENTINEL)
+	@:
 
-$(BLUELIGHT_EXPORT_SENTINEL): assets/lakitu/bluelight.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(BLUELIGHT_EXPORT_SENTINEL): assets/lakitu/bluelight.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_lakitu_bluelight

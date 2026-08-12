@@ -16,20 +16,28 @@ Gfx d_course_sherbet_land_dl_0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),  gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148), gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1370), gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_730),  gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_730),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8), gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88), gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80), gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80), gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3218), gsSPDisplayList(d_course_sherbet_land_packed_dl_3170),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_2FE8), gsSPEndDisplayList(),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_2FE8),
+#endif
+    gsSPEndDisplayList(),
 };
 
 Gfx d_course_sherbet_land_dl_C0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1370),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_11B8),
@@ -39,7 +47,9 @@ Gfx d_course_sherbet_land_dl_C0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3218),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3170),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_30C0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3058),
@@ -89,16 +99,25 @@ Gfx d_course_sherbet_land_dl_280[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),  gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),  gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148), gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_1370), gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_730),  gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_1370),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_730),
+#endif
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08), gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0), gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80), gsSPDisplayList(d_course_sherbet_land_packed_dl_3218),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_3170), gsSPEndDisplayList(),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_3170),
+#endif
+    gsSPEndDisplayList(),
 };
 
 Gfx d_course_sherbet_land_dl_310[] = {
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
@@ -109,7 +128,9 @@ Gfx d_course_sherbet_land_dl_310[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_730),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_B00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
@@ -172,14 +193,18 @@ Gfx d_course_sherbet_land_dl_4E8[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1370),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3218),
+#endif
     gsSPEndDisplayList(),
 };
 
@@ -219,13 +244,17 @@ Gfx d_course_sherbet_land_dl_638[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_11B8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3058),
+#endif
     gsSPEndDisplayList(),
 };
 
@@ -302,8 +331,10 @@ Gfx d_course_sherbet_land_dl_880[] = {
 
 Gfx d_course_sherbet_land_dl_8E8[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
@@ -314,7 +345,9 @@ Gfx d_course_sherbet_land_dl_8E8[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_730),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80),
@@ -329,7 +362,9 @@ Gfx d_course_sherbet_land_dl_8E8[] = {
 Gfx d_course_sherbet_land_dl_9A0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_D90),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148),
@@ -337,7 +372,9 @@ Gfx d_course_sherbet_land_dl_9A0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1370),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2B58),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80),
@@ -392,27 +429,35 @@ Gfx d_course_sherbet_land_dl_B08[] = {
 Gfx d_course_sherbet_land_dl_BC0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_D90),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1370),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_11B8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_730),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2B58),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3218),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3170),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_30C0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3058),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2FE8),
     gsSPEndDisplayList(),
 };
@@ -420,7 +465,9 @@ Gfx d_course_sherbet_land_dl_BC0[] = {
 Gfx d_course_sherbet_land_dl_C88[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_D90),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148),
@@ -428,7 +475,9 @@ Gfx d_course_sherbet_land_dl_C88[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1370),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2B58),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80),
@@ -499,13 +548,19 @@ Gfx d_course_sherbet_land_dl_EC8[] = {
 
 Gfx d_course_sherbet_land_dl_F68[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),  gsSPDisplayList(d_course_sherbet_land_packed_dl_D90),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_1050), gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
+#endif
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),  gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148), gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1370), gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_730),  gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8), gsSPDisplayList(d_course_sherbet_land_packed_dl_2B58),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88), gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
+#endif
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80), gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80), gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3218), gsSPDisplayList(d_course_sherbet_land_packed_dl_3170),
@@ -546,18 +601,29 @@ Gfx d_course_sherbet_land_dl_10D8[] = {
 
 Gfx d_course_sherbet_land_dl_11C8[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8), gsSPDisplayList(d_course_sherbet_land_packed_dl_1370),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8), gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_730),  gsSPDisplayList(d_course_sherbet_land_packed_dl_5D0),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_470),  gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_470),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80), gsSPDisplayList(d_course_sherbet_land_packed_dl_3218),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_3170), gsSPDisplayList(d_course_sherbet_land_packed_dl_30C0),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_3170),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_30C0),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2FE8), gsSPEndDisplayList(),
 };
 
 Gfx d_course_sherbet_land_dl_1238[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_D90),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
@@ -569,7 +635,9 @@ Gfx d_course_sherbet_land_dl_1238[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_5D0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2B58),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
@@ -582,16 +650,20 @@ Gfx d_course_sherbet_land_dl_1238[] = {
 
 Gfx d_course_sherbet_land_dl_12F0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_730),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_5D0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_470),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3170),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_30C0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2358),
@@ -788,7 +860,9 @@ Gfx d_course_sherbet_land_dl_18A0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_348),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_858),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_9A0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2358),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2450),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2548),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_180),
@@ -903,7 +977,9 @@ Gfx d_course_sherbet_land_dl_1B50[] = {
 };
 
 Gfx d_course_sherbet_land_dl_1BA8[] = {
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_858),
@@ -929,13 +1005,19 @@ Gfx d_course_sherbet_land_dl_1C20[] = {
 };
 
 Gfx d_course_sherbet_land_dl_1C48[] = {
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),  gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1050), gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),  gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148), gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1370), gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_B00),  gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8), gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88), gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80), gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80), gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80),
@@ -945,13 +1027,17 @@ Gfx d_course_sherbet_land_dl_1C48[] = {
 
 Gfx d_course_sherbet_land_dl_1D08[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_9A0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_B00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_30C0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_C0),
     gsSPEndDisplayList(),
@@ -961,25 +1047,35 @@ Gfx d_course_sherbet_land_dl_1D60[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),  gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1050), gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),  gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_1148), gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_1148),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1220), gsSPDisplayList(d_course_sherbet_land_packed_dl_B00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),  gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00), gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08), gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0), gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80), gsSPDisplayList(d_course_sherbet_land_packed_dl_30C0),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80),
+#endif
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_30C0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_240),  gsSPEndDisplayList(),
 };
 
 Gfx d_course_sherbet_land_dl_1E10[] = {
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1370),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_B00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3218),
@@ -1024,16 +1120,22 @@ Gfx d_course_sherbet_land_dl_1E88[] = {
 Gfx d_course_sherbet_land_dl_1F70[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1370),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_11B8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_730),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_B00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3218),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3170),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_30C0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3058),
@@ -1073,7 +1175,9 @@ Gfx d_course_sherbet_land_dl_2010[] = {
 
 Gfx d_course_sherbet_land_dl_20D0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1370),
@@ -1084,7 +1188,9 @@ Gfx d_course_sherbet_land_dl_20D0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_B00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3218),
@@ -1135,8 +1241,12 @@ Gfx d_course_sherbet_land_dl_2190[] = {
 Gfx d_course_sherbet_land_dl_2288[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8), gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8), gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_11B8), gsSPDisplayList(d_course_sherbet_land_packed_dl_730),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),  gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_11B8),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_730),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
+#endif
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88), gsSPDisplayList(d_course_sherbet_land_packed_dl_3170),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_30C0), gsSPDisplayList(d_course_sherbet_land_packed_dl_3058),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2FE8), gsSPEndDisplayList(),
@@ -1148,14 +1258,18 @@ Gfx d_course_sherbet_land_dl_22F8[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_11B8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3058),
     gsSPEndDisplayList(),
 };
@@ -1224,12 +1338,25 @@ Gfx d_course_sherbet_land_dl_2438[] = {
 
 Gfx d_course_sherbet_land_dl_2530[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8), gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8), gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_11B8), gsSPDisplayList(d_course_sherbet_land_packed_dl_730),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),  gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88), gsSPDisplayList(d_course_sherbet_land_packed_dl_3170),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_12C8),
+#endif
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_1220),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_11B8),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_730),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
+#endif
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_3170),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_30C0), gsSPDisplayList(d_course_sherbet_land_packed_dl_3058),
-    gsSPDisplayList(d_course_sherbet_land_packed_dl_2FE8), gsSPEndDisplayList(),
+#ifndef VERSION_JP
+    gsSPDisplayList(d_course_sherbet_land_packed_dl_2FE8),
+#endif
+    gsSPEndDisplayList(),
 };
 
 Gfx d_course_sherbet_land_dl_25A0[] = {
@@ -1237,19 +1364,25 @@ Gfx d_course_sherbet_land_dl_25A0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1050),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_FD0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E88),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2E08),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
+#endif
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_sherbet_land_dl_25F8[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_E00),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_10C8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_F48),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_EB8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1148),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_13E8),
@@ -1261,7 +1394,9 @@ Gfx d_course_sherbet_land_dl_25F8[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_C30),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2BC8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F00),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2D80),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2CF0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2C80),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2F80),
@@ -1431,7 +1566,9 @@ Gfx d_course_sherbet_land_dl_2A38[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_14B0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1720),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_18E0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1870),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1FF0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F78),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F10),
@@ -1551,13 +1688,17 @@ Gfx d_course_sherbet_land_dl_2D78[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3368),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_32F8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3568),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3728),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1598),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1520),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_14B0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1720),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_18E0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1870),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F78),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F10),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_20D0),
@@ -1800,17 +1941,23 @@ Gfx d_course_sherbet_land_dl_33E0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1C50),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1E40),
     gsDPSetRenderMode(G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_33E0),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3368),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_32F8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3568),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3728),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1598),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1520),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_14B0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1720),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_18E0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F78),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F10),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_20D0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2290),
@@ -1913,13 +2060,17 @@ Gfx d_course_sherbet_land_dl_36A8[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3728),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_36B8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3648),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_35E0),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_14B0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1720),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_18E0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1870),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1800),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1798),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_20D0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2290),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2220),
@@ -1933,26 +2084,34 @@ Gfx d_course_sherbet_land_dl_3770[] = {
                           GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
                       AA_EN | Z_CMP | Z_UPD | IM_RD | CLR_ON_CVG | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL |
                           GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1A98),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1998),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1C50),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1E40),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1DC0),
     gsDPSetRenderMode(G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_33E0),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3368),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_32F8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3568),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3728),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_36B8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1598),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1520),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_14B0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1720),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_18E0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1870),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F78),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F10),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2290),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2220),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_21B0),
@@ -1987,10 +2146,14 @@ Gfx d_course_sherbet_land_dl_3840[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1870),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1800),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1798),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2068),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1FF0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F78),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F10),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2290),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2220),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_21B0),
@@ -2027,7 +2190,9 @@ Gfx d_course_sherbet_land_dl_3940[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_18E0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1800),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1798),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2068),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1FF0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F78),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F10),
@@ -2084,7 +2249,9 @@ Gfx d_course_sherbet_land_dl_3AE0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1720),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_18E0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1870),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1FF0),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F10),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2290),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2220),
@@ -2188,7 +2355,9 @@ Gfx d_course_sherbet_land_dl_3D98[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3568),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3728),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_36B8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1640),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1598),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1520),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_14B0),
@@ -2213,11 +2382,17 @@ Gfx d_course_sherbet_land_dl_3E58[] = {
     gsDPSetRenderMode(G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3648),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_16B8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1640),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1800),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2220),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_21B0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2138),
+#endif
     gsSPEndDisplayList(),
 };
 
@@ -2395,7 +2570,9 @@ Gfx d_course_sherbet_land_dl_40B0[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3568),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3728),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_36B8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_16B8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1640),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1598),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1520),
@@ -2421,7 +2598,9 @@ Gfx d_course_sherbet_land_dl_4180[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1CD8),
     gsDPSetRenderMode(G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_16B8),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1640),
+#endif
     gsSPEndDisplayList(),
 };
 
@@ -2438,7 +2617,9 @@ Gfx d_course_sherbet_land_dl_41B8[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_33E0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3568),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3728),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_36B8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_16B8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1640),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1598),
@@ -2446,12 +2627,16 @@ Gfx d_course_sherbet_land_dl_41B8[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_14B0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1720),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_18E0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1870),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1F10),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_20D0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2290),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2220),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_21B0),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2138),
     gsSPEndDisplayList(),
 };
@@ -2520,12 +2705,16 @@ Gfx d_course_sherbet_land_dl_43C8[] = {
     gsDPSetRenderMode(G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3500),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3488),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_36B8),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3648),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_35E0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_16B8),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1640),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1870),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1800),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1798),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2068),
@@ -2594,7 +2783,9 @@ Gfx d_course_sherbet_land_dl_4570[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1870),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1800),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1798),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2290),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2220),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_21B0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2138),
@@ -2675,7 +2866,9 @@ Gfx d_course_sherbet_land_dl_4798[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3500),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3488),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_33E0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3568),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_3648),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_35E0),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_16B8),
@@ -2683,12 +2876,16 @@ Gfx d_course_sherbet_land_dl_4798[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1598),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1520),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_14B0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1720),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1800),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1798),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2068),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1FF0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2290),
+#endif
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2138),
     gsSPEndDisplayList(),
 };
@@ -2777,7 +2974,9 @@ Gfx d_course_sherbet_land_dl_4A20[] = {
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1798),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2068),
     gsSPDisplayList(d_course_sherbet_land_packed_dl_1FF0),
+#ifndef VERSION_JP
     gsSPDisplayList(d_course_sherbet_land_packed_dl_2138),
+#endif
     gsSPEndDisplayList(),
 };
 
@@ -2838,249 +3037,17 @@ Gfx d_course_sherbet_land_dl_4B20[] = {
 };
 
 // unk 0x4BF8
+#ifndef VERSION_JP  /* VERSION_JP path order: moved to end of file */
 TrackPathPoint d_course_sherbet_land_unknown_path[] = {
-    { -10, 0, 10, 0 },      { -10, 0, -8, 0 },      { -18, 0, -213, 0 },    { 52, 0, -308, 0 },
-    { 217, 0, -455, 0 },    { 436, 0, -587, 0 },    { 487, 0, -649, 0 },    { 465, 0, -722, 0 },
-    { 308, 0, -890, 0 },    { 132, 0, -1099, 0 },   { 37, 0, -1319, 0 },    { 31, 0, -1396, 0 },
-    { -75, 0, -1469, 0 },   { -302, 0, -1612, 0 },  { -372, 0, -1743, 0 },  { -432, 0, -1953, 0 },
-    { -484, 0, -2151, 0 },  { -586, 0, -2180, 0 },  { -667, 0, -2110, 0 },  { -777, 0, -1902, 0 },
-    { -1230, 0, -1506, 0 }, { -1318, 0, -1360, 0 }, { -1479, 0, -1078, 0 }, { -1776, 0, -888, 0 },
-    { -1966, 0, -833, 0 },  { -2253, 0, -527, 0 },  { -2374, 0, -271, 0 },  { -2421, 0, -91, 0 },
-    { -2482, 0, 123, 0 },   { -2573, 0, 365, 0 },   { -2713, 0, 599, 0 },   { -2870, 0, 760, 0 },
-    { -3002, 0, 937, 0 },   { -3021, 0, 1145, 0 },  { -2922, 0, 1343, 0 },  { -2717, 0, 1621, 0 },
-    { -2585, 0, 1764, 0 },  { -2446, 0, 1779, 0 },  { -2299, 0, 1676, 0 },  { -2171, 0, 1523, 0 },
-    { -1984, 0, 1332, 0 },  { -1951, 0, 1197, 0 },  { -1970, 0, 1109, 0 },  { -2281, 0, 1032, 0 },
-    { -2427, 0, 970, 0 },   { -2475, 0, 886, 0 },   { -2460, 0, 717, 0 },   { -2303, 0, 527, 0 },
-    { -2105, 0, 413, 0 },   { -1937, 0, 281, 0 },   { -1635, 0, 170, 0 },   { -1295, 0, 185, 0 },
-    { -1057, 0, 339, 0 },   { -793, 0, 657, 0 },    { -581, 0, 932, 0 },    { -409, 0, 1045, 0 },
-    { -262, 0, 1001, 0 },   { -120, 0, 771, 0 },    { -6, 0, 452, 0 },      { 1, 0, 49, 0 },
-    { -2058, 0, 1043, 0 },  { -32768, 0, 0, 0 },
+#include "courses/sherbet_land/d_course_sherbet_land_unknown_path.inc.c"
 };
+#endif
 
+#ifndef VERSION_JP  /* VERSION_JP path order: moved to end of file */
 TrackPathPoint d_course_sherbet_land_track_path[] = {
-    { -10, 0, 1, 1 },         { -10, 0, -19, 1 },       { -11, 0, -38, 1 },
-    { -12, 0, -58, 1 },       { -12, 0, -78, 1 },       { -13, 0, -98, 1 },
-    { -14, 0, -118, 1 },      { -14, 0, -139, 1 },      { -13, 0, -159, 1 },
-    { -11, 0, -178, 1 },      { -8, 0, -198, 1 },       { -3, 0, -218, 1 },
-    { 3, 0, -236, 1 },        { 12, 0, -254, 1 },       { 24, 0, -270, 1 },
-    { 37, 0, -285, 1 },       { 50, 0, -300, 1 },       { 64, 0, -315, 1 },
-    { 78, 0, -329, 1 },       { 93, 0, -343, 1 },       { 107, 0, -357, 1 },
-    { 122, 0, -370, 1 },      { 137, 0, -384, 1 },      { 152, 0, -397, 1 },
-    { 167, 0, -409, 1 },      { 183, 0, -422, 1 },      { 199, 0, -434, 1 },
-    { 215, 0, -446, 2 },      { 231, 0, -458, 2 },      { 247, 0, -470, 2 },
-    { 264, 0, -481, 2 },      { 280, 0, -492, 2 },      { 297, 0, -503, 2 },
-    { 314, 0, -513, 2 },      { 331, 0, -524, 2 },      { 348, 0, -534, 2 },
-    { 365, 0, -545, 2 },      { 382, 0, -556, 2 },      { 399, 0, -567, 2 },
-    { 415, 0, -578, 2 },      { 431, 0, -590, 2 },      { 447, 0, -603, 2 },
-    { 461, 0, -617, 2 },      { 472, 0, -634, 2 },      { 478, 0, -653, 2 },
-    { 478, 0, -673, 2 },      { 473, 0, -692, 2 },      { 464, 0, -710, 2 },
-    { 453, 0, -726, 2 },      { 441, 0, -742, 2 },      { 428, 0, -758, 2 },
-    { 415, 0, -773, 2 },      { 402, 0, -788, 2 },      { 388, 0, -803, 2 },
-    { 375, 0, -818, 2 },      { 361, 0, -832, 2 },      { 348, 0, -847, 2 },
-    { 334, 0, -862, 2 },      { 321, 0, -877, 2 },      { 308, 0, -892, 2 },
-    { 294, 0, -907, 2 },      { 281, 0, -922, 2 },      { 268, 0, -937, 2 },
-    { 255, 0, -952, 2 },      { 242, 0, -967, 2 },      { 229, 0, -983, 2 },
-    { 216, 0, -998, 2 },      { 203, 0, -1014, 2 },     { 191, 0, -1029, 2 },
-    { 179, 0, -1045, 2 },     { 167, 0, -1061, 2 },     { 156, 0, -1078, 2 },
-    { 145, 0, -1095, 2 },     { 134, 0, -1112, 2 },     { 124, 0, -1129, 2 },
-    { 114, 0, -1146, 3 },     { 105, 0, -1164, 3 },     { 96, 0, -1182, 3 },
-    { 88, 0, -1200, 3 },      { 80, 0, -1218, 3 },      { 72, 0, -1237, 3 },
-    { 64, 0, -1255, 3 },      { 57, 0, -1274, 3 },      { 50, 0, -1293, 3 },
-    { 44, 0, -1312, 3 },      { 38, 0, -1331, 3 },      { 34, 0, -1351, 3 },
-    { 31, 0, -1370, 3 },      { 23, 0, -1388, 3 },      { 10, 0, -1404, 3 },
-    { -3, 0, -1418, 3 },      { -19, 0, -1430, 3 },     { -35, 0, -1442, 3 },
-    { -52, 0, -1453, 3 },     { -69, 0, -1464, 3 },     { -86, 0, -1475, 3 },
-    { -102, 0, -1485, 3 },    { -119, 0, -1496, 3 },    { -136, 0, -1507, 3 },
-    { -153, 0, -1518, 3 },    { -170, 0, -1529, 3 },    { -187, 0, -1539, 3 },
-    { -204, 0, -1550, 3 },    { -220, 0, -1561, 3 },    { -236, 0, -1573, 3 },
-    { -252, 0, -1585, 3 },    { -268, 0, -1598, 3 },    { -283, 0, -1611, 3 },
-    { -297, 0, -1625, 3 },    { -311, 0, -1640, 3 },    { -323, 0, -1655, 3 },
-    { -334, 0, -1672, 3 },    { -343, 0, -1690, 3 },    { -352, 0, -1708, 3 },
-    { -360, 0, -1726, 3 },    { -367, 0, -1745, 3 },    { -374, 0, -1764, 4 },
-    { -381, 0, -1782, 4 },    { -387, 0, -1801, 4 },    { -394, 0, -1821, 4 },
-    { -399, 0, -1840, 4 },    { -405, 0, -1859, 4 },    { -410, 0, -1878, 4 },
-    { -416, 0, -1897, 4 },    { -421, 0, -1917, 4 },    { -426, 0, -1936, 4 },
-    { -432, 0, -1955, 4 },    { -437, 0, -1975, 4 },    { -442, 0, -1994, 4 },
-    { -447, 0, -2013, 4 },    { -453, 0, -2033, 4 },    { -458, 0, -2052, 4 },
-    { -463, 0, -2071, 4 },    { -470, 0, -2090, 4 },    { -478, 0, -2108, 4 },
-    { -487, 0, -2126, 4 },    { -499, 0, -2142, 4 },    { -514, 0, -2155, 4 },
-    { -532, 0, -2164, 4 },    { -552, 0, -2169, 4 },    { -572, 0, -2169, 4 },
-    { -591, 0, -2165, 4 },    { -609, 0, -2157, 4 },    { -626, 0, -2145, 4 },
-    { -640, 0, -2131, 4 },    { -653, 0, -2116, 4 },    { -665, 0, -2100, 4 },
-    { -676, 0, -2083, 4 },    { -687, 0, -2066, 4 },    { -697, 0, -2049, 4 },
-    { -707, 0, -2032, 4 },    { -717, 0, -2014, 4 },    { -726, 0, -1997, 4 },
-    { -737, 0, -1980, 4 },    { -748, 0, -1963, 4 },    { -760, 0, -1947, 4 },
-    { -773, 0, -1931, 4 },    { -785, 0, -1916, 4 },    { -798, 0, -1901, 4 },
-    { -812, 0, -1886, 4 },    { -825, 0, -1871, 4 },    { -839, 0, -1857, 4 },
-    { -853, 0, -1843, 4 },    { -867, 0, -1829, 4 },    { -882, 0, -1815, 4 },
-    { -896, 0, -1801, 4 },    { -911, 0, -1787, 4 },    { -925, 0, -1773, 4 },
-    { -940, 0, -1760, 4 },    { -955, 0, -1746, 4 },    { -970, 0, -1733, 5 },
-    { -985, 0, -1720, 5 },    { -1000, 0, -1706, 5 },   { -1015, 0, -1693, 5 },
-    { -1030, 0, -1680, 5 },   { -1045, 0, -1667, 5 },   { -1060, 0, -1653, 5 },
-    { -1075, 0, -1640, 5 },   { -1089, 0, -1626, 5 },   { -1104, 0, -1613, 5 },
-    { -1119, 0, -1599, 5 },   { -1134, 0, -1586, 5 },   { -1148, 0, -1572, 5 },
-    { -1162, 0, -1558, 5 },   { -1177, 0, -1544, 5 },   { -1191, 0, -1530, 5 },
-    { -1205, 0, -1515, 5 },   { -1219, 0, -1501, 5 },   { -1232, 0, -1486, 5 },
-    { -1245, 0, -1471, 5 },   { -1258, 0, -1455, 5 },   { -1269, 0, -1439, 5 },
-    { -1280, 0, -1422, 5 },   { -1290, 0, -1405, 5 },   { -1300, 0, -1388, 5 },
-    { -1310, 0, -1370, 5 },   { -1320, 0, -1353, 5 },   { -1331, 0, -1336, 5 },
-    { -1341, 0, -1318, 5 },   { -1351, 0, -1301, 5 },   { -1361, 0, -1284, 5 },
-    { -1371, 0, -1266, 5 },   { -1381, 0, -1249, 5 },   { -1390, 0, -1232, 5 },
-    { -1400, 0, -1214, 5 },   { -1411, 0, -1197, 5 },   { -1422, 0, -1180, 5 },
-    { -1433, 0, -1164, 5 },   { -1445, 0, -1148, 5 },   { -1457, 0, -1132, 5 },
-    { -1470, 0, -1117, 5 },   { -1483, 0, -1102, 5 },   { -1497, 0, -1087, 6 },
-    { -1511, 0, -1073, 6 },   { -1526, 0, -1060, 6 },   { -1541, 0, -1046, 6 },
-    { -1556, 0, -1033, 6 },   { -1572, 0, -1021, 6 },   { -1588, 0, -1009, 6 },
-    { -1604, 0, -998, 6 },    { -1621, 0, -986, 6 },    { -1638, 0, -976, 6 },
-    { -1655, 0, -965, 6 },    { -1672, 0, -955, 6 },    { -1689, 0, -944, 6 },
-    { -1706, 0, -934, 6 },    { -1724, 0, -925, 6 },    { -1742, 0, -915, 6 },
-    { -1759, 0, -906, 6 },    { -1777, 0, -897, 6 },    { -1795, 0, -888, 6 },
-    { -1814, 0, -880, 6 },    { -1832, 0, -873, 6 },    { -1851, 0, -866, 6 },
-    { -1870, 0, -860, 6 },    { -1889, 0, -854, 6 },    { -1907, 0, -846, 6 },
-    { -1925, 0, -836, 6 },    { -1942, 0, -826, 6 },    { -1959, 0, -815, 7 },
-    { -1975, 0, -803, 7 },    { -1991, 0, -791, 7 },    { -2006, 0, -778, 7 },
-    { -2022, 0, -765, 7 },    { -2036, 0, -752, 7 },    { -2051, 0, -738, 7 },
-    { -2065, 0, -724, 7 },    { -2080, 0, -710, 7 },    { -2094, 0, -696, 7 },
-    { -2107, 0, -681, 7 },    { -2121, 0, -667, 7 },    { -2135, 0, -652, 7 },
-    { -2148, 0, -637, 7 },    { -2161, 0, -622, 7 },    { -2174, 0, -606, 7 },
-    { -2187, 0, -591, 7 },    { -2199, 0, -575, 7 },    { -2212, 0, -560, 7 },
-    { -2224, 0, -544, 7 },    { -2235, 0, -528, 7 },    { -2247, 0, -511, 7 },
-    { -2258, 0, -495, 7 },    { -2269, 0, -478, 7 },    { -2280, 0, -461, 7 },
-    { -2290, 0, -444, 7 },    { -2299, 0, -426, 7 },    { -2308, 0, -408, 7 },
-    { -2317, 0, -390, 7 },    { -2325, 0, -372, 7 },    { -2334, 0, -354, 7 },
-    { -2342, 0, -335, 7 },    { -2349, 0, -317, 7 },    { -2357, 0, -298, 7 },
-    { -2364, 0, -280, 7 },    { -2371, 0, -261, 7 },    { -2378, 0, -242, 7 },
-    { -2384, 0, -223, 7 },    { -2390, 0, -204, 7 },    { -2396, 0, -185, 7 },
-    { -2401, 0, -166, 7 },    { -2406, 0, -146, 7 },    { -2411, 0, -127, 7 },
-    { -2416, 0, -108, 7 },    { -2422, 0, -88, 8 },     { -2427, -1, -69, 8 },
-    { -2432, -2, -50, 8 },    { -2438, -3, -30, 8 },    { -2443, -4, -11, 8 },
-    { -2449, -5, 7, 8 },      { -2454, -6, 26, 8 },     { -2460, -6, 45, 8 },
-    { -2466, -7, 65, 8 },     { -2472, -8, 84, 8 },     { -2478, -9, 103, 8 },
-    { -2484, -10, 122, 8 },   { -2490, -11, 141, 8 },   { -2497, -11, 160, 8 },
-    { -2503, -12, 179, 8 },   { -2510, -13, 197, 8 },   { -2517, -14, 216, 8 },
-    { -2524, -14, 235, 8 },   { -2531, -15, 254, 8 },   { -2538, -16, 272, 8 },
-    { -2546, -17, 291, 8 },   { -2554, -17, 309, 8 },   { -2562, -18, 328, 8 },
-    { -2570, -19, 346, 8 },   { -2579, -20, 364, 8 },   { -2588, -21, 382, 8 },
-    { -2597, -23, 400, 8 },   { -2606, -24, 417, 8 },   { -2616, -26, 435, 8 },
-    { -2625, -27, 452, 8 },   { -2635, -29, 470, 8 },   { -2646, -30, 487, 8 },
-    { -2656, -32, 504, 8 },   { -2667, -33, 521, 8 },   { -2678, -35, 538, 8 },
-    { -2689, -36, 554, 8 },   { -2701, -38, 570, 8 },   { -2713, -40, 587, 9 },
-    { -2725, -41, 602, 9 },   { -2737, -43, 618, 9 },   { -2750, -45, 634, 9 },
-    { -2763, -46, 649, 9 },   { -2776, -48, 664, 9 },   { -2790, -50, 678, 9 },
-    { -2804, -52, 692, 9 },   { -2818, -53, 707, 9 },   { -2831, -55, 722, 9 },
-    { -2845, -57, 737, 9 },   { -2858, -59, 752, 9 },   { -2871, -61, 767, 9 },
-    { -2884, -63, 782, 9 },   { -2896, -64, 798, 9 },   { -2909, -66, 813, 9 },
-    { -2921, -67, 829, 9 },   { -2933, -68, 845, 9 },   { -2945, -69, 861, 9 },
-    { -2956, -71, 878, 9 },   { -2966, -72, 895, 9 },   { -2975, -74, 913, 9 },
-    { -2984, -75, 931, 9 },   { -2991, -76, 950, 9 },   { -2997, -77, 969, 9 },
-    { -3002, -78, 988, 9 },   { -3007, -79, 1008, 9 },  { -3010, -80, 1028, 9 },
-    { -3012, -80, 1048, 9 },  { -3012, -80, 1067, 9 },  { -3012, -80, 1087, 9 },
-    { -3011, -80, 1107, 9 },  { -3009, -80, 1127, 9 },  { -3005, -80, 1147, 9 },
-    { -3000, -80, 1166, 9 },  { -2995, -80, 1186, 9 },  { -2988, -80, 1205, 10 },
-    { -2981, -80, 1223, 10 }, { -2972, -80, 1241, 10 }, { -2963, -80, 1259, 10 },
-    { -2954, -80, 1277, 10 }, { -2944, -80, 1294, 10 }, { -2934, -80, 1311, 10 },
-    { -2923, -80, 1328, 10 }, { -2913, -80, 1345, 10 }, { -2902, -80, 1362, 10 },
-    { -2891, -80, 1379, 10 }, { -2880, -80, 1396, 10 }, { -2869, -80, 1412, 10 },
-    { -2857, -80, 1429, 10 }, { -2846, -80, 1445, 10 }, { -2834, -80, 1461, 10 },
-    { -2822, -80, 1477, 10 }, { -2810, -80, 1493, 10 }, { -2798, -80, 1510, 10 },
-    { -2786, -80, 1526, 10 }, { -2774, -80, 1541, 10 }, { -2762, -80, 1557, 10 },
-    { -2750, -80, 1573, 10 }, { -2737, -80, 1589, 10 }, { -2725, -80, 1605, 11 },
-    { -2712, -80, 1620, 11 }, { -2700, -80, 1636, 11 }, { -2687, -80, 1651, 11 },
-    { -2674, -80, 1666, 11 }, { -2660, -80, 1681, 11 }, { -2647, -80, 1696, 11 },
-    { -2633, -80, 1710, 11 }, { -2618, -80, 1723, 11 }, { -2602, -80, 1736, 11 },
-    { -2585, -80, 1747, 11 }, { -2568, -80, 1756, 11 }, { -2549, -80, 1763, 11 },
-    { -2530, -80, 1769, 11 }, { -2510, -80, 1771, 11 }, { -2490, -80, 1772, 11 },
-    { -2470, -80, 1770, 11 }, { -2450, -80, 1765, 11 }, { -2431, -80, 1759, 11 },
-    { -2413, -80, 1751, 11 }, { -2395, -80, 1742, 11 }, { -2378, -80, 1731, 11 },
-    { -2362, -80, 1720, 11 }, { -2346, -80, 1708, 11 }, { -2330, -80, 1695, 11 },
-    { -2315, -80, 1682, 11 }, { -2300, -80, 1669, 11 }, { -2286, -80, 1655, 12 },
-    { -2272, -80, 1641, 12 }, { -2258, -80, 1626, 12 }, { -2245, -80, 1611, 12 },
-    { -2232, -80, 1596, 12 }, { -2219, -80, 1581, 12 }, { -2206, -80, 1566, 12 },
-    { -2193, -80, 1551, 12 }, { -2179, -80, 1536, 12 }, { -2166, -80, 1521, 12 },
-    { -2152, -80, 1506, 12 }, { -2139, -80, 1491, 12 }, { -2125, -80, 1477, 12 },
-    { -2111, -80, 1462, 12 }, { -2097, -80, 1448, 12 }, { -2083, -80, 1434, 12 },
-    { -2069, -80, 1419, 12 }, { -2056, -80, 1405, 12 }, { -2042, -80, 1390, 12 },
-    { -2030, -80, 1374, 12 }, { -2017, -80, 1359, 12 }, { -2005, -80, 1342, 12 },
-    { -1994, -80, 1326, 12 }, { -1985, -80, 1308, 12 }, { -1976, -80, 1290, 13 },
-    { -1969, -80, 1272, 13 }, { -1964, -80, 1252, 13 }, { -1960, -80, 1232, 13 },
-    { -1958, -80, 1213, 13 }, { -1957, -80, 1193, 13 }, { -1957, -80, 1173, 13 },
-    { -1960, -80, 1153, 13 }, { -1969, -80, 1135, 13 }, { -1984, -80, 1122, 13 },
-    { -2002, -80, 1112, 13 }, { -2020, -80, 1104, 13 }, { -2038, -80, 1096, 13 },
-    { -2057, -80, 1089, 13 }, { -2076, -80, 1083, 13 }, { -2095, -80, 1078, 13 },
-    { -2115, -80, 1073, 13 }, { -2134, -80, 1068, 13 }, { -2154, -80, 1063, 13 },
-    { -2173, -80, 1058, 13 }, { -2192, -80, 1053, 13 }, { -2212, -80, 1047, 13 },
-    { -2231, -80, 1042, 13 }, { -2250, -80, 1036, 13 }, { -2269, -80, 1031, 13 },
-    { -2288, -80, 1024, 13 }, { -2307, -80, 1018, 14 }, { -2326, -80, 1011, 14 },
-    { -2345, -80, 1004, 14 }, { -2363, -80, 996, 14 },  { -2381, -79, 987, 14 },
-    { -2398, -78, 978, 14 },  { -2415, -76, 966, 14 },  { -2430, -74, 953, 14 },
-    { -2443, -73, 938, 14 },  { -2454, -72, 921, 14 },  { -2461, -71, 903, 14 },
-    { -2465, -69, 883, 14 },  { -2468, -68, 863, 14 },  { -2469, -67, 843, 14 },
-    { -2468, -67, 823, 14 },  { -2467, -66, 803, 14 },  { -2465, -65, 783, 14 },
-    { -2460, -64, 764, 14 },  { -2455, -63, 745, 14 },  { -2447, -61, 726, 14 },
-    { -2439, -60, 708, 14 },  { -2429, -58, 690, 14 },  { -2419, -56, 673, 14 },
-    { -2408, -55, 657, 14 },  { -2396, -53, 640, 14 },  { -2384, -51, 625, 14 },
-    { -2371, -50, 609, 14 },  { -2358, -48, 594, 14 },  { -2344, -46, 580, 14 },
-    { -2330, -44, 566, 14 },  { -2315, -43, 552, 14 },  { -2300, -41, 539, 14 },
-    { -2285, -39, 526, 15 },  { -2269, -37, 513, 15 },  { -2253, -35, 501, 15 },
-    { -2237, -34, 490, 15 },  { -2220, -32, 479, 15 },  { -2203, -30, 469, 15 },
-    { -2185, -28, 459, 15 },  { -2168, -26, 449, 15 },  { -2151, -24, 438, 15 },
-    { -2134, -22, 427, 15 },  { -2118, -20, 416, 15 },  { -2101, -19, 405, 15 },
-    { -2084, -18, 394, 15 },  { -2068, -17, 382, 15 },  { -2052, -16, 371, 15 },
-    { -2036, -14, 358, 15 },  { -2020, -13, 346, 15 },  { -2004, -12, 334, 15 },
-    { -1988, -11, 323, 15 },  { -1971, -10, 312, 15 },  { -1954, -9, 302, 15 },
-    { -1936, -8, 292, 15 },   { -1919, -7, 283, 15 },   { -1901, -6, 274, 15 },
-    { -1883, -5, 265, 15 },   { -1864, -5, 257, 15 },   { -1846, -4, 249, 15 },
-    { -1827, -3, 241, 15 },   { -1809, -2, 234, 15 },   { -1790, -1, 227, 15 },
-    { -1771, 0, 220, 15 },    { -1752, 0, 214, 15 },    { -1733, 0, 208, 16 },
-    { -1714, 0, 203, 16 },    { -1694, 0, 198, 16 },    { -1675, 0, 193, 16 },
-    { -1655, 0, 189, 16 },    { -1636, 0, 186, 16 },    { -1616, 0, 183, 16 },
-    { -1596, 0, 181, 16 },    { -1576, 0, 179, 16 },    { -1556, 0, 178, 16 },
-    { -1536, 0, 177, 16 },    { -1516, 0, 176, 16 },    { -1496, 0, 176, 16 },
-    { -1476, 0, 177, 16 },    { -1456, 0, 177, 16 },    { -1436, 0, 179, 16 },
-    { -1416, 0, 181, 16 },    { -1396, 0, 183, 16 },    { -1376, 0, 186, 16 },
-    { -1357, 0, 190, 16 },    { -1337, 0, 194, 16 },    { -1318, 0, 199, 16 },
-    { -1299, 0, 204, 16 },    { -1280, 0, 211, 16 },    { -1261, 0, 218, 16 },
-    { -1242, 0, 225, 16 },    { -1224, 0, 234, 16 },    { -1206, 0, 243, 16 },
-    { -1189, 0, 253, 16 },    { -1172, 0, 264, 16 },    { -1156, 0, 275, 16 },
-    { -1139, 0, 287, 16 },    { -1123, 0, 299, 16 },    { -1108, 0, 311, 16 },
-    { -1092, 0, 324, 16 },    { -1077, 0, 337, 16 },    { -1062, 0, 350, 16 },
-    { -1048, 0, 364, 16 },    { -1033, 0, 378, 16 },    { -1019, 0, 392, 16 },
-    { -1005, 0, 407, 16 },    { -992, 0, 421, 17 },     { -978, 0, 436, 17 },
-    { -965, 0, 451, 17 },     { -951, 0, 466, 17 },     { -938, 0, 481, 17 },
-    { -926, 0, 496, 17 },     { -913, 0, 512, 17 },     { -900, 0, 527, 17 },
-    { -887, 0, 543, 17 },     { -875, 0, 558, 17 },     { -862, 0, 574, 17 },
-    { -849, 0, 589, 17 },     { -837, 0, 605, 17 },     { -824, 0, 620, 17 },
-    { -811, 0, 636, 17 },     { -799, 0, 651, 17 },     { -786, 0, 667, 17 },
-    { -774, 0, 683, 17 },     { -761, 0, 698, 17 },     { -749, 0, 714, 17 },
-    { -737, 0, 730, 17 },     { -724, 0, 745, 17 },     { -712, 0, 761, 17 },
-    { -700, 0, 777, 17 },     { -687, 0, 793, 17 },     { -675, 0, 809, 17 },
-    { -663, 0, 824, 17 },     { -650, 0, 840, 17 },     { -637, 0, 855, 17 },
-    { -624, 0, 870, 17 },     { -611, 0, 885, 17 },     { -597, 0, 900, 17 },
-    { -583, 0, 914, 17 },     { -569, 0, 928, 17 },     { -554, 0, 941, 17 },
-    { -539, 0, 955, 17 },     { -523, 0, 967, 17 },     { -507, 0, 979, 17 },
-    { -491, 0, 990, 17 },     { -474, 0, 1001, 17 },    { -456, 0, 1010, 17 },
-    { -437, 0, 1017, 17 },    { -418, 0, 1023, 17 },    { -399, 0, 1027, 18 },
-    { -379, 0, 1029, 18 },    { -359, 0, 1027, 18 },    { -339, 0, 1024, 18 },
-    { -320, 0, 1017, 18 },    { -302, 0, 1008, 18 },    { -286, 0, 997, 18 },
-    { -270, 0, 984, 18 },     { -255, 0, 971, 18 },     { -242, 0, 956, 18 },
-    { -229, 0, 941, 18 },     { -217, 0, 925, 18 },     { -205, 0, 908, 18 },
-    { -194, 0, 892, 18 },     { -184, 0, 875, 18 },     { -174, 0, 857, 18 },
-    { -164, 0, 840, 18 },     { -154, 0, 822, 18 },     { -145, 0, 805, 18 },
-    { -136, 0, 787, 18 },     { -127, 0, 769, 18 },     { -119, 0, 751, 18 },
-    { -111, 0, 732, 18 },     { -103, 0, 714, 18 },     { -95, 0, 696, 18 },
-    { -87, 0, 677, 18 },      { -80, 0, 658, 18 },      { -73, 0, 640, 18 },
-    { -66, 0, 621, 18 },      { -59, 0, 602, 18 },      { -53, 0, 583, 18 },
-    { -47, 0, 564, 18 },      { -42, 0, 545, 18 },      { -37, 0, 525, 18 },
-    { -32, 0, 506, 18 },      { -27, 0, 486, 18 },      { -24, 0, 467, 18 },
-    { -20, 0, 447, 18 },      { -17, 0, 427, 18 },      { -14, 0, 408, 18 },
-    { -11, 0, 388, 18 },      { -9, 0, 368, 18 },       { -7, 0, 348, 18 },
-    { -5, 0, 328, 18 },       { -4, 0, 308, 18 },       { -3, 0, 288, 1 },
-    { -2, 0, 268, 1 },        { -2, 0, 248, 1 },        { -2, 0, 228, 1 },
-    { -1, 0, 208, 1 },        { -1, 0, 188, 1 },        { -1, 0, 168, 1 },
-    { -1, 0, 148, 1 },        { -1, 0, 128, 1 },        { -1, 0, 108, 1 },
-    { -1, 0, 88, 1 },         { -1, 0, 68, 1 },         { -2, 0, 48, 1 },
-    { -4, 0, 28, 1 },         { -9, 0, 8, 1 },          { -32768, -32768, -32768, 0 },
+#include "courses/sherbet_land/d_course_sherbet_land_track_path.inc.c"
 };
+#endif
 
 Vtx d_course_sherbet_land_model1[] = {
     { { { -97, -56, 398 }, 0, { 11, 1360 }, { 0xF8, 0xF8, 0x76, 0xFF } } },
@@ -4028,3 +3995,12 @@ TrackSections d_course_sherbet_land_addr[] = {
     { d_course_sherbet_land_packed_dl_2798, RAMP, 255, 0x0000 },
     { 0x00000000, 0, 0, 0x0000 },
 };
+
+#ifdef VERSION_JP  /* VERSION_JP path order: JP puts the paths last */
+TrackPathPoint d_course_sherbet_land_unknown_path[] = {
+#include "courses/sherbet_land/d_course_sherbet_land_unknown_path.inc.c"
+};
+TrackPathPoint d_course_sherbet_land_track_path[] = {
+#include "courses/sherbet_land/d_course_sherbet_land_track_path.inc.c"
+};
+#endif

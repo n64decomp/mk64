@@ -788,7 +788,11 @@ void func_8028F588(void) {
 }
 
 void func_8028F8BC(void) {
+#ifdef VERSION_JP
+    D_802BA034 = (f32) (D_802BA034 - 0.017);
+#else
     D_802BA034 = (f32) (D_802BA034 - 0.017f);
+#endif
     if (D_802BA034 < 0.0f) {
         D_802BA034 = 0.0f;
     }

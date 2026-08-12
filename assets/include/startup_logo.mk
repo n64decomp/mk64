@@ -10,10 +10,11 @@ $(REFLECTION_MAP:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(REFLECTION_MAP): $(STARTUP_LOGO_EXPORT_SENTINEL) ;
+$(REFLECTION_MAP): $(STARTUP_LOGO_EXPORT_SENTINEL)
+	@:
 
-$(STARTUP_LOGO_EXPORT_SENTINEL): $(ASSET_DIR)/startup_logo.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(STARTUP_LOGO_EXPORT_SENTINEL): $(ASSET_DIR)/startup_logo.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_startup_logo

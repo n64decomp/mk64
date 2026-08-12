@@ -34,6 +34,14 @@ versionGroup.add_argument(
     const="eu.v11",
     dest="version",
 )
+versionGroup.add_argument(
+    "-j",
+    "--jp11",
+    help="use Japanese (1.1) version",
+    action="store_const",
+    const="jp.v11",
+    dest="version",
+)
 parser.add_argument(
     "-m", "--make", help="run make before finding difference(s)", action="store_true"
 )

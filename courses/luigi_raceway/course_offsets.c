@@ -43,6 +43,51 @@ extern u8 gTextureSignNintendoRed1[];
 extern u8 gTextureSignYoshi[];
 extern u8 gTextureCheckerboardBlueGray[];
 
+#ifdef VERSION_JP  /* JP reorders the sign textures, which moves the whole segment 5 layout */
+const course_texture luigi_raceway_textures[] = {
+    { gTextureSignShellShot0, 0x038C, 0x1000, 0x0 },
+    { gTextureSignShellShot1, 0x0247, 0x1000, 0x0 },
+    { gTextureSignBlue64, 0x02BF, 0x1000, 0x0 },
+    { gTextureCheckerboardYellowBlue, 0x013A, 0x0800, 0x0 },
+    { gTexture64619C, 0x0124, 0x0800, 0x0 },
+    { gTextureCheckerboardBlueGreen, 0x0139, 0x0800, 0x0 },
+    { gTextureGrass3, 0x0372, 0x0800, 0x0 },
+    { gTextureFlagRed, 0x019E, 0x0800, 0x0 },
+    { gTexture65100C, 0x0120, 0x0800, 0x0 },
+    { gTexture65112C, 0x0150, 0x0800, 0x0 },
+    { gTexture653608, 0x07A7, 0x0800, 0x0 },
+    { gTextureSignKoopaAir0, 0x03C2, 0x1000, 0x0 },
+    { gTextureSignKoopaAir1, 0x0319, 0x1000, 0x0 },
+    { gTextureGrass11, 0x01F8, 0x0800, 0x0 },
+    { gTextureSignLuigiFace0, 0x05C9, 0x1000, 0x0 },
+    { gTextureSignLuigiFace1, 0x065F, 0x1000, 0x0 },
+    { gTextureSignLuigis0, 0x026A, 0x1000, 0x0 },
+    { gTextureSignLuigis1, 0x02CC, 0x1000, 0x0 },
+    { gTextureSignMarioStar0, 0x0349, 0x1000, 0x0 },
+    { gTextureSignMarioStar1, 0x02D7, 0x1000, 0x0 },
+    { gTexture66C7A8, 0x0149, 0x0800, 0x0 },
+    { gTextureSignNintendoRed0, 0x02E1, 0x1000, 0x0 },
+    { gTextureSignNintendoRed1, 0x034C, 0x1000, 0x0 },
+    { gTexture670AC8, 0x0FBF, 0x1000, 0x0 },
+    { gTexture671A88, 0x012D, 0x0800, 0x0 },
+    { gTexture6735DC, 0x03B1, 0x0800, 0x0 },
+    { gTexture673C68, 0x038D, 0x0800, 0x0 },
+    { gTexture6747C4, 0x0145, 0x0800, 0x0 },
+    { gTextureRoad1, 0x02D2, 0x1000, 0x0 },
+    { gTextureRoad2, 0x02AE, 0x1000, 0x0 },
+    { gTextureRoadFinish1, 0x026B, 0x1000, 0x0 },
+    { gTexture67BBD8, 0x0310, 0x0800, 0x0 },
+    { gTexture68272C, 0x01F9, 0x1000, 0x0 },
+    { gTexture682928, 0x01F9, 0x1000, 0x0 },
+    { gTexture682B24, 0x01F9, 0x1000, 0x0 },
+    { gTexture682D20, 0x01F9, 0x1000, 0x0 },
+    { gTexture682F1C, 0x01F9, 0x1000, 0x0 },
+    { gTexture683118, 0x01F9, 0x1000, 0x0 },
+    { gTextureSignYoshi, 0x0342, 0x1000, 0x0 },
+    { gTextureCheckerboardBlueGray, 0x027F, 0x1000, 0x0 },
+    { 0x00000000, 0x0000, 0x0000, 0x0 },
+};
+#else
 const course_texture luigi_raceway_textures[] = {
     { gTextureSignShellShot0, 0x038C, 0x1000, 0x0 },
     { gTextureSignShellShot1, 0x0247, 0x1000, 0x0 },
@@ -86,6 +131,7 @@ const course_texture luigi_raceway_textures[] = {
     { gTextureCheckerboardBlueGray, 0x04A1, 0x1000, 0x0 },
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
+#endif
 
 const Gfx* luigi_raceway_dls[] = {
     d_course_luigi_raceway_dl_0,    d_course_luigi_raceway_dl_328,  d_course_luigi_raceway_dl_1A8,

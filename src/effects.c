@@ -1643,7 +1643,7 @@ void course_update_path_point(Player* player, s8 playerId) {
             break;
         case COURSE_FRAPPE_SNOWLAND:
             pathPoint = gNearestPathPointByPlayerId[playerId];
-#ifdef VERSION_EU
+#if defined(VERSION_EU) || defined(VERSION_JP)
             if (((pathPoint >= 0xF0) && (pathPoint < 0x11E)) || ((gCopyNearestPathPointByPlayerId[playerId] >= 0xF0) &&
                                                                  (gCopyNearestPathPointByPlayerId[playerId] < 0x11E)))
 #else

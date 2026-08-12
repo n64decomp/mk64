@@ -33,10 +33,11 @@ $(COURSE_PREVIEW_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(COURSE_PREVIEW_PNG): $(COURSE_PREVIEW_EXPORT_SENTINEL) ;
+$(COURSE_PREVIEW_PNG): $(COURSE_PREVIEW_EXPORT_SENTINEL)
+	@:
 
-$(COURSE_PREVIEW_EXPORT_SENTINEL): $(ASSET_DIR)/course_previews.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(COURSE_PREVIEW_EXPORT_SENTINEL): $(ASSET_DIR)/course_previews.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_course_previews

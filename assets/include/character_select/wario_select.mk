@@ -30,10 +30,11 @@ $(WARIO_SELECT_PNG:%.png=%.bin) : %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(WARIO_SELECT_PNG): $(WARIO_SELECT_EXPORT_SENTINEL) ;
+$(WARIO_SELECT_PNG): $(WARIO_SELECT_EXPORT_SENTINEL)
+	@:
 
-$(WARIO_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/wario_select.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(WARIO_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/wario_select.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_wario_select

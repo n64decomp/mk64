@@ -106,6 +106,25 @@ python3 first-diff.py --eu
 ./diff <function> -eu
 ```
 
+# Building JP
+
+mk64 decomp supports the original Japanese release, JP 1.1 `jp.v11`.
+
+Unlike EU, JP does not need US built first. It extracts everything it needs from
+the Japanese cartridge, so a fresh clone can build it on its own. Torch writes
+its generated C per version, so extract with the version you are building:
+
+```bash
+make assets -j VERSION=jp.v11
+make -j VERSION=jp.v11
+```
+
+First-diff/diff commands for JP
+```bash
+python3 first-diff.py --jp11
+./diff <function> -jp11
+```
+
 # Handling Changes
 Certain changes may result in unexpected behaviour (frequently related to physics) due to the games obnoxious linker setup. This is resolved by compiling with the AVOID_UB flag.
 

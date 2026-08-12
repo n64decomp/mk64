@@ -1,6 +1,6 @@
 {
-"gTextureWarioStadiumSignTopLeft":     {"output_dir": "wario_stadium", "rom_offset": "0x8804A0", "block_offset": "0x08890", "width": 64, "height": 32, "type": "rgba16"},
-"gTextureWarioStadiumSignBottomLeft":  {"output_dir": "wario_stadium", "rom_offset": "0x8804A0", "block_offset": "0x09890", "width": 64, "height": 32, "type": "rgba16"},
-"gTextureWarioStadiumSignTopRight":    {"output_dir": "wario_stadium", "rom_offset": "0x8804A0", "block_offset": "0x0A890", "width": 64, "height": 32, "type": "rgba16"},
-"gTextureWarioStadiumSignBottomRight": {"output_dir": "wario_stadium", "rom_offset": "0x8804A0", "block_offset": "0x0B890", "width": 64, "height": 32, "type": "rgba16"}
+"gTextureWarioStadiumSignTopLeft": {"output_dir": "wario_stadium", "rom_offset": "0x8804A0", "block_offset": "0x08890", "width": 64, "height": 32, "type": "rgba16", "jp.v11": {"rom_offset": "0x87E770", "block_offset": "0x054A8"}},
+"gTextureWarioStadiumSignBottomLeft": {"output_dir": "wario_stadium", "rom_offset": "0x8804A0", "block_offset": "0x09890", "width": 64, "height": 32, "type": "rgba16", "jp.v11": {"rom_offset": "0x87E770", "block_offset": "0x064A8"}},
+"gTextureWarioStadiumSignTopRight": {"output_dir": "wario_stadium", "rom_offset": "0x8804A0", "block_offset": "0x0A890", "width": 64, "height": 32, "type": "rgba16", "jp.v11": {"rom_offset": "0x87E770", "block_offset": "0x074A8"}},
+"gTextureWarioStadiumSignBottomRight": {"output_dir": "wario_stadium", "rom_offset": "0x8804A0", "block_offset": "0x0B890", "width": 64, "height": 32, "type": "rgba16", "jp.v11": {"rom_offset": "0x87E770", "block_offset": "0x084A8"}}
 }

@@ -48,6 +48,10 @@ u16 gPlayerYellowEffect[8];
 // Likely an unused colour effect.
 UNUSED u16 gPlayerWhiteEffect[8];
 s32 D_80164B80[296];
+/* JP puts these seven after crash_screen.o's bss, which splits this file's own
+   bss - so in JP they are defined in spawn_players.c instead. They are extern
+   in render_player.h either way, so nothing else changes. */
+#ifndef VERSION_JP
 s16 D_80165020[40];
 // Used to calculate difference between previous and current player velocity.
 Vec3f gPlayerLastVelocity[8];
@@ -56,6 +60,7 @@ s16 gLastAnimGroupSelector[4][8];
 s16 D_80165150[4][8];
 s16 D_80165190[4][8];
 s16 D_801651D0[4][8];
+#endif
 
 void func_8001F980(s32* arg0, s32* arg1) {
     if ((gDemoMode == 1) || (D_80164A28 != 0) || (D_8015F894 != 0)) {

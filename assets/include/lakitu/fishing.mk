@@ -22,10 +22,11 @@ $(FISHING_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(FISHING_FRAMES) $(FISHING_PALETTE): $(FISHING_EXPORT_SENTINEL) ;
+$(FISHING_FRAMES) $(FISHING_PALETTE): $(FISHING_EXPORT_SENTINEL)
+	@:
 
-$(FISHING_EXPORT_SENTINEL): assets/lakitu/fishing.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(FISHING_EXPORT_SENTINEL): assets/lakitu/fishing.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_lakitu_fishing

@@ -11,7 +11,11 @@
 .section .text, "ax"
 
 glabel tkmk00decode
+.ifdef VERSION_JP
+/* JP uses a 0x1F0 frame (no high scratch buffer) */  addi  $sp, $sp, -0x1f0
+.else
 /* 0411D0 800405D0 23BDFC00 */  addi  $sp, $sp, -0x400
+.endif
 /* 0411D4 800405D4 AFB0019C */  sw    $s0, 0x19c($sp)
 /* 0411D8 800405D8 AFB10198 */  sw    $s1, 0x198($sp)
 /* 0411DC 800405DC AFB20194 */  sw    $s2, 0x194($sp)
@@ -70,11 +74,17 @@ glabel tkmk00decode
 /* 04129C 8004069C AFA001E4 */  sw    $zero, 0x1e4($sp)
 /* 0412A0 800406A0 AFA001E8 */  sw    $zero, 0x1e8($sp)
 /* 0412A4 800406A4 AFA001EC */  sw    $zero, 0x1ec($sp)
+.ifndef VERSION_JP
 /* 0412A8 800406A8 03A09825 */  move  $s3, $sp
+.endif
 /* 0412AC 800406AC 00003825 */  move  $a3, $zero
 /* 0412B0 800406B0 8C88002C */  lw    $t0, 0x2c($a0)
 /* 0412B4 800406B4 20840030 */  addi  $a0, $a0, 0x30
+.ifdef VERSION_JP
+/* JP: s3 points at sp directly */  move  $s3, $sp
+.else
 /* 0412B8 800406B8 227303F0 */  addi  $s3, $s3, 0x3f0
+.endif
 /* 0412BC 800406BC 04110140 */  bal   func_80040BC0
 /* 0412C0 800406C0 24140020 */   li    $s4, 32
 /* 0412C4 800406C4 00404825 */  move  $t1, $v0
@@ -340,7 +350,11 @@ glabel tkmk00decode
 /* 041650 80040A50 8FB10198 */  lw    $s1, 0x198($sp)
 /* 041654 80040A54 8FB0019C */  lw    $s0, 0x19c($sp)
 /* 041658 80040A58 03E00008 */  jr    $ra
+.ifdef VERSION_JP
+   addi  $sp, $sp, 0x1f0
+.else
 /* 04165C 80040A5C 23BD0400 */   addi  $sp, $sp, 0x400
+.endif
 
 glabel func_80040A60
 /* 041660 80040A60 00E3C820 */  add   $t9, $a3, $v1

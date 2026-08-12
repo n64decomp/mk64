@@ -1497,10 +1497,11 @@ $(BOWSER_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(BOWSER_KART_FRAME_PNG) $(BOWSER_KART_PALETTE_PNG): $(BOWSER_EXPORT_SENTINEL) ;
+$(BOWSER_KART_FRAME_PNG) $(BOWSER_KART_PALETTE_PNG): $(BOWSER_EXPORT_SENTINEL)
+	@:
 
-$(BOWSER_EXPORT_SENTINEL): $(ASSET_DIR)/karts/bowser_kart.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(BOWSER_EXPORT_SENTINEL): $(ASSET_DIR)/karts/bowser_kart.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_bowser_kart

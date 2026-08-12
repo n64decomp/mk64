@@ -9,7 +9,7 @@
     output:
       binary: mkcube.otr
       headers: include/assets
-      code: assets/code
+      code: assets/code/us
   metadata: [yamls/courses]
   segments:
     - 0x000000
@@ -28,3 +28,34 @@
     - 0x132B50
     - 0x000000
     - 0x145470
+
+9f439457585146a4e1da7e1dd9104f7f94381688:
+  name: Mario Kart 64 [JP v1.1]
+  path: yamls/jp.v11
+  config:
+    gbi: F3DEX_MK64
+    sort: OFFSET
+    enums:
+      - include/defines.h
+    output:
+      binary: mkcube.otr
+      headers: include/assets
+      code: assets/code/jp.v11
+  metadata: [yamls/courses]
+  segments:
+    - 0x000000
+    - 0x000000
+    - 0x12A330
+    - 0x000000
+    - 0x000000
+    - 0x000000
+    - 0x1487D0
+    - 0x000000
+    - 0x000000
+    - 0x88AF10
+    - 0x72F100
+    - 0x144CC0
+    - 0x7FFAA0
+    - 0x1323A0
+    - 0x000000
+    - 0x14B4A0

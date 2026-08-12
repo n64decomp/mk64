@@ -23,6 +23,31 @@ extern u8 gTexture67DC20[];
 extern u8 gTextureSignYoshi[];
 extern u8 gTextureCheckerboardBlueGray[];
 
+#ifdef VERSION_JP  /* JP ships different sign textures, so their compressed sizes differ */
+const course_texture choco_mountain_textures[] = {
+    { gTexture64619C, 0x0124, 0x0800, 0x0 },
+    { gTexture64647C, 0x0829, 0x1000, 0x0 },
+    { gTexture647F4C, 0x05BC, 0x1000, 0x0 },
+    { gTexture64FBF4, 0x0274, 0x0800, 0x0 },
+    { gTexture653DB0, 0x06AE, 0x0800, 0x0 },
+    { gTexture652B54, 0x0606, 0x0800, 0x0 },
+    { gTexture65315C, 0x04A9, 0x0800, 0x0 },
+    { gTexture6684F8, 0x010D, 0x0800, 0x0 },
+    { gTextureSignLuigis0, 0x026A, 0x1000, 0x0 },
+    { gTextureSignLuigis1, 0x02CC, 0x1000, 0x0 },
+    { gTextureSignNintendoRed0, 0x02E1, 0x1000, 0x0 },
+    { gTextureSignNintendoRed1, 0x034C, 0x1000, 0x0 },
+    { gTexture6774D8, 0x0113, 0x0800, 0x0 },
+    { gTextureSignFallingRocks, 0x012C, 0x0800, 0x0 },
+    { gTextureSignBackside, 0x011E, 0x0800, 0x0 },
+    { gTexture679C04, 0x012F, 0x0800, 0x0 },
+    { gTexture67B864, 0x014C, 0x0800, 0x0 },
+    { gTexture67DC20, 0x03EF, 0x0800, 0x0 },
+    { gTextureSignYoshi, 0x0342, 0x1000, 0x0 },
+    { gTextureCheckerboardBlueGray, 0x027F, 0x1000, 0x0 },
+    { 0x00000000, 0x0000, 0x0000, 0x0 },
+};
+#else
 const course_texture choco_mountain_textures[] = {
     { gTexture64619C, 0x0124, 0x0800, 0x0 },
     { gTexture64647C, 0x0829, 0x1000, 0x0 },
@@ -46,6 +71,7 @@ const course_texture choco_mountain_textures[] = {
     { gTextureCheckerboardBlueGray, 0x04A1, 0x1000, 0x0 },
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
+#endif
 
 const Gfx* choco_mountain_dls[] = {
     d_course_choco_mountain_dl_0,    d_course_choco_mountain_dl_150,  d_course_choco_mountain_dl_B0,

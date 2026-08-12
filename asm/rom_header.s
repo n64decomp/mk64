@@ -23,11 +23,26 @@
 
 .ifdef VERSION_EU
 .ascii "P"                      /* PAL (Europe) */
-.else
+.endif
+
+.ifdef VERSION_JP
+.ascii "J"                      /* NTSC-J (Japan) */
+.endif
+
+.ifdef VERSION_US
 .ascii "E"                      /* NTSC-U (North America) */
 .endif
 
+
 .ifdef VERSION_EU_V11
+.set REVISION_V11, 1
+.endif
+
+.ifdef VERSION_JP_V11
+.set REVISION_V11, 1
+.endif
+
+.ifdef REVISION_V11
 .byte  0x01                     /* Version */
 .else
 .byte  0x00                     /* Version */

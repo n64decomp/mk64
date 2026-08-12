@@ -1,0 +1,127 @@
+:config:
+  vram:
+    addr: 0x800E97C0
+    offset: 0xEA3C0
+  header: 
+    code:
+      - '#include <ultra64.h>'
+      - '#include <assets/data_800E8700.h>'
+    header:
+      - '#include <ultra64.h>'
+  tables:
+    D_800E8900:
+      range: [0x800E99C0, 0x800E9A80]
+      mode: APPEND
+D_800E8700:
+  symbol: D_800E8700
+  type: vtx
+  offset: 0x800E97C0
+  count: 4
+D_800E8740:
+  symbol: D_800E8740
+  type: vtx
+  offset: 0x800E9800
+  count: 4
+D_800E8780:
+  symbol: D_800E8780
+  type: vtx
+  offset: 0x800E9840
+  count: 4
+D_800E87C0:
+  symbol: D_800E87C0
+  type: vtx
+  offset: 0x800E9880
+  count: 4
+D_800E8800:
+  symbol: D_800E8800
+  type: vtx
+  offset: 0x800E98C0
+  count: 4
+D_800E8840:
+  symbol: D_800E8840
+  type: vtx
+  offset: 0x800E9900
+  count: 4
+D_800E8880:
+  symbol: D_800E8880
+  type: vtx
+  offset: 0x800E9940
+  count: 4
+D_800E88C0:
+  symbol: D_800E88C0
+  type: vtx
+  offset: 0x800E9980
+  count: 4
+D_800E8900:
+  symbol: D_800E8900
+  type: vtx
+  offset: 0x800E99C0
+  count: 4
+D_800E8940:
+  symbol: D_800E8940
+  type: vtx
+  offset: 0x800E9A00
+  count: 4
+D_800E8980:
+  symbol: D_800E8980
+  type: vtx
+  offset: 0x800E9A40
+  count: 4
+D_800E89C0:
+  symbol: D_800E89C0
+  type: vtx
+  offset: 0x800E9A80
+  count: 4
+D_800E8A00:
+  symbol: D_800E8A00
+  type: vtx
+  offset: 0x800E9AC0
+  count: 4
+D_800E8A40:
+  symbol: D_800E8A40
+  type: vtx
+  offset: 0x800E9B00
+  count: 4
+D_800E8A80:
+  symbol: D_800E8A80
+  type: vtx
+  offset: 0x800E9B40
+  count: 4
+D_800E8AC0:
+  symbol: D_800E8AC0
+  type: vtx
+  offset: 0x800E9B80
+  count: 4
+D_800E8B00:
+  symbol: D_800E8B00
+  type: vtx
+  offset: 0x800E9BC0
+  count: 4
+D_800E8B40:
+  symbol: D_800E8B40
+  type: vtx
+  offset: 0x800E9C00
+  count: 4
+D_800E8B80:
+  symbol: D_800E8B80
+  type: vtx
+  offset: 0x800E9C40
+  count: 4
+D_800E8BC0:
+  symbol: D_800E8BC0
+  type: vtx
+  offset: 0x800E9C80
+  count: 4
+D_800E8C00:
+  symbol: D_800E8C00
+  type: vtx
+  offset: 0x800E9CC0
+  count: 4
+D_800E8D40:
+  symbol: D_800E8D40
+  type: gfx
+  offset: 0x800E9E00
+D_800E8DD0:
+  symbol: D_800E8DD0
+  type: gfx
+  offset: 0x800E9E90

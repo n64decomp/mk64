@@ -23,6 +23,18 @@
 #include "menus.h"
 #include "render_player.h"
 #include "menu_items.h"
+
+#ifdef VERSION_JP
+/* JP order: render_player.o bss, crash_screen.o bss, then these seven. See the
+   matching #ifndef in render_player.c. */
+s16 D_80165020[40];
+Vec3f gPlayerLastVelocity[8];
+s16 gLastAnimFrameSelector[4][8];
+s16 gLastAnimGroupSelector[4][8];
+s16 D_80165150[4][8];
+s16 D_80165190[4][8];
+s16 D_801651D0[4][8];
+#endif
 #include "effects.h"
 #include "decode.h"
 

@@ -50,10 +50,11 @@ $(CHECKEREDFLAG_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(CHECKEREDFLAG_FRAMES) $(CHECKEREDFLAG_PALETTE): $(CHECKEREDFLAG_EXPORT_SENTINEL) ;
+$(CHECKEREDFLAG_FRAMES) $(CHECKEREDFLAG_PALETTE): $(CHECKEREDFLAG_EXPORT_SENTINEL)
+	@:
 
-$(CHECKEREDFLAG_EXPORT_SENTINEL): assets/lakitu/checkeredflag.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(CHECKEREDFLAG_EXPORT_SENTINEL): assets/lakitu/checkeredflag.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_lakitu_checkeredflag

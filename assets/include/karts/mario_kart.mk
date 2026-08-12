@@ -1497,10 +1497,11 @@ $(MARIO_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
 	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
-$(MARIO_KART_FRAME_PNG) $(MARIO_KART_PALETTE_PNG): $(MARIO_EXPORT_SENTINEL) ;
+$(MARIO_KART_FRAME_PNG) $(MARIO_KART_PALETTE_PNG): $(MARIO_EXPORT_SENTINEL)
+	@:
 
-$(MARIO_EXPORT_SENTINEL): $(ASSET_DIR)/karts/mario_kart.json
-	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+$(MARIO_EXPORT_SENTINEL): $(ASSET_DIR)/karts/mario_kart.json $(ASSET_VERSION_STAMP)
+	$(V)$(ASSET_EXTRACT) $(ASSET_BASEROM) $<
 	$(V)$(TOUCH) $@
 
 .PHONY: distclean_mario_kart

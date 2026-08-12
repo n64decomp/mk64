@@ -20,7 +20,13 @@ extern CourseVtx d_course_mario_raceway_vertex[0x167D];
 extern CourseVtx d_course_toads_turnpike_vertex[0x18D7];
 extern CourseVtx d_course_kalimari_desert_vertex[0x18F9];
 extern CourseVtx d_course_koopa_troopa_beach_vertex[0x24A0];
+#ifdef VERSION_JP
+/* JP's luigi_raceway model carries 13 more vertices - it is the one course whose
+   geography genuinely differs. bin/jp.v11/luigi_raceway_vertices.bin is 0x173D * 14. */
+extern CourseVtx d_course_luigi_raceway_vertex[0x173D];
+#else
 extern CourseVtx d_course_luigi_raceway_vertex[0x1730];
+#endif
 extern CourseVtx d_course_moo_moo_farm_vertex[0x1F24];
 extern CourseVtx d_course_banshee_boardwalk_vertex[0x1351];
 extern CourseVtx d_course_dks_jungle_parkway_vertex[0x162F];
