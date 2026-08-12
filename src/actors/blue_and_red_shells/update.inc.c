@@ -185,6 +185,9 @@ s16 func_802B3FD0(Player* owner, struct ShellActor* shell) {
 }
 
 void func_802B4104(struct ShellActor* shell) {
+    //! @bug Both || comparisons were likely meant to be && bands around zero.
+    //! (unk48[1] < 0.25f) || (unk48[1] > -0.25f) is true for every value, so the first branch
+    //! reduces to its surfaceDistance test; the second's (unk54[1] < -0.25f) is already covered.
     if ((shell->unk30.surfaceDistance[0] < 0.0f) &&
         ((shell->unk30.unk48[1] < 0.25f) || (shell->unk30.unk48[1] > -0.25f))) {
         destroy_destructable_actor((struct Actor*) shell);
