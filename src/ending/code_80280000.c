@@ -69,7 +69,7 @@ void func_80280038(void) {
     render_object(PLAYER_ONE + SCREEN_MODE_1P);
     render_player_snow_effect(PLAYER_ONE + SCREEN_MODE_1P);
     ceremony_transition_sliding_borders();
-    func_80281C40();
+    podium_debug_draw_prints();
     init_rdp();
     func_80093F10();
     init_rdp();
@@ -102,7 +102,7 @@ void credits_loop(void) {
         }
     } else {
 
-        D_802874FC = 0;
+        gPodiumDebugPrintIdx = 0;
         func_80283648(camera);
         temp_f12 = camera->lookAt[0] - camera->pos[0];
         temp = camera->lookAt[1] - camera->pos[1];
