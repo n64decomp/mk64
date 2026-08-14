@@ -4,7 +4,7 @@
 /* Function Prototypes */
 
 void podium_debug_draw_prints(void);
-void podium_debug_print(s32, s32, s32, s32);
+void podium_debug_print(s32 x, s32 y, const char* str, s32 value);
 void render_podium_ceremony(void);
 
 extern s32 gGotoMenu;
