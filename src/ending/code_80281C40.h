@@ -3,8 +3,8 @@
 
 /* Function Prototypes */
 
-void func_80281C40(void);
-void func_80281CB4(s32, s32, s32, s32);
+void podium_debug_draw_prints(void);
+void podium_debug_print(s32, s32, s32, s32);
 void render_podium_ceremony(void);
 
 extern s32 gGotoMenu;
