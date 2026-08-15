@@ -10,6 +10,20 @@
 
 .section .text, "ax"
 
+/*
+See these links for potential references to implement our own TKMK00 (de)compression code
+https://github.com/mib-f8sm9c/MiscellaneousHacks/blob/master/BetaTools/MarioKartTestingTool/TKMK00Encoder.cs
+https://skelux.net/showthread.php?tid=47&page=8
+
+This link appears to have code near identical to libtkmk000
+https://github.com/mib-f8sm9c/MiscellaneousHacks/blob/master/BetaTools/MarioKartTestingTool/TKMKTest.cs
+Did libtkmk00 pull from that link, or vice-versa?
+
+Maybe tkmk00 wasn't compiled with IDO. Its explicit usage of registers rather than variables is something that IDO can't do (I think?) but GCC can.
+Or mabybe its C++ code and that interacts with registers differently?
+Or maybe its all hand written?
+*/
+
 glabel tkmk00decode
 /* 0411D0 800405D0 23BDFC00 */  addi  $sp, $sp, -0x400
 /* 0411D4 800405D4 AFB0019C */  sw    $s0, 0x19c($sp)
@@ -342,6 +356,7 @@ glabel tkmk00decode
 /* 041658 80040A58 03E00008 */  jr    $ra
 /* 04165C 80040A5C 23BD0400 */   addi  $sp, $sp, 0x400
 
+# func_80040A60 -> masterReader.ReadBits
 glabel func_80040A60
 /* 041660 80040A60 00E3C820 */  add   $t9, $a3, $v1
 /* 041664 80040A64 24180020 */  li    $t8, 32
@@ -374,6 +389,7 @@ glabel func_80040A60
 /* 0416C0 80040AC0 03E00008 */  jr    $ra
 /* 0416C4 80040AC4 00E84004 */   sllv  $t0, $t0, $a3
 
+# func_80040AC8 -> commandReader.ReadBits
 glabel func_80040AC8
 /* 0416C8 80040AC8 006AC006 */  srlv  $t8, $t2, $v1
 /* 0416CC 80040ACC 33190001 */  andi  $t9, $t8, 1
@@ -445,6 +461,7 @@ glabel func_80040AC8
 /* 0417B8 80040BB8 03E00008 */  jr    $ra
 /* 0417BC 80040BBC 00000000 */   nop   
 
+# func_80040BC0 -> SetUpHuffmanTree
 glabel func_80040BC0
 /* 0417C0 80040BC0 AE7FFFF8 */  sw    $ra, -8($s3)
 /* 0417C4 80040BC4 2273FFF8 */  addi  $s3, $s3, -8
@@ -487,6 +504,7 @@ glabel func_80040BC0
 /* 04184C 80040C4C 03E00008 */  jr    $ra
 /* 041850 80040C50 00000000 */   nop   
 
+# func_80040C54 -> RetrieveHuffmanTreeValue
 glabel func_80040C54
 /* 041854 80040C54 0120A025 */  move  $s4, $t1
 /* 041858 80040C58 03E09825 */  move  $s3, $ra
@@ -507,6 +525,8 @@ glabel func_80040C54
 .L80040C8C:
 /* 04188C 80040C8C 02600008 */  jr    $s3
 /* 041890 80040C90 00000000 */   nop   
+
+# func_80040C94 -> ColorCombine
 glabel func_80040C94
 /* 041894 80040C94 2B010010 */  slti  $at, $t8, 0x10
 /* 041898 80040C98 54200013 */  bnel  $at, $zero, .L80040CE8

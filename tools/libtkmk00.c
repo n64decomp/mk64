@@ -127,6 +127,7 @@ void tkmk00_decode(uint8_t *tkmk, uint8_t *tmp_buf, uint8_t *rgba16, int32_t alp
                      }
                   }
 
+                  // These are misnamed, this is the green prediction
                   red0 = (rgba0 & 0x7C0) >> 6;
                   red1 = (rgba1 & 0x7C0) >> 6;
                   t8 = (red0 + red1) / 2;
@@ -135,6 +136,7 @@ void tkmk00_decode(uint8_t *tkmk, uint8_t *tmp_buf, uint8_t *rgba16, int32_t alp
                   s0 = t9;
 
                   v1 = t9 - t8;
+                  // These are misnamed, this is the red prediction
                   green0 = (rgba0 & 0xF800) >> 11;
                   green1 = (rgba1 & 0xF800) >> 11;
                   t8 = v1 + (green0 + green1) / 2;
