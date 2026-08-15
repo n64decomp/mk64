@@ -210,7 +210,7 @@ void setup_race(void) {
     D_80152308 = 0;
     gDemoTimer = -1;
     D_802BA048 = 0;
-    func_802A74BC();
+    set_screen();
     set_perspective_and_aspect_ratio();
     func_80091FA4();
     init_actors_and_load_textures();
