@@ -124,7 +124,7 @@ void load_ceremony_cutscene(void) {
     D_8015F5A0 = 0;
     D_8015F58C = 0;
     gCollisionMeshCount = (u16) 0;
-    D_800DC5BC = (u16) 0;
+    bFog = (u16) 0;
     D_800DC5C8 = (u16) 0;
     gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
     //! @bug these segmented addresses need to be symbols for mobility

@@ -156,7 +156,7 @@ void load_credits(void) {
     D_8015F5A0 = 0;
     D_8015F58C = 0;
     gCollisionMeshCount = 0;
-    D_800DC5BC = 0;
+    bFog = 0;
     D_800DC5C8 = 0;
     gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
     camera->pos[0] = 1400.0f;

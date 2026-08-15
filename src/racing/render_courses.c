@@ -18,8 +18,8 @@
 #include "courses/all_course_packed.h"
 #include "courses/all_course_offsets.h"
 
-s16 D_802B87B0 = 995;
-s16 D_802B87B4 = 1000;
+s16 gFogMin = 995;
+s16 gFogMax = 1000;
 UNUSED s32 D_802B87B8 = 0;
 s32 D_802B87BC = 0;
 UNUSED s32 D_802B87C0 = 0;
@@ -648,8 +648,8 @@ void render_choco_mountain(struct UnkStruct_800DC5EC* arg0) {
         gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07004608));
     }
     gDPSetCycleType(gDisplayListHead++, G_CYC_2CYCLE);
-    gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
-    gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
+    gDPSetFogColor(gDisplayListHead++, gFogRed, gFogGreen, gFogBlue, 0xFF);
+    gSPFogPosition(gDisplayListHead++, gFogMin, gFogMax);
 
     gDPPipeSync(gDisplayListHead++);
     gSPSetGeometryMode(gDisplayListHead++, G_FOG);
@@ -724,7 +724,7 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC* arg0) {
     // d_course_banshee_boardwalk_packed_dl_7228
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07007228));
 
-    gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
+    gSPFogPosition(gDisplayListHead++, gFogMin, gFogMax);
 
     gDPPipeSync(gDisplayListHead++);
 
@@ -957,7 +957,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07004DF8));
     // d_course_moo_moo_farm_packed_dl_5640
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07005640));
-    gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
+    gSPFogPosition(gDisplayListHead++, gFogMin, gFogMax);
 
     render_course_segments((uintptr_t) moo_moo_farm_dls, arg0);
 
@@ -1016,9 +1016,9 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
+    gDPSetFogColor(gDisplayListHead++, gFogRed, gFogGreen, gFogBlue, 0xFF);
     gDPSetCycleType(gDisplayListHead++, G_CYC_2CYCLE);
-    gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
+    gSPFogPosition(gDisplayListHead++, gFogMin, gFogMax);
     gSPSetGeometryMode(gDisplayListHead++, G_FOG);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_PASS2);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);
@@ -1465,7 +1465,7 @@ void course_generate_collision_mesh(void) {
     D_8015F58C = 0;
     gCollisionMeshCount = 0;
     gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
-    D_800DC5BC = 0;
+    bFog = 0;
     D_800DC5C8 = 0;
 #if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
@@ -1484,12 +1484,12 @@ void course_generate_collision_mesh(void) {
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_CHOCO_MOUNTAIN:
-            D_800DC5BC = 1;
-            D_801625EC = 255;
-            D_801625F4 = 255;
-            D_801625F0 = 255;
-            D_802B87B0 = 0x3E3;
-            D_802B87B4 = 0x3E8;
+            bFog = 1;
+            gFogRed = 255;
+            gFogGreen = 255;
+            gFogBlue = 255;
+            gFogMin = 0x3E3;
+            gFogMax = 0x3E8;
             D_802B87D4 = 0x71C;
             D_802B87D0 = 0xE38;
 
@@ -1522,10 +1522,10 @@ void course_generate_collision_mesh(void) {
             D_8015F8E4 = -50.0f;
             break;
         case COURSE_BANSHEE_BOARDWALK:
-            D_800DC5BC = 1;
-            D_801625EC = 0;
-            D_801625F4 = 0;
-            D_801625F0 = 0;
+            bFog = 1;
+            gFogRed = 0;
+            gFogGreen = 0;
+            gFogBlue = 0;
             parse_course_displaylists((uintptr_t) d_course_banshee_boardwalk_track_sections);
             func_80295C6C();
             // d_course_banshee_boardwalk_packed_dl_878
@@ -1571,11 +1571,11 @@ void course_generate_collision_mesh(void) {
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_TOADS_TURNPIKE:
-            D_801625EC = 43;
-            D_801625F4 = 13;
-            D_801625F0 = 4;
-            D_802B87B0 = 993;
-            D_802B87B4 = 1000;
+            gFogRed = 43;
+            gFogGreen = 13;
+            gFogBlue = 4;
+            gFogMin = 993;
+            gFogMax = 1000;
             parse_course_displaylists((uintptr_t) d_course_toads_turnpike_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
