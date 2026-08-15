@@ -1,0 +1,191 @@
+{
+    "date": "1996-06-24",
+    "sample_bank": "sample_bank0",
+    "envelopes": {
+        "envelope0": [
+            [2, 32700],
+            [1, 32700],
+            [32700, 29430],
+            "hang"
+        ],
+        "envelope1": [
+            [2, 32700],
+            [1, 32700],
+            [32700, 29430],
+            "hang"
+        ],
+        "envelope2": [
+            [2, 32700],
+            [298, 32040],
+            [32700, 28770],
+            "hang"
+        ],
+        "envelope3": [
+            [14, 32700],
+            [1, 32700],
+            [32700, 29430],
+            "hang"
+        ]
+    },
+    "instruments": {
+        "percussion": [
+            {"release_rate": 137, "pan": 64, "envelope": "envelope0", "sound": "7D"},
+            {"release_rate": 137, "pan": 66, "envelope": "envelope0", "sound": {"sample": "7E", "tuning": 1.0}},
+            {"release_rate": 137, "pan": 66, "envelope": "envelope0", "sound": {"sample": "7E", "tuning": 1.059463}},
+            {"release_rate": 137, "pan": 102, "envelope": "envelope0", "sound": {"sample": "A3", "tuning": 1.0}},
+            {"release_rate": 137, "pan": 8, "envelope": "envelope0", "sound": {"sample": "A3", "tuning": 1.059463}},
+            {"release_rate": 137, "pan": 50, "envelope": "envelope0", "sound": {"sample": "80", "tuning": 1.0}}
+        ],
+        "inst0": {
+            "release_rate": 199,
+            "normal_range_lo": 23,
+            "normal_range_hi": 24,
+            "envelope": "envelope1",
+            "sound_lo": "A4",
+            "sound": "A5",
+            "sound_hi": "A6"
+        },
+        "inst1": {
+            "release_rate": 199,
+            "envelope": "envelope1",
+            "sound": "8F"
+        },
+        "inst2": {
+            "release_rate": 199,
+            "normal_range_lo": 8,
+            "normal_range_hi": 24,
+            "envelope": "envelope1",
+            "sound_lo": "C5",
+            "sound": "C6",
+            "sound_hi": "C7"
+        },
+        "inst3": {
+            "release_rate": 199,
+            "normal_range_lo": 23,
+            "envelope": "envelope1",
+            "sound_lo": "C8",
+            "sound": "8D"
+        },
+        "inst4": {
+            "release_rate": 199,
+            "normal_range_lo": 36,
+            "normal_range_hi": 46,
+            "envelope": "envelope1",
+            "sound_lo": "8D",
+            "sound": "8E",
+            "sound_hi": "8B"
+        },
+        "inst5": {
+            "release_rate": 199,
+            "normal_range_lo": 36,
+            "normal_range_hi": 46,
+            "envelope": "envelope1",
+            "sound_lo": "8D",
+            "sound": "8E",
+            "sound_hi": "8B"
+        },
+        "inst6": {
+            "release_rate": 19,
+            "normal_range_lo": 45,
+            "normal_range_hi": 62,
+            "envelope": "envelope2",
+            "sound_lo": "AF",
+            "sound": "B0",
+            "sound_hi": "B1"
+        },
+        "inst7": {
+            "release_rate": 38,
+            "normal_range_hi": 47,
+            "envelope": "envelope3",
+            "sound": "9F",
+            "sound_hi": "A0"
+        },
+        "inst8": {
+            "release_rate": 38,
+            "normal_range_hi": 47,
+            "envelope": "envelope3",
+            "sound": "9D",
+            "sound_hi": "9E"
+        }
+    },
+    "instrument_list": [
+        "inst2",
+        "inst3",
+        "inst4",
+        "inst5",
+        "inst6",
+        "inst7",
+        "inst8",
+        null,
+        null,
+        null,
+        "inst0",
+        "inst1"
+    ],
+    "drum_list": [
+        "drum0",
+        "drum1",
+        "drum2",
+        "drum3",
+        "drum4",
+        "drum5",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ]
+}

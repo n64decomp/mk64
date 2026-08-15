@@ -1,0 +1,144 @@
+{
+    "date": "1996-06-24",
+    "sample_bank": "sample_bank0",
+    "envelopes": {
+        "envelope0": [
+            [2, 32700],
+            [1, 32700],
+            [32700, 29430],
+            "hang"
+        ],
+        "envelope1": [
+            [2, 32700],
+            [235, 0],
+            [1, 0],
+            "hang"
+        ],
+        "envelope2": [
+            [2, 32700],
+            [1, 32700],
+            [32700, 29430],
+            "hang"
+        ],
+        "envelope3": [
+            [2, 32700],
+            [1, 32700],
+            [32700, 29430],
+            "hang"
+        ]
+    },
+    "instruments": {
+        "percussion": [
+            {"release_rate": 90, "pan": 66, "envelope": "envelope0", "sound": "BC"},
+            {"release_rate": 90, "pan": 45, "envelope": "envelope0", "sound": "BD"},
+            {"release_rate": 90, "pan": 64, "envelope": "envelope0", "sound": {"sample": "9B", "tuning": 0.8227612}}
+        ],
+        "inst0": {
+            "release_rate": 43,
+            "envelope": "envelope1",
+            "sound": "BE"
+        },
+        "inst1": {
+            "release_rate": 43,
+            "envelope": "envelope1",
+            "sound": "BE"
+        },
+        "inst2": {
+            "release_rate": 29,
+            "normal_range_lo": 38,
+            "envelope": "envelope2",
+            "sound_lo": "B8",
+            "sound": "B9"
+        },
+        "inst3": {
+            "release_rate": 29,
+            "normal_range_lo": 38,
+            "envelope": "envelope2",
+            "sound_lo": "B8",
+            "sound": "B9"
+        },
+        "inst4": {
+            "release_rate": 189,
+            "envelope": "envelope3",
+            "sound": "97"
+        }
+    },
+    "instrument_list": [
+        "inst0",
+        "inst1",
+        "inst2",
+        "inst3",
+        "inst4",
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    "drum_list": [
+        "drum0",
+        "drum1",
+        "drum2",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ]
+}
