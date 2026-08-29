@@ -2849,7 +2849,7 @@ s32 func_8005D82C(Particle* arg0, s32 arg1, s16 alpha) {
 void set_drift_particles(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 temp_lo;
 
-    if (player->unk_0C0 >= 0) {
+    if (player->skidAngle >= 0) {
         set_particle_position_and_rotation(player, &player->particlePool1[arg1], player->tyres[BACK_LEFT].pos[0],
                       player->tyres[BACK_LEFT].baseHeight + 2.0f, player->tyres[BACK_LEFT].pos[2],
                       player->tyres[BACK_LEFT].surfaceType, 1);
@@ -2859,7 +2859,7 @@ void set_drift_particles(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 ar
                       player->tyres[BACK_RIGHT].surfaceType, 0);
     }
 
-    temp_lo = player->unk_0C0 / DEGREES(1);
+    temp_lo = player->skidAngle / DEGREES(1);
     if ((temp_lo >= 7) || (temp_lo < -6)) {
         init_particle_player(&player->particlePool1[arg1], DRIFT_PARTICLE, 0.35f);
         if (player->driftState == 0) {
@@ -3087,7 +3087,7 @@ void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UN
             if ((arg1 == 0) &&
                 ((player->particlePool1[arg2].timer > 0) || (player->particlePool1[arg2].isAlive == 0))) {
                 if (((((player->speed / 18.0f) * 216.0f) >= 30.0f) &&
-                     ((((player->unk_0C0 / DEGREES(1)) > 0x14) || ((player->unk_0C0 / DEGREES(1)) < (-0x14))))) ||
+                     ((((player->skidAngle / DEGREES(1)) > 20) || ((player->skidAngle / DEGREES(1)) < (-20))))) ||
                     ((player->previousSpeed - player->speed) >= 0.04)) {
                     set_particle_position_and_rotation(player, &player->particlePool1[arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType, (s8) var_t3);
                     init_particle_player(&player->particlePool1[arg1], GROUND_PARTICLE, 0.46f);
@@ -3096,7 +3096,7 @@ void setup_tyre_particles(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UN
                 }
             } else if ((player->particlePool1[arg2].timer > 0) &&
                        (((((player->speed / 18.0f) * 216.0f) >= 30.0f) &&
-                         (((player->unk_0C0 / DEGREES(1)) >= 0x15) || ((player->unk_0C0 / DEGREES(1)) < -0x14))) ||
+                         (((player->skidAngle / DEGREES(1)) > 20) || ((player->skidAngle / DEGREES(1)) < -20))) ||
                         ((player->previousSpeed - player->speed) >= 0.04))) {
                 set_particle_position_and_rotation(player, &player->particlePool1[arg1], tyre_x, tyre_y, tyre_z, (s8) surfaceType, (s8) var_t3);
                 init_particle_player(&player->particlePool1[arg1], GROUND_PARTICLE, 0.46f);
@@ -3573,7 +3573,7 @@ void func_80060504(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             player->particlePool0[arg1].red = 0;
         }
     }
-    thing2 = (player->particlePool0[arg1].rotation - (player->unk_0C0 / 2));
+    thing2 = (player->particlePool0[arg1].rotation - (player->skidAngle / 2));
     if (player->particlePool0[arg1].unk_040 == 0) {
         var_f0 = -((player->unk_098 / 3000.0f) + 0.1);
     } else {
@@ -3910,10 +3910,10 @@ void func_80061EF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             }
             player->particlePool3[arg1].pos[2] =
                 player->pos[2] +
-                (coss(player->particlePool3[arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+                (coss(player->particlePool3[arg1].rotation - player->rotation[1] - player->skidAngle) * 5.0f);
             player->particlePool3[arg1].pos[0] =
                 player->pos[0] +
-                (sins(player->particlePool3[arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+                (sins(player->particlePool3[arg1].rotation - player->rotation[1] - player->skidAngle) * 5.0f);
         } else if (player->particlePool3[arg2].timer > 0) {
             set_particle_position_and_rotation(player, &player->particlePool3[arg1], 0.0f, y, 0.0f, (s8) var_t0, (s8) var_t1);
             init_particle_player(&player->particlePool3[arg1], 3, 0.5f);
@@ -3926,10 +3926,10 @@ void func_80061EF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             }
             player->particlePool3[arg1].pos[2] =
                 player->pos[2] +
-                (coss(player->particlePool3[arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+                (coss(player->particlePool3[arg1].rotation - player->rotation[1] - player->skidAngle) * 5.0f);
             player->particlePool3[arg1].pos[0] =
                 player->pos[0] +
-                (sins(player->particlePool3[arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+                (sins(player->particlePool3[arg1].rotation - player->rotation[1] - player->skidAngle) * 5.0f);
         }
     }
 }
@@ -3973,10 +3973,10 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
 
             player->particlePool3[arg1].pos[2] =
                 player->pos[2] +
-                (coss((player->particlePool3[arg1].rotation - player->rotation[1]) - player->unk_0C0) * 5.0f);
+                (coss((player->particlePool3[arg1].rotation - player->rotation[1]) - player->skidAngle) * 5.0f);
             player->particlePool3[arg1].pos[0] =
                 player->pos[0] +
-                (sins((player->particlePool3[arg1].rotation - player->rotation[1]) - player->unk_0C0) * 5.0f);
+                (sins((player->particlePool3[arg1].rotation - player->rotation[1]) - player->skidAngle) * 5.0f);
             return;
         }
 
@@ -3995,10 +3995,10 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
             new_var = new_var2;
             new_var->particlePool3[arg1].pos[2] =
                 new_var->pos[2] +
-                (coss((new_var->particlePool3[arg1].rotation - new_var->rotation[1]) - new_var->unk_0C0) * 5.0f);
+                (coss((new_var->particlePool3[arg1].rotation - new_var->rotation[1]) - new_var->skidAngle) * 5.0f);
             new_var->particlePool3[arg1].pos[0] =
                 new_var->pos[0] +
-                (sins((new_var->particlePool3[arg1].rotation - new_var->rotation[1]) - new_var->unk_0C0) * 5.0f);
+                (sins((new_var->particlePool3[arg1].rotation - new_var->rotation[1]) - new_var->skidAngle) * 5.0f);
         }
     }
 }
@@ -4226,7 +4226,7 @@ void func_80062C74(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
             player->particlePool0[arg1].alpha = 0;
         }
     }
-    thing = player->particlePool0[arg1].rotation - (player->unk_0C0 / 2);
+    thing = player->particlePool0[arg1].rotation - (player->skidAngle / 2);
     if (player->particlePool0[arg1].unk_040 == 0) {
         var_f6 = -((player->unk_098 / 5000.0f) + 0.1);
     } else {
@@ -4805,9 +4805,9 @@ void func_80064C74(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     }
 
     player->particlePool3[arg1].pos[2] =
-        player->pos[2] + (coss(player->particlePool3[arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+        player->pos[2] + (coss(player->particlePool3[arg1].rotation - player->rotation[1] - player->skidAngle) * 5.0f);
     player->particlePool3[arg1].pos[0] =
-        player->pos[0] + (sins(player->particlePool3[arg1].rotation - player->rotation[1] - player->unk_0C0) * 5.0f);
+        player->pos[0] + (sins(player->particlePool3[arg1].rotation - player->rotation[1] - player->skidAngle) * 5.0f);
     player->particlePool3[arg1].pos[1] = player->pos[1] - 1.0f;
     player->particlePool3[arg1].scale += 0.4;
     ++player->particlePool3[arg1].timer;
@@ -5417,9 +5417,9 @@ void render_player_speech_bubble(Player* player, s8 arg1, u8* texture, s8 arg3, 
         sp74[0] = 0;
         sp74[1] = player->unk_048[arg1];
         sp74[2] = 0;
-        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
+        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->skidAngle)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
-        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
+        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->skidAngle)) * arg4);
         func_800652D4(sp7C, sp74, player->particlePool2[arg3].scale * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP,
@@ -5445,9 +5445,9 @@ void render_music_note(Player* player, s8 arg1, u8* texture, s8 arg3, f32 arg4, 
         sp74[0] = 0;
         sp74[1] = player->unk_048[arg1];
         sp74[2] = 0;
-        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
+        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->skidAngle)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
-        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
+        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->skidAngle)) * arg4);
         func_800652D4(sp7C, sp74, player->particlePool2[arg3].scale * player->size * 0.8);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP,
@@ -5825,7 +5825,7 @@ void init_balloon(Player* player, f32 arg1, f32 arg2, s8 playerIndex, s8 balloon
     D_8018D7D0[playerIndex][balloonIndex] = 0;
     D_8018D800[playerIndex][balloonIndex] = 5;
     D_8018D830[playerIndex][balloonIndex] = 1;
-    D_8018D620[playerIndex][balloonIndex] = -player->rotation[1] - player->unk_0C0;
+    D_8018D620[playerIndex][balloonIndex] = -player->rotation[1] - player->skidAngle;
     func_80062B18(&someX, &someY, &someZ, arg1, 4.0f, arg2 + -3.8, -player->rotation[1], 0);
     gPlayerBalloonPosX[playerIndex][balloonIndex] = player->pos[0] + someX;
     gPlayerBalloonPosZ[playerIndex][balloonIndex] = player->pos[2] + someZ;
@@ -5869,7 +5869,7 @@ void update_player_one_balloon_position(Player* player, f32 arg1, f32 arg2, s8 p
             D_8018D6B0[playerId][balloonId] = 0.0f;
             D_8018D710[playerId][balloonId] = 0.0f;
         }
-        D_8018D620[playerId][balloonId] = -player->rotation[1] - player->unk_0C0;
+        D_8018D620[playerId][balloonId] = -player->rotation[1] - player->skidAngle;
         move_s16_towards(&D_8018D890[playerId][balloonId], player->speed * (f32) DEGREES(1), 0.1f);
     }
     if (D_8018D830[playerId][balloonId] == 1) {
@@ -5951,7 +5951,7 @@ void render_battle_balloon(Player* player, s8 playerIndex, s16 balloonIndex, s8 
     envRed = (envColors[player->characterId] >> 0x10) & 0xFF;
     envGreen = (envColors[player->characterId] >> 0x08) & 0xFF;
     envBlue = (envColors[player->characterId] >> 0x00) & 0xFF;
-    temp_t1 = (((player->unk_048[screenId] + player->rotation[1] + player->unk_0C0) & 0xFFFF) / 128);
+    temp_t1 = (((player->unk_048[screenId] + player->rotation[1] + player->skidAngle) & 0xFFFF) / 128);
     temp_t1 <<= 7;
     if (screenId == playerIndex) {
         var_f20 = 0.3f;

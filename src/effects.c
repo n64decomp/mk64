@@ -208,7 +208,7 @@ void func_8008C528(Player* player, s8 playerIndex) {
     player->unk_0A8 = 0;
     player->effects = player->effects | HIT_BY_GREEN_SHELL_EFFECT;
     player->effects = player->effects & ~DRIFTING_EFFECT;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->unk_236 = 2;
     player->unk_042 = 0;
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
@@ -245,7 +245,7 @@ void func_8008C6D0(Player* player, s8 playerIndex) {
     player->slopeAccel = 0;
     player->effects = (s32) (player->effects & ~HIT_BY_GREEN_SHELL_EFFECT);
     player->unk_0A8 = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->steerPosition = 0;
     player->unk_236 = 0;
     player->unk_078 = 0;
@@ -263,7 +263,7 @@ void add_spinout_effect(Player* player, s8 playerIndex) {
         ((player->effects & DRIVING_SPINOUT_EFFECT) != DRIVING_SPINOUT_EFFECT)) {
         player->effects &= ~DRIFTING_EFFECT;
 
-        if ((player->unk_0C0 / DEGREES(1)) >= 0) {
+        if ((player->skidAngle / DEGREES(1)) >= 0) {
             player->effects |= DRIVING_SPINOUT_EFFECT;
         } else {
             player->effects |= BANANA_SPINOUT_EFFECT;
@@ -271,7 +271,7 @@ void add_spinout_effect(Player* player, s8 playerIndex) {
 
         player->kartGraphics |= WHIRRR;
         // clang-format off
-        player->unk_0C0 = 0; player->steerPosition = 0; player->unk_078 = 0; player->unk_0AE = player->rotation[1]; player->unk_0B2 = 2;
+        player->skidAngle = 0; player->steerPosition = 0; player->unk_078 = 0; player->unk_0AE = player->rotation[1]; player->unk_0B2 = 2;
         // clang-format on
         D_80165190[0][playerIndex] = 1;
         D_80165190[1][playerIndex] = 1;
@@ -299,7 +299,7 @@ void remove_spinout_effects(Player* player, s8 playerId) {
     player->unk_0A8 = 0;
     player->rotation[1] = player->unk_0AE;
     player->steerPosition = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->effects &= ~BANANA_NEAR_SPINOUT_EFFECT;
 
     D_80165190[0][playerId] = 1;
@@ -577,7 +577,7 @@ void func_8008D570(Player* player, s8 playerIndex) {
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = (f32) D_800E3710[player->characterId];
     player->unk_0B2 = 1;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->steerPosition = 0;
     player->unk_078 = 0;
     D_8018D920[playerIndex] = 0;
@@ -618,7 +618,7 @@ void func_8008D698(Player* player, s8 playerIndex) {
 void func_8008D760(Player* player) {
     player->unk_0A8 = 0;
     player->steerPosition = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->rotation[1] = player->unk_0AE;
     player->effects &= ~UNKNOWN_EFFECT_0x80000;
     player->kartGravity = gKartGravityTable[player->characterId];
@@ -637,7 +637,7 @@ void func_8008D7B0(Player* player, s8 playerIndex) {
     player->kartHopVelocity = D_800E3750[player->characterId];
     D_8018D920[playerIndex] = 0;
     player->unk_0B2 = 4;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->steerPosition = 0;
     player->unk_078 = 0;
 
@@ -672,7 +672,7 @@ void func_8008D8B4(Player* player, s8 playerIndex) {
 void func_8008D97C(Player* player) {
     player->unk_0A8 = 0;
     player->steerPosition = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->rotation[1] = player->unk_0AE;
     player->effects &= ~UNKNOWN_EFFECT_0x800000;
     player->kartGravity = gKartGravityTable[player->characterId];
@@ -736,7 +736,7 @@ void apply_hit_effect(Player* player, s8 playerIndex) {
     player->unk_0C2 = 0;
     player->unk_0A8 = 0;
     player->steerPosition = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->unk_08C = 0.0f;
     player->currentSpeed = 0.0f;
     // clang-format off
@@ -852,7 +852,7 @@ void trigger_lightning_strike(Player* player, s8 playerIndex) {
     gPlayerStarEffectStartTime[playerIndex] = gCourseTimer;
     player->unk_0AE = player->rotation[1];
     player->unk_0B2 = 2;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->steerPosition = 0;
     player->unk_078 = 0;
 
@@ -881,7 +881,7 @@ void apply_lightning_effect(Player* player, s8 playerIndex) {
         player->effects &= ~LIGHTNING_STRIKE_EFFECT;
         player->unk_0A8 = 0;
         player->steerPosition = 0;
-        player->unk_0C0 = 0;
+        player->skidAngle = 0;
         player->rotation[1] = player->unk_0AE;
         remove_lightning_effect(player, playerIndex);
         D_80165190[0][playerIndex] = 1;
@@ -899,7 +899,7 @@ void apply_lightning_effect(Player* player, s8 playerIndex) {
                 player->unk_0A8 = 0;
                 player->effects &= ~LIGHTNING_STRIKE_EFFECT;
                 player->steerPosition = 0;
-                player->unk_0C0 = 0;
+                player->skidAngle = 0;
                 player->rotation[1] = player->unk_0AE;
                 D_80165190[0][playerIndex] = 1;
                 D_80165190[1][playerIndex] = 1;
@@ -948,7 +948,7 @@ void remove_lightning_effect(Player* player, UNUSED s8 playerIndex) {
 void func_8008E4A4(Player* player, s8 playerIndex) {
     player->unk_206 = 0;
     player->slopeAccel = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->steerPosition = 0;
     player->unk_0C2 = 0xF;
     player->unk_042 += DEGREES(15);
@@ -1062,7 +1062,7 @@ void func_8008E884(Player* player, s8 playerIndex) {
 void apply_hit_by_star_effect(Player* player, s8 playerIndex) {
     player->unk_206 = 0;
     player->slopeAccel = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->steerPosition = 0;
     player->unk_0C2 = 0xF;
     player->unk_042 += DEGREES(15);
@@ -1256,7 +1256,7 @@ void func_8008F104(Player* player, s8 playerIndex) {
 
     player->unk_0AE = player->rotation[1];
     player->unk_0B2 = 2;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->steerPosition = 0;
     player->effects |= EARLY_START_SPINOUT_EFFECT;
     player->unk_078 = 0;
@@ -1373,7 +1373,7 @@ void func_8008F5A4(Player* player, s8 playerIndex) {
     player->slopeAccel = 0;
     player->effects &= ~TERRAIN_TUMBLE_EFFECT;
     player->unk_0A8 = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->steerPosition = 0;
     player->unk_236 = 0;
     player->unk_078 = 0;
@@ -1783,7 +1783,7 @@ void func_80090778(Player* player) {
 
     player->unk_078 = 0;
     player->steerPosition = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->lakituProps |= LAKITU_SCENE;
     player->effects &= ~DRIFTING_EFFECT;
     player->unk_222 = 0;
@@ -1800,7 +1800,7 @@ void func_80090778(Player* player) {
             player->effects &= ~LIGHTNING_STRIKE_EFFECT;
             player->unk_0A8 = 0;
             player->steerPosition = 0;
-            player->unk_0C0 = 0;
+            player->skidAngle = 0;
             player->rotation[1] = player->unk_0AE;
         }
         remove_lightning_effect(player, playerIndex);
@@ -1813,7 +1813,7 @@ void func_80090868(Player* player) {
 
     player->unk_078 = 0;
     player->steerPosition = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->unk_08C = 0.0f;
     playerIndex = get_player_index_for_player(player);
 
@@ -1853,7 +1853,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
     player->unk_0C2 = 0x000C;
     player->unk_078 = 0;
     player->steerPosition = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->unk_08C = 0.0f;
     clean_effect(player, playerId);
     switch (player->unk_222) {
@@ -2041,7 +2041,7 @@ void func_800911B4(Player* player, s8 arg1) {
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = 2.6f;
     player->unk_0B2 = 2;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->steerPosition = 0;
     player->unk_078 = 0;
     D_8018D920[arg1] = 0;
@@ -2099,7 +2099,7 @@ void func_80091298(Player* player, s8 arg1) {
                 player->unk_DB4.unk18 = 0;
                 player->unk_0A8 = 0;
                 player->steerPosition = 0;
-                player->unk_0C0 = 0;
+                player->skidAngle = 0;
                 player->unk_DB4.unkC = 3.0f;
                 player->kartProps &= ~UNUSED_0x800;
                 player->kartGravity = gKartGravityTable[player->characterId];

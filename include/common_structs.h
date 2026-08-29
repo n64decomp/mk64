@@ -296,7 +296,7 @@ typedef struct {
     /* 0x00B6 */ u16 kartGraphics;
     /* 0x00B8 */ f32 swerveAccelInit;
     /* 0x00BC */ u32 effects;
-    /* 0x00C0 */ s16 unk_0C0;
+    /* 0x00C0 */ s16 skidAngle; // difference between kart's straight line angle and actual movement angle 
     /* 0x00C2 */ s16 unk_0C2;
     /* 0x00C4 */ s16 slopeAccel;
     /* 0x00C6 */ s16 alpha;

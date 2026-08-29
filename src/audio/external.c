@@ -589,7 +589,7 @@ void func_800C2474(void) {
         gPlayers[var_v0].tyres[AUDIO_RIGHT_TYRE].surfaceType = 0;
         gPlayers[var_v0].effects = 0;
         gPlayers[var_v0].unk_20C = 0.0f;
-        gPlayers[var_v0].unk_0C0 = 0;
+        gPlayers[var_v0].skidAngle = 0;
         gPlayers[var_v0].unk_098 = 0.0f;
         gPlayers[var_v0].oobProps = 0;
         D_8018FC10[var_v0][0] = 0x00FF;
@@ -1917,10 +1917,10 @@ void func_800C6108(u8 playerId) {
     } else {
         D_800E9DE4[playerId] = 0.0f;
     }
-    if (gPlayers[playerId].unk_0C0 > 0) {
-        D_800E9E54[playerId] = (f32) player->unk_0C0;
+    if (gPlayers[playerId].skidAngle > 0) {
+        D_800E9E54[playerId] = (f32) player->skidAngle;
     } else {
-        D_800E9E54[playerId] = (f32) -player->unk_0C0;
+        D_800E9E54[playerId] = (f32) -player->skidAngle;
     }
     if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         D_800E9EB4[playerId] = D_800E9E64[playerId] + D_800E9DE4[playerId];

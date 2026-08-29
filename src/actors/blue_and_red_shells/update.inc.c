@@ -276,7 +276,7 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
             if ((controller->buttonDepressed & Z_TRIG) != 0) {
                 controller->buttonDepressed &= ~Z_TRIG;
                 shell->state = RELEASED_SHELL;
-                if (player->unk_0C0 > 0) {
+                if (player->skidAngle > 0) {
                     shell->rotAngle = DEGREES(170);
                 } else {
                     // The minus 1 is almost certainly just due to rounding the other way
@@ -324,7 +324,7 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                 somePosVel[0] = 0.0f;
                 somePosVel[1] = 0.0f;
                 somePosVel[2] = height;
-                vec3f_rotate_y(somePosVel, (s16) (player->rotation[1] + player->unk_0C0));
+                vec3f_rotate_y(somePosVel, (s16) (player->rotation[1] + player->skidAngle));
                 shell->velocity[0] = somePosVel[0];
                 shell->velocity[1] = somePosVel[1];
                 shell->velocity[2] = somePosVel[2];

@@ -735,7 +735,7 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
 
     player->unk_048[screenId] = atan2s(player->pos[0] - camera->pos[0], player->pos[2] - camera->pos[2]);
     player->animFrameSelector[screenId] =
-        (u16) ((((player->unk_048[screenId]) + player->rotation[1] + player->unk_0C0))) / 128;
+        (u16) ((((player->unk_048[screenId]) + player->rotation[1] + player->skidAngle))) / 128;
 
     temp_f2 = (gCharacterSize[player->characterId] * 18.0f) * player->size;
     temp_f0 = player->unk_230 - player->unk_23C;
@@ -764,7 +764,7 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
         player->unk_0D4[screenId] = (s16) ((s32) player->unk_D9C);
     }
     func_80029200(player, screenId);
-    temp_a0 = ((player->unk_048[screenId] + player->rotation[1]) + player->unk_0C0);
+    temp_a0 = ((player->unk_048[screenId] + player->rotation[1]) + player->skidAngle);
     temp_a0 = (s16) player->unk_0D4[screenId] * sins((u16) temp_a0) + player->unk_0CC[screenId] * coss((u16) temp_a0);
     move_s16_towards(&player->unk_050[screenId], temp_a0, 0.5f);
     var_a0 = player->animFrameSelector[screenId];
@@ -799,7 +799,7 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
         ((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
         player->unk_050[screenId] = 0;
     }
-    var_a0 = (player->unk_048[screenId] + player->rotation[1] + player->unk_0C0);
+    var_a0 = (player->unk_048[screenId] + player->rotation[1] + player->skidAngle);
     if (((player->effects & BANANA_SPINOUT_EFFECT) == BANANA_SPINOUT_EFFECT) ||
         ((player->effects & DRIVING_SPINOUT_EFFECT) == DRIVING_SPINOUT_EFFECT) ||
         ((player->effects & UNKNOWN_EFFECT_0x80000) == UNKNOWN_EFFECT_0x80000) ||
@@ -893,7 +893,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
         var_f12 = 18.0f * (gCharacterSize[player->characterId] / 2);
     }
 
-    calculate_orientation_matrix(sp5C, 0.0f, 1.0f, 0.0f, (player->rotation[1] + player->unk_0C0));
+    calculate_orientation_matrix(sp5C, 0.0f, 1.0f, 0.0f, (player->rotation[1] + player->skidAngle));
     sp8C[0] = var_f12 - 3.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = var_f12 - 2.0f;
@@ -999,7 +999,7 @@ void func_8002A194(Player* player, f32 x, f32 y, f32 z) {
     UNUSED s32 pad2;
     f32 temp_f0;
 
-    temp_v1 = -player->rotation[1] - player->unk_0C0;
+    temp_v1 = -player->rotation[1] - player->skidAngle;
     if ((player->effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) {
         var_f20 = (((gCharacterSize[player->characterId] * 18) / 2) * (player->size * 1.5)) - 1;
     } else {
@@ -1146,7 +1146,7 @@ void func_8002A79C(Player* player, s8 playerIndex) {
 }
 
 void update_drift_state_counter(Player* player, s8 playerIndex) {
-    if (((s16) player->unk_0C0 / DEGREES(1)) > 0) {
+    if (((s16) player->skidAngle / DEGREES(1)) > 0) {
         if (((s32) player->steerPosition >> 16) <= -10) {
             if (player->driftStateCounter <= 100) {
                 player->driftStateCounter++;
@@ -1297,61 +1297,61 @@ UNUSED void func_8002AE28(void) {
 UNUSED void func_8002AE30(void) {
 }
 
-void func_8002AE38(Player* player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
+void func_8002AE38(Player* player, s8 playerId, f32 posX, f32 posZ, f32 nextX, f32 nextZ) {
     UNUSED s32 pad[4];
-    s16 temp_v0_3;
-    f32 sp28;
-    f32 temp_f16;
-    s16 temp_a0;
+    s16 old_skid_angle;
+    f32 expectedX;
+    f32 expectedZ;
+    s16 skid_angle_delta;
     s32 var_v1;
 
-    sp28 = (sins(-player->rotation[1]) * player->speed) + arg2;
-    temp_f16 = (coss(-player->rotation[1]) * player->speed) + arg3;
+    expectedX = (sins(-player->rotation[1]) * player->speed) + posX;
+    expectedZ = (coss(-player->rotation[1]) * player->speed) + posZ;
     if (((player->effects & BANANA_NEAR_SPINOUT_EFFECT) != BANANA_NEAR_SPINOUT_EFFECT) &&
         ((player->effects & DRIFTING_EFFECT) != DRIFTING_EFFECT) && !(player->kartProps & DRIVING_NEAR_SPINOUT) &&
         ((((player->speed / 18.0f) * 216.0f) <= 8.0f) ||
          (((player->steerPosition >> 16) < 5) && ((player->steerPosition >> 16) > -5)))) {
         if ((player->effects & AB_SPIN_EFFECT) == AB_SPIN_EFFECT) {
-            player->unk_0C0 = (f32) (player->unk_0C0 - (player->unk_0C0 / 10));
+            player->skidAngle = (f32) (player->skidAngle - (player->skidAngle / 10));
         } else {
-            temp_v0_3 = player->unk_0C0;
-            player->unk_0C0 = player->unk_078 * 9;
-            temp_a0 = player->unk_0C0 - temp_v0_3;
-            player->unk_0C0 = (f32) (temp_v0_3 + (temp_a0 / 15));
+            old_skid_angle = player->skidAngle;
+            player->skidAngle = player->unk_078 * 9;
+            skid_angle_delta = player->skidAngle - old_skid_angle;
+            player->skidAngle = (f32) (old_skid_angle + (skid_angle_delta / 15));
         }
     } else {
-        temp_v0_3 = player->unk_0C0;
-        if (D_801652C0[arg1] & 8) {
+        old_skid_angle = player->skidAngle;
+        if (D_801652C0[playerId] & 8) {
             var_v1 = 2;
         } else {
             var_v1 = 0;
         }
         if ((player->currentSpeed >= 200.0f) && (var_v1 == 2) &&
-            (((player->unk_0C0 / DEGREES(1)) >= 0x10) || ((player->unk_0C0 / DEGREES(1)) < -0xF))) {
-            player->unk_0C0 = atan2s(arg2 - arg4, arg3 - arg5) - atan2s(arg2 - sp28, arg3 - temp_f16);
+            (((player->skidAngle / DEGREES(1)) > 15) || ((player->skidAngle / DEGREES(1)) < -15))) {
+            player->skidAngle = atan2s(posX - nextX, posZ - nextZ) - atan2s(posX - expectedX, posZ - expectedZ);
         } else {
-            player->unk_0C0 = (atan2s(arg2 - arg4, arg3 - arg5) - atan2s(arg2 - sp28, arg3 - temp_f16)) * 2;
+            player->skidAngle = (atan2s(posX - nextX, posZ - nextZ) - atan2s(posX - expectedX, posZ - expectedZ)) * 2;
         }
         if (((player->effects & DRIFTING_EFFECT) != DRIFTING_EFFECT) &&
-            ((((player->steerPosition >> 16) > 0) && (player->unk_0C0 < 0)) ||
-             (((player->steerPosition >> 16) < 0) && (player->unk_0C0 > 0)))) {
-            if (player->unk_0C0 > 0) {
-                player->unk_0C0 = player->unk_078 * 0x14;
+            ((((player->steerPosition >> 16) > 0) && (player->skidAngle < 0)) ||
+             (((player->steerPosition >> 16) < 0) && (player->skidAngle > 0)))) {
+            if (player->skidAngle > 0) {
+                player->skidAngle = player->unk_078 * 20;
             }
-            if (player->unk_0C0 < 0) {
-                player->unk_0C0 = player->unk_078 * 0x14;
+            if (player->skidAngle < 0) {
+                player->skidAngle = player->unk_078 * 20;
             }
-            temp_a0 = player->unk_0C0 - temp_v0_3;
-            player->unk_0C0 = (f32) (temp_v0_3 + (temp_a0 / 12));
+            skid_angle_delta = player->skidAngle - old_skid_angle;
+            player->skidAngle = (f32) (old_skid_angle + (skid_angle_delta / 12));
         } else {
-            if (player->unk_0C0 >= 0x1C71) {
-                player->unk_0C0 = 0x1C70;
+            if (player->skidAngle > 40 * DEGREES(1)) {
+                player->skidAngle = 40 * DEGREES(1);
             }
-            if (player->unk_0C0 < -0x1C70) {
-                player->unk_0C0 = -0x1C70;
+            if (player->skidAngle < -(40 * DEGREES(1))) {
+                player->skidAngle = -(40 * DEGREES(1));
             }
-            temp_a0 = player->unk_0C0 - temp_v0_3;
-            player->unk_0C0 = (f32) (temp_v0_3 + (temp_a0 / 12));
+            skid_angle_delta = player->skidAngle - old_skid_angle;
+            player->skidAngle = (f32) (old_skid_angle + (skid_angle_delta / 12));
         }
     }
 }
@@ -1605,7 +1605,7 @@ void func_8002B9CC(Player* player, s8 playerIndex, UNUSED s32 arg2) {
             }
         }
         temp = (-(s16) get_xz_angle_between_points(player->pos, &player->oldPos[0]));
-        temp2 = (player->rotation[1] - player->unk_0C0);
+        temp2 = (player->rotation[1] - player->skidAngle);
         temp = temp - temp2;
         player->unk_234 = temp / DEGREES(1);
     }
@@ -2097,7 +2097,7 @@ void func_8002D028(Player* player, s8 playerIndex) {
         player->velocity[0] = 0;
         player->velocity[1] = 0;
         player->velocity[2] = 0;
-        player->unk_0C0 = 0;
+        player->skidAngle = 0;
         player->unk_078 = 0;
     } else {
         player->unk_08C = 1200;
@@ -2183,8 +2183,8 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
         gravityY = -1 * player->kartGravity;
         gravityZ = 0 * (player->unk_064[2] + sp16C[2]);
     }
-    temp_f2_2 = ((player->oldPos[2] - player->pos[2]) * coss(player->rotation[1] + player->unk_0C0)) +
-                (-(player->oldPos[0] - player->pos[0]) * sins(player->rotation[1] + player->unk_0C0));
+    temp_f2_2 = ((player->oldPos[2] - player->pos[2]) * coss(player->rotation[1] + player->skidAngle)) +
+                (-(player->oldPos[0] - player->pos[0]) * sins(player->rotation[1] + player->skidAngle));
     if (temp_f2_2 > 0.1) {
         player->kartProps |= MOVE_BACKWARDS;
     } else {
@@ -2751,7 +2751,7 @@ void control_cpu_movement(Player* player, UNUSED Camera* camera, s8 screenId, s8
     player->oldPos[2] = player->pos[2];
     nextX = player->pos[0] + player->velocity[0];
     nextZ = player->pos[2] + player->velocity[2];
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->kartHopJerk = 0;
     player->kartHopAcceleration = 0;
     player->kartHopVelocity = 0;
@@ -2923,7 +2923,7 @@ void func_8002FCA8(Player* player, s8 playerIndex) {
         var_v1 = 0;
     }
     if ((player->currentSpeed >= 200.0f) && (var_v1 == 2)) {
-        temp_lo = (s16) player->unk_0C0 / DEGREES(1);
+        temp_lo = (s16) player->skidAngle / DEGREES(1);
         if ((temp_lo > 0xF) || (temp_lo < -0xF)) {
             var_f0 += 1.0;
         }
@@ -2974,7 +2974,7 @@ void func_8002FE84(Player* player, f32 arg1) {
         // just above this comment
         var_f0 += D_800E2E90[player->characterId][player->tyres[BACK_LEFT].surfaceType] * (0.7 * 1.0);
     }
-    test = player->unk_0C0 / DEGREES(1);
+    test = player->skidAngle / DEGREES(1);
     if (test < 0) {
         var_f0 += -test * 0.004;
     } else {
@@ -3032,14 +3032,14 @@ f32 func_80030150(Player* player, s8 playerIndex) {
                 }
             }
             if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) || (player->driftDuration > 0)) {
-                var_v0 = (s16) player->unk_0C0 / DEGREES(1);
+                var_v0 = (s16) player->skidAngle / DEGREES(1);
                 if (var_v0 < 0) {
                     var_f0 += -var_v0 * 0.004;
                 } else {
                     var_f0 += var_v0 * 0.004;
                 }
             } else {
-                var_v0 = (s16) player->unk_0C0 / DEGREES(1);
+                var_v0 = (s16) player->skidAngle / DEGREES(1);
                 if (var_v0 < 0) {
                     var_f0 += -var_v0 * (0.01 + gKartTurnSpeedReductionTable0[player->characterId]);
                 } else {
@@ -3928,7 +3928,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
          (
            ((player->effects & HOP_EFFECT) != HOP_EFFECT) &&
            (
-             ((player->unk_0C0 / DEGREES(1) <= 6) && (player->unk_0C0 / DEGREES(1) >= -6)) ||
+             ((player->skidAngle / DEGREES(1) <= 6) && (player->skidAngle / DEGREES(1) >= -6)) ||
              ((controller->button & R_TRIG) != R_TRIG)
            )
          ) ||
@@ -3937,11 +3937,11 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
        ) {
        cancel_drift_effect(player);
     }
-    if ((player->unk_0C0 / DEGREES(1)) < (-5)) {
+    if ((player->skidAngle / DEGREES(1)) < (-5)) {
         player->kartProps |= LEFT_TURN;
         player->kartProps &= ~RIGHT_TURN;
         D_801652C0[playerIndex]++;
-    } else if ((player->unk_0C0 / DEGREES(1)) > 5) {
+    } else if ((player->skidAngle / DEGREES(1)) > 5) {
         player->kartProps |= RIGHT_TURN;
         player->kartProps &= ~LEFT_TURN;
         D_801652C0[playerIndex]++;
@@ -4192,7 +4192,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 playerIndex
             }
         }
     } else if (((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) && ((player->effects & HOP_EFFECT) != HOP_EFFECT)) {
-        if ((((s16) player->unk_0C0) / DEGREES(1)) > 0) {
+        if ((((s16) player->skidAngle) / DEGREES(1)) > 0) {
             // linear map, sets -53 to 40 and 53 to 53
             var_s1_2 = (((s32) (((player->steerPosition >> 16) * 13) + (13 * 53))) / (2 * 53)) + 40;
             if ((player->steerPosition >> 16) <= -40) {
@@ -4300,7 +4300,7 @@ void apply_cpu_turn(Player* player, s16 targetAngle) {
                         player->unk_078 = (player->steerPosition >> 16) * (var_f0 + 1.5);
                     }
                 } else if ((player->effects & MIDAIR_EFFECT) != MIDAIR_EFFECT) {
-                    if (((s16) player->unk_0C0 / DEGREES(1)) > 0) {
+                    if (((s16) player->skidAngle / DEGREES(1)) > 0) {
                         var_v0 = player->steerPosition >> 16;
                     } else {
                         var_v0 = player->steerPosition >> 16;
@@ -4314,7 +4314,7 @@ void apply_cpu_turn(Player* player, s16 targetAngle) {
                     }
                     player->unk_078 = var_v0 * var_f0;
                 }
-                if ((((player->effects & HOP_EFFECT) != HOP_EFFECT) && (player->unk_0C0 <= 60) && (player->unk_0C0 >= -60)) ||
+                if ((((player->effects & HOP_EFFECT) != HOP_EFFECT) && (player->skidAngle <= 60) && (player->skidAngle >= -60)) ||
                     (((player->speed / 18.0f) * 216.0f) <= 20.0f) ||
                     ((player->effects & ENEMY_BONK_EFFECT) == ENEMY_BONK_EFFECT)) {
                     cancel_drift_effect(player);
@@ -4336,12 +4336,12 @@ void cancel_drift_effect(Player* player) {
     s32 steer_position_new;
 
     if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
-        if ((player->unk_0C0 / DEGREES(1)) > 0) {
+        if ((player->skidAngle / DEGREES(1)) > 0) {
             // linear map, sets -53 to 40 and 53 to 53
             steer_position_new = ((((player->steerPosition >> 16) * 13) + (13*53)) / (2*53)) + 40;
             player->steerPosition = steer_position_new << 16;
         }
-        if ((player->unk_0C0 / DEGREES(1)) < 0) {
+        if ((player->skidAngle / DEGREES(1)) < 0) {
             // linear map, sets -53 to -53 and 53 to -40
             steer_position_new = ((((player->steerPosition >> 16) * 13) + (13*53)) / (2*53)) - 53;
             player->steerPosition = steer_position_new << 16;

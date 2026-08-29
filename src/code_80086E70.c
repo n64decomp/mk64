@@ -966,6 +966,8 @@ UNUSED void func_8008900C(Player* player) {
     player->currentSpeed = 0.0f;
 }
 
+//some sort of friction. Moves a value toward 0, depending on
+// input value and whether on Sherbet Land (ice)
 void func_80089020(s32 playerId, f32* arg1) {
     f32 var_f0;
     f32 var_f2;
@@ -1075,7 +1077,7 @@ void func_80089474(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 soundB
     }
 }
 
-void func_80089538(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 soundBits) {
+UNUSED void func_80089538(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 soundBits) {
     UNUSED s32 stackPadding;
     Player* player;
 
@@ -1106,7 +1108,7 @@ s32 func_800895E4(s32 objectIndex) {
     return var_s6;
 }
 
-void func_800896D4(s32 objectIndex, f32 arg1, f32 arg2) {
+UNUSED void func_800896D4(s32 objectIndex, f32 arg1, f32 arg2) {
     Player* player;
     s32 playerIndex;
 

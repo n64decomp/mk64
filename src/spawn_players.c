@@ -134,7 +134,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_002 = 0;
 
     player->effects = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->steerPosition = 0;
     player->unk_07A = 0;
     player->unk_006 = 0;
@@ -182,7 +182,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_0B0 = 0;
     player->unk_0B2 = 0;
     player->swerveTimer = 0;
-    player->unk_0C0 = 0;
+    player->skidAngle = 0;
     player->unk_0C2 = 0;
     player->unk_0C8 = 0;
     player->lakituProps = 0;

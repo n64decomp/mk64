@@ -66,7 +66,7 @@ void update_actor_green_shell(struct ShellActor* shell) {
                         somePosVel[0] = 0.0f;
                         somePosVel[1] = 0.0f;
                         somePosVel[2] = -var_f2;
-                        vec3f_rotate_y(somePosVel, player->rotation[1] + player->unk_0C0);
+                        vec3f_rotate_y(somePosVel, player->rotation[1] + player->skidAngle);
                         shell->velocity[0] = somePosVel[0];
                         shell->velocity[1] = somePosVel[1];
                         shell->velocity[2] = somePosVel[2];
@@ -78,7 +78,7 @@ void update_actor_green_shell(struct ShellActor* shell) {
                         return;
                     } else {
                         shell->state = 1;
-                        if (player->unk_0C0 > 0) {
+                        if (player->skidAngle > 0) {
                             shell->rotAngle = DEGREES(170);
                         } else {
                             // The minus 1 is almost certainly just due to rounding the other way
@@ -119,7 +119,7 @@ void update_actor_green_shell(struct ShellActor* shell) {
                 somePosVel[0] = 0.0f;
                 somePosVel[1] = 0.0f;
                 somePosVel[2] = var_f2;
-                vec3f_rotate_y(somePosVel, player->rotation[1] + player->unk_0C0);
+                vec3f_rotate_y(somePosVel, player->rotation[1] + player->skidAngle);
                 shell->velocity[0] = somePosVel[0];
                 shell->velocity[1] = somePosVel[1];
                 shell->velocity[2] = somePosVel[2];
