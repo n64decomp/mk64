@@ -1,0 +1,2759 @@
+newmtl star_outline
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/star_outline.ia16.png
+
+newmtl texture_67A1B8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67A1B8.rgba16.png
+
+newmtl checkerboard_black_white
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/checkerboard_black_white.rgba16.png
+
+newmtl texture_662A34
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_662A34.rgba16.png
+
+newmtl rainbow
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/rainbow.rgba16.png
+
+newmtl texture_66ABA4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66ABA4.rgba16.png
+
+newmtl texture_67490C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67490C.rgba16.png
+
+newmtl texture_64BA50
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64BA50.rgba16.png
+
+newmtl texture_64286C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64286C.rgba16.png
+
+newmtl gray_checkerboard
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/gray_checkerboard.rgba16.png
+
+newmtl texture_64275C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64275C.rgba16.png
+
+newmtl texture_6747C4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6747C4.rgba16.png
+
+newmtl texture_6442D4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6442D4.rgba16.png
+
+newmtl gray_cobblestone
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/gray_cobblestone.rgba16.png
+
+newmtl texture_642978
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_642978.rgba16.png
+
+newmtl checkerboard_yellow_pink
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/checkerboard_yellow_pink.rgba16.png
+
+newmtl texture_64619C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64619C.rgba16.png
+
+newmtl grass_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/grass_1.rgba16.png
+
+newmtl texture_64BB60
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64BB60.rgba16.png
+
+newmtl grass_7
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/grass_7.rgba16.png
+
+newmtl grass_5
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/grass_5.rgba16.png
+
+newmtl flag_red
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/flag_red.rgba16.png
+
+newmtl texture_663F90
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_663F90.rgba16.png
+
+newmtl texture_6642A4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6642A4.rgba16.png
+
+newmtl texture_6640B4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6640B4.rgba16.png
+
+newmtl grass_10
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/grass_10.rgba16.png
+
+newmtl texture_6684F8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6684F8.rgba16.png
+
+newmtl sign_luigis_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_luigis_0.rgba16.png
+
+newmtl sign_luigis_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_luigis_1.rgba16.png
+
+newmtl sign_mario_star_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_mario_star_0.rgba16.png
+
+newmtl sign_mario_star_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_mario_star_1.rgba16.png
+
+newmtl texture_66C8F4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66C8F4.rgba16.png
+
+newmtl sign_nintendo_red_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_nintendo_red_0.rgba16.png
+
+newmtl sign_nintendo_red_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_nintendo_red_1.rgba16.png
+
+newmtl texture_670AC8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_670AC8.rgba16.png
+
+newmtl texture_674354
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_674354.rgba16.png
+
+newmtl road_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/road_0.rgba16.png
+
+newmtl road_finish_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/road_finish_0.rgba16.png
+
+newmtl texture_67B9B0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67B9B0.rgba16.png
+
+newmtl sign_yoshi
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_yoshi.rgba16.png
+
+newmtl checkerboard_blue_gray
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/checkerboard_blue_gray.rgba16.png
+
+newmtl sign_shell_shot_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_shell_shot_0.rgba16.png
+
+newmtl sign_shell_shot_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_shell_shot_1.rgba16.png
+
+newmtl sign_koopa_air_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_koopa_air_0.rgba16.png
+
+newmtl sign_koopa_air_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_koopa_air_1.rgba16.png
+
+newmtl texture_66CA98
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66CA98.rgba16.png
+
+newmtl texture_66EBF0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66EBF0.rgba16.png
+
+newmtl texture_675434
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_675434.rgba16.png
+
+newmtl texture_677F04
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_677F04.rgba16.png
+
+newmtl texture_678118
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_678118.rgba16.png
+
+newmtl texture_679258
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_679258.rgba16.png
+
+newmtl texture_67973C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67973C.rgba16.png
+
+newmtl texture_643B3C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_643B3C.rgba16.png
+
+newmtl texture_66A3DC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66A3DC.rgba16.png
+
+newmtl sign_wood_red_arrow
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_wood_red_arrow.rgba16.png
+
+newmtl texture_66DD38
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66DD38.rgba16.png
+
+newmtl texture_643430
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_643430.rgba16.png
+
+newmtl texture_660D8C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_660D8C.rgba16.png
+
+newmtl texture_6609D0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6609D0.rgba16.png
+
+newmtl grass_12
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/grass_12.rgba16.png
+
+newmtl texture_67BEE8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67BEE8.rgba16.png
+
+newmtl sand_finish
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sand_finish.rgba16.png
+
+newmtl wheel_steam_engine
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/wheel_steam_engine.rgba16.png
+
+newmtl texture_669570
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_669570.rgba16.png
+
+newmtl waves_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/waves_1.rgba16.png
+
+newmtl waves_2
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/waves_2.rgba16.png
+
+newmtl texture_66D024
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66D024.rgba16.png
+
+newmtl texture_678CC8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_678CC8.rgba16.png
+
+newmtl texture_67842C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67842C.rgba16.png
+
+newmtl texture_67893C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67893C.rgba16.png
+
+newmtl texture_651984
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_651984.rgba16.png
+
+newmtl texture_651428
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_651428.rgba16.png
+
+newmtl texture_662924
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_662924.rgba16.png
+
+newmtl wood_bridge_slats
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/wood_bridge_slats.rgba16.png
+
+newmtl texture_65E2EC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65E2EC.rgba16.png
+
+newmtl texture_6846DC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6846DC.rgba16.png
+
+newmtl fence_rope
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/fence_rope.rgba16.png
+
+newmtl texture_685108
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_685108.rgba16.png
+
+newmtl texture_64CC20
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64CC20.rgba16.png
+
+newmtl texture_67F15C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67F15C.rgba16.png
+
+newmtl texture_67F450
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67F450.rgba16.png
+
+newmtl sign_wario_face
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_wario_face.rgba16.png
+
+newmtl texture_64C11C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64C11C.rgba16.png
+
+newmtl texture_64C7B4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64C7B4.rgba16.png
+
+newmtl texture_668228
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_668228.rgba16.png
+
+newmtl texture_668358
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_668358.rgba16.png
+
+newmtl texture_66AEB8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66AEB8.ia16.png
+
+newmtl texture_677A40
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_677A40.rgba16.png
+
+newmtl texture_67E428
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67E428.rgba16.png
+
+newmtl texture_643A34
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_643A34.rgba16.png
+
+newmtl texture_68272C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_68272C.rgba16.png
+
+newmtl texture_682928
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_682928.rgba16.png
+
+newmtl texture_682B24
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_682B24.rgba16.png
+
+newmtl texture_682D20
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_682D20.rgba16.png
+
+newmtl texture_682F1C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_682F1C.rgba16.png
+
+newmtl texture_683118
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_683118.rgba16.png
+
+newmtl texture_64647C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64647C.rgba16.png
+
+newmtl texture_647F4C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_647F4C.rgba16.png
+
+newmtl texture_64FBF4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64FBF4.rgba16.png
+
+newmtl texture_653DB0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_653DB0.rgba16.png
+
+newmtl texture_652B54
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_652B54.rgba16.png
+
+newmtl texture_65315C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65315C.rgba16.png
+
+newmtl texture_6774D8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6774D8.rgba16.png
+
+newmtl sign_falling_rocks
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_falling_rocks.rgba16.png
+
+newmtl sign_backside
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_backside.rgba16.png
+
+newmtl texture_679C04
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_679C04.rgba16.png
+
+newmtl texture_67B864
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67B864.rgba16.png
+
+newmtl texture_67DC20
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67DC20.rgba16.png
+
+newmtl texture_64313C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64313C.rgba16.png
+
+newmtl texture_6528DC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6528DC.rgba16.png
+
+newmtl texture_66ED38
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66ED38.rgba16.png
+
+newmtl texture_676C6C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_676C6C.rgba16.png
+
+newmtl texture_676EA8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_676EA8.rgba16.png
+
+newmtl texture_679D34
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_679D34.rgba16.png
+
+newmtl grass_6
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/grass_6.rgba16.png
+
+newmtl texture_6522E0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6522E0.rgba16.png
+
+newmtl texture_651F40
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_651F40.rgba16.png
+
+newmtl roof_tile
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/roof_tile.rgba16.png
+
+newmtl sign_bowser_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_bowser_0.rgba16.png
+
+newmtl sign_bowser_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_bowser_1.rgba16.png
+
+newmtl texture_6733CC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6733CC.rgba16.png
+
+newmtl texture_673118
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_673118.rgba16.png
+
+newmtl texture_673FF8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_673FF8.rgba16.png
+
+newmtl texture_674B28
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_674B28.rgba16.png
+
+newmtl sign_green_arrow
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_green_arrow.rgba16.png
+
+newmtl texture_68D834
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_68D834.rgba16.png
+
+newmtl texture_676D7C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_676D7C.rgba16.png
+
+newmtl texture_67ADF0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67ADF0.rgba16.png
+
+newmtl texture_67EFEC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67EFEC.rgba16.png
+
+newmtl texture_673990
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_673990.rgba16.png
+
+newmtl texture_67A370
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67A370.rgba16.png
+
+newmtl texture_67A91C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67A91C.rgba16.png
+
+newmtl texture_648508
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_648508.rgba16.png
+
+newmtl texture_654460
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_654460.rgba16.png
+
+newmtl texture_654F74
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_654F74.rgba16.png
+
+newmtl texture_655998
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_655998.rgba16.png
+
+newmtl texture_655F38
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_655F38.rgba16.png
+
+newmtl texture_656AF4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_656AF4.rgba16.png
+
+newmtl texture_6575C8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6575C8.rgba16.png
+
+newmtl texture_658370
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_658370.rgba16.png
+
+newmtl texture_65912C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65912C.rgba16.png
+
+newmtl texture_659EE8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_659EE8.rgba16.png
+
+newmtl texture_65ADE0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65ADE0.rgba16.png
+
+newmtl texture_65BB3C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65BB3C.rgba16.png
+
+newmtl texture_65C8DC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65C8DC.rgba16.png
+
+newmtl texture_65D5D4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65D5D4.rgba16.png
+
+newmtl texture_65EAEC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65EAEC.rgba16.png
+
+newmtl texture_65E59C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65E59C.rgba16.png
+
+newmtl texture_65EE38
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65EE38.rgba16.png
+
+newmtl texture_65FB18
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65FB18.rgba16.png
+
+newmtl sign_pink_arrow
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_pink_arrow.rgba16.png
+
+newmtl waves_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/waves_0.ia16.png
+
+newmtl texture_683844
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_683844.rgba16.png
+
+newmtl texture_6457D8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6457D8.rgba16.png
+
+newmtl texture_6462C0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6462C0.rgba16.png
+
+newmtl texture_6864E8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6864E8.rgba16.png
+
+newmtl texture_686CF0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_686CF0.rgba16.png
+
+newmtl texture_6875A8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6875A8.rgba16.png
+
+newmtl texture_687EE8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_687EE8.rgba16.png
+
+newmtl texture_68876C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_68876C.rgba16.png
+
+newmtl texture_689230
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_689230.rgba16.png
+
+newmtl texture_689C00
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_689C00.rgba16.png
+
+newmtl texture_68A484
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_68A484.rgba16.png
+
+newmtl texture_68AC5C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_68AC5C.rgba16.png
+
+newmtl texture_68B6A4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_68B6A4.rgba16.png
+
+newmtl texture_68BE6C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_68BE6C.rgba16.png
+
+newmtl texture_68C310
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_68C310.rgba16.png
+
+newmtl texture_64B8D8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64B8D8.rgba16.png
+
+newmtl texture_645660
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_645660.rgba16.png
+
+newmtl number_yellow_blue_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/number_yellow_blue_1.rgba16.png
+
+newmtl number_yellow_blue_2
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/number_yellow_blue_2.rgba16.png
+
+newmtl number_yellow_blue_3
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/number_yellow_blue_3.rgba16.png
+
+newmtl number_yellow_blue_4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/number_yellow_blue_4.rgba16.png
+
+newmtl texture_668608
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_668608.rgba16.png
+
+newmtl texture_67B75C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67B75C.rgba16.png
+
+newmtl texture_6835F0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6835F0.rgba16.png
+
+newmtl texture_646CA8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_646CA8.rgba16.png
+
+newmtl texture_6473E4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6473E4.rgba16.png
+
+newmtl texture_647994
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_647994.rgba16.png
+
+newmtl texture_668920
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_668920.rgba16.png
+
+newmtl railroad_track
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/railroad_track.rgba16.png
+
+newmtl railroad_crossing_track
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/railroad_crossing_track.rgba16.png
+
+newmtl texture_67291C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67291C.rgba16.png
+
+newmtl fence_barbed_wire
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/fence_barbed_wire.rgba16.png
+
+newmtl texture_67D304
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67D304.rgba16.png
+
+newmtl texture_67E010
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67E010.rgba16.png
+
+newmtl texture_67EEAC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67EEAC.rgba16.png
+
+newmtl texture_645134
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_645134.rgba16.png
+
+newmtl texture_64FE68
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64FE68.rgba16.png
+
+newmtl texture_6607C0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6607C0.rgba16.png
+
+newmtl texture_6608C8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6608C8.rgba16.png
+
+newmtl grass_11
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/grass_11.rgba16.png
+
+newmtl texture_671A88
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_671A88.rgba16.png
+
+newmtl road_2
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/road_2.rgba16.png
+
+newmtl road_3
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/road_3.rgba16.png
+
+newmtl road_4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/road_4.rgba16.png
+
+newmtl sign_toad_yellow
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_toad_yellow.rgba16.png
+
+newmtl sign_toad_green
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_toad_green.rgba16.png
+
+newmtl sign_merging_lanes
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_merging_lanes.rgba16.png
+
+newmtl texture_65127C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65127C.rgba16.png
+
+newmtl road_5
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/road_5.rgba16.png
+
+newmtl sign_toad_red
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_toad_red.rgba16.png
+
+newmtl texture_6447C4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6447C4.rgba16.png
+
+newmtl texture_676FB0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_676FB0.rgba16.png
+
+newmtl texture_64BB60
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64BB60.rgba16.png
+
+newmtl texture_64BCCC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64BCCC.rgba16.png
+
+newmtl texture_651B20
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_651B20.rgba16.png
+
+newmtl texture_66262C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66262C.rgba16.png
+
+newmtl texture_668728
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_668728.rgba16.png
+
+newmtl texture_66CD64
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66CD64.rgba16.png
+
+newmtl texture_66D698
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66D698.rgba16.png
+
+newmtl texture_66E608
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66E608.rgba16.png
+
+newmtl texture_67B388
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67B388.rgba16.png
+
+newmtl sign_welcome_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_welcome_0.rgba16.png
+
+newmtl sign_welcome_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_welcome_1.rgba16.png
+
+newmtl sign_wooden_back_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_wooden_back_0.rgba16.png
+
+newmtl sign_wooden_back_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_wooden_back_1.rgba16.png
+
+newmtl texture_68D940
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_68D940.rgba16.png
+
+newmtl texture_685AC0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_685AC0.ia16.png
+
+newmtl wood_door_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/wood_door_0.rgba16.png
+
+newmtl grass_2
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/grass_2.rgba16.png
+
+newmtl texture_64AF50
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64AF50.rgba16.png
+
+newmtl texture_64B090
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64B090.rgba16.png
+
+newmtl texture_64B54C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64B54C.rgba16.png
+
+newmtl texture_64B3F8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64B3F8.rgba16.png
+
+newmtl texture_674D58
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_674D58.rgba16.png
+
+newmtl texture_675064
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_675064.rgba16.png
+
+newmtl texture_675220
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_675220.rgba16.png
+
+newmtl texture_683314
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_683314.rgba16.png
+
+newmtl texture_68CDA0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_68CDA0.rgba16.png
+
+newmtl texture_6442D4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6442D4.rgba16.png
+
+newmtl texture_64440C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64440C.rgba16.png
+
+newmtl texture_6446AC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6446AC.rgba16.png
+
+newmtl gTextureMooMooFarmSignLeft
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../assets/courses/moo_moo_farm/gTextureMooMooFarmSignLeft.png
+
+newmtl gTextureMooMooFarmSignRight
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../assets/courses/moo_moo_farm/gTextureMooMooFarmSignRight.png
+
+newmtl texture_64ACAC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64ACAC.rgba16.png
+
+newmtl wheel_steam_engine_real
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/wheel_steam_engine_real.rgba16.png
+
+newmtl checkerbord_yellow_blue
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/checkerbord_yellow_blue.rgba16.png
+
+newmtl checkerboard_blue_green
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/checkerboard_blue_green.rgba16.png
+
+newmtl grass_3
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/grass_3.rgba16.png
+
+newmtl texture_65100C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65100C.rgba16.png
+
+newmtl texture_65112C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_65112C.rgba16.png
+
+newmtl texture_653608
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_653608.rgba16.png
+
+newmtl sign_luigi_face_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_luigi_face_0.rgba16.png
+
+newmtl sign_luigi_face_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_luigi_face_1.rgba16.png
+
+newmtl texture_66C7A8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66C7A8.rgba16.png
+
+newmtl texture_6735DC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6735DC.rgba16.png
+
+newmtl texture_673C68
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_673C68.rgba16.png
+
+newmtl road_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/road_1.rgba16.png
+
+newmtl road_finish_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/road_finish_1.rgba16.png
+
+newmtl texture_67BBD8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67BBD8.rgba16.png
+
+newmtl sign_blue_64
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/sign_blue_64.rgba16.png
+
+newmtl wood_door_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/wood_door_1.rgba16.png
+
+newmtl texture_64F9E8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_64F9E8.rgba16.png
+
+newmtl crown_jewel_blue
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/crown_jewel_blue.rgba16.png
+
+newmtl crown
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/crown.rgba16.png
+
+newmtl crown_jewel_pink
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/crown_jewel_pink.rgba16.png
+
+newmtl checkerboard_pink
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/checkerboard_pink.rgba16.png
+
+newmtl castle_bricks
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/castle_bricks.rgba16.png
+
+newmtl castle_bridge
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/castle_bridge.rgba16.png
+
+newmtl grass_8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/grass_8.rgba16.png
+
+newmtl grass_9
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/grass_9.rgba16.png
+
+newmtl texture_6646B8
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6646B8.rgba16.png
+
+newmtl texture_664408
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_664408.rgba16.png
+
+newmtl bricks_red
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/bricks_red.rgba16.png
+
+newmtl texture_665C0C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_665C0C.rgba16.png
+
+newmtl texture_6661AC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6661AC.rgba16.png
+
+newmtl texture_6663A4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6663A4.rgba16.png
+
+newmtl texture_667BAC
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_667BAC.rgba16.png
+
+newmtl flag_red_2
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/flag_red_2.rgba16.png
+
+newmtl texture_66DB60
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_66DB60.rgba16.png
+
+newmtl stainglass_peach_0
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/stainglass_peach_0.rgba16.png
+
+newmtl stainglass_peach_1
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/stainglass_peach_1.rgba16.png
+
+newmtl fence_post_wooden
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/fence_post_wooden.rgba16.png
+
+newmtl texture_6449D4
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_6449D4.rgba16.png
+
+newmtl texture_67FE0C
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ../textures/standalone/texture_67FE0C.rgba16.png
