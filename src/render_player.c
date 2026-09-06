@@ -1720,7 +1720,7 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
     UNUSED s32 pad[2];
     s32 temp_t1;
     s32 flipOffset;
-    OSMesg* sp34;
+    OSMesg sp34;
 
     update_wheel_palette(player, playerId, screenId, D_801651D0[screenId][playerId]);
     if (!(player->unk_002 & (UNK_002_UNKNOWN_0x4 << (screenId * 4)))) {
@@ -1745,7 +1745,7 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
     } else {
         render_ghost(player, playerId, screenId, flipOffset);
     }
-    osRecvMesg(&gDmaMesgQueue, (OSMesg*) &sp34, OS_MESG_BLOCK);
+    osRecvMesg(&gDmaMesgQueue, &sp34, OS_MESG_BLOCK);
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) &&
         ((player->lakituProps & LAKITU_RETRIEVAL) != LAKITU_RETRIEVAL) &&
         (player->collision.surfaceDistance[2] <= 30.0f)) {
